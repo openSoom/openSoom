@@ -1,5 +1,5 @@
 {
-  "version": 1,
+  "version": 2,
   "date": "2026-11-18",
   "status": "Accepted direction and documented acceptance targets; software implementation pending",
   "definition": "Reusable open-source operations layer for connecting ventilation and air-management equipment and tracing observations, diagnosis, authorized actions, result verification and maintenance across facilities and vendors.",
@@ -133,16 +133,34 @@
     "mec_deployment": "Feasibility check accepted; platform access and actual deployment evidence required",
     "mec_services": "MEC033 onboarding/discovery is a candidate if an endpoint is actually available",
     "federated_learning": "Deferred until data-locality and multi-facility learning need plus ESTIMED VM path exist",
-    "geolocation": "Deferred until location changes operational behavior; static addresses do not establish service integration"
+    "geolocation": "Deferred until location changes operational behavior; static addresses do not establish service integration",
+    "sdt_semantics": "High-value conditional advanced mapping gate; required FCNT/discovery and adapter meaning/unit validation remain mandatory. An adopted mapping needs actual validation; deferral cannot earn Expert credit."
   },
   "publication": {
     "source_license": "Apache-2.0 per event",
     "own_noncode_license": "CC BY 4.0 per event",
     "third_party": "Retain third-party licenses and attribution; do not relicense third-party assets by assumption",
-    "external_actions": "Prepare artifacts; public posting/submission and messages remain separately authorized actions"
+    "external_actions": "Reviewed project changes to openSoom/openSoom via github-personal are authorized; Hackster/video-host posting, Discord submission and external messages remain separately scoped."
   },
   "references": [
     "https://onem2m-hackathon.io/introduce.asp",
     "https://developers.openai.com/plugins/build/plugins"
-  ]
+  ],
+  "execution_plan": "docs/implementation-plan.md",
+  "execution_state": "docs/execution-state.json",
+  "goal_prompt": "docs/goal-mode-prompt.ko.md",
+  "autonomous_execution": {
+    "user_available_during_run": false,
+    "routine_stage_approval_required": false,
+    "main_agent_may_reorder_and_refine": true,
+    "required_outcomes_may_be_silently_waived": false,
+    "repository_publication_authorized": "openSoom/openSoom via github-personal",
+    "blocked_dependency_policy": "Record affected gate and permitted alternatives; continue independent authorized work; retain unverified required gates.",
+    "review_policy": "Four GPT-6.1 Sol Max teams at major milestones; affected owners after meaningful changes; independent verification for closure.",
+    "activation": "Prepared for a subsequent user-started Goal run; this planning update does not start implementation.",
+    "host_policy": "Existing sandbox, approval, account access and resource limits still apply; no permission bypass.",
+    "external_publication": "GitHub project changes authorized; Hackster/video-host/Discord publication and messages require separate explicit scope.",
+    "project_test_security": "Least-privilege ACPs, test-role credentials and project-scoped TLS are authorized; host/account/organization/approval-policy and global-trust changes are not included.",
+    "live_test_usage": "Set finite per-run and persistent shared test-batch bounds before model tests; aggregate all workers/retries/restarts, with no automatic resets or increases. Separate from Goal token_budget."
+  }
 }

@@ -1,8 +1,8 @@
 {
-  "version": 1,
+  "version": 2,
   "date": "2026-11-18",
-  "review_round": "generalized OSS product and Codex/LLM requirements",
-  "scope": "Initial design and governance review; no product implementation claimed",
+  "review_round": "Initial product governance and pre-execution plan review",
+  "scope": "Documentation review and implementation findings; no product implementation or Goal activation claimed",
   "findings": [
     {
       "id": "R-001",
@@ -342,6 +342,383 @@
       ],
       "reviewed_by": "team_2 / oss_experience_review",
       "verification_result": "Independent reviewer confirmed stable task names, absence of local/session paths in 9 public files, exact 17-criterion coverage, and R-001 through R-012 remaining not_verified."
+    },
+    {
+      "id": "R-014",
+      "team": "team_1",
+      "criteria": [
+        11
+      ],
+      "source_review_finding": "T1-P1",
+      "review_round": "pre-execution-plan-2026-11-18",
+      "evidence_status": "documentation_review",
+      "observed_evidence": [
+        "pre-execution-plan-v1 frozen snapshot",
+        "docs/implementation-plan.md",
+        "docs/goal-mode-prompt.ko.md",
+        "docs/execution-state.json",
+        "docs/product-contract.json"
+      ],
+      "gap_and_impact": "Required FCNT validation and conditional SDT/semantic validation were ambiguous in S2-G4.",
+      "minimum_change": "Split required S2-G4 and conditional S2-G5; align prompt, state and completion logic.",
+      "product_reason": "Preserve a useful interoperable core while retaining a truthful advanced-model target.",
+      "verification": "Compare FCNT pass/SDT defer, adopted SDT failure and successful advanced validation across plan/prompt/state.",
+      "main_decision": "accept",
+      "decision_reason": "Preserve a useful interoperable core while retaining a truthful advanced-model target.",
+      "implementation_state": "documentation_updated; product_execution_pending",
+      "implementation_owner": "main",
+      "review_state": "resolved",
+      "closure_evidence": [
+        {
+          "path": "docs/implementation-plan.md",
+          "sha256": "dcdf725db5bec21976077c3b140b9ca9d91bada4d6006b138515145c1f3f2bfb"
+        },
+        {
+          "path": "docs/goal-mode-prompt.ko.md",
+          "sha256": "d02ae4377b5ad88a472d1d1d99a404cba9fa21fc1bc4c824d31befacd2c7a9fd"
+        },
+        {
+          "path": "docs/execution-state.json",
+          "sha256": "cf5a0e8ec20a5b925223d939f1fb43e4fb5d7118cf08f41ef7cffe5926fec420"
+        },
+        {
+          "path": "docs/product-contract.json",
+          "sha256": "75b5995546a09f5c57b5c8fc57c61cd93812712858fb3e1e4702b88b26e82ed2"
+        }
+      ],
+      "reviewed_by": "team_1 / rubric_reviewer",
+      "verification_result": "Approved documentation. Required FCNT and conditional advanced mapping are separated; decisions and completion rules agree. Closure covers acceptance-document changes only; product_execution_pending remains.",
+      "review_report": "docs/review/pre-execution-plan-review.json"
+    },
+    {
+      "id": "R-015",
+      "team": "team_2",
+      "criteria": [
+        6
+      ],
+      "source_review_finding": "T2-P1",
+      "review_round": "pre-execution-plan-2026-11-18",
+      "evidence_status": "documentation_review",
+      "observed_evidence": [
+        "pre-execution-plan-v1 frozen snapshot",
+        "docs/implementation-plan.md"
+      ],
+      "gap_and_impact": "Fresh Codex-host acceptance lacked specific environment and manual-intervention evidence.",
+      "minimum_change": "Specify OS, host/plugin versions, prerequisites, relevant settings, no prior project state and all extra manual actions.",
+      "product_reason": "A newcomer must be able to reproduce the plugin onboarding.",
+      "verification": "Inspect S3-G1 and ensure packaging or MCP-only tests cannot satisfy host acceptance.",
+      "main_decision": "accept",
+      "decision_reason": "A newcomer must be able to reproduce the plugin onboarding.",
+      "implementation_state": "documentation_updated; product_execution_pending",
+      "implementation_owner": "main",
+      "review_state": "resolved",
+      "closure_evidence": [
+        {
+          "path": "docs/implementation-plan.md",
+          "sha256": "dcdf725db5bec21976077c3b140b9ca9d91bada4d6006b138515145c1f3f2bfb"
+        }
+      ],
+      "reviewed_by": "team_2 / oss_experience_review",
+      "verification_result": "Approved documentation. Clean-host evidence, artifact publication handoff and resumable worker/blocker records are explicit. Closure covers acceptance-document changes only; product_execution_pending remains.",
+      "review_report": "docs/review/pre-execution-plan-review.json"
+    },
+    {
+      "id": "R-016",
+      "team": "team_2",
+      "criteria": [
+        4,
+        5,
+        6,
+        7
+      ],
+      "source_review_finding": "T2-P2",
+      "review_round": "pre-execution-plan-2026-11-18",
+      "evidence_status": "documentation_review",
+      "observed_evidence": [
+        "pre-execution-plan-v1 frozen snapshot",
+        "docs/implementation-plan.md",
+        "docs/execution-state.json"
+      ],
+      "gap_and_impact": "Deliverable handoff lacked artifact provenance and post-publication link/access checks.",
+      "minimum_change": "Track path/hash/source run/revision/publication state and add article backlinks plus logged-out checks after separate authorization.",
+      "product_reason": "Submission materials must be accessible and match their execution evidence.",
+      "verification": "Inspect manifest and handoff; pending URLs must not claim public access.",
+      "main_decision": "accept",
+      "decision_reason": "Submission materials must be accessible and match their execution evidence.",
+      "implementation_state": "documentation_updated; product_execution_pending",
+      "implementation_owner": "main",
+      "review_state": "resolved",
+      "closure_evidence": [
+        {
+          "path": "docs/implementation-plan.md",
+          "sha256": "dcdf725db5bec21976077c3b140b9ca9d91bada4d6006b138515145c1f3f2bfb"
+        },
+        {
+          "path": "docs/execution-state.json",
+          "sha256": "cf5a0e8ec20a5b925223d939f1fb43e4fb5d7118cf08f41ef7cffe5926fec420"
+        }
+      ],
+      "reviewed_by": "team_2 / oss_experience_review",
+      "verification_result": "Approved documentation. Clean-host evidence, artifact publication handoff and resumable worker/blocker records are explicit. Closure covers acceptance-document changes only; product_execution_pending remains.",
+      "review_report": "docs/review/pre-execution-plan-review.json"
+    },
+    {
+      "id": "R-017",
+      "team": "team_2",
+      "criteria": [
+        6
+      ],
+      "source_review_finding": "T2-P3",
+      "review_round": "pre-execution-plan-2026-11-18",
+      "evidence_status": "documentation_review",
+      "observed_evidence": [
+        "pre-execution-plan-v1 frozen snapshot",
+        "docs/implementation-plan.md",
+        "docs/execution-state.json",
+        "docs/goal-mode-prompt.ko.md"
+      ],
+      "gap_and_impact": "Resume checkpoints lacked a minimum structure for delegated work and blockers.",
+      "minimum_change": "Define work ownership/base revision/status/next action and blocker attempts/alternatives/unlock condition.",
+      "product_reason": "Avoid duplicate edits and stalled restarts during unattended work.",
+      "verification": "A reviewer can locate current gate, owner, owned paths, evidence and next independent task from the record contracts.",
+      "main_decision": "accept",
+      "decision_reason": "Avoid duplicate edits and stalled restarts during unattended work.",
+      "implementation_state": "documentation_updated; product_execution_pending",
+      "implementation_owner": "main",
+      "review_state": "resolved",
+      "closure_evidence": [
+        {
+          "path": "docs/implementation-plan.md",
+          "sha256": "dcdf725db5bec21976077c3b140b9ca9d91bada4d6006b138515145c1f3f2bfb"
+        },
+        {
+          "path": "docs/execution-state.json",
+          "sha256": "cf5a0e8ec20a5b925223d939f1fb43e4fb5d7118cf08f41ef7cffe5926fec420"
+        },
+        {
+          "path": "docs/goal-mode-prompt.ko.md",
+          "sha256": "d02ae4377b5ad88a472d1d1d99a404cba9fa21fc1bc4c824d31befacd2c7a9fd"
+        }
+      ],
+      "reviewed_by": "team_2 / oss_experience_review",
+      "verification_result": "Approved documentation. Clean-host evidence, artifact publication handoff and resumable worker/blocker records are explicit. Closure covers acceptance-document changes only; product_execution_pending remains.",
+      "review_report": "docs/review/pre-execution-plan-review.json"
+    },
+    {
+      "id": "R-018",
+      "team": "team_3",
+      "criteria": [
+        10
+      ],
+      "source_review_finding": "T3-P1",
+      "review_round": "pre-execution-plan-2026-11-18",
+      "evidence_status": "documentation_review",
+      "observed_evidence": [
+        "pre-execution-plan-v1 frozen snapshot",
+        "docs/implementation-plan.md",
+        "docs/goal-mode-prompt.ko.md",
+        "AGENTS.md",
+        "docs/product-contract.json"
+      ],
+      "gap_and_impact": "Broad security-setting prohibition could be read as banning required project ACP/TLS work.",
+      "minimum_change": "Explicitly permit project-local test ACPs/credentials/TLS and distinguish host/account/organization/approval and global trust changes.",
+      "product_reason": "Implement standards security without weakening host protections.",
+      "verification": "Contrast allowed project ACP/TLS setup with excluded host-policy/global-trust changes.",
+      "main_decision": "accept",
+      "decision_reason": "Implement standards security without weakening host protections.",
+      "implementation_state": "documentation_updated; product_execution_pending",
+      "implementation_owner": "main",
+      "review_state": "resolved",
+      "closure_evidence": [
+        {
+          "path": "docs/implementation-plan.md",
+          "sha256": "dcdf725db5bec21976077c3b140b9ca9d91bada4d6006b138515145c1f3f2bfb"
+        },
+        {
+          "path": "docs/goal-mode-prompt.ko.md",
+          "sha256": "d02ae4377b5ad88a472d1d1d99a404cba9fa21fc1bc4c824d31befacd2c7a9fd"
+        },
+        {
+          "path": "AGENTS.md",
+          "sha256": "79762c0d6bef25e08a06a6b4c1b41d2c0dd5923482ec5b80658762f65c09d8ef"
+        },
+        {
+          "path": "docs/product-contract.json",
+          "sha256": "75b5995546a09f5c57b5c8fc57c61cd93812712858fb3e1e4702b88b26e82ed2"
+        }
+      ],
+      "reviewed_by": "team_3 / architecture_reasonableness",
+      "verification_result": "Approved documentation. Project security scope, shared live-test accounting and real-model failure acceptance are explicit. Closure covers acceptance-document changes only; product_execution_pending remains.",
+      "review_report": "docs/review/pre-execution-plan-review.json"
+    },
+    {
+      "id": "R-019",
+      "team": "team_3",
+      "criteria": [
+        10,
+        17
+      ],
+      "source_review_finding": "T3-P2",
+      "review_round": "pre-execution-plan-2026-11-18",
+      "evidence_status": "documentation_review",
+      "observed_evidence": [
+        "pre-execution-plan-v1 frozen snapshot",
+        "docs/implementation-plan.md",
+        "docs/goal-mode-prompt.ko.md",
+        "docs/execution-state.json",
+        "AGENTS.md",
+        "docs/product-contract.json"
+      ],
+      "gap_and_impact": "Per-run LLM limits did not bound cumulative worker/retry/resume test usage.",
+      "minimum_change": "Configure a finite shared test-batch allowance and persistent consumed/reserved accounting before calls; no automatic reset/increase.",
+      "product_reason": "Keep unattended live testing bounded while independent work can continue.",
+      "verification": "Require shared reservation and restart persistence checks in S3-G3; distinguish product test allowance from Goal token_budget.",
+      "main_decision": "accept",
+      "decision_reason": "Keep unattended live testing bounded while independent work can continue.",
+      "implementation_state": "documentation_updated; product_execution_pending",
+      "implementation_owner": "main",
+      "review_state": "resolved",
+      "closure_evidence": [
+        {
+          "path": "docs/implementation-plan.md",
+          "sha256": "dcdf725db5bec21976077c3b140b9ca9d91bada4d6006b138515145c1f3f2bfb"
+        },
+        {
+          "path": "docs/goal-mode-prompt.ko.md",
+          "sha256": "d02ae4377b5ad88a472d1d1d99a404cba9fa21fc1bc4c824d31befacd2c7a9fd"
+        },
+        {
+          "path": "docs/execution-state.json",
+          "sha256": "cf5a0e8ec20a5b925223d939f1fb43e4fb5d7118cf08f41ef7cffe5926fec420"
+        },
+        {
+          "path": "AGENTS.md",
+          "sha256": "79762c0d6bef25e08a06a6b4c1b41d2c0dd5923482ec5b80658762f65c09d8ef"
+        },
+        {
+          "path": "docs/product-contract.json",
+          "sha256": "75b5995546a09f5c57b5c8fc57c61cd93812712858fb3e1e4702b88b26e82ed2"
+        }
+      ],
+      "reviewed_by": "team_3 / architecture_reasonableness",
+      "verification_result": "Approved documentation. Project security scope, shared live-test accounting and real-model failure acceptance are explicit. Closure covers acceptance-document changes only; product_execution_pending remains.",
+      "review_report": "docs/review/pre-execution-plan-review.json"
+    },
+    {
+      "id": "R-020",
+      "team": "team_3",
+      "criteria": [
+        10,
+        17
+      ],
+      "source_review_finding": "T3-P3",
+      "review_round": "pre-execution-plan-2026-11-18",
+      "evidence_status": "documentation_review",
+      "observed_evidence": [
+        "pre-execution-plan-v1 frozen snapshot",
+        "docs/implementation-plan.md",
+        "docs/goal-mode-prompt.ko.md"
+      ],
+      "gap_and_impact": "Failure acceptance could be fulfilled using only fixtures without real-model failure handling.",
+      "minimum_change": "Require at least one stale/denied/non-recovery scenario with actual LLM and CSE, checking final report against unresolved state.",
+      "product_reason": "An operator needs truthful results when an agent cannot recover the facility.",
+      "verification": "Inspect S3-G3 for real tool/CSE evidence and no invented success or permission escalation.",
+      "main_decision": "accept",
+      "decision_reason": "An operator needs truthful results when an agent cannot recover the facility.",
+      "implementation_state": "documentation_updated; product_execution_pending",
+      "implementation_owner": "main",
+      "review_state": "resolved",
+      "closure_evidence": [
+        {
+          "path": "docs/implementation-plan.md",
+          "sha256": "dcdf725db5bec21976077c3b140b9ca9d91bada4d6006b138515145c1f3f2bfb"
+        },
+        {
+          "path": "docs/goal-mode-prompt.ko.md",
+          "sha256": "d02ae4377b5ad88a472d1d1d99a404cba9fa21fc1bc4c824d31befacd2c7a9fd"
+        }
+      ],
+      "reviewed_by": "team_3 / architecture_reasonableness",
+      "verification_result": "Approved documentation. Project security scope, shared live-test accounting and real-model failure acceptance are explicit. Closure covers acceptance-document changes only; product_execution_pending remains.",
+      "review_report": "docs/review/pre-execution-plan-review.json"
+    },
+    {
+      "id": "R-021",
+      "team": "team_4",
+      "criteria": [
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "source_review_finding": "T4-P1",
+      "review_round": "pre-execution-plan-2026-11-18",
+      "evidence_status": "documentation_review",
+      "observed_evidence": [
+        "pre-execution-plan-v1 frozen snapshot",
+        "docs/implementation-plan.md",
+        "docs/goal-mode-prompt.ko.md",
+        "docs/execution-state.json"
+      ],
+      "gap_and_impact": "A single conditional extension parent gate could hide an adopted incomplete extension.",
+      "minimum_change": "Track per-extension decisions/history/environment/child gates/evidence/review and make adopted pending children block completion.",
+      "product_reason": "Keep distributed features auditable without forcing unjustified scope.",
+      "verification": "MEC adopted/unverified blocks; independently reviewed deferral excludes only that extension; failed distributed core always blocks.",
+      "main_decision": "accept",
+      "decision_reason": "Keep distributed features auditable without forcing unjustified scope.",
+      "implementation_state": "documentation_updated; product_execution_pending",
+      "implementation_owner": "main",
+      "review_state": "resolved",
+      "closure_evidence": [
+        {
+          "path": "docs/implementation-plan.md",
+          "sha256": "dcdf725db5bec21976077c3b140b9ca9d91bada4d6006b138515145c1f3f2bfb"
+        },
+        {
+          "path": "docs/goal-mode-prompt.ko.md",
+          "sha256": "d02ae4377b5ad88a472d1d1d99a404cba9fa21fc1bc4c824d31befacd2c7a9fd"
+        },
+        {
+          "path": "docs/execution-state.json",
+          "sha256": "cf5a0e8ec20a5b925223d939f1fb43e4fb5d7118cf08f41ef7cffe5926fec420"
+        }
+      ],
+      "reviewed_by": "team_4 / edge_standards_review",
+      "verification_result": "Approved documentation. Extension child gates and distributed reconnection/expired-command acceptance are explicit. Closure covers acceptance-document changes only; product_execution_pending remains.",
+      "review_report": "docs/review/pre-execution-plan-review.json"
+    },
+    {
+      "id": "R-022",
+      "team": "team_4",
+      "criteria": [
+        12
+      ],
+      "source_review_finding": "T4-P2",
+      "review_round": "pre-execution-plan-2026-11-18",
+      "evidence_status": "documentation_review",
+      "observed_evidence": [
+        "pre-execution-plan-v1 frozen snapshot",
+        "docs/implementation-plan.md"
+      ],
+      "gap_and_impact": "Central reconnection acceptance did not explicitly cover expired commands conflicting with local actions.",
+      "minimum_change": "Specify action authority/reconciliation and test local ACK followed by delayed expired central command at reconnect.",
+      "product_reason": "Avoid duplicate or stale actions during distributed recovery.",
+      "verification": "Require actual CSE traces of expiry rejection, no duplicate actuation and consistent incident state; do not claim handover.",
+      "main_decision": "accept",
+      "decision_reason": "Avoid duplicate or stale actions during distributed recovery.",
+      "implementation_state": "documentation_updated; product_execution_pending",
+      "implementation_owner": "main",
+      "review_state": "resolved",
+      "closure_evidence": [
+        {
+          "path": "docs/implementation-plan.md",
+          "sha256": "dcdf725db5bec21976077c3b140b9ca9d91bada4d6006b138515145c1f3f2bfb"
+        }
+      ],
+      "reviewed_by": "team_4 / edge_standards_review",
+      "verification_result": "Approved documentation. Extension child gates and distributed reconnection/expired-command acceptance are explicit. Closure covers acceptance-document changes only; product_execution_pending remains.",
+      "review_report": "docs/review/pre-execution-plan-review.json"
     }
   ]
 }

@@ -67,16 +67,25 @@ Four independent GPT-6.1 Sol reviewers, using Max reasoning, own all 17 hackatho
 - [Review charter](docs/review/review-charter.json)
 - [Findings and main-agent dispositions](docs/review/review-ledger.json)
 - [Rubric baseline and evidence requirements](docs/hackathon/rubric-baseline.json)
+- [Implementation stages and completion gates](docs/implementation-plan.md)
+- [Execution checkpoint](docs/execution-state.json)
+- [Goal-mode activation prompt (Korean)](docs/goal-mode-prompt.ko.md)
 
 Reviewer recommendations are internal acceptance targets, not additional official competition rules. Planned features do not receive implementation scores. No official aggregate score or automatic N/A policy is assumed.
 
-## First implementation milestones
+## Implementation stages
 
-1. Build the actual CSE-backed observation → incident → authorized action → observed-result path.
-2. Demonstrate two facility profiles and two vendor adapters with unchanged core applications.
-3. Validate Codex plugin onboarding, declared runtime prerequisites, diagnostics, and lifecycle operations.
-4. Run the deterministic scenario and actual LLM API scenario separately, retaining redacted tool and CSE traces.
-5. Produce reproducible documentation and a demo video from verified behavior.
+| Stage | Intended result |
+| --- | --- |
+| 0 | Scenario/contracts, runtime choice, initial code structure and feasibility checks |
+| 1 | Actual CSE observation → incident → action → ACK → observed-result flow |
+| 2 | Two profiles/two adapters, native standard services, protocols and access control |
+| 3 | Verified Codex onboarding and actual LLM API execution through shared tools |
+| 4 | Distributed facility operation and justified edge extensions |
+| 5 | Dashboard, clear visualization and a playable evidence-based demo video |
+| 6 | Reproducible release and English submission-ready package |
+
+All implementation stages are currently **not started**. Each stage has observable completion gates in the [implementation plan](docs/implementation-plan.md). The main agent may adjust order and implementation details, uses the four independent review teams, and continues other authorized work when an external dependency blocks one gate. Required runtime evidence is never replaced with a successful planning review. The [Goal prompt](docs/goal-mode-prompt.ko.md) is ready for a subsequent run; this documentation update does not activate it.
 
 MEC deployment/services, CSE handover, federated learning, and geolocation require an operational justification and their own execution evidence. They are not added solely to fill rubric rows.
 

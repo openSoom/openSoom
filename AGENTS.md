@@ -61,6 +61,18 @@ The user explicitly authorizes four GPT-6.1 Sol review teams, each responsible f
 - Use deterministic, replayable scenarios. Timestamp freshness from observed/received times; do not substitute network signal quality for data age.
 - Pin implementation versions and follow the matching documentation.
 
+## Staged autonomous execution
+
+- Read `docs/implementation-plan.md`, `docs/execution-state.json` and the current repository before implementation. The reusable activation prompt is `docs/goal-mode-prompt.ko.md`. Preparing these files does not activate a Goal or complete stage 0.
+- The user will be unavailable during the Goal run. Proceed without routine questions, stage approvals or repeated permission for already-authorized work. Main may reorder tasks and refine implementation, recording reasons and affected gates; required outcomes cannot be silently waived.
+- The user has authorized reviewed project changes to `openSoom/openSoom` through `github-personal`. Verify identity/remote before publishing, preserve unrelated work, use ordinary non-force updates, and verify the remote revision. This does not authorize other external messages or submission services.
+- Use actual gate evidence and independent reviews to advance stages. Update the execution checkpoint and review ledger after meaningful milestones and before handoff/compaction. A document, successful command write, fixture or partial connection cannot stand in for the required runtime outcome.
+- Check external runtime/model/Codex/MEC feasibility early with bounded investigations. If a dependency blocks one gate, record attempts, permitted alternatives and unlock conditions, then continue independent work. Required actual-LLM and Codex-host checks remain incomplete until executed.
+- Keep local deterministic demos, project-local dependencies, adapters, UI, docs and tests moving when an external service is unavailable. Do not loop on unchanged errors or end a turn merely to ask whether to continue. If no meaningful authorized work remains, follow the actual Goal tool's blocked-state rules; do not falsely complete the goal.
+- This autonomy remains subject to host permissions, automatic approval review and resource limits. Do not weaken controls, create purchases/paid infrastructure, actuate real equipment or expand external publication scope to avoid a blocker. Record restricted actions and finish permitted alternatives.
+- Project-local test ACPs, role credentials and TLS configuration are authorized implementation work; this does not permit weakening host/account/organization/approval policies or changing global trust stores. Keep live LLM test-batch usage finite and shared across workers/restarts, separate from any Goal tool token budget. Define and persist those bounds before live tests.
+- The release goal prepares English Hackster/video/presentation assets and publishes authorized GitHub changes. Actual third-party posting, Discord submission and judge conversations are separate handoff items until explicitly authorized. They do not earn rubric credit merely by being drafted.
+
 ## Submission and claims
 
 - The user-provided announcement requests a public Hackster article containing source repository and demo-video links, with its URL submitted to the team Discord channel.

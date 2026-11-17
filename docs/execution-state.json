@@ -1,0 +1,539 @@
+{
+  "schema_version": 1,
+  "updated_at_date": "2026-11-18",
+  "timezone": "Asia/Seoul",
+  "purpose": "Implementation checkpoint; evidence and reviews determine completion, not this file alone.",
+  "plan": "docs/implementation-plan.md",
+  "goal_prompt": "docs/goal-mode-prompt.ko.md",
+  "goal_activation": "not_started",
+  "implementation_status": "not_started",
+  "current_stage": 0,
+  "current_gate": "S0-G1",
+  "foundation_commit": "b000f5537dbee213f8a63dac92a56fa074421885",
+  "last_verified_implementation_revision": null,
+  "status_definitions": {
+    "not_started": "No implementation or verification attempted.",
+    "in_progress": "Work is underway; no completion claim.",
+    "passed": "Observable gate behavior verified and independently reviewed, with evidence links.",
+    "failed": "A check ran and its required outcome was not met.",
+    "blocked_external": "An external dependency prevents this gate; continue independent work. This is not automatically the Goal tool blocked status.",
+    "deferred": "Only conditional extension scope, with reviewed rationale; never a pass or official N/A."
+  },
+  "stages": [
+    {
+      "id": 0,
+      "title": "Specify and scaffold the first runnable scenario",
+      "status": "not_started",
+      "gates": [
+        {
+          "id": "S0-G1",
+          "required": true,
+          "status": "not_started",
+          "evidence": [],
+          "reviews": []
+        },
+        {
+          "id": "S0-G2",
+          "required": true,
+          "status": "not_started",
+          "evidence": [],
+          "reviews": []
+        },
+        {
+          "id": "S0-G3",
+          "required": true,
+          "status": "not_started",
+          "evidence": [],
+          "reviews": []
+        },
+        {
+          "id": "S0-G4",
+          "required": true,
+          "status": "not_started",
+          "evidence": [],
+          "reviews": []
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "title": "Complete the actual service loop",
+      "status": "not_started",
+      "gates": [
+        {
+          "id": "S1-G1",
+          "required": true,
+          "status": "not_started",
+          "evidence": [],
+          "reviews": []
+        },
+        {
+          "id": "S1-G2",
+          "required": true,
+          "status": "not_started",
+          "evidence": [],
+          "reviews": []
+        },
+        {
+          "id": "S1-G3",
+          "required": true,
+          "status": "not_started",
+          "evidence": [],
+          "reviews": []
+        },
+        {
+          "id": "S1-G4",
+          "required": true,
+          "status": "not_started",
+          "evidence": [],
+          "reviews": []
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Prove reuse and native oneM2M behavior",
+      "status": "not_started",
+      "gates": [
+        {
+          "id": "S2-G1",
+          "required": true,
+          "status": "not_started",
+          "evidence": [],
+          "reviews": []
+        },
+        {
+          "id": "S2-G2",
+          "required": true,
+          "status": "not_started",
+          "evidence": [],
+          "reviews": []
+        },
+        {
+          "id": "S2-G3",
+          "required": true,
+          "status": "not_started",
+          "evidence": [],
+          "reviews": []
+        },
+        {
+          "id": "S2-G4",
+          "required": true,
+          "status": "not_started",
+          "evidence": [],
+          "reviews": []
+        },
+        {
+          "id": "S2-G5",
+          "required": false,
+          "status": "not_started",
+          "evidence": [],
+          "reviews": []
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Make the service usable through Codex and a real model",
+      "status": "not_started",
+      "gates": [
+        {
+          "id": "S3-G1",
+          "required": true,
+          "status": "not_started",
+          "evidence": [],
+          "reviews": []
+        },
+        {
+          "id": "S3-G2",
+          "required": true,
+          "status": "not_started",
+          "evidence": [],
+          "reviews": []
+        },
+        {
+          "id": "S3-G3",
+          "required": true,
+          "status": "not_started",
+          "evidence": [],
+          "reviews": []
+        },
+        {
+          "id": "S3-G4",
+          "required": true,
+          "status": "not_started",
+          "evidence": [],
+          "reviews": []
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Demonstrate distributed operation and evaluate extensions",
+      "status": "not_started",
+      "gates": [
+        {
+          "id": "S4-G1",
+          "required": true,
+          "status": "not_started",
+          "evidence": [],
+          "reviews": []
+        },
+        {
+          "id": "S4-G2",
+          "required": true,
+          "status": "not_started",
+          "evidence": [],
+          "reviews": []
+        },
+        {
+          "id": "S4-G3",
+          "required": true,
+          "status": "not_started",
+          "evidence": [],
+          "reviews": []
+        },
+        {
+          "id": "S4-G4",
+          "required": false,
+          "status": "not_started",
+          "evidence": [],
+          "reviews": []
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "title": "Make operation and evidence understandable",
+      "status": "not_started",
+      "gates": [
+        {
+          "id": "S5-G1",
+          "required": true,
+          "status": "not_started",
+          "evidence": [],
+          "reviews": []
+        },
+        {
+          "id": "S5-G2",
+          "required": true,
+          "status": "not_started",
+          "evidence": [],
+          "reviews": []
+        },
+        {
+          "id": "S5-G3",
+          "required": true,
+          "status": "not_started",
+          "evidence": [],
+          "reviews": []
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "title": "Release with evidence",
+      "status": "not_started",
+      "gates": [
+        {
+          "id": "S6-G1",
+          "required": true,
+          "status": "not_started",
+          "evidence": [],
+          "reviews": []
+        },
+        {
+          "id": "S6-G2",
+          "required": true,
+          "status": "not_started",
+          "evidence": [],
+          "reviews": []
+        },
+        {
+          "id": "S6-G3",
+          "required": true,
+          "status": "not_started",
+          "evidence": [],
+          "reviews": []
+        },
+        {
+          "id": "S6-G4",
+          "required": true,
+          "status": "not_started",
+          "evidence": [],
+          "reviews": []
+        }
+      ]
+    }
+  ],
+  "external_readiness": [
+    {
+      "id": "llm_api",
+      "status": "unknown",
+      "affected_gates": [
+        "S3-G2"
+      ],
+      "secret_values_recorded": false
+    },
+    {
+      "id": "codex_host",
+      "status": "unknown",
+      "affected_gates": [
+        "S3-G1"
+      ],
+      "secret_values_recorded": false
+    },
+    {
+      "id": "mec_host_and_services",
+      "status": "unknown",
+      "affected_gates": [
+        "S4-G3",
+        "S4-G4"
+      ],
+      "secret_values_recorded": false
+    }
+  ],
+  "blockers": [],
+  "plan_changes": [],
+  "review_rounds": [
+    {
+      "id": "pre-execution-plan-2026-11-18",
+      "scope": "Documentation readiness only; no stage or product verification.",
+      "report": "docs/review/pre-execution-plan-review.json"
+    }
+  ],
+  "next_actions": [
+    {
+      "gate": "S0-G1",
+      "action": "Specify the first multi-zone scenario, state transitions, failures and common contracts."
+    },
+    {
+      "gate": "S0-G2",
+      "action": "Inspect runtime availability; select/pin the CSE and scaffold validators and preflight."
+    },
+    {
+      "gate": "S0-G3",
+      "action": "Check project-scoped model, Codex and MEC readiness using bounded probes; continue independent work."
+    },
+    {
+      "gate": "S0-G4",
+      "action": "Obtain four-team review of the stage-0 implementation snapshot and resolve gate blockers."
+    }
+  ],
+  "external_handoff": [
+    {
+      "action": "Publish the prepared Hackster article and video to their services",
+      "status": "not_authorized_in_current_goal"
+    },
+    {
+      "action": "Submit the article URL to team Discord or contact organizers",
+      "status": "not_authorized_in_current_goal"
+    },
+    {
+      "action": "Authentic judge/public technical discussion and interview attendance",
+      "status": "external_participation_not_established"
+    },
+    {
+      "action": "After separately authorized publication, verify article-to-repository/video links, README article backlink and logged-out public access; populate pending URLs and publication records.",
+      "status": "pending_publication_authorization"
+    }
+  ],
+  "completion_rule": "All required gates pass with captured evidence and independent review. Every conditional extension has an independently reviewed adopt/defer decision; undecided/investigating entries need a disposition. Adopted extensions require nonempty individually tracked passed child gates; reviewed deferrals retain prior history. Parent required:false never waives adopted child gates. Required external validation and distributed core cannot be waived. Authorized repository publication is verified; external submission/communications are separate handoff items.",
+  "work_items": [],
+  "record_formats": {
+    "work_items": [
+      "id",
+      "gate_ids",
+      "owner_role",
+      "owned_paths",
+      "base_revision",
+      "status",
+      "evidence",
+      "next_action"
+    ],
+    "blockers": [
+      "id",
+      "gate_ids",
+      "reason",
+      "attempts",
+      "permitted_alternatives",
+      "unlock_condition",
+      "next_independent_task"
+    ],
+    "plan_changes": [
+      "id",
+      "old_choice",
+      "new_choice",
+      "reason",
+      "affected_gate_ids",
+      "review_ref"
+    ],
+    "review_rounds": [
+      "id",
+      "scope",
+      "report"
+    ],
+    "gate_evidence": [
+      "revision_or_hashes",
+      "commands",
+      "runtime_versions",
+      "expected",
+      "observed",
+      "exit_status",
+      "artifact_paths",
+      "limitations",
+      "independent_review_ref"
+    ],
+    "extension_child_gates": [
+      "id",
+      "status",
+      "evidence",
+      "review_ref"
+    ],
+    "extension_decision_history": [
+      "decision",
+      "reason",
+      "date",
+      "review_ref",
+      "previous_gate_results"
+    ]
+  },
+  "shared_live_test_budget": {
+    "status": "not_configured",
+    "scope": "All product LLM API test calls, workers, retries and resumed processes in the test batch; independent of the Goal tool budget.",
+    "batch_id": null,
+    "max_requests": null,
+    "max_input_output_tokens": null,
+    "per_run_limits": null,
+    "persistent_accounting_path": null,
+    "requests_consumed": 0,
+    "tokens_consumed": 0,
+    "requests_reserved": 0,
+    "tokens_reserved": 0,
+    "rule": "Configure finite limits before live tests; atomically reserve before calls; retain consumed/reserved usage across restarts; no automatic reset or increase; stop live calls at exhaustion and continue independent work."
+  },
+  "conditional_extensions": [
+    {
+      "id": "advanced_data_model",
+      "criterion": 11,
+      "parent_gate": "S2-G5",
+      "decision": "not_decided",
+      "reason": "High-value SDT/semantic target; required FCNT/discovery gate is separate.",
+      "status": "not_started",
+      "gate_ids": [],
+      "gates": [],
+      "environment": null,
+      "evidence": [],
+      "review_ref": null,
+      "decision_history": [],
+      "completion_rule": "An adopted extension requires nonempty individually identified child gates with passed evidence/review. Reviewed deferral excludes only the extension, retaining earlier adoption/failure records."
+    },
+    {
+      "id": "cse_handover",
+      "criterion": 12,
+      "parent_gate": "S4-G4",
+      "decision": "deferred",
+      "reason": "Previous design review deferred until maintenance/availability need; investigate again at stages 0/4.",
+      "status": "not_started",
+      "gate_ids": [],
+      "gates": [],
+      "environment": null,
+      "evidence": [],
+      "review_ref": "docs/review/review-ledger.json#R-009",
+      "decision_history": [],
+      "completion_rule": "An adopted extension requires nonempty individually identified child gates with passed evidence/review. Reviewed deferral excludes only the extension, retaining earlier adoption/failure records."
+    },
+    {
+      "id": "mec_deployment",
+      "criterion": 13,
+      "parent_gate": "S4-G4",
+      "decision": "investigate",
+      "reason": "Verify actual platform access and deployment rights.",
+      "status": "not_started",
+      "gate_ids": [],
+      "gates": [],
+      "environment": null,
+      "evidence": [],
+      "review_ref": null,
+      "decision_history": [],
+      "completion_rule": "An adopted extension requires nonempty individually identified child gates with passed evidence/review. Reviewed deferral excludes only the extension, retaining earlier adoption/failure records."
+    },
+    {
+      "id": "federated_learning",
+      "criterion": 14,
+      "parent_gate": "S4-G4",
+      "decision": "deferred",
+      "reason": "No justified multi-client data/learning need or ESTIMED VM path yet.",
+      "status": "not_started",
+      "gate_ids": [],
+      "gates": [],
+      "environment": null,
+      "evidence": [],
+      "review_ref": "docs/review/review-ledger.json#R-010",
+      "decision_history": [],
+      "completion_rule": "An adopted extension requires nonempty individually identified child gates with passed evidence/review. Reviewed deferral excludes only the extension, retaining earlier adoption/failure records."
+    },
+    {
+      "id": "geolocation",
+      "criterion": 15,
+      "parent_gate": "S4-G4",
+      "decision": "deferred",
+      "reason": "No operational location-change need yet.",
+      "status": "not_started",
+      "gate_ids": [],
+      "gates": [],
+      "environment": null,
+      "evidence": [],
+      "review_ref": "docs/review/review-ledger.json#R-010",
+      "decision_history": [],
+      "completion_rule": "An adopted extension requires nonempty individually identified child gates with passed evidence/review. Reviewed deferral excludes only the extension, retaining earlier adoption/failure records."
+    },
+    {
+      "id": "mec_services",
+      "criterion": 16,
+      "parent_gate": "S4-G4",
+      "decision": "investigate",
+      "reason": "Verify an actual non-location service and oneM2M integration path.",
+      "status": "not_started",
+      "gate_ids": [],
+      "gates": [],
+      "environment": null,
+      "evidence": [],
+      "review_ref": null,
+      "decision_history": [],
+      "completion_rule": "An adopted extension requires nonempty individually identified child gates with passed evidence/review. Reviewed deferral excludes only the extension, retaining earlier adoption/failure records."
+    }
+  ],
+  "deliverables": [
+    {
+      "id": "hackster_article",
+      "path": null,
+      "sha256": null,
+      "source_revision": null,
+      "run_ids": [],
+      "artifact_status": "not_started",
+      "publication_status": "not_published",
+      "public_url": null
+    },
+    {
+      "id": "demo_video",
+      "path": null,
+      "sha256": null,
+      "source_revision": null,
+      "run_ids": [],
+      "artifact_status": "not_started",
+      "publication_status": "not_published",
+      "public_url": null
+    },
+    {
+      "id": "presentation_and_qa",
+      "path": null,
+      "sha256": null,
+      "source_revision": null,
+      "run_ids": [],
+      "artifact_status": "not_started",
+      "publication_status": "not_published",
+      "public_url": null
+    }
+  ]
+}

@@ -1,5 +1,5 @@
 {
-  "version": 1,
+  "version": 2,
   "date": "2026-11-18",
   "project": "openSoom",
   "authority": "User explicitly requested four review teams and main-agent delegation of implementation improvements.",
@@ -71,6 +71,7 @@
   "active_slot_limit": 4,
   "scheduling": "Main plus up to three active reviewers/implementers; batch the four teams.",
   "triggers": [
+    "Pre-execution plan and autonomous Goal prompt review; documentation acceptance only",
     "Meaningful changes affecting assigned criteria",
     "Architecture freeze",
     "First real CSE end-to-end flow",
@@ -134,5 +135,7 @@
     "Reviewers do not send external messages or publish.",
     "Implementation authors cannot independently close their own findings.",
     "This process runs during active work and milestones; it is not a scheduled background monitor."
-  ]
+  ],
+  "implementation_plan": "docs/implementation-plan.md",
+  "execution_state": "docs/execution-state.json"
 }
