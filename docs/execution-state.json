@@ -5,10 +5,10 @@
   "purpose": "Implementation checkpoint; evidence and reviews determine completion, not this file alone.",
   "plan": "docs/implementation-plan.md",
   "goal_prompt": "docs/goal-mode-prompt.ko.md",
-  "goal_activation": "active",
-  "implementation_status": "verified_pending_repository_publication",
+  "goal_activation": "completion_ready",
+  "implementation_status": "complete",
   "current_stage": 6,
-  "current_gate": "S6-G4",
+  "current_gate": null,
   "foundation_commit": "b000f5537dbee213f8a63dac92a56fa074421885",
   "last_verified_implementation_revision": "ca10412ed1da62b92684e8163c2b6d092f450a5f",
   "status_definitions": {
@@ -450,7 +450,7 @@
     {
       "id": 6,
       "title": "Release with evidence",
-      "status": "in_progress",
+      "status": "passed",
       "gates": [
         {
           "id": "S6-G1",
@@ -510,9 +510,16 @@
         {
           "id": "S6-G4",
           "required": true,
-          "status": "in_progress",
-          "evidence": [],
-          "reviews": []
+          "status": "passed",
+          "evidence": [
+            "evidence/release/publication.json",
+            "evidence/release/history-publication-audit.json",
+            "evidence/release/publication-audit.json"
+          ],
+          "reviews": [
+            "docs/review/release-summary.md"
+          ],
+          "verification": "Reviewed implementation and release records pushed through github-personal; remoteSHA and unauthenticated public repository/artifact access verified. Following metadata-only checkpoint retains the recorded published source revision."
         },
         {
           "id": "S6-G5",
@@ -665,12 +672,7 @@
       ]
     }
   ],
-  "next_actions": [
-    {
-      "gate": "S6-G4",
-      "action": "Commit reviewed release bookkeeping, push non-force through github-personal, fulfill applied Goal public-repository target and verify remote revision/public access."
-    }
-  ],
+  "next_actions": [],
   "external_handoff": [
     {
       "action": "Publish the prepared Hackster article and video to their services",
@@ -1261,12 +1263,13 @@
         "agent-379720ef883c",
         "agent-479f866b7e84"
       ],
-      "artifact_status": "independently_reviewed_prepared_artifact",
-      "publication_status": "not_published",
-      "public_url": null,
+      "artifact_status": "independently_reviewed",
+      "publication_status": "available_in_public_repository",
+      "public_url": "https://github.com/openSoom/openSoom/blob/main/docs/submission/hackster-article.md",
       "provenance": "Artifact is prepared alongside code; cited execution IDs retain their original source scope.",
       "artifact_manifest": "evidence/release/artifacts.json",
-      "release_candidate_revision": "ca10412ed1da62b92684e8163c2b6d092f450a5f"
+      "release_candidate_revision": "ca10412ed1da62b92684e8163c2b6d092f450a5f",
+      "external_publication_status": "Hackster draft; no article post or public Hackster URL"
     },
     {
       "id": "demo_video",
@@ -1277,12 +1280,13 @@
         "agent-379720ef883c",
         "agent-479f866b7e84"
       ],
-      "artifact_status": "independently_reviewed_prepared_artifact",
-      "publication_status": "not_published",
-      "public_url": null,
+      "artifact_status": "independently_reviewed",
+      "publication_status": "available_in_public_repository",
+      "public_url": "https://github.com/openSoom/openSoom/blob/main/deliverables/video/openSoom-demo-en.mp4",
       "provenance": "evidence/video/asset-provenance.json",
       "artifact_manifest": "evidence/release/artifacts.json",
-      "release_candidate_revision": "ca10412ed1da62b92684e8163c2b6d092f450a5f"
+      "release_candidate_revision": "ca10412ed1da62b92684e8163c2b6d092f450a5f",
+      "external_publication_status": "Downloadable repository MP4; no separate video-host upload"
     },
     {
       "id": "presentation_and_qa",
@@ -1290,9 +1294,9 @@
       "sha256": "39656b42ef763e07940cabed25df6f1007b4adc42e4540118ec7b4287ec2a23d",
       "source_revision": "fd5e648fa1c74e425507a98247844be150265acb",
       "run_ids": [],
-      "artifact_status": "independently_reviewed_prepared_artifact",
-      "publication_status": "not_published",
-      "public_url": null,
+      "artifact_status": "independently_reviewed",
+      "publication_status": "available_in_public_repository",
+      "public_url": "https://github.com/openSoom/openSoom/blob/main/docs/submission/technical-qa.md",
       "provenance": "Artifact is prepared alongside code; cited execution IDs retain their original source scope.",
       "artifact_manifest": "evidence/release/artifacts.json",
       "release_candidate_revision": "ca10412ed1da62b92684e8163c2b6d092f450a5f"
@@ -1303,20 +1307,21 @@
       "sha256": "48987c5066890992f8213458917165ae9ccc31123e6dc97daf5ddfa8b6dfba6b",
       "source_revision": "fd5e648fa1c74e425507a98247844be150265acb",
       "run_ids": [],
-      "artifact_status": "independently_reviewed_prepared_artifact",
-      "publication_status": "not_published",
-      "public_url": null,
+      "artifact_status": "independently_reviewed",
+      "publication_status": "available_in_public_repository",
+      "public_url": "https://github.com/openSoom/openSoom/blob/main/pitch/index.html",
       "provenance": "Artifact is prepared alongside code; cited execution IDs retain their original source scope.",
       "artifact_manifest": "evidence/release/artifacts.json",
-      "release_candidate_revision": "ca10412ed1da62b92684e8163c2b6d092f450a5f"
+      "release_candidate_revision": "ca10412ed1da62b92684e8163c2b6d092f450a5f",
+      "external_publication_status": "Repository HTML and local preview; no public website deployment"
     },
     {
       "id": "korean_explanation",
       "path": "docs/project-guide.ko.md",
       "sha256": "d7ea061a721fe62db6e3d8bd120396968d49e265977fc41098e2639d841f4ee4",
-      "artifact_status": "independently_reviewed_prepared_artifact",
-      "publication_status": "not_published",
-      "public_url": null,
+      "artifact_status": "independently_reviewed",
+      "publication_status": "available_in_public_repository",
+      "public_url": "https://github.com/openSoom/openSoom/blob/main/docs/project-guide.ko.md",
       "artifact_manifest": "evidence/release/artifacts.json",
       "release_candidate_revision": "ca10412ed1da62b92684e8163c2b6d092f450a5f"
     }
@@ -1329,5 +1334,13 @@
     "public_repository_target": "Explicit applied Goal prompt: reproducible public repository; repository publication authorized for this project.",
     "history_audit": "evidence/release/history-publication-audit.json",
     "scope": "Only this project repository; no issues, PRs, releases or wiki; one main branch. No account or organization policy changes."
+  },
+  "completed_at": "2026-11-17T21:01:22.159621+00:00",
+  "publication_result": {
+    "evidence": "evidence/release/publication.json",
+    "published_release_revision": "1e525fe2dfe1afe8ed6fc4391c1a060513c5e879",
+    "reviewed_implementation_revision": "ca10412ed1da62b92684e8163c2b6d092f450a5f",
+    "visibility": "public",
+    "unauthenticated_access_verified": true
   }
 }

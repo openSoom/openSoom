@@ -1,9 +1,9 @@
 {
-  "captured_at": "2026-11-17T20:47:09.272349+00:00",
-  "text_files_scanned": 225,
+  "captured_at": "2026-11-17T21:02:15.899008+00:00",
+  "text_files_scanned": 234,
   "known_secret_values_compared": 5,
   "known_secret_matches": 0,
   "private_absolute_path_matches": 0,
-  "scope": "Tracked and nonignored candidate text files; values are never recorded in this audit. This is a focused release check, not a general security certification.",
-  "paths_sha256": "178f1e18c82b0eb27574ea2c086c87ca8b2b57b8c7dca270a9edeccb510ad495"
+  "scope": "Final tracked/nonignored release text, including publication metadata. Focused known-value/path check, not general security certification.",
+  "paths_sha256": "102c059d3cea46919f198a705f1c2a76818e18b3fe5b9a7e847b2d3bcc6d7a63"
 }

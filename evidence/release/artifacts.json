@@ -1,7 +1,7 @@
 {
   "captured_source_revision": "fd5e648fa1c74e425507a98247844be150265acb",
   "note": "Artifact snapshot prepared after the final Three.js/full architecture pass. Historical runtime/video captures retain their own original hashes. The later additive tool interpretation contract and its regression are explicit source deltas, not retroactive live-test claims.",
-  "publication": "repository_release_pending; no Hackster/video-host/site publishing performed",
+  "publication": "Reviewed source/artifacts are in public openSoom/openSoom; unauthenticated access verified. Hackster/video-host/site/Discord remain separate.",
   "files": [
     {
       "path": "docs/submission/hackster-article.md",
@@ -156,5 +156,6 @@
     "evidence/agent/units-checkpoint.json"
   ],
   "independent_review": "Four-team implementation and correction closeout accepted at ca10412; only publication bookkeeping follows.",
-  "snapshot_updated_at": "2026-11-17T20:58:44.567901+00:00"
+  "snapshot_updated_at": "2026-11-17T21:01:22.159621+00:00",
+  "publication_evidence": "evidence/release/publication.json"
 }

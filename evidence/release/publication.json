@@ -1,0 +1,49 @@
+{
+  "verified_at": "2026-11-17T21:00:07.235915+00:00",
+  "repository": "https://github.com/openSoom/openSoom",
+  "git_remote": "git@github-personal:openSoom/openSoom.git",
+  "identity": "wonark",
+  "mode": "ordinary_nonforce_push_then_authorized_public_repository_publication",
+  "reviewed_implementation_revision": "ca10412ed1da62b92684e8163c2b6d092f450a5f",
+  "published_release_revision": "1e525fe2dfe1afe8ed6fc4391c1a060513c5e879",
+  "remote_revision_verified": true,
+  "previous_visibility": "private",
+  "visibility": "public",
+  "unauthenticated_access_verified": true,
+  "public_artifacts": [
+    {
+      "path": "README.md",
+      "type": "file",
+      "bytes": 11728,
+      "public_url": "https://github.com/openSoom/openSoom/blob/main/README.md"
+    },
+    {
+      "path": "docs/goal-mode-prompt.ko.md",
+      "type": "file",
+      "bytes": 10099,
+      "public_url": "https://github.com/openSoom/openSoom/blob/main/docs/goal-mode-prompt.ko.md"
+    },
+    {
+      "path": "docs/review/release-summary.md",
+      "type": "file",
+      "bytes": 4364,
+      "public_url": "https://github.com/openSoom/openSoom/blob/main/docs/review/release-summary.md"
+    },
+    {
+      "path": "pitch/index.html",
+      "type": "file",
+      "bytes": 21041,
+      "public_url": "https://github.com/openSoom/openSoom/blob/main/pitch/index.html"
+    },
+    {
+      "path": "deliverables/video/openSoom-demo-en.mp4",
+      "type": "file",
+      "bytes": 3429346,
+      "public_url": "https://github.com/openSoom/openSoom/blob/main/deliverables/video/openSoom-demo-en.mp4"
+    }
+  ],
+  "authorization_basis": "User-applied Goal prompt explicitly requests a reproducible public repository; publication is authorized to openSoom/openSoom through github-personal.",
+  "history_audit": "evidence/release/history-publication-audit.json",
+  "external_services": "No Hackster/video-host/Discord submission or message performed.",
+  "checkpoint_note": "A following documentation-only commit records this verified publication; this revision remains the published code/review checkpoint, avoiding a self-referential commit hash."
+}

@@ -3,8 +3,9 @@
 Four independent GPT-6.1 Sol Max teams reviewed the combined release at
 `0d733da7051eeffbe070f6c219e9631509b0f858` and its corrections at
 `ca10412ed1da62b92684e8163c2b6d092f450a5f`. No required implementation blocker
-remains within the declared prototype scope. The main agent separately owns
-repository publication and its remote verification; see the
+remains within the declared prototype scope. The main agent completed the authorized public repository publication and
+verified the remote revision and unauthenticated access; see the
+[publication record](../../evidence/release/publication.json) and
 [execution checkpoint](../execution-state.json).
 
 | Team | Rubric criteria | Independent correction review |
@@ -67,7 +68,9 @@ The applied Goal requests a reproducible public repository at
 `openSoom/openSoom`, using the selected `github-personal` identity. The
 [history audit](../../evidence/release/history-publication-audit.json) checks
 the complete project history before fulfilling that publication target.
-Final remote/public-access results are recorded separately from these reviews.
+[Remote/public-access results](../../evidence/release/publication.json) are
+recorded separately from these reviews; no account or organization policy was
+changed.
 
 Serving-CSE handover, actual MEC deployment, federated learning, network/MEC
 geolocation and non-location MEC service consumption remain independently
