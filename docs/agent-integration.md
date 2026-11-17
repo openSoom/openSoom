@@ -161,8 +161,10 @@ quality. Its actual Codex response preserves the recorded quantities and prior
 ACK/non-recovery history. Both provider and host completed normally. The raw
 harness still records `INCOMPLETE_CAPTURED_RECORD_EXPLANATION`: a preface plus
 six numbered sentences exceeded its six-sentence format check. This status
-and all earlier factual failures remain unchanged; independent reviewers must
-assess the stage's functional outcome separately from that format deviation.
+and all earlier factual failures remain unchanged; [Team 2](review/final-closeout-team2.json) and
+[Team 3](review/final-closeout-team3.json) independently accepted the stage's
+functional and factual outcome while retaining that nonblocking format
+deviation.
 The [input mapping](../evidence/agent/units-input-map.json) retains every chosen
 fact and the restored measurement objects without fabricating chat history.
 

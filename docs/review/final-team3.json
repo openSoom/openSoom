@@ -1,0 +1,534 @@
+{
+  "schema_version": 1,
+  "review_type": "strict_final_combined_release_review",
+  "team": "team_3",
+  "reviewer_task": "architecture_reasonableness",
+  "reviewed_at": "2026-11-17T20:49:40.630265+00:00",
+  "immutable_commit": "0d733da7051eeffbe070f6c219e9631509b0f858",
+  "criteria": [
+    8,
+    9,
+    10,
+    17
+  ],
+  "verdict": "CHANGES_REQUIRED; operational prototype trust/real-model evidence supported; complete release not approved at this commit",
+  "summary_ko": "실제 CSE/MCP/hosted 모델의 운영 경로, 소유권·신선도·중복·댐퍼 값·재시작·예산 경계는 지지한다. 그러나 Codex 사용자 인계의 사실 검증은 단위가 누락된 하네스 입력과 잘못된 L/min 설명 때문에 미완료다. 후보의 두 도식 표기 문제도 별도 수정 SHA 검토가 필요하다.",
+  "independence": {
+    "product_or_live_service_mutations": 0,
+    "new_provider_calls_by_reviewer": 0,
+    "only_written_file": "docs/review/final-team3.json",
+    "source_isolation": "All candidate documents and evidence read through git show at the specified commit. Product/tests working tree matched that commit when independent pytest ran. Later working-tree label/diagram edits, later units evidence and policy-profile experiments are excluded.",
+    "later_parent_report": "A later units turn and 72/238120 accounting were announced after the initial read-only budget check; neither is credited or fact-checked in this candidate verdict."
+  },
+  "official_rubric_boundary": {
+    "criteria_count": 17,
+    "owned_criteria": [
+      8,
+      9,
+      10,
+      17
+    ],
+    "source_identity": "Hackathon Rubric 2026 PDF SHA-256 42b38857fffae7c92739f84440b9db020ec6b79897c0f70db64c465ffd2cdfad; exact baseline descriptors read; PDF previously independently inspected unchanged.",
+    "official_score": null,
+    "official_total": null,
+    "weights": null,
+    "not_applicable_rule": null,
+    "rule": "Unknown/external participation is not automatically zero or N/A. Internal stage gates and recommendations are separate from official rubric scoring."
+  },
+  "evidence_integrity": {
+    "agent_indexed_capture_files_checked": 32,
+    "agent_hash_mismatches": [],
+    "runtime_reconciliation_files_checked": 25,
+    "source_reconciliation_mismatches": [],
+    "artifact_files_checked": 28,
+    "artifact_hash_mismatches": [],
+    "final_check_source_mismatches": [],
+    "capture_base": "fd5e648fa1c74e425507a98247844be150265acb",
+    "bounded_delta_files": [
+      "src/opensoom/core.py",
+      "src/opensoom/mcp_server.py",
+      "plugin/skills/opensoom-operations/SKILL.md",
+      "plugin/skills/opensoom-setup/SKILL.md"
+    ],
+    "delta_assessment": "The four changed runtime/skill files add read_evidence scope/counter metadata and descriptions only. App, policy, actuator behavior, CSE adapter, persistent store, runner, budget, lifecycle, profiles and dependency lock remain unchanged. Captures remain attributed to their original revision; this is a bounded static/regression bridge, not a new live replay.",
+    "historical_no_recovery": "secure-live-no-recovery.json is a historical real hosted-model run with ACK and two later deficient samples. release-live-no-recovery.json explicitly says NOT_RECAPTURED_LIVE. The current fixed runtime has a deterministic actual-CSE no-recovery capture; the accepted current negative live case is stale denial. No unsupported final-source no-recovery live pass is inferred."
+  },
+  "independent_checks": [
+    {
+      "command": ".venv/bin/pytest -q",
+      "exit_status": 0,
+      "observed": "53 passed, 8 subtests passed in 2.01s",
+      "scope": "Includes local mocked protocol/provider/federation failure checks and isolated SQLite/role/actuator/counter regressions; no current CSE or live inference mutation."
+    },
+    {
+      "command": "ffmpeg -v error -i deliverables/video/openSoom-demo-en.mp4 -f null -",
+      "exit_status": 0,
+      "observed": "Full 108-second artifact decoded without reported error.",
+      "scope": "Independent media decode only; not a new runtime or inference demonstration."
+    },
+    {
+      "check": "Read-only existing SQLite budget audit",
+      "observed_at_review_point": {
+        "requests": 71,
+        "tokens_charged": 235310,
+        "pending_reservations": 0,
+        "states": {
+          "settled": 71
+        },
+        "max_requests": 100,
+        "max_tokens": 250000
+      },
+      "matches_candidate_latest_accounting": true,
+      "scope": "Historical observation during this review before the separately announced later units case; no counter writes, resets or quota changes."
+    },
+    {
+      "check": "Saved rendered image inspection",
+      "files": [
+        "evidence/dashboard/visual-upgrade-desktop-unresolved.jpg",
+        "evidence/pitch/architecture-full-single-command.jpg",
+        "evidence/pitch/architecture-full-distributed.jpg",
+        "evidence/video/storyboard-contact-sheet.jpg"
+      ],
+      "observed": "Dashboard shows 200 m³/h vs 500 target with device ACK and not-recovered result. Single/distributed architecture views distinguish resources/modules/processes and deployments. Film labels real software/virtual equipment and preserves unresolved outcome. Browser interaction/automatic fallback claims remain limited to reported QA/source coverage."
+    }
+  ],
+  "criteria_assessment": [
+    {
+      "criterion": 8,
+      "name": "Judge points",
+      "verdict": "NOT_EVIDENCED_EXTERNAL_HANDOFF",
+      "evidence_maturity": "Prepared discussion/question material; no captured authentic technical exchange.",
+      "evidence": [
+        "docs/submission/technical-qa.md",
+        "docs/submission/handoff.md",
+        "docs/review/review-ledger.json#R-012"
+      ],
+      "assessment": "No manufactured public/private interaction is claimed. Drafts and AI-generated reviewer discussion do not establish the official interaction descriptor. This is an honest external handoff, not an unauthorized messaging requirement or automatic zero."
+    },
+    {
+      "criterion": 9,
+      "name": "Interview points",
+      "verdict": "PREPARATION_SUPPORTED; actual interview/performance not verified",
+      "evidence_maturity": "Implemented/prepared English Q&A, architecture/resource explanations, Korean guide and pitch; rendered artifacts captured.",
+      "evidence": [
+        "docs/submission/technical-qa.md",
+        "docs/project-guide.ko.md",
+        "pitch/index.html",
+        "evidence/pitch/architecture-source-map.json"
+      ],
+      "assessment": "The prepared answers explain resource tree, standards integration, oneM2M choice, provider/device simulation boundaries, role enforcement, persistence and limitations. No actual interview is claimed. Candidate presentation transport labels/caption require the small Team 1 corrections before final artifact acceptance."
+    },
+    {
+      "criterion": 10,
+      "name": "Security and Privacy",
+      "verdict": "SUPPORTED_WITH_EXPLICIT_TRUSTED_LOOPBACK_LIMITS",
+      "evidence_maturity": "Implemented, independently verified and captured for the declared prototype.",
+      "evidence": [
+        "evidence/runtime/cse-https-smoke.json",
+        "evidence/runtime/cse-mqtt-tls-smoke.json",
+        "evidence/application/release-acceptance.json",
+        "evidence/release/review-regressions.json",
+        "docs/review/corrections-team3.json",
+        "deploy/README.md"
+      ],
+      "assessment": "Actual server-authenticated secure transports and scoped AE ACP allow/deny behavior are captured. Service-fixed role/facility/schema/profile/freshness guards, run-owner write protection, non-granting model tools and secret handling pass focused tests. Observer cannot alter another role run or its denial log. Real equipment remains unsupported/observe-first; no self-grant is inferred from setup tools. Local HTTP, trusted AE origin strings, anonymous loopback MQTT and HTTP Mcc remain honestly scoped, so this is not authenticated-device or production network/multiuser security evidence."
+    },
+    {
+      "criterion": 17,
+      "name": "AI Agents & MCP Integration",
+      "verdict": "REAL_PRODUCT_MULTI_TOOL_WORKFLOW_SUPPORTED; factual Codex handoff incomplete",
+      "evidence_maturity": "Real hosted-model tools/service state/outcome validation captured; current Korean handoff interpretation not accepted.",
+      "evidence": [
+        "evidence/agent/release-live-recovery.json",
+        "evidence/agent/release-live-stale.json",
+        "evidence/agent/index.json",
+        "evidence/agent/guided-live.json",
+        "evidence/agent/guided-config-continuation-live.json",
+        "evidence/agent/semantics-live.json"
+      ],
+      "assessment": "The hosted runner selects and executes discovery/group/evidence/action/verification through actual MCP and CSE, with durable state and bounds. The current stale model attempts control before full evidence; the service blocks it before CSE write, and the model reports unresolved. This demonstrates external enforcement/error handling, not proactive model refusal. Failures/fixtures are not promoted to live success. Corrected counter/history semantics are verified, but the selected explanation input drops measurement units and the model invents L/min. Completed delivery alone cannot close factual user handoff or S3-G1."
+    }
+  ],
+  "gate_verdicts": [
+    {
+      "gate": "S1-G1",
+      "verdict": "PASS_TEAM3_SCOPE",
+      "evidence": [
+        "evidence/application/release-acceptance.json",
+        "evidence/agent/release-live-recovery.json",
+        "evidence/release/source-reconciliation.json"
+      ],
+      "reason": "Actual resource/command/ACK/post-ACK observation flow with correlated identifiers; corrected runtime delta is additive."
+    },
+    {
+      "gate": "S1-G2",
+      "verdict": "PASS_TEAM3_SCOPE",
+      "evidence": [
+        "evidence/application/release-acceptance.json",
+        "evidence/release/review-regressions.json",
+        "tests/test_llm_runner.py",
+        "tests/test_review_regressions.py"
+      ],
+      "reason": "Stale/missing, absent ACK and no recovery remain unresolved; requested 0/50/100 values preserved, earlier-run success cannot pass a new run, idempotency protects retries."
+    },
+    {
+      "gate": "S1-G3",
+      "verdict": "PASS_PLANNED_PROCESS_RESTART_SCOPE",
+      "evidence": [
+        "evidence/release/final-clean-lifecycle.json",
+        "docs/review/corrections-team3.json"
+      ],
+      "reason": "Same pending command/run/incident survive stop/start and restart, then time out without ACK or false recovery. Not abrupt failure or CSE handover evidence."
+    },
+    {
+      "gate": "S1-G4",
+      "verdict": "TEAM3_REVIEW_COMPLETE; main reconciles all four reports",
+      "reason": "This review supplies independent Team 3 close-out; it does not claim all-team state advancement by itself."
+    },
+    {
+      "gate": "S3-G1",
+      "verdict": "NOT_PASSED_REQUIRED_FACTUAL_HANDOFF_REMAINS",
+      "evidence": [
+        "evidence/agent/release-codex-host.json",
+        "evidence/agent/guided-live.json",
+        "evidence/agent/guided-config-continuation-live.json",
+        "evidence/agent/guided-explanation-live.json",
+        "evidence/agent/semantics-live.json"
+      ],
+      "reason": "Fresh plugin/host MCP and maintainer-prepared guided checks establish real components and model-selected reads. Original bounded cases remain failed/partial; completed explanations contain factual errors. Separate attributed cases can support acceptance, but no correct complete factual handoff exists at this immutable candidate. No additional uninterrupted-chat, desktop UI or human-usability-study requirement is invented."
+    },
+    {
+      "gate": "S3-G2",
+      "verdict": "PASS_OPERATIONAL_RUNNER_SCOPE_WITH_BOUNDED_SOURCE_DELTA",
+      "evidence": [
+        "evidence/release/final-clean-lifecycle.json",
+        "evidence/agent/release-live-recovery.json",
+        "evidence/agent/release-live-stale.json",
+        "evidence/release/semantics-contract.patch"
+      ],
+      "reason": "Fixture and actual model-generated shared-tool flow are separate and service checked; current later metadata/skill delta is explicitly reconciled, not retroactively called a live run."
+    },
+    {
+      "gate": "S3-G3",
+      "verdict": "PASS_OPERATIONAL_GUARDS_AND_BUDGET_SCOPE; explanation fact issue tracked separately",
+      "evidence": [
+        "tests/test_llm_budget.py",
+        "tests/test_llm_runner.py",
+        "tests/test_mcp_server.py",
+        "tests/test_review_regressions.py",
+        "evidence/agent/release-live-stale.json",
+        "evidence/agent/guided-config-race-regression.json"
+      ],
+      "reason": "Owner/facility/profile/schema/freshness, duplicate/pending/failure state, secrets and durable shared reservations are checked. Actual stale denial remains unresolved in the final operational report. User explanation factual acceptance is still blocked by T3-F01 under S3-G1."
+    },
+    {
+      "gate": "S3-G4",
+      "verdict": "PENDING_REQUIRED_CLOSEOUT",
+      "reason": "All-team reconciliation and independent factual handoff correction are still required."
+    },
+    {
+      "gate": "S5-G1",
+      "verdict": "PASS_TEAM3_CLAIM_AND_STATE_SCOPE",
+      "evidence": [
+        "evidence/dashboard/visual-upgrade-qa.json",
+        "evidence/dashboard/visual-upgrade-desktop-unresolved.jpg",
+        "evidence/dashboard/visual-source-checks.mjs"
+      ],
+      "reason": "State-driven 3D/text distinguishes virtual telemetry, stale/absent flow, device ACK and later result; no CFD/health inference. Source/synthetic checks and author browser QA are not called new physical/CSE experiments."
+    },
+    {
+      "gate": "S5-G2",
+      "verdict": "PASS_TEAM3_MEDIA_TRUTH_SCOPE; Team2 owns overall media quality",
+      "evidence": [
+        "deliverables/video/openSoom-demo-en.mp4",
+        "deliverables/video/narration.en.txt",
+        "deliverables/video/captions.en.srt",
+        "evidence/video/asset-provenance.json"
+      ],
+      "reason": "108-second English artifact decodes; inspected scenes distinguish interactive recorded stills, historical model runs, actual host transport and virtual equipment. No physical efficacy or continuous-screen-recording claim."
+    },
+    {
+      "gate": "S5-G3",
+      "verdict": "PASS_TEAM3_PROVENANCE_SCOPE",
+      "evidence": [
+        "evidence/video/asset-provenance.json",
+        "deliverables/video/storyboard.json",
+        "evidence/video/qa.json"
+      ],
+      "reason": "Reproduction/capture paths and original licenses retained. Historical captures keep their own hashes/run IDs and are not final-core recaptures."
+    },
+    {
+      "gate": "S6-G1",
+      "verdict": "PASS_TEAM3_RUNTIME_LIFECYCLE_SCOPE; guided acceptance still S3-G1",
+      "evidence": [
+        "evidence/release/final-clean-lifecycle.json",
+        "evidence/release/source-reconciliation.json",
+        "README.md"
+      ],
+      "reason": "New isolated source/environments and persisted configuration/pending state/cleanup evidence support supported-environment reproduction; no new uncontrolled production deployment claim."
+    },
+    {
+      "gate": "S6-G2",
+      "verdict": "SMALL_FACTUAL_PRESENTATION_CORRECTION_REQUIRED",
+      "evidence": [
+        "docs/submission/hackster-article.md",
+        "docs/submission/technical-qa.md",
+        "docs/submission/handoff.md"
+      ],
+      "reason": "Draft/Q&A/media handoff prepared honestly, but Team1 T1-F02 identifies a diagram/caption that can conflate alternative transport profiles. Actual public hosting/discussion/interview remain external handoff."
+    },
+    {
+      "gate": "S6-G3",
+      "verdict": "NOT_PASSED",
+      "reason": "Known required factual handoff and candidate presentation findings remain open. The main may not waive them because the visual package is strong."
+    },
+    {
+      "gate": "S6-G4",
+      "verdict": "PENDING_MAIN_OWNED_PUBLICATION",
+      "reason": "Final reviewed commit/push/remote revision verification is a later authorized main-agent action. This read-only review does not establish it."
+    },
+    {
+      "gate": "S6-G5",
+      "verdict": "SOURCE_MAPPED_VISUAL_ARTIFACT_SUPPORTED_WITH_SMALL_REQUIRED_LABEL_FIX",
+      "evidence": [
+        "pitch/index.html",
+        "pitch/architecture.js",
+        "evidence/pitch/architecture-source-map.json",
+        "evidence/pitch/architecture-browser-qa.json",
+        "docs/project-guide.ko.md"
+      ],
+      "reason": "Inspectable components and Korean guide map to real resources/modules; process and topology boundaries are explicit. Team1 T1-F01 single-profile SDT update transport label must be corrected at a new SHA. Canvas raycast/orbit and automatic fallback are not falsely called interactively tested."
+    }
+  ],
+  "findings": [
+    {
+      "id": "T3-F01",
+      "related_findings": [
+        "R-027",
+        "R-031",
+        "T3-EXPLAIN-001"
+      ],
+      "criteria": [
+        6,
+        9,
+        17
+      ],
+      "gates": [
+        "S3-G1",
+        "S3-G4",
+        "S6-G3"
+      ],
+      "severity": "P2",
+      "classification": "required_factual_handoff_acceptance_gap; harness semantic projection defect, not missing product unit",
+      "observed_evidence": [
+        "scripts/codex_semantics_regression.py: fresh_paths selects observations/*/value without unit or quality/timestamps",
+        "evidence/agent/semantics-mcp-capture.json#/response/structuredContent/zones/0/observations/airflow",
+        "evidence/agent/semantics-live.json#/model_korean_explanation",
+        "evidence/agent/semantics-fact-check.json"
+      ],
+      "exact_original_phrase": "송풍 200 L/min(목표 500)",
+      "actual_quantity": {
+        "value": 200,
+        "unit": "m³/h",
+        "profile_target": 500
+      },
+      "gap_and_impact": "The complete source MCP result has correct units, but the validation selector sends bare values to the model. The completed user answer invents L/min, materially changing the quantity and undermining facility interpretation. The new count/history contract works, but full factual acceptance is still missing.",
+      "smallest_reasonable_correction": "Correct only the validation input builder: preserve complete chosen quantity objects, their unit/quality/timestamps/source and target relationship, plus all already selected decision-relevant facts. Keep bulky forensic file/hash/JSON-pointer mappings in a sidecar bound to that model-visible payload. Add deterministic exact-value/unit/fact-preservation checks and zero-call feasibility. Do not change core control, policy, budgets or an old case result; do not substitute canned prose.",
+      "product_justification": "Facility managers and integrations must interpret numeric observations with their actual units and evidence age. A test harness must not remove semantics that the shipped tool supplies.",
+      "verification": "At a new immutable correction/evidence SHA, compare the model-visible facts against source records including complete measurements, ensure every retained old fact remains, inspect any actual completed explanation for correct units/direction, prior virtual ACK, unresolved state, counter/list scope and historical framing. Preserve all original failed/partial/raw results and charges. A future narrow regression can be legitimate after the genuine input correction but is not preapproved here; no live request was authorized or made by this reviewer.",
+      "format_boundary": "Exact six-sentence formatting is an experiment protocol constraint, not a separately established user/stage-gate rule. Preserve a harness format failure if it occurs; independently assess actual functional/factual completion without silently changing the original test status.",
+      "status_at_reviewed_commit": "unresolved",
+      "later_working_tree_or_units_evidence": "Excluded; requires a separately identified correction/evidence SHA."
+    }
+  ],
+  "cross_team_candidate_findings": [
+    {
+      "id": "T1-F01",
+      "gates": [
+        "S6-G5"
+      ],
+      "status_at_this_commit": "unresolved",
+      "assessment": "Agreed: single-profile SDT PM2.5 projection edge is labelled HTTPS although secure native capture shows MQTT_TLS. Correct renderer/export labels only; no new model/runtime run needed.",
+      "later_fix": "Reported working-tree fix not credited in this immutable verdict."
+    },
+    {
+      "id": "T1-F02",
+      "gates": [
+        "S6-G2",
+        "S6-G5"
+      ],
+      "status_at_this_commit": "unresolved",
+      "assessment": "Agreed: the article diagram needs a local caption/edge label separating the secure single profile and alternative distributed HTTP demonstration. Nearby prose already distinguishes them.",
+      "later_fix": "Reported working-tree fix not credited until correction SHA."
+    }
+  ],
+  "prior_findings": [
+    {
+      "id": "R-001",
+      "status": "resolved_original_scope",
+      "basis": "Generic profiles/registry/adapters and two-site/two-format reuse evidence remain valid."
+    },
+    {
+      "id": "R-003",
+      "status": "resolved_original_core_requirement_scope; broader guided handoff tracked by R-027/R-031",
+      "basis": "Plugin/MCP and actual hosted API runner are mandatory and implemented with captured multi-tool service execution and durable run state. Owner/actuator blockers are independently fixed. This does not pass S3-G1."
+    },
+    {
+      "id": "R-004",
+      "status": "resolved_fixture_live_classification_scope",
+      "basis": "Explicit pass types, captured provider/service outcomes and preserved rejected attempts; no fallback promotes provider failure or historical success."
+    },
+    {
+      "id": "R-007",
+      "status": "resolved_declared_prototype_scope",
+      "basis": "Fixed-role/profiles/freshness/permission guards, secrets, owner restrictions and actuator-value correctness remain supported. Trusted-loopback/virtual-device limits preserved."
+    },
+    {
+      "id": "R-012",
+      "status": "external_handoff_not_evidenced",
+      "basis": "Preparation exists; public exchange and actual interview do not."
+    },
+    {
+      "id": "R-018",
+      "status": "resolved_documentation_scope; implementation evidence now supports its project-security distinction",
+      "basis": "Project ACP/TLS work does not authorize global trust/account/security weakening."
+    },
+    {
+      "id": "R-019",
+      "status": "resolved_documentation_scope; shared accounting implementation verified",
+      "basis": "Atomic reservations, retries/concurrency/restart checks and fixed persisted 100/250000 bounds."
+    },
+    {
+      "id": "R-020",
+      "status": "resolved_documentation_scope; actual negative execution now captured",
+      "basis": "Current stale-action service denial and truthful unresolved outcome satisfy the required real-model failure case; historical no-recovery remains separately labelled."
+    },
+    {
+      "id": "R-024 / T3-001",
+      "status": "resolved",
+      "basis": "Role-owned writes and error recording block observer mutation without altering the target run; owner remains allowed."
+    },
+    {
+      "id": "T3-002 / Team1 T1-I1",
+      "status": "resolved",
+      "basis": "Actual 0/50/100 CSE/API captures retain setpoints; zero/partial outcomes stay unresolved."
+    },
+    {
+      "id": "R-030 / S1-G3",
+      "status": "resolved_planned_process_restart_scope",
+      "basis": "Pending IDs preserved through stop/start/restart and later timeout without false recovery."
+    },
+    {
+      "id": "R-027",
+      "status": "partially_resolved_not_closed",
+      "basis": "Real model-selected guided calls exist, but original cases are incomplete and complete explanations are not yet factually acceptable at this commit."
+    },
+    {
+      "id": "R-031 / T3-EXPLAIN-001",
+      "status": "product_counter_history_contract_resolved; whole_factual_handoff_open",
+      "basis": "Additive evidence_scope and 3 critical/stale/missing tests preserve prior ACK outside current run. Corrected explanation recognizes history but wrong unit due to input projection prevents complete acceptance."
+    }
+  ],
+  "budget_failure_and_permission_assessment": {
+    "unchanged_shared_batch": {
+      "max_requests": 100,
+      "max_tokens": 250000,
+      "candidate_consumed_requests": 71,
+      "candidate_tokens_charged": 235310,
+      "candidate_tokens_remaining": 14690,
+      "pending_requests": 0
+    },
+    "failure_retention": "Original six-request guided case, three-request configuration case, unsupported counter explanation and unit-error semantic regression remain preserved and unaccepted for their missing outcome. Failed API/model flows and weak historical negatives are separately labelled; their charges remain counted.",
+    "settlement_race": "The first configuration request and its conservative refusal before settlement are retained. The focused proxy serializes full handler settlement; deterministic race evidence consumes no provider calls. Supported resume failed honestly; attributed data continuation is not fabricated conversation history.",
+    "no_scope_reset": "No counter reset, allowance enlargement, automatic retry or new run-prefix is treated as permission to repeat an exhausted case. Additional genuinely changed-contract/input checks need an explicitly recorded scope and must fit the same remaining shared reservation.",
+    "pending_readonly_feasibility": "A stricter throwaway read-only/approval-never profile with no escalation and unused builtin skills disabled only there was described after this commit. It is not candidate live evidence or approved inference here. Any later execution must preserve global policy, estimator, all original facts/failures and shared accounting, and disclose instrumentation rather than claim ordinary default-host behavior."
+  },
+  "claim_limitations_and_small_clarifications": [
+    "The current stale live model says the CSE rejected its action, but the structured code and trace show the service freshness guard rejected it before a CSE command write. Article/index/Korean guide correctly explain this. Accept the negative operational outcome, not every prose attribution or proactive-refusal claim.",
+    "Current-source means captured fd5 runtime plus the explicitly assessed additive metadata/skill delta; it must not mean every file was live-retested at 0d733da.",
+    "The source-provided airflow unit already exists; an input-selector failure is not evidence that the product tool lacks physical units.",
+    "Historical or harness-selected MCP reads, actual model-selected operations, actual host transport and text-only interpretation are separate evidence classes.",
+    "Visualized air streams/layout are illustrative, not CFD or measured capture adequacy. Models/resources are not one process per 3D node.",
+    "Local secure and distributed HTTP profiles are alternative tests; distributed agent links are shared contract edges, not independently executed distributed model sessions.",
+    "Publication, authentic discussions and interview attendance remain explicit external states. Prepared drafts cannot earn public-evidence credit."
+  ],
+  "minimum_closeout_actions": [
+    "Complete T3-F01 factual handoff evidence after preserving full quantity semantics; keep original raw statuses and evaluate material requirements separately from incidental sentence-count formatting.",
+    "Review T1-F01/T1-F02 label/caption fixes at the next immutable correction commit and refresh only affected source maps/hashes.",
+    "Main reconciles all four final reports and required gates, then verifies authorized GitHub publication of the final revision. External Hackster/video-host/Discord actions remain separately authorized handoff items."
+  ],
+  "new_inference_needed_for_core_correctness": false,
+  "overall_goal_complete": false,
+  "inspected_file_hashes": {
+    "docs/review/release-review-request.md": "bd7fa869330766a6e306494354e6e5b98ed5dbc6cf2d5f6428f88a329f4203dd",
+    "docs/hackathon/rubric-baseline.json": "2eddd5ef6bb2bf7bb9354b92a432512546be3b522e3f84724d016b4dd2055a94",
+    "docs/implementation-plan.md": "101f47a11a6aec71e113c8e0d5dcd721d9da670a44306b3b13fa03eddcb8a28d",
+    "docs/product-contract.json": "aea0c48c291e7c2c03e7db0df7da65a475760a500a031558aba33c33d25b884e",
+    "docs/review/review-ledger.json": "907e0d38ece210ad492cb187a6067c835d4aef9f3a6fef234cc0f2863505a22e",
+    "docs/agent-integration.md": "2ef487652c1c77a826ed3a118e7dccf1fe18a1533050872d40712a320a171e60",
+    "deploy/README.md": "2969079322aa7c7f640925aa5619f0d602cfd1291eb92ea75a7a9ba6a2e9b6c9",
+    "docs/submission/hackster-article.md": "fd0aa203dc151db35276b9150cf4242918049120f6a614f863f9b6dc2e007dad",
+    "docs/submission/technical-qa.md": "39656b42ef763e07940cabed25df6f1007b4adc42e4540118ec7b4287ec2a23d",
+    "docs/submission/handoff.md": "5fbb35f818d8aee368767b1f8c2fa1714143dd2b5135aef83557add24db6179a",
+    "docs/project-guide.ko.md": "d7ea061a721fe62db6e3d8bd120396968d49e265977fc41098e2639d841f4ee4",
+    "README.md": "50e2501f37e0f44b18149f81f721d14e7f91ab236f02afb6b50e7e0697289a27",
+    "src/opensoom/core.py": "00f4339ce5481d4daf13f8d44ab857f86173469f8da68eddf0db96d5ca6c32c5",
+    "src/opensoom/app.py": "90b2b13f78732ed32ac22fa0e21c9669d4731180463e80bbe551f881e622a144",
+    "src/opensoom/policy.py": "801ba84bf1eea13404a19017359e4e01fcf11d33e812e3a571df68e34c110ad5",
+    "src/opensoom/store.py": "e7369b519f396f86074334e2de0a0c9bfaedcbd4081d6c245780178167e62318",
+    "src/opensoom/mcp_server.py": "71fd594289b16f085f6cc8b4ce3cbefefc2b7fe7d7296098f9820b41940d8bdc",
+    "src/opensoom/llm_runner.py": "5f66e3a4f77ac5c1d441c65e47dc445869a6b4af4c60113a383c3dded3de04d0",
+    "src/opensoom/llm_budget.py": "306f6cfbdcdc3f7f0fe2718bd87b1d46ec371be66faf6cba8e68ac9dfcb781bc",
+    "src/opensoom/models.py": "5a11e9a47b6446a4e9f2d77a222e962147a864a53869ee5875870e0d85061e48",
+    "tests/test_review_regressions.py": "3d2d22affca26267d81d1590317bdcbd21fe7a445c4a8f087446993d55f0a776",
+    "tests/test_llm_budget.py": "5caec8ddd1b8f238e25addcc12c169a3f129fc558c320f692228d45e02d2913b",
+    "tests/test_llm_runner.py": "9b335d55551af881559c6ebd2d12d175ae47eae502ce2182ce4b2da4380a03fe",
+    "tests/test_mcp_server.py": "16de17d7f782875572c576dbf1f55dfba000340a10f1c3567b193d18ef4bd5a0",
+    "evidence/agent/index.json": "154582f3819d8457079ce68a4c8e5936217d2e5b4cf41f268bb75131c344055c",
+    "evidence/agent/release-live-recovery.json": "6b4aeb6f6342207655815791ab002acfc7b733e8fb19b52d2174d683edb1ffc8",
+    "evidence/agent/release-live-stale.json": "5ce63072fc492f796f4829d9a444b091c7181577f0285a422ae959a69611b097",
+    "evidence/agent/release-live-no-recovery.json": "919a93ff6fafcb3ade3e878550acbf79a96183f580e49582c17f131e61c84db6",
+    "evidence/agent/secure-live-no-recovery.json": "eba6e0a590575fba0d04efd230cb8224c9091db379d0cede0273b289ed13a6ab",
+    "evidence/agent/release-codex-host.json": "c680b9490a27e1cf76b5cf43bd03d7137626ac041776e7fd4322c6e2799011eb",
+    "evidence/agent/release-protocol-correlation.json": "f0dc90e24b086f42b6e3688ee264b4d62bb92e3c78ca4725811279e2f6862486",
+    "evidence/agent/guided-live.json": "a0cc9dfd26b2d9d50a4625a91d76c25c617dcfb500c5e3d133d3d7234c74a057",
+    "evidence/agent/guided-config-first-settlement-race.json": "b7efc8ae797357221a74eb2defdb059c1b6b92e9a5d62213ee7ac86ff4a1c282",
+    "evidence/agent/guided-config-continuation-live.json": "88ce9a71c9b92326f9a90158a6a1c26a607c3e6972f1a23fe44671a996b2efdf",
+    "evidence/agent/guided-config-race-regression.json": "6c2f72a47ceecf41e7ca9264d9723368f620a7fd807414e7b13e0d5ff5600894",
+    "evidence/agent/guided-config-resume-check.json": "a54ab89b04f9e5a4b409b5b5b9577d197a83ea2a14a11fb17ac7fd8905e06f16",
+    "evidence/agent/guided-explanation-live.json": "d117550a716b7d36a8b28e96cde0fecec8f770eb130a00af4b6901e9e53e6b95",
+    "evidence/agent/guided-explanation-fact-check.json": "47005c271744aedac6864950a5a507f27ca0c04bbf6dccf6a5d0f7b5e68d3416",
+    "evidence/agent/semantics-live.json": "d712da056e50a849a0e2421ead995440da723e8b37a0001f8fc87b4486adb898",
+    "evidence/agent/semantics-fact-check.json": "5f60850bec32a648a2127e6ff276376f35d670c9836e6c53d01919a6614e2f37",
+    "evidence/agent/semantics-mcp-capture.json": "abba8916cd5be4009f156007bdcd82437d0627ae29875a2eab931b4cc0880d46",
+    "evidence/agent/semantics-checkpoint.json": "eb71dc2ce5af40d9443e3c79a4f7ee078b88e89219799cd95f9aa88f90b410b0",
+    "scripts/codex_semantics_regression.py": "bbafdd18c10d04f7c3bd77ba18fb5f14b11465a0cf87202b31887d2c6ddaa063",
+    "evidence/release/source-reconciliation.json": "97ab04dad7caf3bcc13f91aee74578c1a5f9d659698d9c60a1c476f97d9c9d70",
+    "evidence/release/semantics-contract.patch": "fcca8029eb04f1011ed8ecc6c0d37f53600bfd154761e266cd2eb08d7680179c",
+    "evidence/release/review-regressions.json": "d708b55e5a94a9cc1e910c8c72fa26974f7578e118a6c8929e94d18cd35ec3ee",
+    "evidence/release/final-clean-lifecycle.json": "4cd45ee2671fc346f4f7e014b30a4804b0d566bb1cc1a99520c4ed5b353dce26",
+    "evidence/application/release-acceptance.json": "5bde7e0f55f28854f085ce619622349c99e6993d8f119f194f4dacf79ff727b1",
+    "evidence/runtime/product-multisite-continuity.json": "177da67f736ae8887debc8b02474c03f4a73d1330221ebeb4d8ca4aada85fed2",
+    "evidence/runtime/cse-https-smoke.json": "4d8ae11c23423ec785e5758645d858b8f2265a3e01192e101e5de2d94f5bbca4",
+    "evidence/runtime/cse-mqtt-tls-smoke.json": "84078e28aef99361d7c0e197c8e23993f2e7c4686de7be66837a6f6c6bde082f",
+    "evidence/release/artifacts.json": "e5921d4aca77c0bf134b2215442556d74af4e2e58cdaf0f62f985d72ac6eb5ea",
+    "evidence/release/final-checks.json": "1ddf54d15a46e956c7399e607752738c660884495d5ddaedd4c0bb4879a1a3dc",
+    "evidence/dashboard/visual-upgrade-qa.json": "88d1b515541c5b459d3fa4572e96e90fa357c04233534ba07b1d5c5674b78ce7",
+    "evidence/dashboard/visual-upgrade-desktop-unresolved.jpg": "170669d715b6f004d5ef69ae0d4294c7201e5c6a1d7eac3836b1a30df13433b2",
+    "evidence/dashboard/visual-source-checks.mjs": "1bfa6012dc63b0b84372b9e8cee6e4ca80a65743b0fbcf6f44ce4d759824d9ca",
+    "evidence/pitch/architecture-source-map.json": "78fb3b8b550792023104dcb822c4203352404dd84b95b78140e69d59263afb80",
+    "evidence/pitch/architecture-browser-qa.json": "891855aa47c2c5045cf4f9e6d2cb07f269513abd88b5cf8a84ab42aa27a6436c",
+    "evidence/pitch/architecture-full-single-command.jpg": "1e4a28edca3ae9b56cbf64a4e32058f88b0684210e3eba1c6f394868f2b9defd",
+    "evidence/pitch/architecture-full-distributed.jpg": "1450b44937a2fbd86f4b05f73edb9f8ee0562d65ba905b2aaf25135973d60740",
+    "pitch/index.html": "48987c5066890992f8213458917165ae9ccc31123e6dc97daf5ddfa8b6dfba6b",
+    "pitch/architecture.js": "42e28ffc2aa0daa3ca87c9c1c8bc4fae16446a66d94b3da896f140a42e9e9203",
+    "web/app.js": "60e30ba5895bd5944ed79f2e19e43c2014d3aef88ecc899259507dd921498a76",
+    "web/facility-3d.js": "5928136bbb7d21bea92a8553b48015cafef85ba4902fa8ced3218bcf60bdcf28",
+    "evidence/video/qa.json": "e4033e61611e988fbb6ea781b039229f87cfb20429b0229be6f0148dc1cd0804",
+    "evidence/video/asset-provenance.json": "828f480e1902e94aa14be6af80aab2af972f8ed844ee26b1c8516096d34e6037",
+    "evidence/video/storyboard-contact-sheet.jpg": "6c0295a8756854aa54a166ed8c577a0017fb630d82ed46749aadf9ab7d707eef",
+    "deliverables/video/narration.en.txt": "5e371d6940b536cb81789b2cc36cb93f9e6fa05e0f82ed7031f67ff43c19ad12",
+    "deliverables/video/captions.en.srt": "3f99916575679ca1d3c330126206a20eafde59cc375cd7ed07f447bbc7cd0569",
+    "deliverables/video/openSoom-demo-en.mp4": "d4cc9e2ce19fcef31f97212edf54f0ae5caa5c32e2f17e5ae8ae7ce32721c0ee"
+  }
+}

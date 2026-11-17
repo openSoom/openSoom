@@ -1,0 +1,19 @@
+{
+  "captured_at": "2026-11-17T20:55:53.325922+00:00",
+  "purpose": "Before making the authorized open-source project repository public; inspect the complete six-commit project history, not only its current checkout.",
+  "repository": "openSoom/openSoom",
+  "authenticated_identity": "wonark",
+  "existing_visibility": "private",
+  "branches": [
+    "main"
+  ],
+  "wiki_enabled": false,
+  "issues_or_pull_requests_present": false,
+  "releases_present": false,
+  "reachable_commits": 6,
+  "historical_text_blobs_scanned": 283,
+  "known_secret_values_compared": 5,
+  "findings": [],
+  "sensitive_attachment_extensions": [],
+  "scope": "Focused known-secret/private-path/attachment check; no claim of a general exhaustive security audit."
+}

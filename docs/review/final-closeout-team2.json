@@ -1,0 +1,142 @@
+{
+  "schema_version": 1,
+  "team": "team_2",
+  "reviewer_role": "oss_experience_review",
+  "model": "gpt-6.1-sol",
+  "reasoning_effort": "max",
+  "reviewed_commit": "ca10412ed1da62b92684e8163c2b6d092f450a5f",
+  "prior_reviewed_commit": "0d733da7051eeffbe070f6c219e9631509b0f858",
+  "prior_review": "docs/review/final-team2.json",
+  "scope": "Narrow independent closeout of FT2-01/R-027/R-031, FT2-02 and FT2-03/R-034 against the immutable correction snapshot. Other Team 2 assessments are carried forward only where source/artifacts remain unchanged.",
+  "result": "affected_team2_blockers_resolved_with_explicit_nonblocking_format_deviation",
+  "overall_boundary": "No remaining Team 2-owned blocking issue is identified for the documented supported release scope. This is not an official rubric score, a completed public submission, or a substitute for other teams' closeout and main-owned publication/state reconciliation.",
+  "evidence_inspected": [
+    "evidence/agent/units-live.json",
+    "evidence/agent/units-model-packet.json",
+    "evidence/agent/units-input-map.json",
+    "evidence/agent/units-fact-check.json",
+    "evidence/agent/units-checkpoint.json",
+    "evidence/agent/units-scope.json",
+    "evidence/agent/semantics-mcp-capture.json",
+    "evidence/agent/semantics-live.json",
+    "evidence/agent/guided-config-continuation-live.json",
+    "evidence/application/release-acceptance.json",
+    "src/opensoom/core.py",
+    "docs/implementation-plan.md#S3-G1",
+    "docs/agent-integration.md",
+    "docs/submission/hackster-article.md",
+    "pitch/architecture.js",
+    "pitch/README.md",
+    "evidence/pitch/architecture-source-map.json",
+    "evidence/pitch/architecture-browser-qa.json",
+    "evidence/pitch/release-corrections-qa.json",
+    "evidence/pitch/architecture-release-desktop.jpg",
+    "evidence/release/artifacts.json",
+    "evidence/release/publication-audit.json"
+  ],
+  "independent_integrity_checks": {
+    "source_method": "Read from a git archive of reviewed_commit; working-tree data excluded.",
+    "units_live_sha256": "96d85aee3e67b48da6f7cf7ab5000a67d218c1501e57e515d2a464a26e49eea6",
+    "input_map_sha256": "73ea3851d7721bb03df5ad1ee109e860dd561516e49c93f0d6d515b2163708d4",
+    "packet_sha256": "1193661a0cdc98964e79eda1bd9b18f28995f9e8b8e4faaf9d98ec1c5db347ac",
+    "mapping_count_checked": 45,
+    "mapping_failures": 0,
+    "measurement_restoration": "All five full measurement objects match their original values, units, observation/receipt timestamps, provenance and quality. Earlier selected operational facts are preserved.",
+    "documented_unit_additions": "The prior command object retains all original fields and adds value_unit only. Its percent association and the target airflow m³/h association match the existing Core.UNITS AST constant and the mapped quantity; no value conversion or invented measurement occurred.",
+    "packet_equals_actual_live_input": true,
+    "checkpoint_file_hash_mismatches": 0,
+    "runtime_and_plugin_delta_from_prior_candidate": "None in src/ or plugin/. New work is verification harness/evidence and presentation/documentation correction.",
+    "prior_case_files_compared": 37,
+    "prior_guided_and_semantics_case_changes": 0,
+    "release_artifact_hash_mismatches": 0,
+    "correction_QA_source_hash_mismatches": 0,
+    "correction_screenshot_hash_matches": true
+  },
+  "actual_response_assessment": {
+    "provider_completed": true,
+    "codex_turn_completed": true,
+    "operational_tool_calls": 0,
+    "raw_status_preserved": "INCOMPLETE_CAPTURED_RECORD_EXPLANATION",
+    "raw_concise_korean_check": false,
+    "observed_length": "One introduction plus six numbered sentences, seven total.",
+    "functional_factual_acceptance": true,
+    "supported_facts": [
+      "learning-space is the simulated configured profile; classroom is critical and meeting/lounge are nominal in the records",
+      "Airflow is 200 m³/h against 500 m³/h; PM2.5 is 62 µg/m³ and CO2 is 1450 ppm, with correct below/above-target directions",
+      "The recorded fan is running, damper is 100 percent and measurement quality is good",
+      "An earlier preauthorized virtual set_damper command has an ACK but remains unresolved",
+      "Zero recovery_count is not used to deny prior attempts; the prior acknowledged unsuccessful command is expressly retained",
+      "The proposed next step is not described as an executed action; two later qualifying observations remain the configured recovery requirement"
+    ],
+    "temporal_interpretation": "The response opens as a virtual learning-space record interpretation, and the actual prompt explicitly says the turn interprets past records. In that complete frame, '현재 critical 상태' refers to the condition reported in those records, not to a fresh sensor read. No operational tool ran. '기록 당시' would be clearer future wording, but this response does not establish or claim a new live measurement.",
+    "recommendation_scope": "The final numbered item proposes ventilation/capacity/filter checks; it does not perform them, grant control rights, prove physical performance or assert a health benefit. The accepted scope remains interpretation of a maintainer-prepared virtual facility. Real commissioning or control is not established.",
+    "format_deviation_disposition": "Nonblocking for S3-G1's functional/factual outcome. S3-G1 and the original T2-I02 require a usable concise grounded setup/diagnosis handoff; neither prescribes six sentences. Seven short sentences with six clearly organized items meet that purpose. The turn did fail its narrower requested length check, so the raw INCOMPLETE status and concise_korean=false stay unchanged. This review does not claim exact prompt-format compliance or relabel the harness as PASS.",
+    "no_further_length_only_inference_required": true
+  },
+  "composite_onboarding_acceptance": {
+    "S3_G1": "Functionally supported within the declared instrumented Codex CLI 0.166.0, source-checkout and maintainer-prepared virtual-runtime scope.",
+    "evidence_chain": "Earlier actual Codex model-selected doctor/discover/read_evidence and prepare_setup/read_group executions remain intact with their CSE/service correlations. Separate fresh-profile registration/MCP checks and clean isolated lifecycle establish their own components. The new completed grounded recorded-results explanation supplies the previously missing user-visible handoff. These records are not represented as one uninterrupted chat.",
+    "important_limits": [
+      "The explanation-only turn executes no tools; model-led tool selection is evidenced in the earlier separate captures",
+      "Maintainer installation/runtime startup and approved profile activation remain prerequisites, not accomplishments attributed to this model turn",
+      "The stricter throwaway profile is read-only with approval_policy=never, no operations and unchanged installed openSoom skill; unrelated skill toggles affect that isolated profile only",
+      "This does not validate a desktop wizard, bare-wheel package, another OS/host, real devices or a human first-use study",
+      "It demonstrates one bounded grounded handoff, not guaranteed correctness of every future model answer"
+    ]
+  },
+  "finding_closeout": [
+    {
+      "id": "FT2-01",
+      "related": ["R-027", "R-031"],
+      "verdict": "resolved_for_required_functional_factual_handoff",
+      "reason": "A measurement-complete, provenance-checked packet produced a genuinely completed accurate explanation; prior failures remain preserved. The residual sentence-count format deviation is recorded separately and does not remove a functional gate requirement."
+    },
+    {
+      "id": "FT2-02",
+      "verdict": "resolved",
+      "evidence": ["pitch/architecture.js:165", "evidence/pitch/architecture-source-map.json", "docs/submission/hackster-article.md", "evidence/pitch/release-corrections-qa.json"],
+      "reason": "Both SDT projection edges now say native MQTT/TLS for the secure single profile and HTTP for the distributed profile. English/Korean mode/node text matches. The article's central edge is dashed and explicitly identifies a separate HTTP-Mcc demonstration. Source map, new source hashes and artifact manifest agree; the later QA is distinguished from the original historical capture."
+    },
+    {
+      "id": "FT2-03",
+      "related": ["R-034"],
+      "verdict": "resolved",
+      "evidence": ["evidence/pitch/architecture-browser-qa.json#evidence_origin"],
+      "reason": "Stable public roles replace internal session handles. A metadata-only redaction note preserves the distinction between observer and recorder; the original observations, screenshot hashes and limitations are retained."
+    },
+    {
+      "id": "R-002",
+      "verdict": "resolved_for_documented_supported_release_scope",
+      "reason": "Fresh CLI registration/MCP execution, clean lifecycle and composite model-guided setup/diagnosis plus the completed grounded handoff now establish the shipped path. Unperformed desktop/human/real-device validation remains unclaimed."
+    },
+    {
+      "id": "R-011",
+      "verdict": "prepared_deliverable_acceptance_supported; external_public_evidence_pending",
+      "reason": "The prepared article/video/repository/pitch package is accepted in Team 2's internal release scope after caption corrections. Public Hackster/video URLs, the eventual article backlink and actual submission remain distinct handoff items; no public-evidence credit is granted merely by closing prepared-package work."
+    },
+    {
+      "id": "R-025/R-028/R-029",
+      "verdict": "prior_resolved_assessments_carried_forward",
+      "reason": "Product runtime/plugin code and the relevant historical evidence/output protection remain unchanged from the prior candidate; none of these corrections reopens those findings."
+    }
+  ],
+  "gate_effects": [
+    {"gates": ["S3-G1"], "team2_verdict": "functional_factual_acceptance_supported_with_nonblocking_format_deviation"},
+    {"gates": ["S3-G4", "S6-G3"], "team2_verdict": "team2_blockers_closed; main_must_reconcile_all_teams_and_update_checkpoint"},
+    {"gates": ["S6-G2", "S6-G5"], "team2_verdict": "prepared_artifact_and_claim_consistency_supported_after_corrections"},
+    {"gates": ["S5-G1", "S5-G2", "S5-G3", "S6-G1"], "team2_verdict": "prior_supported_scope_carried_forward; no_runtime_or_media_regeneration_required_for_these_narrow_changes"},
+    {"gates": ["S6-G4"], "team2_verdict": "main_owned_post_review_push_and_remote_verification_still_required"}
+  ],
+  "shared_budget_observed": {
+    "max_requests": 100,
+    "max_tokens": 250000,
+    "requests_consumed": 72,
+    "tokens_charged": 238120,
+    "tokens_remaining": 11880,
+    "pending_requests": 0,
+    "prior_case_limits_reset": false
+  },
+  "publication_and_scoring_boundary": "Prepared repository/media acceptance is separate from actual GitHub publication verification, Hackster/video hosting, Discord submission, interview/discussion participation and official rubric scoring. No official score or total is assigned, and omitted features are not automatically N/A.",
+  "remaining_team2_blockers": [],
+  "reviewer_actions": "Read-only examination of immutable archives, source/packet/hash comparisons and a saved correction screenshot. Only this separate closeout review file was written. No inference, runtime/profile mutation, source changes, host setting changes or external publication."
+}

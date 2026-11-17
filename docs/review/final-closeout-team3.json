@@ -1,0 +1,676 @@
+{
+  "schema_version": 1,
+  "review_type": "bounded_independent_final_correction_closeout",
+  "team": "team_3",
+  "reviewer_task": "architecture_reasonableness",
+  "reviewed_at": "2026-11-17T20:54:50.359058+00:00",
+  "base_reviewed_commit": "0d733da7051eeffbe070f6c219e9631509b0f858",
+  "correction_evidence_commit": "ca10412ed1da62b92684e8163c2b6d092f450a5f",
+  "base_review": "docs/review/final-team3.json",
+  "scope": "Close out the identified input-unit/factual-handoff gap and inspect the bounded presentation corrections. Original full review remains the base; no unrelated requirements or inference added.",
+  "verdict": "FUNCTIONAL_AND_FACTUAL_HANDOFF_ACCEPTED_WITH_PRESERVED_FORMAT_DEVIATION; no remaining Team 3 required blocker in this scoped correction",
+  "independence": {
+    "new_provider_calls_by_reviewer": 0,
+    "live_cse_service_or_global_policy_mutations": 0,
+    "product_code_edits": false,
+    "only_written_file": "docs/review/final-closeout-team3.json",
+    "method": "Read immutable git objects, independently compare packet/source mappings and exact prose, inspect harness/profile delta, and read existing budget SQLite in mode=ro. Product/src/plugin unchanged, so earlier 53 tests and 8 subtests were not needlessly repeated."
+  },
+  "product_delta": {
+    "src_plugin_git_diff": "empty between base and correction commit",
+    "runtime_and_control_changes": false,
+    "interpretation": "The shipped tool/skill semantics already approved in the base review remain unchanged. This corrects the validation input that had omitted measurement units; it does not retroactively relabel a historical live run."
+  },
+  "input_semantic_integrity": {
+    "mapping_count": 45,
+    "all_mapping_source_hashes_and_values_match": true,
+    "mapping_checks": [
+      {
+        "source_file": "evidence/agent/semantics-mcp-capture.json",
+        "source_pointer": "/response/structuredContent/id",
+        "packet_pointer": "/revised_evidence/data/id",
+        "source_hash_matches": true,
+        "value_matches": true
+      },
+      {
+        "source_file": "evidence/agent/semantics-mcp-capture.json",
+        "source_pointer": "/response/structuredContent/profile",
+        "packet_pointer": "/revised_evidence/data/profile",
+        "source_hash_matches": true,
+        "value_matches": true
+      },
+      {
+        "source_file": "evidence/agent/semantics-mcp-capture.json",
+        "source_pointer": "/response/structuredContent/simulation",
+        "packet_pointer": "/revised_evidence/data/simulation",
+        "source_hash_matches": true,
+        "value_matches": true
+      },
+      {
+        "source_file": "evidence/agent/semantics-mcp-capture.json",
+        "source_pointer": "/response/structuredContent/status",
+        "packet_pointer": "/revised_evidence/data/status",
+        "source_hash_matches": true,
+        "value_matches": true
+      },
+      {
+        "source_file": "evidence/agent/semantics-mcp-capture.json",
+        "source_pointer": "/response/structuredContent/evidence_scope",
+        "packet_pointer": "/revised_evidence/data/evidence_scope",
+        "source_hash_matches": true,
+        "value_matches": true
+      },
+      {
+        "source_file": "evidence/agent/semantics-mcp-capture.json",
+        "source_pointer": "/response/structuredContent/incidents",
+        "packet_pointer": "/revised_evidence/data/incidents",
+        "source_hash_matches": true,
+        "value_matches": true
+      },
+      {
+        "source_file": "evidence/agent/semantics-mcp-capture.json",
+        "source_pointer": "/response/structuredContent/commands",
+        "packet_pointer": "/revised_evidence/data/commands",
+        "source_hash_matches": true,
+        "value_matches": true
+      },
+      {
+        "source_file": "evidence/agent/semantics-mcp-capture.json",
+        "source_pointer": "/response/structuredContent/run_id",
+        "packet_pointer": "/revised_evidence/data/run_id",
+        "source_hash_matches": true,
+        "value_matches": true
+      },
+      {
+        "source_file": "evidence/agent/semantics-mcp-capture.json",
+        "source_pointer": "/response/structuredContent/zones/0/id",
+        "packet_pointer": "/revised_evidence/data/zones/0/id",
+        "source_hash_matches": true,
+        "value_matches": true
+      },
+      {
+        "source_file": "evidence/agent/semantics-mcp-capture.json",
+        "source_pointer": "/response/structuredContent/zones/0/status",
+        "packet_pointer": "/revised_evidence/data/zones/0/status",
+        "source_hash_matches": true,
+        "value_matches": true
+      },
+      {
+        "source_file": "evidence/agent/semantics-mcp-capture.json",
+        "source_pointer": "/response/structuredContent/zones/0/reason",
+        "packet_pointer": "/revised_evidence/data/zones/0/reason",
+        "source_hash_matches": true,
+        "value_matches": true
+      },
+      {
+        "source_file": "evidence/agent/semantics-mcp-capture.json",
+        "source_pointer": "/response/structuredContent/zones/1/id",
+        "packet_pointer": "/revised_evidence/data/zones/1/id",
+        "source_hash_matches": true,
+        "value_matches": true
+      },
+      {
+        "source_file": "evidence/agent/semantics-mcp-capture.json",
+        "source_pointer": "/response/structuredContent/zones/1/status",
+        "packet_pointer": "/revised_evidence/data/zones/1/status",
+        "source_hash_matches": true,
+        "value_matches": true
+      },
+      {
+        "source_file": "evidence/agent/semantics-mcp-capture.json",
+        "source_pointer": "/response/structuredContent/zones/1/reason",
+        "packet_pointer": "/revised_evidence/data/zones/1/reason",
+        "source_hash_matches": true,
+        "value_matches": true
+      },
+      {
+        "source_file": "evidence/agent/semantics-mcp-capture.json",
+        "source_pointer": "/response/structuredContent/zones/2/id",
+        "packet_pointer": "/revised_evidence/data/zones/2/id",
+        "source_hash_matches": true,
+        "value_matches": true
+      },
+      {
+        "source_file": "evidence/agent/semantics-mcp-capture.json",
+        "source_pointer": "/response/structuredContent/zones/2/status",
+        "packet_pointer": "/revised_evidence/data/zones/2/status",
+        "source_hash_matches": true,
+        "value_matches": true
+      },
+      {
+        "source_file": "evidence/agent/semantics-mcp-capture.json",
+        "source_pointer": "/response/structuredContent/zones/2/reason",
+        "packet_pointer": "/revised_evidence/data/zones/2/reason",
+        "source_hash_matches": true,
+        "value_matches": true
+      },
+      {
+        "source_file": "evidence/agent/semantics-mcp-capture.json",
+        "source_pointer": "/response/structuredContent/zones/0/target_airflow",
+        "packet_pointer": "/revised_evidence/data/zones/0/target_airflow",
+        "source_hash_matches": true,
+        "value_matches": true
+      },
+      {
+        "source_file": "evidence/agent/semantics-mcp-capture.json",
+        "source_pointer": "/response/structuredContent/zones/0/freshness",
+        "packet_pointer": "/revised_evidence/data/zones/0/freshness",
+        "source_hash_matches": true,
+        "value_matches": true
+      },
+      {
+        "source_file": "evidence/agent/semantics-mcp-capture.json",
+        "source_pointer": "/response/structuredContent/zones/0/observations/airflow/value",
+        "packet_pointer": "/revised_evidence/data/zones/0/observations/airflow/value",
+        "source_hash_matches": true,
+        "value_matches": true
+      },
+      {
+        "source_file": "evidence/agent/semantics-mcp-capture.json",
+        "source_pointer": "/response/structuredContent/zones/0/observations/pm25/value",
+        "packet_pointer": "/revised_evidence/data/zones/0/observations/pm25/value",
+        "source_hash_matches": true,
+        "value_matches": true
+      },
+      {
+        "source_file": "evidence/agent/semantics-mcp-capture.json",
+        "source_pointer": "/response/structuredContent/zones/0/observations/co2/value",
+        "packet_pointer": "/revised_evidence/data/zones/0/observations/co2/value",
+        "source_hash_matches": true,
+        "value_matches": true
+      },
+      {
+        "source_file": "evidence/agent/semantics-mcp-capture.json",
+        "source_pointer": "/response/structuredContent/zones/0/observations/fan_running/value",
+        "packet_pointer": "/revised_evidence/data/zones/0/observations/fan_running/value",
+        "source_hash_matches": true,
+        "value_matches": true
+      },
+      {
+        "source_file": "evidence/agent/semantics-mcp-capture.json",
+        "source_pointer": "/response/structuredContent/zones/0/observations/damper_pct/value",
+        "packet_pointer": "/revised_evidence/data/zones/0/observations/damper_pct/value",
+        "source_hash_matches": true,
+        "value_matches": true
+      },
+      {
+        "source_file": "evidence/agent/guided-config-continuation-live.json",
+        "source_pointer": "/model_selected_mcp_calls/0/result/structuredContent/profile/id",
+        "packet_pointer": "/prior_setup/data/profile/id",
+        "source_hash_matches": true,
+        "value_matches": true
+      },
+      {
+        "source_file": "evidence/agent/guided-config-continuation-live.json",
+        "source_pointer": "/model_selected_mcp_calls/0/result/structuredContent/profile/simulation_only",
+        "packet_pointer": "/prior_setup/data/profile/simulation_only",
+        "source_hash_matches": true,
+        "value_matches": true
+      },
+      {
+        "source_file": "evidence/agent/guided-config-continuation-live.json",
+        "source_pointer": "/model_selected_mcp_calls/0/result/structuredContent/configured_facilities",
+        "packet_pointer": "/prior_setup/data/configured_facilities",
+        "source_hash_matches": true,
+        "value_matches": true
+      },
+      {
+        "source_file": "evidence/agent/guided-config-continuation-live.json",
+        "source_pointer": "/model_selected_mcp_calls/0/result/structuredContent/mode",
+        "packet_pointer": "/prior_setup/data/mode",
+        "source_hash_matches": true,
+        "value_matches": true
+      },
+      {
+        "source_file": "evidence/agent/guided-config-continuation-live.json",
+        "source_pointer": "/model_selected_mcp_calls/0/result/structuredContent/activation_requires",
+        "packet_pointer": "/prior_setup/data/activation_requires",
+        "source_hash_matches": true,
+        "value_matches": true
+      },
+      {
+        "source_file": "evidence/agent/guided-config-continuation-live.json",
+        "source_pointer": "/model_selected_mcp_calls/0/result/structuredContent/runtime/status",
+        "packet_pointer": "/prior_setup/data/runtime/status",
+        "source_hash_matches": true,
+        "value_matches": true
+      },
+      {
+        "source_file": "evidence/agent/guided-config-continuation-live.json",
+        "source_pointer": "/model_selected_mcp_calls/0/result/structuredContent/runtime/cse/connected",
+        "packet_pointer": "/prior_setup/data/runtime/cse/connected",
+        "source_hash_matches": true,
+        "value_matches": true
+      },
+      {
+        "source_file": "evidence/agent/guided-config-continuation-live.json",
+        "source_pointer": "/model_selected_mcp_calls/1/result/structuredContent/facility_id",
+        "packet_pointer": "/prior_group/data/facility_id",
+        "source_hash_matches": true,
+        "value_matches": true
+      },
+      {
+        "source_file": "evidence/agent/guided-config-continuation-live.json",
+        "source_pointer": "/model_selected_mcp_calls/1/result/structuredContent/status",
+        "packet_pointer": "/prior_group/data/status",
+        "source_hash_matches": true,
+        "value_matches": true
+      },
+      {
+        "source_file": "evidence/agent/guided-config-continuation-live.json",
+        "source_pointer": "/model_selected_mcp_calls/1/result/structuredContent/group/rsc",
+        "packet_pointer": "/prior_group/data/group/rsc",
+        "source_hash_matches": true,
+        "value_matches": true
+      },
+      {
+        "source_file": "evidence/agent/guided-config-continuation-live.json",
+        "source_pointer": "/model_selected_mcp_calls/1/result/structuredContent/group/rqi",
+        "packet_pointer": "/prior_group/data/group/rqi",
+        "source_hash_matches": true,
+        "value_matches": true
+      },
+      {
+        "source_file": "evidence/agent/guided-config-continuation-live.json",
+        "source_pointer": "/model_selected_mcp_calls/1/result/structuredContent/run_id",
+        "packet_pointer": "/prior_group/data/run_id",
+        "source_hash_matches": true,
+        "value_matches": true
+      },
+      {
+        "source_file": "evidence/agent/guided-config-continuation-live.json",
+        "source_pointer": "/model_selected_mcp_calls/1/result/structuredContent/group/body/m2m:agr/m2m:rsp/0/rsc",
+        "packet_pointer": "/prior_group/data/group/body/m2m:agr/m2m:rsp/0/rsc",
+        "source_hash_matches": true,
+        "value_matches": true
+      },
+      {
+        "source_file": "evidence/agent/guided-config-continuation-live.json",
+        "source_pointer": "/model_selected_mcp_calls/1/result/structuredContent/group/body/m2m:agr/m2m:rsp/1/rsc",
+        "packet_pointer": "/prior_group/data/group/body/m2m:agr/m2m:rsp/1/rsc",
+        "source_hash_matches": true,
+        "value_matches": true
+      },
+      {
+        "source_file": "evidence/agent/guided-config-continuation-live.json",
+        "source_pointer": "/model_selected_mcp_calls/1/result/structuredContent/group/body/m2m:agr/m2m:rsp/2/rsc",
+        "packet_pointer": "/prior_group/data/group/body/m2m:agr/m2m:rsp/2/rsc",
+        "source_hash_matches": true,
+        "value_matches": true
+      },
+      {
+        "source_file": "evidence/application/release-acceptance.json",
+        "source_pointer": "/scenarios/no_recovery/state/commands/0",
+        "packet_pointer": "/prior_command/data",
+        "source_hash_matches": true,
+        "value_matches": true
+      },
+      {
+        "source_file": "evidence/agent/semantics-mcp-capture.json",
+        "source_pointer": "/response/structuredContent/zones/0/observations/airflow",
+        "packet_pointer": "/revised_evidence/data/zones/0/observations/airflow",
+        "source_hash_matches": true,
+        "value_matches": true
+      },
+      {
+        "source_file": "evidence/agent/semantics-mcp-capture.json",
+        "source_pointer": "/response/structuredContent/zones/0/observations/pm25",
+        "packet_pointer": "/revised_evidence/data/zones/0/observations/pm25",
+        "source_hash_matches": true,
+        "value_matches": true
+      },
+      {
+        "source_file": "evidence/agent/semantics-mcp-capture.json",
+        "source_pointer": "/response/structuredContent/zones/0/observations/co2",
+        "packet_pointer": "/revised_evidence/data/zones/0/observations/co2",
+        "source_hash_matches": true,
+        "value_matches": true
+      },
+      {
+        "source_file": "evidence/agent/semantics-mcp-capture.json",
+        "source_pointer": "/response/structuredContent/zones/0/observations/fan_running",
+        "packet_pointer": "/revised_evidence/data/zones/0/observations/fan_running",
+        "source_hash_matches": true,
+        "value_matches": true
+      },
+      {
+        "source_file": "evidence/agent/semantics-mcp-capture.json",
+        "source_pointer": "/response/structuredContent/zones/0/observations/damper_pct",
+        "packet_pointer": "/revised_evidence/data/zones/0/observations/damper_pct",
+        "source_hash_matches": true,
+        "value_matches": true
+      }
+    ],
+    "packet_sha256_matches": true,
+    "original_semantics_packet_sha256_matches": true,
+    "all_previous_selected_fact_mismatches": [],
+    "full_observation_objects": {
+      "airflow": {
+        "exact_source_match": true,
+        "fields": [
+          "observed_at",
+          "quality",
+          "received_at",
+          "source",
+          "unit",
+          "value"
+        ],
+        "value": 200.0,
+        "unit": "m³/h"
+      },
+      "pm25": {
+        "exact_source_match": true,
+        "fields": [
+          "observed_at",
+          "quality",
+          "received_at",
+          "source",
+          "unit",
+          "value"
+        ],
+        "value": 62.0,
+        "unit": "µg/m³"
+      },
+      "co2": {
+        "exact_source_match": true,
+        "fields": [
+          "observed_at",
+          "quality",
+          "received_at",
+          "source",
+          "unit",
+          "value"
+        ],
+        "value": 1450.0,
+        "unit": "ppm"
+      },
+      "fan_running": {
+        "exact_source_match": true,
+        "fields": [
+          "observed_at",
+          "quality",
+          "received_at",
+          "source",
+          "unit",
+          "value"
+        ],
+        "value": true,
+        "unit": "boolean"
+      },
+      "damper_pct": {
+        "exact_source_match": true,
+        "fields": [
+          "observed_at",
+          "quality",
+          "received_at",
+          "source",
+          "unit",
+          "value"
+        ],
+        "value": 100.0,
+        "unit": "%"
+      }
+    },
+    "canonical_unit_associations": "Target airflow m³/h and set_damper % are added from the existing product UNITS AST constant and recorded with source hash. This is not an invented conversion or a new simulated measurement.",
+    "model_context_vs_forensics": "Model-visible data retain captured_at, evidence_scope, diagnostic facts and full selected measurements. Exact source files/hashes/JSON-pointer mapping remain bound in the forensic sidecar. No prior model answer or fabricated tool/assistant history is supplied."
+  },
+  "factual_output_review": {
+    "live_capture_sha256": "96d85aee3e67b48da6f7cf7ab5000a67d218c1501e57e515d2a464a26e49eea6",
+    "raw_capture_status": "INCOMPLETE_CAPTURED_RECORD_EXPLANATION",
+    "provider_status": "completed",
+    "codex_turn_status": "completed",
+    "operational_tool_calls": 0,
+    "checked_facts": [
+      {
+        "fact": "Airflow below target",
+        "source": "200 m³/h vs 500 m³/h",
+        "model": "200 m³/h and 500 m³/h; below target",
+        "verdict": "matches"
+      },
+      {
+        "fact": "PM2.5 and CO2 above profile targets",
+        "source": "62 µg/m³, 1450 ppm",
+        "model": "62 µg/m³, 1450 ppm; above target",
+        "verdict": "matches"
+      },
+      {
+        "fact": "Fan/damper observations",
+        "source": "fan_running=true; damper_pct=100%; quality good",
+        "model": "Fan running, damper100%, quality good",
+        "verdict": "matches simulated source"
+      },
+      {
+        "fact": "Zone diagnosis",
+        "source": "classroom critical; meeting/lounge nominal",
+        "model": "Same three zone statuses",
+        "verdict": "matches"
+      },
+      {
+        "fact": "Prior action and unresolved result",
+        "source": "Preauthorized virtual set_damper100 command cmd-6406eb6c6318, ACK, later unresolved",
+        "model": "Prior100% command acknowledged but not recovered",
+        "verdict": "matches; no no-prior-attempt inference"
+      },
+      {
+        "fact": "Counter/history",
+        "source": "recovery_count0; current-run commands empty but retained earlier ACK exists; required recovery samples2",
+        "model": "Acknowledged prior action retained, recovery counter0 explained alongside persisting deficiency, subsequent2 normal observations recommended",
+        "verdict": "matches; original faulty inference is absent"
+      },
+      {
+        "fact": "Prepared setup",
+        "source": "Maintainer-prepared virtual runtime/preactivated profiles; captured ready/CSE-connected profile",
+        "model": "Prepared simulation-only learning-space facility",
+        "verdict": "supported by declared prerequisites and captured setup"
+      }
+    ],
+    "temporal_assessment": {
+      "exact_phrase": "현재 critical 상태",
+      "context": [
+        "Opening: 가상 학습 공간(learning-b) 기록 해석 요약입니다.",
+        "User request explicitly asks for past-record interpretation.",
+        "Packet retains separate original capture times and measurement observation/received times.",
+        "No operational tool is offered or called in this model turn."
+      ],
+      "verdict": "Accept as the critical state within the interpreted record context; it does not claim a fresh operational read. Explicit capture-time phrasing would improve clarity, but this is not a material factual blocker requiring another paid call."
+    },
+    "capture_time_integrity": {
+      "model_visible_times": {
+        "revised_evidence": "2026-11-17T20:21:24.045559+00:00",
+        "prior_setup": "2026-11-17T20:00:04.730000+00:00",
+        "prior_group": "2026-11-17T20:00:06.523000+00:00",
+        "prior_command": "2026-11-17T19:14:37.744+00:00"
+      },
+      "revised_capture_time_matches_source": true,
+      "historical_command_capture_time_matches_acceptance_completion": true,
+      "measurement_event_time": "2026-11-17T20:21:23.515+00:00",
+      "prior_ack_event_time": "2026-11-17T19:14:34.931+00:00",
+      "assessment": "Capture completion and measurement/ACK event times remain separate, not rewritten as model-turn current sensor reads."
+    },
+    "recommendations_assessment": "Ventilation/fan/filter checks are proposed follow-up, not performed operations, root-cause proof, physical-control permission or real-device integration evidence. The virtual-record framing and server control boundaries remain. Future operator wording should favor profile-approved verification/maintenance and site-expert validation, but no additional model run is needed to establish these captured facts."
+  },
+  "format_vs_requirement": {
+    "original_prompt_constraint": "At most six concise Korean sentences",
+    "observed_sentence_count": 7,
+    "observation": "One short introduction plus six numbered sentences; total7.",
+    "strict_experiment_format_verdict": "FAIL_UNCHANGED",
+    "original_status_preserved": "INCOMPLETE_CAPTURED_RECORD_EXPLANATION",
+    "functional_factual_requirement_verdict": "ACCEPTED_WITH_FORMAT_DEVIATION",
+    "reason": "The actual provider and Codex turn completed; the required setup/zone/history/unresolved/next-step interpretation is delivered with correct quantities. The accepted product/stage requirement does not establish an exact six-sentence limit. This review does not change the prompt, raw test status or completion_checks.concise_korean=false, and does not claim the strict experiment passed every check."
+  },
+  "permission_and_execution_scope": {
+    "sandbox": "read-only",
+    "approval_policy": "never",
+    "operational_tools_offered": 0,
+    "operational_calls": 0,
+    "official_generated_permission_text": [
+      "<permissions instructions>\nFilesystem sandboxing defines which files can be read or written. `sandbox_mode` is `read-only`: The sandbox only permits reading files. Network access is restricted.\nApproval policy is currently never. Do not provide the `sandbox_permissions` for any reason, commands will be rejected.\n</permissions instructions>"
+    ],
+    "official_permissions_preserved": true,
+    "isolated_builtin_skill_changes": [
+      {
+        "method": "skills/config/write",
+        "name": "imagegen",
+        "enabled": false,
+        "profile_scope": "fresh isolated child CODEX_HOME"
+      },
+      {
+        "method": "skills/config/write",
+        "name": "openai-docs",
+        "enabled": false,
+        "profile_scope": "fresh isolated child CODEX_HOME"
+      },
+      {
+        "method": "skills/config/write",
+        "name": "skill-creator",
+        "enabled": false,
+        "profile_scope": "fresh isolated child CODEX_HOME"
+      },
+      {
+        "method": "skills/config/write",
+        "name": "skill-installer",
+        "enabled": false,
+        "profile_scope": "fresh isolated child CODEX_HOME"
+      }
+    ],
+    "assessment": "StrictRPC applies only to the fresh child CODEX_HOME app-server. It disables unrelated builtin skills there and starts a read-only/approval-never thread; there is no available escalation, global policy rewrite or altered product permission. This is disclosed test instrumentation, not ordinary-default-host evidence. The installed openSoom setup skill remains selected unchanged."
+  },
+  "shared_budget_and_case_preservation": {
+    "limits": {
+      "max_requests": 100,
+      "max_tokens": 250000
+    },
+    "before": {
+      "requests": 71,
+      "tokens_charged": 235310
+    },
+    "after": {
+      "requests": 72,
+      "tokens_charged": 238120,
+      "tokens_remaining": 11880,
+      "pending_requests": 0
+    },
+    "new_usage": {
+      "requests": 1,
+      "input_tokens": 2449,
+      "output_tokens": 361,
+      "total_tokens": 2810,
+      "reserved_tokens": 12476,
+      "fixed_case_token_maximum": 14000,
+      "shared_remaining_before": 14690,
+      "settlement": "settled"
+    },
+    "requests_or_tokens_reset": false,
+    "allowance_increased": false,
+    "retry": false,
+    "independent_read_only_db_observation": {
+      "requests": 72,
+      "tokens_charged": 238120,
+      "pending_reservations": 0,
+      "limits_match": true,
+      "new_reservation_run_id": "codex-units-3b6bdb8e81",
+      "reserved_tokens": 12476,
+      "charged_tokens": 2810,
+      "state": "settled"
+    },
+    "prior_bytes_unchanged": {
+      "scripts/codex_guided_rehearsal.py": true,
+      "scripts/codex_configuration_rehearsal.py": true,
+      "scripts/codex_explanation_rehearsal.py": true,
+      "scripts/codex_semantics_regression.py": true,
+      "evidence/agent/guided-live.json": true,
+      "evidence/agent/guided-config-continuation-live.json": true,
+      "evidence/agent/guided-explanation-live.json": true,
+      "evidence/agent/semantics-live.json": true
+    },
+    "checkpoint_file_hash_mismatches": [],
+    "further_inference": "No further inference is required or authorized by this review. Exhausted case outcomes and all historical failures remain preserved."
+  },
+  "finding_closeout": [
+    {
+      "id": "T3-F01",
+      "status": "resolved_for_input_semantics_and_required_factual_handoff",
+      "basis": "All45 source mappings and prior chosen facts preserved, complete quantities restored, actual model output uses correct units and unresolved history. Strict format failure remains separately disclosed."
+    },
+    {
+      "id": "R-031",
+      "status": "resolved_required_counter_history_quantity_interpretation_scope",
+      "basis": "Reusable product evidence_scope remains verified; completed output now avoids absence-of-attempts inference and wrong units while retaining prior ACK/unresolved. Original counter-error/unit-error answers remain unmodified and unaccepted."
+    },
+    {
+      "id": "R-027",
+      "status": "resolved_for_declared_componentwise_guided_onboarding_scope",
+      "basis": "Combined with the base evidence: fresh supported Codex plugin/host calls, actual model-selected readiness/profile/group/diagnosis checks, independent clean lifecycle and now factual completed handoff. Sources/times/chats are explicitly separate and prerequisites are maintainer installed/preactivated.",
+      "not_established": [
+        "One uninterrupted successful onboarding conversation",
+        "Autonomous runtime installation/admin self-activation",
+        "Ordinary default-provider flow without instrumentation",
+        "Desktop UI validation",
+        "A nontechnical human first-use study",
+        "Real-device setup"
+      ]
+    },
+    {
+      "id": "R-003",
+      "status": "resolved_original_core_requirement_scope",
+      "basis": "Mandatory plugin/actual runner/state already supported in base; scoped guided-handoff gap now has required factual evidence."
+    },
+    {
+      "id": "R-007 / T3-001 / T3-002 / R-030",
+      "status": "resolution_unchanged",
+      "basis": "No src/plugin runtime/control delta; prior independently verified role/actuator/pending-restart results remain valid."
+    }
+  ],
+  "presentation_correction_check": {
+    "T1-F01": "Both food-project and learning-project single protocols now say Native oneM2M MQTT/TLS; distributed remains HTTP. Renderer source and exported map agree with the captured SDT update path.",
+    "T1-F02": "Article central edge is dashed alternative distributed HTTP Mcc and adjacent caption explicitly separates2MN/2API/1IN from secure single installation.",
+    "team3_verdict": "No remaining Team3 claim-consistency objection; Team1 owns its formal finding closeout.",
+    "historical_visuals": "Original captures remain historical; release-corrections QA and screenshot identify later labels. No new physical/model execution claim."
+  },
+  "gate_closeout_recommendations": [
+    {
+      "gate": "S3-G1",
+      "recommendation": "PASS_DECLARED_COMPONENTWISE_SUPPORTED_ENVIRONMENT_SCOPE",
+      "limits": "Retain prerequisites, separate chats, instrumented provider, format deviation and unverified desktop/human-first-use scope; do not call the original bounded cases fully passed."
+    },
+    {
+      "gate": "S3-G4",
+      "recommendation": "TEAM3_CLOSEOUT_COMPLETE; main reconciles all four owner reports",
+      "limits": "This is independent Team3 verification, not unilateral all-team advancement."
+    },
+    {
+      "gate": "S6-G2 / S6-G5",
+      "recommendation": "Team3 factual concerns closed by bounded source labels/caption; combine with Team1/2/4 verdicts."
+    },
+    {
+      "gate": "S6-G3",
+      "recommendation": "NO_REMAINING_TEAM3_REQUIRED_BLOCKER; main must reconcile final correction snapshot and four teams."
+    },
+    {
+      "gate": "S6-G4",
+      "recommendation": "Still main-owned final commit/push/remote verification; not established by this read-only closeout."
+    }
+  ],
+  "new_required_blockers": [],
+  "further_model_requests_recommended": false,
+  "overall_goal_complete_claimed": false,
+  "inspected_file_hashes": {
+    "scripts/codex_units_regression.py": "df079038552feecf47d978c9fd1a424f5c5daef073ac25be581745bb5b79cfad",
+    "evidence/agent/units-live.json": "96d85aee3e67b48da6f7cf7ab5000a67d218c1501e57e515d2a464a26e49eea6",
+    "evidence/agent/units-fact-check.json": "3543e74608904e5d710da39bf2ee2c4918b942c877be26ce01ba759e84eb2dc3",
+    "evidence/agent/units-checkpoint.json": "793e7396600a5a8f6d8fcac583c0cda3d3219bb12a92df576bd27b066424e68d",
+    "evidence/agent/units-input-map.json": "73ea3851d7721bb03df5ad1ee109e860dd561516e49c93f0d6d515b2163708d4",
+    "evidence/agent/units-model-packet.json": "1193661a0cdc98964e79eda1bd9b18f28995f9e8b8e4faaf9d98ec1c5db347ac",
+    "evidence/agent/units-scope.json": "88b7458d8ee6771eba12c56d0005b551b9ad4c99f69f32e0ea1e1e92fb8f603e",
+    "evidence/agent/units-dry.json": "108bfd0fd763c8784d95be2ea55342bdc35f671058d5e1567517e3b4250ba620",
+    "evidence/agent/index.json": "008a4796d7200beaf0c355fac2ed0e68f5392e71bf9df7e9590e5178817e4a94",
+    "docs/agent-integration.md": "86accad14280ef33eb810458e654cfcc02ca7f65befb19c9e8f40169bb07f914",
+    "docs/review/review-ledger.json": "71418e4e64ce6f030509d8e8eea42eda94ddd8480e8aad713827fe752c51645c",
+    "docs/submission/hackster-article.md": "8aa3a6176d1a2959003780d060260b7259353cd28c32b85528ce1b029357c51d",
+    "pitch/architecture.js": "6f6467b7323305a6982ab7707cf0a55db3e04712a64baa1369dc7d994118f48c",
+    "evidence/pitch/architecture-source-map.json": "dc328c6e85abdeed24908b63798d11d2d2177514242143b4fcb7608b90fb9c83",
+    "evidence/pitch/release-corrections-qa.json": "4980d2a4c41c1249437943dce68a39c62892d755810a8f852c7d6ee4ddf2bdf6"
+  },
+  "official_score": null,
+  "official_total": null
+}

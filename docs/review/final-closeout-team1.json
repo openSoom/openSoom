@@ -1,0 +1,266 @@
+{
+  "schema_version": 1,
+  "team": "team_1 / rubric_reviewer",
+  "model": "gpt-6.1-sol",
+  "reasoning_effort": "max",
+  "review_date": "2026-11-18",
+  "immutable_commit": "ca10412ed1da62b92684e8163c2b6d092f450a5f",
+  "base_review_commit": "0d733da7051eeffbe070f6c219e9631509b0f858",
+  "base_review": "docs/review/final-team1.json",
+  "criteria": [
+    1,
+    2,
+    3,
+    11
+  ],
+  "scope": "Narrow independent correction closeout; base criterion/gate assessment plus identified diff. Not whole-release approval or a new live runtime/model run.",
+  "verdict": "T1-F01_R032_and_T1-F02_R033_resolved; no_remaining_team1_correction_blocker; overall_release_closeout_remains_main_and_other_teams_owned",
+  "summary_ko": "두 표현 문제의 수정을 독립 확인했다. SDT 갱신 경로와 한·영 설명 및 재생성 대응표가 실제 MQTT/TLS 캡처에 맞고, 기사도 보안 단일 설치와 HTTP 분산 시험을 명시적으로 구분한다. 팀1의 구현·SDT 판정은 기본 검토에서 유지된다. 새 Codex 기록의 기능·사실 적합성은 팀2·3 판단 사항이며 원본 형식 실패를 PASS로 바꾸지 않는다.",
+  "independence": {
+    "authored_only": "docs/review/final-closeout-team1.json",
+    "original_final_team1_preserved": true,
+    "product_code_edits": false,
+    "new_inference_calls": 0,
+    "runtime_mutations": 0,
+    "external_publication": false,
+    "snapshot_check": "HEAD matched the supplied commit and tracked working tree was clean at review start. Diff and evidence read against exact Git objects; local Node import executed only the static explanatory module."
+  },
+  "source_delta": {
+    "compared_commits": [
+      "0d733da7051eeffbe070f6c219e9631509b0f858",
+      "ca10412ed1da62b92684e8163c2b6d092f450a5f"
+    ],
+    "team1_runtime_paths_checked": [
+      "src/opensoom",
+      "profiles",
+      "schemas",
+      "config",
+      "plugin"
+    ],
+    "runtime_diff": "empty",
+    "assessment": "All prior actualCSE, protocol, model mapping, policy and actuator acceptance carries forward under the base review source-reconciliation analysis. New scripts/codex_units_regression.py is validation tooling, not an operational runtime change; it was not executed in this review. No blanket new live run is required for the presentation-only corrections."
+  },
+  "checks": [
+    {
+      "name": "Renderer versus regenerated source map",
+      "method": "Node import of actual ARCHITECTURE_SOURCE_MAP; assert.deepEqual on sources/layers/topologies/nodes/edges/boundaries",
+      "result": "PASS",
+      "observed": "Six semantic sections exactly match. Both food-project and learning-project use single=Native oneM2M MQTT/TLS and distributed=oneM2M HTTP. Graph remains51 nodes77edges."
+    },
+    {
+      "name": "Bilingual single-profile context",
+      "method": "Source diff and Node assertions",
+      "result": "PASS",
+      "observed": "English and Korean descriptions and pitch/README explicitly include SDT projection updates with observations/ACKs over native MQTT/TLS. HTTPS remains CSE reads/commands; localHTTP and stdio limits remain."
+    },
+    {
+      "name": "Correction evidence hashes",
+      "method": "SHA256 of correction commit blobs versus release-corrections-qa.json",
+      "result": "PASS",
+      "observed": "All4 source hashes and the saved screenshot hash match; source-map architecture.js hash matches the corrected renderer."
+    },
+    {
+      "name": "Saved rendered context",
+      "method": "Independent visual inspection of evidence/pitch/architecture-release-desktop.jpg plus author QA scope review",
+      "result": "PASS_WITH_EXPLICIT_SCOPE",
+      "observed": "Saved image shows distributed/local lab,46 inspectable components and legible process/resource/module distinctions. It is not a screenshot of the corrected single-profile text or hovered SDT edge. The author QA reports single-profile reload/context check; independent Node/source assertions establish those exact corrected strings. No fresh browser execution is claimed."
+    },
+    {
+      "name": "Article alternative profile",
+      "method": "Immutable article diff/source inspection",
+      "result": "PASS",
+      "observed": "Dashed central edge is labeled Alternative distributed lab:HTTP Mcc. Adjacent caption explicitly states separate2MN-CSE/2facilityAPI/1IN-CSE HTTP demonstration, not evidence of distributedTLS, and no centralCSE requirement for single installation."
+    },
+    {
+      "name": "Historical capture preservation",
+      "method": "Diff review",
+      "result": "PASS",
+      "observed": "Prior architecture browser QA/source snapshot remains historical; role metadata is redacted separately. New limited correction QA and screenshot are additive. Previous live-model cases are not rewritten."
+    }
+  ],
+  "finding_closeout": [
+    {
+      "ids": [
+        "T1-F01",
+        "R-032"
+      ],
+      "status": "resolved",
+      "criteria": [
+        2,
+        11
+      ],
+      "gates": [
+        "S6-G5"
+      ],
+      "evidence": [
+        "pitch/architecture.js:165",
+        "pitch/README.md",
+        "evidence/pitch/architecture-source-map.json",
+        "evidence/pitch/release-corrections-qa.json",
+        "src/opensoom/core.py:180",
+        "evidence/application/release-acceptance.json#/checks/actual_product_mixed_protocol_trace/native_MQTT_SDT_update"
+      ],
+      "reason": "Corrected display and exported map agree with unchanged implementation and actualCSE MQTT_TLS SDT update capture. Relevant bilingual summary corrected; no runtime delta."
+    },
+    {
+      "ids": [
+        "T1-F02",
+        "R-033"
+      ],
+      "status": "resolved",
+      "criteria": [
+        2,
+        3
+      ],
+      "gates": [
+        "S6-G2",
+        "S6-G5"
+      ],
+      "evidence": [
+        "docs/submission/hackster-article.md:36",
+        "docs/submission/hackster-article.md:39",
+        "evidence/pitch/release-corrections-qa.json"
+      ],
+      "reason": "Diagram/caption now distinguish alternative secure-single and distributedHTTP scopes. No inferred combined secure multisite execution remains in that diagram claim."
+    }
+  ],
+  "explicit_gate_verdicts": [
+    {
+      "gates": [
+        "S1-G1",
+        "S1-G2",
+        "S1-G3",
+        "S2-G1",
+        "S2-G2",
+        "S2-G3",
+        "S2-G4"
+      ],
+      "team1_verdict": "base_review_supported_verdicts_unchanged",
+      "basis": "No operational code/config/model/adapter delta. Preserve base loopback trust, native group-abort/fallback, simulated device and multiple-app/cohosting limitations."
+    },
+    {
+      "gates": [
+        "S2-G5"
+      ],
+      "team1_verdict": "pass_supported_for_adopted_PM25_only_SDT",
+      "basis": "Base review explicitly verified adoption and all3 child gates. No new model/runtime delta; protocol label now correct. Main may record closure using both reports without implying other extension decisions."
+    },
+    {
+      "gates": [
+        "SDT-G1"
+      ],
+      "team1_verdict": "pass_supported",
+      "basis": "Base: pinned TS0023v5.6.0 airQualitySensor/cod:aiQSr/cnd, nonnegativeintegerµg/m³, ties-even projection, retained canonical precision and correct CO2/volume-flow omissions. Unchanged."
+    },
+    {
+      "gates": [
+        "SDT-G2"
+      ],
+      "team1_verdict": "pass_supported",
+      "basis": "Base: actual type28creation/native discovery and invalid PM2.5 string rsc4000 rejection. Unchanged."
+    },
+    {
+      "gates": [
+        "SDT-G3"
+      ],
+      "team1_verdict": "pass_supported_for_both_virtual_adapters_profiles",
+      "basis": "Base release-acceptance actual app reads learning-b vendor-b; release-live-recovery read_evidence reads food-a vendor-a; model/unit/rqi present and canonical observations retained. Unchanged."
+    },
+    {
+      "gates": [
+        "S3-G2"
+      ],
+      "team1_verdict": "base_standalone_fixture_and_real_model_operational_path_supported",
+      "basis": "New presentation corrections do not alter the accepted recovery/stale operational traces. This is not a Codex onboarding/handoff pass."
+    },
+    {
+      "gates": [
+        "S3-G1",
+        "S3-G3",
+        "S3-G4"
+      ],
+      "team1_verdict": "defer_final_functional_factual_closeout_to_team2_team3",
+      "basis": "New units-live record preserves raw INCOMPLETE_CAPTURED_RECORD_EXPLANATION status while provider/host completed. Seven sentences violated six-sentence raw harness limit. Team1 does not rewrite this toPASS or independently approve full Codex grounded-user handoff; Teams2/3 assess factual/functional behavior and meaning of the format deviation."
+    },
+    {
+      "gates": [
+        "S6-G5"
+      ],
+      "team1_verdict": "team1_factual_corrections_complete",
+      "basis": "Both owned presentation findings resolved; remaining overall visual/accessibility/complete-gate acceptance belongs to combined team review."
+    },
+    {
+      "gates": [
+        "S6-G2"
+      ],
+      "team1_verdict": "team1_diagram_scope_clear",
+      "basis": "T1-F02 resolved; article/video readiness and pending third-party publication remain Team2/main-owned."
+    },
+    {
+      "gates": [
+        "S6-G3",
+        "S6-G4"
+      ],
+      "team1_verdict": "not_a_whole_release_or_publication_pass",
+      "basis": "Main must reconcile all independent reviews and verify authorized repository publication. No external action performed here."
+    }
+  ],
+  "prior_finding_dispositions": [
+    {
+      "ids": [
+        "R-025",
+        "T1-I2"
+      ],
+      "team1_status": "resolved_operational_provenance_scope",
+      "basis": "Base review verified final fixed-base positive/stale model captures and bounded additive metadata/skill delta; correction commit adds no runtime delta. Separate R-027/R-031 handoff interpretation is not silently included."
+    },
+    {
+      "ids": [
+        "R-026",
+        "T1-I3"
+      ],
+      "team1_status": "resolved_advanced_model_adoption_record_scope",
+      "basis": "Adopted limitedPM25 model has explicit SDT-G1/G2/G3, each independently supported. Other conditional extension decisions and the combined R-026 closure retain Team4/main ownership."
+    },
+    {
+      "ids": [
+        "R-023",
+        "T1-I1"
+      ],
+      "team1_status": "resolved_still_supported",
+      "basis": "Base0/50/100 actualCSE regression and local tests; actuator code unchanged."
+    },
+    {
+      "ids": [
+        "R-027",
+        "R-031"
+      ],
+      "team1_status": "new_evidence_requires_team2_team3_disposition; no_team1_auto_pass",
+      "basis": "Previous raw factual failures remain historical; new provider/host completion does not erase raw7-vs6format failure. Team1 did not run inference or issue a new whole-gate decision."
+    }
+  ],
+  "new_actionable_findings": [],
+  "remaining_claim_limits": [
+    "No exact official score/aggregate/N-A or award forecast.",
+    "PM2.5-only SDT is not whole-device certification or SAREF.",
+    "Simulated physical observations and actuator response; no physical ventilation/health outcome.",
+    "Secure single installation and distributedHTTP are separate demonstrations; localhost origins/anonymousMQTT are not production device authentication.",
+    "51 source-mapped components include logical modules/resources, not51deployed processes.",
+    "ServingCSEhandover/MEC/FL/geolocation and always-running central consumer remain unevidenced, as stated in base review."
+  ],
+  "evidence_sha256": {
+    "docs/review/final-team1.json": "b15ffa2883e4c93342f919016e57d204a6796f51d95c7b923ac68c98a3685db0",
+    "pitch/architecture.js": "6f6467b7323305a6982ab7707cf0a55db3e04712a64baa1369dc7d994118f48c",
+    "pitch/README.md": "2933e44a6b1df72e3f4b55023e1dada3b0d047fb807441a81d058c01908c7765",
+    "evidence/pitch/architecture-source-map.json": "dc328c6e85abdeed24908b63798d11d2d2177514242143b4fcb7608b90fb9c83",
+    "evidence/pitch/release-corrections-qa.json": "4980d2a4c41c1249437943dce68a39c62892d755810a8f852c7d6ee4ddf2bdf6",
+    "evidence/pitch/architecture-release-desktop.jpg": "ec9f207ae4c55555fdf4d93c2a2a720bec466ca3069c6d812f14364f874b22d8",
+    "evidence/pitch/architecture-browser-qa.json": "1b0f37e8a493458971673e1e7f5cfbb0eb0da742f7d08fe14201232d03868b07",
+    "docs/submission/hackster-article.md": "8aa3a6176d1a2959003780d060260b7259353cd28c32b85528ce1b029357c51d",
+    "src/opensoom/core.py": "00f4339ce5481d4daf13f8d44ab857f86173469f8da68eddf0db96d5ca6c32c5",
+    "docs/execution-state.json": "495ff5fad6da97ddc156aaafd4fe7897ea8910746d4a99741a7c157aec0c01d3",
+    "docs/review/review-ledger.json": "71418e4e64ce6f030509d8e8eea42eda94ddd8480e8aad713827fe752c51645c",
+    "evidence/agent/units-live.json": "96d85aee3e67b48da6f7cf7ab5000a67d218c1501e57e515d2a464a26e49eea6",
+    "evidence/agent/units-fact-check.json": "3543e74608904e5d710da39bf2ee2c4918b942c877be26ce01ba759e84eb2dc3"
+  }
+}

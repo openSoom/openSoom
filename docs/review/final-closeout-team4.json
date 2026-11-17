@@ -1,0 +1,185 @@
+{
+  "schema_version": 1,
+  "review_type": "narrow_final_snapshot_reconciliation",
+  "reviewer": {
+    "team": "team_4",
+    "task_name": "edge_standards_review",
+    "model": "gpt-6.1-sol",
+    "reasoning_effort": "max"
+  },
+  "reviewed_commit": "ca10412ed1da62b92684e8163c2b6d092f450a5f",
+  "prior_reviewed_commit": "0d733da7051eeffbe070f6c219e9631509b0f858",
+  "prior_report": {
+    "path": "docs/review/final-team4.json",
+    "sha256": "6fefe6431236ca82ba4d1ef1e279134dba331ab913cc9ae356fa26eb471b7023",
+    "preserved_in_reviewed_snapshot": true
+  },
+  "review_scope": "Read-only immutable commit/diff, evidence hashes and Team 4 regression check. Original review remains the detailed source-delta/runtime assessment; this carries its bounded verdicts to the exact common snapshot.",
+  "decision": {
+    "team4_scope": "APPROVED_NO_REGRESSION",
+    "new_blockers": [],
+    "new_actionable_findings": [],
+    "overall_goal_complete": false,
+    "reason": "Distributed runtime source/evidence and all five extension dispositions are unchanged. Presentation corrections improve source/protocol accuracy without introducing advanced-capability claims. New Codex factual/format evidence belongs to Teams 2/3 and is not adjudicated here."
+  },
+  "checked_unchanged": [
+    "src/opensoom/core.py",
+    "src/opensoom/app.py",
+    "src/opensoom/federation.py",
+    "scripts/cse_product_topology.py",
+    "scripts/cse_multisite_smoke.py",
+    "scripts/cse_runtime.py",
+    "deploy/acme-single.ini",
+    "profiles/food-production.json",
+    "profiles/learning-space.json",
+    "config/facilities.json",
+    "evidence/runtime/product-multisite-continuity.json",
+    "evidence/runtime/cse-multisite-smoke.json",
+    "evidence/runtime/acceptance-checkpoint.json",
+    "evidence/stage0/mec-feasibility.json",
+    "docs/extension-decisions.md",
+    "docs/implementation-plan.md",
+    "docs/product-contract.json",
+    "docs/project-guide.ko.md",
+    "deliverables/video/openSoom-demo-en.mp4"
+  ],
+  "state_reconciliation": {
+    "conditional_extensions_deep_equal_to_prior_snapshot": true,
+    "stage4_records_deep_equal_to_prior_snapshot": true,
+    "completion_rule_unchanged": true,
+    "runtime_source_delta_assessment": "The earlier topology-to-release core/app delta remains exactly the one independently assessed in final-team4.json. No new runtime delta is introduced here.",
+    "new_state_changes": "Additional Codex validation work-item and shared-usage accounting only; they do not alter Team 4 extension decisions or S4 acceptance.",
+    "prior_report_hash_verified": true
+  },
+  "presentation_changes": [
+    {
+      "paths": [
+        "pitch/architecture.js",
+        "evidence/pitch/architecture-source-map.json",
+        "pitch/README.md"
+      ],
+      "observed": "Single-installation observations, ACKs and SDT projection updates now explicitly use native oneM2M MQTT/TLS. food-project and learning-project retain oneM2M HTTP in the distributed view.",
+      "source_verification": "Unchanged Core.publish chooses client=self.mqtt or self.cse before updating cod:aiQSr; unchanged topology startup has no MQTT host configuration. The corrected labels therefore match the implemented alternatives.",
+      "result": "PASS"
+    },
+    {
+      "paths": [
+        "docs/submission/hackster-article.md"
+      ],
+      "observed": "The central link is dashed and labelled Alternative distributed lab: HTTP Mcc. The adjacent caption explicitly separates secure single-installation paths from two MN-CSEs/two APIs/one IN-CSE using HTTP.",
+      "result": "PASS_IMPROVED_CLAIM_BOUNDARY"
+    },
+    {
+      "paths": [
+        "evidence/pitch/architecture-browser-qa.json",
+        "evidence/pitch/release-corrections-qa.json",
+        "evidence/release/artifacts.json"
+      ],
+      "observed": "Prior browser QA observations retain their original source snapshots; role identifiers are redacted and limited later corrections have a separate QA record. All correction source/screenshot hashes and all listed prepared artifact hashes match the immutable snapshot.",
+      "result": "PASS_PROVENANCE"
+    }
+  ],
+  "independent_read_only_checks": {
+    "method": "git show and git diff between the two exact commits; JSON deep comparison and SHA-256 checks without inference or runtime execution.",
+    "architecture": {
+      "nodes": 51,
+      "edges": 77,
+      "ids_modes_positions_structure_unchanged": true,
+      "boundaries_sources_layers_unchanged": true,
+      "only_expected_single_sdt_protocol_labels_and_context_changed": true
+    },
+    "correction_qa_source_hashes_match": true,
+    "correction_screenshot_hash_matches": true,
+    "prepared_artifact_hashes_match": true,
+    "runtime_reexecution": false,
+    "live_inference_calls": 0,
+    "external_actions": 0,
+    "prior_test_evidence": "The earlier immutable review's 12 tests and 3 subtests remain historical final-source evidence for identical runtime files; no new test execution is claimed."
+  },
+  "criterion_positions": [
+    {
+      "number": 12,
+      "position": "Serving-CSE handover deferred and not implemented; actual fixed-MN central-outage continuity remains separate captured evidence.",
+      "verdict": "CARRY_PRIOR_REVIEWED_DEFERRAL_NO_HANDOVER_CREDIT"
+    },
+    {
+      "number": 13,
+      "position": "Actual local AE/CSE deployment remains documented; no authenticated managed MEC hosting or orchestration was added.",
+      "verdict": "CARRY_PRIOR_REVIEWED_MEC_DEFERRAL"
+    },
+    {
+      "number": 14,
+      "position": "No actual multi-client training/aggregation or ESTIMED VM execution; LLM interpretation remains separate.",
+      "verdict": "CARRY_PRIOR_REVIEWED_FL_DEFERRAL"
+    },
+    {
+      "number": 15,
+      "position": "Fixed facility/zone identity and geometry remain distinct from network/MEC location-service interworking.",
+      "verdict": "CARRY_PRIOR_REVIEWED_GEOLOCATION_DEFERRAL"
+    },
+    {
+      "number": 16,
+      "position": "No actual non-location MEC service consumption through oneM2M was introduced.",
+      "verdict": "CARRY_PRIOR_REVIEWED_MEC_SERVICE_DEFERRAL"
+    }
+  ],
+  "gate_verdicts": [
+    {
+      "gate": "S0-G3",
+      "scope": "MEC feasibility portion",
+      "verdict": "PASS_INVESTIGATION_WITH_REVIEWED_DEFERRAL",
+      "basis": "Identical bounded feasibility record and reviewed decision; no platform execution claim."
+    },
+    {
+      "gate": "S4-G1",
+      "verdict": "PASS_BOUNDED_EXECUTION_EVIDENCE",
+      "basis": "Identical CSE topology/routing/announcement/access evidence and runtime source; previous independent assessment carries unchanged."
+    },
+    {
+      "gate": "S4-G2",
+      "verdict": "PASS_BOUNDED_EXECUTION_WITH_PRIOR_REVIEWED_SOURCE_DELTA",
+      "basis": "Identical central-outage/local-ACK/recovery, expired/wrong-profile intent rejection and replay evidence. No serving-CSE handover, full-history replay or abrupt facility-process crash recovery is inferred."
+    },
+    {
+      "gate": "S4-G3",
+      "verdict": "PASS_REVIEWED_DECISIONS",
+      "basis": "All five reviewed deferrals/history/environment/evidence records remain deeply equal and consistent."
+    },
+    {
+      "gate": "S4-G4",
+      "verdict": "REVIEWED_DEFERRED_NO_EXTENSION_EXECUTION_CREDIT",
+      "basis": "No Team 4 extension is adopted. Empty child-gate arrays remain consistent with deferral; adopted-child and required-core completion rules are unchanged."
+    },
+    {
+      "gate": "S5-G1/S5-G2/S6-G3",
+      "scope": "Team 4 claim consistency only",
+      "verdict": "PASS_OWNED_CLAIM_BOUNDARIES",
+      "basis": "Source-mapped topology counts/structures and truthful handover/MEC/FL/location limits retained; corrected captions improve separation of protocol profiles."
+    }
+  ],
+  "prior_finding_positions": [
+    {
+      "id": "R-026",
+      "verdict": "RESOLVED_FOR_TEAM4_CRITERIA_12_TO_16",
+      "reason": "The reconciled extension records remain unchanged and correct. Full combined criterion-11 closure remains contingent on Team 1."
+    },
+    {
+      "id": "R-008/R-009/R-010/R-021/R-022",
+      "verdict": "CARRY_PRIOR_SCOPE_LIMITED_RESOLUTION",
+      "reason": "No regression to the investigation/deferral, extension bookkeeping or bounded reconciliation evidence previously accepted."
+    }
+  ],
+  "handoff": [
+    "Attach this exact-snapshot reconciliation alongside final-team4.json for S4 and R-026 bookkeeping.",
+    "Teams 2/3 must independently decide the new Codex factual/format outcome; the raw seven-versus-six sentence failure and previous cases remain retained.",
+    "No official score, total or N/A is assigned; no deferred capability earns implementation credit and this report does not approve overall Goal completion."
+  ],
+  "evidence_sha256": {
+    "pitch/architecture.js": "6f6467b7323305a6982ab7707cf0a55db3e04712a64baa1369dc7d994118f48c",
+    "evidence/pitch/architecture-source-map.json": "dc328c6e85abdeed24908b63798d11d2d2177514242143b4fcb7608b90fb9c83",
+    "docs/submission/hackster-article.md": "8aa3a6176d1a2959003780d060260b7259353cd28c32b85528ce1b029357c51d",
+    "pitch/README.md": "2933e44a6b1df72e3f4b55023e1dada3b0d047fb807441a81d058c01908c7765",
+    "evidence/runtime/product-multisite-continuity.json": "177da67f736ae8887debc8b02474c03f4a73d1330221ebeb4d8ca4aada85fed2"
+  },
+  "allowed_write": "docs/review/final-closeout-team4.json only"
+}

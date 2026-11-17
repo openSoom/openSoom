@@ -6,11 +6,11 @@
   "plan": "docs/implementation-plan.md",
   "goal_prompt": "docs/goal-mode-prompt.ko.md",
   "goal_activation": "active",
-  "implementation_status": "release_preparation_and_independent_closeout",
+  "implementation_status": "verified_pending_repository_publication",
   "current_stage": 6,
-  "current_gate": "S3-G1",
+  "current_gate": "S6-G4",
   "foundation_commit": "b000f5537dbee213f8a63dac92a56fa074421885",
-  "last_verified_implementation_revision": "fd5e648fa1c74e425507a98247844be150265acb",
+  "last_verified_implementation_revision": "ca10412ed1da62b92684e8163c2b6d092f450a5f",
   "status_definitions": {
     "not_started": "No implementation or verification attempted.",
     "in_progress": "Work is underway; no completion claim.",
@@ -38,7 +38,11 @@
             "docs/review/implementation-team1.json",
             "docs/review/implementation-team2.json",
             "docs/review/implementation-team3.json",
-            "docs/review/implementation-team4.json"
+            "docs/review/implementation-team4.json",
+            "docs/review/final-closeout-team1.json",
+            "docs/review/final-closeout-team2.json",
+            "docs/review/final-closeout-team3.json",
+            "docs/review/final-closeout-team4.json"
           ]
         },
         {
@@ -54,7 +58,11 @@
             "docs/review/implementation-team1.json",
             "docs/review/implementation-team2.json",
             "docs/review/implementation-team3.json",
-            "docs/review/implementation-team4.json"
+            "docs/review/implementation-team4.json",
+            "docs/review/final-closeout-team1.json",
+            "docs/review/final-closeout-team2.json",
+            "docs/review/final-closeout-team3.json",
+            "docs/review/final-closeout-team4.json"
           ]
         },
         {
@@ -70,7 +78,11 @@
             "docs/review/implementation-team1.json",
             "docs/review/implementation-team2.json",
             "docs/review/implementation-team3.json",
-            "docs/review/implementation-team4.json"
+            "docs/review/implementation-team4.json",
+            "docs/review/final-closeout-team1.json",
+            "docs/review/final-closeout-team2.json",
+            "docs/review/final-closeout-team3.json",
+            "docs/review/final-closeout-team4.json"
           ]
         },
         {
@@ -78,16 +90,24 @@
           "required": true,
           "status": "passed",
           "evidence": [
-            "docs/review/implementation-team1.json",
-            "docs/review/implementation-team2.json",
-            "docs/review/implementation-team3.json",
-            "docs/review/implementation-team4.json"
+            "docs/review/final-team1.json",
+            "docs/review/final-team2.json",
+            "docs/review/final-team3.json",
+            "docs/review/final-team4.json",
+            "docs/review/final-closeout-team1.json",
+            "docs/review/final-closeout-team2.json",
+            "docs/review/final-closeout-team3.json",
+            "docs/review/final-closeout-team4.json"
           ],
           "reviews": [
             "docs/review/implementation-team1.json",
             "docs/review/implementation-team2.json",
             "docs/review/implementation-team3.json",
-            "docs/review/implementation-team4.json"
+            "docs/review/implementation-team4.json",
+            "docs/review/final-closeout-team1.json",
+            "docs/review/final-closeout-team2.json",
+            "docs/review/final-closeout-team3.json",
+            "docs/review/final-closeout-team4.json"
           ]
         }
       ]
@@ -95,27 +115,35 @@
     {
       "id": 1,
       "title": "Complete the actual service loop",
-      "status": "in_progress",
+      "status": "passed",
       "gates": [
         {
           "id": "S1-G1",
           "required": true,
-          "status": "in_progress",
+          "status": "passed",
           "evidence": [
             "evidence/application/release-acceptance.json",
             "evidence/release/review-regressions.json"
           ],
-          "reviews": []
+          "reviews": [
+            "docs/review/final-closeout-team1.json",
+            "docs/review/final-closeout-team2.json",
+            "docs/review/final-closeout-team3.json"
+          ]
         },
         {
           "id": "S1-G2",
           "required": true,
-          "status": "in_progress",
+          "status": "passed",
           "evidence": [
             "evidence/application/release-acceptance.json",
             "evidence/release/review-regressions.json"
           ],
-          "reviews": []
+          "reviews": [
+            "docs/review/final-closeout-team1.json",
+            "docs/review/final-closeout-team2.json",
+            "docs/review/final-closeout-team3.json"
+          ]
         },
         {
           "id": "S1-G3",
@@ -126,24 +154,34 @@
             "evidence/dashboard/qa.json"
           ],
           "reviews": [
-            "docs/review/corrections-team3.json"
+            "docs/review/corrections-team3.json",
+            "docs/review/final-closeout-team1.json",
+            "docs/review/final-closeout-team2.json",
+            "docs/review/final-closeout-team3.json"
           ]
         },
         {
           "id": "S1-G4",
           "required": true,
-          "status": "in_progress",
+          "status": "passed",
           "evidence": [
-            "docs/review/implementation-team1.json",
-            "docs/review/implementation-team2.json",
-            "docs/review/implementation-team3.json",
-            "docs/review/implementation-team4.json"
+            "docs/review/final-team1.json",
+            "docs/review/final-team2.json",
+            "docs/review/final-team3.json",
+            "docs/review/final-team4.json",
+            "docs/review/final-closeout-team1.json",
+            "docs/review/final-closeout-team2.json",
+            "docs/review/final-closeout-team3.json",
+            "docs/review/final-closeout-team4.json"
           ],
           "reviews": [
             "docs/review/implementation-team1.json",
             "docs/review/implementation-team2.json",
             "docs/review/implementation-team3.json",
-            "docs/review/implementation-team4.json"
+            "docs/review/implementation-team4.json",
+            "docs/review/final-closeout-team1.json",
+            "docs/review/final-closeout-team2.json",
+            "docs/review/final-closeout-team3.json"
           ]
         }
       ]
@@ -151,113 +189,151 @@
     {
       "id": 2,
       "title": "Prove reuse and native oneM2M behavior",
-      "status": "in_progress",
+      "status": "passed",
       "gates": [
         {
           "id": "S2-G1",
           "required": true,
-          "status": "in_progress",
+          "status": "passed",
           "evidence": [
             "evidence/application/release-acceptance.json",
             "tests/test_contracts.py",
             "tests/test_facility_registry.py"
           ],
-          "reviews": []
+          "reviews": [
+            "docs/review/final-closeout-team1.json",
+            "docs/review/final-closeout-team3.json"
+          ]
         },
         {
           "id": "S2-G2",
           "required": true,
-          "status": "in_progress",
+          "status": "passed",
           "evidence": [
             "evidence/application/release-acceptance.json",
             "evidence/runtime/cse-https-smoke.json"
           ],
-          "reviews": []
+          "reviews": [
+            "docs/review/final-closeout-team1.json",
+            "docs/review/final-closeout-team3.json"
+          ]
         },
         {
           "id": "S2-G3",
           "required": true,
-          "status": "in_progress",
+          "status": "passed",
           "evidence": [
             "evidence/application/release-acceptance.json",
             "evidence/runtime/cse-mqtt-tls-smoke.json",
             "evidence/release/review-regressions.json"
           ],
-          "reviews": []
+          "reviews": [
+            "docs/review/final-closeout-team1.json",
+            "docs/review/final-closeout-team3.json"
+          ]
         },
         {
           "id": "S2-G4",
           "required": true,
-          "status": "in_progress",
+          "status": "passed",
           "evidence": [
             "docs/standard-model.md",
             "evidence/application/release-acceptance.json"
           ],
-          "reviews": []
+          "reviews": [
+            "docs/review/final-closeout-team1.json",
+            "docs/review/final-closeout-team3.json"
+          ]
         },
         {
           "id": "S2-G5",
           "required": false,
-          "status": "in_progress",
+          "status": "passed",
           "evidence": [
             "docs/extension-decisions.md",
             "docs/standard-model.md",
             "evidence/application/release-acceptance.json"
           ],
-          "reviews": []
+          "reviews": [
+            "docs/review/final-closeout-team1.json",
+            "docs/review/final-closeout-team3.json"
+          ]
         }
       ]
     },
     {
       "id": 3,
       "title": "Make the service usable through Codex and a real model",
-      "status": "in_progress",
+      "status": "passed",
       "gates": [
         {
           "id": "S3-G1",
           "required": true,
-          "status": "in_progress",
+          "status": "passed",
           "evidence": [
             "evidence/agent/index.json",
-            "evidence/release/final-clean-lifecycle.json"
+            "evidence/release/final-clean-lifecycle.json",
+            "evidence/agent/units-live.json",
+            "evidence/agent/units-input-map.json",
+            "evidence/agent/units-fact-check.json"
           ],
-          "reviews": []
+          "reviews": [
+            "docs/review/final-closeout-team1.json",
+            "docs/review/final-closeout-team2.json",
+            "docs/review/final-closeout-team3.json"
+          ],
+          "scope": "Componentwise supported Codex CLI onboarding with maintainer-prepared runtime/profiles and instrumented provider. Raw7-vs6sentence harness failure retained; independent functional/factual acceptance is separate. No desktop/human/bare-machine/physical-device claim."
         },
         {
           "id": "S3-G2",
           "required": true,
-          "status": "in_progress",
+          "status": "passed",
           "evidence": [
             "evidence/agent/index.json"
           ],
-          "reviews": []
+          "reviews": [
+            "docs/review/final-closeout-team1.json",
+            "docs/review/final-closeout-team2.json",
+            "docs/review/final-closeout-team3.json"
+          ]
         },
         {
           "id": "S3-G3",
           "required": true,
-          "status": "in_progress",
+          "status": "passed",
           "evidence": [
             "evidence/agent/index.json",
             "evidence/release/review-regressions.json",
             "evidence/application/release-acceptance.json"
           ],
-          "reviews": []
+          "reviews": [
+            "docs/review/final-closeout-team1.json",
+            "docs/review/final-closeout-team2.json",
+            "docs/review/final-closeout-team3.json"
+          ]
         },
         {
           "id": "S3-G4",
           "required": true,
-          "status": "in_progress",
+          "status": "passed",
           "evidence": [
-            "docs/review/implementation-team1.json",
-            "docs/review/implementation-team2.json",
-            "docs/review/implementation-team3.json",
-            "docs/review/implementation-team4.json"
+            "docs/review/final-team1.json",
+            "docs/review/final-team2.json",
+            "docs/review/final-team3.json",
+            "docs/review/final-team4.json",
+            "docs/review/final-closeout-team1.json",
+            "docs/review/final-closeout-team2.json",
+            "docs/review/final-closeout-team3.json",
+            "docs/review/final-closeout-team4.json"
           ],
           "reviews": [
             "docs/review/implementation-team1.json",
             "docs/review/implementation-team2.json",
             "docs/review/implementation-team3.json",
-            "docs/review/implementation-team4.json"
+            "docs/review/implementation-team4.json",
+            "docs/review/final-closeout-team1.json",
+            "docs/review/final-closeout-team2.json",
+            "docs/review/final-closeout-team3.json"
           ]
         }
       ]
@@ -265,37 +341,43 @@
     {
       "id": 4,
       "title": "Demonstrate distributed operation and evaluate extensions",
-      "status": "in_progress",
+      "status": "passed",
       "gates": [
         {
           "id": "S4-G1",
           "required": true,
-          "status": "in_progress",
+          "status": "passed",
           "evidence": [
             "evidence/runtime/product-multisite-continuity.json",
             "evidence/runtime/cse-multisite-smoke.json"
           ],
-          "reviews": []
+          "reviews": [
+            "docs/review/final-closeout-team4.json"
+          ]
         },
         {
           "id": "S4-G2",
           "required": true,
-          "status": "in_progress",
+          "status": "passed",
           "evidence": [
             "evidence/runtime/product-multisite-continuity.json",
             "evidence/release/final-clean-lifecycle.json"
           ],
-          "reviews": []
+          "reviews": [
+            "docs/review/final-closeout-team4.json"
+          ]
         },
         {
           "id": "S4-G3",
           "required": true,
-          "status": "in_progress",
+          "status": "passed",
           "evidence": [
             "docs/extension-decisions.md",
             "docs/review/implementation-team4.json"
           ],
-          "reviews": []
+          "reviews": [
+            "docs/review/final-closeout-team4.json"
+          ]
         },
         {
           "id": "S4-G4",
@@ -306,7 +388,8 @@
             "docs/review/implementation-team4.json"
           ],
           "reviews": [
-            "docs/review/implementation-team4.json"
+            "docs/review/implementation-team4.json",
+            "docs/review/final-closeout-team4.json"
           ]
         }
       ]
@@ -314,38 +397,53 @@
     {
       "id": 5,
       "title": "Make operation and evidence understandable",
-      "status": "in_progress",
+      "status": "passed",
       "gates": [
         {
           "id": "S5-G1",
           "required": true,
-          "status": "in_progress",
+          "status": "passed",
           "evidence": [
             "evidence/dashboard/qa.json",
             "evidence/dashboard/visual-upgrade-qa.json"
           ],
-          "reviews": []
+          "reviews": [
+            "docs/review/final-closeout-team1.json",
+            "docs/review/final-closeout-team2.json",
+            "docs/review/final-closeout-team3.json",
+            "docs/review/final-closeout-team4.json"
+          ]
         },
         {
           "id": "S5-G2",
           "required": true,
-          "status": "in_progress",
+          "status": "passed",
           "evidence": [
             "deliverables/video/openSoom-demo-en.mp4",
             "evidence/video/qa.json"
           ],
-          "reviews": []
+          "reviews": [
+            "docs/review/final-closeout-team1.json",
+            "docs/review/final-closeout-team2.json",
+            "docs/review/final-closeout-team3.json",
+            "docs/review/final-closeout-team4.json"
+          ]
         },
         {
           "id": "S5-G3",
           "required": true,
-          "status": "in_progress",
+          "status": "passed",
           "evidence": [
             "deliverables/video/storyboard.json",
             "evidence/video/asset-provenance.json",
             "scripts/render_video.py"
           ],
-          "reviews": []
+          "reviews": [
+            "docs/review/final-closeout-team1.json",
+            "docs/review/final-closeout-team2.json",
+            "docs/review/final-closeout-team3.json",
+            "docs/review/final-closeout-team4.json"
+          ]
         }
       ]
     },
@@ -357,38 +455,57 @@
         {
           "id": "S6-G1",
           "required": true,
-          "status": "in_progress",
+          "status": "passed",
           "evidence": [
             "evidence/release/final-clean-lifecycle.json",
             "README.md",
             "docs/extending.md",
             "evidence/release/final-checks.json"
           ],
-          "reviews": []
+          "reviews": [
+            "docs/review/final-closeout-team1.json",
+            "docs/review/final-closeout-team2.json",
+            "docs/review/final-closeout-team3.json",
+            "docs/review/final-closeout-team4.json"
+          ]
         },
         {
           "id": "S6-G2",
           "required": true,
-          "status": "in_progress",
+          "status": "passed",
           "evidence": [
             "docs/submission/hackster-article.md",
             "docs/submission/technical-qa.md",
             "pitch/index.html",
             "deliverables/video/openSoom-demo-en.mp4"
           ],
-          "reviews": []
+          "reviews": [
+            "docs/review/final-closeout-team1.json",
+            "docs/review/final-closeout-team2.json",
+            "docs/review/final-closeout-team3.json",
+            "docs/review/final-closeout-team4.json"
+          ]
         },
         {
           "id": "S6-G3",
           "required": true,
-          "status": "in_progress",
+          "status": "passed",
           "evidence": [
-            "docs/review/implementation-team1.json",
-            "docs/review/implementation-team2.json",
-            "docs/review/implementation-team3.json",
-            "docs/review/implementation-team4.json"
+            "docs/review/final-team1.json",
+            "docs/review/final-team2.json",
+            "docs/review/final-team3.json",
+            "docs/review/final-team4.json",
+            "docs/review/final-closeout-team1.json",
+            "docs/review/final-closeout-team2.json",
+            "docs/review/final-closeout-team3.json",
+            "docs/review/final-closeout-team4.json"
           ],
-          "reviews": []
+          "reviews": [
+            "docs/review/final-closeout-team1.json",
+            "docs/review/final-closeout-team2.json",
+            "docs/review/final-closeout-team3.json",
+            "docs/review/final-closeout-team4.json"
+          ]
         },
         {
           "id": "S6-G4",
@@ -400,16 +517,23 @@
         {
           "id": "S6-G5",
           "required": true,
-          "status": "in_progress",
+          "status": "passed",
           "evidence": [
             "pitch/index.html",
             "pitch/architecture.js",
             "evidence/pitch/qa.json",
             "evidence/pitch/visual-upgrade-qa.json",
             "evidence/pitch/architecture-source-map.json",
-            "docs/project-guide.ko.md"
+            "docs/project-guide.ko.md",
+            "evidence/pitch/architecture-browser-qa.json",
+            "evidence/pitch/release-corrections-qa.json"
           ],
-          "reviews": []
+          "reviews": [
+            "docs/review/final-closeout-team1.json",
+            "docs/review/final-closeout-team2.json",
+            "docs/review/final-closeout-team3.json",
+            "docs/review/final-closeout-team4.json"
+          ]
         }
       ]
     }
@@ -429,9 +553,11 @@
     },
     {
       "id": "codex_host",
-      "status": "fresh_Codex_CLI_0.166.0_actual_MCP_calls_captured_desktop_UI_not_tested",
+      "status": "verified_componentwise_supported_Codex_CLI; desktop_UI_not_tested",
       "evidence": [
-        "evidence/agent/secure-codex-host-correlated.json"
+        "evidence/agent/index.json",
+        "docs/review/final-closeout-team2.json",
+        "docs/review/final-closeout-team3.json"
       ],
       "affected_gates": [
         "S3-G1"
@@ -515,16 +641,34 @@
         "docs/review/implementation-team4.json"
       ],
       "revision": "2b2a239270e70625e99e39a5b738e09c84c19822"
+    },
+    {
+      "id": "strict-final-0d733da",
+      "scope": "Requested stricter all17criterion review after full3D/media/guide implementation. Findings preserved at the immutable base.",
+      "revision": "0d733da7051eeffbe070f6c219e9631509b0f858",
+      "reports": [
+        "docs/review/final-team1.json",
+        "docs/review/final-team2.json",
+        "docs/review/final-team3.json",
+        "docs/review/final-team4.json"
+      ]
+    },
+    {
+      "id": "final-corrections-ca10412",
+      "scope": "Independent common-snapshot closeout of all affected findings; no remaining required team blocker. Main owns publication.",
+      "revision": "ca10412ed1da62b92684e8163c2b6d092f450a5f",
+      "reports": [
+        "docs/review/final-closeout-team1.json",
+        "docs/review/final-closeout-team2.json",
+        "docs/review/final-closeout-team3.json",
+        "docs/review/final-closeout-team4.json"
+      ]
     }
   ],
   "next_actions": [
     {
-      "gate": "S3-G1",
-      "action": "Resolve unsupported inference in completed Codex explanation under independent review; preserve original failed cases."
-    },
-    {
-      "gate": "S6-G3/S6-G4",
-      "action": "Freeze combined release, obtain four-team final verification, then publish reviewed commit to authorized GitHub."
+      "gate": "S6-G4",
+      "action": "Commit reviewed release bookkeeping, push non-force through github-personal, fulfill applied Goal public-repository target and verify remote revision/public access."
     }
   ],
   "external_handoff": [
@@ -567,9 +711,15 @@
         "docs/execution-state.json"
       ],
       "base_revision": "54e93ee64c55bf62a8527764ed1084e0dee6a1d9",
-      "status": "implemented_with_captured_evidence",
+      "status": "completed_and_reviewed",
       "evidence": [],
-      "next_action": "Independent release closeout; evidence is indexed by stage gates."
+      "next_action": "No implementation action remains in this work item; preserved case outcomes retain their original status.",
+      "release_review_refs": [
+        "docs/review/final-closeout-team1.json",
+        "docs/review/final-closeout-team2.json",
+        "docs/review/final-closeout-team3.json",
+        "docs/review/final-closeout-team4.json"
+      ]
     },
     {
       "id": "W-002",
@@ -588,9 +738,15 @@
         "evidence/runtime/"
       ],
       "base_revision": "54e93ee64c55bf62a8527764ed1084e0dee6a1d9",
-      "status": "implemented_with_captured_evidence",
+      "status": "completed_and_reviewed",
       "evidence": [],
-      "next_action": "Independent release closeout; evidence is indexed by stage gates."
+      "next_action": "No implementation action remains in this work item; preserved case outcomes retain their original status.",
+      "release_review_refs": [
+        "docs/review/final-closeout-team1.json",
+        "docs/review/final-closeout-team2.json",
+        "docs/review/final-closeout-team3.json",
+        "docs/review/final-closeout-team4.json"
+      ]
     },
     {
       "id": "W-003",
@@ -604,9 +760,15 @@
         "docs/dashboard-design.md"
       ],
       "base_revision": "54e93ee64c55bf62a8527764ed1084e0dee6a1d9",
-      "status": "implemented_with_captured_evidence",
+      "status": "completed_and_reviewed",
       "evidence": [],
-      "next_action": "Independent release closeout; evidence is indexed by stage gates."
+      "next_action": "No implementation action remains in this work item; preserved case outcomes retain their original status.",
+      "release_review_refs": [
+        "docs/review/final-closeout-team1.json",
+        "docs/review/final-closeout-team2.json",
+        "docs/review/final-closeout-team3.json",
+        "docs/review/final-closeout-team4.json"
+      ]
     },
     {
       "id": "W-004",
@@ -625,9 +787,13 @@
         "docs/agent-integration.md"
       ],
       "base_revision": "54e93ee64c55bf62a8527764ed1084e0dee6a1d9",
-      "status": "implemented_with_captured_evidence",
+      "status": "completed_and_reviewed",
       "evidence": [],
-      "next_action": "Independent release closeout; evidence is indexed by stage gates."
+      "next_action": "No implementation action remains in this work item; preserved case outcomes retain their original status.",
+      "release_review_refs": [
+        "docs/review/final-closeout-team2.json",
+        "docs/review/final-closeout-team3.json"
+      ]
     },
     {
       "id": "W-005",
@@ -640,13 +806,17 @@
         "evidence/agent/guided-*"
       ],
       "base_revision": "fd5e648fa1c74e425507a98247844be150265acb",
-      "status": "captured_awaiting_factual_review",
+      "status": "completed_with_original_failed_or_partial_case_preserved",
       "evidence": [
         "evidence/agent/guided-rehearsal.md",
         "evidence/agent/guided-config-report.md",
         "evidence/agent/guided-explanation-report.md"
       ],
-      "next_action": "Independent factual review of completed explanation and minimum remaining correction."
+      "next_action": "No implementation action remains in this work item; preserved case outcomes retain their original status.",
+      "release_review_refs": [
+        "docs/review/final-closeout-team2.json",
+        "docs/review/final-closeout-team3.json"
+      ]
     },
     {
       "id": "W-006",
@@ -659,11 +829,17 @@
         "evidence/pitch/"
       ],
       "base_revision": "fd5e648fa1c74e425507a98247844be150265acb",
-      "status": "implemented_awaiting_independent_review",
+      "status": "completed_and_reviewed",
       "evidence": [
         "evidence/pitch/qa.json"
       ],
-      "next_action": "Strict final combined candidate review after metadata reconciliation."
+      "next_action": "No implementation action remains in this work item; preserved case outcomes retain their original status.",
+      "release_review_refs": [
+        "docs/review/final-closeout-team1.json",
+        "docs/review/final-closeout-team2.json",
+        "docs/review/final-closeout-team3.json",
+        "docs/review/final-closeout-team4.json"
+      ]
     },
     {
       "id": "W-007",
@@ -677,11 +853,17 @@
         "evidence/dashboard/"
       ],
       "base_revision": "fd5e648fa1c74e425507a98247844be150265acb",
-      "status": "implemented_awaiting_independent_review",
+      "status": "completed_and_reviewed",
       "evidence": [
         "evidence/dashboard/visual-upgrade-qa.json"
       ],
-      "next_action": "Independent release review of current run/condition correspondence and visual accessibility"
+      "next_action": "No implementation action remains in this work item; preserved case outcomes retain their original status.",
+      "release_review_refs": [
+        "docs/review/final-closeout-team1.json",
+        "docs/review/final-closeout-team2.json",
+        "docs/review/final-closeout-team3.json",
+        "docs/review/final-closeout-team4.json"
+      ]
     },
     {
       "id": "W-008",
@@ -696,9 +878,15 @@
         "evidence/pitch/architecture-source-map.json"
       ],
       "base_revision": "fd5e648fa1c74e425507a98247844be150265acb",
-      "status": "implemented_awaiting_independent_review",
+      "status": "completed_and_reviewed",
       "evidence": [],
-      "next_action": "Strict final combined candidate review after metadata reconciliation."
+      "next_action": "No implementation action remains in this work item; preserved case outcomes retain their original status.",
+      "release_review_refs": [
+        "docs/review/final-closeout-team1.json",
+        "docs/review/final-closeout-team2.json",
+        "docs/review/final-closeout-team3.json",
+        "docs/review/final-closeout-team4.json"
+      ]
     },
     {
       "id": "W-009",
@@ -712,7 +900,7 @@
         "evidence/agent/semantics-*"
       ],
       "base_revision": "fd5e648fa1c74e425507a98247844be150265acb",
-      "status": "captured_factual_gap",
+      "status": "completed_with_original_failed_or_partial_case_preserved",
       "evidence": [
         "evidence/release/semantics-contract.patch",
         "evidence/release/final-checks.json",
@@ -723,7 +911,11 @@
         "evidence/agent/semantics-live.json",
         "evidence/agent/semantics-fact-check.json"
       ],
-      "next_action": "Independent review of unit-preserving validation input; no autonomous retry/reset."
+      "next_action": "No implementation action remains in this work item; preserved case outcomes retain their original status.",
+      "release_review_refs": [
+        "docs/review/final-closeout-team2.json",
+        "docs/review/final-closeout-team3.json"
+      ]
     },
     {
       "id": "W-010",
@@ -736,7 +928,7 @@
         "evidence/agent/units-*"
       ],
       "base_revision": "0d733da7051eeffbe070f6c219e9631509b0f858",
-      "status": "captured_awaiting_independent_review",
+      "status": "functional_factual_outcome_reviewed; raw_format_failure_preserved",
       "evidence": [
         "docs/review/guided-semantics-units-advisory-team2.json",
         "evidence/agent/units-input-map.json",
@@ -745,7 +937,11 @@
         "evidence/agent/units-fact-check.json",
         "evidence/agent/units-checkpoint.json"
       ],
-      "next_action": "Independent Team2/3 functional factual review; no more inference planned."
+      "next_action": "No implementation action remains in this work item; preserved case outcomes retain their original status.",
+      "release_review_refs": [
+        "docs/review/final-closeout-team2.json",
+        "docs/review/final-closeout-team3.json"
+      ]
     }
   ],
   "record_formats": {
@@ -850,7 +1046,7 @@
       "approval_policy": "never; escalation unavailable",
       "global_policy_changed": false,
       "previous_cases_preserved": true,
-      "live_status": "completed_response_captured; raw_format_check_failed; independent_factual_review_pending",
+      "live_status": "completed_functional_factual_acceptance_by_teams2and3; raw_format_failure_preserved",
       "scope": "evidence/agent/units-scope.json"
     }
   },
@@ -861,7 +1057,7 @@
       "parent_gate": "S2-G5",
       "decision": "adopted",
       "reason": "Useful limited PM2.5 standard projection recognized across vendors; preserve original canonical precision and omit incompatible CO2/airflow properties.",
-      "status": "in_progress",
+      "status": "passed",
       "gate_ids": [
         "SDT-G1",
         "SDT-G2",
@@ -871,36 +1067,39 @@
         {
           "id": "SDT-G1",
           "criterion": "Pinned model identifier, data type, unit, rounding and omission rules",
-          "status": "in_progress",
+          "status": "passed",
           "evidence": [
             "docs/standard-model.md",
             "tests/test_contracts.py"
           ],
           "reviews": [
-            "docs/review/implementation-team1.json"
+            "docs/review/implementation-team1.json",
+            "docs/review/final-closeout-team1.json"
           ]
         },
         {
           "id": "SDT-G2",
           "criterion": "Native FCNT creation/type validation/discovery",
-          "status": "in_progress",
+          "status": "passed",
           "evidence": [
             "evidence/runtime/cse-https-smoke.json",
             "evidence/application/release-acceptance.json"
           ],
           "reviews": [
-            "docs/review/implementation-team1.json"
+            "docs/review/implementation-team1.json",
+            "docs/review/final-closeout-team1.json"
           ]
         },
         {
           "id": "SDT-G3",
           "criterion": "Actual application read for both profiles/adapters with canonical precision retained",
-          "status": "in_progress",
+          "status": "passed",
           "evidence": [
             "evidence/application/release-acceptance.json"
           ],
           "reviews": [
-            "docs/review/implementation-team1.json"
+            "docs/review/implementation-team1.json",
+            "docs/review/final-closeout-team1.json"
           ]
         }
       ],
@@ -909,7 +1108,7 @@
         "docs/standard-model.md",
         "evidence/application/release-acceptance.json"
       ],
-      "review_ref": "docs/review/implementation-team1.json",
+      "review_ref": "docs/review/final-closeout-team1.json",
       "decision_history": [
         {
           "date": "2026-11-18",
@@ -935,7 +1134,7 @@
         "docs/extension-decisions.md",
         "evidence/stage0/mec-feasibility.json"
       ],
-      "review_ref": "docs/review/implementation-team4.json",
+      "review_ref": "docs/review/final-closeout-team4.json",
       "decision_history": [
         {
           "date": "2026-11-18",
@@ -961,7 +1160,7 @@
         "docs/extension-decisions.md",
         "evidence/stage0/mec-feasibility.json"
       ],
-      "review_ref": "docs/review/implementation-team4.json",
+      "review_ref": "docs/review/final-closeout-team4.json",
       "decision_history": [
         {
           "date": "2026-11-18",
@@ -987,7 +1186,7 @@
         "docs/extension-decisions.md",
         "evidence/stage0/mec-feasibility.json"
       ],
-      "review_ref": "docs/review/implementation-team4.json",
+      "review_ref": "docs/review/final-closeout-team4.json",
       "decision_history": [
         {
           "date": "2026-11-18",
@@ -1013,7 +1212,7 @@
         "docs/extension-decisions.md",
         "evidence/stage0/mec-feasibility.json"
       ],
-      "review_ref": "docs/review/implementation-team4.json",
+      "review_ref": "docs/review/final-closeout-team4.json",
       "decision_history": [
         {
           "date": "2026-11-18",
@@ -1039,7 +1238,7 @@
         "docs/extension-decisions.md",
         "evidence/stage0/mec-feasibility.json"
       ],
-      "review_ref": "docs/review/implementation-team4.json",
+      "review_ref": "docs/review/final-closeout-team4.json",
       "decision_history": [
         {
           "date": "2026-11-18",
@@ -1056,17 +1255,18 @@
     {
       "id": "hackster_article",
       "path": "docs/submission/hackster-article.md",
-      "sha256": "fd0aa203dc151db35276b9150cf4242918049120f6a614f863f9b6dc2e007dad",
+      "sha256": "8aa3a6176d1a2959003780d060260b7259353cd28c32b85528ce1b029357c51d",
       "source_revision": "fd5e648fa1c74e425507a98247844be150265acb",
       "run_ids": [
         "agent-379720ef883c",
         "agent-479f866b7e84"
       ],
-      "artifact_status": "prepared_awaiting_independent_release_review",
+      "artifact_status": "independently_reviewed_prepared_artifact",
       "publication_status": "not_published",
       "public_url": null,
       "provenance": "Artifact is prepared alongside code; cited execution IDs retain their original source scope.",
-      "artifact_manifest": "evidence/release/artifacts.json"
+      "artifact_manifest": "evidence/release/artifacts.json",
+      "release_candidate_revision": "ca10412ed1da62b92684e8163c2b6d092f450a5f"
     },
     {
       "id": "demo_video",
@@ -1077,11 +1277,12 @@
         "agent-379720ef883c",
         "agent-479f866b7e84"
       ],
-      "artifact_status": "prepared_awaiting_independent_release_review",
+      "artifact_status": "independently_reviewed_prepared_artifact",
       "publication_status": "not_published",
       "public_url": null,
       "provenance": "evidence/video/asset-provenance.json",
-      "artifact_manifest": "evidence/release/artifacts.json"
+      "artifact_manifest": "evidence/release/artifacts.json",
+      "release_candidate_revision": "ca10412ed1da62b92684e8163c2b6d092f450a5f"
     },
     {
       "id": "presentation_and_qa",
@@ -1089,11 +1290,12 @@
       "sha256": "39656b42ef763e07940cabed25df6f1007b4adc42e4540118ec7b4287ec2a23d",
       "source_revision": "fd5e648fa1c74e425507a98247844be150265acb",
       "run_ids": [],
-      "artifact_status": "prepared_awaiting_independent_release_review",
+      "artifact_status": "independently_reviewed_prepared_artifact",
       "publication_status": "not_published",
       "public_url": null,
       "provenance": "Artifact is prepared alongside code; cited execution IDs retain their original source scope.",
-      "artifact_manifest": "evidence/release/artifacts.json"
+      "artifact_manifest": "evidence/release/artifacts.json",
+      "release_candidate_revision": "ca10412ed1da62b92684e8163c2b6d092f450a5f"
     },
     {
       "id": "single_page_pitch",
@@ -1101,20 +1303,31 @@
       "sha256": "48987c5066890992f8213458917165ae9ccc31123e6dc97daf5ddfa8b6dfba6b",
       "source_revision": "fd5e648fa1c74e425507a98247844be150265acb",
       "run_ids": [],
-      "artifact_status": "prepared_awaiting_independent_release_review",
+      "artifact_status": "independently_reviewed_prepared_artifact",
       "publication_status": "not_published",
       "public_url": null,
       "provenance": "Artifact is prepared alongside code; cited execution IDs retain their original source scope.",
-      "artifact_manifest": "evidence/release/artifacts.json"
+      "artifact_manifest": "evidence/release/artifacts.json",
+      "release_candidate_revision": "ca10412ed1da62b92684e8163c2b6d092f450a5f"
     },
     {
       "id": "korean_explanation",
       "path": "docs/project-guide.ko.md",
       "sha256": "d7ea061a721fe62db6e3d8bd120396968d49e265977fc41098e2639d841f4ee4",
-      "artifact_status": "prepared_awaiting_independent_release_review",
+      "artifact_status": "independently_reviewed_prepared_artifact",
       "publication_status": "not_published",
       "public_url": null,
-      "artifact_manifest": "evidence/release/artifacts.json"
+      "artifact_manifest": "evidence/release/artifacts.json",
+      "release_candidate_revision": "ca10412ed1da62b92684e8163c2b6d092f450a5f"
     }
-  ]
+  ],
+  "publication_preflight": {
+    "remote": "git@github-personal:openSoom/openSoom.git",
+    "identity": "wonark",
+    "remote_main_before_release": "54e93ee64c55bf62a8527764ed1084e0dee6a1d9",
+    "existing_visibility": "private",
+    "public_repository_target": "Explicit applied Goal prompt: reproducible public repository; repository publication authorized for this project.",
+    "history_audit": "evidence/release/history-publication-audit.json",
+    "scope": "Only this project repository; no issues, PRs, releases or wiki; one main branch. No account or organization policy changes."
+  }
 }

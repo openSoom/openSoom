@@ -6,7 +6,7 @@ openSoom connects facility observations, diagnosis, authorized actions and outco
 
 ![Actual openSoom dashboard with a simulated unresolved exhaust incident](evidence/dashboard/desktop-no-recovery.jpg)
 
-**Hackathon prototype:** actual ACME oneM2M CSE, MCP, API and model execution; simulated sensors and actuators. The local runtime and hosted-model recovery, non-recovery and stale-data checks have captured evidence. Independent release review is in progress. Codex **CLI 0.166.0** host integration is tested; a separate desktop UI flow and physical equipment are not verified.
+**Hackathon prototype:** actual ACME oneM2M CSE, MCP, API and model execution; simulated sensors and actuators. The local runtime and hosted-model recovery, non-recovery and stale-data checks have captured evidence. Four independent GPT-6.1 Sol Max teams completed stricter release review and correction verification; see the [review summary](docs/review/release-summary.md). Codex **CLI 0.166.0** host integration is tested; a separate desktop UI flow and physical equipment are not verified.
 
 ## A concrete operating problem
 

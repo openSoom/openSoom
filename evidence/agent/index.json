@@ -7,7 +7,7 @@
     "release-live-stale.json",
     "release-codex-host.json"
   ],
-  "independent_review_status": "pending main-owned independent review",
+  "independent_review_status": "Accepted within declared capture/source-delta scope by final reviews and ca10412 closeout; public submission remains separate.",
   "source_hash_snapshot_at_bundle_capture": {
     "config/facilities.json": "0b385a82788c18673624b385798dd4b9f73ae75bf05f15102f5b5e8b432ba547",
     "config/live-test-budget.json": "05465e8ce4cc65e23b2a1f4f761fca448e2b9ac65a1a4b78c273b1188a993bf9",
@@ -302,7 +302,7 @@
       "plugin/skills/opensoom-operations/SKILL.md: same general contract guidance"
     ],
     "regression_evidence": "evidence/release/final-checks.json",
-    "review_status": "Requires bounded source-delta assessment; previous capture source hashes and failed cases remain unchanged."
+    "review_status": "Bounded additive delta independently accepted by four teams."
   },
   "latest_live_batch": {
     "batch_id": "opensoom-hackathon-2026-01",
@@ -315,7 +315,7 @@
     "source": "evidence/agent/units-checkpoint.json"
   },
   "guided_host_evidence": {
-    "review_status": "completed_response_and_corrected_facts_captured; independent_functional_acceptance_pending_with_format_deviation",
+    "review_status": "Functional/factual outcome accepted by Teams2/3; original seven-sentence format failure preserved.",
     "prerequisites": "Maintainer-installed runtime and preactivated virtual profiles; fresh supported Codex CLI0.166.0 profiles; instrumented bounded provider; no desktop UI/human-first-use claim.",
     "strategy": "Separate demonstrations, explicitly allowed by S3-G1 and Team2 advisory; no fabricated uninterrupted conversation.",
     "files": [
@@ -379,6 +379,11 @@
         "sha256": "793e7396600a5a8f6d8fcac583c0cda3d3219bb12a92df576bd27b066424e68d",
         "scope": "Source/evidence hashes, preserved prior cases and settled72request accounting."
       }
-    ]
+    ],
+    "independent_review_files": [
+      "docs/review/final-closeout-team2.json",
+      "docs/review/final-closeout-team3.json"
+    ],
+    "acceptance_limit": "Separate actual model tool executions and completed recorded-results explanation, using maintainer-prepared virtual runtime/profiles and an instrumented Codex CLI. No one uninterrupted successful install/chat or default-provider/desktop/human-first-use claim."
   }
 }
