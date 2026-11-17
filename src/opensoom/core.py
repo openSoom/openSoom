@@ -255,6 +255,8 @@ class Core:
             run = self.store.get("runs", run_id)
             if not run or (fid and run["facility_id"] != fid):
                 raise OperationError("run_scope", "Run does not match the requested facility", 403)
+            if run.get("principal_role") != principal["role"]:
+                raise OperationError("run_owner_required", "Only the owning identity can append operations to this run", 403)
         if name == "doctor":
             result = self.doctor()
         elif name == "prepare_setup":
@@ -418,9 +420,16 @@ class Core:
         for index, zone in enumerate(facility["zones"]):
             faulty = index == 0 and scenario != "normal"
             started_at = self.store.get("runs", facility.get("active_run"), {}).get("started_at", "9999")
-            changed = any(c["facility_id"] == facility["id"] and c["zone_id"] == zone["id"] and c["action"] == "set_damper" and c.get("ack") and c["created_at"] >= started_at for c in commands)
-            recover = changed and scenario not in ("no_recovery", "missing_ack", "stale", "missing")
-            values = {"observed_at": utcnow(), "pm25": 62.0 if faulty and not recover else 12.0, "co2": 1450.0 if faulty and not recover else 620.0, "airflow": zone["minimum_airflow"] * (0.4 if faulty and not recover else 1.15), "fan_running": True, "damper_pct": 100.0 if changed else (35.0 if faulty else 70.0)}
+            applied = [c for c in commands if c["facility_id"] == facility["id"] and c["zone_id"] == zone["id"] and c["action"] == "set_damper" and c.get("ack") and c["created_at"] >= started_at]
+            damper = float(applied[-1]["value"]) if applied else (35.0 if faulty else 70.0)
+            # Deterministic device model, not a physical airflow equation:
+            # an acknowledged setpoint must become the reported device state.
+            # Partial/closed requests cannot borrow a full-open recovery.
+            flow_ratio = 1.15 * damper / 100 if applied else (0.4 if faulty else 1.15)
+            if faulty and scenario == "no_recovery":
+                flow_ratio = min(flow_ratio, 0.4)
+            deficient = flow_ratio < 1
+            values = {"observed_at": utcnow(), "pm25": 62.0 if deficient else 12.0, "co2": 1450.0 if deficient else 620.0, "airflow": zone["minimum_airflow"] * flow_ratio, "fan_running": True, "damper_pct": damper}
             if index == 0 and scenario == "stale":
                 values["observed_at"] = (datetime.now(timezone.utc) - timedelta(minutes=5)).isoformat()
             if index == 0 and scenario == "missing":
@@ -455,7 +464,7 @@ class Core:
                 self.store.put("incident_history", incident["id"], {**incident, "archived_at": utcnow()})
                 self.store.delete("incidents", key)
         self.store.put("facilities", fid, facility)
-        self.store.put("runs", run_id, {"id": run_id, "facility_id": fid, "scenario": scenario, "mode": "fixture" if autorun else "interactive", "status": "running", "started_at": utcnow(), "steps": [], "tool_calls": []})
+        self.store.put("runs", run_id, {"id": run_id, "facility_id": fid, "principal_role": principal["role"], "scenario": scenario, "mode": "fixture" if autorun else "interactive", "status": "running", "started_at": utcnow(), "steps": [], "tool_calls": []})
         self.log("scenario_started", scenario.replace("_", " ").capitalize() + " · virtual equipment", fid, run_id=run_id)
         self.sample_facility(facility)
         if autorun and scenario not in ("normal", "stale", "missing"):

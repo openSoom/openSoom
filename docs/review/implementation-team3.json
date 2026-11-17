@@ -1,0 +1,300 @@
+{
+  "schema_version": 1,
+  "review_id": "implementation-team3-initial",
+  "reviewed_at": "2026-11-17T19:11:39.909683+00:00",
+  "team": "team_3",
+  "reviewer_task": "architecture_reasonableness",
+  "criteria": [
+    8,
+    9,
+    10,
+    17
+  ],
+  "immutable_revision": "2b2a239270e70625e99e39a5b738e09c84c19822",
+  "scope": "Independent implementation review of S0/S1/S3 trust and product-AI paths; untracked pitch/video/deliverables excluded.",
+  "review_mode": {
+    "code_edits": false,
+    "new_live_llm_calls": 0,
+    "real_cse_mutations": 0,
+    "permitted_output": "docs/review/implementation-team3.json",
+    "tests": "Existing unit checks and isolated temporary-store reproductions; initial snapshot reconstructed from git objects for final reproductions after main began editing."
+  },
+  "verdict": "required_gates_blocked_on_frozen_revision",
+  "required_blockers": [
+    "T3-001",
+    "T3-002"
+  ],
+  "frozen_source_sha256": {
+    "src/opensoom/core.py": "26d87bfa6023203500e15492a7bad70266f25f05462d2f386419b1391444f97f",
+    "src/opensoom/app.py": "bf11d4fd94f0378ab6de0002645620c9f45c680b83f3a071aeec968e92908a32",
+    "src/opensoom/mcp_server.py": "a6dbe7d5785b224f2b74bbd03c9500dbae795bcf716c11e44d9b51293ddf90dc",
+    "src/opensoom/llm_runner.py": "5f66e3a4f77ac5c1d441c65e47dc445869a6b4af4c60113a383c3dded3de04d0",
+    "src/opensoom/llm_budget.py": "306f6cfbdcdc3f7f0fe2718bd87b1d46ec371be66faf6cba8e68ac9dfcb781bc"
+  },
+  "checks": [
+    {
+      "name": "assigned_unit_checks",
+      "command": ".venv/bin/python -m pytest tests/test_llm_budget.py tests/test_llm_runner.py tests/test_mcp_server.py tests/test_facility_registry.py tests/test_contracts.py -q",
+      "result": "28 passed in 0.92s",
+      "exit_status": 0,
+      "classification": "real test execution; provider calls mocked, no paid/live model request"
+    },
+    {
+      "name": "agent_entry_hashes",
+      "result": "All 15 index entry SHA-256 values match committed evidence files."
+    },
+    {
+      "name": "protocol_correlation",
+      "matched_request_ids": 25,
+      "records": 25,
+      "request_response_ids_match": true,
+      "result": "Actual captured request/response correlation; HTTPS and native MQTT/TLS bindings remain distinct from local HTTP/MCP."
+    },
+    {
+      "name": "actual_model_runs",
+      "evidence": [
+        "evidence/agent/secure-live-recovery.json",
+        "evidence/agent/secure-live-no-recovery.json",
+        "evidence/agent/secure-live-stale-refusal.json"
+      ],
+      "result": "Captured hosted gpt-5-mini responses, model-labeled tool calls, service-owned runs and CSE outcomes support positive and negative actual-model execution. Non-recovery contains ACK plus two later unresolved samples; stale case makes no command. Reviewed existing evidence only."
+    },
+    {
+      "name": "application_and_clean_lifecycle",
+      "evidence": [
+        "evidence/application/acceptance.json",
+        "evidence/application/first-secure-loop.json",
+        "evidence/release/clean-lifecycle.json"
+      ],
+      "result": "Actual CSE six-scenario acceptance and isolated install/start/stop/restart/cleanup evidence captured. Acceptance source hashes match frozen revision; lifecycle retains budget and runtime config. These are deterministic/fixture checks, not live-model runs."
+    }
+  ],
+  "findings": [
+    {
+      "id": "T3-001",
+      "priority": "P2",
+      "classification": "required_blocking",
+      "criteria": [
+        10,
+        17
+      ],
+      "affected_gates": [
+        "S3-G3"
+      ],
+      "related_ledger_findings": [
+        "R-003",
+        "R-007"
+      ],
+      "evidence_status": "verified",
+      "observed_evidence": [
+        {
+          "path": "src/opensoom/app.py",
+          "lines": [
+            148,
+            154,
+            174,
+            197
+          ]
+        },
+        {
+          "path": "src/opensoom/core.py",
+          "lines": [
+            250,
+            257,
+            330,
+            333
+          ]
+        }
+      ],
+      "gap": "Read-only observer can modify an operator-owned run and append tool records to it. PATCH uses facility read authorization only; tool run header checks facility but not stored actor ownership. Error recording is also facility-only.",
+      "impact": "A scoped observer can change durable summaries/outcomes or contaminate another actor run trace. This contradicts the server-enforced read-only/agent identity boundary even within the documented trusted-loopback prototype.",
+      "reproduction": {
+        "environment": "Temporary checkout reconstructed from immutable commit, isolated SQLite, synthetic service credentials; FastAPI TestClient without lifespan; no CSE/model calls",
+        "requests": [
+          {
+            "method": "PATCH",
+            "path": "/api/agent-runs/operator-run",
+            "actor": "observer",
+            "body": {
+              "outcome": "FAIL",
+              "summary": "Changed by observer"
+            },
+            "observed_http": 200,
+            "observed_stored_summary": "Changed by observer"
+          },
+          {
+            "method": "POST",
+            "path": "/api/tools/doctor",
+            "actor": "observer",
+            "run_header": "operator-run",
+            "body": {
+              "arguments": {}
+            },
+            "doctor": "stubbed readiness to avoid CSE access",
+            "observed_http": 200,
+            "observed": "doctor record added to operator-owned run.tool_calls"
+          }
+        ]
+      },
+      "minimum_fix": "Bind run-writing/finalization and tool-call recording to the persisted actor owner (the current prototype can use fixed principal_role plus facility). Keep authorized reads separate. Rejected owner-mismatch attempts must not append into the target run in the error handler; log a separate security event if useful.",
+      "product_reason": "Facility users need trustworthy audit/agent results and an actual read-only role.",
+      "verification": [
+        "Observer PATCH of an operator run returns 403 and leaves the entire run unchanged.",
+        "Observer tool request with another role run header returns 403 and does not append successful or denied tool records.",
+        "Owner calls/finalization still work; cross-facility denial remains enforced."
+      ],
+      "main_decision": "accepted by main during review",
+      "implementation_state": "fix in progress outside this frozen revision; not verified here",
+      "review_state": "open"
+    },
+    {
+      "id": "T3-002",
+      "priority": "P2",
+      "classification": "required_blocking",
+      "criteria": [
+        10,
+        17
+      ],
+      "affected_gates": [
+        "S1-G1",
+        "S1-G2",
+        "S3-G2",
+        "S3-G3"
+      ],
+      "related_ledger_findings": [
+        "R-003",
+        "R-007"
+      ],
+      "evidence_status": "verified",
+      "observed_evidence": [
+        {
+          "path": "src/opensoom/core.py",
+          "lines": [
+            414,
+            429
+          ]
+        },
+        {
+          "path": "src/opensoom/models.py",
+          "lines": [
+            35,
+            48
+          ]
+        }
+      ],
+      "gap": "The virtual actuator ignores the accepted set_damper value: any acknowledged damper command causes a reported 100 percent damper and modeled recovery in exhaust_fault.",
+      "impact": "A valid zero/partial command can be reported as full opening and verified recovery. The model can choose a wrong action value yet receive a successful integration result, so command/ACK/observation verification does not establish the requested virtual behavior.",
+      "reproduction": {
+        "environment": "Immutable snapshot in isolated temporary store; acknowledged command seeded to isolate simulator mapping; publish replaced by an in-memory observation collector; no CSE/model calls",
+        "command_value": 0,
+        "observed_damper_pct": 100.0,
+        "observed_airflow": 1035.0,
+        "configured_minimum_airflow": 900
+      },
+      "minimum_fix": "Preserve the acknowledged requested percentage in simulated actuator state and observations. Make modeled flow/recovery depend on that state and profile, with no unsupported physical efficacy claim. Alternatively reject unsupported values explicitly rather than acknowledging different behavior.",
+      "product_reason": "Even a labeled simulation must faithfully execute the declared command contract and retain unsuccessful action outcomes.",
+      "verification": [
+        "Real service/CSE tests for accepted 0, 50 and 100 percent commands retain the exact value in command, virtual ACK and later observations.",
+        "A zero or insufficient partial action does not fabricate recovery.",
+        "The 100 percent positive case and explicit no_recovery case still distinguish successful command/ACK from subsequent observed recovery.",
+        "Repeated requests remain idempotent and post-ACK samples are distinct."
+      ],
+      "main_decision": "accepted by main; independently also found by Team 1",
+      "implementation_state": "fix in progress outside this frozen revision; not verified here",
+      "review_state": "open"
+    }
+  ],
+  "gate_assessment": {
+    "S0": "Scenario/contracts/runtime and provider/Codex/MEC readiness have implementation artifacts. No additional Team 3 planning blocker; full four-team gate review remains separate.",
+    "S1": "Actual first-CSE loop, ACP denials and failure scenarios are captured. Do not close the full service-loop gates while T3-002 contradicts supported command semantics. Pending-run restart coverage should be assessed against the specific restart evidence; completed lifecycle rehearsal alone is not all continuity behavior.",
+    "S3-G1": "Fresh Codex CLI 0.166.0 plugin installation and actual app-server MCP calls verified by captured transport evidence; clean CLI lifecycle is separate. No Codex model turn, desktop UI or human-first-use rehearsal is captured. Do not promote PASS_HOST_MCP to those claims. Team 2/main owns the combined guided-onboarding acceptance; this review does not invent an additional mandatory desktop test.",
+    "S3-G2": "Existing hosted-model positive/no-recovery/stale traces support actual shared MCP/service/CSE execution. Rerun or replay affected scenarios on the corrected code before closing trust-sensitive gates; do not relabel the old captures as new-revision live runs.",
+    "S3-G3": "Shared SQLite reservations, concurrency, retries, unknown usage charging and restart preservation pass independent unit checks; actual negative model traces exist. Run-owner and simulated actuator defects remain blockers.",
+    "S3-G4": "Requires all four teams and independent close-out of accepted fixes; not passed by this report."
+  },
+  "criterion_assessment": [
+    {
+      "criterion": 8,
+      "evidence_state": "not_evidenced",
+      "result": "Authentic public technical exchange remains external handoff. No interaction or rubric credit invented."
+    },
+    {
+      "criterion": 9,
+      "evidence_state": "planned_and_partial_documentation",
+      "result": "Resource/integration/trust explanations exist. Interview participation/rehearsal not established by reviewed implementation bundle; untracked presentation not inspected."
+    },
+    {
+      "criterion": 10,
+      "evidence_state": "implemented_verified_captured_with_blocker",
+      "result": "Server-authenticated TLS and distinct ACP allow/deny evidence captured. Trusted local origins/anonymous loopback broker, cleartext local app and inter-CSE HTTP limits are explicitly documented. No authenticated-device or production-security claim; T3-001 must be fixed."
+    },
+    {
+      "criterion": 17,
+      "evidence_state": "implemented_verified_captured_with_blockers",
+      "result": "Real hosted-model multi-tool workflow, service state, validation and negative evidence exist; fixture/provider-error separation is correct. T3-001/T3-002 prevent full gate closure. No aggregate score assigned."
+    }
+  ],
+  "ledger_closure_recommendations": [
+    {
+      "id": "R-001",
+      "recommendation": "resolved_for_original_separation_scope",
+      "basis": [
+        "Generic registry/profiles/adapters and two-profile/two-vendor actual acceptance use unchanged core/tool code.",
+        "test_facility_registry adds a configured bakery without core changes; profile-specific diagnosis verified."
+      ],
+      "limit": "Does not imply all facilities or real equipment are supported; reconcile with Teams 1 and 2."
+    },
+    {
+      "id": "R-003",
+      "recommendation": "partially_verified_keep_open_until_blocker_closeout",
+      "basis": [
+        "Plugin/MCP, standalone actual model runner and durable service runs implemented and captured."
+      ],
+      "remaining": [
+        "T3-001",
+        "T3-002",
+        "Full S3 acceptance and affected-revision evidence reconciliation"
+      ]
+    },
+    {
+      "id": "R-004",
+      "recommendation": "resolved_for_fixture_live_classification_scope",
+      "basis": [
+        "All agent index entry hashes match; failed/weak attempts retained and excluded from accepted evidence.",
+        "Actual model, fixture and API failure paths have distinct labels; provider error and historical-run false-pass tests pass."
+      ],
+      "limit": "Old actual-model captures remain attributed to their captured source; this is not proof every final core revision was live-tested."
+    },
+    {
+      "id": "R-007",
+      "recommendation": "not_resolved",
+      "basis": [
+        "Fixed actor role/schema/facility/freshness/profile checks and secret boundaries implemented, but T3-001 bypasses run-write ownership and T3-002 corrupts simulated action outcomes."
+      ],
+      "remaining": [
+        "Independent corrected-revision denial/value checks"
+      ]
+    }
+  ],
+  "claim_limitations": [
+    {
+      "id": "T3-L01",
+      "classification": "claim_limitation",
+      "detail": "Agent capture source hashes match the runner, MCP server, budget and CSE client, but core.py/app.py differ from frozen implementation. The later application acceptance hashes do match the frozen implementation. Preserve exact provenance and record a change-impact/replay bridge rather than treating historical live captures as a final-source live rerun."
+    },
+    {
+      "id": "T3-L02",
+      "classification": "claim_limitation",
+      "detail": "Codex-host evidence proves installation and actual host MCP transport, not a Codex inference turn, desktop UI or human first-use usability. Existing README/integration docs state this honestly."
+    },
+    {
+      "id": "T3-L03",
+      "classification": "claim_limitation",
+      "detail": "All physical data and actuator behavior are simulated. Real CSE/MCP/hosted inference execution does not establish real ventilation performance or health benefit."
+    }
+  ],
+  "next_highest_value_action": "Freeze corrected run-owner and actuator-value behavior, capture actual CSE/API 0/50/100 and denial/no-state-change regressions, then request independent bounded close-out. No new provider calls are necessary for the isolated defect regressions; retain existing actual-model evidence provenance.",
+  "new_live_model_calls_in_review": 0,
+  "official_score": null,
+  "official_total": null
+}

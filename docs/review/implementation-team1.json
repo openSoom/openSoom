@@ -1,0 +1,223 @@
+{
+  "reviewer": "team_1 / rubric_reviewer",
+  "model": "gpt-6.1-sol",
+  "reasoning_effort": "max",
+  "date": "2026-11-18",
+  "immutable_commit": "2b2a239270e70625e99e39a5b738e09c84c19822",
+  "criteria": [
+    1,
+    2,
+    3,
+    11
+  ],
+  "scope": "Independent implementation review of stage-0/first-CSE/Codex-and-LLM checkpoints. Not an aggregate score or whole-release approval.",
+  "independence": {
+    "product_code_modified": false,
+    "new_llm_calls": 0,
+    "live_cse_mutations": 0,
+    "allowed_output": "docs/review/implementation-team1.json"
+  },
+  "evidence_integrity": {
+    "tracked_sources_equal_commit_at_review_start": true,
+    "runtime_acceptance_checkpoint_source_and_artifact_hashes_match": true,
+    "agent_bundle_source_mismatch": [
+      "src/opensoom/core.py",
+      "src/opensoom/app.py"
+    ],
+    "agent_core_captured_sha256": "0c5e992d78b695edfefedf196342585a37c47e3f54c537fe21e2526cb11d7953",
+    "current_core_sha256": "26d87bfa6023203500e15492a7bad70266f25f05462d2f386419b1391444f97f",
+    "agent_app_captured_sha256": "4bbdafe26a0fe76838032d1332552b7edc8e98e87523610029521a6f4a2ac0a9",
+    "current_app_sha256": "bf11d4fd94f0378ab6de0002645620c9f45c680b83f3a071aeec968e92908a32"
+  },
+  "checks_performed": [
+    {
+      "command": ".venv/bin/python -m pytest tests/test_contracts.py tests/test_facility_registry.py tests/integration/test_cse_client.py -q",
+      "result": "16 passed, 5 subtests passed",
+      "exit_status": 0,
+      "boundary": "Contract/unit and mocked protocol-boundary tests; not a new live CSE run."
+    },
+    {
+      "check": "Isolated Core.sample_facility source-level probe with an acknowledged set_damper value 0; publish captured in memory and acknowledge_pending bypassed",
+      "observed": {
+        "requested_damper": 0,
+        "observed_damper": 100.0,
+        "observed_airflow": 1035.0
+      },
+      "boundary": "No CSE request, model request or main-service state mutation."
+    },
+    {
+      "check": "Pinned primary TS-0023 v5.6.0 section 5.3.1.6 inspected",
+      "source": "https://specifications.onem2m.org/ts/ts-0023/v5.6.0/5.3/#5316-airqualitysensor",
+      "result": "pm25 is optional nonnegative integer in micrograms per cubic metre; co2 is float in milligrams per cubic metre. Product PM2.5 projection and deliberate CO2 omission match the documented scope."
+    }
+  ],
+  "criteria_assessment": [
+    {
+      "number": 1,
+      "evidence_state": "implemented_and_captured; independently inspected",
+      "assessment": "Expert-band descriptor is supported by actual native group/fopt use, subscription verification/notifications and product traces. Do not infer a precise 5 or award total. Group member denial aborts the ACME aggregate; separately labeled fallback reads are honest and are not native mixed responses.",
+      "paths": [
+        "src/opensoom/core.py:92",
+        "src/opensoom/core.py:285",
+        "evidence/application/acceptance.json",
+        "evidence/runtime/cse-https-smoke.json"
+      ]
+    },
+    {
+      "number": 2,
+      "evidence_state": "implemented_and_captured; independently inspected",
+      "assessment": "Multiple appropriate native bindings are supported: adapter observations, ACKs and SDT updates use native oneM2M MQTT/TLS, while operations/CSE commands use HTTPS. Expert-band descriptor has evidence, not an exact score. Loopback anonymous MQTT and local HTTP API/callback/Mcc boundaries preclude a claim of production device authentication or universal end-to-end TLS.",
+      "paths": [
+        "src/opensoom/onem2m.py:122",
+        "src/opensoom/core.py:169",
+        "evidence/application/acceptance.json#checks.actual_product_mixed_protocol_trace",
+        "evidence/runtime/cse-mqtt-tls-smoke.json"
+      ]
+    },
+    {
+      "number": 3,
+      "evidence_state": "implemented_and_captured with required action-contract defect",
+      "assessment": "Proficient scenario behavior is clearly evidenced; Expert remains a qualified judgment about complex equipment/application use. Diagnostic, operator, maintenance and adapter AE identities have distinct CSE roles; cohosting them is disclosed and is not automatically disqualifying. AE count alone is not proof of independent complex applications. The non-100 damper defect prevents unqualified operational acceptance.",
+      "paths": [
+        "docs/architecture.md",
+        "src/opensoom/core.py:96",
+        "src/opensoom/core.py:336",
+        "src/opensoom/core.py:414",
+        "evidence/application/acceptance.json"
+      ]
+    },
+    {
+      "number": 11,
+      "evidence_state": "limited SDT implementation captured and independently checked against primary model",
+      "assessment": "Actual cod:aiQSr type-28 FCNTs, cnd, native discovery, application reads, PM2.5 units/integer projection and type rejection support the rubric advanced SDT descriptor within a PM2.5-only scope. This is not SAREF or whole-device certification. Canonical CIN retains precision and the other quantities. Latest projected values require observation freshness/provenance.",
+      "paths": [
+        "docs/standard-model.md",
+        "src/opensoom/core.py:142",
+        "src/opensoom/core.py:173",
+        "src/opensoom/core.py:317",
+        "evidence/application/acceptance.json#checks.actual_SDT_discovery_and_pm25_mapping",
+        "evidence/runtime/cse-https-smoke.json#checks.sdt_type_rejection"
+      ]
+    }
+  ],
+  "findings": [
+    {
+      "id": "T1-I1",
+      "team": "team_1",
+      "criteria": [
+        3
+      ],
+      "severity": "P1",
+      "classification": "required_gate_blocker",
+      "gates": [
+        "S1-G1",
+        "S1-G2",
+        "S3-G2"
+      ],
+      "evidence_status": "reproduced_source_level_defect",
+      "observed_evidence": [
+        "src/opensoom/core.py:421-423",
+        "src/opensoom/core.py:406",
+        "isolated probe requested 0 but observed 100 and airflow 1035"
+      ],
+      "gap_and_impact": "Any acknowledged set_damper command is treated as fully open and recovered, irrespective of its requested percentage. The ACK can say 0 or 50 while observations say 100, and verification can report recovery for an unperformed target.",
+      "minimum_change": "Honor the requested virtual damper state and derive the documented simulated outcome from that state/profile/scenario, or explicitly constrain the supported command to the only implemented target. Keep no-recovery and missing-ACK behavior separate.",
+      "product_reason": "A facility operator and real agent must be able to trust that the accepted action and observed virtual device response refer to the same target.",
+      "verification": "Test 0/50/100 through actual command -> ACK -> later observation -> verification. Low targets must not silently become 100 or verified recovery. Retain negative cases; capture final 100 recovery on the patched revision.",
+      "main_decision": "pending",
+      "decision_reason": "Main accepted this issue in coordination; formal disposition remains main-owned.",
+      "implementation_state": "unfixed_in_reviewed_commit",
+      "review_state": "unresolved"
+    },
+    {
+      "id": "T1-I2",
+      "team": "team_1",
+      "criteria": [
+        3,
+        11
+      ],
+      "severity": "P2",
+      "classification": "required_evidence_linkage_before_final_S3_closeout",
+      "gates": [
+        "S3-G2",
+        "S3-G3",
+        "S3-G4"
+      ],
+      "evidence_status": "provenance_gap",
+      "observed_evidence": [
+        "evidence/agent/index.json#source_hash_snapshot_at_bundle_capture",
+        "evidence/runtime/acceptance-checkpoint.json"
+      ],
+      "gap_and_impact": "The accepted real-model bundle captures earlier core.py and app.py hashes. Current runtime captures match this commit, but a retained old-to-new diff/impact review linking those live runs to final operational behavior is absent. The existing model runs remain valid historical evidence.",
+      "minimum_change": "Preserve the old bundle and record its exact runtime source/diff impact. Following the damper fix, capture one bounded positive real-model run on the final source snapshot; use reviewed impact analysis to retain unaffected stale/no-recovery evidence. No new calls were made in this review.",
+      "product_reason": "The release must connect model decisions and service outcomes to an identified implementation instead of presenting older captured behavior as an unconditional current-revision pass.",
+      "verification": "Final run records matching service/runner/client hashes, command target, ACK and later observations. Document why retained negative runs remain applicable, or rerun only affected paths.",
+      "main_decision": "pending",
+      "decision_reason": "Main owns any permitted API run and shared budget.",
+      "implementation_state": "evidence_linkage_pending",
+      "review_state": "unresolved"
+    },
+    {
+      "id": "T1-I3",
+      "team": "team_1",
+      "criteria": [
+        11
+      ],
+      "severity": "P2",
+      "classification": "completion_record_gap_not_new_product_scope",
+      "gates": [
+        "S2-G5"
+      ],
+      "evidence_status": "document_state_mismatch",
+      "observed_evidence": [
+        "docs/extension-decisions.md",
+        "docs/execution-state.json#conditional_extensions.advanced_data_model"
+      ],
+      "gap_and_impact": "The extension decision document adopts PM2.5 SDT, while execution-state still says not_decided with no child gates or evidence. The final completion rule requires a reviewed decision and nonempty passed adopted child gates.",
+      "minimum_change": "Record adoption of the limited PM2.5 model and link individually tracked type/unit, discovery and application-use validation gates to the existing evidence and this independent review.",
+      "product_reason": "Preserve a precise, truthful standard-model scope and make the accepted extension resumable.",
+      "verification": "Execution state and extension decision agree; adopted child gates carry identified evidence/review references. Do not infer whole-model certification.",
+      "main_decision": "pending",
+      "decision_reason": "Main owns gate-state reconciliation after all team reviews.",
+      "implementation_state": "state_update_pending",
+      "review_state": "unresolved"
+    }
+  ],
+  "original_finding_closeout_recommendations": [
+    {
+      "id": "R-005",
+      "recommendation": "resolve_original_native_common_service_gap_with_scoped_evidence",
+      "reason": "Native discovery, fopt, subscriptions, role identities and actual CSE action/ACK paths are present. T1-I1 is a separate operational defect and still blocks relevant milestone acceptance."
+    },
+    {
+      "id": "R-006",
+      "recommendation": "resolve_for_native_MQTT_TLS_HTTPS_and_PM25_only_SDT_scope",
+      "reason": "Captured actual bindings, equivalent adapter unit mappings, pinned standard model, native discovery/application read and invalid-type rejection support the originally requested scope. Do not claim complete SDT/SAREF coverage or production authentication."
+    }
+  ],
+  "gate_assessment": {
+    "stage_0": "Team1 technical contracts/runtime evidence support progress; four-team all-stage closeout remains main-owned.",
+    "stage_1": "Actual 100-percent recovery and failure traces are supported, but T1-I1 prevents unqualified S1-G1/S1-G2 closeout for the advertised allowed 0-100 command domain. Pending-restart behavior was not independently reexecuted here.",
+    "stage_2": "Native protocol, discovery/group/subscription, explicit adapter mappings and PM2.5 model evidence support S2 technical claims within stated lab boundaries. Reconcile S2-G5 adoption/child records; do not treat group fallback as a native mixed aggregate.",
+    "stage_3": "Actual hosted-model tool runs and native CSE correlations exist. Current-source inheritance requires T1-I2 resolution. Codex CLI/MCP transport evidence is distinct from a Codex model turn/desktop experience, whose acceptance is owned jointly by Teams2/3."
+  },
+  "advanced_model_decision": {
+    "recommendation": "adopt_limited_PM25_SDT",
+    "minimum_valid_scope": "TS-0023 v5.6.0 airQualitySensor.pm25 integer micrograms/m3 only",
+    "not_claimed": [
+      "SAREF",
+      "whole-device certification",
+      "CO2 ppm-to-mg/m3 mapping",
+      "volume airflow-to-airFlow.speed mapping",
+      "physical measurement validation"
+    ],
+    "state_update_required": true
+  },
+  "verdict": "changes_required_before_unqualified_milestone_or_release_acceptance; substantial real oneM2M implementation evidence confirmed",
+  "reverification_scope": [
+    "Patched command target behavior 0/50/100 and existing missing-ACK/no-recovery tests",
+    "Final revision positive model/CSE run or an independently justified exact-source impact bridge; no blanket rerun requirement",
+    "Adopted SDT decision and child-gate/evidence records",
+    "Verify no unrelated tracked-source drift from the next frozen commit"
+  ]
+}

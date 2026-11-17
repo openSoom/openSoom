@@ -137,7 +137,7 @@ def tool(name: str, body: ToolEnvelope, request: Request):
     except (OperationError, CSEError, ValidationError) as exc:
         if run_id:
             run = core.store.get("runs", run_id)
-            if run and run["facility_id"] in actor["facilities"]:
+            if run and run["facility_id"] in actor["facilities"] and run.get("principal_role") == actor["role"]:
                 run["tool_calls"] = run.get("tool_calls", []) + [{"name": name, "at": utcnow(), "result_status": "denied" if isinstance(exc, OperationError) and exc.status == 403 else "error", "error": getattr(exc, "code", type(exc).__name__)}]
                 core.store.put("runs", run_id, run)
         if isinstance(exc, ValidationError):
@@ -174,6 +174,9 @@ def create_agent_run(body: dict, request: Request):
 @app.patch("/api/agent-runs/{run_id}")
 def update_agent_run(run_id: str, body: dict, request: Request):
     run = get_run(run_id, request)
+    actor = principal(request)
+    if actor["role"] == "observer" or actor["role"] != run.get("principal_role"):
+        raise OperationError("run_owner_required", "Only the run's owning operational identity can update its result", 403)
     names = {t["name"] for t in run.get("tool_calls", [])}
     commands = [c for c in core.store.list("commands") if c.get("run_id") == run_id]
     requested = body.get("outcome", "RUNNING")

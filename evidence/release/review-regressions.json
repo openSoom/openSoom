@@ -1,0 +1,258 @@
+{
+  "started_at": "2026-11-17T19:11:53.685983+00:00",
+  "kind": "actual_CSE_review_regression",
+  "physical_devices": "simulated",
+  "live_model_calls": 0,
+  "source_sha256_before": {
+    "src/opensoom/core.py": "91a8c15285d2c7b64fccf5105bcf7e4f8738e5f200c26c2af9abd2e9f72c56ef",
+    "src/opensoom/app.py": "90b2b13f78732ed32ac22fa0e21c9669d4731180463e80bbe551f881e622a144",
+    "scripts/review_regression_check.py": "a2e71ca359ae3e005f78529cbeac31ed21bcf52731c50716c945158ec03b83c7"
+  },
+  "setpoints": [
+    {
+      "requested_value": 0,
+      "run_id": "demo-d9c21a352c",
+      "command_id": "cmd-ae8db570c241",
+      "result": {
+        "facility_id": "food-a",
+        "zone_id": "cook",
+        "action": "set_damper",
+        "value": 0.0,
+        "reason": "Review regression: preserve the requested virtual setpoint",
+        "request_id": "demo-d9c21a352c:setpoint",
+        "id": "cmd-ae8db570c241",
+        "status": "unresolved",
+        "ack": true,
+        "created_at": "2026-11-17T19:11:54.183669+00:00",
+        "expires_at": "2026-11-17T19:12:24.183669+00:00",
+        "profile_version": 1,
+        "run_id": "demo-d9c21a352c",
+        "incident_id": "incident-87984507be",
+        "observed_result": "unresolved",
+        "cse_rqi": "opensoom-90baed49abc74e71993d5dec38cf5d8d",
+        "cse_resource_id": "cinD5AHyStYib",
+        "ack_at": "2026-11-17T19:11:55.563+00:00",
+        "ack_rqi": "opensoom-a5bbd6b5156f449f949f8e11ad4c0669",
+        "unresolved_samples": 2,
+        "verification_rqi": "opensoom-08fc0d12cbe54f06aec1c29c1717fa71",
+        "command_id": "cmd-ae8db570c241",
+        "complete": false,
+        "outcome": "unresolved",
+        "observations": {
+          "pm25": {
+            "value": 62.0,
+            "unit": "\u00b5g/m\u00b3",
+            "observed_at": "2026-11-17T19:11:57.823+00:00",
+            "received_at": "2026-11-17T19:11:57.823+00:00",
+            "source": "simulated",
+            "quality": "good"
+          },
+          "co2": {
+            "value": 1450.0,
+            "unit": "ppm",
+            "observed_at": "2026-11-17T19:11:57.823+00:00",
+            "received_at": "2026-11-17T19:11:57.823+00:00",
+            "source": "simulated",
+            "quality": "good"
+          },
+          "airflow": {
+            "value": 0.0,
+            "unit": "m\u00b3/h",
+            "observed_at": "2026-11-17T19:11:57.823+00:00",
+            "received_at": "2026-11-17T19:11:57.823+00:00",
+            "source": "simulated",
+            "quality": "good"
+          },
+          "fan_running": {
+            "value": true,
+            "unit": "boolean",
+            "observed_at": "2026-11-17T19:11:57.823+00:00",
+            "received_at": "2026-11-17T19:11:57.823+00:00",
+            "source": "simulated",
+            "quality": "good"
+          },
+          "damper_pct": {
+            "value": 0.0,
+            "unit": "%",
+            "observed_at": "2026-11-17T19:11:57.823+00:00",
+            "received_at": "2026-11-17T19:11:57.823+00:00",
+            "source": "simulated",
+            "quality": "good"
+          }
+        },
+        "message": "CSE acceptance/ACK alone does not establish recovery"
+      }
+    },
+    {
+      "requested_value": 50,
+      "run_id": "demo-8387e20225",
+      "command_id": "cmd-24de75b954dc",
+      "result": {
+        "facility_id": "food-a",
+        "zone_id": "cook",
+        "action": "set_damper",
+        "value": 50.0,
+        "reason": "Review regression: preserve the requested virtual setpoint",
+        "request_id": "demo-8387e20225:setpoint",
+        "id": "cmd-24de75b954dc",
+        "status": "unresolved",
+        "ack": true,
+        "created_at": "2026-11-17T19:11:58.203983+00:00",
+        "expires_at": "2026-11-17T19:12:28.203983+00:00",
+        "profile_version": 1,
+        "run_id": "demo-8387e20225",
+        "incident_id": "incident-d5e63d3b75",
+        "observed_result": "unresolved",
+        "cse_rqi": "opensoom-ac15591573b64370832b663fc75c45f9",
+        "cse_resource_id": "cinltFsNhE7i7",
+        "ack_at": "2026-11-17T19:12:00.002+00:00",
+        "ack_rqi": "opensoom-50b5806887604ffbb7456f5af337a02a",
+        "unresolved_samples": 2,
+        "verification_rqi": "opensoom-e85408a7474c4a3986cb5e56111376d4",
+        "command_id": "cmd-24de75b954dc",
+        "complete": false,
+        "outcome": "unresolved",
+        "observations": {
+          "pm25": {
+            "value": 62.0,
+            "unit": "\u00b5g/m\u00b3",
+            "observed_at": "2026-11-17T19:12:02.174+00:00",
+            "received_at": "2026-11-17T19:12:02.174+00:00",
+            "source": "simulated",
+            "quality": "good"
+          },
+          "co2": {
+            "value": 1450.0,
+            "unit": "ppm",
+            "observed_at": "2026-11-17T19:12:02.174+00:00",
+            "received_at": "2026-11-17T19:12:02.174+00:00",
+            "source": "simulated",
+            "quality": "good"
+          },
+          "airflow": {
+            "value": 517.5,
+            "unit": "m\u00b3/h",
+            "observed_at": "2026-11-17T19:12:02.174+00:00",
+            "received_at": "2026-11-17T19:12:02.174+00:00",
+            "source": "simulated",
+            "quality": "good"
+          },
+          "fan_running": {
+            "value": true,
+            "unit": "boolean",
+            "observed_at": "2026-11-17T19:12:02.174+00:00",
+            "received_at": "2026-11-17T19:12:02.174+00:00",
+            "source": "simulated",
+            "quality": "good"
+          },
+          "damper_pct": {
+            "value": 50.0,
+            "unit": "%",
+            "observed_at": "2026-11-17T19:12:02.174+00:00",
+            "received_at": "2026-11-17T19:12:02.174+00:00",
+            "source": "simulated",
+            "quality": "good"
+          }
+        },
+        "message": "CSE acceptance/ACK alone does not establish recovery"
+      }
+    },
+    {
+      "requested_value": 100,
+      "run_id": "demo-0f2b25f3e8",
+      "command_id": "cmd-34d576ddec97",
+      "result": {
+        "facility_id": "food-a",
+        "zone_id": "cook",
+        "action": "set_damper",
+        "value": 100.0,
+        "reason": "Review regression: preserve the requested virtual setpoint",
+        "request_id": "demo-0f2b25f3e8:setpoint",
+        "id": "cmd-34d576ddec97",
+        "status": "verified",
+        "ack": true,
+        "created_at": "2026-11-17T19:12:02.448931+00:00",
+        "expires_at": "2026-11-17T19:12:32.448931+00:00",
+        "profile_version": 1,
+        "run_id": "demo-0f2b25f3e8",
+        "incident_id": "incident-09ac069c56",
+        "observed_result": "recovered",
+        "cse_rqi": "opensoom-94f643811ea543f4996eee6c37a89018",
+        "cse_resource_id": "cinrbSgpQUTTz",
+        "ack_at": "2026-11-17T19:12:04.352+00:00",
+        "ack_rqi": "opensoom-1195fd0661a849dfa91e423af44772a5",
+        "verified_at": "2026-11-17T19:12:06.577+00:00",
+        "verification_rqi": "opensoom-db592c9310294987a87d2ca88945915d",
+        "command_id": "cmd-34d576ddec97",
+        "complete": true,
+        "outcome": "recovered",
+        "observations": {
+          "pm25": {
+            "value": 12.0,
+            "unit": "\u00b5g/m\u00b3",
+            "observed_at": "2026-11-17T19:12:06.533+00:00",
+            "received_at": "2026-11-17T19:12:06.533+00:00",
+            "source": "simulated",
+            "quality": "good"
+          },
+          "co2": {
+            "value": 620.0,
+            "unit": "ppm",
+            "observed_at": "2026-11-17T19:12:06.533+00:00",
+            "received_at": "2026-11-17T19:12:06.533+00:00",
+            "source": "simulated",
+            "quality": "good"
+          },
+          "airflow": {
+            "value": 1035.0,
+            "unit": "m\u00b3/h",
+            "observed_at": "2026-11-17T19:12:06.533+00:00",
+            "received_at": "2026-11-17T19:12:06.533+00:00",
+            "source": "simulated",
+            "quality": "good"
+          },
+          "fan_running": {
+            "value": true,
+            "unit": "boolean",
+            "observed_at": "2026-11-17T19:12:06.533+00:00",
+            "received_at": "2026-11-17T19:12:06.533+00:00",
+            "source": "simulated",
+            "quality": "good"
+          },
+          "damper_pct": {
+            "value": 100.0,
+            "unit": "%",
+            "observed_at": "2026-11-17T19:12:06.533+00:00",
+            "received_at": "2026-11-17T19:12:06.533+00:00",
+            "source": "simulated",
+            "quality": "good"
+          }
+        },
+        "message": "Result verified from later CSE observations"
+      }
+    }
+  ],
+  "ownership": {
+    "run_id": "owner-8bc950ed2cf1",
+    "observer_patch": {
+      "detail": {
+        "code": "run_owner_required",
+        "message": "Only the run's owning operational identity can update its result"
+      }
+    },
+    "observer_tool_append": {
+      "detail": {
+        "code": "run_owner_required",
+        "message": "Only the owning identity can append operations to this run"
+      }
+    },
+    "target_state_unchanged": true,
+    "owner_update_allowed": true
+  },
+  "source_sha256_after": {
+    "src/opensoom/core.py": "91a8c15285d2c7b64fccf5105bcf7e4f8738e5f200c26c2af9abd2e9f72c56ef",
+    "src/opensoom/app.py": "90b2b13f78732ed32ac22fa0e21c9669d4731180463e80bbe551f881e622a144",
+    "scripts/review_regression_check.py": "a2e71ca359ae3e005f78529cbeac31ed21bcf52731c50716c945158ec03b83c7"
+  },
+  "outcome": "PASS_REVIEW_REGRESSIONS"
+}
