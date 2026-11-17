@@ -1,0 +1,103 @@
+{
+  "status": "PROVIDER_AND_CODEX_COMPLETED_MEASUREMENTS_MATCH_LENGTH_CHECK_FAILED",
+  "author_side_review_only": true,
+  "live_sha256": "96d85aee3e67b48da6f7cf7ab5000a67d218c1501e57e515d2a464a26e49eea6",
+  "raw_response_unmodified": true,
+  "completion": {
+    "codex_turn_completed": true,
+    "provider_completed": true,
+    "one_provider_request": true,
+    "no_operational_tool_calls": true,
+    "concise_korean": false
+  },
+  "raw_script_status": "INCOMPLETE_CAPTURED_RECORD_EXPLANATION",
+  "exact_source_mappings_verified": 45,
+  "unit_comparisons": {
+    "airflow": {
+      "source_value": 200,
+      "source_unit": "m³/h",
+      "model_phrase": "200 m³/h",
+      "match": true
+    },
+    "target": {
+      "source_value": 500,
+      "canonical_source_unit": "m³/h",
+      "model_phrase": "500 m³/h",
+      "match": true
+    },
+    "pm25": {
+      "source_value": 62,
+      "source_unit": "µg/m³",
+      "model_phrase": "62 µg/m³",
+      "match": true
+    },
+    "co2": {
+      "source_value": 1450,
+      "source_unit": "ppm",
+      "model_phrase": "1450 ppm",
+      "match": true
+    },
+    "damper": {
+      "source_value": 100,
+      "source_unit": "%",
+      "model_phrase": "100%",
+      "match": true
+    }
+  },
+  "supported_operational_facts": [
+    "Simulation-only learning-space profile and ready/CSE-connected captured setup",
+    "classroom critical, meeting and lounge nominal",
+    "Airflow below configured target; particles and CO2 above their profile targets",
+    "Fan reported running and damper100%, both simulated observations with quality good",
+    "Earlier preauthorized virtual set_damper command acknowledged but unresolved",
+    "recovery_count0 is not described as absence of previous attempts; the earlier acknowledged action is retained",
+    "Required recovery samples2 is the supplied profile value"
+  ],
+  "issues_for_independent_review": [
+    {
+      "type": "length",
+      "observed": "One introduction sentence plus six numbered sentences, total7",
+      "effect": "Strict requested <=6 sentence check remains false; no test status was relabeled."
+    },
+    {
+      "type": "temporal_wording",
+      "phrase": "현재 critical 상태",
+      "context": "The response opens as a virtual-record interpretation and the user prompt explicitly asks for past-record interpretation; this phrase still lacks a precise capture-time qualifier.",
+      "effect": "Independent reviewer must assess clarity; no new operational observation occurred in the model turn."
+    },
+    {
+      "type": "recommendation_scope",
+      "observed": "Ventilation/capacity/filter checks are proposed next actions, not actions executed or proof of real-device integration."
+    }
+  ],
+  "stricter_profile": {
+    "sandbox": "read-only",
+    "approval_policy": "never",
+    "operational_model_calls": 0,
+    "unrelated_builtin_skills_disabled_only_in_fresh_profile": true,
+    "official_permission_text_preserved": true
+  },
+  "all_prior_cases_preserved": true,
+  "whole_gate_self_passed": false,
+  "independent_review_required": true,
+  "shared_budget": {
+    "batch_id": "opensoom-hackathon-2026-01",
+    "max_requests": 100,
+    "max_tokens": 250000,
+    "requests_consumed": 72,
+    "tokens_charged": 238120,
+    "tokens_reserved": 0,
+    "pending_requests": 0,
+    "requests_remaining": 28,
+    "tokens_remaining": 11880,
+    "requires_investigation": false
+  },
+  "case_scope": {
+    "max_requests": 1,
+    "max_tokens": 14000,
+    "requests_consumed": 1,
+    "tokens_charged": 2810,
+    "requests_remaining": 0,
+    "tokens_remaining": 11190
+  }
+}

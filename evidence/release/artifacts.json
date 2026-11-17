@@ -5,8 +5,8 @@
   "files": [
     {
       "path": "docs/submission/hackster-article.md",
-      "sha256": "fd0aa203dc151db35276b9150cf4242918049120f6a614f863f9b6dc2e007dad",
-      "bytes": 11347
+      "sha256": "8aa3a6176d1a2959003780d060260b7259353cd28c32b85528ce1b029357c51d",
+      "bytes": 11693
     },
     {
       "path": "docs/submission/technical-qa.md",
@@ -25,8 +25,8 @@
     },
     {
       "path": "pitch/README.md",
-      "sha256": "fd040659059efc1e101c5a773809554db1fdd879e284cffb977a41c8fc17575f",
-      "bytes": 4925
+      "sha256": "2933e44a6b1df72e3f4b55023e1dada3b0d047fb807441a81d058c01908c7765",
+      "bytes": 4953
     },
     {
       "path": "pitch/architecture.css",
@@ -40,8 +40,8 @@
     },
     {
       "path": "pitch/architecture.js",
-      "sha256": "42e28ffc2aa0daa3ca87c9c1c8bc4fae16446a66d94b3da896f140a42e9e9203",
-      "bytes": 83158
+      "sha256": "6f6467b7323305a6982ab7707cf0a55db3e04712a64baa1369dc7d994118f48c",
+      "bytes": 83240
     },
     {
       "path": "pitch/assets/dashboard.jpg",
@@ -151,8 +151,10 @@
     "evidence/pitch/architecture-source-map.json",
     "evidence/pitch/architecture-browser-qa.json",
     "evidence/dashboard/visual-upgrade-qa.json",
-    "evidence/release/semantics-contract.patch"
+    "evidence/release/semantics-contract.patch",
+    "evidence/pitch/release-corrections-qa.json",
+    "evidence/agent/units-checkpoint.json"
   ],
   "independent_review": "pending final combined release snapshot",
-  "snapshot_updated_at": "2026-11-17T20:23:06.561705+00:00"
+  "snapshot_updated_at": "2026-11-17T20:46:52.967653+00:00"
 }

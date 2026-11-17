@@ -1,0 +1,156 @@
+{
+  "schema_version": 1,
+  "team": "team_2",
+  "reviewer_role": "oss_experience_review",
+  "model": "gpt-6.1-sol",
+  "reasoning_effort": "max",
+  "reviewed_commit": "0d733da7051eeffbe070f6c219e9631509b0f858",
+  "criteria_owned": [4, 5, 6, 7],
+  "review_contract": "docs/review/release-review-request.md",
+  "result": "changes_required_before_complete_release_acceptance",
+  "summary": "The source-checkout installation/lifecycle, substantial real CSE/model evidence, English video, source-mapped Three.js presentation and Korean guide are present and reviewable. The required grounded Codex onboarding handoff remains unverified in this immutable candidate: its latest completed semantic response states the wrong airflow unit after the harness omitted units. Presentation protocol labels also need small source-consistency corrections. Public article/video hosting is honestly pending and is a separate handoff, not a reason to fabricate public evidence.",
+  "snapshot_boundary": "All substantive source, documents, evidence and images were read from a git archive of reviewed_commit. Working-tree fixes and any later unit-preserving model validation are excluded. This report does not approve a future inference call or predict its result.",
+  "rubric_basis": {
+    "title": "Hackathon Rubric 2026",
+    "sha256": "42b38857fffae7c92739f84440b9db020ec6b79897c0f70db64c465ffd2cdfad",
+    "verification": "Original one-page PDF text was read and its SHA-256 verified against the local source index; owned rows were compared with rubric-baseline.json.",
+    "boundary": "Rubric descriptors, project acceptance gates and publication evidence are distinct. No official score, total, weight, N/A treatment or award probability is inferred."
+  },
+  "evidence_inspected": {
+    "adoption": ["README.md", "deploy/README.md", "docs/agent-integration.md", "docs/extending.md", "plugin/", "scripts/agent_install_plugin.py", "scripts/agent_codex_check.py", "evidence/agent/setup-acceptance.json", "evidence/release/final-clean-lifecycle.json"],
+    "source_and_execution": ["docs/product-contract.json", "docs/implementation-plan.md", "docs/execution-state.json", "docs/review/review-ledger.json", "src/opensoom/core.py", "src/opensoom/mcp_server.py", "evidence/agent/index.json", "evidence/agent/release-live-recovery.json", "evidence/agent/release-live-stale.json", "evidence/agent/release-codex-host.json", "evidence/application/release-acceptance.json", "evidence/release/review-regressions.json", "evidence/release/source-reconciliation.json", "evidence/release/semantics-contract.patch", "evidence/release/final-checks.json"],
+    "guided_host": ["evidence/agent/guided-rehearsal.md", "evidence/agent/guided-live.json", "evidence/agent/guided-correlation.json", "evidence/agent/guided-config-report.md", "evidence/agent/guided-config-continuation-live.json", "evidence/agent/guided-explanation-report.md", "evidence/agent/guided-explanation-live.json", "evidence/agent/semantics-live.json", "evidence/agent/semantics-fact-check.json", "evidence/agent/semantics-mcp-capture.json"],
+    "article_and_presenter": ["docs/submission/hackster-article.md", "docs/submission/technical-qa.md", "docs/submission/handoff.md", "docs/project-guide.ko.md", "pitch/README.md", "pitch/index.html", "pitch/architecture.js", "evidence/pitch/architecture-source-map.json", "evidence/pitch/architecture-browser-qa.json", "evidence/pitch/visual-upgrade-qa.json"],
+    "video": ["deliverables/video/openSoom-demo-en.mp4", "deliverables/video/README.md", "deliverables/video/narration.en.txt", "deliverables/video/captions.en.srt", "deliverables/video/storyboard.json", "scripts/render_video.py", "evidence/video/qa.json", "evidence/video/ffprobe.json", "evidence/video/asset-provenance.json", "evidence/video/decoded-contact-sheet.jpg"],
+    "visual_captures": ["evidence/dashboard/visual-upgrade-desktop-unresolved.jpg", "evidence/dashboard/visual-upgrade-mobile-full.jpg", "evidence/dashboard/visual-upgrade-qa.json", "evidence/pitch/architecture-full-distributed.jpg", "evidence/pitch/architecture-mobile-components.jpg", "evidence/pitch/desktop.jpg"],
+    "release_index": ["evidence/release/artifacts.json", "docs/hackathon/rubric-baseline.json", "docs/hackathon/current-assessment.md", "THIRD_PARTY_NOTICES.md"]
+  },
+  "independent_verification": {
+    "artifact_manifest": "All 28 listed file hashes match this immutable candidate.",
+    "agent_index": "All 24 indexed artifact hashes match. Accepted release recovery, stale/error-handling and CLI-host captures are distinguished from retained historical failures.",
+    "source_reconciliation": "All 25 release-side source hashes match. The four changed runtime/skill files relative to fd5e648 are exactly core.py read_evidence metadata, the MCP description and the two skill interpretation paragraphs. The inspected patch adds no actuator, policy, budget, CSE binding or lifecycle behavior. The interpretation outcome is separately assessed and is not retroactively passed.",
+    "final_checks_hashes": "Every source_sha256 entry matches the candidate.",
+    "architecture_QA_hashes": "All nine recorded presentation source hashes match. Saved desktop/mobile captures and source map correspond to the candidate; known source-label errors are below.",
+    "video": {"sha256": "d4cc9e2ce19fcef31f97212edf54f0ae5caa5c32e2f17e5ae8ae7ce32721c0ee", "duration_seconds": 108.021333, "dimensions": "1920x1080", "format": "H.264/AAC", "full_decode_command": "ffmpeg -v error -i deliverables/video/openSoom-demo-en.mp4 -f null -", "exit_status": 0, "decode_errors": 0},
+    "offline_regressions": {"command": "PYTHONPATH=<immutable-snapshot>/src <existing-project-python> -m pytest tests/test_cli_lifecycle.py tests/test_contracts.py tests/test_facility_registry.py tests/test_review_regressions.py -q -p no:cacheprovider", "result": "27 passed in 2.03s", "exit_status": 0},
+    "presentation_regressions": {"command": "node evidence/dashboard/visual-source-checks.mjs", "result": "22 passed", "exit_status": 0, "scope": "Synthetic presentation checks, not new CSE/device/model execution"},
+    "media_scope": "Inspected decoded scene sheet, narration/captions, visual captures, source mapping and recorded browser/audio QA; independently decoded the whole video. No new browser interaction, full independent audio audition, CSE scenario or model request was performed.",
+    "historical_video_sources": "Video source hashes intentionally retain their original capture identity. render_video.py, scenario-contract.md and core.py now differ, while every referenced browser image still matches. The renderer difference includes the relative-filename privacy correction and the later runtime semantics are separately reconciled. Historical model runs shown in the film are not represented as new candidate-source runs."
+  },
+  "criterion_verdicts": [
+    {
+      "criterion": 4,
+      "name": "Quality of Article",
+      "maturity": "implemented_English_draft; independently_reviewed; not_public",
+      "verdict": "prepared_content_with_small_claim_consistency_correction_required",
+      "assessment": "Draft covers the concrete sourced problem, virtual equipment, architecture/resources, native services and protocols, trust boundaries, reproducible setup, failure-derived insights and specific oneM2M benefits. It carefully separates health/physical outcomes and retained model failures. The combined protocol figure/paragraph needs explicit alternative-profile scope as described in FT2-02. Public Hackster publication, final video URL and public access are not established.",
+      "score": null
+    },
+    {
+      "criterion": 5,
+      "name": "Quality of Video",
+      "maturity": "implemented_rendered_and_captured; independently_inspected_prepared_artifact; not_video_host_published",
+      "verdict": "prepared_artifact_supported",
+      "assessment": "The 108-second film has a coherent opening problem, readable original graphics, actual edited dashboard captures, English narration/captions, a recorded model trace, separate ACK/recovery/non-recovery and reuse. Reasonable production effort and an understandable narrative are visible. It identifies simulated physical data, historical recorded runs and CLI transport versus model execution. Public hosting is pending; the video does not prove a completed manager onboarding interaction.",
+      "score": null
+    },
+    {
+      "criterion": 6,
+      "name": "Quality of Github",
+      "maturity": "implemented_source_checkout; captured_clean_lifecycle; final_release_revision_not_published",
+      "verdict": "strong_reproducible_repository_with_required_onboarding_handoff_gap",
+      "assessment": "Standalone README explains purpose, pinned install, source navigation, diagnostics, account-free real-CSE fixture, extension paths and lifecycle. Fresh copied source/two environments/HTTPS CSE execution includes pending-state restart and cleanup preservation. Tested scope is macOS arm64/Python 3.12 and Codex CLI 0.166.0 source checkout; wheel-only installation, other OS acceptance, desktop UI and a human first-use study remain unclaimed. Plugin installation and actual model-selected tools exist, but the required grounded final Codex user explanation is not yet established. Article backlink remains an honest external publication handoff; no full Expert claim is established now.",
+      "score": null
+    },
+    {
+      "criterion": 7,
+      "name": "Promotion of oneM2M",
+      "maturity": "implemented_article_video_repository_and_pitch; technical_evidence_captured; final_consistency_pending",
+      "verdict": "concrete_standard_value_supported_with_protocol_label_correction_required",
+      "assessment": "Materials explain the actual discovery/subscription/group/ACP and sharing functions, adapter-only vendor replacement and unchanged operational code. They distinguish application-specific policy from standard common services and acknowledge that a single-vendor system could be simpler. Protocol/profile labels must agree across article and interactive source map. Public reach or completed submission is not inferred from prepared files.",
+      "score": null
+    }
+  ],
+  "gate_verdicts": [
+    {"gates": ["S0-G1", "S0-G2", "S0-G3", "S0-G4"], "verdict": "no_new_team2_blocker", "reason": "Contracts, pinned runtime/preflight and reviewed feasibility are implemented; Stage 0 approval does not imply later onboarding or publication success."},
+    {"gates": ["S1-G3"], "verdict": "supported_in_team2_scope", "reason": "Final isolated lifecycle preserves the exact pending command/run/incident across restart and reaches timeout without a false recovery. Cleanup removes scoped service data while preserving configuration, CSE and shared allowance."},
+    {"gates": ["S2-G1"], "verdict": "reuse_supported_in_team2_scope", "reason": "Two profiles/adapters, configuration-only facility extension and unchanged core/tool paths have captured application evidence and independent offline contract/registry checks. Detailed protocol/model acceptance belongs to Team 1."},
+    {"gates": ["S3-G1"], "verdict": "not_passed_required_user_handoff_gap", "reason": "Registration, MCP, readiness, model-selected setup/diagnosis and lifecycle are separately evidenced. The latest completed explanation still has a wrong unit; FT2-01 and R-027 remain open. Desktop or a human study is not added as a new requirement."},
+    {"gates": ["S3-G2", "S3-G3"], "verdict": "execution_evidence_supported_subject_to_team3_closeout", "reason": "Actual hosted positive and stale/error-handling results, distinct fixture results, scopes and shared accounting exist; the bounded additive read-contract delta is explicit. This is not a finding that the known explanation is factually correct."},
+    {"gates": ["S3-G4"], "verdict": "not_complete", "reason": "Final multi-team reconciliation and the required factual handoff remain outstanding."},
+    {"gates": ["S5-G1"], "verdict": "supported", "reason": "Rendered dashboard shows run-bound unresolved and stale conditions with explicit simulated/illustrative labeling, distinct command/ACK/result and readable mobile controls. Twenty-two source checks cover stale/missing/zero values, absent ACK and cross-run/zone isolation."},
+    {"gates": ["S5-G2", "S5-G3"], "verdict": "supported_prepared_local_artifact", "reason": "Playable fully decoded English video, storyboard/captions, renderer, asset provenance and recorded playback QA exist. It is an edited capture sequence and its historical model evidence remains correctly identified."},
+    {"gates": ["S6-G1"], "verdict": "supported_source_checkout_lifecycle_scope", "reason": "Clean isolated lifecycle, pinned dependencies, standalone documentation, diagnostic failure states and focused regression checks support the shipped macOS checkout route. This does not waive S3-G1."},
+    {"gates": ["S6-G2"], "verdict": "prepared_package_needs_small_consistency_correction", "reason": "English draft/Q&A, video, presenter material and artifact hashes exist; FT2-02 must be corrected. Actual article/video-host/Discord publication is a separate handoff and is not required to pretend this draft is public."},
+    {"gates": ["S6-G3"], "verdict": "not_passed", "reason": "R-027/R-031 and candidate presentation-label corrections remain open; final four-team reconciled acceptance cannot be inferred from implementation-author QA."},
+    {"gates": ["S6-G4"], "verdict": "pending_main_owned_repository_publication", "reason": "The reviewed candidate is identified locally. Post-review push/remote revision verification is explicitly pending in the release manifest and review contract; no remote publication check was performed here."},
+    {"gates": ["S6-G5"], "verdict": "visual_and_Korean_material_supported_label_correction_pending", "reason": "The larger Three.js facility/workflow/full architecture, 51 mapped nodes/77 relationships, alternative topology views, logical-versus-process legend, DOM component index/mobile groups and Korean explanations are implemented and captured. FT2-02 affects the source-mapped protocol detail. Pointer orbit, raycast and automatic fallback have declared unexercised limits; no unrelated accessibility certification is required."}
+  ],
+  "prior_finding_rechecks": [
+    {"id": "R-002", "verdict": "partially_resolved", "evidence": ["evidence/release/final-clean-lifecycle.json", "evidence/agent/release-codex-host.json", "evidence/agent/guided-live.json", "evidence/agent/guided-config-continuation-live.json"], "reason": "Technical adoption/lifecycle and model-led reads exist. The broader grounded manager handoff remains open under R-027."},
+    {"id": "R-011", "verdict": "partially_resolved", "evidence": ["README.md", "docs/submission/hackster-article.md", "deliverables/video/openSoom-demo-en.mp4", "evidence/release/artifacts.json"], "reason": "Substantial reproducible prepared deliverables exist. Candidate claim consistency and final acceptance remain pending; public article/video hosting and backlink are accurately external handoff items."},
+    {"id": "R-025", "verdict": "resolved_for_source_provenance_gap", "evidence": ["evidence/agent/index.json", "evidence/release/source-reconciliation.json", "evidence/release/semantics-contract.patch", "evidence/release/final-checks.json"], "reason": "New base-revision positive/stale/host captures are indexed and preserved; current runtime differences are exactly bounded additive interpretation metadata/skill changes. Control behavior is not silently substituted. Interpretation success remains a separate R-027/R-031 issue."},
+    {"id": "R-027", "verdict": "partially_resolved_remains_open", "evidence": ["evidence/agent/guided-live.json", "evidence/agent/guided-config-continuation-live.json", "evidence/agent/guided-explanation-live.json", "evidence/agent/semantics-live.json"], "reason": "Actual model tool selection and normal final delivery now exist. The last response says 200 L/min where the real tool contains 200 m³/h. It is not a grounded final pass."},
+    {"id": "R-028", "verdict": "resolved", "evidence": ["scripts/agent_codex_check.py", "evidence/agent/index.json#default_output_regression"], "reason": "Default output is a unique ignored .runtime/agent-checks file. Actual default invocation is recorded and the historical failure hash is preserved."},
+    {"id": "R-029", "verdict": "resolved", "evidence": ["evidence/video/ffprobe.json", "scripts/render_video.py"], "reason": "Probe filename is repository-relative, the renderer saves it that way and the prior personal absolute path is absent. Separate session-recorder cleanup is FT2-03, not a recurrence of the video path defect."},
+    {"id": "R-031", "verdict": "product_semantics_corrected_final_handoff_still_open", "evidence": ["evidence/release/semantics-contract.patch", "tests/test_review_regressions.py", "evidence/agent/semantics-live.json", "evidence/agent/semantics-fact-check.json"], "reason": "Real tool/skill semantics and deterministic prior-ACK cases are corrected, and the later model recognizes action history/count/direction. Its new unit error prevents whole factual handoff closure. Units were present in the actual tool but omitted by the validation projection."}
+  ],
+  "findings": [
+    {
+      "id": "FT2-01",
+      "related_findings": ["R-027", "R-031", "T2-GE01"],
+      "criteria": [6, 17],
+      "gate_ids": ["S3-G1", "S3-G4", "S6-G3"],
+      "priority": "P1",
+      "classification": "required_acceptance_gap",
+      "release_blocker": true,
+      "observed_evidence": ["evidence/agent/semantics-live.json#model_korean_explanation", "evidence/agent/semantics-fact-check.json", "evidence/agent/semantics-mcp-capture.json#/response/structuredContent/zones/0/observations/airflow"],
+      "gap_and_impact": "The completed explanation says 200 L/min; the original captured measurement is 200 m³/h. The harness selected only values, omitting original measurement units/timestamps/provenance. This establishes a lossy validation input plus an unsupported model inference, not a missing-unit backend defect. A manager cannot rely on this as the required factually grounded handoff.",
+      "minimum_change": "Preserve this failure and all exhausted cases. Complete a transparently versioned measurement-complete input integrity check and an actual grounded user handoff under a main-approved finite scope within the unchanged shared batch. The proposed future stricter profile or corrected-input test is not evidence in this candidate. Do not edit the old answer or waive the gate.",
+      "product_reason": "Correct measurements and action history are core adoption requirements; successful transport or a complete sentence does not establish reliable operational guidance.",
+      "verification": "Independent source mapping confirms all previously chosen facts plus exact units/timestamps/source/quality survive the transformation, and an actually completed final answer preserves those facts, historical/simulation scope, prior ACK versus recovery, unresolved state and permission limits. No additional full installation/tool replay or desktop/human study is imposed."
+    },
+    {
+      "id": "FT2-02",
+      "criteria": [4, 7],
+      "gate_ids": ["S6-G2", "S6-G3", "S6-G5"],
+      "priority": "P2",
+      "classification": "cross_artifact_protocol_claim_consistency",
+      "release_blocker": true,
+      "observed_evidence": ["pitch/architecture.js:165", "src/opensoom/core.py:180", "docs/submission/hackster-article.md:27", "docs/submission/hackster-article.md:47", "deploy/README.md"],
+      "gap_and_impact": "The interactive standard PM2.5 projection edge labels the single secure profile as HTTPS, but publish selects self.mqtt for that SDT update when MQTT is enabled. The article's combined diagram/paragraph can also read as one deployment using both secure device bindings and a central distributed CSE, even though the distributed demonstration uses HTTP and is separate. Correct surrounding caveats do not fix an incorrect selected edge label.",
+      "minimum_change": "Label the secure SDT update as native MQTT/TLS and explicitly caption or separate the secure-single and distributed-HTTP article paths. Update the exported source map and affected artifact hashes. This agrees with the protocol owners' presentation correction; no backend rewrite or new protocol feature is needed.",
+      "product_reason": "The project's oneM2M value must be understandable without asking readers to reconcile contradictory profile details.",
+      "verification": "A narrow correction snapshot shows labels matching Core.publish and the actual secure/distributed evidence; selected inspector text, article caption, source map and release manifest agree. Refresh affected visual QA only where displayed behavior changed."
+    },
+    {
+      "id": "FT2-03",
+      "criteria": [6],
+      "gate_ids": ["S6-G4"],
+      "priority": "P3",
+      "classification": "public_metadata_portability",
+      "release_blocker": false,
+      "observed_evidence": ["evidence/pitch/architecture-browser-qa.json#evidence_origin"],
+      "gap_and_impact": "The public observer/recorder metadata still contains internal session identifiers. These are not credentials, but they are unnecessary, session-specific public metadata and repeat an earlier portability concern.",
+      "minimum_change": "Use stable public role labels and retain an explicit metadata-only redaction note. Preserve the observation attribution, source/capture hashes and the fact that the recorder did not conduct the UI observations.",
+      "product_reason": "Public evidence should be intelligible and reusable across sessions without exposing internal coordination handles.",
+      "verification": "The revised record has role labels while its substantive observations and referenced screenshot/source hashes remain unchanged."
+    }
+  ],
+  "publication_verdict": {
+    "GitHub_candidate_revision": "pending_main_post_review_push_and_remote_verification",
+    "Hackster_article": "draft_not_published",
+    "video_host": "not_published; local_repository_artifact_present",
+    "pitch_host": "static_repository_artifact; no_external_hosting_claim",
+    "Discord_submission": "not_performed_or_authorized_in_this_review",
+    "article_backlink": "pending_actual_publication",
+    "assessment": "Current disclosure and handoff are honest. These external actions do not earn public-evidence credit now and do not authorize this reviewer to perform them. Their absence is not an invented zero or N/A."
+  },
+  "limitations_and_followup": [
+    "This exact candidate cannot be declared fully complete because a required factual onboarding outcome remains open.",
+    "Main-reported working-tree caption/metadata changes and any later model run need their own immutable correction snapshot and narrow independent verification; they are not silently included here.",
+    "Source-checkout support and explicit maintainer prerequisites are reasonable current release limits. A downloadable package, other OS, desktop wizard, human study or real-device pilot remains useful future work, not a new blocker imposed by this review.",
+    "No official rubric score, aggregate, eligibility ruling, clinical/physical performance, MEC deployment or completion of public submission is established."
+  ],
+  "reviewer_actions": "Only this review file was written in the shared repository. All inspected candidate files came from an isolated immutable archive. Offline tests/media decode made no provider requests and did not mutate running application/CSE/profiles or host settings."
+}

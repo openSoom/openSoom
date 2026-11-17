@@ -889,7 +889,7 @@
       "verification": "Independent reviewer inspects changed code and reproducible behavior/evidence on the identified final snapshot.",
       "main_decision": "accept",
       "decision_reason": "Necessary correction or missing evidence for an existing requirement, without adding unrelated product scope.",
-      "implementation_state": "Correctedcounter/historycontract implemented and tests53+8passed; actualcompletedregressionfixedtheseclaims but omittedinputunit led to wrongL/min. Fullfactualhandoffremainsopen.",
+      "implementation_state": "Corrected product semantics and unit-preserving validation input now yield a completed actualCodex response with source-matched quantities/history. Original7-vs6sentence format failure retained; independent functional/factual acceptance pending.",
       "implementation_owner": "main with bounded delegated implementation",
       "review_state": "awaiting_independent_verification",
       "closure_evidence": [
@@ -899,7 +899,10 @@
         "evidence/agent/guided-explanation-live.json",
         "evidence/agent/guided-explanation-fact-check.json",
         "evidence/agent/semantics-live.json",
-        "evidence/agent/semantics-fact-check.json"
+        "evidence/agent/semantics-fact-check.json",
+        "evidence/agent/units-live.json",
+        "evidence/agent/units-input-map.json",
+        "evidence/agent/units-fact-check.json"
       ]
     },
     {
@@ -998,7 +1001,7 @@
       "verification": "Deterministic semantic regression and actual completed model explanation against source records, with original failed output preserved.",
       "main_decision": "accept",
       "decision_reason": "Directly observed product ambiguity; additive read contract preserves behavior and prior evidence.",
-      "implementation_state": "Correctedcounter/historycontract implemented and tests53+8passed; actualcompletedregressionfixedtheseclaims but omittedinputunit led to wrongL/min. Fullfactualhandoffremainsopen.",
+      "implementation_state": "Corrected product semantics and unit-preserving validation input now yield a completed actualCodex response with source-matched quantities/history. Original7-vs6sentence format failure retained; independent functional/factual acceptance pending.",
       "implementation_owner": "main + runtime_onem2m for bounded capture",
       "review_state": "awaiting_independent_verification",
       "closure_evidence": [
@@ -1007,7 +1010,87 @@
         "docs/review/guided-explanation-review-team2.json",
         "docs/review/explanation-semantics-team3.json",
         "evidence/agent/semantics-live.json",
-        "evidence/agent/semantics-fact-check.json"
+        "evidence/agent/semantics-fact-check.json",
+        "evidence/agent/units-live.json",
+        "evidence/agent/units-input-map.json",
+        "evidence/agent/units-fact-check.json"
+      ]
+    },
+    {
+      "id": "R-032",
+      "team": "team_1",
+      "criteria": [
+        2,
+        11
+      ],
+      "review_round": "strict-final-0d733da",
+      "evidence_status": "review_finding",
+      "gap_and_impact": "Full architecture explorer labeled single-profile SDT projection writes asHTTPS, but implementation/capture use nativeMQTT/TLS.",
+      "minimum_change": "Correct bothfacilityprojectionedge labels, summaryand sourcemap.",
+      "product_reason": "Architecture explanation must match the actualoneM2M binding.",
+      "verification": "Independent review against core publish path and native_MQTT_SDT_update capture; exported map agrees with source.",
+      "main_decision": "accept",
+      "decision_reason": "Small factual correction to presentation; no runtimebehaviorchange.",
+      "implementation_state": "Labels and exportedsource-mapcorrected; pendingindependentverification.",
+      "implementation_owner": "main",
+      "review_state": "awaiting_independent_verification",
+      "closure_evidence": [
+        "pitch/architecture.js",
+        "pitch/README.md",
+        "evidence/pitch/architecture-source-map.json",
+        "evidence/pitch/release-corrections-qa.json"
+      ],
+      "source_findings": [
+        "T1-F01"
+      ]
+    },
+    {
+      "id": "R-033",
+      "team": "team_1",
+      "criteria": [
+        2,
+        3,
+        4
+      ],
+      "source_findings": [
+        "T1-F02"
+      ],
+      "review_round": "strict-final-0d733da",
+      "evidence_status": "review_finding",
+      "gap_and_impact": "Article Mermaid combined secure local and distributed profiles without an explicit alternative-deployment caption.",
+      "minimum_change": "Label and caption the separate HTTP distributed demonstration.",
+      "product_reason": "Readers should not infer untested distributed TLS coverage.",
+      "verification": "Independent review of diagram and caption against actual deployment profiles.",
+      "main_decision": "accept",
+      "decision_reason": "Clarifies existing evidence without runtime scope expansion.",
+      "implementation_state": "Caption and dashed edge corrected; awaiting independent verification.",
+      "implementation_owner": "main",
+      "review_state": "awaiting_independent_verification",
+      "closure_evidence": [
+        "docs/submission/hackster-article.md",
+        "evidence/pitch/release-corrections-qa.json"
+      ]
+    },
+    {
+      "id": "R-034",
+      "team": "team_2",
+      "criteria": [
+        4,
+        6
+      ],
+      "review_round": "strict-final-0d733da",
+      "evidence_status": "review_finding",
+      "gap_and_impact": "Browser QA recorder metadata exposed unnecessary internal session identifiers; no credential was found.",
+      "minimum_change": "Keep provenance as public role labels.",
+      "product_reason": "Publish relevant reproducibility information without internal session details.",
+      "verification": "Inspect evidence_origin and retain all observations/source hashes.",
+      "main_decision": "accept",
+      "decision_reason": "Small public-metadata improvement.",
+      "implementation_state": "Role labels substituted; awaiting independent verification.",
+      "implementation_owner": "main",
+      "review_state": "awaiting_independent_verification",
+      "closure_evidence": [
+        "evidence/pitch/architecture-browser-qa.json"
       ]
     }
   ]

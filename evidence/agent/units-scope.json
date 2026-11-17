@@ -1,0 +1,30 @@
+{
+  "case_prefix": "codex-units-",
+  "limits": {
+    "max_requests": 1,
+    "max_tokens": 14000,
+    "max_output_tokens": 2048,
+    "provider_timeout_seconds": 45,
+    "turn_timeout_seconds": 90,
+    "retries": 0
+  },
+  "requested_output_tokens": 768,
+  "purpose": "Measurement-complete corrected-input regression, not retry/reset of any prior case.",
+  "sandbox": "read-only",
+  "approval_policy": "never",
+  "operational_tools": 0,
+  "stricter_policy_rationale": "The isolated explanation turn cannot request escalation; ordinary Codex-generated restrictions are preserved verbatim. No outside-sandbox execution is allowed.",
+  "disabled_unrelated_builtin_skills": [
+    "imagegen",
+    "openai-docs",
+    "skill-creator",
+    "skill-installer"
+  ],
+  "shipped_opensoom_setup_skill": "installed and selected unchanged",
+  "shared_budget_unchanged": {
+    "max_requests": 100,
+    "max_tokens": 250000
+  },
+  "effective_reservation_bound": "min(14000 - case charged tokens, actual remaining shared tokens)",
+  "automatic_retry_or_reset": false
+}

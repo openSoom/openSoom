@@ -33,8 +33,14 @@ flowchart TB
   X[Codex plugin] --> M
   L[Actual model API runner] --> M
   D[Facility dashboard] --> O
-  C <-->|Selective sharing / remote operations| I[Central IN-CSE]
+  C <-.->|Alternative distributed lab: HTTP Mcc| I[Central IN-CSE]
 ```
+
+The solid paths show the secure single-installation profile. The dashed central
+connection represents a separate distributed demonstration with two MN-CSEs,
+two facility APIs and one IN-CSE, using HTTP Mcc. It is not evidence that the
+distributed topology ran with the secure profile's TLS bindings; a single
+installation needs no central CSE.
 
 The CSE resource tree contains facility/zone containers with observation, command and ACK content instances. Native subscriptions notify the service of new observations. A facility group fans out across its observation containers. Separate ACPs govern structure, observations, commands and ACKs. Standard PM2.5 flexContainers sit beneath the application AE. [Full resource tree](../architecture.md).
 

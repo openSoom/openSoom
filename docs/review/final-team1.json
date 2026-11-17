@@ -1,0 +1,451 @@
+{
+  "schema_version": 1,
+  "team": "team_1 / rubric_reviewer",
+  "model": "gpt-6.1-sol",
+  "reasoning_effort": "max",
+  "review_date": "2026-11-18",
+  "immutable_commit": "0d733da7051eeffbe070f6c219e9631509b0f858",
+  "criteria": [
+    1,
+    2,
+    3,
+    11
+  ],
+  "verdict": "changes_required_for_factual_presentation; substantive_oneM2M_core_supported; complete_release_not_approved",
+  "summary_ko": "실제 oneM2M 공통 서비스·다중 바인딩·PM2.5 한정 SDT 및 수정된 명령/ACK/결과 흐름을 확인했다. 기존 핵심 동작 결함의 종료 근거는 충분하다. 후보 커밋의 SDT 전송 라벨 오류를 고쳐야 하며, 이미 열린 Codex 사용자 안내 단위 오류 R-027/R-031 때문에 전체 완료를 승인하지 않는다.",
+  "independence": {
+    "product_source_edits": false,
+    "new_model_calls": 0,
+    "live_facility_mutations": 0,
+    "external_publication": false,
+    "only_authored_output": "docs/review/final-team1.json",
+    "snapshot_policy": "Review started with HEAD equal to immutable_commit and no tracked diff. Later parent presentation edits were excluded; remaining reads used git show at the immutable commit. Saved image captures are historical rendered evidence, not a new browser/runtime execution."
+  },
+  "official_rubric": {
+    "original_filename": "Hackathon Rubric 2026 (1).pdf",
+    "sha256": "42b38857fffae7c92739f84440b9db020ec6b79897c0f70db64c465ffd2cdfad",
+    "source_rechecked": "Original PDF text for owned descriptors, baseline and prior original rendered inspection",
+    "scoring_boundary": "No exact score, aggregate, weighting, track applicability, N/A or award forecast is assigned. Internal gates are project acceptance criteria, not official rubric requirements."
+  },
+  "evidence_integrity": {
+    "release_and_reconciliation_hash_entries_checked": 54,
+    "release_hash_mismatches": [],
+    "reconciliation_base": "fd5e648fa1c74e425507a98247844be150265acb",
+    "reconciliation_base_hash_mismatches": [],
+    "application_capture_before_equals_after": true,
+    "application_capture_hashes_match_base_revision": true,
+    "agent_index_entries_checked": 24,
+    "agent_entry_artifact_hash_mismatches": [],
+    "bounded_delta": {
+      "files": [
+        "src/opensoom/core.py",
+        "src/opensoom/mcp_server.py",
+        "plugin/skills/opensoom-operations/SKILL.md",
+        "plugin/skills/opensoom-setup/SKILL.md"
+      ],
+      "diff": "16 insertions, 1 deletion in src/plugin versus runtime base",
+      "assessment": "Verified additive read_evidence.evidence_scope metadata, one MCP description and two skills. No control, policy, protocol-client, model-runner, shared-budget or lifecycle behavior changed. Existing positive/stale captures can support those unchanged operational outcomes. New semantic contract and its effect on model prose require their separate evidence; they are not retroactively present in older runs.",
+      "patch": "evidence/release/semantics-contract.patch"
+    }
+  },
+  "checks_performed": [
+    {
+      "command": ".venv/bin/python -m pytest tests/test_contracts.py tests/test_facility_registry.py tests/test_review_regressions.py tests/integration/test_cse_client.py -q",
+      "exit_status": 0,
+      "result": "24 passed, 5 subtests passed in 0.78s",
+      "scope": "Local contracts/regressions and mocked CSE-client boundary; no new live CSE/model run."
+    },
+    {
+      "command": "node evidence/dashboard/visual-source-checks.mjs",
+      "exit_status": 0,
+      "result": "22 checks passed",
+      "scope": "Synthetic presentation regression checks; not device/model/runtime acceptance."
+    },
+    {
+      "check": "Architecture graph cross-reference audit at immutable_commit",
+      "result": "51 unique logical/source-mapped nodes, 77 edges; all referenced source paths exist and all node/edge source IDs resolve. Modes contain 46 distributed and 34 single-installation components. These are not 51 deployed processes."
+    },
+    {
+      "check": "Saved rendered captures inspected",
+      "files": [
+        "evidence/dashboard/visual-upgrade-desktop-unresolved.jpg",
+        "evidence/pitch/architecture-full-single-command.jpg",
+        "evidence/pitch/architecture-full-distributed.jpg",
+        "evidence/video/decoded-42s.jpg"
+      ],
+      "result": "Dashboard shows 200 m³/h against 500 m³/h with ACK and unresolved outcome; virtual/illustrative label visible. Architecture distinguishes processes/resources/logical modules and alternative topology modes. Video uses a named historical live-model run and separates CLI/MCP host transport."
+    }
+  ],
+  "criteria_assessment": [
+    {
+      "criterion": 1,
+      "official_descriptor_applied": "Expert: one or more complex services, such as group, announcement or pollingChannel.",
+      "evidence_state": "implemented_verified_captured",
+      "assessment_ko": "네이티브 GRP/fopt 성공, SUB 알림 후 권위 CSE 재조회, 실제 discovery와 별도 분산 announcement 증거가 있어 Expert 구간 서술을 지지한다. 정확한 5점은 판정하지 않는다.",
+      "evidence": [
+        "src/opensoom/core.py:139",
+        "src/opensoom/core.py:144",
+        "src/opensoom/core.py:287",
+        "evidence/application/release-acceptance.json#/checks/native_product_group_success",
+        "evidence/runtime/cse-https-smoke.json#/checks/subscription",
+        "evidence/runtime/product-multisite-continuity.json"
+      ],
+      "limits": [
+        "ACME member denial aborts the native aggregate. Explicitly labeled individual diagnostic reads after failure are application fallback, not a native mixed-success aggregate.",
+        "Group CRUD success is not actuator execution; per-command ACK and later observations remain separate."
+      ]
+    },
+    {
+      "criterion": 2,
+      "official_descriptor_applied": "Expert: devices/applications use multiple different protocols according to communication conditions.",
+      "evidence_state": "implemented_verified_captured; one presentation label incorrect",
+      "assessment_ko": "가상 어댑터의 관측·ACK·SDT 갱신은 실제 CSE MQTT/TLS 바인딩, 서비스 조회·명령은 HTTPS이다. 장비 발행과 앱 요청의 역할 분리가 명확하여 Expert 구간을 지지한다.",
+      "evidence": [
+        "src/opensoom/core.py:169",
+        "src/opensoom/core.py:180",
+        "src/opensoom/onem2m.py",
+        "evidence/runtime/cse-mqtt-tls-smoke.json",
+        "evidence/application/release-acceptance.json#/checks/actual_product_mixed_protocol_trace"
+      ],
+      "limits": [
+        "Anonymous loopback MQTT and trusted local origin headers do not prove production device authentication.",
+        "Local API/callback and distributed Mcc are HTTP. Secure single-installation and distributed HTTP captures are alternatives, not one all-TLS multisite run."
+      ],
+      "finding_ids": [
+        "T1-F01"
+      ]
+    },
+    {
+      "criterion": 3,
+      "official_descriptor_applied": "Proficient: multiple simple devices such as sensor and actuator through a CSE/application. Expert additionally requires complex device/multiple complex applications and actual reuse of oneM2M service functions.",
+      "evidence_state": "implemented_verified_captured; complexity judgement qualified",
+      "assessment_ko": "서로 다른 프로필·제조사 형식, 진단·운영·정비·어댑터의 실제 AE/ACP 책임, 장애·ACK·후속 관측 검증과 분산 자원 공유를 확인했다. Proficient는 확실히 지지되며 Expert 판단을 뒷받침하는 구체적 복잡성이 있다. 다만 단순 센서+댐퍼, AE 수 또는 51개 시각화 노드 수만으로 Expert/최고점을 자동 부여하지 않는다.",
+      "evidence": [
+        "docs/architecture.md",
+        "src/opensoom/core.py",
+        "evidence/application/release-acceptance.json",
+        "evidence/release/review-regressions.json",
+        "evidence/agent/release-live-recovery.json",
+        "evidence/agent/release-live-stale.json"
+      ],
+      "limits": [
+        "Physical device behavior is simulated; no physical capture adequacy or health benefit is established.",
+        "Logical roles are cohosted, not independently deployed production services.",
+        "Maintenance-record creation does not itself establish physical repair or recovery.",
+        "Actual Codex grounded-user-handoff acceptance remains incomplete under R-027/R-031."
+      ]
+    },
+    {
+      "criterion": 11,
+      "official_descriptor_applied": "Proficient: FCNT model plus application-purpose discovery. Expert: advanced semantic/SAREF or SDT TS-0023 model use.",
+      "evidence_state": "limited_PM25_SDT_implemented_verified_captured",
+      "assessment_ko": "TS-0023 v5.6.0 airQualitySensor의 cod:aiQSr/cnd, 정수형 비음수 PM2.5 µg/m³ 투영, 실제 ty=28 발견·타입 거절·앱 읽기를 확인했다. 제한된 PM2.5 범위에서 고급 SDT 서술을 지지한다.",
+      "evidence": [
+        "docs/standard-model.md",
+        "src/opensoom/core.py:142",
+        "src/opensoom/core.py:177",
+        "src/opensoom/core.py:331",
+        "evidence/runtime/cse-https-smoke.json#/checks/sdt_type_rejection",
+        "evidence/application/release-acceptance.json#/checks/actual_SDT_discovery_and_pm25_mapping",
+        "evidence/agent/release-live-recovery.json#/tool_calls/2/output"
+      ],
+      "limits": [
+        "Canonical CIN retains original float precision and observed/received timestamps. The SDT projection rounds with Python round, ties-to-even.",
+        "CO2 ppm is not assigned to SDT mass concentration; volume airflow m³/h is not mapped to airFlow speed.",
+        "No SAREF, whole-device conformance certification or freshness guarantee from the latest projected value alone.",
+        "The Codex explanatory unit error is downstream of correctly unit-bearing tool data; it does not invalidate CSE SDT mapping, but prevents an unqualified user-handoff pass."
+      ]
+    }
+  ],
+  "adopted_SDT_child_gates": [
+    {
+      "id": "SDT-G1",
+      "verdict": "pass_supported_with_scoped_claims",
+      "basis": "Pinned specification/model ID, integer µg/m³, nonnegative canonical validation, explicit ties-even rounding and omission rules agree between standard-model.md, Core.publish and vendor conversion tests. Original precision is retained."
+    },
+    {
+      "id": "SDT-G2",
+      "verdict": "pass_supported",
+      "basis": "Actual type28 cod:aiQSr creation, native discovery and CSE rsc4000 invalid-string rejection are captured; FCNT alone is not the basis for SDT credit."
+    },
+    {
+      "id": "SDT-G3",
+      "verdict": "pass_supported_across_two_profiles_adapters",
+      "basis": "release-acceptance actual_SDT...application_read_evidence reads learning-b vendor-b classroom/meeting/lounge. release-live-recovery read_evidence output reads food-a vendor-a cook/wash/pack with model ID, integer PM2.5, µg/m³ and request IDs; both preserve canonical observations. The common code uses both adapters."
+    }
+  ],
+  "gate_verdicts": [
+    {
+      "gates": [
+        "S0-G1",
+        "S0-G2",
+        "S0-G3"
+      ],
+      "team1_verdict": "supported_in_team1_scope",
+      "basis": "Concrete scenario/identity/model/runtime contracts and captured actual CSE/readiness exist; this does not establish unavailable MEC or completed Codex onboarding."
+    },
+    {
+      "gates": [
+        "S0-G4",
+        "S1-G4",
+        "S3-G4",
+        "S6-G3"
+      ],
+      "team1_verdict": "cross_team_main_owned; final_closeout_not_passed",
+      "basis": "This review supplies Team1 findings only. R-027/R-031 and T1-F01 remain open in the reviewed candidate; main must reconcile all teams."
+    },
+    {
+      "gates": [
+        "S1-G1",
+        "S1-G2"
+      ],
+      "team1_verdict": "pass_supported",
+      "basis": "Actual normal/fault/recovery, stale/missing refusal, missing ACK timeout and ACK-with-no-recovery captures. CSE/command/run/timestamp correlation and patched 0/50/100 outcomes inspected."
+    },
+    {
+      "gates": [
+        "S1-G3"
+      ],
+      "team1_verdict": "pass_supported_in_team1_scope",
+      "basis": "final-clean-lifecycle retains same pending command/incident through restart, then times out without false recovery. Rendered unresolved state agrees with recorded selected run."
+    },
+    {
+      "gates": [
+        "S2-G1"
+      ],
+      "team1_verdict": "pass_supported_for_two_virtual_adapters_profiles",
+      "basis": "Identical core/tool paths, distinct configured targets and equivalent normalized vendor mappings. No real-vendor protocol certification is implied."
+    },
+    {
+      "gates": [
+        "S2-G2"
+      ],
+      "team1_verdict": "pass_supported_with_native_failure_boundary",
+      "basis": "Native discovery/SUB/fopt success and a denied member are captured. Whole-group failure is retained; successful/denied per-member diagnostics are explicitly separate fallback, not invented native mixed aggregation."
+    },
+    {
+      "gates": [
+        "S2-G3"
+      ],
+      "team1_verdict": "pass_supported_for_declared_loopback_lab_boundary",
+      "basis": "Native MQTT/TLS/HTTPS and registered nonadmin AE ACP denials, scope/stale checks are captured. Full production authentication or all-TLS distributed topology is not claimed."
+    },
+    {
+      "gates": [
+        "S2-G4",
+        "S2-G5"
+      ],
+      "team1_verdict": "pass_supported_in_limited_PM25_scope",
+      "basis": "Adopt decision is recorded; SDT-G1/G2/G3 have sufficient evidence as assessed above. Main may update in_progress records after this independent review; other extension decisions remain Team4-owned."
+    },
+    {
+      "gates": [
+        "S3-G1"
+      ],
+      "team1_verdict": "blocked_known_grounded_handoff_failure",
+      "basis": "R-027/R-031 remain: completed semantics answer calls airflow 200 L/min, actual source says200 m³/h. Harness selection omitted units; real tool includes them. Completion/transport is not a factual user-handoff pass."
+    },
+    {
+      "gates": [
+        "S3-G2"
+      ],
+      "team1_verdict": "pass_supported_for_standalone_fixture_and_actual_model_path",
+      "basis": "release-live-recovery actual model generated discovery/evidence/action/verify calls and actualCSE outcome; bounded additive source delta does not alter those controls. Codex onboarding remains separate."
+    },
+    {
+      "gates": [
+        "S3-G3"
+      ],
+      "team1_verdict": "operational_negative_case_supported; complete_gate_defer_to_team3",
+      "basis": "Current-base stale model case is server-refused before CSE command creation and honestly unresolved; deterministic missing-ACK/no-recovery and ownership regressions pass. Shared-budget concurrency/credential full closure is Team3 scope."
+    },
+    {
+      "gates": [
+        "S5-G1"
+      ],
+      "team1_verdict": "source_and_saved_render_support_with_stated_limits",
+      "basis": "24 local tests and22 synthetic visual checks plus actual-state unresolved screenshot agree; this reviewer did not rerun a live browser or all four rendered states. Team2/3 own full visual closeout."
+    },
+    {
+      "gates": [
+        "S6-G5"
+      ],
+      "team1_verdict": "correction_required_in_candidate",
+      "basis": "51 logical nodes/77 edges are source mapped and topologies separated, but SDT update edge protocol label is wrong. See T1-F01."
+    },
+    {
+      "gates": [
+        "S6-G4"
+      ],
+      "team1_verdict": "not_assessed_pending_authorized_publication",
+      "basis": "No external publishing in this review; public submission/hosting remains handoff scope."
+    },
+    {
+      "gates": [
+        "S6-G2"
+      ],
+      "team1_verdict": "small_factual_diagram_clarification_required",
+      "basis": "English source claims are generally scoped, but article diagram needs the alternative-profile caption in T1-F02. Team2 owns overall article/video readiness and publication state."
+    }
+  ],
+  "prior_findings": [
+    {
+      "ids": [
+        "R-005",
+        "R-006",
+        "R-014"
+      ],
+      "verdict": "prior_scoped_closure_still_supported",
+      "basis": "Actual standard services, bindings and limited model plus required/conditional gate split remain present."
+    },
+    {
+      "ids": [
+        "T1-I1",
+        "R-023"
+      ],
+      "verdict": "resolved",
+      "basis": "Core.sample_facility preserves actual requested setpoint. Actual CSE regressions:0→0m³/h unresolved,50→517.5m³/h unresolved,100→1035m³/h recovered; ACK values remain requested values. Local parametric regression passes."
+    },
+    {
+      "ids": [
+        "T1-I2",
+        "R-025"
+      ],
+      "verdict": "resolved_for_team1_operational_provenance_scope",
+      "basis": "Final fixed-base positive and stale live model captures exist, original failures retained; exact release/base hashes and additive source delta independently checked. This does not close distinct Codex natural-language onboarding findings."
+    },
+    {
+      "ids": [
+        "T1-I3",
+        "R-026"
+      ],
+      "verdict": "team1_advanced_model_record_gap_resolved; broader_extension_closeout_team4_owned",
+      "basis": "advanced_data_model is adopted with nonempty SDT-G1/G2/G3, evidence and decision history. This report independently supports all three; main state still truthfully in_progress until closeout."
+    },
+    {
+      "ids": [
+        "R-027",
+        "R-031"
+      ],
+      "verdict": "unresolved_shared_release_blocker",
+      "basis": "Raw completed answer contains unsupported L/min, while source MCP observation unit is m³/h. Earlier counter/history error was improved, not erased. A completion flag and clarification patch do not establish corrected factual delivery."
+    }
+  ],
+  "findings": [
+    {
+      "id": "T1-F01",
+      "criteria": [
+        2,
+        11
+      ],
+      "gates": [
+        "S6-G5"
+      ],
+      "severity": "P2",
+      "classification": "required_factual_presentation_correction_before_final_acceptance",
+      "observed_evidence": [
+        "pitch/architecture.js:165",
+        "evidence/pitch/architecture-source-map.json#/edges/food-project",
+        "evidence/pitch/architecture-source-map.json#/edges/learning-project",
+        "src/opensoom/core.py:180",
+        "evidence/application/release-acceptance.json#/checks/actual_product_mixed_protocol_trace/native_MQTT_SDT_update"
+      ],
+      "gap_and_impact_ko": "single 모드의 PM2.5 SDT 갱신 edge가 HTTPS로 표시되지만 실제 구현은 self.mqtt or self.cse를 사용하며 secure 캡처는 MQTT_TLS 갱신이다. 소스 대응을 표방하는 최종 구조도가 실제 바인딩을 잘못 설명한다.",
+      "smallest_reasonable_fix": "Change both single-profile projection-edge labels to native oneM2M MQTT/TLS, regenerate the exported source map and refresh any dependent source-hash/QA delta record. Do not change runtime protocol code or rerun unrelated model cases.",
+      "product_justification": "An integrator must be able to trace the advertised data path and trust the same standard-model transport shown in the actual CSE evidence.",
+      "verification": "On a new immutable correction commit, assert both *-project single protocol labels match the captured MQTT_TLS update; verify the source map matches renderer and explicitly preserve historical rendered capture hashes. Runtime bytes unchanged means no new live inference is needed.",
+      "status_at_reviewed_commit": "unresolved",
+      "parent_reported_later_working_tree_fix": "Excluded from this verdict; requires identified correction commit."
+    },
+    {
+      "id": "T1-F02",
+      "criteria": [
+        2,
+        3
+      ],
+      "gates": [
+        "S6-G2",
+        "S6-G5"
+      ],
+      "severity": "P2",
+      "classification": "small_required_claim_clarification; no_new_runtime_requirement",
+      "observed_evidence": [
+        "docs/submission/hackster-article.md:39",
+        "docs/submission/hackster-article.md:59",
+        "evidence/pitch/architecture-source-map.json#/boundaries"
+      ],
+      "gap_and_impact_ko": "기사 Mermaid는 MQTT/TLS 장비 경로와 중앙 IN-CSE를 한 그림에 배치하여 보안 단일 설치와 HTTP 분산 시험을 결합한 실제 실행처럼 읽힐 수 있다. 주변 본문은 구분하지만 독립적으로 재사용될 그림에도 이 구분이 필요하다.",
+      "smallest_reasonable_fix": "Label the central edge as optional alternative distributed HTTP Mcc and add a caption explicitly separating the single secure profile from the two-MN/two-API/one-IN HTTP demonstration.",
+      "product_justification": "Readers must be able to reproduce the topology and its actual transport/trust boundary without inferring an untested combined secure distributed system.",
+      "verification": "Inspect the diagram and caption at an identified correction commit, preserving the demonstrated native MQTT/TLS+HTTPS and distributed HTTP scopes. No new runtime/model run needed.",
+      "status_at_reviewed_commit": "unresolved",
+      "parent_reported_later_working_tree_fix": "Excluded until reviewed at the correction commit."
+    }
+  ],
+  "claim_limitations_and_small_clarifications": [
+    {
+      "criteria": [
+        2,
+        3
+      ],
+      "path": "docs/submission/hackster-article.md:39",
+      "recommendation": "Add a diagram caption that the MQTT/TLS+HTTPS single profile and optional central-IN-CSE HTTP distributed profile are alternative captures. Surrounding prose already says this; the Mermaid picture alone combines them and should be self-contained.",
+      "classification": "small_factual_clarification; no_new_runtime_requirement"
+    },
+    {
+      "criteria": [
+        3,
+        11
+      ],
+      "evidence": "evidence/agent/semantics-fact-check.json",
+      "limitation": "Keep R-027/R-031 open. Any future bounded corrected handoff must preserve units/model IDs, historical/current timestamps, ACK versus authorization and sample-counter versus attempt-history meaning. Do not manually rewrite the raw model answer or call clarification-only evidence an actual operational model read."
+    },
+    {
+      "criteria": [
+        3
+      ],
+      "evidence": "evidence/video/asset-provenance.json",
+      "limitation": "Video shows named historical accepted live captures and edited still/graphics, not the new final-source recovery capture or a continuous recording. Provenance is explicit; no blanket latest-source/no-failure claim is justified."
+    }
+  ],
+  "required_reverification": [
+    "Review exact correction commit for T1-F01/T1-F02, including renderer/source-map/hash consistency and article alternative-profile diagram/caption.",
+    "Main/Teams2–3 must independently close or retain R-027/R-031 against actual factual delivery evidence; this reviewer made no new model call.",
+    "Update S2-G5 and adopted child-gate review references only after recording this independent scoped assessment; do not infer other teams or all-release completion."
+  ],
+  "inspected_file_hashes": {
+    "AGENTS.md": "e08f6343bf944041eb3d674f3ac7a1e7b72a8f3bcf5241d636299b0d98644f66",
+    "docs/review/release-review-request.md": "bd7fa869330766a6e306494354e6e5b98ed5dbc6cf2d5f6428f88a329f4203dd",
+    "docs/hackathon/rubric-baseline.json": "2eddd5ef6bb2bf7bb9354b92a432512546be3b522e3f84724d016b4dd2055a94",
+    "docs/product-contract.json": "aea0c48c291e7c2c03e7db0df7da65a475760a500a031558aba33c33d25b884e",
+    "docs/implementation-plan.md": "101f47a11a6aec71e113c8e0d5dcd721d9da670a44306b3b13fa03eddcb8a28d",
+    "docs/execution-state.json": "db6e28e26a2e5264b2a20d493137d903b1caafc99fcbe671610846ea5807e29b",
+    "docs/review/review-ledger.json": "907e0d38ece210ad492cb187a6067c835d4aef9f3a6fef234cc0f2863505a22e",
+    "docs/review/implementation-team1.json": "81ed0ac16faad28266fe70c913619422a08bb154103c9a43718afd3af85b0b5a",
+    "docs/architecture.md": "267c69710728779ec6aa9109d22a07104baa526fe6ae0dd1acaf741040863d35",
+    "docs/standard-model.md": "e92820c0f6da3a2494de24308faccc6a98f7d43ebffe5ec11ad35878069c772f",
+    "src/opensoom/core.py": "00f4339ce5481d4daf13f8d44ab857f86173469f8da68eddf0db96d5ca6c32c5",
+    "src/opensoom/onem2m.py": "c4edcf610b9c82266d222dc63b69869cbd62000478405cdcd98f44178b0b123e",
+    "src/opensoom/mcp_server.py": "71fd594289b16f085f6cc8b4ce3cbefefc2b7fe7d7296098f9820b41940d8bdc",
+    "evidence/application/release-acceptance.json": "5bde7e0f55f28854f085ce619622349c99e6993d8f119f194f4dacf79ff727b1",
+    "evidence/release/review-regressions.json": "d708b55e5a94a9cc1e910c8c72fa26974f7578e118a6c8929e94d18cd35ec3ee",
+    "evidence/release/final-clean-lifecycle.json": "4cd45ee2671fc346f4f7e014b30a4804b0d566bb1cc1a99520c4ed5b353dce26",
+    "evidence/release/source-reconciliation.json": "97ab04dad7caf3bcc13f91aee74578c1a5f9d659698d9c60a1c476f97d9c9d70",
+    "evidence/release/semantics-contract.patch": "fcca8029eb04f1011ed8ecc6c0d37f53600bfd154761e266cd2eb08d7680179c",
+    "evidence/release/final-checks.json": "1ddf54d15a46e956c7399e607752738c660884495d5ddaedd4c0bb4879a1a3dc",
+    "evidence/agent/index.json": "154582f3819d8457079ce68a4c8e5936217d2e5b4cf41f268bb75131c344055c",
+    "evidence/agent/release-live-recovery.json": "6b4aeb6f6342207655815791ab002acfc7b733e8fb19b52d2174d683edb1ffc8",
+    "evidence/agent/release-live-stale.json": "5ce63072fc492f796f4829d9a444b091c7181577f0285a422ae959a69611b097",
+    "evidence/agent/semantics-fact-check.json": "5f60850bec32a648a2127e6ff276376f35d670c9836e6c53d01919a6614e2f37",
+    "evidence/agent/guided-explanation-fact-check.json": "47005c271744aedac6864950a5a507f27ca0c04bbf6dccf6a5d0f7b5e68d3416",
+    "evidence/pitch/architecture-source-map.json": "78fb3b8b550792023104dcb822c4203352404dd84b95b78140e69d59263afb80",
+    "pitch/architecture.js": "42e28ffc2aa0daa3ca87c9c1c8bc4fae16446a66d94b3da896f140a42e9e9203",
+    "evidence/dashboard/visual-upgrade-qa.json": "88d1b515541c5b459d3fa4572e96e90fa357c04233534ba07b1d5c5674b78ce7",
+    "evidence/pitch/architecture-browser-qa.json": "891855aa47c2c5045cf4f9e6d2cb07f269513abd88b5cf8a84ab42aa27a6436c",
+    "docs/project-guide.ko.md": "d7ea061a721fe62db6e3d8bd120396968d49e265977fc41098e2639d841f4ee4",
+    "docs/submission/hackster-article.md": "fd0aa203dc151db35276b9150cf4242918049120f6a614f863f9b6dc2e007dad",
+    "docs/submission/technical-qa.md": "39656b42ef763e07940cabed25df6f1007b4adc42e4540118ec7b4287ec2a23d",
+    "evidence/video/qa.json": "e4033e61611e988fbb6ea781b039229f87cfb20429b0229be6f0148dc1cd0804",
+    "evidence/video/asset-provenance.json": "828f480e1902e94aa14be6af80aab2af972f8ed844ee26b1c8516096d34e6037"
+  }
+}

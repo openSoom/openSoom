@@ -1,0 +1,390 @@
+{
+  "schema_version": 1,
+  "review_type": "strict_final_combined_release_independent_review",
+  "reviewer": {
+    "team": "team_4",
+    "task_name": "edge_standards_review",
+    "model": "gpt-6.1-sol",
+    "reasoning_effort": "max"
+  },
+  "reviewed_commit": "0d733da7051eeffbe070f6c219e9631509b0f858",
+  "reviewed_date": "2026-11-18",
+  "instructions": "docs/review/release-review-request.md and AGENTS.md from the immutable candidate",
+  "source_isolation": "All source, evidence, presentation and ledger assessment used a git archive of reviewed_commit; no in-flight working-tree implementation was used.",
+  "decision": {
+    "team_scope": "APPROVE_WITH_EXPLICIT_EVIDENCE_LIMITS",
+    "new_release_blockers": [],
+    "new_actionable_findings": [],
+    "overall_goal_complete": false,
+    "reason": "Required distributed behavior has real recorded execution, a bounded independently assessed source delta and passing targeted final-source tests. All five advanced capabilities remain reviewed deferrals without implementation credit. This is only Team 4 closeout; R-027/R-031 and other teams' required gates remain independently decisive."
+  },
+  "official_rubric_boundary": {
+    "source_title": "Hackathon Rubric 2026",
+    "source_sha256": "42b38857fffae7c92739f84440b9db020ec6b79897c0f70db64c465ffd2cdfad",
+    "local_baseline": "docs/hackathon/rubric-baseline.json",
+    "assigned_criteria": [
+      12,
+      13,
+      14,
+      15,
+      16
+    ],
+    "scores_assigned": false,
+    "official_total": null,
+    "not_applicable_inferred": false,
+    "note": "Implementation maturity, internal gate verdicts and accepted product-scope deferrals are not official rubric scores or N/A decisions. Local AE/CSE deployment is reported as such; eligibility and rubric interpretation are not invented."
+  },
+  "inspection": {
+    "runtime": [
+      "evidence/runtime/product-multisite-continuity.json",
+      "evidence/runtime/cse-multisite-smoke.json",
+      "evidence/runtime/acceptance-checkpoint.json",
+      "evidence/stage0/mec-feasibility.json",
+      "evidence/release/source-reconciliation.json",
+      "evidence/release/semantics-contract.patch",
+      "evidence/release/final-checks.json",
+      "evidence/release/final-clean-lifecycle.json",
+      "evidence/release/artifacts.json"
+    ],
+    "source": [
+      "src/opensoom/core.py",
+      "src/opensoom/app.py",
+      "src/opensoom/federation.py",
+      "src/opensoom/adapters.py",
+      "src/opensoom/policy.py",
+      "src/opensoom/store.py",
+      "scripts/cse_product_topology.py",
+      "scripts/cse_multisite_smoke.py",
+      "scripts/cse_runtime.py",
+      "deploy/acme-single.ini",
+      "deploy/README.md"
+    ],
+    "governance": [
+      "docs/product-contract.json",
+      "docs/implementation-plan.md",
+      "docs/execution-state.json",
+      "docs/extension-decisions.md",
+      "docs/review/review-ledger.json",
+      "docs/review/implementation-team4.json"
+    ],
+    "presentation": [
+      "README.md",
+      "docs/architecture.md",
+      "docs/project-guide.ko.md",
+      "docs/submission/hackster-article.md",
+      "docs/submission/technical-qa.md",
+      "docs/hackathon/current-assessment.md",
+      "pitch/index.html",
+      "pitch/architecture.js",
+      "pitch/architecture.fragment.html",
+      "pitch/README.md",
+      "evidence/pitch/architecture-source-map.json",
+      "evidence/pitch/architecture-browser-qa.json",
+      "web/facility-3d.js",
+      "evidence/dashboard/visual-upgrade-qa.json",
+      "deliverables/video/narration.en.txt",
+      "deliverables/video/captions.en.srt",
+      "evidence/video/qa.json",
+      "evidence/video/asset-provenance.json"
+    ],
+    "saved_images_visually_inspected": [
+      "evidence/pitch/architecture-full-distributed.jpg",
+      "evidence/pitch/architecture-full-single-command.jpg",
+      "evidence/dashboard/visual-upgrade-desktop-unresolved.jpg",
+      "evidence/video/decoded-contact-sheet.jpg"
+    ],
+    "not_executed": [
+      "No live inference or provider calls",
+      "No shared CSE restart or topology recapture",
+      "No live facility changes",
+      "No browser interaction recapture",
+      "No external publication or messages"
+    ],
+    "image_limit": "Saved screenshots and decoded video contact sheet support claim review. This review does not independently establish full playback/audio quality, orbit/raycast interaction or automatic WebGL/reduced-motion fallback."
+  },
+  "source_provenance": {
+    "topology_capture": {
+      "artifact": "evidence/runtime/product-multisite-continuity.json",
+      "run_id": "topology-549e41103a",
+      "captured_source_reference": "2b2a239270e70625e99e39a5b738e09c84c19822",
+      "before_after_hashes_equal": true,
+      "unchanged_final_source_paths": 12,
+      "changed_paths": [
+        "src/opensoom/core.py",
+        "src/opensoom/app.py"
+      ],
+      "note": "The two changed files are explicitly assessed below. The historical capture has not been relabelled as a new final-source execution."
+    },
+    "checkpoint_artifact_hashes": "All three referenced artifacts match evidence/runtime/acceptance-checkpoint.json.",
+    "final_reconciliation": "Every release_sha256 in evidence/release/source-reconciliation.json matches this candidate; the full record covers the later additive semantics contract relative to fd5e648. Its scope is not silently substituted for the earlier topology-to-release delta.",
+    "topology_to_final_delta_assessment": {
+      "method": "Read git diff 2b2a239..0d733da for core.py/app.py/federation.py/cse_product_topology.py, compare historical hashes and run targeted tests from the final immutable archive.",
+      "core_changes": [
+        "Run-owner enforcement and recording principal_role on new demo runs.",
+        "Virtual device applies the actual acknowledged damper value rather than treating every ACK as full-open recovery.",
+        "read_evidence adds counter/history interpretation metadata."
+      ],
+      "app_changes": "Run owner is required to append denied tool results or patch agent-run outcomes.",
+      "unchanged_paths": "FederationReceiver, request_action, CSE client, policy, adapters, store, topology driver, CSE runtime/configuration and facility profiles retain the reviewed topology implementation.",
+      "bounded_equivalence_reason": "The topology driver requests 100 percent in both acted zones. The corrected simulation still reports 100 percent and 1.15 times the profile airflow target for those cases; it changes partial/closed-value cases rather than the recorded full-open path. The driver does not use the newly restricted agent-run patch endpoints, and its fresh demo runs now carry the operator owner. The added evidence_scope is read-only metadata. Expiry/profile/idempotency receipt logic is unchanged.",
+      "accepted_for": "The recorded two-facility central-outage, full-open local recovery and explicit replay scenario only.",
+      "not_accepted_for": "A fresh multi-CSE performance measurement, arbitrary crash recovery, untested actuator values or complete final-source Codex/model acceptance."
+    },
+    "final_regression_hashes": "All 29 source hashes in evidence/release/final-checks.json match.",
+    "prepared_artifact_hashes": "All 28 files listed in evidence/release/artifacts.json match; video SHA-256 matches its QA record.",
+    "media_scope": "Video is an edited historical capture and original explanatory graphics. Its own source/run provenance is retained; it is not a new distributed or final-source execution."
+  },
+  "independent_checks": [
+    {
+      "command": "PYTHONPATH=<immutable-archive>/src <project>/.venv/bin/python -m pytest tests/integration/test_cse_federation.py tests/test_review_regressions.py -q",
+      "cwd": "git archive of reviewed_commit",
+      "exit_status": 0,
+      "observed": "12 passed, 3 subtests passed in 0.63s",
+      "meaning": "Final-source expiry/facility/profile/replay/idempotency/privilege-injection boundaries plus actuator-value, run-owner and evidence-meaning regressions.",
+      "limitation": "Local tests, not a fresh actual CSE topology or model run."
+    },
+    {
+      "command": "node --input-type=module: import ARCHITECTURE_SOURCE_MAP; deep-compare renderer/boundaries/sources/layers/topologies/nodes/edges to saved JSON; validate every edge endpoint/mode and per-topology node counts",
+      "exit_status": 0,
+      "observed": {
+        "nodes": 51,
+        "edges": 77,
+        "single": 34,
+        "distributed": 46,
+        "source_map_equals_code": true,
+        "all_edge_modes_valid": true
+      },
+      "meaning": "The saved architecture map is generated by the actual candidate JS data; all source files and source IDs exist. No DOM, network or control path was invoked."
+    }
+  ],
+  "criteria": [
+    {
+      "number": 12,
+      "name": "CSE Handover & Service Continuity",
+      "position": "PARTIAL_ADJACENT_CONTINUITY_EVIDENCE; SERVING_CSE_HANDOVER_DEFERRED_NOT_IMPLEMENTED",
+      "implemented": "Actual local observation/policy/action/ACK/recovery during stopped central IN-CSE; explicit reconnect/expired-intent/replay behavior.",
+      "verified_captured": "Recorded 14.635-second central outage with fixed serving MN-CSEs; matching historical source plus accepted bounded delta and final-source boundary tests.",
+      "absent": "No serving-CSE transition, target-CSE state/subscription/ACP rebuild or automatic handover.",
+      "disposition": "Reviewed deferral remains appropriate for fixed facilities; no handover level or score is assigned.",
+      "simpler_alternative": "Keep local facility authority and durable state through the tested central outage.",
+      "reopen": "Justified gateway maintenance/failure requires a different serving CSE; then test identity mapping, state/subscriptions/ACP restoration, interruption/loss and any claimed automatic trigger.",
+      "evidence": [
+        "docs/extension-decisions.md",
+        "docs/execution-state.json:conditional_extensions/cse_handover",
+        "evidence/runtime/product-multisite-continuity.json"
+      ]
+    },
+    {
+      "number": 13,
+      "name": "oneM2M–MEC Application / VM Deployment",
+      "position": "LOCAL_AE_CSE_DEPLOYMENT_DOCUMENTED; MEC_MANAGED_DEPLOYMENT_DEFERRED_NOT_IMPLEMENTED",
+      "implemented": "Pinned actual ACME processes and AE registrations, including two MN-CSEs and an IN-CSE, with reproducible local deployment instructions.",
+      "verified_captured": "Local deployment and native registration/routing evidence exists; public MEC endpoint readiness was investigated.",
+      "absent": "No authenticated permitted MEC host, managed image deployment/hosting logs or orchestration across eligible MEC hosts.",
+      "disposition": "The MEC extension deferral is accepted. Actual local AE/CSE deployment must be described accurately; this review does not infer official proficiency solely from the missing or local hosting mode.",
+      "simpler_alternative": "Project-local pinned processes without Docker satisfy the prototype's tested deployment need.",
+      "reopen": "A permitted project host, image-deployment right and registration/logging endpoints become available.",
+      "evidence": [
+        "deploy/README.md",
+        "evidence/runtime/cse-multisite-smoke.json",
+        "evidence/stage0/mec-feasibility.json",
+        "docs/extension-decisions.md"
+      ]
+    },
+    {
+      "number": 14,
+      "name": "Federated Learning (TR-0084)",
+      "position": "DEFERRED_NOT_IMPLEMENTED",
+      "implemented": "Profile-bound deterministic diagnosis and actual model inference are separate implemented paths.",
+      "verified_captured": "No FL participant training, aggregation or ESTIMED VM execution evidence exists.",
+      "absent": "A justified learning task/dataset, actual multi-client training/coordination and rubric-specific ESTIMED VM use.",
+      "disposition": "Reviewed deferral accepted; actual LLM inference is not FL and earns no FL implementation claim.",
+      "simpler_alternative": "Interpretable configured rules cover the current synthetic cases.",
+      "reopen": "Measurable cross-site learning/data-locality need and ESTIMED VM path exist; test actual aggregation and applicable dynamic participation/resilient rounds.",
+      "evidence": [
+        "docs/extension-decisions.md",
+        "docs/execution-state.json:conditional_extensions/federated_learning",
+        "docs/hackathon/rubric-baseline.json"
+      ]
+    },
+    {
+      "number": 15,
+      "name": "Geolocation Services",
+      "position": "DEFERRED_NOT_IMPLEMENTED",
+      "implemented": "Configured facility/zone identity.",
+      "verified_captured": "No actual network/MEC/oneM2M location-service interworking is captured.",
+      "absent": "Location-service events mapped into a location-dependent application behavior.",
+      "disposition": "Reviewed deferral accepted. Static facility identity and the 3D layout are not location-service evidence.",
+      "simpler_alternative": "Fixed zone configuration supplies the operating scope.",
+      "reopen": "Moving equipment/responders need genuine service events that change policy, placement or handover.",
+      "evidence": [
+        "docs/extension-decisions.md",
+        "docs/execution-state.json:conditional_extensions/geolocation"
+      ]
+    },
+    {
+      "number": 16,
+      "name": "MEC Services",
+      "position": "DEFERRED_NOT_IMPLEMENTED",
+      "implemented": "Native oneM2M discovery and a shared MCP/service interface.",
+      "verified_captured": "No actual non-location MEC service is consumed through oneM2M. MEC033 is a candidate, not an available tested service.",
+      "absent": "Supported service instance, oneM2M/IPE resource mapping and application use of actual MEC responses.",
+      "disposition": "Reviewed deferral accepted; MCP and native CSE discovery are not MEC service consumption.",
+      "simpler_alternative": "oneM2M discovery covers current facility equipment needs.",
+      "reopen": "A supported useful non-location service is available and a oneM2M -> IPE -> actual MEC -> CSE/application result can be observed.",
+      "evidence": [
+        "evidence/stage0/mec-feasibility.json",
+        "docs/extension-decisions.md",
+        "docs/execution-state.json:conditional_extensions/mec_services"
+      ]
+    }
+  ],
+  "internal_gate_verdicts": [
+    {
+      "gate": "S0-G3",
+      "scope": "MEC feasibility portion",
+      "verdict": "PASS_INVESTIGATION_WITH_REVIEWED_DEFERRAL",
+      "evidence": [
+        "evidence/stage0/mec-feasibility.json",
+        "docs/extension-decisions.md"
+      ],
+      "reason": "Bounded public readiness check records landing-page availability, a session-specific reset and absent project-specific authenticated rights. It does not assert global outage or actual platform execution. Other S0 readiness checks belong to their owners."
+    },
+    {
+      "gate": "S4-G1",
+      "verdict": "PASS_BOUNDED_EXECUTION_EVIDENCE",
+      "evidence": [
+        "evidence/runtime/cse-multisite-smoke.json",
+        "evidence/runtime/product-multisite-continuity.json",
+        "scripts/cse_product_topology.py"
+      ],
+      "reason": "Actual independent CSE processes register, forward discovery/retrieval, expose selective announcements and enforce unprivileged cross-scope/read-only denial. Two separate facility APIs use separate stores. Same-host HTTP and local actor trust remain explicit."
+    },
+    {
+      "gate": "S4-G2",
+      "verdict": "PASS_BOUNDED_EXECUTION_WITH_REVIEWED_SOURCE_DELTA",
+      "evidence": [
+        "evidence/runtime/product-multisite-continuity.json",
+        "src/opensoom/federation.py",
+        "scripts/cse_product_topology.py",
+        "tests/integration/test_cse_federation.py",
+        "tests/test_review_regressions.py"
+      ],
+      "observed": {
+        "central_outage_seconds": 14.635,
+        "local_flow": "command -> virtual ACK -> later CSE observations -> recovery",
+        "expired_intent": "central_intent_expired",
+        "wrong_profile": "central_profile_mismatch",
+        "local_commands_and_incidents_unchanged": true,
+        "direct_central_command_write_rsc": 4103,
+        "fresh_intent_single_command_replay": true
+      },
+      "reason": "The capture and source support local continuity and conservative reconciliation. Current-source differences are bounded above and tested; no recapture is falsely claimed.",
+      "limitation": "Explicit replay, not an always-running federation consumer; state-tag deltas show a polling gap, not packet loss or complete history replay. No serving-CSE transition or abrupt facility-process failure claim."
+    },
+    {
+      "gate": "S4-G3",
+      "verdict": "PASS_REVIEWED_DECISIONS",
+      "evidence": [
+        "docs/extension-decisions.md",
+        "docs/execution-state.json:conditional_extensions",
+        "docs/review/implementation-team4.json",
+        "docs/review/review-ledger.json:R-026"
+      ],
+      "reason": "All five entries now match the reviewed deferrals, identify reasons/environment/evidence/review/history and have no hidden adopted child gates. Needs, simpler alternatives and reopening conditions are adequate."
+    },
+    {
+      "gate": "S4-G4",
+      "verdict": "REVIEWED_DEFERRED_NO_EXTENSION_EXECUTION_CREDIT",
+      "reason": "Criteria 12-16 capabilities are individually deferred. Empty child-gate arrays are consistent with deferral, not a passed capability. The completion rule still blocks any adopted incomplete extension and every required distributed-core failure."
+    },
+    {
+      "gate": "S5-G1/S5-G2/S6-G3",
+      "scope": "Team 4 claim consistency only",
+      "verdict": "PASS_OWNED_CLAIM_BOUNDARIES",
+      "reason": "Dashboard geometry, source-mapped architecture, Korean guide, article and video do not turn local continuity into MEC/handover/FL/location or simulate evidence of physical outcomes. Full UI/media and whole-release acceptance remain with their assigned reviewers."
+    }
+  ],
+  "extension_record_review": {
+    "criteria_12_to_16": "Every entry is decision=deferred/status=deferred with reason, environment, evidence, review_ref and retained previous-decision history.",
+    "no_hidden_adoption": true,
+    "previous_failed_adoption_deleted": false,
+    "child_gate_rule_preserved": true,
+    "criterion_11_boundary": "The separate adopted advanced-data-model entry has SDT-G1/G2/G3 and remains in_progress rather than falsely passed. Technical validation belongs to Team 1.",
+    "goal_rule": "Parent required:false does not waive adopted child checks; deferral applies only to extensions. Required external/host/model and distributed gates are not waived."
+  },
+  "final_claim_consistency": {
+    "architecture_data": "51 nodes and 77 edges exactly match code; 34 single-installation and 46 distributed components. Components include native resource families and logical modules.",
+    "deployed_processes": "Single view maps one API and one CSE; distributed view maps two APIs, two MN-CSEs and one IN-CSE. Logical diagnostic/maintenance/adapter roles are not separate deployed processes.",
+    "topology_alternatives": "Secure single installation uses MQTT/TLS observations/ACKs, HTTPS CSE reads/commands, local API/callback HTTP and MCP stdio. Distributed lab uses HTTP/Mcc. Views are explicitly alternative demonstrations.",
+    "agent_edges": "Four distributed API/dashboard links are dashed shared_contract_not_exercised_here and not animated as proven distributed agent sessions. Agent execution is scoped to the single installation.",
+    "federation": "Receiver is labelled an explicitly invoked library and central operator an AE plus demo driver, not production orchestration or a migrated process.",
+    "korean_guide_article": "Both explicitly distinguish local central-outage continuity, serving-CSE handover, VM migration, actual MEC, FL and location. Facility-specific simulation targets and physical limits remain explicit.",
+    "video": "Narration/captions, decoded contact sheet and provenance contain actual-software/virtual-equipment labels and no advanced-feature execution claims. Its historical runs remain historical.",
+    "dashboard": "Saved unresolved view and renderer source preserve command/ACK/outcome distinction; geometry and motion are illustrative, not CFD, network geolocation or certified measured ventilation."
+  },
+  "prior_findings": [
+    {
+      "id": "R-008",
+      "verdict": "RESOLVED_FOR_INVESTIGATION_SCOPE_ONLY",
+      "reason": "Feasibility and reviewed MEC deferrals are documented; no deployment/service capability credit."
+    },
+    {
+      "id": "R-009",
+      "verdict": "RESOLVED_AS_REVIEWED_DEFERRAL",
+      "reason": "Justified handover deferral and explicit reopening evidence remain; no handover implementation."
+    },
+    {
+      "id": "R-010",
+      "verdict": "RESOLVED_AS_REVIEWED_DEFERRAL",
+      "reason": "FL/location need, alternatives and required environment/events remain explicit; no N/A or score inference."
+    },
+    {
+      "id": "R-021",
+      "verdict": "RESOLVED",
+      "reason": "Per-extension decisions, histories, evidence and adopted-child completion rules are now populated consistently."
+    },
+    {
+      "id": "R-022",
+      "verdict": "RESOLVED_WITH_BOUNDED_RUNTIME_EVIDENCE",
+      "reason": "Actual central-stop/local-ACK/reconnect/expired-command scenario preserves current commands/incidents, with explicit source-delta assessment."
+    },
+    {
+      "id": "R-026",
+      "verdict": "RESOLVED_FOR_TEAM4_CRITERIA_12_TO_16",
+      "reason": "The former investigate-versus-defer mismatch is corrected in execution-state and decision history. Criterion 11's model-validation portion requires Team 1 closeout before closing the combined finding in full."
+    },
+    {
+      "id": "T4-C001",
+      "verdict": "RETAIN_SCOPE_WITH_TEAM3_OWNER",
+      "reason": "Historical capture hashes and final source deltas are now explicit. Final Codex/model factual handoff acceptance is not granted by this Team 4 review."
+    }
+  ],
+  "actionable_findings": [],
+  "smallest_actionable_changes": [],
+  "main_closeout_handoff": [
+    "Attach this report to S4-G1/G2/G3 and record accepted gate verdicts without converting deferred capabilities into executed passes.",
+    "Use Team 1's criterion-11 verdict together with this report to close the combined R-026.",
+    "Keep known R-027/R-031 and any other required unresolved outcomes open. This review does not authorize overall completion, publication, inference or external actions."
+  ],
+  "evidence_sha256": {
+    "docs/extension-decisions.md": "995d57f7bbc24c752f625507d61ed55db0800fad69151ab78dac48d0b295e973",
+    "docs/execution-state.json": "db6e28e26a2e5264b2a20d493137d903b1caafc99fcbe671610846ea5807e29b",
+    "docs/review/review-ledger.json": "907e0d38ece210ad492cb187a6067c835d4aef9f3a6fef234cc0f2863505a22e",
+    "src/opensoom/core.py": "00f4339ce5481d4daf13f8d44ab857f86173469f8da68eddf0db96d5ca6c32c5",
+    "src/opensoom/app.py": "90b2b13f78732ed32ac22fa0e21c9669d4731180463e80bbe551f881e622a144",
+    "src/opensoom/federation.py": "8aa9727ee7b028fb173f0375f033f74a874a29624cdf6cfd34a0baed9043e11d",
+    "scripts/cse_product_topology.py": "c3c92606e108599a3aaf28ddf535fea3dbec6db5eb6819fc72309e2431563718",
+    "evidence/runtime/product-multisite-continuity.json": "177da67f736ae8887debc8b02474c03f4a73d1330221ebeb4d8ca4aada85fed2",
+    "evidence/runtime/cse-multisite-smoke.json": "48167af50668bd2d0a26e41f03aa2df71122024b0d3e45c97da1f784c66e67ed",
+    "evidence/release/source-reconciliation.json": "97ab04dad7caf3bcc13f91aee74578c1a5f9d659698d9c60a1c476f97d9c9d70",
+    "evidence/release/final-checks.json": "1ddf54d15a46e956c7399e607752738c660884495d5ddaedd4c0bb4879a1a3dc",
+    "evidence/pitch/architecture-source-map.json": "78fb3b8b550792023104dcb822c4203352404dd84b95b78140e69d59263afb80",
+    "evidence/pitch/architecture-browser-qa.json": "891855aa47c2c5045cf4f9e6d2cb07f269513abd88b5cf8a84ab42aa27a6436c",
+    "pitch/architecture.js": "42e28ffc2aa0daa3ca87c9c1c8bc4fae16446a66d94b3da896f140a42e9e9203",
+    "docs/project-guide.ko.md": "d7ea061a721fe62db6e3d8bd120396968d49e265977fc41098e2639d841f4ee4",
+    "docs/submission/hackster-article.md": "fd0aa203dc151db35276b9150cf4242918049120f6a614f863f9b6dc2e007dad",
+    "deliverables/video/openSoom-demo-en.mp4": "d4cc9e2ce19fcef31f97212edf54f0ae5caa5c32e2f17e5ae8ae7ce32721c0ee"
+  },
+  "allowed_write": "docs/review/final-team4.json only"
+}

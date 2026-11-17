@@ -45,8 +45,8 @@ const MODES = {
   },
   single: {
     label: 'SINGLE INSTALLATION / SECURE CSE PROFILE',
-    en: 'One local service and one actual CSE serve two reusable example profiles. Adapter observations and ACKs use native oneM2M MQTT/TLS; service reads and commands use HTTPS. MCP uses stdio, and the local API and callback use loopback HTTP. No central CSE is required.',
-    ko: '하나의 현장 서비스와 실제 CSE가 서로 다른 두 예시 프로필을 처리합니다. 관측·ACK는 네이티브 oneM2M MQTT/TLS, 조회·명령은 HTTPS를 사용합니다. MCP는 stdio, 로컬 API·콜백은 HTTP입니다. 중앙 CSE 없이 시작할 수 있습니다.',
+    en: 'One local service and one actual CSE serve two reusable example profiles. Adapter observations, ACKs and SDT projection updates use native oneM2M MQTT/TLS; service reads and commands use HTTPS. MCP uses stdio, and the local API and callback use loopback HTTP. No central CSE is required.',
+    ko: '하나의 현장 서비스와 실제 CSE가 서로 다른 두 예시 프로필을 처리합니다. 관측·ACK·SDT 갱신은 네이티브 oneM2M MQTT/TLS, 조회·명령은 HTTPS를 사용합니다. MCP는 stdio, 로컬 API·콜백은 HTTP입니다. 중앙 CSE 없이 시작할 수 있습니다.',
     evidence: ['architecture', 'protocol', 'agentEvidence', 'deployment'],
   },
 };
@@ -162,7 +162,7 @@ for (const site of sites) {
   for (const [zid] of site.zones) edge(`${key}-wire-${zid}`, `${key}-${zid}`, `${key}-adapter`, 'observe', 'Virtual vendor payload → normalization', ['adapters', profileSource], { category: 'simulated_input' });
   edge(`${key}-publish`, `${key}-adapter`, `${key}-observations`, 'observe', 'Create observation CIN', ['core', 'protocol', 'topology'], { protocol: { single: 'Native oneM2M MQTT/TLS', distributed: 'oneM2M HTTP' } });
   edge(`${key}-sub`, `${key}-observations`, `${key}-subscription`, 'observe', 'Native subscription notification', ['core', 'api'], { protocol: 'Local HTTP callback' });
-  edge(`${key}-project`, `${key}-adapter`, `${key}-sdt`, 'observe', 'Separately update standard PM2.5 projection', ['core'], { protocol: { single: 'oneM2M HTTPS', distributed: 'oneM2M HTTP' } });
+  edge(`${key}-project`, `${key}-adapter`, `${key}-sdt`, 'observe', 'Separately update standard PM2.5 projection', ['core'], { protocol: { single: 'Native oneM2M MQTT/TLS', distributed: 'oneM2M HTTP' } });
   edge(`${key}-fanout`, `${key}-group`, `${key}-observations`, 'observe', 'Native /fopt/la retrieval', ['core'], { category: 'native_service' });
   edge(`${key}-command-read`, `${key}-commands`, `${key}-adapter`, 'act', 'Adapter retrieves command from CSE', ['core'], { protocol: { single: 'oneM2M HTTPS', distributed: 'oneM2M HTTP' } });
   edge(`${key}-ack-write`, `${key}-adapter`, `${key}-acks`, 'act', 'Create distinct ACK CIN', ['core', 'protocol'], { protocol: { single: 'Native oneM2M MQTT/TLS', distributed: 'oneM2M HTTP' } });
@@ -208,8 +208,8 @@ node('central-registration', 'Remote CSE registrations', '원격 CSE 등록', 'N
   { short: 'CSR / MCC', modes: ['distributed'], boundary: 'Registration and remote access, not CSE handover.' });
 
 node('single-cse', 'Shared secure CSE', '하나의 보안 CSE', 'ACTUAL CSE PROCESS', 'resources', 'central', [0, 4.25, -2.1],
-  'One actual ACME CSE hosts both example facilities. Native oneM2M MQTT/TLS publishes observations and ACKs, while HTTPS serves reads and command writes. TLS verifies the lab server; origin headers remain trusted loopback identities.',
-  '실제 ACME CSE 하나가 두 예시 시설을 관리합니다. 관측·ACK는 네이티브 MQTT/TLS, 조회·명령은 HTTPS입니다. TLS로 실험 서버를 검증하지만 원점 식별자는 로컬 신뢰 경계에 있습니다.',
+  'One actual ACME CSE hosts both example facilities. Native oneM2M MQTT/TLS publishes observations, ACKs and SDT projection updates, while HTTPS serves reads and command writes. TLS verifies the lab server; origin headers remain trusted loopback identities.',
+  '실제 ACME CSE 하나가 두 예시 시설을 관리합니다. 관측·ACK·SDT 갱신은 네이티브 MQTT/TLS, 조회·명령은 HTTPS입니다. TLS로 실험 서버를 검증하지만 원점 식별자는 로컬 신뢰 경계에 있습니다.',
   'https://127.0.0.1:8443/cse-secure · MQTT/TLS :8883', ['protocol', 'core', 'deployment'],
   { short: 'CSE / HTTPS + MQTT TLS', modes: ['single'], major: true, boundary: 'No central CSE is required. TLS and ACP are real; authenticated physical devices are not demonstrated.' });
 node('single-ae', 'Shared application identities', '공통 AE 식별자', 'NATIVE AE RESOURCE GROUP', 'resources', 'identity', [0, 2.85, 0.3],

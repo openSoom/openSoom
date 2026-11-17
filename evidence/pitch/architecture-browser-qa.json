@@ -3,8 +3,8 @@
   "status": "PASS_REPORTED_ARCHITECTURE_BROWSER_CHECKS",
   "recorded_at": "2026-11-17T20:16:41.344Z",
   "evidence_origin": {
-    "observer": "Main agent /root",
-    "recorder": "Implementation agent /root/agent_integration",
+    "observer": "Main agent",
+    "recorder": "Architecture implementation agent",
     "basis": "Direct browser observations reported by the main agent in a delegated metadata task; recorder performed no UI activity.",
     "browser": "Chrome",
     "capture_time": "Not independently recorded by metadata worker"
@@ -157,5 +157,6 @@
     "Animated paths and geometry are illustrative; physical devices and values remain simulated.",
     "Single secure CSE transport and distributed HTTP topology remain separate evidence profiles.",
     "Independent rubric closeout is a separate review; this record does not advance a gate."
-  ]
+  ],
+  "metadata_redaction_note": "Public role labels replace internal session identifiers; observations, capture source hashes and limitations are unchanged."
 }

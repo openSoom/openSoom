@@ -1,0 +1,41 @@
+{
+  "captured_at": "2026-11-17T20:40:53.003577+00:00",
+  "base_candidate": "0d733da7051eeffbe070f6c219e9631509b0f858",
+  "scope": "Presentation correctness; no runtime or model execution claim.",
+  "checks": [
+    {
+      "name": "Both food-project and learning-project SDT edge labels",
+      "method": "Imported actual ARCHITECTURE_SOURCE_MAP in Node",
+      "observed": "single=Native oneM2M MQTT/TLS; distributed=oneM2M HTTP",
+      "result": "PASS"
+    },
+    {
+      "name": "Actual browser single-profile context after reload",
+      "method": "Chrome via CUA, localhost8095 served from pitch only",
+      "observed": "Explicitly states observations, ACKs and SDT projection updates use nativeMQTT/TLS; service reads/commandsHTTPS.",
+      "result": "PASS"
+    },
+    {
+      "name": "Topology counts after correction",
+      "observed": "34single/46distributed; rendered screenshot inspected",
+      "result": "PASS"
+    },
+    {
+      "name": "Article diagram profiles",
+      "method": "Source review",
+      "observed": "Central edge dashed and labeled alternativeHTTPMcc; caption describes separate2MN/2API/1INdeployment",
+      "result": "PASS"
+    }
+  ],
+  "source_sha256": {
+    "pitch/architecture.js": "6f6467b7323305a6982ab7707cf0a55db3e04712a64baa1369dc7d994118f48c",
+    "pitch/README.md": "2933e44a6b1df72e3f4b55023e1dada3b0d047fb807441a81d058c01908c7765",
+    "evidence/pitch/architecture-source-map.json": "dc328c6e85abdeed24908b63798d11d2d2177514242143b4fcb7608b90fb9c83",
+    "docs/submission/hackster-article.md": "8aa3a6176d1a2959003780d060260b7259353cd28c32b85528ce1b029357c51d"
+  },
+  "screenshot": {
+    "path": "evidence/pitch/architecture-release-desktop.jpg",
+    "sha256": "ec9f207ae4c55555fdf4d93c2a2a720bec466ca3069c6d812f14364f874b22d8"
+  },
+  "prior_qa_policy": "Original browser QA and screenshot source snapshots remain historical; this records the limited later label/caption correction."
+}

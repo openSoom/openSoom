@@ -155,6 +155,17 @@ zero recovery-sample counter, which does not support that conclusion. A
 completed response alone is therefore not the complete onboarding gate.
 These are separate chats, not a reconstructed uninterrupted conversation.
 
+The later [measurement-complete validation](../evidence/agent/units-live.json)
+restores whole observation objects, including units, timestamps, source and
+quality. Its actual Codex response preserves the recorded quantities and prior
+ACK/non-recovery history. Both provider and host completed normally. The raw
+harness still records `INCOMPLETE_CAPTURED_RECORD_EXPLANATION`: a preface plus
+six numbered sentences exceeded its six-sentence format check. This status
+and all earlier factual failures remain unchanged; independent reviewers must
+assess the stage's functional outcome separately from that format deviation.
+The [input mapping](../evidence/agent/units-input-map.json) retains every chosen
+fact and the restored measurement objects without fabricating chat history.
+
 Early failed attempts are retained: the first fixture ended before recovery samples arrived; the first portable plugin used an unsupported absolute executable command. Both were corrected and retested. The first no-recovery live run observed a pre-ACK state and is weak negative evidence. A later run exposed reuse of a previous incident's idempotency key; current-run checks now reject it. The first release recapture also failed because the model skipped the required read_evidence step despite eventual device recovery. That failure is retained; a later run satisfied the full workflow. Acceptance uses the explicitly indexed current-source traces above. Independent rubric review remains separate from these implementation checks.
 
 ## Primary references

@@ -1,7 +1,7 @@
 {
   "created_at": "2026-11-17T20:03:49.274Z",
   "source_sha256": {
-    "pitch/architecture.js": "42e28ffc2aa0daa3ca87c9c1c8bc4fae16446a66d94b3da896f140a42e9e9203",
+    "pitch/architecture.js": "6f6467b7323305a6982ab7707cf0a55db3e04712a64baa1369dc7d994118f48c",
     "pitch/architecture.css": "c04101489775348b87f81bbb9092803b26031579baa178853e6dc6631b43317e",
     "pitch/architecture.fragment.html": "417c78c3828222503d24fd6e6627a0a3f1af9adc08126e93fa1bf4439c5c2791"
   },
@@ -186,8 +186,8 @@
     },
     "single": {
       "label": "SINGLE INSTALLATION / SECURE CSE PROFILE",
-      "en": "One local service and one actual CSE serve two reusable example profiles. Adapter observations and ACKs use native oneM2M MQTT/TLS; service reads and commands use HTTPS. MCP uses stdio, and the local API and callback use loopback HTTP. No central CSE is required.",
-      "ko": "하나의 현장 서비스와 실제 CSE가 서로 다른 두 예시 프로필을 처리합니다. 관측·ACK는 네이티브 oneM2M MQTT/TLS, 조회·명령은 HTTPS를 사용합니다. MCP는 stdio, 로컬 API·콜백은 HTTP입니다. 중앙 CSE 없이 시작할 수 있습니다.",
+      "en": "One local service and one actual CSE serve two reusable example profiles. Adapter observations, ACKs and SDT projection updates use native oneM2M MQTT/TLS; service reads and commands use HTTPS. MCP uses stdio, and the local API and callback use loopback HTTP. No central CSE is required.",
+      "ko": "하나의 현장 서비스와 실제 CSE가 서로 다른 두 예시 프로필을 처리합니다. 관측·ACK·SDT 갱신은 네이티브 oneM2M MQTT/TLS, 조회·명령은 HTTPS를 사용합니다. MCP는 stdio, 로컬 API·콜백은 HTTP입니다. 중앙 CSE 없이 시작할 수 있습니다.",
       "evidence": [
         "architecture",
         "protocol",
@@ -1332,8 +1332,8 @@
         4.25,
         -2.1
       ],
-      "description": "One actual ACME CSE hosts both example facilities. Native oneM2M MQTT/TLS publishes observations and ACKs, while HTTPS serves reads and command writes. TLS verifies the lab server; origin headers remain trusted loopback identities.",
-      "descriptionKo": "실제 ACME CSE 하나가 두 예시 시설을 관리합니다. 관측·ACK는 네이티브 MQTT/TLS, 조회·명령은 HTTPS입니다. TLS로 실험 서버를 검증하지만 원점 식별자는 로컬 신뢰 경계에 있습니다.",
+      "description": "One actual ACME CSE hosts both example facilities. Native oneM2M MQTT/TLS publishes observations, ACKs and SDT projection updates, while HTTPS serves reads and command writes. TLS verifies the lab server; origin headers remain trusted loopback identities.",
+      "descriptionKo": "실제 ACME CSE 하나가 두 예시 시설을 관리합니다. 관측·ACK·SDT 갱신은 네이티브 MQTT/TLS, 조회·명령은 HTTPS입니다. TLS로 실험 서버를 검증하지만 원점 식별자는 로컬 신뢰 경계에 있습니다.",
       "path": "https://127.0.0.1:8443/cse-secure · MQTT/TLS :8883",
       "sources": [
         "protocol",
@@ -1691,7 +1691,7 @@
       ],
       "implementation": "implemented",
       "protocol": {
-        "single": "oneM2M HTTPS",
+        "single": "Native oneM2M MQTT/TLS",
         "distributed": "oneM2M HTTP"
       }
     },
@@ -2129,7 +2129,7 @@
       ],
       "implementation": "implemented",
       "protocol": {
-        "single": "oneM2M HTTPS",
+        "single": "Native oneM2M MQTT/TLS",
         "distributed": "oneM2M HTTP"
       }
     },
@@ -2867,5 +2867,5 @@
       "dashed": true
     }
   ],
-  "updated_at": "2026-11-17T20:16:41.344Z"
+  "updated_at": "2026-11-17T20:35:07.139Z"
 }

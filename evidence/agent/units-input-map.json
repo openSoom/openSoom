@@ -1,0 +1,321 @@
+{
+  "purpose": "Correct the documented lossy measurement projection; all old cases remain unchanged.",
+  "source_packet": "evidence/agent/semantics-live.json",
+  "source_packet_sha256": "d712da056e50a849a0e2421ead995440da723e8b37a0001f8fc87b4486adb898",
+  "original_source_registry": {
+    "fresh": {
+      "file": "evidence/agent/semantics-mcp-capture.json",
+      "sha256": "abba8916cd5be4009f156007bdcd82437d0627ae29875a2eab931b4cc0880d46",
+      "at": "2026-11-17T20:21:24.045559+00:00"
+    },
+    "prior": {
+      "file": "evidence/agent/guided-config-continuation-live.json",
+      "sha256": "88ce9a71c9b92326f9a90158a6a1c26a607c3e6972f1a23fe44671a996b2efdf",
+      "at": "2026-11-17T20:00:06.523000+00:00"
+    },
+    "history": {
+      "file": "evidence/application/release-acceptance.json",
+      "sha256": "5bde7e0f55f28854f085ce619622349c99e6993d8f119f194f4dacf79ff727b1",
+      "at": "2026-11-17T19:14:34.931+00:00"
+    }
+  },
+  "packet_file": "evidence/agent/units-model-packet.json",
+  "packet_sha256": "1193661a0cdc98964e79eda1bd9b18f28995f9e8b8e4faaf9d98ec1c5db347ac",
+  "model_packet_bytes": 4295,
+  "all_previously_selected_values_preserved": true,
+  "original_to_packet_mappings": [
+    {
+      "source_file": "evidence/agent/semantics-mcp-capture.json",
+      "source_sha256": "abba8916cd5be4009f156007bdcd82437d0627ae29875a2eab931b4cc0880d46",
+      "source_pointer": "/response/structuredContent/id",
+      "packet_pointer": "/revised_evidence/data/id"
+    },
+    {
+      "source_file": "evidence/agent/semantics-mcp-capture.json",
+      "source_sha256": "abba8916cd5be4009f156007bdcd82437d0627ae29875a2eab931b4cc0880d46",
+      "source_pointer": "/response/structuredContent/profile",
+      "packet_pointer": "/revised_evidence/data/profile"
+    },
+    {
+      "source_file": "evidence/agent/semantics-mcp-capture.json",
+      "source_sha256": "abba8916cd5be4009f156007bdcd82437d0627ae29875a2eab931b4cc0880d46",
+      "source_pointer": "/response/structuredContent/simulation",
+      "packet_pointer": "/revised_evidence/data/simulation"
+    },
+    {
+      "source_file": "evidence/agent/semantics-mcp-capture.json",
+      "source_sha256": "abba8916cd5be4009f156007bdcd82437d0627ae29875a2eab931b4cc0880d46",
+      "source_pointer": "/response/structuredContent/status",
+      "packet_pointer": "/revised_evidence/data/status"
+    },
+    {
+      "source_file": "evidence/agent/semantics-mcp-capture.json",
+      "source_sha256": "abba8916cd5be4009f156007bdcd82437d0627ae29875a2eab931b4cc0880d46",
+      "source_pointer": "/response/structuredContent/evidence_scope",
+      "packet_pointer": "/revised_evidence/data/evidence_scope"
+    },
+    {
+      "source_file": "evidence/agent/semantics-mcp-capture.json",
+      "source_sha256": "abba8916cd5be4009f156007bdcd82437d0627ae29875a2eab931b4cc0880d46",
+      "source_pointer": "/response/structuredContent/incidents",
+      "packet_pointer": "/revised_evidence/data/incidents"
+    },
+    {
+      "source_file": "evidence/agent/semantics-mcp-capture.json",
+      "source_sha256": "abba8916cd5be4009f156007bdcd82437d0627ae29875a2eab931b4cc0880d46",
+      "source_pointer": "/response/structuredContent/commands",
+      "packet_pointer": "/revised_evidence/data/commands"
+    },
+    {
+      "source_file": "evidence/agent/semantics-mcp-capture.json",
+      "source_sha256": "abba8916cd5be4009f156007bdcd82437d0627ae29875a2eab931b4cc0880d46",
+      "source_pointer": "/response/structuredContent/run_id",
+      "packet_pointer": "/revised_evidence/data/run_id"
+    },
+    {
+      "source_file": "evidence/agent/semantics-mcp-capture.json",
+      "source_sha256": "abba8916cd5be4009f156007bdcd82437d0627ae29875a2eab931b4cc0880d46",
+      "source_pointer": "/response/structuredContent/zones/0/id",
+      "packet_pointer": "/revised_evidence/data/zones/0/id"
+    },
+    {
+      "source_file": "evidence/agent/semantics-mcp-capture.json",
+      "source_sha256": "abba8916cd5be4009f156007bdcd82437d0627ae29875a2eab931b4cc0880d46",
+      "source_pointer": "/response/structuredContent/zones/0/status",
+      "packet_pointer": "/revised_evidence/data/zones/0/status"
+    },
+    {
+      "source_file": "evidence/agent/semantics-mcp-capture.json",
+      "source_sha256": "abba8916cd5be4009f156007bdcd82437d0627ae29875a2eab931b4cc0880d46",
+      "source_pointer": "/response/structuredContent/zones/0/reason",
+      "packet_pointer": "/revised_evidence/data/zones/0/reason"
+    },
+    {
+      "source_file": "evidence/agent/semantics-mcp-capture.json",
+      "source_sha256": "abba8916cd5be4009f156007bdcd82437d0627ae29875a2eab931b4cc0880d46",
+      "source_pointer": "/response/structuredContent/zones/1/id",
+      "packet_pointer": "/revised_evidence/data/zones/1/id"
+    },
+    {
+      "source_file": "evidence/agent/semantics-mcp-capture.json",
+      "source_sha256": "abba8916cd5be4009f156007bdcd82437d0627ae29875a2eab931b4cc0880d46",
+      "source_pointer": "/response/structuredContent/zones/1/status",
+      "packet_pointer": "/revised_evidence/data/zones/1/status"
+    },
+    {
+      "source_file": "evidence/agent/semantics-mcp-capture.json",
+      "source_sha256": "abba8916cd5be4009f156007bdcd82437d0627ae29875a2eab931b4cc0880d46",
+      "source_pointer": "/response/structuredContent/zones/1/reason",
+      "packet_pointer": "/revised_evidence/data/zones/1/reason"
+    },
+    {
+      "source_file": "evidence/agent/semantics-mcp-capture.json",
+      "source_sha256": "abba8916cd5be4009f156007bdcd82437d0627ae29875a2eab931b4cc0880d46",
+      "source_pointer": "/response/structuredContent/zones/2/id",
+      "packet_pointer": "/revised_evidence/data/zones/2/id"
+    },
+    {
+      "source_file": "evidence/agent/semantics-mcp-capture.json",
+      "source_sha256": "abba8916cd5be4009f156007bdcd82437d0627ae29875a2eab931b4cc0880d46",
+      "source_pointer": "/response/structuredContent/zones/2/status",
+      "packet_pointer": "/revised_evidence/data/zones/2/status"
+    },
+    {
+      "source_file": "evidence/agent/semantics-mcp-capture.json",
+      "source_sha256": "abba8916cd5be4009f156007bdcd82437d0627ae29875a2eab931b4cc0880d46",
+      "source_pointer": "/response/structuredContent/zones/2/reason",
+      "packet_pointer": "/revised_evidence/data/zones/2/reason"
+    },
+    {
+      "source_file": "evidence/agent/semantics-mcp-capture.json",
+      "source_sha256": "abba8916cd5be4009f156007bdcd82437d0627ae29875a2eab931b4cc0880d46",
+      "source_pointer": "/response/structuredContent/zones/0/target_airflow",
+      "packet_pointer": "/revised_evidence/data/zones/0/target_airflow"
+    },
+    {
+      "source_file": "evidence/agent/semantics-mcp-capture.json",
+      "source_sha256": "abba8916cd5be4009f156007bdcd82437d0627ae29875a2eab931b4cc0880d46",
+      "source_pointer": "/response/structuredContent/zones/0/freshness",
+      "packet_pointer": "/revised_evidence/data/zones/0/freshness"
+    },
+    {
+      "source_file": "evidence/agent/semantics-mcp-capture.json",
+      "source_sha256": "abba8916cd5be4009f156007bdcd82437d0627ae29875a2eab931b4cc0880d46",
+      "source_pointer": "/response/structuredContent/zones/0/observations/airflow/value",
+      "packet_pointer": "/revised_evidence/data/zones/0/observations/airflow/value"
+    },
+    {
+      "source_file": "evidence/agent/semantics-mcp-capture.json",
+      "source_sha256": "abba8916cd5be4009f156007bdcd82437d0627ae29875a2eab931b4cc0880d46",
+      "source_pointer": "/response/structuredContent/zones/0/observations/pm25/value",
+      "packet_pointer": "/revised_evidence/data/zones/0/observations/pm25/value"
+    },
+    {
+      "source_file": "evidence/agent/semantics-mcp-capture.json",
+      "source_sha256": "abba8916cd5be4009f156007bdcd82437d0627ae29875a2eab931b4cc0880d46",
+      "source_pointer": "/response/structuredContent/zones/0/observations/co2/value",
+      "packet_pointer": "/revised_evidence/data/zones/0/observations/co2/value"
+    },
+    {
+      "source_file": "evidence/agent/semantics-mcp-capture.json",
+      "source_sha256": "abba8916cd5be4009f156007bdcd82437d0627ae29875a2eab931b4cc0880d46",
+      "source_pointer": "/response/structuredContent/zones/0/observations/fan_running/value",
+      "packet_pointer": "/revised_evidence/data/zones/0/observations/fan_running/value"
+    },
+    {
+      "source_file": "evidence/agent/semantics-mcp-capture.json",
+      "source_sha256": "abba8916cd5be4009f156007bdcd82437d0627ae29875a2eab931b4cc0880d46",
+      "source_pointer": "/response/structuredContent/zones/0/observations/damper_pct/value",
+      "packet_pointer": "/revised_evidence/data/zones/0/observations/damper_pct/value"
+    },
+    {
+      "source_file": "evidence/agent/guided-config-continuation-live.json",
+      "source_sha256": "88ce9a71c9b92326f9a90158a6a1c26a607c3e6972f1a23fe44671a996b2efdf",
+      "source_pointer": "/model_selected_mcp_calls/0/result/structuredContent/profile/id",
+      "packet_pointer": "/prior_setup/data/profile/id"
+    },
+    {
+      "source_file": "evidence/agent/guided-config-continuation-live.json",
+      "source_sha256": "88ce9a71c9b92326f9a90158a6a1c26a607c3e6972f1a23fe44671a996b2efdf",
+      "source_pointer": "/model_selected_mcp_calls/0/result/structuredContent/profile/simulation_only",
+      "packet_pointer": "/prior_setup/data/profile/simulation_only"
+    },
+    {
+      "source_file": "evidence/agent/guided-config-continuation-live.json",
+      "source_sha256": "88ce9a71c9b92326f9a90158a6a1c26a607c3e6972f1a23fe44671a996b2efdf",
+      "source_pointer": "/model_selected_mcp_calls/0/result/structuredContent/configured_facilities",
+      "packet_pointer": "/prior_setup/data/configured_facilities"
+    },
+    {
+      "source_file": "evidence/agent/guided-config-continuation-live.json",
+      "source_sha256": "88ce9a71c9b92326f9a90158a6a1c26a607c3e6972f1a23fe44671a996b2efdf",
+      "source_pointer": "/model_selected_mcp_calls/0/result/structuredContent/mode",
+      "packet_pointer": "/prior_setup/data/mode"
+    },
+    {
+      "source_file": "evidence/agent/guided-config-continuation-live.json",
+      "source_sha256": "88ce9a71c9b92326f9a90158a6a1c26a607c3e6972f1a23fe44671a996b2efdf",
+      "source_pointer": "/model_selected_mcp_calls/0/result/structuredContent/activation_requires",
+      "packet_pointer": "/prior_setup/data/activation_requires"
+    },
+    {
+      "source_file": "evidence/agent/guided-config-continuation-live.json",
+      "source_sha256": "88ce9a71c9b92326f9a90158a6a1c26a607c3e6972f1a23fe44671a996b2efdf",
+      "source_pointer": "/model_selected_mcp_calls/0/result/structuredContent/runtime/status",
+      "packet_pointer": "/prior_setup/data/runtime/status"
+    },
+    {
+      "source_file": "evidence/agent/guided-config-continuation-live.json",
+      "source_sha256": "88ce9a71c9b92326f9a90158a6a1c26a607c3e6972f1a23fe44671a996b2efdf",
+      "source_pointer": "/model_selected_mcp_calls/0/result/structuredContent/runtime/cse/connected",
+      "packet_pointer": "/prior_setup/data/runtime/cse/connected"
+    },
+    {
+      "source_file": "evidence/agent/guided-config-continuation-live.json",
+      "source_sha256": "88ce9a71c9b92326f9a90158a6a1c26a607c3e6972f1a23fe44671a996b2efdf",
+      "source_pointer": "/model_selected_mcp_calls/1/result/structuredContent/facility_id",
+      "packet_pointer": "/prior_group/data/facility_id"
+    },
+    {
+      "source_file": "evidence/agent/guided-config-continuation-live.json",
+      "source_sha256": "88ce9a71c9b92326f9a90158a6a1c26a607c3e6972f1a23fe44671a996b2efdf",
+      "source_pointer": "/model_selected_mcp_calls/1/result/structuredContent/status",
+      "packet_pointer": "/prior_group/data/status"
+    },
+    {
+      "source_file": "evidence/agent/guided-config-continuation-live.json",
+      "source_sha256": "88ce9a71c9b92326f9a90158a6a1c26a607c3e6972f1a23fe44671a996b2efdf",
+      "source_pointer": "/model_selected_mcp_calls/1/result/structuredContent/group/rsc",
+      "packet_pointer": "/prior_group/data/group/rsc"
+    },
+    {
+      "source_file": "evidence/agent/guided-config-continuation-live.json",
+      "source_sha256": "88ce9a71c9b92326f9a90158a6a1c26a607c3e6972f1a23fe44671a996b2efdf",
+      "source_pointer": "/model_selected_mcp_calls/1/result/structuredContent/group/rqi",
+      "packet_pointer": "/prior_group/data/group/rqi"
+    },
+    {
+      "source_file": "evidence/agent/guided-config-continuation-live.json",
+      "source_sha256": "88ce9a71c9b92326f9a90158a6a1c26a607c3e6972f1a23fe44671a996b2efdf",
+      "source_pointer": "/model_selected_mcp_calls/1/result/structuredContent/run_id",
+      "packet_pointer": "/prior_group/data/run_id"
+    },
+    {
+      "source_file": "evidence/agent/guided-config-continuation-live.json",
+      "source_sha256": "88ce9a71c9b92326f9a90158a6a1c26a607c3e6972f1a23fe44671a996b2efdf",
+      "source_pointer": "/model_selected_mcp_calls/1/result/structuredContent/group/body/m2m:agr/m2m:rsp/0/rsc",
+      "packet_pointer": "/prior_group/data/group/body/m2m:agr/m2m:rsp/0/rsc"
+    },
+    {
+      "source_file": "evidence/agent/guided-config-continuation-live.json",
+      "source_sha256": "88ce9a71c9b92326f9a90158a6a1c26a607c3e6972f1a23fe44671a996b2efdf",
+      "source_pointer": "/model_selected_mcp_calls/1/result/structuredContent/group/body/m2m:agr/m2m:rsp/1/rsc",
+      "packet_pointer": "/prior_group/data/group/body/m2m:agr/m2m:rsp/1/rsc"
+    },
+    {
+      "source_file": "evidence/agent/guided-config-continuation-live.json",
+      "source_sha256": "88ce9a71c9b92326f9a90158a6a1c26a607c3e6972f1a23fe44671a996b2efdf",
+      "source_pointer": "/model_selected_mcp_calls/1/result/structuredContent/group/body/m2m:agr/m2m:rsp/2/rsc",
+      "packet_pointer": "/prior_group/data/group/body/m2m:agr/m2m:rsp/2/rsc"
+    },
+    {
+      "source_file": "evidence/application/release-acceptance.json",
+      "source_sha256": "5bde7e0f55f28854f085ce619622349c99e6993d8f119f194f4dacf79ff727b1",
+      "source_pointer": "/scenarios/no_recovery/state/commands/0",
+      "packet_pointer": "/prior_command/data"
+    },
+    {
+      "source_file": "evidence/agent/semantics-mcp-capture.json",
+      "source_sha256": "abba8916cd5be4009f156007bdcd82437d0627ae29875a2eab931b4cc0880d46",
+      "source_pointer": "/response/structuredContent/zones/0/observations/airflow",
+      "packet_pointer": "/revised_evidence/data/zones/0/observations/airflow",
+      "restoration": "Entire original metric object; no value conversion or invented unit"
+    },
+    {
+      "source_file": "evidence/agent/semantics-mcp-capture.json",
+      "source_sha256": "abba8916cd5be4009f156007bdcd82437d0627ae29875a2eab931b4cc0880d46",
+      "source_pointer": "/response/structuredContent/zones/0/observations/pm25",
+      "packet_pointer": "/revised_evidence/data/zones/0/observations/pm25",
+      "restoration": "Entire original metric object; no value conversion or invented unit"
+    },
+    {
+      "source_file": "evidence/agent/semantics-mcp-capture.json",
+      "source_sha256": "abba8916cd5be4009f156007bdcd82437d0627ae29875a2eab931b4cc0880d46",
+      "source_pointer": "/response/structuredContent/zones/0/observations/co2",
+      "packet_pointer": "/revised_evidence/data/zones/0/observations/co2",
+      "restoration": "Entire original metric object; no value conversion or invented unit"
+    },
+    {
+      "source_file": "evidence/agent/semantics-mcp-capture.json",
+      "source_sha256": "abba8916cd5be4009f156007bdcd82437d0627ae29875a2eab931b4cc0880d46",
+      "source_pointer": "/response/structuredContent/zones/0/observations/fan_running",
+      "packet_pointer": "/revised_evidence/data/zones/0/observations/fan_running",
+      "restoration": "Entire original metric object; no value conversion or invented unit"
+    },
+    {
+      "source_file": "evidence/agent/semantics-mcp-capture.json",
+      "source_sha256": "abba8916cd5be4009f156007bdcd82437d0627ae29875a2eab931b4cc0880d46",
+      "source_pointer": "/response/structuredContent/zones/0/observations/damper_pct",
+      "packet_pointer": "/revised_evidence/data/zones/0/observations/damper_pct",
+      "restoration": "Entire original metric object; no value conversion or invented unit"
+    }
+  ],
+  "all_five_measurements_restored_exactly": true,
+  "canonical_unit_associations": {
+    "source_file": "src/opensoom/core.py",
+    "source_sha256": "00f4339ce5481d4daf13f8d44ab857f86173469f8da68eddf0db96d5ca6c32c5",
+    "AST_constant": "UNITS",
+    "target_airflow": {
+      "key": "airflow",
+      "value": "m³/h"
+    },
+    "set_damper_value": {
+      "key": "damper_pct",
+      "value": "%"
+    },
+    "meaning": "Canonical target/command unit associations from the existing product, no conversion."
+  },
+  "timestamps": "Each model-facing captured_at is the original capture completion; observation and ACK event timestamps remain in their exact objects.",
+  "forensic_provenance_outside_provider_payload": true,
+  "no_prior_answer_or_fake_chat_history": true
+}

@@ -1,0 +1,38 @@
+{
+  "status": "PROVIDER_AND_CODEX_COMPLETED_MEASUREMENTS_MATCH_LENGTH_CHECK_FAILED",
+  "files": {
+    "scripts/codex_units_regression.py": "df079038552feecf47d978c9fd1a424f5c5daef073ac25be581745bb5b79cfad",
+    "evidence/agent/units-dry.json": "108bfd0fd763c8784d95be2ea55342bdc35f671058d5e1567517e3b4250ba620",
+    "evidence/agent/units-fact-check.json": "3543e74608904e5d710da39bf2ee2c4918b942c877be26ce01ba759e84eb2dc3",
+    "evidence/agent/units-input-map.json": "73ea3851d7721bb03df5ad1ee109e860dd561516e49c93f0d6d515b2163708d4",
+    "evidence/agent/units-live.json": "96d85aee3e67b48da6f7cf7ab5000a67d218c1501e57e515d2a464a26e49eea6",
+    "evidence/agent/units-model-packet.json": "1193661a0cdc98964e79eda1bd9b18f28995f9e8b8e4faaf9d98ec1c5db347ac",
+    "evidence/agent/units-scope.json": "88b7458d8ee6771eba12c56d0005b551b9ad4c99f69f32e0ea1e1e92fb8f603e"
+  },
+  "all_prior_semantics_files_unchanged": true,
+  "earlier_cases_preserved": true,
+  "scope": {
+    "max_requests": 1,
+    "max_tokens": 14000,
+    "requests_consumed": 1,
+    "tokens_charged": 2810,
+    "requests_remaining": 0,
+    "tokens_remaining": 11190
+  },
+  "shared_budget": {
+    "batch_id": "opensoom-hackathon-2026-01",
+    "max_requests": 100,
+    "max_tokens": 250000,
+    "requests_consumed": 72,
+    "tokens_charged": 238120,
+    "tokens_reserved": 0,
+    "pending_requests": 0,
+    "requests_remaining": 28,
+    "tokens_remaining": 11880,
+    "requires_investigation": false
+  },
+  "credential_value_matches": 0,
+  "processes_stopped": true,
+  "whole_gate_self_passed": false,
+  "further_case_inference_allowed": false
+}

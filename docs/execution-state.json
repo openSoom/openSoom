@@ -724,6 +724,28 @@
         "evidence/agent/semantics-fact-check.json"
       ],
       "next_action": "Independent review of unit-preserving validation input; no autonomous retry/reset."
+    },
+    {
+      "id": "W-010",
+      "gate_ids": [
+        "S3-G1"
+      ],
+      "owner_role": "runtime_onem2m",
+      "owned_paths": [
+        "scripts/codex_units_regression.py",
+        "evidence/agent/units-*"
+      ],
+      "base_revision": "0d733da7051eeffbe070f6c219e9631509b0f858",
+      "status": "captured_awaiting_independent_review",
+      "evidence": [
+        "docs/review/guided-semantics-units-advisory-team2.json",
+        "evidence/agent/units-input-map.json",
+        "evidence/agent/units-dry.json",
+        "evidence/agent/units-live.json",
+        "evidence/agent/units-fact-check.json",
+        "evidence/agent/units-checkpoint.json"
+      ],
+      "next_action": "Independent Team2/3 functional factual review; no more inference planned."
     }
   ],
   "record_formats": {
@@ -797,12 +819,12 @@
       "max_attempts_per_step": 2
     },
     "persistent_accounting_path": ".runtime/llm-budget.sqlite",
-    "requests_consumed": 71,
-    "tokens_consumed": 235310,
+    "requests_consumed": 72,
+    "tokens_consumed": 238120,
     "requests_reserved": 0,
     "tokens_reserved": 0,
     "rule": "Configure finite limits before live tests; atomically reserve before calls; retain consumed/reserved usage across restarts; no automatic reset or increase; stop live calls at exhaustion and continue independent work.",
-    "usage_snapshot_note": "One corrected-contract Codex turn completed, counter/history/direction improved; validation input omitted airflow unit and model inventedL/min. Fact acceptance remainsopen, priorcasesunchanged.",
+    "usage_snapshot_note": "Final corrected-input response completed with accurate units/history. Raw harness retains7-vs6sentence deviation; independent functional review pending. All original case limits/failures retained.",
     "post_correction_case": {
       "purpose": "Actual Codex interpretation regression after reusable tool/skill semantics correction",
       "max_requests": 1,
@@ -814,6 +836,22 @@
       "unchanged_shared_limits": true,
       "previous_cases_preserved": true,
       "live_status": "completed_factual_gap_unit_omission"
+    },
+    "measurement_complete_case": {
+      "purpose": "Repair validation projection that omitted actual measurement units; preserve all prior chosen facts and restore complete measurement objects.",
+      "max_requests": 1,
+      "max_reservation_tokens": 14000,
+      "requested_output_tokens": 768,
+      "timeout_seconds": 45,
+      "retries": 0,
+      "actual_preflight_reservation": 12476,
+      "shared_remaining_at_preflight": 14690,
+      "sandbox": "read-only",
+      "approval_policy": "never; escalation unavailable",
+      "global_policy_changed": false,
+      "previous_cases_preserved": true,
+      "live_status": "completed_response_captured; raw_format_check_failed; independent_factual_review_pending",
+      "scope": "evidence/agent/units-scope.json"
     }
   },
   "conditional_extensions": [

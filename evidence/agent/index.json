@@ -308,14 +308,14 @@
     "batch_id": "opensoom-hackathon-2026-01",
     "max_requests": 100,
     "max_tokens": 250000,
-    "requests_consumed": 71,
-    "tokens_charged": 235310,
-    "tokens_remaining": 14690,
+    "requests_consumed": 72,
+    "tokens_charged": 238120,
+    "tokens_remaining": 11880,
     "pending_requests": 0,
-    "source": "evidence/agent/semantics-checkpoint.json"
+    "source": "evidence/agent/units-checkpoint.json"
   },
   "guided_host_evidence": {
-    "review_status": "pending_independent_factual_review",
+    "review_status": "completed_response_and_corrected_facts_captured; independent_functional_acceptance_pending_with_format_deviation",
     "prerequisites": "Maintainer-installed runtime and preactivated virtual profiles; fresh supported Codex CLI0.166.0 profiles; instrumented bounded provider; no desktop UI/human-first-use claim.",
     "strategy": "Separate demonstrations, explicitly allowed by S3-G1 and Team2 advisory; no fabricated uninterrupted conversation.",
     "files": [
@@ -358,6 +358,26 @@
         "file": "evidence/agent/semantics-mcp-capture.json",
         "sha256": "abba8916cd5be4009f156007bdcd82437d0627ae29875a2eab931b4cc0880d46",
         "scope": "Actualpost-correction MCP read, harnessselectednotmodelselected; fullunits/values preserved here."
+      },
+      {
+        "file": "evidence/agent/units-live.json",
+        "sha256": "96d85aee3e67b48da6f7cf7ab5000a67d218c1501e57e515d2a464a26e49eea6",
+        "scope": "Actual provider and Codex turn completed with correct quantities/units and priorACK/unresolved. Original harness INCOMPLETE remains because7sentences exceed its6sentence format check. Functional factual acceptance awaits independent review."
+      },
+      {
+        "file": "evidence/agent/units-input-map.json",
+        "sha256": "73ea3851d7721bb03df5ad1ee109e860dd561516e49c93f0d6d515b2163708d4",
+        "scope": "All45 selected value/object mappings retained; five complete measurement objects restored; forensic mapping kept outside model context."
+      },
+      {
+        "file": "evidence/agent/units-fact-check.json",
+        "sha256": "3543e74608904e5d710da39bf2ee2c4918b942c877be26ce01ba759e84eb2dc3",
+        "scope": "Author factual comparison; original response untouched. Temporal wording and length deviation explicitly referred for independent review."
+      },
+      {
+        "file": "evidence/agent/units-checkpoint.json",
+        "sha256": "793e7396600a5a8f6d8fcac583c0cda3d3219bb12a92df576bd27b066424e68d",
+        "scope": "Source/evidence hashes, preserved prior cases and settled72request accounting."
       }
     ]
   }

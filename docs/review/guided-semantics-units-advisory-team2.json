@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "team": "team_2",
+  "reviewer_role": "oss_experience_review",
+  "model": "gpt-6.1-sol",
+  "reasoning_effort": "max",
+  "scope": "Focused followup to guided-explanation-review-team2.json; inspect the corrected-product semantic result and propose a legitimate corrected-input check. No inference execution is approved by this advisory.",
+  "evidence": [
+    "evidence/agent/semantics-live.json",
+    "evidence/agent/semantics-fact-check.json",
+    "evidence/agent/semantics-mcp-capture.json",
+    "evidence/agent/semantics-scope.json",
+    "evidence/agent/semantics-checkpoint.json",
+    "scripts/codex_semantics_regression.py:149",
+    "scripts/codex_semantics_regression.py:152",
+    "src/opensoom/core.py:20",
+    "docs/review/guided-explanation-review-team2.json"
+  ],
+  "reviewed_live_sha256": "d712da056e50a849a0e2421ead995440da723e8b37a0001f8fc87b4486adb898",
+  "independent_observations": [
+    "Actual provider and Codex turn completed normally; the original six-sentence answer remains intact.",
+    "The response now recognizes a prior acknowledged unsuccessful damper command, keeps the incident unresolved, preserves the post-ACK recovery rule and distinguishes deficient airflow from elevated PM/CO2.",
+    "The answer says airflow is 200 L/min. The actual captured MCP measurement is value 200.0 with unit m³/h; no conversion was performed or supported.",
+    "The live input selection includes only /value for airflow, PM2.5, CO2, fan_running and damper_pct. It omits their original unit, observed_at, received_at, source and quality fields.",
+    "The original MCP result already supplies those fields correctly. Its SHA-256 matches the live packet source registry. Thus this result is not evidence that the product tool lacks measurement units.",
+    "All previous case limits and failed outputs remain preserved. Shared accounting records 71 requests / 235310 tokens, 14690 remaining and zero pending reservations."
+  ],
+  "classification": {
+    "primary_cause": "Test-harness input projection omitted measurement meaning present in the product's real output.",
+    "model_behavior": "The model supplied an unsupported unit instead of preserving uncertainty. Correct values with an invented unit do not form a grounded user handoff.",
+    "product_gap_established": "No new missing-unit backend defect is established by this test. The prior recovery/history semantics correction has positive captured regression evidence. Reliable user handoff is still unverified as a whole.",
+    "R_027": "remains_open_for_grounded_user_handoff",
+    "S3_G1": "Other verified components remain valid; the wrong-unit response does not close factual handoff acceptance.",
+    "final_release_approval": false
+  },
+  "legitimate_corrected_input_strategy": {
+    "advisory_result": "Reasonable equivalent verification design, conditional on transparent main-owned scope, offline integrity checks and actual final factual review. This is not permission to execute an API call or a guarantee of a pass.",
+    "why_distinct": "The new purpose is correcting a documented lossy test-input transformation, not resetting or silently retrying an exhausted case with unchanged inputs. The prior semantic run stays a completed response with a unit-error factual failure.",
+    "preserve": [
+      "Every previously chosen operational fact, all retained incidents and command history, source identities, differing timestamps, current-run history limits and recovery-count semantics",
+      "Full original captures and their hashes, prior prompts/model responses, exhausted policies and shared cumulative accounting",
+      "The fact that the new MCP capture was harness-selected and zero-inference, while earlier model-selected operations were separate evidence",
+      "The historical-record interpretation scope, maintainer prerequisites, physical simulation and absence of operations in the explanation turn"
+    ],
+    "restore": "Treat each selected measurement as an inseparable value/unit/observed_at/received_at/source/quality object from the original capture. Preserve the target's canonical unit association using the actual contract; do not manually invent or convert units. If a source unit is unavailable, report it as unknown.",
+    "out_of_band_provenance": "Long forensic JSON pointers and repeated file hashes can move to a separately hashed source-to-packet manifest. The model-facing packet still needs meaningful source labels, capture/observation times and the relations among records. Removing repeated forensic syntax is acceptable; removing operational facts or qualifiers to fit is not.",
+    "do_not_supply": "No corrected answer, synthetic assistant/tool history, rewritten prior transcript, fabricated current reading or hidden factual substitution.",
+    "offline_preconditions": [
+      "An automated map compares every original selected value with its new packet location, with no silent deletion or alteration",
+      "All five selected measurement objects carry their exact source units/timestamps/provenance/quality; a missing-unit packet fails before any live request",
+      "Earlier acknowledged command, unresolved incident, all three zone statuses/reasons and recovery/history scope remain present",
+      "Each source hash and transformed-packet hash is recorded; the main records the transformation and corrected-input purpose before execution",
+      "An unchanged conservative reservation estimator and zero-call preflight fit the complete planned request under both a newly fixed test limit and the current shared remainder"
+    ],
+    "live_execution_boundary": "Only main may decide whether to perform a single explicitly bounded corrected-input regression. This advisory approves no call. Do not reset previous caps, shared counters or reservations, lower the estimator, raise shared limits, or loop on stochastic variants. If preflight cannot fit within the remaining fixed batch, leave the gate open.",
+    "final_acceptance": [
+      "A genuine Codex/provider response completes normally and remains preserved without manual textual correction",
+      "Any quoted measurement uses the supplied value and unit correctly; the captured airflow is 200 m³/h and the source target is in the same canonical flow unit",
+      "Prior action/ACK, unresolved status and qualifying post-ACK recovery samples remain distinct",
+      "ACK is described as the virtual device's acknowledgement, not administrator approval",
+      "The answer clearly describes captured historical observations rather than newly measured current conditions, and retains simulated-physical limits",
+      "Independent review verifies the actual user-visible answer and source chain before any R-027 closure"
+    ]
+  },
+  "remaining_requirement": "A completed, factually grounded user-facing interpretation under a measurement-complete product-data packet. No replay of installation or all five tool selections, new physical experiment, desktop test or human study is required by this focused finding.",
+  "reviewer_actions": "Read-only evidence/source inspection and this advisory file only. No inference, runtime/profile mutation or non-review edits."
+}
