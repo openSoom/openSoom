@@ -1,0 +1,138 @@
+{
+  "version": 1,
+  "date": "2026-11-18",
+  "project": "openSoom",
+  "authority": "User explicitly requested four review teams and main-agent delegation of implementation improvements.",
+  "source_of_truth": {
+    "title": "Hackathon Rubric 2026",
+    "sha256": "42b38857fffae7c92739f84440b9db020ec6b79897c0f70db64c465ffd2cdfad",
+    "availability": "Organizer-provided reference. Original attachment is not redistributed in this repository."
+  },
+  "baseline": "docs/hackathon/rubric-baseline.json",
+  "teams": [
+    {
+      "id": "team_1",
+      "name": "oneM2M architecture and interoperability",
+      "criteria": [
+        1,
+        2,
+        3,
+        11
+      ],
+      "model": "gpt-6.1-sol",
+      "reasoning_effort": "max",
+      "initial_design_review": "completed; no implementation evidence",
+      "task_name": "rubric_reviewer"
+    },
+    {
+      "id": "team_2",
+      "name": "Open-source adoption and deliverables",
+      "criteria": [
+        4,
+        5,
+        6,
+        7
+      ],
+      "model": "gpt-6.1-sol",
+      "reasoning_effort": "max",
+      "initial_design_review": "completed; no implementation evidence",
+      "task_name": "oss_experience_review"
+    },
+    {
+      "id": "team_3",
+      "name": "Operations, trust and product AI",
+      "criteria": [
+        8,
+        9,
+        10,
+        17
+      ],
+      "model": "gpt-6.1-sol",
+      "reasoning_effort": "max",
+      "initial_design_review": "completed; no implementation evidence",
+      "task_name": "architecture_reasonableness"
+    },
+    {
+      "id": "team_4",
+      "name": "Edge and distributed standards",
+      "criteria": [
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "model": "gpt-6.1-sol",
+      "reasoning_effort": "max",
+      "initial_design_review": "completed; no implementation evidence",
+      "task_name": "edge_standards_review"
+    }
+  ],
+  "active_slot_limit": 4,
+  "scheduling": "Main plus up to three active reviewers/implementers; batch the four teams.",
+  "triggers": [
+    "Meaningful changes affecting assigned criteria",
+    "Architecture freeze",
+    "First real CSE end-to-end flow",
+    "Codex onboarding and live LLM acceptance",
+    "Release candidate",
+    "Final article/video/repository package"
+  ],
+  "review_cycle": [
+    "Identify revision or file-hash snapshot and evidence bundle",
+    "Independent review by criterion owners",
+    "Main records accept, alternative or defer and reason",
+    "Delegate bounded implementation tasks with file ownership",
+    "Run checks proportionate to changed behavior",
+    "Independent reviewer verifies the new evidence",
+    "Close as resolved, partially resolved or unresolved; retain deferral rationale"
+  ],
+  "finding_required_fields": [
+    "id",
+    "team",
+    "criteria",
+    "evidence_status",
+    "observed_evidence",
+    "gap_and_impact",
+    "minimum_change",
+    "product_reason",
+    "verification",
+    "main_decision",
+    "decision_reason",
+    "implementation_state",
+    "review_state"
+  ],
+  "evidence_bundle": [
+    "Revision or snapshot ID",
+    "Reproduction instructions and environment",
+    "Code/configuration/resource model paths",
+    "CSE requests and per-device results",
+    "Codex installation and runtime readiness evidence",
+    "Actual LLM trace versus fixture classification",
+    "Docs/video/article artifacts when relevant",
+    "Known limitations and unresolved questions"
+  ],
+  "rationality_gate": [
+    "Name the facility user's problem",
+    "Explain why the simpler alternative is inadequate",
+    "Explain reuse, integration or operational benefit",
+    "Identify an available implementation path",
+    "Define observable success and failure",
+    "Document cost to onboarding and maintenance"
+  ],
+  "evidence_states": [
+    "planned",
+    "implemented",
+    "verified",
+    "captured"
+  ],
+  "evidence_rules": [
+    "No planned feature receives an implementation score.",
+    "Do not invent weights, an official total or N/A policy.",
+    "Missing evidence is not automatically zero.",
+    "Internal acceptance gates are separate from official rubric descriptors.",
+    "Reviewers do not send external messages or publish.",
+    "Implementation authors cannot independently close their own findings.",
+    "This process runs during active work and milestones; it is not a scheduled background monitor."
+  ]
+}

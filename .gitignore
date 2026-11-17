@@ -1,0 +1,11 @@
+tmp/
+.env
+.env.*
+!.env.example
+!.env.*.example
+.venv/
+__pycache__/
+*.pyc
+node_modules/
+.DS_Store
+artifacts/local/

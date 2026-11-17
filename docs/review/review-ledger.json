@@ -1,0 +1,347 @@
+{
+  "version": 1,
+  "date": "2026-11-18",
+  "review_round": "generalized OSS product and Codex/LLM requirements",
+  "scope": "Initial design and governance review; no product implementation claimed",
+  "findings": [
+    {
+      "id": "R-001",
+      "team": "team_3",
+      "criteria": [
+        3,
+        6,
+        11
+      ],
+      "evidence_status": "design_only",
+      "observed_evidence": [
+        "User requirements",
+        "AGENTS.md",
+        "docs/hackathon/rubric-baseline.json",
+        "Independent initial reviewer report; no software execution evidence"
+      ],
+      "gap_and_impact": "School-specific names and rules would prevent reuse.",
+      "minimum_change": "Separate generic core, facility profiles, adapters and examples.",
+      "product_reason": "Same installation serves different facilities.",
+      "verification": "Two different profiles and two vendor adapters use unchanged core/tool code.",
+      "main_decision": "accept",
+      "decision_reason": "Same installation serves different facilities.",
+      "implementation_state": "policy_documented; software_pending",
+      "implementation_owner": "Main agent; delegate bounded work as needed",
+      "review_state": "not_verified",
+      "closure_evidence": []
+    },
+    {
+      "id": "R-002",
+      "team": "team_2",
+      "criteria": [
+        4,
+        5,
+        6,
+        7
+      ],
+      "evidence_status": "design_only",
+      "observed_evidence": [
+        "User requirements",
+        "AGENTS.md",
+        "docs/hackathon/rubric-baseline.json",
+        "Independent initial reviewer report; no software execution evidence"
+      ],
+      "gap_and_impact": "Nontechnical plugin onboarding and runtime readiness are not implemented.",
+      "minimum_change": "Validate Codex first with guided setup, preflight checks, diagnostics and stop/restart.",
+      "product_reason": "Installation convenience is a user requirement.",
+      "verification": "Clean Codex host follows public instructions without application-source edits.",
+      "main_decision": "accept",
+      "decision_reason": "Installation convenience is a user requirement.",
+      "implementation_state": "planned",
+      "implementation_owner": "Main agent; delegate bounded work as needed",
+      "review_state": "not_verified",
+      "closure_evidence": []
+    },
+    {
+      "id": "R-003",
+      "team": "team_3",
+      "criteria": [
+        9,
+        10,
+        17
+      ],
+      "evidence_status": "design_only",
+      "observed_evidence": [
+        "User requirements",
+        "AGENTS.md",
+        "docs/hackathon/rubric-baseline.json",
+        "Independent initial reviewer report; no software execution evidence"
+      ],
+      "gap_and_impact": "Actual LLM service execution was previously treated as optional.",
+      "minimum_change": "Make plugin/MCP and actual API runner mandatory core, using shared tools and persistent state.",
+      "product_reason": "User explicitly requires agent-operated setup and API-driven service tests.",
+      "verification": "Actual model tool calls reach the CSE and checked outcomes; record trace and errors.",
+      "main_decision": "accept",
+      "decision_reason": "User explicitly requires agent-operated setup and API-driven service tests.",
+      "implementation_state": "policy_corrected; software_pending",
+      "implementation_owner": "Main agent; delegate bounded work as needed",
+      "review_state": "not_verified",
+      "closure_evidence": []
+    },
+    {
+      "id": "R-004",
+      "team": "team_2",
+      "criteria": [
+        5,
+        6,
+        17
+      ],
+      "evidence_status": "design_only",
+      "observed_evidence": [
+        "User requirements",
+        "AGENTS.md",
+        "docs/hackathon/rubric-baseline.json",
+        "Independent initial reviewer report; no software execution evidence"
+      ],
+      "gap_and_impact": "Fixture playback could be confused with a live-model service test.",
+      "minimum_change": "Separate deterministic demo, API connectivity and live end-to-end outcomes.",
+      "product_reason": "Reproducibility and honest evidence are both needed.",
+      "verification": "A live API failure cannot result in a live pass through fixture fallback.",
+      "main_decision": "accept",
+      "decision_reason": "Reproducibility and honest evidence are both needed.",
+      "implementation_state": "planned",
+      "implementation_owner": "Main agent; delegate bounded work as needed",
+      "review_state": "not_verified",
+      "closure_evidence": []
+    },
+    {
+      "id": "R-005",
+      "team": "team_1",
+      "criteria": [
+        1,
+        3
+      ],
+      "evidence_status": "design_only",
+      "observed_evidence": [
+        "User requirements",
+        "AGENTS.md",
+        "docs/hackathon/rubric-baseline.json",
+        "Independent initial reviewer report; no software execution evidence"
+      ],
+      "gap_and_impact": "Generic plugin tools could bypass or imitate oneM2M common services.",
+      "minimum_change": "Connect discovery/group/evidence/action/verification tools to actual CSE primitives.",
+      "product_reason": "Reduce repeated integration work and expose standard services to operators.",
+      "verification": "Capture native discovery and /fopt requests, per-member outcomes and distinct AE identities.",
+      "main_decision": "accept",
+      "decision_reason": "Reduce repeated integration work and expose standard services to operators.",
+      "implementation_state": "planned",
+      "implementation_owner": "Main agent; delegate bounded work as needed",
+      "review_state": "not_verified",
+      "closure_evidence": []
+    },
+    {
+      "id": "R-006",
+      "team": "team_1",
+      "criteria": [
+        2,
+        11
+      ],
+      "evidence_status": "design_only",
+      "observed_evidence": [
+        "User requirements",
+        "AGENTS.md",
+        "docs/hackathon/rubric-baseline.json",
+        "Independent initial reviewer report; no software execution evidence"
+      ],
+      "gap_and_impact": "Native protocol diversity and a verified interoperable model are not implemented.",
+      "minimum_change": "Implement native MQTT/TLS plus HTTPS and explicit IPE mappings; verify chosen SDT/semantic scope.",
+      "product_reason": "Equipment telemetry and operator requests have different communication needs; adapters isolate vendor formats.",
+      "verification": "Native binding traces and model validation; vendor replacement preserves applications.",
+      "main_decision": "accept",
+      "decision_reason": "Equipment telemetry and operator requests have different communication needs; adapters isolate vendor formats.",
+      "implementation_state": "planned",
+      "implementation_owner": "Main agent; delegate bounded work as needed",
+      "review_state": "not_verified",
+      "closure_evidence": []
+    },
+    {
+      "id": "R-007",
+      "team": "team_3",
+      "criteria": [
+        10,
+        17
+      ],
+      "evidence_status": "design_only",
+      "observed_evidence": [
+        "User requirements",
+        "AGENTS.md",
+        "docs/hackathon/rubric-baseline.json",
+        "Independent initial reviewer report; no software execution evidence"
+      ],
+      "gap_and_impact": "AI setup and action tools expand configuration and credential boundaries.",
+      "minimum_change": "Use server-enforced roles/profiles, observe-first real-device defaults, secret redaction and bounded actions.",
+      "product_reason": "Convenient agent use must preserve facility ownership and explicit control configuration.",
+      "verification": "Cross-facility, stale-evidence and out-of-scope requests fail; approved simulated workflow runs autonomously.",
+      "main_decision": "accept",
+      "decision_reason": "Convenient agent use must preserve facility ownership and explicit control configuration.",
+      "implementation_state": "planned",
+      "implementation_owner": "Main agent; delegate bounded work as needed",
+      "review_state": "not_verified",
+      "closure_evidence": []
+    },
+    {
+      "id": "R-008",
+      "team": "team_4",
+      "criteria": [
+        13,
+        16
+      ],
+      "evidence_status": "design_only",
+      "observed_evidence": [
+        "User requirements",
+        "AGENTS.md",
+        "docs/hackathon/rubric-baseline.json",
+        "Independent initial reviewer report; no software execution evidence"
+      ],
+      "gap_and_impact": "MEC endpoint, deployment rights and runtime evidence are unavailable.",
+      "minimum_change": "Run a bounded feasibility check before committing to MEC hosting or MEC033 service integration.",
+      "product_reason": "Onboarding/discovery can use MEC if actually available and operationally useful.",
+      "verification": "Identify actual host/service/permissions; distinguish deployment from API consumption.",
+      "main_decision": "accept",
+      "decision_reason": "Onboarding/discovery can use MEC if actually available and operationally useful.",
+      "implementation_state": "feasibility_pending",
+      "implementation_owner": "Main agent; delegate bounded work as needed",
+      "review_state": "not_verified",
+      "closure_evidence": []
+    },
+    {
+      "id": "R-009",
+      "team": "team_4",
+      "criteria": [
+        12
+      ],
+      "evidence_status": "design_only",
+      "observed_evidence": [
+        "User requirements",
+        "AGENTS.md",
+        "docs/hackathon/rubric-baseline.json",
+        "Independent initial reviewer report; no software execution evidence"
+      ],
+      "gap_and_impact": "No current serving-CSE transition requirement or execution evidence.",
+      "minimum_change": "Consider planned gateway maintenance/availability only when justified; retain separate scope.",
+      "product_reason": "Avoid manufacturing mobility solely for points.",
+      "verification": "If adopted, prove identity/state/subscription/ACP restoration and interruption/loss measurements.",
+      "main_decision": "defer",
+      "decision_reason": "Avoid manufacturing mobility solely for points.",
+      "implementation_state": "deferred",
+      "implementation_owner": "Main agent; delegate bounded work as needed",
+      "review_state": "not_verified",
+      "closure_evidence": []
+    },
+    {
+      "id": "R-010",
+      "team": "team_4",
+      "criteria": [
+        14,
+        15
+      ],
+      "evidence_status": "design_only",
+      "observed_evidence": [
+        "User requirements",
+        "AGENTS.md",
+        "docs/hackathon/rubric-baseline.json",
+        "Independent initial reviewer report; no software execution evidence"
+      ],
+      "gap_and_impact": "No multi-client learning dataset/need or operational location-change requirement.",
+      "minimum_change": "Defer FL and geolocation until an actual need and executable path exist.",
+      "product_reason": "Protect adoption simplicity and avoid forced architecture.",
+      "verification": "Reopen when data-locality/location-dependent behavior and required environment are available.",
+      "main_decision": "defer",
+      "decision_reason": "Protect adoption simplicity and avoid forced architecture.",
+      "implementation_state": "deferred",
+      "implementation_owner": "Main agent; delegate bounded work as needed",
+      "review_state": "not_verified",
+      "closure_evidence": []
+    },
+    {
+      "id": "R-011",
+      "team": "team_2",
+      "criteria": [
+        4,
+        5,
+        6,
+        7
+      ],
+      "evidence_status": "design_only",
+      "observed_evidence": [
+        "User requirements",
+        "AGENTS.md",
+        "docs/hackathon/rubric-baseline.json",
+        "Independent initial reviewer report; no software execution evidence"
+      ],
+      "gap_and_impact": "No public article/video/repository acceptance evidence yet.",
+      "minimum_change": "Build deliverables from verified onboarding, device replacement and actual agent/CSE traces.",
+      "product_reason": "Open-source reuse and oneM2M benefits must be understandable and reproducible.",
+      "verification": "Article-independent README reproduction and matching article/video claims.",
+      "main_decision": "accept",
+      "decision_reason": "Open-source reuse and oneM2M benefits must be understandable and reproducible.",
+      "implementation_state": "planned",
+      "implementation_owner": "Main agent; delegate bounded work as needed",
+      "review_state": "not_verified",
+      "closure_evidence": []
+    },
+    {
+      "id": "R-012",
+      "team": "team_3",
+      "criteria": [
+        8,
+        9
+      ],
+      "evidence_status": "design_only",
+      "observed_evidence": [
+        "User requirements",
+        "AGENTS.md",
+        "docs/hackathon/rubric-baseline.json",
+        "Independent initial reviewer report; no software execution evidence"
+      ],
+      "gap_and_impact": "Public technical exchange and interview evidence remain unverified.",
+      "minimum_change": "Prepare technical discussion drafts and resource-tree/integration explanations from actual results.",
+      "product_reason": "Explain standards choices honestly without manufactured interactions.",
+      "verification": "User-authorized authentic exchanges and a substantive technical rehearsal.",
+      "main_decision": "accept",
+      "decision_reason": "Explain standards choices honestly without manufactured interactions.",
+      "implementation_state": "planned",
+      "implementation_owner": "Main agent; delegate bounded work as needed",
+      "review_state": "not_verified",
+      "closure_evidence": []
+    },
+    {
+      "id": "R-013",
+      "team": "team_2",
+      "criteria": [
+        6
+      ],
+      "evidence_status": "documentation_review",
+      "observed_evidence": [
+        "AGENTS.md",
+        "docs/review/review-charter.json"
+      ],
+      "gap_and_impact": "Session-specific reviewer identifiers in public documentation reduce portability.",
+      "minimum_change": "Use stable team roles and reusable task names instead of session paths.",
+      "product_reason": "Public contributor guidance must work in new sessions.",
+      "verification": "Inspect the published guidance and charter for stable team/task names and absence of session identifiers.",
+      "main_decision": "accept",
+      "decision_reason": "Small documentation correction improves reuse without changing review coverage.",
+      "implementation_state": "documentation_updated",
+      "implementation_owner": "main",
+      "review_state": "resolved",
+      "closure_evidence": [
+        {
+          "path": "AGENTS.md",
+          "sha256": "7ded8d227e59d6829f9328874872de08f47df2bbb6c142cf5c3155537636c691"
+        },
+        {
+          "path": "docs/review/review-charter.json",
+          "sha256": "976ad8d0687f30bf750282a2a5558c3187feb3ba55b7327e21042ccbbaaf7174"
+        }
+      ],
+      "reviewed_by": "team_2 / oss_experience_review",
+      "verification_result": "Independent reviewer confirmed stable task names, absence of local/session paths in 9 public files, exact 17-criterion coverage, and R-001 through R-012 remaining not_verified."
+    }
+  ]
+}

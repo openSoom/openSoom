@@ -1,0 +1,148 @@
+{
+  "version": 1,
+  "date": "2026-11-18",
+  "status": "Accepted direction and documented acceptance targets; software implementation pending",
+  "definition": "Reusable open-source operations layer for connecting ventilation and air-management equipment and tracing observations, diagnosis, authorized actions, result verification and maintenance across facilities and vendors.",
+  "user_confirmed": {
+    "reference_example_not_product_boundary": "School kitchen",
+    "target_scope": "Food production and other ventilation-required facilities",
+    "primary_user": "Nontechnical facility managers must be able to use agent-guided installation and configuration",
+    "first_host": "Codex",
+    "plugin_required": true,
+    "actual_llm_api_runner_required": true,
+    "review_teams": 4,
+    "implementation_delegation": "Main agent may use subagents as needed to improve accepted findings",
+    "physical_devices": "Simulated physical devices authorized by organizer according to user"
+  },
+  "consistent_management": "Shared contracts, permissions, workflows and evidence; facility-specific targets and controls.",
+  "boundaries": {
+    "core": [
+      "facility/zone/asset/capability identity",
+      "observations with units, provenance and observed/received timestamps",
+      "discovery and subscriptions",
+      "profile-bound diagnosis and permitted actions",
+      "incidents and maintenance records",
+      "command ID, expiry, idempotency, ACK and measured-result checks",
+      "role-scoped access and audit/run state"
+    ],
+    "facility_profile": [
+      "equipment relationships",
+      "applicable measurements",
+      "operating modes",
+      "approved thresholds and time windows",
+      "allowed controls",
+      "missing-data and failure response",
+      "recovery verification conditions"
+    ],
+    "device_adapter": [
+      "vendor protocol access",
+      "field and unit conversion",
+      "capability declarations",
+      "command and acknowledgement mapping"
+    ],
+    "user_surfaces": [
+      "Codex plugin with onboarding and operation workflows",
+      "MCP tools for the shared service",
+      "facility dashboard",
+      "standalone actual-LLM API runner"
+    ],
+    "deployment_profiles": [
+      "single-facility local start",
+      "two facility MN-CSEs and a central IN-CSE demonstration",
+      "conditional managed MEC deployment"
+    ]
+  },
+  "defaults_not_explicit_user_actuation_choice": {
+    "real_devices": "Observe and diagnose until configuration explicitly enables scoped controls",
+    "simulated_demo": "Preauthorized bounded automatic actions may run without a human performing model steps",
+    "profile_authority": "Facility administrator activates profiles; AI can prepare and explain drafts but cannot grant itself authority",
+    "core_demo": "Local, no hardware or paid API credentials required; dependency download/network prerequisites documented",
+    "llm_provider": "Configurable provider/model endpoint; do not assume the internal reviewer model name is available through a public API",
+    "secrets": "Local secret/environment injection; no keys in source, ordinary tool results or model prompts",
+    "language": "English submission/developer reference; Korean operator onboarding for the initial user"
+  },
+  "tool_contract_candidate": [
+    {
+      "name": "doctor",
+      "purpose": "Check declared dependencies, connection and runtime state without exposing credentials"
+    },
+    {
+      "name": "prepare_setup",
+      "purpose": "Validate a facility profile and provide an intelligible setup plan"
+    },
+    {
+      "name": "apply_setup",
+      "purpose": "Apply authorized idempotent configuration; report separate runtime/CSE/MCP readiness"
+    },
+    {
+      "name": "discover",
+      "purpose": "Find accessible facilities and equipment using oneM2M discovery"
+    },
+    {
+      "name": "read_group",
+      "purpose": "Query a real CSE group/fopt and retain per-member responses"
+    },
+    {
+      "name": "read_evidence",
+      "purpose": "Retrieve current observations, freshness, device state and incident history"
+    },
+    {
+      "name": "request_action",
+      "purpose": "Create authorized scoped control or maintenance requests after server-side validation"
+    },
+    {
+      "name": "verify_result",
+      "purpose": "Check CSE state, device ACK and subsequent observations; distinguish incomplete outcomes"
+    }
+  ],
+  "llm_execution": {
+    "shared_path": "Codex or standalone real-model runner -> same MCP tool contract -> openSoom service -> actual CSE",
+    "persistent_state": "Service-owned run and incident records, not only conversation history",
+    "bounds": [
+      "maximum model/tool steps",
+      "timeouts",
+      "bounded retries",
+      "allowed tool/action scope"
+    ],
+    "trace": "runId -> model-generated tool call -> oneM2M requestId -> incident/command/ACK/observations",
+    "outcomes": [
+      "PASS_HOSTED_LLM_E2E",
+      "PASS_LOCAL_LLM_E2E",
+      "PASS_FIXTURE",
+      "API_CONNECTIVITY_ONLY",
+      "BLOCKED",
+      "FAIL",
+      "NOT_RUN"
+    ],
+    "pass_rule": "A live pass requires actual model-generated tool calls and checked service outcomes. Fixture fallback cannot be reported as a live-model success.",
+    "current_status": "NOT_RUN"
+  },
+  "acceptance_targets_not_official_rubric": [
+    "Fresh supported Codex environment completes guided setup without editing application source.",
+    "Plugin installation, MCP connection, runtime startup and actual CSE operation are checked separately.",
+    "Account-free deterministic demo reproduces normal operation, exhaust anomaly, missing observation, maintenance action and recovery evidence.",
+    "A real LLM API runner completes the same service flow, with tool traces and final CSE outcome verification.",
+    "At least two facility profiles use the same core code; first candidates are a cooking/food-production area and a meeting/classroom ventilation example.",
+    "At least two vendor adapters with different field/unit formats use the same application/tool code.",
+    "Role/ACP denials, stale data, wrong tool arguments, duplicate requests and bounded error recovery have meaningful checks.",
+    "README, diagnostics, stop/restart and cleanup instructions are verified independently.",
+    "Simulated physical data, actual CSE/MCP/model execution and unsupported real equipment are labeled honestly."
+  ],
+  "advanced_features": {
+    "handover": "Conditional on a real availability/maintenance need and explicit transition evidence",
+    "mec_deployment": "Feasibility check accepted; platform access and actual deployment evidence required",
+    "mec_services": "MEC033 onboarding/discovery is a candidate if an endpoint is actually available",
+    "federated_learning": "Deferred until data-locality and multi-facility learning need plus ESTIMED VM path exist",
+    "geolocation": "Deferred until location changes operational behavior; static addresses do not establish service integration"
+  },
+  "publication": {
+    "source_license": "Apache-2.0 per event",
+    "own_noncode_license": "CC BY 4.0 per event",
+    "third_party": "Retain third-party licenses and attribution; do not relicense third-party assets by assumption",
+    "external_actions": "Prepare artifacts; public posting/submission and messages remain separately authorized actions"
+  },
+  "references": [
+    "https://onem2m-hackathon.io/introduce.asp",
+    "https://developers.openai.com/plugins/build/plugins"
+  ]
+}
