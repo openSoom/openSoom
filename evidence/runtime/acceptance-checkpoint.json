@@ -1,0 +1,32 @@
+{
+  "recorded_at": "2026-11-17T19:01:04.691424+00:00",
+  "status": "runtime_capture_complete_pending_independent_review",
+  "source_sha256": {
+    "src/opensoom/core.py": "26d87bfa6023203500e15492a7bad70266f25f05462d2f386419b1391444f97f",
+    "src/opensoom/app.py": "bf11d4fd94f0378ab6de0002645620c9f45c680b83f3a071aeec968e92908a32",
+    "src/opensoom/models.py": "5a11e9a47b6446a4e9f2d77a222e962147a864a53869ee5875870e0d85061e48",
+    "src/opensoom/adapters.py": "b6b2425832cb70d38795c9758b90531eba313304a19a8bbe8ce085e12a6a8840",
+    "src/opensoom/policy.py": "801ba84bf1eea13404a19017359e4e01fcf11d33e812e3a571df68e34c110ad5",
+    "src/opensoom/store.py": "e7369b519f396f86074334e2de0a0c9bfaedcbd4081d6c245780178167e62318",
+    "src/opensoom/onem2m.py": "c4edcf610b9c82266d222dc63b69869cbd62000478405cdcd98f44178b0b123e",
+    "scripts/application_acceptance.py": "036f3bece2e766df26f739ef656f713c8e0952a232f5e48c5c88767f32dd1165",
+    "profiles/food-production.json": "402ae760ec4fe13c23e2a6c63e3ec80518d8ebdba30edde9e64cfdbb573e4c6e",
+    "profiles/learning-space.json": "2bc00d56a3fcf15cb388d7b81892a33123492b4452105522d368e5b8daee14e3",
+    "schemas/facilities.schema.json": "c9d5b5015a202ec63fe360e823d05d575eb44e80f7f3a746f6a3ab2651e37f06",
+    "schemas/facility-profile.schema.json": "dd61c40a44498454b9ea06e01d5fd0a23b9124b2708b94f2c088191a07ee3ea1",
+    "config/facilities.json": "0b385a82788c18673624b385798dd4b9f73ae75bf05f15102f5b5e8b432ba547",
+    "src/opensoom/federation.py": "8aa9727ee7b028fb173f0375f033f74a874a29624cdf6cfd34a0baed9043e11d",
+    "scripts/cse_product_topology.py": "c3c92606e108599a3aaf28ddf535fea3dbec6db5eb6819fc72309e2431563718",
+    "scripts/cse_runtime.py": "8fc04a2288b381bfcb3e2cfe07e289f7cb6d41c60fd9a2ccf4ecb7ece22a988f",
+    "deploy/acme-single.ini": "d7a97bf87dee84edff1b9dd2bff0ef21d4c1f96469f76bacd82f202f8abcccd5"
+  },
+  "artifacts": {
+    "evidence/application/acceptance.json": "0792d32cab4526644e1f13fb93945e98f70c7a4170e3efa7bf865b9b2b6bd8b2",
+    "evidence/runtime/product-multisite-continuity.json": "177da67f736ae8887debc8b02474c03f4a73d1330221ebeb4d8ca4aada85fed2",
+    "evidence/runtime/runtime-decision.json": "081007c03c0350a3b6599adf61e3e3220dfefeee38e272c736c996adb0a8fb34"
+  },
+  "application_acceptance_id": "acceptance-d8fce81e37",
+  "topology_run_id": "topology-549e41103a",
+  "main_service_preserved": true,
+  "source_unchanged_during_both_captures": true
+}

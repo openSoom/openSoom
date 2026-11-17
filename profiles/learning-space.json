@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "id": "learning-space",
+  "name": "Shared learning spaces",
+  "simulation_only": true,
+  "description": "Second profile demonstrates reuse across occupancy-driven rooms. Values are simulation parameters.",
+  "freshness_seconds": 45,
+  "command_ttl_seconds": 30,
+  "recovery_samples": 2,
+  "allowed_actions": ["set_damper", "request_maintenance"],
+  "zones": [
+    {"id": "classroom", "name": "Learning studio", "minimum_airflow": 500, "pm25_warning": 25, "co2_warning": 1000},
+    {"id": "meeting", "name": "Meeting room", "minimum_airflow": 300, "pm25_warning": 25, "co2_warning": 1000},
+    {"id": "lounge", "name": "Shared lounge", "minimum_airflow": 350, "pm25_warning": 30, "co2_warning": 1100}
+  ]
+}

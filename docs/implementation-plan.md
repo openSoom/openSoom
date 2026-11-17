@@ -1,6 +1,6 @@
 # Implementation goals and acceptance evidence
 
-Status: implementation plan; stages 0–6 have not started. Preparing this document does not complete stage 0. The execution ledger is [execution-state.json](execution-state.json). The accepted product boundaries remain in [product-contract.json](product-contract.json).
+Status: active implementation; execution evidence is being collected and independently reviewed. Preparing a document does not complete its stage. The execution ledger is [execution-state.json](execution-state.json). The accepted product boundaries remain in [product-contract.json](product-contract.json).
 
 ## Outcome and scope
 
@@ -137,6 +137,7 @@ Completion gates:
 - **S6-G1:** a clean supported environment reproduces the documented install/start/demo/diagnose/stop/restart/cleanup path with pinned dependencies. README independently explains purpose, architecture, source layout, limitations and extension examples. Verify behavior-focused tests relevant to the shipped paths.
 - **S6-G2:** English Hackster draft contains the concrete sourced problem, architecture/resource tree, protocol and security choices, deployment instructions, actual findings, limitations, repository link and prepared video handoff. Prepare an English presentation and technical Q&A based on actual evidence; record missing authentic public-discussion evidence without manufacturing it. For each article/video/presentation artifact, retain its location, SHA-256, source revision/run IDs and publication state. Unpublished URLs remain pending. After separate publication authorization, the handoff requires article↔repository/video links, the README article backlink and logged-out public-access checks; these are not claimed before publication.
 - **S6-G3:** all four teams inspect the release snapshot and all 17 criteria; unresolved findings have explicit impact and disposition. No unaddressed defect that violates a required gate may be hidden behind a deferral. Source, dashboard, article and video make consistent claims.
+- **S6-G5 (added by maintainer during execution):** deliver a single-page HTML pitching/landing-page artifact using actual Three.js visualization. Explain the problem, architecture, oneM2M role, agent workflow and evidence limits. Provide Korean presenter guidance, usable interactions, responsive/accessibility fallbacks, pinned dependency/license provenance and rendered browser checks. Keep it repository-hostable without publishing to a new external service.
 - **S6-G4:** reviewed code/docs/evidence and deliverable locations are committed and pushed through `github-personal`; verify the remote revision. Preserve third-party licenses, exclude secrets/private attachments and record any externally pending publication/submission actions.
 
 ## Evidence, state and independent review

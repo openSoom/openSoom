@@ -1,0 +1,19 @@
+{
+  "date": "2026-11-18",
+  "scope": "Bounded public endpoint readiness check; no user account or deployment capability established",
+  "attempts": [
+    {
+      "url": "https://estimed.etsi.org/",
+      "status": 200,
+      "resolved_url": "https://estimed.etsi.org/",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "url": "https://mec-platform.etsi.org/",
+      "error": "URLError",
+      "detail": "<urlopen error [Errno 54] Connection reset by peer>"
+    }
+  ],
+  "project_specific_mec_config": "not provided in environment",
+  "decision": "Keep actual MEC hosting/services conditional; continue actual local distributed CSE implementation. Public page availability is not deployment access or MEC service consumption."
+}

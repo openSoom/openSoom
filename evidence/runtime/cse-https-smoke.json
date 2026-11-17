@@ -1,0 +1,351 @@
+{
+  "kind": "actual_CSE_execution",
+  "cse": "ACME 2026.5.3",
+  "transport": "HTTPS",
+  "physical_data": "simulated",
+  "checks": {
+    "cse_base": {
+      "rsc": 2000,
+      "rqi": "opensoom-cdb971c521734e49bbc46feb957fe9ba",
+      "body": {
+        "m2m:cb": {
+          "ri": "opensoom-secure",
+          "rn": "cse-secure",
+          "csi": "/opensoom-secure",
+          "spi": "//opensoom.example",
+          "csz": [
+            "application/json",
+            "application/vnd.onem2m-res+json",
+            "application/cbor",
+            "application/vnd.onem2m-res+cbor"
+          ],
+          "acpi": [
+            "/opensoom-secure/acpCreateRootResources"
+          ],
+          "poa": [
+            "https://127.0.0.1:8443"
+          ],
+          "cst": 1,
+          "srt": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            9,
+            10,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            34,
+            43,
+            44,
+            47,
+            48,
+            58,
+            60,
+            62,
+            63,
+            64,
+            65,
+            66,
+            10001,
+            10002,
+            10003,
+            10004,
+            10009,
+            10010,
+            10013,
+            10014,
+            10016,
+            10018,
+            10024,
+            10028,
+            10029,
+            10030,
+            10058,
+            10060,
+            10062,
+            10063,
+            10064,
+            10065,
+            10066
+          ],
+          "srv": [
+            "2a",
+            "3",
+            "4",
+            "5"
+          ],
+          "pi": "",
+          "ty": 5,
+          "ct": "20261117T182036,555386",
+          "lt": "20261117T182036,555386",
+          "ici": "/opensoom-secure",
+          "ctm": "20261117T183252,363758"
+        }
+      },
+      "http_status": 200
+    },
+    "ae_registration": {
+      "rsc": 2001,
+      "aei": "Csmoke09904b7893",
+      "rqi": "opensoom-509a59a5380e48d886e07a3c7b332000"
+    },
+    "discovery": {
+      "rsc": 2000,
+      "rqi": "opensoom-5fd343dbb7e640b0b1d8576966f07321",
+      "body": {
+        "m2m:uril": [
+          "/opensoom-secure/cntOttp4oAKrF"
+        ]
+      },
+      "http_status": 200
+    },
+    "unprivileged_acp_denial": {
+      "rsc": 4103,
+      "rqi": "opensoom-7b1d8d3caf8447ac9addc868c796f780",
+      "body": {
+        "m2m:dbg": "originator: Cdenied09904b7893 has no RETRIEVE privileges for resource: cntOttp4oAKrF"
+      },
+      "http_status": 403
+    },
+    "permitted_acp_read": {
+      "rsc": 2000,
+      "rqi": "opensoom-f1e4961d4e8b417d8eaa2e24b13c3f97",
+      "body": {
+        "m2m:cnt": {
+          "rn": "observations",
+          "lbl": [
+            "opensoom",
+            "smoke"
+          ],
+          "acpi": [
+            "acpM8nnJV54Y0"
+          ],
+          "cni": 1,
+          "cbs": 8,
+          "st": 1,
+          "pi": "Csmoke09904b7893",
+          "ri": "cntOttp4oAKrF",
+          "ty": 3,
+          "ct": "20261117T183252,374755",
+          "lt": "20261117T183252,374755",
+          "et": "20311116T183252,368467"
+        }
+      },
+      "http_status": 200
+    },
+    "native_group_fanout": {
+      "rsc": 2000,
+      "rqi": "opensoom-30f01a904510485893860c91e268cf0b",
+      "body": {
+        "m2m:agr": {
+          "m2m:rsp": [
+            {
+              "rsc": 2000,
+              "rqi": "opensoom-30f01a904510485893860c91e268cf0b",
+              "rvi": "4",
+              "pc": {
+                "m2m:cnt": {
+                  "rn": "observations",
+                  "lbl": [
+                    "opensoom",
+                    "smoke"
+                  ],
+                  "acpi": [
+                    "acpM8nnJV54Y0"
+                  ],
+                  "cni": 1,
+                  "cbs": 8,
+                  "st": 1,
+                  "pi": "Csmoke09904b7893",
+                  "ri": "cntOttp4oAKrF",
+                  "ty": 3,
+                  "ct": "20261117T183252,374755",
+                  "lt": "20261117T183252,374755",
+                  "et": "20311116T183252,368467"
+                }
+              }
+            },
+            {
+              "rsc": 2000,
+              "rqi": "opensoom-30f01a904510485893860c91e268cf0b",
+              "rvi": "4",
+              "pc": {
+                "m2m:cnt": {
+                  "rn": "second-zone",
+                  "acpi": [
+                    "acpqptd6yJM47"
+                  ],
+                  "cni": 0,
+                  "cbs": 0,
+                  "st": 0,
+                  "pi": "Csmoke09904b7893",
+                  "ri": "cntKBQNO0I6UI",
+                  "ty": 3,
+                  "ct": "20261117T183252,402110",
+                  "lt": "20261117T183252,402110",
+                  "et": "20311116T183252,368467"
+                }
+              }
+            }
+          ]
+        }
+      },
+      "http_status": 200
+    },
+    "native_group_partial_failure": {
+      "native_aggregate_error": {
+        "rsc": 4103,
+        "rqi": "opensoom-a818f9ff5bc74ca0ae4ee0a183e875ca",
+        "body": {
+          "m2m:dbg": "originator: Csmoke09904b7893 has no RETRIEVE privileges for resource: cntKBQNO0I6UI"
+        },
+        "http_status": 403
+      },
+      "independent_member_checks": [
+        {
+          "rsc": 2000,
+          "rqi": "opensoom-a3c166a9ddd947f2a82518cd463495f6",
+          "body": {
+            "m2m:cnt": {
+              "rn": "observations",
+              "lbl": [
+                "opensoom",
+                "smoke"
+              ],
+              "acpi": [
+                "acpM8nnJV54Y0"
+              ],
+              "cni": 1,
+              "cbs": 8,
+              "st": 1,
+              "pi": "Csmoke09904b7893",
+              "ri": "cntOttp4oAKrF",
+              "ty": 3,
+              "ct": "20261117T183252,374755",
+              "lt": "20261117T183252,374755",
+              "et": "20311116T183252,368467"
+            }
+          },
+          "http_status": 200
+        },
+        {
+          "rsc": 4103,
+          "rqi": "opensoom-dabdc356ac2d4ea3a950fd93ff9c32f5",
+          "body": {
+            "m2m:dbg": "originator: Csmoke09904b7893 has no RETRIEVE privileges for resource: cntKBQNO0I6UI"
+          },
+          "http_status": 403
+        }
+      ],
+      "observed_behavior": "ACME aborts the aggregate on the denied member; no all-success or native mixed-result claim."
+    },
+    "sdt_air_quality_creation": {
+      "rsc": 2001,
+      "rqi": "opensoom-7d28d6bc541b4e779a46a29ebeade077",
+      "body": {
+        "cod:aiQSr": {
+          "rn": "air-quality",
+          "cnd": "org.onem2m.common.moduleclass.airQualitySensor",
+          "lbl": [
+            "opensoom",
+            "air-quality"
+          ],
+          "pm25": 18,
+          "co2": 750.0,
+          "cs": 12,
+          "st": 0,
+          "pi": "Csmoke09904b7893",
+          "ri": "aiQSrjqQ2M6CJWn",
+          "ty": 28,
+          "ct": "20261117T183252,422903",
+          "lt": "20261117T183252,422903",
+          "et": "20311116T183252,368467"
+        }
+      },
+      "http_status": 201
+    },
+    "sdt_discovery": {
+      "rsc": 2000,
+      "rqi": "opensoom-ffb2305814e14a6a910f8b020d0c6045",
+      "body": {
+        "m2m:uril": [
+          "/opensoom-secure/aiQSrjqQ2M6CJWn"
+        ]
+      },
+      "http_status": 200
+    },
+    "sdt_type_rejection": {
+      "rsc": 4000,
+      "rqi": "opensoom-cc2f8d4bc1664da98687239a225b65dd",
+      "body": {
+        "m2m:dbg": "Attribute/value validation error: pm25=invalid (invalid type: str. Expected: integer)"
+      },
+      "http_status": 400
+    },
+    "subscription": {
+      "creation_rqi": "opensoom-b27a817a2b7b42a7a79779106dbb22be",
+      "cin_rqi": "opensoom-6efef452f02d479f8f0b20a7a09a6a7f",
+      "verification_and_notification": [
+        {
+          "rqi": "TFAbmy8Yff",
+          "body": {
+            "m2m:sgn": {
+              "vrq": true,
+              "sur": "/opensoom-secure/subLuLzA2W5hC",
+              "cr": "Csmoke09904b7893"
+            }
+          }
+        },
+        {
+          "rqi": "09s9f96ahw",
+          "body": {
+            "m2m:sgn": {
+              "nev": {
+                "net": 3,
+                "rep": {
+                  "m2m:cin": {
+                    "con": {
+                      "pm25_ug_m3": 18,
+                      "simulated": true
+                    },
+                    "cnf": "application/json:0",
+                    "cs": 8,
+                    "pi": "cntOttp4oAKrF",
+                    "ri": "cinRORwm87jQN",
+                    "rn": "cin_KtLyn3d6dv",
+                    "ty": 4,
+                    "ct": "20261117T183252,385189",
+                    "lt": "20261117T183252,385189",
+                    "et": "20311116T183252,368467",
+                    "st": 1
+                  }
+                }
+              },
+              "sur": "/opensoom-secure/subLuLzA2W5hC"
+            }
+          }
+        }
+      ]
+    }
+  },
+  "limitations": [
+    "ACP tests use claimed originators on a trusted loopback transport; not proof of cryptographic AE identity binding.",
+    "CSE success and notifications do not prove actuator response or ventilation performance."
+  ],
+  "result": "PASS_NATIVE_CSE_SMOKE",
+  "request_trace_sha256": "c2cfa6fa3a40cc8d44d6df33a62b942718bffbcdf5eb972d09ad1f7d17b08760"
+}

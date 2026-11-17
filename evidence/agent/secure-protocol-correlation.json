@@ -1,0 +1,1195 @@
+{
+  "captured_at": "2026-11-17T18:44:44.071787+00:00",
+  "label": "Software protocol evidence; physical devices are simulated",
+  "scope": "MCP stdio and local HTTP service; service/CSE HTTPS and virtual-device native MQTT/TLS are separate boundaries",
+  "binding_evidence": [
+    "evidence/runtime/cse-https-smoke.json",
+    "evidence/runtime/cse-mqtt-tls-smoke.json"
+  ],
+  "source_runs": [
+    "secure-live-recovery.json",
+    "secure-live-no-recovery.json",
+    "secure-live-stale-refusal.json",
+    "secure-codex-host-correlated.json"
+  ],
+  "matched_request_ids": 25,
+  "records": [
+    {
+      "source": "cse-requests.jsonl",
+      "binding": "service HTTPS CSE requests",
+      "timestamp": "2026-11-17T18:40:28.000484+00:00",
+      "method": "GET",
+      "path": "cse-secure/opensoom/facilities/food-a",
+      "origin": "Cosoperator",
+      "rqi": "opensoom-6cf2f1ef982a4adaa2d4391bfc42701c",
+      "request": null,
+      "query": {
+        "fu": 1,
+        "drt": 2,
+        "ty": 3
+      },
+      "response": {
+        "rsc": 2000,
+        "rqi": "opensoom-6cf2f1ef982a4adaa2d4391bfc42701c",
+        "body": {
+          "m2m:uril": [
+            "/opensoom-secure/cnt8xEdmADPH8",
+            "/opensoom-secure/cnt2mQNmfBv2z",
+            "/opensoom-secure/cnt9N3xCKDRHY",
+            "/opensoom-secure/cntBihZ19zaZh",
+            "/opensoom-secure/cntXwuAy9K6FY",
+            "/opensoom-secure/cntSCHgBFyNpy",
+            "/opensoom-secure/cntxeUWlRrtx0",
+            "/opensoom-secure/cntX0gfVtHsVZ",
+            "/opensoom-secure/cnthNe29u6bbr",
+            "/opensoom-secure/cntVsXSYGCnGO",
+            "/opensoom-secure/cnt48i9c46YpW",
+            "/opensoom-secure/cnt07xzwevGcf"
+          ]
+        },
+        "http_status": 200
+      }
+    },
+    {
+      "source": "cse-requests.jsonl",
+      "binding": "service HTTPS CSE requests",
+      "timestamp": "2026-11-17T18:40:29.221384+00:00",
+      "method": "GET",
+      "path": "cse-secure/opensoom/food-a-zone-observations/fopt/la",
+      "origin": "Cosoperator",
+      "rqi": "opensoom-29ff631b6f0c40849935a3283f85cbc1",
+      "request": null,
+      "query": {},
+      "response": {
+        "rsc": 2000,
+        "rqi": "opensoom-29ff631b6f0c40849935a3283f85cbc1",
+        "body": {
+          "m2m:agr": {
+            "m2m:rsp": [
+              {
+                "rsc": 2000,
+                "rqi": "opensoom-29ff631b6f0c40849935a3283f85cbc1",
+                "rvi": "4",
+                "pc": {
+                  "m2m:cin": {
+                    "con": "{\"facility_id\": \"food-a\", \"zone_id\": \"cook\", \"observed_at\": \"2026-11-17T18:40:27.661+00:00\", \"received_at\": \"2026-11-17T18:40:27.661+00:00\", \"source\": \"simulated\", \"adapter\": \"vendor-a\", \"pm25\": 62.0, \"co2\": 1450.0, \"airflow\": 360.0, \"fan_running\": true, \"damper_pct\": 35.0}",
+                    "cnf": "application/json:0",
+                    "cs": 274,
+                    "pi": "cnt2mQNmfBv2z",
+                    "ri": "cinHcKLbHpslc",
+                    "rn": "cin_hM5hzVukhU",
+                    "ty": 4,
+                    "ct": "20261117T184027,665141",
+                    "lt": "20261117T184027,665141",
+                    "et": "20311116T183914,888248",
+                    "st": 37
+                  }
+                }
+              },
+              {
+                "rsc": 2000,
+                "rqi": "opensoom-29ff631b6f0c40849935a3283f85cbc1",
+                "rvi": "4",
+                "pc": {
+                  "m2m:cin": {
+                    "con": "{\"facility_id\": \"food-a\", \"zone_id\": \"wash\", \"observed_at\": \"2026-11-17T18:40:27.678+00:00\", \"received_at\": \"2026-11-17T18:40:27.678+00:00\", \"source\": \"simulated\", \"adapter\": \"vendor-a\", \"pm25\": 12.0, \"co2\": 620.0, \"airflow\": 690.0, \"fan_running\": true, \"damper_pct\": 70.0}",
+                    "cnf": "application/json:0",
+                    "cs": 273,
+                    "pi": "cntSCHgBFyNpy",
+                    "ri": "cinwL5J5SOcYA",
+                    "rn": "cin_iNtauZ8ZTW",
+                    "ty": 4,
+                    "ct": "20261117T184027,681406",
+                    "lt": "20261117T184027,681406",
+                    "et": "20311116T183914,888248",
+                    "st": 37
+                  }
+                }
+              },
+              {
+                "rsc": 2000,
+                "rqi": "opensoom-29ff631b6f0c40849935a3283f85cbc1",
+                "rvi": "4",
+                "pc": {
+                  "m2m:cin": {
+                    "con": "{\"facility_id\": \"food-a\", \"zone_id\": \"pack\", \"observed_at\": \"2026-11-17T18:40:27.690+00:00\", \"received_at\": \"2026-11-17T18:40:27.690+00:00\", \"source\": \"simulated\", \"adapter\": \"vendor-a\", \"pm25\": 12.0, \"co2\": 620.0, \"airflow\": 517.5, \"fan_running\": true, \"damper_pct\": 70.0}",
+                    "cnf": "application/json:0",
+                    "cs": 273,
+                    "pi": "cntVsXSYGCnGO",
+                    "ri": "cin90ZsSCD3NY",
+                    "rn": "cin_tpm4WvnPhF",
+                    "ty": 4,
+                    "ct": "20261117T184027,692818",
+                    "lt": "20261117T184027,692818",
+                    "et": "20311116T183914,888248",
+                    "st": 37
+                  }
+                }
+              }
+            ]
+          }
+        },
+        "http_status": 200
+      }
+    },
+    {
+      "source": "cse-requests.jsonl",
+      "binding": "service HTTPS CSE requests",
+      "timestamp": "2026-11-17T18:40:31.815245+00:00",
+      "method": "GET",
+      "path": "cse-secure/opensoom/facilities/food-a/cook/observations/la",
+      "origin": "Cosdiagnostic",
+      "rqi": "opensoom-3cb2bee405e54883acc739a3010bb2d0",
+      "request": null,
+      "query": {},
+      "response": {
+        "rsc": 2000,
+        "rqi": "opensoom-3cb2bee405e54883acc739a3010bb2d0",
+        "body": {
+          "m2m:cin": {
+            "con": "{\"facility_id\": \"food-a\", \"zone_id\": \"cook\", \"observed_at\": \"2026-11-17T18:40:31.809+00:00\", \"received_at\": \"2026-11-17T18:40:31.809+00:00\", \"source\": \"simulated\", \"adapter\": \"vendor-a\", \"pm25\": 62.0, \"co2\": 1450.0, \"airflow\": 360.0, \"fan_running\": true, \"damper_pct\": 35.0}",
+            "cnf": "application/json:0",
+            "cs": 274,
+            "pi": "cnt2mQNmfBv2z",
+            "ri": "cin88yURi8ju7",
+            "rn": "cin_cg91T75oVn",
+            "ty": 4,
+            "ct": "20261117T184031,812497",
+            "lt": "20261117T184031,812497",
+            "et": "20311116T183914,888248",
+            "st": 39
+          }
+        },
+        "http_status": 200
+      }
+    },
+    {
+      "source": "cse-requests.jsonl",
+      "binding": "service HTTPS CSE requests",
+      "timestamp": "2026-11-17T18:40:31.829680+00:00",
+      "method": "GET",
+      "path": "cse-secure/opensoom/facilities/food-a/wash/observations/la",
+      "origin": "Cosdiagnostic",
+      "rqi": "opensoom-cff489c3b72b46bdb249ae749191295b",
+      "request": null,
+      "query": {},
+      "response": {
+        "rsc": 2000,
+        "rqi": "opensoom-cff489c3b72b46bdb249ae749191295b",
+        "body": {
+          "m2m:cin": {
+            "con": "{\"facility_id\": \"food-a\", \"zone_id\": \"wash\", \"observed_at\": \"2026-11-17T18:40:31.824+00:00\", \"received_at\": \"2026-11-17T18:40:31.824+00:00\", \"source\": \"simulated\", \"adapter\": \"vendor-a\", \"pm25\": 12.0, \"co2\": 620.0, \"airflow\": 690.0, \"fan_running\": true, \"damper_pct\": 70.0}",
+            "cnf": "application/json:0",
+            "cs": 273,
+            "pi": "cntSCHgBFyNpy",
+            "ri": "cinFvGhSK4Lmw",
+            "rn": "cin_qkEpR5iLOM",
+            "ty": 4,
+            "ct": "20261117T184031,827060",
+            "lt": "20261117T184031,827060",
+            "et": "20311116T183914,888248",
+            "st": 39
+          }
+        },
+        "http_status": 200
+      }
+    },
+    {
+      "source": "cse-requests.jsonl",
+      "binding": "service HTTPS CSE requests",
+      "timestamp": "2026-11-17T18:40:31.840891+00:00",
+      "method": "GET",
+      "path": "cse-secure/opensoom/facilities/food-a/pack/observations/la",
+      "origin": "Cosdiagnostic",
+      "rqi": "opensoom-4bd9c828914f486aba65d0e4b6b9c020",
+      "request": null,
+      "query": {},
+      "response": {
+        "rsc": 2000,
+        "rqi": "opensoom-4bd9c828914f486aba65d0e4b6b9c020",
+        "body": {
+          "m2m:cin": {
+            "con": "{\"facility_id\": \"food-a\", \"zone_id\": \"pack\", \"observed_at\": \"2026-11-17T18:40:31.837+00:00\", \"received_at\": \"2026-11-17T18:40:31.837+00:00\", \"source\": \"simulated\", \"adapter\": \"vendor-a\", \"pm25\": 12.0, \"co2\": 620.0, \"airflow\": 517.5, \"fan_running\": true, \"damper_pct\": 70.0}",
+            "cnf": "application/json:0",
+            "cs": 273,
+            "pi": "cntVsXSYGCnGO",
+            "ri": "cin09pncv6uxC",
+            "rn": "cin_0EQmDb5oX4",
+            "ty": 4,
+            "ct": "20261117T184031,839350",
+            "lt": "20261117T184031,839350",
+            "et": "20311116T183914,888248",
+            "st": 39
+          }
+        },
+        "http_status": 200
+      }
+    },
+    {
+      "source": "cse-requests.jsonl",
+      "binding": "service HTTPS CSE requests",
+      "timestamp": "2026-11-17T18:40:34.728678+00:00",
+      "method": "POST",
+      "path": "cse-secure/opensoom/facilities/food-a/cook/commands",
+      "origin": "Cosoperator",
+      "rqi": "opensoom-59aab0b6f648476ebc13956a5157ab9b",
+      "request": {
+        "m2m:cin": {
+          "con": "{\"facility_id\": \"food-a\", \"zone_id\": \"cook\", \"action\": \"set_damper\", \"value\": 100.0, \"reason\": \"Insufficient exhaust with fan running; airflow 360 vs target 900; raise damper to max\", \"request_id\": \"agent-379720ef883c:set-cook-damper-100\", \"id\": \"cmd-607d6d77947b\", \"status\": \"requested\", \"ack\": false, \"created_at\": \"2026-11-17T18:40:34.728408+00:00\", \"expires_at\": \"2026-11-17T18:41:04.728408+00:00\", \"profile_version\": 1, \"run_id\": \"agent-379720ef883c\", \"incident_id\": \"incident-99c44faf8b\", \"observed_result\": \"pending\"}",
+          "cnf": "application/json:0"
+        }
+      },
+      "query": {},
+      "response": {
+        "rsc": 2001,
+        "rqi": "opensoom-59aab0b6f648476ebc13956a5157ab9b",
+        "body": {
+          "m2m:cin": {
+            "con": "{\"facility_id\": \"food-a\", \"zone_id\": \"cook\", \"action\": \"set_damper\", \"value\": 100.0, \"reason\": \"Insufficient exhaust with fan running; airflow 360 vs target 900; raise damper to max\", \"request_id\": \"agent-379720ef883c:set-cook-damper-100\", \"id\": \"cmd-607d6d77947b\", \"status\": \"requested\", \"ack\": false, \"created_at\": \"2026-11-17T18:40:34.728408+00:00\", \"expires_at\": \"2026-11-17T18:41:04.728408+00:00\", \"profile_version\": 1, \"run_id\": \"agent-379720ef883c\", \"incident_id\": \"incident-99c44faf8b\", \"observed_result\": \"pending\"}",
+            "cnf": "application/json:0",
+            "cs": 524,
+            "pi": "cnt9N3xCKDRHY",
+            "ri": "cinf92AVTu1mE",
+            "rn": "cin_Mc2vij2J9h",
+            "ty": 4,
+            "ct": "20261117T184034,732154",
+            "lt": "20261117T184034,732154",
+            "et": "20311116T183914,888248",
+            "st": 1
+          }
+        },
+        "http_status": 201
+      }
+    },
+    {
+      "source": "cse-requests.jsonl",
+      "binding": "service HTTPS CSE requests",
+      "timestamp": "2026-11-17T18:40:38.052843+00:00",
+      "method": "GET",
+      "path": "cse-secure/opensoom/facilities/food-a/cook/observations/la",
+      "origin": "Cosdiagnostic",
+      "rqi": "opensoom-b40baab4748a4f2d8f544009245e3bf1",
+      "request": null,
+      "query": {},
+      "response": {
+        "rsc": 2000,
+        "rqi": "opensoom-b40baab4748a4f2d8f544009245e3bf1",
+        "body": {
+          "m2m:cin": {
+            "con": "{\"facility_id\": \"food-a\", \"zone_id\": \"cook\", \"observed_at\": \"2026-11-17T18:40:38.046+00:00\", \"received_at\": \"2026-11-17T18:40:38.046+00:00\", \"source\": \"simulated\", \"adapter\": \"vendor-a\", \"pm25\": 12.0, \"co2\": 620.0, \"airflow\": 1035.0, \"fan_running\": true, \"damper_pct\": 100.0}",
+            "cnf": "application/json:0",
+            "cs": 275,
+            "pi": "cnt2mQNmfBv2z",
+            "ri": "cinAEfwLGRWMw",
+            "rn": "cin_NX5wV4fVdT",
+            "ty": 4,
+            "ct": "20261117T184038,050016",
+            "lt": "20261117T184038,050016",
+            "et": "20311116T183914,888248",
+            "st": 42
+          }
+        },
+        "http_status": 200
+      }
+    },
+    {
+      "source": "cse-requests.jsonl",
+      "binding": "service HTTPS CSE requests",
+      "timestamp": "2026-11-17T18:41:02.746142+00:00",
+      "method": "GET",
+      "path": "cse-secure/opensoom/facilities/food-a",
+      "origin": "Cosoperator",
+      "rqi": "opensoom-79f3dd3feb604b6f924bfa4719e7947e",
+      "request": null,
+      "query": {
+        "fu": 1,
+        "drt": 2,
+        "ty": 3
+      },
+      "response": {
+        "rsc": 2000,
+        "rqi": "opensoom-79f3dd3feb604b6f924bfa4719e7947e",
+        "body": {
+          "m2m:uril": [
+            "/opensoom-secure/cnt8xEdmADPH8",
+            "/opensoom-secure/cnt2mQNmfBv2z",
+            "/opensoom-secure/cnt9N3xCKDRHY",
+            "/opensoom-secure/cntBihZ19zaZh",
+            "/opensoom-secure/cntXwuAy9K6FY",
+            "/opensoom-secure/cntSCHgBFyNpy",
+            "/opensoom-secure/cntxeUWlRrtx0",
+            "/opensoom-secure/cntX0gfVtHsVZ",
+            "/opensoom-secure/cnthNe29u6bbr",
+            "/opensoom-secure/cntVsXSYGCnGO",
+            "/opensoom-secure/cnt48i9c46YpW",
+            "/opensoom-secure/cnt07xzwevGcf"
+          ]
+        },
+        "http_status": 200
+      }
+    },
+    {
+      "source": "cse-requests.jsonl",
+      "binding": "service HTTPS CSE requests",
+      "timestamp": "2026-11-17T18:41:03.991425+00:00",
+      "method": "GET",
+      "path": "cse-secure/opensoom/food-a-zone-observations/fopt/la",
+      "origin": "Cosoperator",
+      "rqi": "opensoom-8d0ab600641a4d0da415def5fc4d292d",
+      "request": null,
+      "query": {},
+      "response": {
+        "rsc": 2000,
+        "rqi": "opensoom-8d0ab600641a4d0da415def5fc4d292d",
+        "body": {
+          "m2m:agr": {
+            "m2m:rsp": [
+              {
+                "rsc": 2000,
+                "rqi": "opensoom-8d0ab600641a4d0da415def5fc4d292d",
+                "rvi": "4",
+                "pc": {
+                  "m2m:cin": {
+                    "con": "{\"facility_id\": \"food-a\", \"zone_id\": \"cook\", \"observed_at\": \"2026-11-17T18:41:02.973+00:00\", \"received_at\": \"2026-11-17T18:41:02.973+00:00\", \"source\": \"simulated\", \"adapter\": \"vendor-a\", \"pm25\": 62.0, \"co2\": 1450.0, \"airflow\": 360.0, \"fan_running\": true, \"damper_pct\": 35.0}",
+                    "cnf": "application/json:0",
+                    "cs": 274,
+                    "pi": "cnt2mQNmfBv2z",
+                    "ri": "cinz7w8OJJg1X",
+                    "rn": "cin_43xcXTPTRi",
+                    "ty": 4,
+                    "ct": "20261117T184102,975279",
+                    "lt": "20261117T184102,975279",
+                    "et": "20311116T183914,888248",
+                    "st": 55
+                  }
+                }
+              },
+              {
+                "rsc": 2000,
+                "rqi": "opensoom-8d0ab600641a4d0da415def5fc4d292d",
+                "rvi": "4",
+                "pc": {
+                  "m2m:cin": {
+                    "con": "{\"facility_id\": \"food-a\", \"zone_id\": \"wash\", \"observed_at\": \"2026-11-17T18:41:02.986+00:00\", \"received_at\": \"2026-11-17T18:41:02.986+00:00\", \"source\": \"simulated\", \"adapter\": \"vendor-a\", \"pm25\": 12.0, \"co2\": 620.0, \"airflow\": 690.0, \"fan_running\": true, \"damper_pct\": 70.0}",
+                    "cnf": "application/json:0",
+                    "cs": 273,
+                    "pi": "cntSCHgBFyNpy",
+                    "ri": "cinwfuP4TZObz",
+                    "rn": "cin_uio2AL07CX",
+                    "ty": 4,
+                    "ct": "20261117T184102,988445",
+                    "lt": "20261117T184102,988445",
+                    "et": "20311116T183914,888248",
+                    "st": 55
+                  }
+                }
+              },
+              {
+                "rsc": 2000,
+                "rqi": "opensoom-8d0ab600641a4d0da415def5fc4d292d",
+                "rvi": "4",
+                "pc": {
+                  "m2m:cin": {
+                    "con": "{\"facility_id\": \"food-a\", \"zone_id\": \"pack\", \"observed_at\": \"2026-11-17T18:41:02.996+00:00\", \"received_at\": \"2026-11-17T18:41:02.996+00:00\", \"source\": \"simulated\", \"adapter\": \"vendor-a\", \"pm25\": 12.0, \"co2\": 620.0, \"airflow\": 517.5, \"fan_running\": true, \"damper_pct\": 70.0}",
+                    "cnf": "application/json:0",
+                    "cs": 273,
+                    "pi": "cntVsXSYGCnGO",
+                    "ri": "cinuIA4wUISCC",
+                    "rn": "cin_IPRQjMDLYd",
+                    "ty": 4,
+                    "ct": "20261117T184102,998659",
+                    "lt": "20261117T184102,998659",
+                    "et": "20311116T183914,888248",
+                    "st": 55
+                  }
+                }
+              }
+            ]
+          }
+        },
+        "http_status": 200
+      }
+    },
+    {
+      "source": "cse-requests.jsonl",
+      "binding": "service HTTPS CSE requests",
+      "timestamp": "2026-11-17T18:41:05.046868+00:00",
+      "method": "GET",
+      "path": "cse-secure/opensoom/facilities/food-a/cook/observations/la",
+      "origin": "Cosdiagnostic",
+      "rqi": "opensoom-efaab1ea25a34a629c47f730621ece7f",
+      "request": null,
+      "query": {},
+      "response": {
+        "rsc": 2000,
+        "rqi": "opensoom-efaab1ea25a34a629c47f730621ece7f",
+        "body": {
+          "m2m:cin": {
+            "con": "{\"facility_id\": \"food-a\", \"zone_id\": \"cook\", \"observed_at\": \"2026-11-17T18:41:05.042+00:00\", \"received_at\": \"2026-11-17T18:41:05.042+00:00\", \"source\": \"simulated\", \"adapter\": \"vendor-a\", \"pm25\": 62.0, \"co2\": 1450.0, \"airflow\": 360.0, \"fan_running\": true, \"damper_pct\": 35.0}",
+            "cnf": "application/json:0",
+            "cs": 274,
+            "pi": "cnt2mQNmfBv2z",
+            "ri": "cinJ6tb4ZsQox",
+            "rn": "cin_Ga5vKMjWQV",
+            "ty": 4,
+            "ct": "20261117T184105,044726",
+            "lt": "20261117T184105,044726",
+            "et": "20311116T183914,888248",
+            "st": 56
+          }
+        },
+        "http_status": 200
+      }
+    },
+    {
+      "source": "cse-requests.jsonl",
+      "binding": "service HTTPS CSE requests",
+      "timestamp": "2026-11-17T18:41:05.057849+00:00",
+      "method": "GET",
+      "path": "cse-secure/opensoom/facilities/food-a/wash/observations/la",
+      "origin": "Cosdiagnostic",
+      "rqi": "opensoom-fc65c4461c4a48ea960d0747deea09dd",
+      "request": null,
+      "query": {},
+      "response": {
+        "rsc": 2000,
+        "rqi": "opensoom-fc65c4461c4a48ea960d0747deea09dd",
+        "body": {
+          "m2m:cin": {
+            "con": "{\"facility_id\": \"food-a\", \"zone_id\": \"wash\", \"observed_at\": \"2026-11-17T18:41:05.054+00:00\", \"received_at\": \"2026-11-17T18:41:05.054+00:00\", \"source\": \"simulated\", \"adapter\": \"vendor-a\", \"pm25\": 12.0, \"co2\": 620.0, \"airflow\": 690.0, \"fan_running\": true, \"damper_pct\": 70.0}",
+            "cnf": "application/json:0",
+            "cs": 273,
+            "pi": "cntSCHgBFyNpy",
+            "ri": "cinD2cyeVCYKF",
+            "rn": "cin_lT1eSlVZDV",
+            "ty": 4,
+            "ct": "20261117T184105,056131",
+            "lt": "20261117T184105,056131",
+            "et": "20311116T183914,888248",
+            "st": 56
+          }
+        },
+        "http_status": 200
+      }
+    },
+    {
+      "source": "cse-requests.jsonl",
+      "binding": "service HTTPS CSE requests",
+      "timestamp": "2026-11-17T18:41:05.069084+00:00",
+      "method": "GET",
+      "path": "cse-secure/opensoom/facilities/food-a/pack/observations/la",
+      "origin": "Cosdiagnostic",
+      "rqi": "opensoom-030cb7badb2c4166bf80094463a7d369",
+      "request": null,
+      "query": {},
+      "response": {
+        "rsc": 2000,
+        "rqi": "opensoom-030cb7badb2c4166bf80094463a7d369",
+        "body": {
+          "m2m:cin": {
+            "con": "{\"facility_id\": \"food-a\", \"zone_id\": \"pack\", \"observed_at\": \"2026-11-17T18:41:05.065+00:00\", \"received_at\": \"2026-11-17T18:41:05.066+00:00\", \"source\": \"simulated\", \"adapter\": \"vendor-a\", \"pm25\": 12.0, \"co2\": 620.0, \"airflow\": 517.5, \"fan_running\": true, \"damper_pct\": 70.0}",
+            "cnf": "application/json:0",
+            "cs": 273,
+            "pi": "cntVsXSYGCnGO",
+            "ri": "cinDMjrF9TrLD",
+            "rn": "cin_rXVU7Ub8Go",
+            "ty": 4,
+            "ct": "20261117T184105,067447",
+            "lt": "20261117T184105,067447",
+            "et": "20311116T183914,888248",
+            "st": 56
+          }
+        },
+        "http_status": 200
+      }
+    },
+    {
+      "source": "cse-requests.jsonl",
+      "binding": "service HTTPS CSE requests",
+      "timestamp": "2026-11-17T18:41:06.067243+00:00",
+      "method": "GET",
+      "path": "cse-secure",
+      "origin": "CAdmin",
+      "rqi": "opensoom-f4828cbc092a4949aece13427b991aec",
+      "request": null,
+      "query": {},
+      "response": {
+        "rsc": 2000,
+        "rqi": "opensoom-f4828cbc092a4949aece13427b991aec",
+        "body": {
+          "m2m:cb": {
+            "ri": "opensoom-secure",
+            "rn": "cse-secure",
+            "csi": "/opensoom-secure",
+            "spi": "//opensoom.example",
+            "csz": [
+              "application/json",
+              "application/vnd.onem2m-res+json",
+              "application/cbor",
+              "application/vnd.onem2m-res+cbor"
+            ],
+            "acpi": [
+              "/opensoom-secure/acpCreateRootResources"
+            ],
+            "poa": [
+              "https://127.0.0.1:8443"
+            ],
+            "cst": 1,
+            "srt": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              9,
+              10,
+              13,
+              14,
+              15,
+              16,
+              17,
+              18,
+              23,
+              24,
+              25,
+              26,
+              27,
+              28,
+              29,
+              30,
+              34,
+              43,
+              44,
+              47,
+              48,
+              58,
+              60,
+              62,
+              63,
+              64,
+              65,
+              66,
+              10001,
+              10002,
+              10003,
+              10004,
+              10009,
+              10010,
+              10013,
+              10014,
+              10016,
+              10018,
+              10024,
+              10028,
+              10029,
+              10030,
+              10058,
+              10060,
+              10062,
+              10063,
+              10064,
+              10065,
+              10066
+            ],
+            "srv": [
+              "2a",
+              "3",
+              "4",
+              "5"
+            ],
+            "pi": "",
+            "ty": 5,
+            "ct": "20261117T182036,555386",
+            "lt": "20261117T182036,555386",
+            "ici": "/opensoom-secure",
+            "ctm": "20261117T184106,069807"
+          }
+        },
+        "http_status": 200
+      }
+    },
+    {
+      "source": "cse-requests.jsonl",
+      "binding": "service HTTPS CSE requests",
+      "timestamp": "2026-11-17T18:41:06.081878+00:00",
+      "method": "GET",
+      "path": "cse-secure",
+      "origin": "CAdmin",
+      "rqi": "opensoom-75edc0fecf91402f9a7ae49ebdbdfd00",
+      "request": null,
+      "query": {},
+      "response": {
+        "rsc": 2000,
+        "rqi": "opensoom-75edc0fecf91402f9a7ae49ebdbdfd00",
+        "body": {
+          "m2m:cb": {
+            "ri": "opensoom-secure",
+            "rn": "cse-secure",
+            "csi": "/opensoom-secure",
+            "spi": "//opensoom.example",
+            "csz": [
+              "application/json",
+              "application/vnd.onem2m-res+json",
+              "application/cbor",
+              "application/vnd.onem2m-res+cbor"
+            ],
+            "acpi": [
+              "/opensoom-secure/acpCreateRootResources"
+            ],
+            "poa": [
+              "https://127.0.0.1:8443"
+            ],
+            "cst": 1,
+            "srt": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              9,
+              10,
+              13,
+              14,
+              15,
+              16,
+              17,
+              18,
+              23,
+              24,
+              25,
+              26,
+              27,
+              28,
+              29,
+              30,
+              34,
+              43,
+              44,
+              47,
+              48,
+              58,
+              60,
+              62,
+              63,
+              64,
+              65,
+              66,
+              10001,
+              10002,
+              10003,
+              10004,
+              10009,
+              10010,
+              10013,
+              10014,
+              10016,
+              10018,
+              10024,
+              10028,
+              10029,
+              10030,
+              10058,
+              10060,
+              10062,
+              10063,
+              10064,
+              10065,
+              10066
+            ],
+            "srv": [
+              "2a",
+              "3",
+              "4",
+              "5"
+            ],
+            "pi": "",
+            "ty": 5,
+            "ct": "20261117T182036,555386",
+            "lt": "20261117T182036,555386",
+            "ici": "/opensoom-secure",
+            "ctm": "20261117T184106,084255"
+          }
+        },
+        "http_status": 200
+      }
+    },
+    {
+      "source": "cse-requests.jsonl",
+      "binding": "service HTTPS CSE requests",
+      "timestamp": "2026-11-17T18:41:06.100823+00:00",
+      "method": "GET",
+      "path": "cse-secure/opensoom/facilities/food-a",
+      "origin": "Cosoperator",
+      "rqi": "opensoom-f38927f4c2a84d13a5a500288208d2bd",
+      "request": null,
+      "query": {
+        "fu": 1,
+        "drt": 2,
+        "ty": 3
+      },
+      "response": {
+        "rsc": 2000,
+        "rqi": "opensoom-f38927f4c2a84d13a5a500288208d2bd",
+        "body": {
+          "m2m:uril": [
+            "/opensoom-secure/cnt8xEdmADPH8",
+            "/opensoom-secure/cnt2mQNmfBv2z",
+            "/opensoom-secure/cnt9N3xCKDRHY",
+            "/opensoom-secure/cntBihZ19zaZh",
+            "/opensoom-secure/cntXwuAy9K6FY",
+            "/opensoom-secure/cntSCHgBFyNpy",
+            "/opensoom-secure/cntxeUWlRrtx0",
+            "/opensoom-secure/cntX0gfVtHsVZ",
+            "/opensoom-secure/cnthNe29u6bbr",
+            "/opensoom-secure/cntVsXSYGCnGO",
+            "/opensoom-secure/cnt48i9c46YpW",
+            "/opensoom-secure/cnt07xzwevGcf"
+          ]
+        },
+        "http_status": 200
+      }
+    },
+    {
+      "source": "cse-requests.jsonl",
+      "binding": "service HTTPS CSE requests",
+      "timestamp": "2026-11-17T18:41:06.118531+00:00",
+      "method": "GET",
+      "path": "cse-secure/opensoom/food-a-zone-observations/fopt/la",
+      "origin": "Cosoperator",
+      "rqi": "opensoom-b6d8999cfc354ae7bd9c1c69f0295982",
+      "request": null,
+      "query": {},
+      "response": {
+        "rsc": 2000,
+        "rqi": "opensoom-b6d8999cfc354ae7bd9c1c69f0295982",
+        "body": {
+          "m2m:agr": {
+            "m2m:rsp": [
+              {
+                "rsc": 2000,
+                "rqi": "opensoom-b6d8999cfc354ae7bd9c1c69f0295982",
+                "rvi": "4",
+                "pc": {
+                  "m2m:cin": {
+                    "con": "{\"facility_id\": \"food-a\", \"zone_id\": \"cook\", \"observed_at\": \"2026-11-17T18:41:05.042+00:00\", \"received_at\": \"2026-11-17T18:41:05.042+00:00\", \"source\": \"simulated\", \"adapter\": \"vendor-a\", \"pm25\": 62.0, \"co2\": 1450.0, \"airflow\": 360.0, \"fan_running\": true, \"damper_pct\": 35.0}",
+                    "cnf": "application/json:0",
+                    "cs": 274,
+                    "pi": "cnt2mQNmfBv2z",
+                    "ri": "cinJ6tb4ZsQox",
+                    "rn": "cin_Ga5vKMjWQV",
+                    "ty": 4,
+                    "ct": "20261117T184105,044726",
+                    "lt": "20261117T184105,044726",
+                    "et": "20311116T183914,888248",
+                    "st": 56
+                  }
+                }
+              },
+              {
+                "rsc": 2000,
+                "rqi": "opensoom-b6d8999cfc354ae7bd9c1c69f0295982",
+                "rvi": "4",
+                "pc": {
+                  "m2m:cin": {
+                    "con": "{\"facility_id\": \"food-a\", \"zone_id\": \"wash\", \"observed_at\": \"2026-11-17T18:41:05.054+00:00\", \"received_at\": \"2026-11-17T18:41:05.054+00:00\", \"source\": \"simulated\", \"adapter\": \"vendor-a\", \"pm25\": 12.0, \"co2\": 620.0, \"airflow\": 690.0, \"fan_running\": true, \"damper_pct\": 70.0}",
+                    "cnf": "application/json:0",
+                    "cs": 273,
+                    "pi": "cntSCHgBFyNpy",
+                    "ri": "cinD2cyeVCYKF",
+                    "rn": "cin_lT1eSlVZDV",
+                    "ty": 4,
+                    "ct": "20261117T184105,056131",
+                    "lt": "20261117T184105,056131",
+                    "et": "20311116T183914,888248",
+                    "st": 56
+                  }
+                }
+              },
+              {
+                "rsc": 2000,
+                "rqi": "opensoom-b6d8999cfc354ae7bd9c1c69f0295982",
+                "rvi": "4",
+                "pc": {
+                  "m2m:cin": {
+                    "con": "{\"facility_id\": \"food-a\", \"zone_id\": \"pack\", \"observed_at\": \"2026-11-17T18:41:05.065+00:00\", \"received_at\": \"2026-11-17T18:41:05.066+00:00\", \"source\": \"simulated\", \"adapter\": \"vendor-a\", \"pm25\": 12.0, \"co2\": 620.0, \"airflow\": 517.5, \"fan_running\": true, \"damper_pct\": 70.0}",
+                    "cnf": "application/json:0",
+                    "cs": 273,
+                    "pi": "cntVsXSYGCnGO",
+                    "ri": "cinDMjrF9TrLD",
+                    "rn": "cin_rXVU7Ub8Go",
+                    "ty": 4,
+                    "ct": "20261117T184105,067447",
+                    "lt": "20261117T184105,067447",
+                    "et": "20311116T183914,888248",
+                    "st": 56
+                  }
+                }
+              }
+            ]
+          }
+        },
+        "http_status": 200
+      }
+    },
+    {
+      "source": "cse-requests.jsonl",
+      "binding": "service HTTPS CSE requests",
+      "timestamp": "2026-11-17T18:41:08.346313+00:00",
+      "method": "POST",
+      "path": "cse-secure/opensoom/facilities/food-a/cook/commands",
+      "origin": "Cosoperator",
+      "rqi": "opensoom-cfddf4ffd7fb440ab0b19e64146ef65f",
+      "request": {
+        "m2m:cin": {
+          "con": "{\"facility_id\": \"food-a\", \"zone_id\": \"cook\", \"action\": \"set_damper\", \"value\": 100.0, \"reason\": \"Insufficient airflow while fan running; raise damper to max per profile\", \"request_id\": \"agent-479f866b7e84:set-damper-cook-1\", \"id\": \"cmd-838cfc0f207e\", \"status\": \"requested\", \"ack\": false, \"created_at\": \"2026-11-17T18:41:08.346055+00:00\", \"expires_at\": \"2026-11-17T18:41:38.346055+00:00\", \"profile_version\": 1, \"run_id\": \"agent-479f866b7e84\", \"incident_id\": \"incident-11f9022a4d\", \"observed_result\": \"pending\"}",
+          "cnf": "application/json:0"
+        }
+      },
+      "query": {},
+      "response": {
+        "rsc": 2001,
+        "rqi": "opensoom-cfddf4ffd7fb440ab0b19e64146ef65f",
+        "body": {
+          "m2m:cin": {
+            "con": "{\"facility_id\": \"food-a\", \"zone_id\": \"cook\", \"action\": \"set_damper\", \"value\": 100.0, \"reason\": \"Insufficient airflow while fan running; raise damper to max per profile\", \"request_id\": \"agent-479f866b7e84:set-damper-cook-1\", \"id\": \"cmd-838cfc0f207e\", \"status\": \"requested\", \"ack\": false, \"created_at\": \"2026-11-17T18:41:08.346055+00:00\", \"expires_at\": \"2026-11-17T18:41:38.346055+00:00\", \"profile_version\": 1, \"run_id\": \"agent-479f866b7e84\", \"incident_id\": \"incident-11f9022a4d\", \"observed_result\": \"pending\"}",
+            "cnf": "application/json:0",
+            "cs": 508,
+            "pi": "cnt9N3xCKDRHY",
+            "ri": "cinkei0wUFO1g",
+            "rn": "cin_y7r3e6O5Ud",
+            "ty": 4,
+            "ct": "20261117T184108,349781",
+            "lt": "20261117T184108,349781",
+            "et": "20311116T183914,888248",
+            "st": 2
+          }
+        },
+        "http_status": 201
+      }
+    },
+    {
+      "source": "cse-requests.jsonl",
+      "binding": "service HTTPS CSE requests",
+      "timestamp": "2026-11-17T18:41:11.269219+00:00",
+      "method": "GET",
+      "path": "cse-secure/opensoom/facilities/food-a/cook/observations/la",
+      "origin": "Cosdiagnostic",
+      "rqi": "opensoom-46f5d0292f4341fe9a2c4752b444de91",
+      "request": null,
+      "query": {},
+      "response": {
+        "rsc": 2000,
+        "rqi": "opensoom-46f5d0292f4341fe9a2c4752b444de91",
+        "body": {
+          "m2m:cin": {
+            "con": "{\"facility_id\": \"food-a\", \"zone_id\": \"cook\", \"observed_at\": \"2026-11-17T18:41:11.263+00:00\", \"received_at\": \"2026-11-17T18:41:11.263+00:00\", \"source\": \"simulated\", \"adapter\": \"vendor-a\", \"pm25\": 62.0, \"co2\": 1450.0, \"airflow\": 360.0, \"fan_running\": true, \"damper_pct\": 100.0}",
+            "cnf": "application/json:0",
+            "cs": 275,
+            "pi": "cnt2mQNmfBv2z",
+            "ri": "cinSrtNQ28jni",
+            "rn": "cin_UCxo124lcu",
+            "ty": 4,
+            "ct": "20261117T184111,266264",
+            "lt": "20261117T184111,266264",
+            "et": "20311116T183914,888248",
+            "st": 59
+          }
+        },
+        "http_status": 200
+      }
+    },
+    {
+      "source": "cse-requests.jsonl",
+      "binding": "service HTTPS CSE requests",
+      "timestamp": "2026-11-17T18:42:22.108826+00:00",
+      "method": "GET",
+      "path": "cse-secure/opensoom/facilities/food-a",
+      "origin": "Cosoperator",
+      "rqi": "opensoom-d8609d07bb1241808945176a806a3479",
+      "request": null,
+      "query": {
+        "fu": 1,
+        "drt": 2,
+        "ty": 3
+      },
+      "response": {
+        "rsc": 2000,
+        "rqi": "opensoom-d8609d07bb1241808945176a806a3479",
+        "body": {
+          "m2m:uril": [
+            "/opensoom-secure/cnt8xEdmADPH8",
+            "/opensoom-secure/cnt2mQNmfBv2z",
+            "/opensoom-secure/cnt9N3xCKDRHY",
+            "/opensoom-secure/cntBihZ19zaZh",
+            "/opensoom-secure/cntXwuAy9K6FY",
+            "/opensoom-secure/cntSCHgBFyNpy",
+            "/opensoom-secure/cntxeUWlRrtx0",
+            "/opensoom-secure/cntX0gfVtHsVZ",
+            "/opensoom-secure/cnthNe29u6bbr",
+            "/opensoom-secure/cntVsXSYGCnGO",
+            "/opensoom-secure/cnt48i9c46YpW",
+            "/opensoom-secure/cnt07xzwevGcf"
+          ]
+        },
+        "http_status": 200
+      }
+    },
+    {
+      "source": "cse-requests.jsonl",
+      "binding": "service HTTPS CSE requests",
+      "timestamp": "2026-11-17T18:42:23.670432+00:00",
+      "method": "GET",
+      "path": "cse-secure/opensoom/food-a-zone-observations/fopt/la",
+      "origin": "Cosoperator",
+      "rqi": "opensoom-cf73ceb0c0fd40b79a21edbde9d052ed",
+      "request": null,
+      "query": {},
+      "response": {
+        "rsc": 2000,
+        "rqi": "opensoom-cf73ceb0c0fd40b79a21edbde9d052ed",
+        "body": {
+          "m2m:agr": {
+            "m2m:rsp": [
+              {
+                "rsc": 2000,
+                "rqi": "opensoom-cf73ceb0c0fd40b79a21edbde9d052ed",
+                "rvi": "4",
+                "pc": {
+                  "m2m:cin": {
+                    "con": "{\"facility_id\": \"food-a\", \"zone_id\": \"cook\", \"observed_at\": \"2026-11-17T18:37:22.023+00:00\", \"received_at\": \"2026-11-17T18:42:22.023+00:00\", \"source\": \"simulated\", \"adapter\": \"vendor-a\", \"pm25\": 62.0, \"co2\": 1450.0, \"airflow\": 360.0, \"fan_running\": true, \"damper_pct\": 35.0}",
+                    "cnf": "application/json:0",
+                    "cs": 274,
+                    "pi": "cnt2mQNmfBv2z",
+                    "ri": "cin0UTsI8hkli",
+                    "rn": "cin_CE0pRd2HMq",
+                    "ty": 4,
+                    "ct": "20261117T184222,026862",
+                    "lt": "20261117T184222,026862",
+                    "et": "20311116T183914,888248",
+                    "st": 94
+                  }
+                }
+              },
+              {
+                "rsc": 2000,
+                "rqi": "opensoom-cf73ceb0c0fd40b79a21edbde9d052ed",
+                "rvi": "4",
+                "pc": {
+                  "m2m:cin": {
+                    "con": "{\"facility_id\": \"food-a\", \"zone_id\": \"wash\", \"observed_at\": \"2026-11-17T18:42:22.042+00:00\", \"received_at\": \"2026-11-17T18:42:22.042+00:00\", \"source\": \"simulated\", \"adapter\": \"vendor-a\", \"pm25\": 12.0, \"co2\": 620.0, \"airflow\": 690.0, \"fan_running\": true, \"damper_pct\": 70.0}",
+                    "cnf": "application/json:0",
+                    "cs": 273,
+                    "pi": "cntSCHgBFyNpy",
+                    "ri": "cinJHAvgVP1h3",
+                    "rn": "cin_ZgW8IcBzST",
+                    "ty": 4,
+                    "ct": "20261117T184222,046396",
+                    "lt": "20261117T184222,046396",
+                    "et": "20311116T183914,888248",
+                    "st": 94
+                  }
+                }
+              },
+              {
+                "rsc": 2000,
+                "rqi": "opensoom-cf73ceb0c0fd40b79a21edbde9d052ed",
+                "rvi": "4",
+                "pc": {
+                  "m2m:cin": {
+                    "con": "{\"facility_id\": \"food-a\", \"zone_id\": \"pack\", \"observed_at\": \"2026-11-17T18:42:22.056+00:00\", \"received_at\": \"2026-11-17T18:42:22.056+00:00\", \"source\": \"simulated\", \"adapter\": \"vendor-a\", \"pm25\": 12.0, \"co2\": 620.0, \"airflow\": 517.5, \"fan_running\": true, \"damper_pct\": 70.0}",
+                    "cnf": "application/json:0",
+                    "cs": 273,
+                    "pi": "cntVsXSYGCnGO",
+                    "ri": "cinSyyPqHQGm8",
+                    "rn": "cin_qprBCgS79m",
+                    "ty": 4,
+                    "ct": "20261117T184222,059414",
+                    "lt": "20261117T184222,059414",
+                    "et": "20311116T183914,888248",
+                    "st": 94
+                  }
+                }
+              }
+            ]
+          }
+        },
+        "http_status": 200
+      }
+    },
+    {
+      "source": "cse-requests.jsonl",
+      "binding": "service HTTPS CSE requests",
+      "timestamp": "2026-11-17T18:42:24.111777+00:00",
+      "method": "GET",
+      "path": "cse-secure/opensoom/facilities/food-a/cook/observations/la",
+      "origin": "Cosdiagnostic",
+      "rqi": "opensoom-7315cf4bb94b424c9b876c0da28c98fa",
+      "request": null,
+      "query": {},
+      "response": {
+        "rsc": 2000,
+        "rqi": "opensoom-7315cf4bb94b424c9b876c0da28c98fa",
+        "body": {
+          "m2m:cin": {
+            "con": "{\"facility_id\": \"food-a\", \"zone_id\": \"cook\", \"observed_at\": \"2026-11-17T18:37:24.107+00:00\", \"received_at\": \"2026-11-17T18:42:24.107+00:00\", \"source\": \"simulated\", \"adapter\": \"vendor-a\", \"pm25\": 62.0, \"co2\": 1450.0, \"airflow\": 360.0, \"fan_running\": true, \"damper_pct\": 35.0}",
+            "cnf": "application/json:0",
+            "cs": 274,
+            "pi": "cnt2mQNmfBv2z",
+            "ri": "cin0Je1iOHoNA",
+            "rn": "cin_u8KkC3LPGX",
+            "ty": 4,
+            "ct": "20261117T184224,109635",
+            "lt": "20261117T184224,109635",
+            "et": "20311116T183914,888248",
+            "st": 95
+          }
+        },
+        "http_status": 200
+      }
+    },
+    {
+      "source": "cse-requests.jsonl",
+      "binding": "service HTTPS CSE requests",
+      "timestamp": "2026-11-17T18:42:24.125845+00:00",
+      "method": "GET",
+      "path": "cse-secure/opensoom/facilities/food-a/wash/observations/la",
+      "origin": "Cosdiagnostic",
+      "rqi": "opensoom-e62201ce596f471b9f53f4c9c4c6ff03",
+      "request": null,
+      "query": {},
+      "response": {
+        "rsc": 2000,
+        "rqi": "opensoom-e62201ce596f471b9f53f4c9c4c6ff03",
+        "body": {
+          "m2m:cin": {
+            "con": "{\"facility_id\": \"food-a\", \"zone_id\": \"wash\", \"observed_at\": \"2026-11-17T18:42:24.121+00:00\", \"received_at\": \"2026-11-17T18:42:24.121+00:00\", \"source\": \"simulated\", \"adapter\": \"vendor-a\", \"pm25\": 12.0, \"co2\": 620.0, \"airflow\": 690.0, \"fan_running\": true, \"damper_pct\": 70.0}",
+            "cnf": "application/json:0",
+            "cs": 273,
+            "pi": "cntSCHgBFyNpy",
+            "ri": "cinXia4xHxe5F",
+            "rn": "cin_FXMRQPdjEg",
+            "ty": 4,
+            "ct": "20261117T184224,123873",
+            "lt": "20261117T184224,123873",
+            "et": "20311116T183914,888248",
+            "st": 95
+          }
+        },
+        "http_status": 200
+      }
+    },
+    {
+      "source": "cse-requests.jsonl",
+      "binding": "service HTTPS CSE requests",
+      "timestamp": "2026-11-17T18:42:24.140500+00:00",
+      "method": "GET",
+      "path": "cse-secure/opensoom/facilities/food-a/pack/observations/la",
+      "origin": "Cosdiagnostic",
+      "rqi": "opensoom-301a868d12984d5caeda12f50d6f1891",
+      "request": null,
+      "query": {},
+      "response": {
+        "rsc": 2000,
+        "rqi": "opensoom-301a868d12984d5caeda12f50d6f1891",
+        "body": {
+          "m2m:cin": {
+            "con": "{\"facility_id\": \"food-a\", \"zone_id\": \"pack\", \"observed_at\": \"2026-11-17T18:42:24.135+00:00\", \"received_at\": \"2026-11-17T18:42:24.135+00:00\", \"source\": \"simulated\", \"adapter\": \"vendor-a\", \"pm25\": 12.0, \"co2\": 620.0, \"airflow\": 517.5, \"fan_running\": true, \"damper_pct\": 70.0}",
+            "cnf": "application/json:0",
+            "cs": 273,
+            "pi": "cntVsXSYGCnGO",
+            "ri": "cinbyO5GfhGmN",
+            "rn": "cin_RT4Fb0i1sr",
+            "ty": 4,
+            "ct": "20261117T184224,138451",
+            "lt": "20261117T184224,138451",
+            "et": "20311116T183914,888248",
+            "st": 95
+          }
+        },
+        "http_status": 200
+      }
+    },
+    {
+      "source": "mqtt-requests.jsonl",
+      "binding": "native oneM2M MQTT/TLS device requests",
+      "timestamp": "2026-11-17T18:40:35.972578+00:00",
+      "topic": "/oneM2M/req/opensoom-10865ee29c7b4bfeb2dbe02d1c0b2d90/opensoom-secure/json",
+      "request": {
+        "op": 1,
+        "to": "cse-secure/opensoom/facilities/food-a/cook/acks",
+        "fr": "Cosadapter",
+        "rqi": "opensoom-8a458a657b014cd2910fe7ed46c8b421",
+        "rvi": "4",
+        "ty": 4,
+        "pc": {
+          "m2m:cin": {
+            "con": "{\"command_id\": \"cmd-607d6d77947b\", \"facility_id\": \"food-a\", \"zone_id\": \"cook\", \"ack_at\": \"2026-11-17T18:40:35.969+00:00\", \"simulated\": true, \"device_state\": \"damper_changed\", \"value\": 100.0}",
+            "cnf": "application/json:0"
+          }
+        }
+      },
+      "response": {
+        "rsc": 2001,
+        "rqi": "opensoom-8a458a657b014cd2910fe7ed46c8b421",
+        "body": {
+          "m2m:cin": {
+            "con": "{\"command_id\": \"cmd-607d6d77947b\", \"facility_id\": \"food-a\", \"zone_id\": \"cook\", \"ack_at\": \"2026-11-17T18:40:35.969+00:00\", \"simulated\": true, \"device_state\": \"damper_changed\", \"value\": 100.0}",
+            "cnf": "application/json:0",
+            "cs": 190,
+            "pi": "cntBihZ19zaZh",
+            "ri": "cinC3NFGJNH4L",
+            "rn": "cin_uBci7TPbAx",
+            "ty": 4,
+            "ct": "20261117T184035,971005",
+            "lt": "20261117T184035,971005",
+            "et": "20311116T183914,888248",
+            "st": 1
+          }
+        },
+        "http_status": null,
+        "transport": "MQTT_TLS"
+      }
+    },
+    {
+      "source": "mqtt-requests.jsonl",
+      "binding": "native oneM2M MQTT/TLS device requests",
+      "timestamp": "2026-11-17T18:41:09.190574+00:00",
+      "topic": "/oneM2M/req/opensoom-10865ee29c7b4bfeb2dbe02d1c0b2d90/opensoom-secure/json",
+      "request": {
+        "op": 1,
+        "to": "cse-secure/opensoom/facilities/food-a/cook/acks",
+        "fr": "Cosadapter",
+        "rqi": "opensoom-ac3061dff4244d07a9273a35600e9e1c",
+        "rvi": "4",
+        "ty": 4,
+        "pc": {
+          "m2m:cin": {
+            "con": "{\"command_id\": \"cmd-838cfc0f207e\", \"facility_id\": \"food-a\", \"zone_id\": \"cook\", \"ack_at\": \"2026-11-17T18:41:09.187+00:00\", \"simulated\": true, \"device_state\": \"damper_changed\", \"value\": 100.0}",
+            "cnf": "application/json:0"
+          }
+        }
+      },
+      "response": {
+        "rsc": 2001,
+        "rqi": "opensoom-ac3061dff4244d07a9273a35600e9e1c",
+        "body": {
+          "m2m:cin": {
+            "con": "{\"command_id\": \"cmd-838cfc0f207e\", \"facility_id\": \"food-a\", \"zone_id\": \"cook\", \"ack_at\": \"2026-11-17T18:41:09.187+00:00\", \"simulated\": true, \"device_state\": \"damper_changed\", \"value\": 100.0}",
+            "cnf": "application/json:0",
+            "cs": 190,
+            "pi": "cntBihZ19zaZh",
+            "ri": "cinYpvdQUEaV9",
+            "rn": "cin_5eqt0yTKna",
+            "ty": 4,
+            "ct": "20261117T184109,189101",
+            "lt": "20261117T184109,189101",
+            "et": "20311116T183914,888248",
+            "st": 2
+          }
+        },
+        "http_status": null,
+        "transport": "MQTT_TLS"
+      }
+    }
+  ]
+}

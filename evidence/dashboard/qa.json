@@ -1,0 +1,173 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-11-17T18:37:33.539979+00:00",
+  "license": "CC-BY-4.0",
+  "surface": "Local openSoom dashboard served by the project application",
+  "url": "http://127.0.0.1:8090/",
+  "browser": "Chrome via approved computer-use browser tooling",
+  "physical_devices": "simulated",
+  "oneM2M": "Actual local ACME CSE runtime, not a rendered backend",
+  "viewports": [
+    {
+      "requested_width": 393,
+      "requested_height": 852,
+      "observed_layout_width": 378,
+      "observed_scroll_width": 378,
+      "result": "No horizontal overflow; mobile zone controls, help, full page and modal inspected"
+    },
+    {
+      "default_desktop_width": 1785,
+      "default_desktop_height": 1034,
+      "observed_layout_width": 1785,
+      "observed_scroll_width": 1785,
+      "result": "No horizontal overflow; facility view, workflow, events, command outcome and evidence inspected"
+    }
+  ],
+  "checks": [
+    {
+      "name": "Empty/offline states",
+      "result": "PASS",
+      "detail": "Static local preview without API showed explicit unavailable/empty data with demo actions disabled. No fixture values were injected in the browser."
+    },
+    {
+      "name": "Facility selection",
+      "result": "PASS",
+      "detail": "Both food-a and learning-b rendered from service data. All scenario mutations used learning-b; food-a was inspected read-only."
+    },
+    {
+      "name": "Keyboard zone selection",
+      "result": "PASS",
+      "detail": "Enter on the Meeting room SVG button changed the selected detail to Meeting room; SVG groups expose labels in the accessibility tree."
+    },
+    {
+      "name": "Metric selection",
+      "result": "PASS",
+      "detail": "CO₂ control changed SVG labels/readings/units from airflow to service CO₂ values; Airflow restored."
+    },
+    {
+      "name": "Mobile help",
+      "result": "PASS",
+      "detail": "Mobile help icon opened native dialog including simulation limits, ACK/recovery distinction and Korean operator guidance."
+    },
+    {
+      "name": "Error announcement",
+      "result": "PASS",
+      "detail": "Stale action rejection appeared inside the active native dialog, focused as an alert. The command was not added."
+    },
+    {
+      "name": "Console",
+      "result": "PASS",
+      "detail": "No error logs reported in final live browser check."
+    },
+    {
+      "name": "Static source checks",
+      "result": "PASS",
+      "detail": "node --check, unique HTML IDs and known static SVG references, CSS brace balance, and git diff --check passed."
+    }
+  ],
+  "runs": [
+    {
+      "id": "demo-ba2b8fc713",
+      "scenario": "exhaust_fault",
+      "mode": "fixture",
+      "status": "running",
+      "started_at": "2026-11-17T18:27:21.820+00:00",
+      "completed_at": null,
+      "outcome": null,
+      "expected_behavior": null,
+      "ui_observation": "Virtual action progressed through CSE write, device ACK and later observed recovery. UI showed 1 verified outcome. The initial backend version left the run marked running; the command itself was verified.",
+      "commands": [
+        {
+          "id": "cmd-8d37eea8e11c",
+          "status": "verified",
+          "ack": true,
+          "observed_result": "recovered",
+          "cse_rqi": "opensoom-051e463597f04495af8c8f1823384a15",
+          "ack_rqi": "opensoom-18e283ab2843459ca6f5edf38178efb0",
+          "verification_rqi": "opensoom-e934260481df4f9b952ac1df0de117ee",
+          "ack_at": "2026-11-17T18:27:22.421+00:00",
+          "verified_at": "2026-11-17T18:27:24.500+00:00"
+        }
+      ]
+    },
+    {
+      "id": "demo-64650a875e",
+      "scenario": "stale",
+      "mode": "fixture",
+      "status": "completed",
+      "started_at": "2026-11-17T18:31:14.303+00:00",
+      "completed_at": "2026-11-17T18:33:17.541+00:00",
+      "outcome": "PASS_FIXTURE",
+      "expected_behavior": "unsafe_evidence_remains_unresolved",
+      "ui_observation": "UI showed 2 of 3 current zones, STALE DATA, no current-run action, and an in-dialog server rejection: Observation is too old for control. An older verified command was not presented as current recovery.",
+      "commands": []
+    },
+    {
+      "id": "demo-a5d362f56e",
+      "scenario": "missing_ack",
+      "mode": "fixture",
+      "status": "completed",
+      "started_at": "2026-11-17T18:33:27.354+00:00",
+      "completed_at": "2026-11-17T18:33:58.245+00:00",
+      "outcome": "PASS_FIXTURE",
+      "expected_behavior": "missing_ack_remains_unresolved",
+      "ui_observation": "UI showed command timed_out, no device ACK, 0 pending actions, 1 incident and 0 verified outcomes after the deadline.",
+      "commands": [
+        {
+          "id": "cmd-e240996d080b",
+          "status": "timed_out",
+          "ack": false,
+          "observed_result": "unresolved",
+          "cse_rqi": "opensoom-3173a33dafcb4c65bba2f3e9d3f362cc",
+          "ack_rqi": null,
+          "verification_rqi": null,
+          "ack_at": null,
+          "verified_at": null
+        }
+      ]
+    },
+    {
+      "id": "demo-3990d46e50",
+      "scenario": "no_recovery",
+      "mode": "fixture",
+      "status": "completed",
+      "started_at": "2026-11-17T18:35:24.902+00:00",
+      "completed_at": "2026-11-17T18:35:27.169+00:00",
+      "outcome": "PASS_FIXTURE",
+      "expected_behavior": "ack_without_recovery_remains_unresolved",
+      "ui_observation": "UI first showed ACKNOWLEDGED while awaiting later observations, then UNRESOLVED after deficient post-ACK observations. Check result refreshed the actual service outcome; recovery stayed unverified.",
+      "commands": [
+        {
+          "id": "cmd-38f3a24fde72",
+          "status": "unresolved",
+          "ack": true,
+          "observed_result": "unresolved",
+          "cse_rqi": "opensoom-e87044c813ff439883ee0a31e7ce86d8",
+          "ack_rqi": "opensoom-1d736e43b18e4e97960973cc742a9d9c",
+          "verification_rqi": "opensoom-b289070865e2443983916106cf7c9088",
+          "ack_at": "2026-11-17T18:35:24.997+00:00",
+          "verified_at": null
+        }
+      ]
+    }
+  ],
+  "captures": [
+    "desktop-no-recovery.jpg",
+    "mobile-missing-ack.jpg",
+    "execution-evidence.jpg"
+  ],
+  "recorded_trace": "no-recovery-trace.json",
+  "source_sha256": {
+    "web/app.js": "e200982416f2688a350b82ca85b4fdb99756b51dd3b064ee11dc8f397583a8e8",
+    "web/index.html": "69066e15157e3bbb71ec79ea1709df5e74e5d7c46ccd67d10c00871452623170",
+    "web/mark.svg": "aec576466e147d1132f4f1f9d19c73964d02a18cd4159294cf6edcd528fd2968",
+    "web/styles.css": "6fe0829ce73a257fbe07b4c80de26686a14b0cb258378ff75fe33ef9ec6d63f1"
+  },
+  "limits": [
+    "This is implementation-author QA, not the independent Rubric review.",
+    "No certification, physical ventilation performance or health outcome is asserted.",
+    "Keyboard/basic accessibility and visual layout were inspected; this is not a comprehensive WCAG conformance audit.",
+    "Browser QA covered Chrome; other browsers/assistive-technology combinations remain unverified.",
+    "Screenshot and trace captures are timestamped evidence of this local run, not a live-model execution claim."
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "id": "food-production",
+  "name": "Food production",
+  "simulation_only": true,
+  "description": "Illustrative multi-zone kitchen/food-production operations; thresholds are simulation inputs, not certified ventilation guidance.",
+  "freshness_seconds": 45,
+  "command_ttl_seconds": 30,
+  "recovery_samples": 2,
+  "allowed_actions": ["set_damper", "request_maintenance"],
+  "zones": [
+    {"id": "cook", "name": "Cooking line", "minimum_airflow": 900, "pm25_warning": 45, "co2_warning": 1200},
+    {"id": "wash", "name": "Wash station", "minimum_airflow": 600, "pm25_warning": 35, "co2_warning": 1300},
+    {"id": "pack", "name": "Packing area", "minimum_airflow": 450, "pm25_warning": 25, "co2_warning": 1100}
+  ]
+}

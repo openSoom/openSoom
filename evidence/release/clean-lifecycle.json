@@ -1,0 +1,425 @@
+{
+  "status": "PASS_ISOLATED_LIFECYCLE",
+  "isolation": "new source copy, two new Python environments, new HTTPS CSE database and application store",
+  "ports": {
+    "api": 8179,
+    "cse_https": 8643
+  },
+  "model_calls": 0,
+  "physical_devices": "simulated",
+  "steps": [
+    {
+      "label": "install_application",
+      "command": [
+        "uv",
+        "--cache-dir",
+        "<source-checkout>/tmp/uv-cache",
+        "sync",
+        "--frozen",
+        "--python",
+        "python3.12"
+      ],
+      "exit_status": 0,
+      "output": "Using CPython 3.12.12 interpreter at: /opt/homebrew/opt/python@3.12/bin/python3.12\nCreating virtual environment at: .venv\n   Building opensoom @ file://<isolated-checkout>\n      Built opensoom @ file://<isolated-checkout>\nPrepared 1 package in 338ms\nInstalled 40 packages in 47ms\n + annotated-doc==0.0.6\n + annotated-types==0.8.0\n + anyio==4.16.0\n + attrs==26.1.0\n + certifi==2026.10.23\n + cffi==2.1.1\n + click==8.5.1\n + cryptography==50.0.2\n + fastapi==0.163.1\n + h11==0.16.0\n + httpcore==1.0.9\n + httpcore2==2.16.2\n + httpx==0.28.1\n + httpx2==2.16.2\n + idna==3.20\n + iniconfig==2.3.1\n + jsonschema==4.26.0\n + jsonschema-specifications==2025.9.1\n + mcp==2.3.0\n + mcp-types==2.3.0\n + opensoom==0.1.0 (from file://<isolated-checkout>)\n + opentelemetry-api==1.45.2\n + packaging==26.3\n + paho-mqtt==2.2.0\n + pluggy==1.7.0\n + pycparser==3.12\n + pydantic==2.14.3\n + pydantic-core==2.50.4\n + pygments==2.21.0\n + pyjwt==2.15.1\n + pytest==9.2.0\n + python-multipart==0.0.34\n + referencing==0.37.0\n + rpds-py==2026.9.1\n + sse-starlette==3.7.0\n + starlette==1.10.0\n + truststore==0.10.5\n + typing-extensions==4.16.0\n + typing-inspection==0.4.5\n + uvicorn==0.54.0\n"
+    },
+    {
+      "label": "install_cse",
+      "command": [
+        "<isolated-checkout>/.venv/bin/python",
+        "scripts/cse_runtime.py",
+        "install"
+      ],
+      "exit_status": 0,
+      "output": "Using CPython 3.12.12 interpreter at: /opt/homebrew/opt/python@3.12/bin/python3.12\nCreating virtual environment at: tmp/runtime/cse-venv\nActivate with: source tmp/runtime/cse-venv/bin/activate\nUsing Python 3.12.12 environment at: tmp/runtime/cse-venv\nResolved 49 packages in 9ms\nInstalled 49 packages in 96ms\n + acmecse==2026.5.3\n + anyio==4.16.0\n + blinker==1.9.0\n + cachetools==8.0.0\n + cbor2==6.3.0\n + certifi==2026.10.23\n + charset-normalizer==3.5.2\n + click==8.5.1\n + coapthon3-acme-cse==1.1.4\n + flask==3.1.3\n + flask-cors==6.0.5\n + h11==0.16.0\n + httpcore==1.0.9\n + httpx==0.28.1\n + idna==3.20\n + inquirerpy==0.3.4\n + isodate==0.7.2\n + itsdangerous==2.2.0\n + jinja2==3.1.6\n + kazoo==2.11.0\n + linkify-it-py==2.2.0\n + markdown-it-py==4.3.0\n + markupsafe==3.0.4\n + mdit-py-plugins==0.7.0\n + mdurl==0.1.2\n + numpy==2.5.5\n + paho-mqtt==2.2.0\n + pfzy==0.3.4\n + platformdirs==4.14.5\n + plotext==5.3.2\n + prompt-toolkit==3.0.53\n + psycopg2-binary==2.9.13\n + pygments==2.21.0\n + pyparsing==3.3.3\n + pyperclip==1.11.0\n + python-dotenv==1.2.4\n + rdflib==7.6.0\n + requests==2.34.2\n + rich==15.0.0\n + shapely==2.2.0\n + textual==5.2.0\n + textual-plotext==1.0.1\n + tinydb==4.9.0\n + typing-extensions==4.16.0\n + urllib3==2.8.0\n + waitress==3.0.2\n + wcwidth==0.9.4\n + websockets==17.4\n + werkzeug==3.1.9\n"
+    },
+    {
+      "label": "start_isolated_https_cse",
+      "command": [
+        "<isolated-checkout>/.venv/bin/python",
+        "scripts/cse_runtime.py",
+        "start",
+        "--name",
+        "secure",
+        "--port",
+        "8643"
+      ],
+      "exit_status": 0,
+      "output": "{\"name\": \"secure\", \"running\": true, \"pid\": 64278, \"url\": \"https://127.0.0.1:8643\", \"resource\": \"cse-secure\", \"cse_id\": \"/opensoom-secure\", \"ca_file\": \"<isolated-checkout>/.runtime/pki/ca.crt\"}\n"
+    },
+    {
+      "label": "validate_profiles_and_registry",
+      "command": [
+        "<isolated-checkout>/.venv/bin/python",
+        "-m",
+        "opensoom.cli",
+        "validate"
+      ],
+      "exit_status": 0,
+      "output": "{\"status\": \"valid\", \"profiles\": [\"food-production\", \"learning-space\"], \"facility_registry\": {\"food-a\": {\"id\": \"food-a\", \"name\": \"Northworks food production\", \"profile\": \"food-production\", \"adapter\": \"vendor-a\", \"read_only_roles\": [\"observer\"]}, \"learning-b\": {\"id\": \"learning-b\", \"name\": \"Westside learning hub\", \"profile\": \"learning-space\", \"adapter\": \"vendor-b\", \"read_only_roles\": []}}}\n"
+    },
+    {
+      "label": "before_start_diagnostic",
+      "command": [
+        "<isolated-checkout>/.venv/bin/python",
+        "-m",
+        "opensoom.cli",
+        "doctor",
+        "--port",
+        "8179"
+      ],
+      "exit_status": 1,
+      "output": "{\n  \"status\": \"not_ready\",\n  \"cse\": {\n    \"connected\": true,\n    \"rsc\": 2000,\n    \"rqi\": \"opensoom-c7ca6b28a8264524be91b102ffb8efb6\",\n    \"base\": \"cse-secure\"\n  },\n  \"profiles\": [\n    \"food-production\",\n    \"learning-space\"\n  ],\n  \"simulation\": true,\n  \"persistent_state\": true,\n  \"physical_devices_supported\": false,\n  \"service\": {\n    \"running\": false,\n    \"reachable\": false,\n    \"port\": 8179\n  },\n  \"next_step\": \"Run opensoom start using the saved runtime configuration\"\n}\n"
+    },
+    {
+      "label": "start_secure",
+      "command": [
+        "<isolated-checkout>/.venv/bin/python",
+        "-m",
+        "opensoom.cli",
+        "start",
+        "--secure",
+        "--port",
+        "8179"
+      ],
+      "exit_status": 0,
+      "output": "{\"pid\": 64413, \"url\": \"http://127.0.0.1:8179\", \"status\": \"starting\"}\n"
+    },
+    {
+      "label": "doctor_without_original_environment",
+      "command": [
+        "opensoom",
+        "doctor"
+      ],
+      "exit_status": 0,
+      "result": {
+        "status": "ready",
+        "cse": {
+          "connected": true,
+          "rsc": 2000,
+          "rqi": "opensoom-be17e4b8958f4959abc64f363c4aa46e",
+          "base": "cse-secure"
+        },
+        "profiles": [
+          "food-production",
+          "learning-space"
+        ],
+        "simulation": true,
+        "persistent_state": true,
+        "physical_devices_supported": false,
+        "service": {
+          "running": true,
+          "reachable": true,
+          "port": 8179
+        }
+      }
+    },
+    {
+      "label": "fixture_recovery",
+      "command": [
+        "<isolated-checkout>/.venv/bin/python",
+        "-m",
+        "opensoom.llm_runner",
+        "--mode",
+        "fixture",
+        "--facility",
+        "food-a",
+        "--scenario",
+        "exhaust_fault",
+        "--expect",
+        "recovered",
+        "--prepare-scenario",
+        "--output",
+        "<isolated-checkout>/.runtime/fixture.json"
+      ],
+      "exit_status": 0,
+      "output": "{\"run_id\": \"agent-6fa4159e14be\", \"outcome\": \"PASS_FIXTURE\", \"tool_calls\": 9, \"model_calls\": 0, \"summary\": \"Deterministic fixture completed; this is not a live-model result.\"}\nHTTP Request: POST http://127.0.0.1:8179/api/tools/doctor \"HTTP/1.1 200 OK\"\nHTTP Request: POST http://127.0.0.1:8179/api/tools/discover \"HTTP/1.1 200 OK\"\nHTTP Request: POST http://127.0.0.1:8179/api/tools/read_group \"HTTP/1.1 200 OK\"\nHTTP Request: POST http://127.0.0.1:8179/api/tools/read_evidence \"HTTP/1.1 200 OK\"\nHTTP Request: POST http://127.0.0.1:8179/api/tools/request_action \"HTTP/1.1 200 OK\"\nHTTP Request: POST http://127.0.0.1:8179/api/tools/verify_result \"HTTP/1.1 200 OK\"\nHTTP Request: POST http://127.0.0.1:8179/api/tools/verify_result \"HTTP/1.1 200 OK\"\nHTTP Request: POST http://127.0.0.1:8179/api/tools/verify_result \"HTTP/1.1 200 OK\"\nHTTP Request: POST http://127.0.0.1:8179/api/tools/verify_result \"HTTP/1.1 200 OK\"\n"
+    },
+    {
+      "label": "seed_budget_preservation_check",
+      "command": [
+        "<isolated-checkout>/.venv/bin/python",
+        "-c",
+        "from opensoom.llm_budget import SharedBudget,BudgetLimits; b=SharedBudget('.runtime/llm-budget.sqlite',BudgetLimits('isolated-lifecycle-test-no-model-calls',1,1)); b.reserve('sentinel','test',1); print(b.snapshot())"
+      ],
+      "exit_status": 0,
+      "output": "{'batch_id': 'isolated-lifecycle-test-no-model-calls', 'max_requests': 1, 'max_tokens': 1, 'requests_consumed': 1, 'tokens_charged': 1, 'tokens_reserved': 1, 'pending_requests': 1, 'requests_remaining': 0, 'tokens_remaining': 0, 'requires_investigation': False}\n"
+    },
+    {
+      "label": "stop",
+      "command": [
+        "<isolated-checkout>/.venv/bin/python",
+        "-m",
+        "opensoom.cli",
+        "stop"
+      ],
+      "exit_status": 0,
+      "output": "{\"status\": \"stopped\", \"configuration_retained\": true}\n"
+    },
+    {
+      "label": "stopped_diagnostic",
+      "command": [
+        "<isolated-checkout>/.venv/bin/python",
+        "-m",
+        "opensoom.cli",
+        "doctor"
+      ],
+      "exit_status": 1,
+      "output": "{\n  \"status\": \"not_ready\",\n  \"cse\": {\n    \"connected\": true,\n    \"rsc\": 2000,\n    \"rqi\": \"opensoom-5db479064a864174abe6c94f5a0fb13e\",\n    \"base\": \"cse-secure\"\n  },\n  \"profiles\": [\n    \"food-production\",\n    \"learning-space\"\n  ],\n  \"simulation\": true,\n  \"persistent_state\": true,\n  \"physical_devices_supported\": false,\n  \"service\": {\n    \"running\": false,\n    \"reachable\": false,\n    \"port\": 8179\n  },\n  \"next_step\": \"Run opensoom start using the saved runtime configuration\"\n}\n"
+    },
+    {
+      "label": "start_without_flags_or_environment",
+      "command": [
+        "<isolated-checkout>/.venv/bin/python",
+        "-m",
+        "opensoom.cli",
+        "start"
+      ],
+      "exit_status": 0,
+      "output": "{\"pid\": 64455, \"url\": \"http://127.0.0.1:8179\", \"status\": \"starting\"}\n"
+    },
+    {
+      "label": "doctor_after_stop_start",
+      "command": [
+        "opensoom",
+        "doctor"
+      ],
+      "exit_status": 0,
+      "result": {
+        "status": "ready",
+        "cse": {
+          "connected": true,
+          "rsc": 2000,
+          "rqi": "opensoom-ff9f4b5c35ad42788613928b20e5a709",
+          "base": "cse-secure"
+        },
+        "profiles": [
+          "food-production",
+          "learning-space"
+        ],
+        "simulation": true,
+        "persistent_state": true,
+        "physical_devices_supported": false,
+        "service": {
+          "running": true,
+          "reachable": true,
+          "port": 8179
+        }
+      }
+    },
+    {
+      "label": "restart_without_flags_or_environment",
+      "command": [
+        "<isolated-checkout>/.venv/bin/python",
+        "-m",
+        "opensoom.cli",
+        "restart"
+      ],
+      "exit_status": 0,
+      "output": "{\"pid\": 64481, \"url\": \"http://127.0.0.1:8179\", \"status\": \"starting\"}\n"
+    },
+    {
+      "label": "doctor_after_restart",
+      "command": [
+        "opensoom",
+        "doctor"
+      ],
+      "exit_status": 0,
+      "result": {
+        "status": "ready",
+        "cse": {
+          "connected": true,
+          "rsc": 2000,
+          "rqi": "opensoom-82e394fc68f54ec9896dcefc02071104",
+          "base": "cse-secure"
+        },
+        "profiles": [
+          "food-production",
+          "learning-space"
+        ],
+        "simulation": true,
+        "persistent_state": true,
+        "physical_devices_supported": false,
+        "service": {
+          "running": true,
+          "reachable": true,
+          "port": 8179
+        }
+      }
+    },
+    {
+      "label": "cleanup_running_service",
+      "command": [
+        "<isolated-checkout>/.venv/bin/python",
+        "-m",
+        "opensoom.cli",
+        "cleanup"
+      ],
+      "exit_status": 0,
+      "output": "{\"status\": \"cleaned\", \"retained\": [\"service-config.json\", \"CSE state\", \"shared LLM budget\"]}\n"
+    },
+    {
+      "label": "cse_survives_service_cleanup",
+      "command": [
+        "<isolated-checkout>/.venv/bin/python",
+        "scripts/cse_runtime.py",
+        "status",
+        "--name",
+        "secure"
+      ],
+      "exit_status": 0,
+      "output": "{\"name\": \"secure\", \"running\": true, \"pid\": 64278, \"url\": \"https://127.0.0.1:8643\", \"resource\": \"cse-secure\", \"cse_id\": \"/opensoom-secure\", \"ca_file\": \"<isolated-checkout>/.runtime/pki/ca.crt\"}\n"
+    },
+    {
+      "label": "stop_isolated_cse",
+      "command": [
+        "<isolated-checkout>/.venv/bin/python",
+        "scripts/cse_runtime.py",
+        "stop",
+        "--name",
+        "secure"
+      ],
+      "exit_status": 0,
+      "output": "{\"name\": \"secure\", \"stopped\": true}\n"
+    }
+  ],
+  "source_cli_sha256": "64f45b19309678a44e70437db3cab9685d4406a8c8471ccdf507ef584ddcbd60",
+  "diagnosis": {
+    "status": "missing",
+    "zones": [
+      {
+        "id": "cook",
+        "status": "missing"
+      },
+      {
+        "id": "wash",
+        "status": "missing"
+      },
+      {
+        "id": "pack",
+        "status": "missing"
+      }
+    ]
+  },
+  "fixture": {
+    "id": "agent-6fa4159e14be",
+    "outcome": "PASS_FIXTURE",
+    "trace_verification": {
+      "passed": true,
+      "reason": "Actual tool results contain verified recovery"
+    },
+    "service_verification": {
+      "id": "agent-6fa4159e14be",
+      "run_id": "agent-6fa4159e14be",
+      "facility_id": "food-a",
+      "scenario": "exhaust_fault",
+      "mode": "fixture",
+      "model": null,
+      "principal_role": "operator",
+      "status": "completed",
+      "started_at": "2026-11-17T18:58:08.383+00:00",
+      "tool_calls": [
+        {
+          "name": "doctor",
+          "at": "2026-11-17T18:58:08.893+00:00",
+          "arguments": {},
+          "result_status": "ready"
+        },
+        {
+          "name": "discover",
+          "at": "2026-11-17T18:58:08.948+00:00",
+          "arguments": {
+            "facility_id": "food-a"
+          },
+          "result_status": "ok"
+        },
+        {
+          "name": "read_group",
+          "at": "2026-11-17T18:58:08.967+00:00",
+          "arguments": {
+            "facility_id": "food-a"
+          },
+          "result_status": "ok"
+        },
+        {
+          "name": "read_evidence",
+          "at": "2026-11-17T18:58:08.999+00:00",
+          "arguments": {
+            "facility_id": "food-a"
+          },
+          "result_status": "critical"
+        },
+        {
+          "name": "request_action",
+          "at": "2026-11-17T18:58:09.020+00:00",
+          "arguments": {
+            "facility_id": "food-a",
+            "zone_id": "cook",
+            "action": "set_damper",
+            "reason": "Reproduce the configured virtual exhaust recovery scenario.",
+            "request_id": "agent-6fa4159e14be-action",
+            "value": 100.0
+          },
+          "result_status": "requested"
+        },
+        {
+          "name": "verify_result",
+          "at": "2026-11-17T18:58:10.048+00:00",
+          "arguments": {
+            "facility_id": "food-a",
+            "command_id": "cmd-7ba3c06a4b30"
+          },
+          "result_status": "requested"
+        },
+        {
+          "name": "verify_result",
+          "at": "2026-11-17T18:58:11.069+00:00",
+          "arguments": {
+            "facility_id": "food-a",
+            "command_id": "cmd-7ba3c06a4b30"
+          },
+          "result_status": "acknowledged"
+        },
+        {
+          "name": "verify_result",
+          "at": "2026-11-17T18:58:12.097+00:00",
+          "arguments": {
+            "facility_id": "food-a",
+            "command_id": "cmd-7ba3c06a4b30"
+          },
+          "result_status": "acknowledged"
+        },
+        {
+          "name": "verify_result",
+          "at": "2026-11-17T18:58:13.125+00:00",
+          "arguments": {
+            "facility_id": "food-a",
+            "command_id": "cmd-7ba3c06a4b30"
+          },
+          "result_status": "verified"
+        }
+      ],
+      "steps": 0,
+      "summary": "Deterministic fixture completed; this is not a live-model result.",
+      "usage": {},
+      "live_model": false,
+      "reported_outcome": "recovered",
+      "outcome": "PASS_FIXTURE",
+      "completed_at": "2026-11-17T18:58:13.238+00:00",
+      "server_validation": {
+        "verified_recovery": true,
+        "handled_failure": false,
+        "recorded_tool_calls": 9,
+        "requested_outcome": "PASS_FIXTURE"
+      }
+    }
+  },
+  "cleanup": {
+    "operations_removed": true,
+    "credentials_removed": true,
+    "process_record_removed": true,
+    "configuration_preserved": true,
+    "budget_preserved": true
+  },
+  "main_service_record_unchanged": true,
+  "scope_note": "CLI/application onboarding and HTTPS CSE lifecycle; MQTT binding and Codex desktop UI are separate checks. The budget sentinel is synthetic and performs no provider request."
+}

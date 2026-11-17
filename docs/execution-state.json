@@ -5,10 +5,10 @@
   "purpose": "Implementation checkpoint; evidence and reviews determine completion, not this file alone.",
   "plan": "docs/implementation-plan.md",
   "goal_prompt": "docs/goal-mode-prompt.ko.md",
-  "goal_activation": "not_started",
-  "implementation_status": "not_started",
-  "current_stage": 0,
-  "current_gate": "S0-G1",
+  "goal_activation": "active",
+  "implementation_status": "implemented_core_awaiting_independent_review",
+  "current_stage": 3,
+  "current_gate": "S3-G4",
   "foundation_commit": "b000f5537dbee213f8a63dac92a56fa074421885",
   "last_verified_implementation_revision": null,
   "status_definitions": {
@@ -23,33 +23,33 @@
     {
       "id": 0,
       "title": "Specify and scaffold the first runnable scenario",
-      "status": "not_started",
+      "status": "in_progress",
       "gates": [
         {
           "id": "S0-G1",
           "required": true,
-          "status": "not_started",
+          "status": "in_progress",
           "evidence": [],
           "reviews": []
         },
         {
           "id": "S0-G2",
           "required": true,
-          "status": "not_started",
+          "status": "in_progress",
           "evidence": [],
           "reviews": []
         },
         {
           "id": "S0-G3",
           "required": true,
-          "status": "not_started",
+          "status": "in_progress",
           "evidence": [],
           "reviews": []
         },
         {
           "id": "S0-G4",
           "required": true,
-          "status": "not_started",
+          "status": "in_progress",
           "evidence": [],
           "reviews": []
         }
@@ -58,33 +58,33 @@
     {
       "id": 1,
       "title": "Complete the actual service loop",
-      "status": "not_started",
+      "status": "in_progress",
       "gates": [
         {
           "id": "S1-G1",
           "required": true,
-          "status": "not_started",
+          "status": "in_progress",
           "evidence": [],
           "reviews": []
         },
         {
           "id": "S1-G2",
           "required": true,
-          "status": "not_started",
+          "status": "in_progress",
           "evidence": [],
           "reviews": []
         },
         {
           "id": "S1-G3",
           "required": true,
-          "status": "not_started",
+          "status": "in_progress",
           "evidence": [],
           "reviews": []
         },
         {
           "id": "S1-G4",
           "required": true,
-          "status": "not_started",
+          "status": "in_progress",
           "evidence": [],
           "reviews": []
         }
@@ -93,40 +93,40 @@
     {
       "id": 2,
       "title": "Prove reuse and native oneM2M behavior",
-      "status": "not_started",
+      "status": "in_progress",
       "gates": [
         {
           "id": "S2-G1",
           "required": true,
-          "status": "not_started",
+          "status": "in_progress",
           "evidence": [],
           "reviews": []
         },
         {
           "id": "S2-G2",
           "required": true,
-          "status": "not_started",
+          "status": "in_progress",
           "evidence": [],
           "reviews": []
         },
         {
           "id": "S2-G3",
           "required": true,
-          "status": "not_started",
+          "status": "in_progress",
           "evidence": [],
           "reviews": []
         },
         {
           "id": "S2-G4",
           "required": true,
-          "status": "not_started",
+          "status": "in_progress",
           "evidence": [],
           "reviews": []
         },
         {
           "id": "S2-G5",
           "required": false,
-          "status": "not_started",
+          "status": "in_progress",
           "evidence": [],
           "reviews": []
         }
@@ -135,33 +135,33 @@
     {
       "id": 3,
       "title": "Make the service usable through Codex and a real model",
-      "status": "not_started",
+      "status": "in_progress",
       "gates": [
         {
           "id": "S3-G1",
           "required": true,
-          "status": "not_started",
+          "status": "in_progress",
           "evidence": [],
           "reviews": []
         },
         {
           "id": "S3-G2",
           "required": true,
-          "status": "not_started",
+          "status": "in_progress",
           "evidence": [],
           "reviews": []
         },
         {
           "id": "S3-G3",
           "required": true,
-          "status": "not_started",
+          "status": "in_progress",
           "evidence": [],
           "reviews": []
         },
         {
           "id": "S3-G4",
           "required": true,
-          "status": "not_started",
+          "status": "in_progress",
           "evidence": [],
           "reviews": []
         }
@@ -170,33 +170,33 @@
     {
       "id": 4,
       "title": "Demonstrate distributed operation and evaluate extensions",
-      "status": "not_started",
+      "status": "in_progress",
       "gates": [
         {
           "id": "S4-G1",
           "required": true,
-          "status": "not_started",
+          "status": "in_progress",
           "evidence": [],
           "reviews": []
         },
         {
           "id": "S4-G2",
           "required": true,
-          "status": "not_started",
+          "status": "in_progress",
           "evidence": [],
           "reviews": []
         },
         {
           "id": "S4-G3",
           "required": true,
-          "status": "not_started",
+          "status": "in_progress",
           "evidence": [],
           "reviews": []
         },
         {
           "id": "S4-G4",
           "required": false,
-          "status": "not_started",
+          "status": "in_progress",
           "evidence": [],
           "reviews": []
         }
@@ -205,26 +205,26 @@
     {
       "id": 5,
       "title": "Make operation and evidence understandable",
-      "status": "not_started",
+      "status": "in_progress",
       "gates": [
         {
           "id": "S5-G1",
           "required": true,
-          "status": "not_started",
+          "status": "in_progress",
           "evidence": [],
           "reviews": []
         },
         {
           "id": "S5-G2",
           "required": true,
-          "status": "not_started",
+          "status": "in_progress",
           "evidence": [],
           "reviews": []
         },
         {
           "id": "S5-G3",
           "required": true,
-          "status": "not_started",
+          "status": "in_progress",
           "evidence": [],
           "reviews": []
         }
@@ -233,7 +233,7 @@
     {
       "id": 6,
       "title": "Release with evidence",
-      "status": "not_started",
+      "status": "in_progress",
       "gates": [
         {
           "id": "S6-G1",
@@ -262,6 +262,13 @@
           "status": "not_started",
           "evidence": [],
           "reviews": []
+        },
+        {
+          "id": "S6-G5",
+          "required": true,
+          "status": "in_progress",
+          "evidence": [],
+          "reviews": []
         }
       ]
     }
@@ -269,15 +276,22 @@
   "external_readiness": [
     {
       "id": "llm_api",
-      "status": "unknown",
+      "status": "actual_hosted_recovery_nonrecovery_stale_runs_captured",
+      "evidence": [
+        "evidence/agent/index.json"
+      ],
       "affected_gates": [
-        "S3-G2"
+        "S3-G2",
+        "S3-G3"
       ],
       "secret_values_recorded": false
     },
     {
       "id": "codex_host",
-      "status": "unknown",
+      "status": "fresh_Codex_CLI_0.166.0_actual_MCP_calls_captured_desktop_UI_not_tested",
+      "evidence": [
+        "evidence/agent/secure-codex-host-correlated.json"
+      ],
       "affected_gates": [
         "S3-G1"
       ],
@@ -285,7 +299,10 @@
     },
     {
       "id": "mec_host_and_services",
-      "status": "unknown",
+      "status": "no_authenticated_project_environment_identified",
+      "evidence": [
+        "evidence/stage0/mec-feasibility.json"
+      ],
       "affected_gates": [
         "S4-G3",
         "S4-G4"
@@ -294,7 +311,41 @@
     }
   ],
   "blockers": [],
-  "plan_changes": [],
+  "plan_changes": [
+    {
+      "id": "PC-001",
+      "old_choice": "Docker candidate for local CSE",
+      "new_choice": "Pinned project-local Python CSE and broker environments",
+      "reason": "Docker daemon unavailable; actual native bindings and isolated reproducible runtime work locally",
+      "affected_gate_ids": [
+        "S0-G2",
+        "S1-G1"
+      ],
+      "review_ref": null
+    },
+    {
+      "id": "PC-002",
+      "old_choice": "Potential broad standard air-quality mapping",
+      "new_choice": "Adopt useful PM2.5-only SDT projection with full canonical observations retained",
+      "reason": "TS0023 CO2 mass concentration and airFlow speed do not match canonical ppm/volume flow",
+      "affected_gate_ids": [
+        "S2-G4",
+        "S2-G5"
+      ],
+      "review_ref": null
+    },
+    {
+      "id": "PC-003",
+      "old_choice": "Submission presentation format unspecified",
+      "new_choice": "Single-page HTML pitching/landing page with Three.js and Korean presenter guidance",
+      "reason": "Maintainer added this required deliverable during active Goal",
+      "affected_gate_ids": [
+        "S6-G2",
+        "S6-G5"
+      ],
+      "review_ref": null
+    }
+  ],
   "review_rounds": [
     {
       "id": "pre-execution-plan-2026-11-18",
@@ -304,20 +355,16 @@
   ],
   "next_actions": [
     {
-      "gate": "S0-G1",
-      "action": "Specify the first multi-zone scenario, state transitions, failures and common contracts."
+      "gate": "S0-G4/S1-G4/S3-G4",
+      "action": "Freeze implementation snapshot and obtain four-team independent review of stage0, actualCSE and agent evidence."
     },
     {
-      "gate": "S0-G2",
-      "action": "Inspect runtime availability; select/pin the CSE and scaffold validators and preflight."
+      "gate": "S6-G1",
+      "action": "Complete isolated lifecycle and actual application acceptance checks."
     },
     {
-      "gate": "S0-G3",
-      "action": "Check project-scoped model, Codex and MEC readiness using bounded probes; continue independent work."
-    },
-    {
-      "gate": "S0-G4",
-      "action": "Obtain four-team review of the stage-0 implementation snapshot and resolve gate blockers."
+      "gate": "S5-G2/S6-G2/S6-G5",
+      "action": "Render English video, submission drafts and Three.js single-page pitching artifact."
     }
   ],
   "external_handoff": [
@@ -339,7 +386,90 @@
     }
   ],
   "completion_rule": "All required gates pass with captured evidence and independent review. Every conditional extension has an independently reviewed adopt/defer decision; undecided/investigating entries need a disposition. Adopted extensions require nonempty individually tracked passed child gates; reviewed deferrals retain prior history. Parent required:false never waives adopted child gates. Required external validation and distributed core cannot be waived. Authorized repository publication is verified; external submission/communications are separate handoff items.",
-  "work_items": [],
+  "work_items": [
+    {
+      "id": "W-001",
+      "gate_ids": [
+        "S0-G1",
+        "S0-G2",
+        "S1-G1"
+      ],
+      "owner_role": "main",
+      "owned_paths": [
+        "src/opensoom/core.py",
+        "src/opensoom/app.py",
+        "src/opensoom/models.py",
+        "src/opensoom/cli.py",
+        "profiles/",
+        "schemas/",
+        "scenarios/",
+        "pyproject.toml",
+        "docs/execution-state.json"
+      ],
+      "base_revision": "54e93ee64c55bf62a8527764ed1084e0dee6a1d9",
+      "status": "in_progress",
+      "evidence": [],
+      "next_action": "Implement profile-bound durable service and scenario runner."
+    },
+    {
+      "id": "W-002",
+      "gate_ids": [
+        "S0-G2",
+        "S1-G1",
+        "S2-G2",
+        "S4-G1"
+      ],
+      "owner_role": "runtime_onem2m",
+      "owned_paths": [
+        "src/opensoom/onem2m.py",
+        "deploy/",
+        "scripts/cse_*.py",
+        "tests/integration/test_cse_*.py",
+        "evidence/runtime/"
+      ],
+      "base_revision": "54e93ee64c55bf62a8527764ed1084e0dee6a1d9",
+      "status": "in_progress",
+      "evidence": [],
+      "next_action": "Run pinned ACME2026.5.3 CSE and smoke."
+    },
+    {
+      "id": "W-003",
+      "gate_ids": [
+        "S1-G3",
+        "S5-G1"
+      ],
+      "owner_role": "dashboard_implementation",
+      "owned_paths": [
+        "web/",
+        "docs/dashboard-design.md"
+      ],
+      "base_revision": "54e93ee64c55bf62a8527764ed1084e0dee6a1d9",
+      "status": "in_progress",
+      "evidence": [],
+      "next_action": "Build data-driven facility dashboard."
+    },
+    {
+      "id": "W-004",
+      "gate_ids": [
+        "S0-G3",
+        "S3-G1",
+        "S3-G2",
+        "S3-G3"
+      ],
+      "owner_role": "agent_integration",
+      "owned_paths": [
+        "src/opensoom/mcp_server.py",
+        "src/opensoom/llm_runner.py",
+        "src/opensoom/llm_budget.py",
+        "plugin/",
+        "docs/agent-integration.md"
+      ],
+      "base_revision": "54e93ee64c55bf62a8527764ed1084e0dee6a1d9",
+      "status": "in_progress",
+      "evidence": [],
+      "next_action": "Build shared MCP, real API runner and Codex plugin."
+    }
+  ],
   "record_formats": {
     "work_items": [
       "id",
@@ -399,13 +529,18 @@
     ]
   },
   "shared_live_test_budget": {
-    "status": "not_configured",
+    "status": "configured",
     "scope": "All product LLM API test calls, workers, retries and resumed processes in the test batch; independent of the Goal tool budget.",
-    "batch_id": null,
-    "max_requests": null,
-    "max_input_output_tokens": null,
-    "per_run_limits": null,
-    "persistent_accounting_path": null,
+    "batch_id": "opensoom-hackathon-2026-01",
+    "max_requests": 100,
+    "max_input_output_tokens": 250000,
+    "per_run_limits": {
+      "steps": 12,
+      "output_tokens": 4096,
+      "timeout_seconds": 45,
+      "max_attempts_per_step": 2
+    },
+    "persistent_accounting_path": ".runtime/llm-budget.sqlite",
     "requests_consumed": 0,
     "tokens_consumed": 0,
     "requests_reserved": 0,

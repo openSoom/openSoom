@@ -1,0 +1,845 @@
+{
+  "test": "codex-plugin-host",
+  "status": "PASS_HOST_MCP",
+  "profile": "fresh isolated Codex data directory",
+  "normal_user_profile_changed": false,
+  "model_inference_calls": 0,
+  "physical_devices": "simulated",
+  "commands": [
+    {
+      "args": [
+        "plugin",
+        "list",
+        "--json"
+      ],
+      "exit_status": 0,
+      "output": {
+        "installed": [],
+        "available": []
+      }
+    },
+    {
+      "args": [
+        "plugin",
+        "marketplace",
+        "add",
+        "<checkout>/.runtime/plugin-marketplace",
+        "--json"
+      ],
+      "exit_status": 0,
+      "output": {
+        "marketplaceName": "opensoom-local",
+        "installedRoot": "<checkout>/.runtime/plugin-marketplace",
+        "alreadyAdded": false
+      }
+    },
+    {
+      "args": [
+        "plugin",
+        "add",
+        "opensoom@opensoom-local",
+        "--json"
+      ],
+      "exit_status": 0,
+      "output": {
+        "pluginId": "opensoom@opensoom-local",
+        "name": "opensoom",
+        "marketplaceName": "opensoom-local",
+        "version": "0.1.0",
+        "installedPath": "<checkout>/.runtime/codex-acceptance-c65b9eb6/plugins/cache/opensoom-local/opensoom/0.1.0",
+        "authPolicy": "ON_INSTALL"
+      }
+    },
+    {
+      "args": [
+        "plugin",
+        "list",
+        "--json"
+      ],
+      "exit_status": 0,
+      "output": {
+        "installed": [
+          {
+            "pluginId": "opensoom@opensoom-local",
+            "name": "opensoom",
+            "marketplaceName": "opensoom-local",
+            "version": "0.1.0",
+            "installed": true,
+            "enabled": true,
+            "source": {
+              "source": "local",
+              "path": "<checkout>/.runtime/plugin-marketplace/plugin"
+            },
+            "marketplaceSource": {
+              "sourceType": "local",
+              "source": "<checkout>/.runtime/plugin-marketplace"
+            },
+            "installPolicy": "AVAILABLE",
+            "authPolicy": "ON_INSTALL"
+          }
+        ],
+        "available": []
+      }
+    }
+  ],
+  "host_calls": [
+    {
+      "tool": "doctor",
+      "arguments": {},
+      "response": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\n  \"status\": \"ready\",\n  \"cse\": {\n    \"connected\": true,\n    \"rsc\": 2000,\n    \"rqi\": \"opensoom-562bfa323748414e8eb02352bd386c45\",\n    \"base\": \"cse-in\"\n  },\n  \"profiles\": [\n    \"food-production\",\n    \"learning-space\"\n  ],\n  \"simulation\": true,\n  \"persistent_state\": true,\n  \"physical_devices_supported\": false\n}"
+          }
+        ],
+        "structuredContent": {
+          "status": "ready",
+          "cse": {
+            "connected": true,
+            "rsc": 2000,
+            "rqi": "opensoom-562bfa323748414e8eb02352bd386c45",
+            "base": "cse-in"
+          },
+          "profiles": [
+            "food-production",
+            "learning-space"
+          ],
+          "simulation": true,
+          "persistent_state": true,
+          "physical_devices_supported": false
+        },
+        "isError": false
+      }
+    },
+    {
+      "tool": "discover",
+      "arguments": {
+        "facility_id": "food-a"
+      },
+      "response": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\n  \"facilities\": [\n    {\n      \"id\": \"food-a\",\n      \"name\": \"Northworks food production\",\n      \"profile\": \"food-production\",\n      \"zones\": [\n        {\n          \"id\": \"cook\",\n          \"name\": \"Cooking line\"\n        },\n        {\n          \"id\": \"wash\",\n          \"name\": \"Wash station\"\n        },\n        {\n          \"id\": \"pack\",\n          \"name\": \"Packing area\"\n        }\n      ]\n    }\n  ],\n  \"cse_discovery\": [\n    {\n      \"rsc\": 2000,\n      \"rqi\": \"opensoom-338fb5f7f43e40899a389bfb766dcb13\",\n      \"body\": {\n        \"m2m:uril\": [\n          \"/opensoom-in/cntGyauu1PauZ\",\n          \"/opensoom-in/cntEcsTF24pah\",\n          \"/opensoom-in/cntnUE5PfDAFU\",\n          \"/opensoom-in/cntvLGoZ3aZFQ\",\n          \"/opensoom-in/cnt64WSK7B9tP\",\n          \"/opensoom-in/cnttUgZaEw2Y4\",\n          \"/opensoom-in/cntNJOHzu0mXu\",\n          \"/opensoom-in/cntA6a1pRSmb0\",\n          \"/opensoom-in/cntwVKjhlpQEE\",\n          \"/opensoom-in/cntnS6Oakp4BT\",\n          \"/opensoom-in/cntYUipHd7mDy\",\n          \"/opensoom-in/cntiszFhNuiSQ\"\n        ]\n      },\n      \"http_status\": 200\n    }\n  ]\n}"
+          }
+        ],
+        "structuredContent": {
+          "facilities": [
+            {
+              "id": "food-a",
+              "name": "Northworks food production",
+              "profile": "food-production",
+              "zones": [
+                {
+                  "id": "cook",
+                  "name": "Cooking line"
+                },
+                {
+                  "id": "wash",
+                  "name": "Wash station"
+                },
+                {
+                  "id": "pack",
+                  "name": "Packing area"
+                }
+              ]
+            }
+          ],
+          "cse_discovery": [
+            {
+              "rsc": 2000,
+              "rqi": "opensoom-338fb5f7f43e40899a389bfb766dcb13",
+              "body": {
+                "m2m:uril": [
+                  "/opensoom-in/cntGyauu1PauZ",
+                  "/opensoom-in/cntEcsTF24pah",
+                  "/opensoom-in/cntnUE5PfDAFU",
+                  "/opensoom-in/cntvLGoZ3aZFQ",
+                  "/opensoom-in/cnt64WSK7B9tP",
+                  "/opensoom-in/cnttUgZaEw2Y4",
+                  "/opensoom-in/cntNJOHzu0mXu",
+                  "/opensoom-in/cntA6a1pRSmb0",
+                  "/opensoom-in/cntwVKjhlpQEE",
+                  "/opensoom-in/cntnS6Oakp4BT",
+                  "/opensoom-in/cntYUipHd7mDy",
+                  "/opensoom-in/cntiszFhNuiSQ"
+                ]
+              },
+              "http_status": 200
+            }
+          ]
+        },
+        "isError": false
+      }
+    },
+    {
+      "tool": "read_evidence",
+      "arguments": {
+        "facility_id": "food-a"
+      },
+      "response": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\n  \"id\": \"food-a\",\n  \"name\": \"Northworks food production\",\n  \"profile\": \"food-production\",\n  \"adapter\": \"vendor-a\",\n  \"scenario\": \"no_recovery\",\n  \"zones\": [\n    {\n      \"id\": \"cook\",\n      \"name\": \"Cooking line\",\n      \"target_airflow\": 900,\n      \"observations\": {\n        \"pm25\": {\n          \"value\": 62.0,\n          \"unit\": \"µg/m³\",\n          \"observed_at\": \"2026-11-17T18:31:37.579+00:00\",\n          \"received_at\": \"2026-11-17T18:31:37.579+00:00\",\n          \"source\": \"simulated\",\n          \"quality\": \"good\"\n        },\n        \"co2\": {\n          \"value\": 1450.0,\n          \"unit\": \"ppm\",\n          \"observed_at\": \"2026-11-17T18:31:37.579+00:00\",\n          \"received_at\": \"2026-11-17T18:31:37.579+00:00\",\n          \"source\": \"simulated\",\n          \"quality\": \"good\"\n        },\n        \"airflow\": {\n          \"value\": 360.0,\n          \"unit\": \"m³/h\",\n          \"observed_at\": \"2026-11-17T18:31:37.579+00:00\",\n          \"received_at\": \"2026-11-17T18:31:37.579+00:00\",\n          \"source\": \"simulated\",\n          \"quality\": \"good\"\n        },\n        \"fan_running\": {\n          \"value\": true,\n          \"unit\": \"boolean\",\n          \"observed_at\": \"2026-11-17T18:31:37.579+00:00\",\n          \"received_at\": \"2026-11-17T18:31:37.579+00:00\",\n          \"source\": \"simulated\",\n          \"quality\": \"good\"\n        },\n        \"damper_pct\": {\n          \"value\": 100.0,\n          \"unit\": \"%\",\n          \"observed_at\": \"2026-11-17T18:31:37.579+00:00\",\n          \"received_at\": \"2026-11-17T18:31:37.579+00:00\",\n          \"source\": \"simulated\",\n          \"quality\": \"good\"\n        }\n      },\n      \"status\": \"critical\",\n      \"freshness\": 0.900504,\n      \"reason\": \"Airflow is below this zone's configured simulation target; Particles exceed the configured simulation target; CO₂ exceeds the configured simulation target\",\n      \"cse_rqi\": \"opensoom-c9018dd860c04d9caf8c3b7a41c6d95f\"\n    },\n    {\n      \"id\": \"wash\",\n      \"name\": \"Wash station\",\n      \"target_airflow\": 600,\n      \"observations\": {\n        \"pm25\": {\n          \"value\": 12.0,\n          \"unit\": \"µg/m³\",\n          \"observed_at\": \"2026-11-17T18:31:37.595+00:00\",\n          \"received_at\": \"2026-11-17T18:31:37.595+00:00\",\n          \"source\": \"simulated\",\n          \"quality\": \"good\"\n        },\n        \"co2\": {\n          \"value\": 620.0,\n          \"unit\": \"ppm\",\n          \"observed_at\": \"2026-11-17T18:31:37.595+00:00\",\n          \"received_at\": \"2026-11-17T18:31:37.595+00:00\",\n          \"source\": \"simulated\",\n          \"quality\": \"good\"\n        },\n        \"airflow\": {\n          \"value\": 690.0,\n          \"unit\": \"m³/h\",\n          \"observed_at\": \"2026-11-17T18:31:37.595+00:00\",\n          \"received_at\": \"2026-11-17T18:31:37.595+00:00\",\n          \"source\": \"simulated\",\n          \"quality\": \"good\"\n        },\n        \"fan_running\": {\n          \"value\": true,\n          \"unit\": \"boolean\",\n          \"observed_at\": \"2026-11-17T18:31:37.595+00:00\",\n          \"received_at\": \"2026-11-17T18:31:37.595+00:00\",\n          \"source\": \"simulated\",\n          \"quality\": \"good\"\n        },\n        \"damper_pct\": {\n          \"value\": 70.0,\n          \"unit\": \"%\",\n          \"observed_at\": \"2026-11-17T18:31:37.595+00:00\",\n          \"received_at\": \"2026-11-17T18:31:37.595+00:00\",\n          \"source\": \"simulated\",\n          \"quality\": \"good\"\n        }\n      },\n      \"status\": \"nominal\",\n      \"freshness\": 0.884624,\n      \"reason\": \"Within configured operating targets\",\n      \"cse_rqi\": \"opensoom-7ca80c37bb99485dbd22630bf2ebcea7\"\n    },\n    {\n      \"id\": \"pack\",\n      \"name\": \"Packing area\",\n      \"target_airflow\": 450,\n      \"observations\": {\n        \"pm25\": {\n          \"value\": 12.0,\n          \"unit\": \"µg/m³\",\n          \"observed_at\": \"2026-11-17T18:31:37.610+00:00\",\n          \"received_at\": \"2026-11-17T18:31:37.610+00:00\",\n          \"source\": \"simulated\",\n          \"quality\": \"good\"\n        },\n        \"co2\": {\n          \"value\": 620.0,\n          \"unit\": \"ppm\",\n          \"observed_at\": \"2026-11-17T18:31:37.610+00:00\",\n          \"received_at\": \"2026-11-17T18:31:37.610+00:00\",\n          \"source\": \"simulated\",\n          \"quality\": \"good\"\n        },\n        \"airflow\": {\n          \"value\": 517.5,\n          \"unit\": \"m³/h\",\n          \"observed_at\": \"2026-11-17T18:31:37.610+00:00\",\n          \"received_at\": \"2026-11-17T18:31:37.610+00:00\",\n          \"source\": \"simulated\",\n          \"quality\": \"good\"\n        },\n        \"fan_running\": {\n          \"value\": true,\n          \"unit\": \"boolean\",\n          \"observed_at\": \"2026-11-17T18:31:37.610+00:00\",\n          \"received_at\": \"2026-11-17T18:31:37.610+00:00\",\n          \"source\": \"simulated\",\n          \"quality\": \"good\"\n        },\n        \"damper_pct\": {\n          \"value\": 70.0,\n          \"unit\": \"%\",\n          \"observed_at\": \"2026-11-17T18:31:37.610+00:00\",\n          \"received_at\": \"2026-11-17T18:31:37.610+00:00\",\n          \"source\": \"simulated\",\n          \"quality\": \"good\"\n        }\n      },\n      \"status\": \"nominal\",\n      \"freshness\": 0.869731,\n      \"reason\": \"Within configured operating targets\",\n      \"cse_rqi\": \"opensoom-0cef9cb11a804fa4a0096db456cedc95\"\n    }\n  ],\n  \"status\": \"critical\",\n  \"simulation\": true,\n  \"controls_enabled\": true,\n  \"incidents\": [\n    {\n      \"id\": \"incident-85a711c3ac\",\n      \"facility_id\": \"food-a\",\n      \"zone_id\": \"cook\",\n      \"title\": \"Verify cooking line ventilation\",\n      \"status\": \"open\",\n      \"created_at\": \"2026-11-17T18:30:59.113+00:00\",\n      \"recovery_count\": 0,\n      \"reason\": \"Airflow is below this zone's configured simulation target; Particles exceed the configured simulation target; CO₂ exceeds the configured simulation target\",\n      \"severity\": \"critical\",\n      \"updated_at\": \"2026-11-17T18:31:37.594+00:00\",\n      \"latest_rqi\": \"opensoom-c9018dd860c04d9caf8c3b7a41c6d95f\"\n    }\n  ],\n  \"commands\": [\n    {\n      \"facility_id\": \"food-a\",\n      \"zone_id\": \"cook\",\n      \"action\": \"set_damper\",\n      \"value\": 100.0,\n      \"reason\": \"Preauthorized deterministic demonstration\",\n      \"request_id\": \"demo-e060eaf7be:damper\",\n      \"id\": \"cmd-4957474705bf\",\n      \"status\": \"verified\",\n      \"ack\": true,\n      \"created_at\": \"2026-11-17T18:24:32.782536+00:00\",\n      \"expires_at\": \"2026-11-17T18:25:02.782536+00:00\",\n      \"profile_version\": 1,\n      \"run_id\": \"demo-e060eaf7be\",\n      \"incident_id\": \"incident-6c7ba726ac\",\n      \"observed_result\": \"recovered\",\n      \"cse_rqi\": \"opensoom-05dea8779d154d9badc11faa641e51b0\",\n      \"cse_resource_id\": \"cin3eWlYKwXJH\",\n      \"ack_at\": \"2026-11-17T18:24:33.256+00:00\",\n      \"ack_rqi\": \"opensoom-a1b0f2592725472290094ce0724af096\",\n      \"verified_at\": \"2026-11-17T18:24:35.304+00:00\",\n      \"verification_rqi\": \"opensoom-3db4b3eec82c408fa630d3a4ad0cdd1d\"\n    },\n    {\n      \"facility_id\": \"food-a\",\n      \"zone_id\": \"cook\",\n      \"action\": \"set_damper\",\n      \"value\": 100.0,\n      \"reason\": \"Reproduce the configured virtual exhaust recovery scenario.\",\n      \"request_id\": \"agent-e6c60a74018f-action\",\n      \"id\": \"cmd-5b17b48981e5\",\n      \"status\": \"verified\",\n      \"ack\": true,\n      \"created_at\": \"2026-11-17T18:26:15.110744+00:00\",\n      \"expires_at\": \"2026-11-17T18:26:45.110744+00:00\",\n      \"profile_version\": 1,\n      \"run_id\": \"agent-e6c60a74018f\",\n      \"incident_id\": \"incident-faaad45d5b\",\n      \"observed_result\": \"recovered\",\n      \"cse_rqi\": \"opensoom-da1ce63e6f7249a1a16a617fdec3425a\",\n      \"cse_resource_id\": \"cinrXO2yVZQ1x\",\n      \"ack_at\": \"2026-11-17T18:26:17.112+00:00\",\n      \"ack_rqi\": \"opensoom-d1b51274d7934ddf80a320195669d4fd\",\n      \"verified_at\": \"2026-11-17T18:26:19.166+00:00\",\n      \"verification_rqi\": \"opensoom-be439135f0a64c7ea8a54b53848033ae\"\n    },\n    {\n      \"facility_id\": \"food-a\",\n      \"zone_id\": \"cook\",\n      \"action\": \"set_damper\",\n      \"value\": 100.0,\n      \"reason\": \"Reproduce the configured virtual exhaust recovery scenario.\",\n      \"request_id\": \"agent-d9abaa86c36e-action\",\n      \"id\": \"cmd-e9a0c92b2950\",\n      \"status\": \"verified\",\n      \"ack\": true,\n      \"created_at\": \"2026-11-17T18:29:14.855130+00:00\",\n      \"expires_at\": \"2026-11-17T18:29:44.855130+00:00\",\n      \"profile_version\": 1,\n      \"run_id\": \"agent-d9abaa86c36e\",\n      \"incident_id\": \"incident-115798d643\",\n      \"observed_result\": \"recovered\",\n      \"cse_rqi\": \"opensoom-aea4d842f92c4413a28cff29604efaa5\",\n      \"cse_resource_id\": \"cinp0AJQUDLBn\",\n      \"ack_at\": \"2026-11-17T18:29:14.869+00:00\",\n      \"ack_rqi\": \"opensoom-f22c2276c3804156a7dbdd73db613fed\",\n      \"verified_at\": \"2026-11-17T18:29:16.955+00:00\",\n      \"verification_rqi\": \"opensoom-1ade99abf84643f3834f4982406b1edd\"\n    },\n    {\n      \"facility_id\": \"food-a\",\n      \"zone_id\": \"cook\",\n      \"action\": \"set_damper\",\n      \"value\": 100.0,\n      \"reason\": \"Insufficient exhaust with running fan — raise damper to max per profile\",\n      \"request_id\": \"assistant-food-a-cook-setdamper-100\",\n      \"id\": \"cmd-96e3bb8cb9c7\",\n      \"status\": \"verified\",\n      \"ack\": true,\n      \"created_at\": \"2026-11-17T18:29:51.310229+00:00\",\n      \"expires_at\": \"2026-11-17T18:30:21.310229+00:00\",\n      \"profile_version\": 1,\n      \"run_id\": \"agent-59167791194a\",\n      \"incident_id\": \"incident-ef54a7f35d\",\n      \"observed_result\": \"recovered\",\n      \"cse_rqi\": \"opensoom-03245c97abb642d1bd4f0cbe924d12ed\",\n      \"cse_resource_id\": \"cinHyRifvkXjt\",\n      \"ack_at\": \"2026-11-17T18:29:52.358+00:00\",\n      \"ack_rqi\": \"opensoom-c1746063337749d885b8086a9ef30850\",\n      \"verified_at\": \"2026-11-17T18:29:54.473+00:00\",\n      \"verification_rqi\": \"opensoom-4ffa19e9b78f4a1597412ae46514ddd7\"\n    },\n    {\n      \"facility_id\": \"food-a\",\n      \"zone_id\": \"cook\",\n      \"action\": \"set_damper\",\n      \"value\": 100.0,\n      \"reason\": \"Insufficient exhaust with running fan — raise damper to max per profile\",\n      \"request_id\": \"assistant-no-recovery-001\",\n      \"id\": \"cmd-7541eec2ccbc\",\n      \"status\": \"acknowledged\",\n      \"ack\": true,\n      \"created_at\": \"2026-11-17T18:31:08.381840+00:00\",\n      \"expires_at\": \"2026-11-17T18:31:38.381840+00:00\",\n      \"profile_version\": 1,\n      \"run_id\": \"agent-4cf00b257048\",\n      \"incident_id\": \"incident-85a711c3ac\",\n      \"observed_result\": \"awaiting_observations\",\n      \"cse_rqi\": \"opensoom-825aa37b636f437384ac1befebe65515\",\n      \"cse_resource_id\": \"cinX9WwWR9TRt\",\n      \"ack_at\": \"2026-11-17T18:31:09.988+00:00\",\n      \"ack_rqi\": \"opensoom-1ee325c14e7d47dcb8b18a016b7da817\"\n    }\n  ]\n}"
+          }
+        ],
+        "structuredContent": {
+          "id": "food-a",
+          "name": "Northworks food production",
+          "profile": "food-production",
+          "adapter": "vendor-a",
+          "scenario": "no_recovery",
+          "zones": [
+            {
+              "id": "cook",
+              "name": "Cooking line",
+              "target_airflow": 900,
+              "observations": {
+                "pm25": {
+                  "value": 62.0,
+                  "unit": "µg/m³",
+                  "observed_at": "2026-11-17T18:31:37.579+00:00",
+                  "received_at": "2026-11-17T18:31:37.579+00:00",
+                  "source": "simulated",
+                  "quality": "good"
+                },
+                "co2": {
+                  "value": 1450.0,
+                  "unit": "ppm",
+                  "observed_at": "2026-11-17T18:31:37.579+00:00",
+                  "received_at": "2026-11-17T18:31:37.579+00:00",
+                  "source": "simulated",
+                  "quality": "good"
+                },
+                "airflow": {
+                  "value": 360.0,
+                  "unit": "m³/h",
+                  "observed_at": "2026-11-17T18:31:37.579+00:00",
+                  "received_at": "2026-11-17T18:31:37.579+00:00",
+                  "source": "simulated",
+                  "quality": "good"
+                },
+                "fan_running": {
+                  "value": true,
+                  "unit": "boolean",
+                  "observed_at": "2026-11-17T18:31:37.579+00:00",
+                  "received_at": "2026-11-17T18:31:37.579+00:00",
+                  "source": "simulated",
+                  "quality": "good"
+                },
+                "damper_pct": {
+                  "value": 100.0,
+                  "unit": "%",
+                  "observed_at": "2026-11-17T18:31:37.579+00:00",
+                  "received_at": "2026-11-17T18:31:37.579+00:00",
+                  "source": "simulated",
+                  "quality": "good"
+                }
+              },
+              "status": "critical",
+              "freshness": 0.900504,
+              "reason": "Airflow is below this zone's configured simulation target; Particles exceed the configured simulation target; CO₂ exceeds the configured simulation target",
+              "cse_rqi": "opensoom-c9018dd860c04d9caf8c3b7a41c6d95f"
+            },
+            {
+              "id": "wash",
+              "name": "Wash station",
+              "target_airflow": 600,
+              "observations": {
+                "pm25": {
+                  "value": 12.0,
+                  "unit": "µg/m³",
+                  "observed_at": "2026-11-17T18:31:37.595+00:00",
+                  "received_at": "2026-11-17T18:31:37.595+00:00",
+                  "source": "simulated",
+                  "quality": "good"
+                },
+                "co2": {
+                  "value": 620.0,
+                  "unit": "ppm",
+                  "observed_at": "2026-11-17T18:31:37.595+00:00",
+                  "received_at": "2026-11-17T18:31:37.595+00:00",
+                  "source": "simulated",
+                  "quality": "good"
+                },
+                "airflow": {
+                  "value": 690.0,
+                  "unit": "m³/h",
+                  "observed_at": "2026-11-17T18:31:37.595+00:00",
+                  "received_at": "2026-11-17T18:31:37.595+00:00",
+                  "source": "simulated",
+                  "quality": "good"
+                },
+                "fan_running": {
+                  "value": true,
+                  "unit": "boolean",
+                  "observed_at": "2026-11-17T18:31:37.595+00:00",
+                  "received_at": "2026-11-17T18:31:37.595+00:00",
+                  "source": "simulated",
+                  "quality": "good"
+                },
+                "damper_pct": {
+                  "value": 70.0,
+                  "unit": "%",
+                  "observed_at": "2026-11-17T18:31:37.595+00:00",
+                  "received_at": "2026-11-17T18:31:37.595+00:00",
+                  "source": "simulated",
+                  "quality": "good"
+                }
+              },
+              "status": "nominal",
+              "freshness": 0.884624,
+              "reason": "Within configured operating targets",
+              "cse_rqi": "opensoom-7ca80c37bb99485dbd22630bf2ebcea7"
+            },
+            {
+              "id": "pack",
+              "name": "Packing area",
+              "target_airflow": 450,
+              "observations": {
+                "pm25": {
+                  "value": 12.0,
+                  "unit": "µg/m³",
+                  "observed_at": "2026-11-17T18:31:37.610+00:00",
+                  "received_at": "2026-11-17T18:31:37.610+00:00",
+                  "source": "simulated",
+                  "quality": "good"
+                },
+                "co2": {
+                  "value": 620.0,
+                  "unit": "ppm",
+                  "observed_at": "2026-11-17T18:31:37.610+00:00",
+                  "received_at": "2026-11-17T18:31:37.610+00:00",
+                  "source": "simulated",
+                  "quality": "good"
+                },
+                "airflow": {
+                  "value": 517.5,
+                  "unit": "m³/h",
+                  "observed_at": "2026-11-17T18:31:37.610+00:00",
+                  "received_at": "2026-11-17T18:31:37.610+00:00",
+                  "source": "simulated",
+                  "quality": "good"
+                },
+                "fan_running": {
+                  "value": true,
+                  "unit": "boolean",
+                  "observed_at": "2026-11-17T18:31:37.610+00:00",
+                  "received_at": "2026-11-17T18:31:37.610+00:00",
+                  "source": "simulated",
+                  "quality": "good"
+                },
+                "damper_pct": {
+                  "value": 70.0,
+                  "unit": "%",
+                  "observed_at": "2026-11-17T18:31:37.610+00:00",
+                  "received_at": "2026-11-17T18:31:37.610+00:00",
+                  "source": "simulated",
+                  "quality": "good"
+                }
+              },
+              "status": "nominal",
+              "freshness": 0.869731,
+              "reason": "Within configured operating targets",
+              "cse_rqi": "opensoom-0cef9cb11a804fa4a0096db456cedc95"
+            }
+          ],
+          "status": "critical",
+          "simulation": true,
+          "controls_enabled": true,
+          "incidents": [
+            {
+              "id": "incident-85a711c3ac",
+              "facility_id": "food-a",
+              "zone_id": "cook",
+              "title": "Verify cooking line ventilation",
+              "status": "open",
+              "created_at": "2026-11-17T18:30:59.113+00:00",
+              "recovery_count": 0,
+              "reason": "Airflow is below this zone's configured simulation target; Particles exceed the configured simulation target; CO₂ exceeds the configured simulation target",
+              "severity": "critical",
+              "updated_at": "2026-11-17T18:31:37.594+00:00",
+              "latest_rqi": "opensoom-c9018dd860c04d9caf8c3b7a41c6d95f"
+            }
+          ],
+          "commands": [
+            {
+              "facility_id": "food-a",
+              "zone_id": "cook",
+              "action": "set_damper",
+              "value": 100.0,
+              "reason": "Preauthorized deterministic demonstration",
+              "request_id": "demo-e060eaf7be:damper",
+              "id": "cmd-4957474705bf",
+              "status": "verified",
+              "ack": true,
+              "created_at": "2026-11-17T18:24:32.782536+00:00",
+              "expires_at": "2026-11-17T18:25:02.782536+00:00",
+              "profile_version": 1,
+              "run_id": "demo-e060eaf7be",
+              "incident_id": "incident-6c7ba726ac",
+              "observed_result": "recovered",
+              "cse_rqi": "opensoom-05dea8779d154d9badc11faa641e51b0",
+              "cse_resource_id": "cin3eWlYKwXJH",
+              "ack_at": "2026-11-17T18:24:33.256+00:00",
+              "ack_rqi": "opensoom-a1b0f2592725472290094ce0724af096",
+              "verified_at": "2026-11-17T18:24:35.304+00:00",
+              "verification_rqi": "opensoom-3db4b3eec82c408fa630d3a4ad0cdd1d"
+            },
+            {
+              "facility_id": "food-a",
+              "zone_id": "cook",
+              "action": "set_damper",
+              "value": 100.0,
+              "reason": "Reproduce the configured virtual exhaust recovery scenario.",
+              "request_id": "agent-e6c60a74018f-action",
+              "id": "cmd-5b17b48981e5",
+              "status": "verified",
+              "ack": true,
+              "created_at": "2026-11-17T18:26:15.110744+00:00",
+              "expires_at": "2026-11-17T18:26:45.110744+00:00",
+              "profile_version": 1,
+              "run_id": "agent-e6c60a74018f",
+              "incident_id": "incident-faaad45d5b",
+              "observed_result": "recovered",
+              "cse_rqi": "opensoom-da1ce63e6f7249a1a16a617fdec3425a",
+              "cse_resource_id": "cinrXO2yVZQ1x",
+              "ack_at": "2026-11-17T18:26:17.112+00:00",
+              "ack_rqi": "opensoom-d1b51274d7934ddf80a320195669d4fd",
+              "verified_at": "2026-11-17T18:26:19.166+00:00",
+              "verification_rqi": "opensoom-be439135f0a64c7ea8a54b53848033ae"
+            },
+            {
+              "facility_id": "food-a",
+              "zone_id": "cook",
+              "action": "set_damper",
+              "value": 100.0,
+              "reason": "Reproduce the configured virtual exhaust recovery scenario.",
+              "request_id": "agent-d9abaa86c36e-action",
+              "id": "cmd-e9a0c92b2950",
+              "status": "verified",
+              "ack": true,
+              "created_at": "2026-11-17T18:29:14.855130+00:00",
+              "expires_at": "2026-11-17T18:29:44.855130+00:00",
+              "profile_version": 1,
+              "run_id": "agent-d9abaa86c36e",
+              "incident_id": "incident-115798d643",
+              "observed_result": "recovered",
+              "cse_rqi": "opensoom-aea4d842f92c4413a28cff29604efaa5",
+              "cse_resource_id": "cinp0AJQUDLBn",
+              "ack_at": "2026-11-17T18:29:14.869+00:00",
+              "ack_rqi": "opensoom-f22c2276c3804156a7dbdd73db613fed",
+              "verified_at": "2026-11-17T18:29:16.955+00:00",
+              "verification_rqi": "opensoom-1ade99abf84643f3834f4982406b1edd"
+            },
+            {
+              "facility_id": "food-a",
+              "zone_id": "cook",
+              "action": "set_damper",
+              "value": 100.0,
+              "reason": "Insufficient exhaust with running fan — raise damper to max per profile",
+              "request_id": "assistant-food-a-cook-setdamper-100",
+              "id": "cmd-96e3bb8cb9c7",
+              "status": "verified",
+              "ack": true,
+              "created_at": "2026-11-17T18:29:51.310229+00:00",
+              "expires_at": "2026-11-17T18:30:21.310229+00:00",
+              "profile_version": 1,
+              "run_id": "agent-59167791194a",
+              "incident_id": "incident-ef54a7f35d",
+              "observed_result": "recovered",
+              "cse_rqi": "opensoom-03245c97abb642d1bd4f0cbe924d12ed",
+              "cse_resource_id": "cinHyRifvkXjt",
+              "ack_at": "2026-11-17T18:29:52.358+00:00",
+              "ack_rqi": "opensoom-c1746063337749d885b8086a9ef30850",
+              "verified_at": "2026-11-17T18:29:54.473+00:00",
+              "verification_rqi": "opensoom-4ffa19e9b78f4a1597412ae46514ddd7"
+            },
+            {
+              "facility_id": "food-a",
+              "zone_id": "cook",
+              "action": "set_damper",
+              "value": 100.0,
+              "reason": "Insufficient exhaust with running fan — raise damper to max per profile",
+              "request_id": "assistant-no-recovery-001",
+              "id": "cmd-7541eec2ccbc",
+              "status": "acknowledged",
+              "ack": true,
+              "created_at": "2026-11-17T18:31:08.381840+00:00",
+              "expires_at": "2026-11-17T18:31:38.381840+00:00",
+              "profile_version": 1,
+              "run_id": "agent-4cf00b257048",
+              "incident_id": "incident-85a711c3ac",
+              "observed_result": "awaiting_observations",
+              "cse_rqi": "opensoom-825aa37b636f437384ac1befebe65515",
+              "cse_resource_id": "cinX9WwWR9TRt",
+              "ack_at": "2026-11-17T18:31:09.988+00:00",
+              "ack_rqi": "opensoom-1ee325c14e7d47dcb8b18a016b7da817"
+            }
+          ]
+        },
+        "isError": false
+      }
+    }
+  ],
+  "source_sha256": {
+    "plugin/mcp.json": "554e2340c31c98469c00f840d652a0cf0a9a2a4a770b057bfe15c145fc8b237b",
+    "plugin/plugin.json": "214a1b69f07e834b7cc2703bd6f0b859e95f75b2af4bd010a6c7bc86b9487d0b",
+    "plugin/skills/opensoom-operations/SKILL.md": "15ceecd2b8534d65b435e8ba6f214729d859339ee55dc4f22c60d482a5dd7c96",
+    "plugin/skills/opensoom-setup/SKILL.md": "6ea80c9ee267287342e90f81da69549cffd8dc5aabb0acaff248d0faa5796421"
+  },
+  "codex_version": "codex-cli 0.166.0",
+  "host_initialize": {
+    "userAgent": "Codex Desktop/0.166.0 (Mac OS 26.6.2; arm64) dumb (opensoom-acceptance; 0.1.0)",
+    "codexHome": "<checkout>/.runtime/codex-acceptance-c65b9eb6",
+    "platformFamily": "unix",
+    "platformOs": "macos"
+  },
+  "plugin_inventory": {
+    "marketplaces": [
+      {
+        "name": "opensoom-local",
+        "path": "<checkout>/.runtime/plugin-marketplace/.agents/plugins/marketplace.json",
+        "interface": {
+          "displayName": "openSoom local development"
+        },
+        "plugins": [
+          {
+            "id": "opensoom@opensoom-local",
+            "remotePluginId": null,
+            "version": null,
+            "localVersion": "0.1.0",
+            "name": "opensoom",
+            "shareContext": null,
+            "source": {
+              "type": "local",
+              "path": "<checkout>/.runtime/plugin-marketplace/plugin"
+            },
+            "installed": true,
+            "installedAt": null,
+            "enabled": true,
+            "installPolicy": "AVAILABLE",
+            "installPolicySource": null,
+            "mustShowInstallationInterstitial": null,
+            "authPolicy": "ON_INSTALL",
+            "availability": "AVAILABLE",
+            "disabledReason": null,
+            "eligiblePlanTypes": null,
+            "interface": {
+              "displayName": "openSoom",
+              "shortDescription": "Understand your facility's air, act and verify.",
+              "longDescription": "A local open-source operations plugin for connecting equipment, checking fresh evidence and verifying allowed ventilation actions. The demonstration uses virtual physical equipment and actual oneM2M software.",
+              "developerName": "openSoom contributors",
+              "category": "Productivity",
+              "capabilities": [
+                "Read",
+                "Write"
+              ],
+              "websiteUrl": "https://github.com/openSoom/openSoom",
+              "privacyPolicyUrl": null,
+              "termsOfServiceUrl": null,
+              "defaultPrompt": [
+                "Help me set up the openSoom virtual facility.",
+                "Inspect the facility's ventilation and verify any permitted action."
+              ],
+              "brandColor": "#167C70",
+              "composerIcon": null,
+              "composerIconUrl": null,
+              "logo": null,
+              "logoDark": null,
+              "logoUrl": null,
+              "logoUrlDark": null,
+              "screenshots": [],
+              "screenshotUrls": []
+            },
+            "keywords": [
+              "onem2m",
+              "ventilation",
+              "facility",
+              "mcp"
+            ]
+          }
+        ]
+      }
+    ],
+    "marketplaceLoadErrors": [],
+    "featuredPluginIds": []
+  },
+  "mcp_servers": {
+    "data": [
+      {
+        "name": "opensoom",
+        "runtimeStatus": "connected",
+        "pluginId": "opensoom@opensoom-local",
+        "httpOrigin": null,
+        "serverInfo": {
+          "name": "openSoom",
+          "title": null,
+          "version": "0.1.0",
+          "description": null,
+          "icons": null,
+          "websiteUrl": null
+        },
+        "serverCapabilities": {
+          "prompts": {
+            "listChanged": false
+          },
+          "resources": {
+            "subscribe": false,
+            "listChanged": false
+          },
+          "tools": {
+            "listChanged": false
+          }
+        },
+        "toolListMeta": null,
+        "tools": {
+          "request_action": {
+            "name": "request_action",
+            "description": "Request a profile-authorized action. Reuse request_id when retrying the same intended action. Server validates freshness and scope. This tool is part of plugin `openSoom`.",
+            "inputSchema": {
+              "properties": {
+                "facility_id": {
+                  "title": "Facility Id",
+                  "type": "string"
+                },
+                "zone_id": {
+                  "title": "Zone Id",
+                  "type": "string"
+                },
+                "action": {
+                  "enum": [
+                    "set_damper",
+                    "request_maintenance"
+                  ],
+                  "title": "Action",
+                  "type": "string"
+                },
+                "reason": {
+                  "title": "Reason",
+                  "type": "string"
+                },
+                "request_id": {
+                  "title": "Request Id",
+                  "type": "string"
+                },
+                "value": {
+                  "anyOf": [
+                    {
+                      "type": "number"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "default": null,
+                  "title": "Value"
+                }
+              },
+              "required": [
+                "facility_id",
+                "zone_id",
+                "action",
+                "reason",
+                "request_id"
+              ],
+              "type": "object",
+              "title": "request_actionArguments"
+            },
+            "outputSchema": {
+              "type": "object",
+              "additionalProperties": true,
+              "title": "request_actionDictOutput"
+            }
+          },
+          "discover": {
+            "name": "discover",
+            "description": "Find accessible facilities and equipment using real oneM2M discovery. This tool is part of plugin `openSoom`.",
+            "inputSchema": {
+              "properties": {
+                "facility_id": {
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "default": null,
+                  "title": "Facility Id"
+                }
+              },
+              "type": "object",
+              "title": "discoverArguments"
+            },
+            "outputSchema": {
+              "type": "object",
+              "additionalProperties": true,
+              "title": "discoverDictOutput"
+            }
+          },
+          "read_evidence": {
+            "name": "read_evidence",
+            "description": "Read current observations, freshness, incidents and commands before deciding on an action. This tool is part of plugin `openSoom`.",
+            "inputSchema": {
+              "properties": {
+                "facility_id": {
+                  "title": "Facility Id",
+                  "type": "string"
+                },
+                "zone_id": {
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "default": null,
+                  "title": "Zone Id"
+                }
+              },
+              "required": [
+                "facility_id"
+              ],
+              "type": "object",
+              "title": "read_evidenceArguments"
+            },
+            "outputSchema": {
+              "type": "object",
+              "additionalProperties": true,
+              "title": "read_evidenceDictOutput"
+            }
+          },
+          "prepare_setup": {
+            "name": "prepare_setup",
+            "description": "Validate an existing facility profile and explain the setup plan without activating it. This tool is part of plugin `openSoom`.",
+            "inputSchema": {
+              "properties": {
+                "profile_id": {
+                  "title": "Profile Id",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "profile_id"
+              ],
+              "type": "object",
+              "title": "prepare_setupArguments"
+            },
+            "outputSchema": {
+              "type": "object",
+              "additionalProperties": true,
+              "title": "prepare_setupDictOutput"
+            }
+          },
+          "read_group": {
+            "name": "read_group",
+            "description": "Query the facility's native oneM2M group and retain each member's result; group success is not device ACK. This tool is part of plugin `openSoom`.",
+            "inputSchema": {
+              "properties": {
+                "facility_id": {
+                  "title": "Facility Id",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "facility_id"
+              ],
+              "type": "object",
+              "title": "read_groupArguments"
+            },
+            "outputSchema": {
+              "type": "object",
+              "additionalProperties": true,
+              "title": "read_groupDictOutput"
+            }
+          },
+          "apply_setup": {
+            "name": "apply_setup",
+            "description": "Apply a validated profile only if this server's fixed identity is already an administrator; never self-grant. This tool is part of plugin `openSoom`.",
+            "inputSchema": {
+              "properties": {
+                "profile_id": {
+                  "title": "Profile Id",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "profile_id"
+              ],
+              "type": "object",
+              "title": "apply_setupArguments"
+            },
+            "outputSchema": {
+              "type": "object",
+              "additionalProperties": true,
+              "title": "apply_setupDictOutput"
+            }
+          },
+          "doctor": {
+            "name": "doctor",
+            "description": "Check service/CSE readiness and actionable setup diagnostics without exposing credentials. This tool is part of plugin `openSoom`.",
+            "inputSchema": {
+              "properties": {},
+              "type": "object",
+              "title": "doctorArguments"
+            },
+            "outputSchema": {
+              "type": "object",
+              "additionalProperties": true,
+              "title": "doctorDictOutput"
+            }
+          },
+          "verify_result": {
+            "name": "verify_result",
+            "description": "Independently check command state, device ACK and later observations; report pending/failed/unresolved outcomes as returned. This tool is part of plugin `openSoom`.",
+            "inputSchema": {
+              "properties": {
+                "facility_id": {
+                  "title": "Facility Id",
+                  "type": "string"
+                },
+                "command_id": {
+                  "title": "Command Id",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "facility_id",
+                "command_id"
+              ],
+              "type": "object",
+              "title": "verify_resultArguments"
+            },
+            "outputSchema": {
+              "type": "object",
+              "additionalProperties": true,
+              "title": "verify_resultDictOutput"
+            }
+          }
+        },
+        "toolsError": null,
+        "resources": [],
+        "resourceTemplates": [],
+        "authStatus": "unsupported"
+      }
+    ],
+    "nextCursor": null
+  },
+  "limitations": [
+    "No Codex model turn was executed; this is a host/plugin transport test.",
+    "Live model decisions are tested separately by the standalone runner.",
+    "Physical sensors and actuators are virtual."
+  ],
+  "notification_methods": [
+    "mcpServer/startupStatus/updated",
+    "remoteControl/status/changed",
+    "thread/started"
+  ],
+  "test_process_stopped": true
+}

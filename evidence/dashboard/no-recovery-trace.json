@@ -1,0 +1,142 @@
+{
+  "run": {
+    "id": "demo-3990d46e50",
+    "facility_id": "learning-b",
+    "scenario": "no_recovery",
+    "mode": "fixture",
+    "status": "completed",
+    "started_at": "2026-11-17T18:35:24.902+00:00",
+    "steps": [
+      {
+        "timestamp": "2026-11-17T18:35:24.902+00:00",
+        "type": "scenario_started",
+        "message": "No recovery · virtual equipment",
+        "facility_id": "learning-b",
+        "zone_id": null,
+        "run_id": "demo-3990d46e50",
+        "data": {},
+        "id": 150
+      },
+      {
+        "timestamp": "2026-11-17T18:35:24.922+00:00",
+        "type": "incident_opened",
+        "message": "Airflow is below this zone's configured simulation target; Particles exceed the configured simulation target; CO₂ exceeds the configured simulation target",
+        "facility_id": "learning-b",
+        "zone_id": "classroom",
+        "run_id": "demo-3990d46e50",
+        "data": {
+          "rqi": "opensoom-f5f7f6270e484b8dabe96f16d39803a8"
+        },
+        "id": 151
+      },
+      {
+        "timestamp": "2026-11-17T18:35:24.982+00:00",
+        "type": "command_requested",
+        "message": "Damper adjustment requested: 100%",
+        "facility_id": "learning-b",
+        "zone_id": "classroom",
+        "run_id": "demo-3990d46e50",
+        "data": {
+          "command_id": "cmd-38f3a24fde72",
+          "rqi": "opensoom-e87044c813ff439883ee0a31e7ce86d8"
+        },
+        "id": 152
+      },
+      {
+        "timestamp": "2026-11-17T18:35:24.999+00:00",
+        "type": "device_ack",
+        "message": "Virtual device acknowledged; recovery still requires observations",
+        "facility_id": "learning-b",
+        "zone_id": "classroom",
+        "run_id": "demo-3990d46e50",
+        "data": {
+          "command_id": "cmd-38f3a24fde72",
+          "rqi": "opensoom-1d736e43b18e4e97960973cc742a9d9c"
+        },
+        "id": 153
+      }
+    ],
+    "tool_calls": [],
+    "outcome": "PASS_FIXTURE",
+    "expected_behavior": "ack_without_recovery_remains_unresolved",
+    "completed_at": "2026-11-17T18:35:27.169+00:00",
+    "command_ids": [
+      "cmd-38f3a24fde72"
+    ]
+  },
+  "commands": [
+    {
+      "facility_id": "learning-b",
+      "zone_id": "classroom",
+      "action": "set_damper",
+      "value": 100,
+      "reason": "Preauthorized deterministic demonstration",
+      "request_id": "demo-3990d46e50:damper",
+      "id": "cmd-38f3a24fde72",
+      "status": "unresolved",
+      "ack": true,
+      "created_at": "2026-11-17T18:35:24.974070+00:00",
+      "expires_at": "2026-11-17T18:35:54.974070+00:00",
+      "profile_version": 1,
+      "run_id": "demo-3990d46e50",
+      "incident_id": "incident-975e89aa58",
+      "observed_result": "unresolved",
+      "cse_rqi": "opensoom-e87044c813ff439883ee0a31e7ce86d8",
+      "cse_resource_id": "cinYh5RnItZE3",
+      "ack_at": "2026-11-17T18:35:24.997+00:00",
+      "ack_rqi": "opensoom-1d736e43b18e4e97960973cc742a9d9c",
+      "unresolved_samples": 10,
+      "verification_rqi": "opensoom-abbb8ba36a404ce1ad2755739321bdd7"
+    }
+  ],
+  "events": [
+    {
+      "timestamp": "2026-11-17T18:35:24.902+00:00",
+      "type": "scenario_started",
+      "message": "No recovery · virtual equipment",
+      "facility_id": "learning-b",
+      "zone_id": null,
+      "run_id": "demo-3990d46e50",
+      "data": {},
+      "id": 150
+    },
+    {
+      "timestamp": "2026-11-17T18:35:24.922+00:00",
+      "type": "incident_opened",
+      "message": "Airflow is below this zone's configured simulation target; Particles exceed the configured simulation target; CO₂ exceeds the configured simulation target",
+      "facility_id": "learning-b",
+      "zone_id": "classroom",
+      "run_id": "demo-3990d46e50",
+      "data": {
+        "rqi": "opensoom-f5f7f6270e484b8dabe96f16d39803a8"
+      },
+      "id": 151
+    },
+    {
+      "timestamp": "2026-11-17T18:35:24.982+00:00",
+      "type": "command_requested",
+      "message": "Damper adjustment requested: 100%",
+      "facility_id": "learning-b",
+      "zone_id": "classroom",
+      "run_id": "demo-3990d46e50",
+      "data": {
+        "command_id": "cmd-38f3a24fde72",
+        "rqi": "opensoom-e87044c813ff439883ee0a31e7ce86d8"
+      },
+      "id": 152
+    },
+    {
+      "timestamp": "2026-11-17T18:35:24.999+00:00",
+      "type": "device_ack",
+      "message": "Virtual device acknowledged; recovery still requires observations",
+      "facility_id": "learning-b",
+      "zone_id": "classroom",
+      "run_id": "demo-3990d46e50",
+      "data": {
+        "command_id": "cmd-38f3a24fde72",
+        "rqi": "opensoom-1d736e43b18e4e97960973cc742a9d9c"
+      },
+      "id": 153
+    }
+  ]
+}

@@ -1,0 +1,162 @@
+{
+  "kind": "actual_native_oneM2M_MQTT_binding",
+  "physical_data": "simulated",
+  "cse": "ACME 2026.5.3",
+  "broker": "aMQTT 0.12.2",
+  "server_certificate_verification": true,
+  "checks": {
+    "native_mqtt_create": {
+      "rsc": 2001,
+      "rqi": "opensoom-209c969dc1ef470d9a2f08762fc49f70",
+      "body": {
+        "m2m:cin": {
+          "con": {
+            "pm25_ug_m3": 24,
+            "co2_ppm": 820,
+            "simulated": true
+          },
+          "cnf": "application/json:0",
+          "cs": 12,
+          "pi": "cntRscPJmi8nV",
+          "ri": "cinMuPppv2mAm",
+          "rn": "cin_CPQbQ7Jj7P",
+          "ty": 4,
+          "ct": "20261117T183619,754628",
+          "lt": "20261117T183619,754628",
+          "et": "20311116T183619,738182",
+          "st": 1
+        }
+      },
+      "http_status": null,
+      "transport": "MQTT_TLS"
+    },
+    "https_same_resource": {
+      "rsc": 2000,
+      "rqi": "opensoom-5f2a16cd633c4ef2a4f3c0e152ce3523",
+      "body": {
+        "m2m:cin": {
+          "con": {
+            "pm25_ug_m3": 24,
+            "co2_ppm": 820,
+            "simulated": true
+          },
+          "cnf": "application/json:0",
+          "cs": 12,
+          "pi": "cntRscPJmi8nV",
+          "ri": "cinMuPppv2mAm",
+          "rn": "cin_CPQbQ7Jj7P",
+          "ty": 4,
+          "ct": "20261117T183619,754628",
+          "lt": "20261117T183619,754628",
+          "et": "20311116T183619,738182",
+          "st": 1
+        }
+      },
+      "http_status": 200
+    },
+    "native_mqtt_denial": {
+      "rsc": 4103,
+      "rqi": "opensoom-78c4a2678b4e48f8a94f8af681991d72",
+      "body": {
+        "m2m:dbg": "originator: CNotThisDevice has no CREATE privileges for resource: cntRscPJmi8nV"
+      },
+      "http_status": null,
+      "transport": "MQTT_TLS"
+    },
+    "HTTPS_tls": {
+      "version": "TLSv1.3",
+      "cipher": "TLS_AES_256_GCM_SHA384",
+      "untrusted_certificate_rejected": true
+    },
+    "MQTT_TLS_tls": {
+      "version": "TLSv1.3",
+      "cipher": "TLS_AES_256_GCM_SHA384",
+      "untrusted_certificate_rejected": true
+    }
+  },
+  "limitations": [
+    "Broker is loopback-only with anonymous lab clients; no production AE credential/topic binding is claimed.",
+    "The CSE's HTTP listener does not require client certificates. Client-side server certificate validation remains enabled."
+  ],
+  "request_topic": "/oneM2M/req/opensoom-e0f5afc33e1847e88def247e905d1922/opensoom-secure/json",
+  "response_topic": "/oneM2M/resp/opensoom-e0f5afc33e1847e88def247e905d1922/opensoom-secure/json",
+  "trace_sha256": "db177d66f5e1740a474088fc6ad15153bd105d7014d637c8b553ad04fcb6a74f",
+  "native_request_response_trace": [
+    {
+      "timestamp": "2026-11-17T18:36:19.756963+00:00",
+      "topic": "/oneM2M/req/opensoom-e0f5afc33e1847e88def247e905d1922/opensoom-secure/json",
+      "request": {
+        "op": 1,
+        "to": "cse-secure/mqtt-230d6f5b4e/observations",
+        "fr": "Cmqtt230d6f5b4e",
+        "rqi": "opensoom-209c969dc1ef470d9a2f08762fc49f70",
+        "rvi": "4",
+        "ty": 4,
+        "pc": {
+          "m2m:cin": {
+            "con": {
+              "pm25_ug_m3": 24,
+              "co2_ppm": 820,
+              "simulated": true
+            },
+            "cnf": "application/json:0"
+          }
+        }
+      },
+      "response": {
+        "rsc": 2001,
+        "rqi": "opensoom-209c969dc1ef470d9a2f08762fc49f70",
+        "body": {
+          "m2m:cin": {
+            "con": {
+              "pm25_ug_m3": 24,
+              "co2_ppm": 820,
+              "simulated": true
+            },
+            "cnf": "application/json:0",
+            "cs": 12,
+            "pi": "cntRscPJmi8nV",
+            "ri": "cinMuPppv2mAm",
+            "rn": "cin_CPQbQ7Jj7P",
+            "ty": 4,
+            "ct": "20261117T183619,754628",
+            "lt": "20261117T183619,754628",
+            "et": "20311116T183619,738182",
+            "st": 1
+          }
+        },
+        "http_status": null,
+        "transport": "MQTT_TLS"
+      }
+    },
+    {
+      "timestamp": "2026-11-17T18:36:19.762401+00:00",
+      "topic": "/oneM2M/req/opensoom-e0f5afc33e1847e88def247e905d1922/opensoom-secure/json",
+      "request": {
+        "op": 1,
+        "to": "cse-secure/mqtt-230d6f5b4e/observations",
+        "fr": "CNotThisDevice",
+        "rqi": "opensoom-78c4a2678b4e48f8a94f8af681991d72",
+        "rvi": "4",
+        "ty": 4,
+        "pc": {
+          "m2m:cin": {
+            "con": {
+              "simulated": true
+            }
+          }
+        }
+      },
+      "response": {
+        "rsc": 4103,
+        "rqi": "opensoom-78c4a2678b4e48f8a94f8af681991d72",
+        "body": {
+          "m2m:dbg": "originator: CNotThisDevice has no CREATE privileges for resource: cntRscPJmi8nV"
+        },
+        "http_status": null,
+        "transport": "MQTT_TLS"
+      }
+    }
+  ],
+  "result": "PASS_NATIVE_MQTT_TLS_AND_HTTPS"
+}

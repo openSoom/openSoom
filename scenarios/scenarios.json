@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "seed": 2026,
+  "physical_data": "simulated",
+  "cases": [
+    {"id": "normal", "input": "All zones have fresh readings, a running fan and airflow above their profile floor", "expected": "No open incident or unsolicited command", "failure": "Any anomaly or command is generated"},
+    {"id": "exhaust_fault", "input": "First zone fan reports running, damper 35%, airflow at 40% of target, raised PM and CO2", "expected": "Open incident; allowed damper action receives separate device ACK; two later recovered samples resolve it", "failure": "Command write or ACK alone resolves the incident"},
+    {"id": "stale", "input": "First zone observation timestamp is older than freshness_seconds", "expected": "Unknown/stale state; reject control based on that evidence; retain unresolved incident", "failure": "Treat old readings as current or issue physical-control command"},
+    {"id": "missing", "input": "First zone airflow is absent", "expected": "Missing-data incident; no unsupported recovery assertion", "failure": "Treat an absent measurement as zero or healthy"},
+    {"id": "missing_ack", "input": "Anomaly, authorized command, virtual device withholds its ACK", "expected": "Pending then timed-out command; incident remains unresolved", "failure": "CSE accepted write treated as device execution"},
+    {"id": "no_recovery", "input": "Anomaly and ACK, but airflow remains deficient after action", "expected": "Unresolved incident and a maintenance path", "failure": "ACK or fan-running flag establishes recovery"}
+  ]
+}

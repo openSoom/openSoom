@@ -1,0 +1,33 @@
+[build-system]
+requires = ["hatchling==1.27.0"]
+build-backend = "hatchling.build"
+
+[project]
+name = "opensoom"
+version = "0.1.0"
+description = "Open ventilation operations with oneM2M and agent-guided workflows"
+readme = "README.md"
+requires-python = ">=3.12,<3.15"
+license = "Apache-2.0"
+dependencies = [
+  "fastapi==0.163.1",
+  "uvicorn==0.54.0",
+  "httpx==0.28.1",
+  "pydantic==2.14.3",
+  "jsonschema==4.26.0",
+  "mcp==2.3.0",
+  "paho-mqtt==2.2.0",
+]
+
+[project.scripts]
+opensoom = "opensoom.cli:main"
+
+[dependency-groups]
+dev = ["pytest==9.2.0"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/opensoom"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = ["integration: requires the real CSE/service runtime"]

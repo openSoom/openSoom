@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "openSoom facility profile",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "id", "name", "simulation_only", "description", "freshness_seconds", "command_ttl_seconds", "recovery_samples", "allowed_actions", "zones"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "id": {"type": "string", "pattern": "^[a-z][a-z0-9-]{1,48}$"},
+    "name": {"type": "string", "minLength": 1},
+    "simulation_only": {"const": true},
+    "description": {"type": "string"},
+    "freshness_seconds": {"type": "integer", "minimum": 1, "maximum": 300},
+    "command_ttl_seconds": {"type": "integer", "minimum": 1, "maximum": 120},
+    "recovery_samples": {"type": "integer", "minimum": 2, "maximum": 10},
+    "allowed_actions": {"type": "array", "uniqueItems": true, "items": {"enum": ["set_damper", "request_maintenance"]}},
+    "zones": {
+      "type": "array", "minItems": 1,
+      "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["id", "name", "minimum_airflow", "pm25_warning", "co2_warning"],
+        "properties": {
+          "id": {"type": "string", "pattern": "^[a-z][a-z0-9-]{1,48}$"},
+          "name": {"type": "string", "minLength": 1},
+          "minimum_airflow": {"type": "number", "exclusiveMinimum": 0},
+          "pm25_warning": {"type": "number", "exclusiveMinimum": 0},
+          "co2_warning": {"type": "number", "exclusiveMinimum": 0}
+        }
+      }
+    }
+  }
+}

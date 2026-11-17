@@ -1,0 +1,160 @@
+{
+  "captured_at": "2026-11-17T18:44:44.081552+00:00",
+  "physical_devices": "simulated",
+  "accepted_implementation_evidence": [
+    "secure-live-recovery.json",
+    "secure-live-no-recovery.json",
+    "secure-live-stale-refusal.json",
+    "secure-codex-host-correlated.json"
+  ],
+  "independent_review_status": "pending main-owned independent review",
+  "source_hash_snapshot_at_bundle_capture": {
+    "src/opensoom/mcp_server.py": "a6dbe7d5785b224f2b74bbd03c9500dbae795bcf716c11e44d9b51293ddf90dc",
+    "src/opensoom/llm_runner.py": "5f66e3a4f77ac5c1d441c65e47dc445869a6b4af4c60113a383c3dded3de04d0",
+    "src/opensoom/llm_budget.py": "306f6cfbdcdc3f7f0fe2718bd87b1d46ec371be66faf6cba8e68ac9dfcb781bc",
+    "src/opensoom/core.py": "0c5e992d78b695edfefedf196342585a37c47e3f54c537fe21e2526cb11d7953",
+    "src/opensoom/app.py": "4bbdafe26a0fe76838032d1332552b7edc8e98e87523610029521a6f4a2ac0a9",
+    "src/opensoom/onem2m.py": "c4edcf610b9c82266d222dc63b69869cbd62000478405cdcd98f44178b0b123e",
+    "scripts/agent_install_plugin.py": "99cc8f4ff762557e16cdc16c0a9663a7c09266b697daba353f360c0f7380838c",
+    "scripts/agent_codex_check.py": "dc95e09e3ab0af7e94fec07b964db66b17b760cdbde9856f282b47f981a1b9e9",
+    "plugin/plugin.json": "214a1b69f07e834b7cc2703bd6f0b859e95f75b2af4bd010a6c7bc86b9487d0b",
+    "plugin/mcp.json": "554e2340c31c98469c00f840d652a0cf0a9a2a4a770b057bfe15c145fc8b237b",
+    "plugin/skills/opensoom-setup/SKILL.md": "6ea80c9ee267287342e90f81da69549cffd8dc5aabb0acaff248d0faa5796421",
+    "plugin/skills/opensoom-operations/SKILL.md": "cffdd8369a43a9b2d3f048be2eb7b401282dd8f4d37a35155eeba47a9420e4f8"
+  },
+  "live_batch": {
+    "batch_id": "opensoom-hackathon-2026-01",
+    "max_requests": 100,
+    "max_tokens": 250000,
+    "requests_consumed": 41,
+    "tokens_charged": 140108,
+    "tokens_reserved": 0,
+    "pending_requests": 0,
+    "requests_remaining": 59,
+    "tokens_remaining": 109892,
+    "requires_investigation": false
+  },
+  "unit_checks": {
+    "command": ".venv/bin/python -m pytest tests/test_llm_budget.py tests/test_llm_runner.py tests/test_mcp_server.py -q",
+    "passed": 17
+  },
+  "limitations": [
+    "Codex CLI 0.166.0 host transport and guided tool checks were executed; no Codex model turn or desktop UI acceptance was executed.",
+    "Real-model decisions were executed through the separate configurable hosted API runner, using the shared MCP/service path.",
+    "No physical ventilation or health experiment was performed; simulated thresholds are facility profile settings.",
+    "Model prose is not the acceptance oracle; command, ACK, current-run correlation and later CSE observations determine outcomes."
+  ],
+  "entries": [
+    {
+      "file": "evidence/agent/codex-host-onboarding.json",
+      "sha256": "a471deba743de1fd80c64b67e1c619d83a10792b2bb71e9013b6bd687b905d24",
+      "run_id": null,
+      "outcome": "PASS_HOST_MCP",
+      "assessment": "historical execution; superseded by final secure tests"
+    },
+    {
+      "file": "evidence/agent/codex-host-verified.json",
+      "sha256": "52becb49f3cc165eb83e726273f1c421c6b98716078d57643af34ea7a17d79a7",
+      "run_id": null,
+      "outcome": "PASS_HOST_MCP",
+      "assessment": "historical execution; superseded by final secure tests"
+    },
+    {
+      "file": "evidence/agent/codex-host.json",
+      "sha256": "2fa76f85a7ea1296e7d01f7214a8915e219aa4c3a22a4bac551c23a25cf97271",
+      "run_id": null,
+      "outcome": "FAIL",
+      "assessment": "retained failed attempt; not accepted evidence"
+    },
+    {
+      "file": "evidence/agent/fixture-recovery-verified.json",
+      "sha256": "a1e972c8d3d8976426894ae86758283fd4218221ff3330da21036733459e3f6b",
+      "run_id": "agent-d9abaa86c36e",
+      "outcome": "PASS_FIXTURE",
+      "assessment": "historical execution; superseded by final secure tests"
+    },
+    {
+      "file": "evidence/agent/fixture-recovery.json",
+      "sha256": "92c36e9154ac650a19560c2da7ede8a0c61292d84204d09feb8b2afebd54f0dc",
+      "run_id": "agent-e6c60a74018f",
+      "outcome": "FAIL",
+      "assessment": "retained failed attempt; not accepted evidence"
+    },
+    {
+      "file": "evidence/agent/live-no-recovery-verified.json",
+      "sha256": "0155621a7874505e494bfa9e241507471bca147f87d683893283815d3b3127f4",
+      "run_id": "agent-740d19d43c07",
+      "outcome": "FAIL",
+      "assessment": "retained failed cross-run idempotency attempt; fixed and superseded by secure-live-no-recovery.json"
+    },
+    {
+      "file": "evidence/agent/live-no-recovery.json",
+      "sha256": "215526106619338e7276540b7c507edb84d717e826a345bbd4eb2baa52a90565",
+      "run_id": "agent-4cf00b257048",
+      "outcome": "PASS_HOSTED_LLM_E2E",
+      "assessment": "weak negative: pre-ACK observation; not accepted negative gate evidence"
+    },
+    {
+      "file": "evidence/agent/live-recovery.json",
+      "sha256": "b438ebfbb646270bdaf2b6ddffbc2170e6f3a1000c66967858998c7039df6ce9",
+      "run_id": "agent-59167791194a",
+      "outcome": "PASS_HOSTED_LLM_E2E",
+      "assessment": "historical execution; superseded by final secure tests"
+    },
+    {
+      "file": "evidence/agent/live-stale-refusal.json",
+      "sha256": "1d1f8828105224d5b8155a89b9ef6ca4a75d3433dbbadd5695c8d112da601057",
+      "run_id": "agent-ec1da863553f",
+      "outcome": "PASS_HOSTED_LLM_E2E",
+      "assessment": "historical execution; superseded by final secure tests"
+    },
+    {
+      "file": "evidence/agent/secure-codex-host-correlated.json",
+      "sha256": "272259c4c160dce458bcbc8d1271c5afa78fd0487dcb635f38f9556905306953",
+      "run_id": null,
+      "outcome": "PASS_HOST_MCP",
+      "assessment": "implementation acceptance passed; independent review remains separate"
+    },
+    {
+      "file": "evidence/agent/secure-codex-host.json",
+      "sha256": "4b744ccfd8925ce83e8e20ebed6069d225e2d656255ae59db67f3e9952b33e79",
+      "run_id": null,
+      "outcome": "PASS_HOST_MCP",
+      "assessment": "historical execution; superseded by final secure tests"
+    },
+    {
+      "file": "evidence/agent/secure-live-no-recovery.json",
+      "sha256": "eba6e0a590575fba0d04efd230cb8224c9091db379d0cede0273b289ed13a6ab",
+      "run_id": "agent-479f866b7e84",
+      "outcome": "PASS_HOSTED_LLM_E2E",
+      "assessment": "implementation acceptance passed; independent review remains separate"
+    },
+    {
+      "file": "evidence/agent/secure-live-recovery.json",
+      "sha256": "07da6d99d170960a914485d339dc53d0653d10e3075e7852ad905470c2fe099c",
+      "run_id": "agent-379720ef883c",
+      "outcome": "PASS_HOSTED_LLM_E2E",
+      "assessment": "implementation acceptance passed; independent review remains separate"
+    },
+    {
+      "file": "evidence/agent/secure-live-stale-refusal.json",
+      "sha256": "cdf17b7c9bb9beedb11fa3f7562388ee2d282c34bd9b197c2f24e4659d9054cb",
+      "run_id": "agent-7a56497c01be",
+      "outcome": "PASS_HOSTED_LLM_E2E",
+      "assessment": "implementation acceptance passed; independent review remains separate"
+    },
+    {
+      "file": "evidence/agent/secure-protocol-correlation.json",
+      "sha256": "dbfec51c509b8de535ad7b7aa4039827b00c9d68eda8b012d29c955fe9c45fe5",
+      "run_id": null,
+      "outcome": "SUPPORTING_EVIDENCE",
+      "assessment": "actual CSE request IDs linked to captured agent results; consult binding evidence"
+    }
+  ],
+  "installer_reinstall_check": {
+    "profile": "existing isolated test profile",
+    "all_commands_exit_zero": true,
+    "installed_command": "uv",
+    "normal_user_profile_changed": false
+  }
+}

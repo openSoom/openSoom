@@ -1,0 +1,259 @@
+{
+  "kind": "actual_multi_CSE_Mcc_execution",
+  "physical_data": "simulated",
+  "topology": {
+    "central": "IN-CSE /opensoom-central",
+    "food": "MN-CSE /opensoom-food",
+    "learning": "MN-CSE /opensoom-learning"
+  },
+  "checks": {
+    "native_remote_CSE_registrations": {
+      "rsc": 2000,
+      "rqi": "opensoom-46d75bc2dc75407b8133e157715afbeb",
+      "body": {
+        "m2m:uril": [
+          "/opensoom-central/opensoom-food",
+          "/opensoom-central/opensoom-learning"
+        ]
+      },
+      "http_status": 200
+    },
+    "food": {
+      "resource_created": {
+        "rsc": 2001,
+        "rqi": "opensoom-a755b35e2fb344108527565995cf38a3",
+        "body": {
+          "m2m:cnt": {
+            "rn": "observations",
+            "lbl": [
+              "opensoom",
+              "food",
+              "opensoom-run-c292e635"
+            ],
+            "acpi": [
+              "acpIWmeFcdWIX"
+            ],
+            "at": [
+              "/opensoom-central/cntA4CxchbpAhG"
+            ],
+            "aa": [
+              "lbl"
+            ],
+            "cni": 0,
+            "cbs": 0,
+            "st": 0,
+            "pi": "Cfoodc292e635",
+            "ri": "cntgTL1wzE7wq",
+            "ty": 3,
+            "ct": "20261117T183234,645648",
+            "lt": "20261117T183234,645648",
+            "et": "20311116T183234,644196"
+          }
+        },
+        "http_status": 201
+      },
+      "remote_discovery": {
+        "rsc": 2000,
+        "rqi": "opensoom-53ae34c567b94638bab7b449b0eb3ab9",
+        "body": {
+          "m2m:uril": [
+            "/opensoom-food/cntgTL1wzE7wq"
+          ]
+        },
+        "http_status": 200
+      },
+      "remote_read": {
+        "rsc": 2000,
+        "rqi": "opensoom-45d7202985864b668ffb1df7d2d3058e",
+        "body": {
+          "m2m:cin": {
+            "con": {
+              "facility": "food",
+              "simulated": true,
+              "sequence": 1
+            },
+            "cs": 12,
+            "pi": "cntgTL1wzE7wq",
+            "ri": "cinE5XMo1NEwp",
+            "rn": "cin_3iKuqEAvwf",
+            "ty": 4,
+            "ct": "20261117T183234,652996",
+            "lt": "20261117T183234,652996",
+            "et": "20311116T183234,644196",
+            "st": 1
+          }
+        },
+        "http_status": 200
+      },
+      "cross_scope_denial": {
+        "rsc": 4103,
+        "rqi": "opensoom-09842c9aee8f42c1865acec8b540a9de",
+        "body": {
+          "m2m:dbg": "originator has no permission for RETRIEVE"
+        },
+        "http_status": 403
+      },
+      "read_only_operator_write_denied": {
+        "rsc": 4103,
+        "rqi": "opensoom-8c288eae361744e29f378fbd3d87670e",
+        "body": {
+          "m2m:dbg": "originator: /opensoom-central/Coperatorc292e635 has no CREATE privileges for resource: cntgTL1wzE7wq"
+        },
+        "http_status": 403
+      }
+    },
+    "learning": {
+      "resource_created": {
+        "rsc": 2001,
+        "rqi": "opensoom-fa603d4bb5f34dbc96d826099273a190",
+        "body": {
+          "m2m:cnt": {
+            "rn": "observations",
+            "lbl": [
+              "opensoom",
+              "learning",
+              "opensoom-run-c292e635"
+            ],
+            "acpi": [
+              "acpTH2gToWPCi"
+            ],
+            "at": [
+              "/opensoom-central/cntArQCidisTRG"
+            ],
+            "aa": [
+              "lbl"
+            ],
+            "cni": 0,
+            "cbs": 0,
+            "st": 0,
+            "pi": "Clearningc292e635",
+            "ri": "cnt1fZUjs5lKx",
+            "ty": 3,
+            "ct": "20261117T183234,675468",
+            "lt": "20261117T183234,675468",
+            "et": "20311116T183234,673982"
+          }
+        },
+        "http_status": 201
+      },
+      "remote_discovery": {
+        "rsc": 2000,
+        "rqi": "opensoom-2394448e8d82427ca787d1416f6b4054",
+        "body": {
+          "m2m:uril": [
+            "/opensoom-learning/cnt1fZUjs5lKx"
+          ]
+        },
+        "http_status": 200
+      },
+      "remote_read": {
+        "rsc": 2000,
+        "rqi": "opensoom-ce5e9c0894694810882dcd66b0f2bef7",
+        "body": {
+          "m2m:cin": {
+            "con": {
+              "facility": "learning",
+              "simulated": true,
+              "sequence": 1
+            },
+            "cs": 16,
+            "pi": "cnt1fZUjs5lKx",
+            "ri": "cing6r66Gx0gB",
+            "rn": "cin_WW0l0c173H",
+            "ty": 4,
+            "ct": "20261117T183234,683341",
+            "lt": "20261117T183234,683341",
+            "et": "20311116T183234,673982",
+            "st": 1
+          }
+        },
+        "http_status": 200
+      },
+      "cross_scope_denial": {
+        "rsc": 4103,
+        "rqi": "opensoom-999a00a0ccc14e7386233d60a98aa5ee",
+        "body": {
+          "m2m:dbg": "originator has no permission for RETRIEVE"
+        },
+        "http_status": 403
+      },
+      "read_only_operator_write_denied": {
+        "rsc": 4103,
+        "rqi": "opensoom-899a892a1b1d442ca7399466da2133b1",
+        "body": {
+          "m2m:dbg": "originator: /opensoom-central/Coperatorc292e635 has no CREATE privileges for resource: cnt1fZUjs5lKx"
+        },
+        "http_status": 403
+      }
+    },
+    "selective_container_announcements": {
+      "rsc": 2000,
+      "rqi": "opensoom-b0d60e9e5e3e44b99c3eb24c1ff4dd7e",
+      "body": {
+        "m2m:uril": [
+          "/opensoom-central/cntA4CxchbpAhG",
+          "/opensoom-central/cntArQCidisTRG"
+        ]
+      },
+      "http_status": 200
+    },
+    "announced_container_readback": [
+      {
+        "rsc": 2000,
+        "rqi": "opensoom-e234b71815ef43bb9d708c5c4b8bbfba",
+        "body": {
+          "m2m:cntA": {
+            "et": "20311116T182832,798963",
+            "lnk": "/opensoom-food/cntgTL1wzE7wq",
+            "lbl": [
+              "opensoom",
+              "food",
+              "opensoom-run-c292e635"
+            ],
+            "acpi": [
+              "/opensoom-food/acpIWmeFcdWIX"
+            ],
+            "pi": "cbAxFNfRlgvWt",
+            "ri": "cntA4CxchbpAhG",
+            "rn": "cntA_9GDxpmQAvt",
+            "ty": 10003,
+            "ct": "20261117T183234,650123",
+            "lt": "20261117T183234,650123"
+          }
+        },
+        "http_status": 200
+      },
+      {
+        "rsc": 2000,
+        "rqi": "opensoom-10d3aa20296e4d0884fab4e8f02ba5f0",
+        "body": {
+          "m2m:cntA": {
+            "et": "20311116T183150,206675",
+            "lnk": "/opensoom-learning/cnt1fZUjs5lKx",
+            "lbl": [
+              "opensoom",
+              "learning",
+              "opensoom-run-c292e635"
+            ],
+            "acpi": [
+              "/opensoom-learning/acpTH2gToWPCi"
+            ],
+            "pi": "cbAXndxxNDnLW",
+            "ri": "cntArQCidisTRG",
+            "rn": "cntA_KQ6spnmKXw",
+            "ty": 10003,
+            "ct": "20261117T183234,680443",
+            "lt": "20261117T183234,680443"
+          }
+        },
+        "http_status": 200
+      }
+    ]
+  },
+  "limitations": [
+    "Three actual CSE processes run on one host; no MEC hosting or geographic distribution is claimed.",
+    "Local development HTTP trust boundary; this is separate from the verified HTTPS/MQTT TLS profile.",
+    "Remote registration/announcements do not establish handover or automatic replication."
+  ],
+  "result": "PASS_NATIVE_MULTISITE_CSE"
+}

@@ -1,0 +1,93 @@
+{
+  "recorded_at": "2026-11-17T19:01:04.691424+00:00",
+  "status": "implemented_and_self_checked_pending_independent_review",
+  "decision": "Use pinned ACME Python runtime, separate aMQTT TLS broker, and optional isolated multi-CSE profile.",
+  "reason": "Docker daemon was unavailable; Python3.12 executes actual oneM2M services locally with inspectable protocol evidence and a simple single-facility start.",
+  "runtime": {
+    "python": "3.12.12",
+    "acmecse": "2026.5.3",
+    "acme_license": "BSD-3-Clause",
+    "acme_wheel_sha256": "baefe38c4cea3115d0e8642562d7b12becebf45ad90e382aea1abdccd11c399f",
+    "amqtt": "0.12.2",
+    "amqtt_license": "MIT",
+    "httpx": "0.28.1",
+    "paho_mqtt": "2.2.0",
+    "rvi": "4",
+    "sdt_bundle_declared_version": "5.6.0",
+    "sdt_bundle_sha256": "b83b1578203dfc097ad4f37e585dfe34d1f460e03436357877cdb593697e91c2"
+  },
+  "primary_sources": [
+    "https://github.com/ankraft/ACME-oneM2M-CSE",
+    "https://pypi.org/project/acmecse/2026.5.3/",
+    "https://pypi.org/project/amqtt/0.12.2/",
+    "https://acmecse.net/setup/Configuration-http/",
+    "https://acmecse.net/setup/Operation-mqtt/",
+    "https://specifications.onem2m.org/ts/ts-0023/v5.6.0/5.3/#5316-airqualitysensor"
+  ],
+  "reproducers": [
+    "python3 scripts/cse_bootstrap.py single",
+    "python3 scripts/cse_bootstrap.py secure",
+    "python3 scripts/cse_bootstrap.py multisite",
+    "tmp/runtime/cse-venv/bin/python scripts/cse_smoke.py",
+    "tmp/runtime/cse-venv/bin/python scripts/cse_smoke.py --url https://127.0.0.1:8443 --base cse-secure --ca-file .runtime/pki/ca.crt --evidence evidence/runtime/cse-https-smoke.json",
+    "tmp/runtime/cse-venv/bin/python scripts/cse_mqtt_smoke.py",
+    "tmp/runtime/cse-venv/bin/python scripts/cse_multisite_smoke.py",
+    ".venv/bin/python scripts/cse_product_topology.py",
+    "PYTHONPATH=src .venv/bin/python -m unittest discover -s tests/integration -p 'test_cse_*.py'",
+    ".venv/bin/python scripts/application_acceptance.py"
+  ],
+  "checks": {
+    "http_native_smoke": "PASS_NATIVE_CSE_SMOKE",
+    "https_native_smoke": "PASS_NATIVE_CSE_SMOKE",
+    "native_mqtt_tls_and_https": "PASS_NATIVE_MQTT_TLS_AND_HTTPS",
+    "native_multisite": "PASS_NATIVE_MULTISITE_CSE",
+    "product_continuity": "PASS_PRODUCT_MULTISITE_CONTINUITY",
+    "client_and_intent_boundary_tests": {
+      "passed": 9,
+      "failed": 0
+    },
+    "bootstrap_idempotence": [
+      "secure",
+      "multisite"
+    ],
+    "gate_statuses_changed": false,
+    "application_acceptance": "PASS_ACTUAL_APPLICATION_ACCEPTANCE"
+  },
+  "limitations": [
+    "ACP checks asserted actor strings; local processes are trusted and clients are not cryptographically bound to origins.",
+    "Broker is anonymous on loopback; TLS verifies server identity. Multi-site Mcc uses loopback HTTP.",
+    "Subscription callback smoke uses loopback HTTP even when subscription creation uses HTTPS.",
+    "Native group aborts on a denied member with4103; separate diagnostic reads are not a fabricated native mixed aggregate.",
+    "Physical equipment, readings and ACK behavior are simulated; CSE software and API operations are actual.",
+    "Distributed scenario is an explicit receiver/replay execution; no always-running central intent consumer, MEC, handover or complete historical replay claim.",
+    "Latest application and product-topology captures record unchanged relevant source hashes across actual execution. Independent reviewers retain stage-gate decisions."
+  ],
+  "file_sha256": {
+    "src/opensoom/onem2m.py": "c4edcf610b9c82266d222dc63b69869cbd62000478405cdcd98f44178b0b123e",
+    "src/opensoom/federation.py": "8aa9727ee7b028fb173f0375f033f74a874a29624cdf6cfd34a0baed9043e11d",
+    "scripts/cse_bootstrap.py": "e0f95cd48f6d61525a07ce972ba863f5065ed14d01b72f1c8927913c31b01448",
+    "scripts/cse_broker.py": "a3d5353cd62a924bdfb79bcdbdd5a8b6f911658bf3ec5ba040a3dcb625859924",
+    "scripts/cse_mqtt_smoke.py": "97102d1b8a04e1b1bab5e3411281abd4ec59f50f920d7d8b0018de8784d6751a",
+    "scripts/cse_multisite_smoke.py": "0556468e47dcedd3d83db3a5bfdbe119999863a72b1b947e657aaf6df8d3dc1b",
+    "scripts/cse_product_topology.py": "c3c92606e108599a3aaf28ddf535fea3dbec6db5eb6819fc72309e2431563718",
+    "scripts/cse_runtime.py": "8fc04a2288b381bfcb3e2cfe07e289f7cb6d41c60fd9a2ccf4ecb7ece22a988f",
+    "scripts/cse_smoke.py": "e52d493d5594bc3d877dd26a395f25c8e8cea83ff28ba9c2cfd60314a2684c28",
+    "deploy/README.md": "2969079322aa7c7f640925aa5619f0d602cfd1291eb92ea75a7a9ba6a2e9b6c9",
+    "deploy/acme-single.ini": "d7a97bf87dee84edff1b9dd2bff0ef21d4c1f96469f76bacd82f202f8abcccd5",
+    "deploy/cse-requirements.in": "1165055f2237ac81674b2958415f70d73a461b61035c5908368461acc903e105",
+    "deploy/cse-requirements.txt": "d34b9bb305370cd52c73f7e901309d456304892ddb0af783d14867087756d69c",
+    "deploy/mqtt-requirements.txt": "a769f66cca0d4487c79fbe22b2651e48fd9c3d3127cd712ad6668d90e75650bb",
+    "tests/integration/test_cse_client.py": "c2e13aa23e54c7be7f5760c5e5247ab2b7babb6e63838bbb422e53ea0265c46a",
+    "tests/integration/test_cse_federation.py": "10ecbfb1a97e3c73343fe26dba2eb4f75f0c2a6a735c6da402f4235528a6adee",
+    "scripts/application_acceptance.py": "036f3bece2e766df26f739ef656f713c8e0952a232f5e48c5c88767f32dd1165",
+    "evidence/application/README.md": "5bcbb589a53380a792ca783a886c8710e857214480eda5bbff981b432fca148d"
+  },
+  "evidence_sha256": {
+    "evidence/runtime/cse-smoke.json": "5939d5d801cd8827db2697363b8c8affc83a8045b64539719746732077d52870",
+    "evidence/runtime/cse-https-smoke.json": "4d8ae11c23423ec785e5758645d858b8f2265a3e01192e101e5de2d94f5bbca4",
+    "evidence/runtime/cse-mqtt-tls-smoke.json": "84078e28aef99361d7c0e197c8e23993f2e7c4686de7be66837a6f6c6bde082f",
+    "evidence/runtime/cse-multisite-smoke.json": "48167af50668bd2d0a26e41f03aa2df71122024b0d3e45c97da1f784c66e67ed",
+    "evidence/runtime/product-multisite-continuity.json": "177da67f736ae8887debc8b02474c03f4a73d1330221ebeb4d8ca4aada85fed2",
+    "evidence/application/acceptance.json": "0792d32cab4526644e1f13fb93945e98f70c7a4170e3efa7bf865b9b2b6bd8b2"
+  }
+}

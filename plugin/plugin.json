@@ -1,0 +1,26 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "opensoom",
+  "version": "0.1.0",
+  "description": "Connect a virtual facility, diagnose ventilation incidents and verify authorized actions through oneM2M.",
+  "author": {"name": "openSoom contributors"},
+  "repository": "https://github.com/openSoom/openSoom",
+  "license": "Apache-2.0",
+  "keywords": ["onem2m", "ventilation", "facility", "mcp"],
+  "extensions": {
+    "com.openai": {
+      "onboardingSkill": "./skills/opensoom-setup/SKILL.md",
+      "interface": {
+        "displayName": "openSoom",
+        "shortDescription": "Understand your facility's air, act and verify.",
+        "longDescription": "A local open-source operations plugin for connecting equipment, checking fresh evidence and verifying allowed ventilation actions. The demonstration uses virtual physical equipment and actual oneM2M software.",
+        "developerName": "openSoom contributors",
+        "category": "Productivity",
+        "capabilities": ["Read", "Write"],
+        "websiteURL": "https://github.com/openSoom/openSoom",
+        "defaultPrompt": ["Help me set up the openSoom virtual facility.", "Inspect the facility's ventilation and verify any permitted action."],
+        "brandColor": "#167C70"
+      }
+    }
+  }
+}

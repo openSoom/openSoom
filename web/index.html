@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#163e39">
+  <meta name="opensoom-token" content="__OPENSOOM_TOKEN__">
+  <meta name="description" content="Understand the air in every zone. Connect observations, permitted actions and verified outcomes with openSoom.">
+  <title>openSoom · Facility overview</title>
+  <link rel="icon" type="image/svg+xml" href="/assets/mark.svg">
+  <link rel="stylesheet" href="/assets/styles.css">
+  <script src="/assets/app.js" defer></script>
+</head>
+<body>
+  <svg class="icon-library" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+    <symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.7"/><rect x="14" y="3" width="7" height="7" rx="1.7"/><rect x="3" y="14" width="7" height="7" rx="1.7"/><rect x="14" y="14" width="7" height="7" rx="1.7"/></symbol>
+    <symbol id="i-wind" viewBox="0 0 24 24"><path d="M3 8h12a3 3 0 1 0-3-3M3 12h16a3 3 0 1 1-3 3M3 16h5a3 3 0 1 1-3 3"/></symbol>
+    <symbol id="i-activity" viewBox="0 0 24 24"><path d="M2 12h4l3-8 5 16 3-8h5"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+    <symbol id="i-alert" viewBox="0 0 24 24"><path d="m10.3 4.3-8 14A1.8 1.8 0 0 0 4 21h16a1.8 1.8 0 0 0 1.7-2.7l-8-14a2 2 0 0 0-3.4 0Z"/><path d="M12 9v4m0 4h.01"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14m-5-5 5 5-5 5"/></symbol>
+    <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m8 10 4 4 4-4"/></symbol>
+    <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M20 7v5h-5M4 17v-5h5"/><path d="M6.2 6.2A8 8 0 0 1 20 12M4 12a8 8 0 0 0 13.8 5.8"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+    <symbol id="i-bolt" viewBox="0 0 24 24"><path d="m13 2-9 12h7l-1 8 10-13h-7l1-7Z"/></symbol>
+    <symbol id="i-document" viewBox="0 0 24 24"><path d="M14 3H5v18h14V8l-5-5Zm0 0v5h5M8 12h8m-8 4h5"/></symbol>
+    <symbol id="i-building" viewBox="0 0 24 24"><path d="M4 21V3h12v18M2 21h20M16 9h4v12M8 7h4m-4 4h4m-4 4h4m-3 6v-3h2v3"/></symbol>
+    <symbol id="i-help" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9 9a3 3 0 0 1 6 0c0 2-3 2-3 5m0 3h.01"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><path d="m8 5 11 7-11 7V5Z"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M6 18 18 6"/></symbol>
+    <symbol id="i-link" viewBox="0 0 24 24"><path d="m10 13 4-4m-6 6-2 2a4 4 0 0 1-5-5l5-5a4 4 0 0 1 6 0m0 8a4 4 0 0 0 6 0l5-5a4 4 0 0 0-5-5l-2 2" transform="translate(1 1) scale(.92)"/></symbol>
+    <symbol id="i-tool" viewBox="0 0 24 24"><path d="m14 6 4 4 3-3a6 6 0 0 1-8 7L6 21l-3-3 7-7a6 6 0 0 1 7-8l-3 3Z"/></symbol>
+    <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></symbol>
+  </svg>
+
+  <a class="skip-link" href="#main">Skip to facility overview</a>
+  <aside class="sidebar" aria-label="Main navigation">
+    <a class="brand" href="/" aria-label="openSoom overview"><img src="/assets/mark.svg" width="36" height="36" alt=""><span>open<span class="brand-light">Soom</span><small>ROOM TO BREATHE</small></span></a>
+    <div class="workspace-label">WORKSPACE</div>
+    <nav class="main-nav">
+      <a class="nav-item active" href="#overview" aria-current="page"><svg><use href="#i-grid"/></svg><span>Overview</span><span class="nav-dot"></span></a>
+      <a class="nav-item" href="#zones-section"><svg><use href="#i-wind"/></svg><span>Zones &amp; equipment</span></a>
+      <a class="nav-item" href="#activity-section"><svg><use href="#i-activity"/></svg><span>Activity</span><span class="nav-count" id="nav-event-count">0</span></a>
+      <button class="nav-item" id="evidence-nav" type="button"><svg><use href="#i-document"/></svg><span>Evidence</span></button>
+    </nav>
+    <div class="sidebar-bottom">
+      <div class="side-note"><span class="side-note-orbit" aria-hidden="true">↗</span><strong>Open by design.</strong><p>Your facilities. Your equipment.<br>One shared way to operate.</p><span class="side-note-tag">POWERED BY oneM2M</span></div>
+      <button class="nav-item help-button" type="button" id="help-open"><svg><use href="#i-help"/></svg><span>How this works</span></button>
+      <div class="operator"><span class="avatar">FM</span><span><strong>Facility manager</strong><small>Local workspace</small></span><span class="operator-dot" aria-hidden="true"></span></div>
+    </div>
+  </aside>
+
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="breadcrumb"><span>Workspace</span><span class="crumb-slash">/</span><strong>Overview</strong></div>
+      <div class="topbar-end"><span class="connection-state" id="connection-state"><span class="pulse-dot"></span>Connecting</span><span class="topbar-divider"></span><span class="mode-badge" id="mode-badge">Virtual facility</span><button class="icon-button mobile-help" type="button" id="help-topbar" aria-label="How openSoom works" title="Help"><svg><use href="#i-help"/></svg></button><button class="icon-button" type="button" id="refresh-button" aria-label="Refresh facility data" title="Refresh"><svg><use href="#i-refresh"/></svg></button></div>
+    </header>
+
+    <main id="main">
+      <section class="page-heading" id="overview">
+        <div><div class="eyebrow">YOUR AIR, AT A GLANCE</div><h1>Facility overview<span class="heading-dot">.</span></h1><p id="overview-subtitle">A clear view of every zone, from observation to outcome.</p></div>
+        <div class="facility-picker"><svg><use href="#i-building"/></svg><label class="sr-only" for="facility-select">Choose facility</label><select id="facility-select" disabled><option>Waiting for a facility</option></select><svg class="picker-chevron"><use href="#i-chevron"/></svg></div>
+      </section>
+
+      <div class="connection-banner" id="connection-banner" role="status" hidden></div>
+
+      <section class="summary-grid" aria-label="Facility summary">
+        <article class="summary-card"><div class="summary-top"><span>Monitored zones</span><span class="metric-icon mint"><svg><use href="#i-grid"/></svg></span></div><div class="summary-number" id="summary-zones">—<small>zones</small></div><p id="summary-zones-note">Waiting for current observations</p></article>
+        <article class="summary-card"><div class="summary-top"><span>Needs attention</span><span class="metric-icon sand"><svg><use href="#i-alert"/></svg></span></div><div class="summary-number" id="summary-incidents">—<small>incidents</small></div><p id="summary-incidents-note">Open issues stay visible</p></article>
+        <article class="summary-card"><div class="summary-top"><span>Actions in progress</span><span class="metric-icon lavender"><svg><use href="#i-bolt"/></svg></span></div><div class="summary-number" id="summary-actions">—<small>actions</small></div><p id="summary-actions-note">Tracked through acknowledgement</p></article>
+        <article class="summary-card"><div class="summary-top"><span>Verified recoveries</span><span class="metric-icon sky"><svg><use href="#i-check"/></svg></span></div><div class="summary-number" id="summary-recovered">—<small>outcomes</small></div><p>Confirmed from later observations</p></article>
+      </section>
+
+      <div class="primary-grid">
+        <section class="panel facility-panel" id="zones-section" aria-labelledby="facility-map-heading">
+          <div class="panel-heading"><div><span class="section-kicker">LIVE FACILITY VIEW</span><h2 id="facility-map-heading">Every zone, connected.</h2></div><span class="soft-badge" id="facility-profile">No profile loaded</span></div>
+          <div class="map-toolbar"><div class="metric-tabs" role="group" aria-label="Observation shown on map"><button type="button" class="selected" data-metric="airflow" aria-pressed="true">Airflow</button><button type="button" data-metric="pm25" aria-pressed="false">PM2.5</button><button type="button" data-metric="co2" aria-pressed="false">CO₂</button></div><span class="map-live" id="map-updated"><span class="tiny-dot"></span>No observations yet</span></div>
+          <div class="map-frame" id="facility-map"><div class="map-empty"><svg><use href="#i-building"/></svg><strong>Your facility will appear here</strong><span>Connect the service to see current zones and observations.</span></div></div>
+          <div id="mobile-zones" class="mobile-zones" role="group" aria-label="Facility zones"></div>
+          <div class="map-footer"><div class="map-legend"><span><i class="legend-dot nominal"></i>Within profile</span><span><i class="legend-dot warning"></i>Attention</span><span><i class="legend-dot stale"></i>Stale / missing</span></div><span>Illustrative layout · simulated readings</span></div>
+          <div class="zone-detail" id="zone-detail"><div class="empty-inline">Select a zone to inspect its observations.</div></div>
+        </section>
+
+        <aside class="panel workflow-panel" aria-labelledby="workflow-heading">
+          <div class="workflow-intro"><div class="assistant-mark" aria-hidden="true"><span></span><span></span><span></span></div><span class="soft-badge" id="run-mode">No active run</span></div>
+          <span class="section-kicker">ASSISTED OPERATIONS</span><h2 id="workflow-heading">From signal<br>to certainty.</h2><p class="workflow-copy">Follow each step. See the evidence.<br>Know when an issue is really resolved.</p>
+          <div class="workflow-steps" id="workflow-steps"></div>
+          <div class="run-summary" id="run-summary"><span class="tiny-dot"></span><span>Ready when your facility is connected.</span></div>
+          <button class="text-button evidence-button" type="button" id="view-run-button">View execution evidence <svg><use href="#i-arrow"/></svg></button>
+        </aside>
+      </div>
+
+      <section class="panel scenario-panel" aria-labelledby="scenario-heading">
+        <div class="scenario-label"><span class="scenario-icon"><svg><use href="#i-play"/></svg></span><div><h2 id="scenario-heading">See the system respond</h2><p>Replay a virtual facility scenario through the real service.</p></div></div>
+        <div class="scenario-controls"><label class="sr-only" for="scenario-select">Scenario</label><select id="scenario-select"><option value="exhaust_fault">Insufficient exhaust</option><option value="normal">Normal operation</option><option value="stale">Stale observations</option><option value="missing_ack">Device not responding</option><option value="no_recovery">No recovery after action</option></select><label class="toggle-label"><input type="checkbox" id="autorun-toggle" checked><span class="toggle-track" aria-hidden="true"></span><span>Allowed actions</span></label><button class="button primary" id="start-demo-button" type="button" disabled><svg><use href="#i-play"/></svg>Run scenario</button></div>
+      </section>
+
+      <div class="secondary-grid" id="activity-section">
+        <section class="panel activity-panel" aria-labelledby="activity-heading"><div class="panel-heading"><div><span class="section-kicker">THE OPERATING PICTURE</span><h2 id="activity-heading">Recent activity</h2></div><span class="soft-badge" id="event-count">0 events</span></div><div class="activity-list" id="activity-list"><div class="empty-state"><svg><use href="#i-activity"/></svg><strong>A clear record of what happened</strong><p>Observations, decisions and results will appear here.</p></div></div></section>
+        <section class="panel command-panel" aria-labelledby="command-heading"><div class="panel-heading"><div><span class="section-kicker">CLOSE THE LOOP</span><h2 id="command-heading">Action &amp; outcome</h2></div><svg class="heading-icon"><use href="#i-link"/></svg></div><div id="command-detail"><div class="empty-state"><svg><use href="#i-check"/></svg><strong>Acknowledged is a step.<br>Verified is the outcome.</strong><p>When an action runs, its device response and later observations stay connected here.</p></div></div></section>
+      </div>
+      <footer class="page-footer"><span><span class="footer-brand">openSoom</span> Open-source air operations.</span><span id="footer-updated">Waiting for the service</span></footer>
+    </main>
+  </div>
+
+  <dialog id="evidence-dialog" class="evidence-dialog" aria-labelledby="evidence-title"><div class="dialog-heading"><div><span class="section-kicker">TRACEABLE BY DESIGN</span><h2 id="evidence-title">Execution evidence</h2></div><button class="icon-button" data-close-dialog="evidence-dialog" type="button" aria-label="Close evidence"><svg><use href="#i-close"/></svg></button></div><div id="evidence-content" class="dialog-content"></div></dialog>
+  <dialog id="help-dialog" class="help-dialog" aria-labelledby="help-title"><div class="dialog-heading"><div><span class="section-kicker">A LITTLE CONTEXT</span><h2 id="help-title">A clearer way to manage air.</h2></div><button class="icon-button" data-close-dialog="help-dialog" type="button" aria-label="Close help"><svg><use href="#i-close"/></svg></button></div><div class="dialog-content"><p>openSoom connects equipment observations to facility rules, permitted actions and a checked result. Select a zone to inspect its measurements or run a virtual scenario to follow the complete workflow.</p><div class="help-flow"><span>Observe</span><b>→</b><span>Diagnose</span><b>→</b><span>Act</span><b>→</b><span>Verify</span></div><h3>What the labels mean</h3><p><strong>Virtual facility:</strong> equipment and physical readings are simulated. The facility drawing illustrates relationships; it is not an airflow calculation or a certified ventilation assessment.</p><p><strong>oneM2M connected:</strong> the service reports a reachable CSE. This is separate from a successful command, device acknowledgement or recovery.</p><p><strong>Deterministic run / live model:</strong> the execution label comes from the recorded run. A scripted scenario is not labeled as a live LLM decision.</p><h3>시설 관리자를 위한 안내</h3><p lang="ko">구역을 선택하면 관측값과 데이터의 최신 여부를 확인할 수 있습니다. 명령을 보낸 것, 장비가 응답한 것, 이후 관측값으로 회복을 확인한 것은 각각 다른 단계입니다. 데모의 장비와 측정값은 가상이며, 실제 시설의 안전 성능을 보장하지 않습니다.</p></div></dialog>
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+</body>
+</html>

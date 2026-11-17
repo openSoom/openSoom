@@ -1,98 +1,134 @@
 # openSoom
 
-Open-source ventilation and air-operations software for connecting equipment, diagnosing operating issues, coordinating authorized actions, and checking their results across facilities and vendors.
+**Open ventilation operations, from evidence to verified action.**
 
-**Status: product and review foundation.** This initial version contains the product contract, implementation acceptance targets, and independent review process. A runnable service, installable Codex plugin, and live LLM runner are not included yet.
+openSoom connects facility observations, diagnosis, authorized actions and outcome checks through oneM2M. A Codex plugin and a standalone LLM API runner use the same tools as the facility dashboard. Food production is the first example. Different facility profiles and device adapters reuse the same core.
 
-## The problem
+![Actual openSoom dashboard with a simulated unresolved exhaust incident](evidence/dashboard/desktop-no-recovery.jpg)
 
-A ventilation device reporting “on” does not establish that the intended airflow is present. Operators need to connect equipment state, relevant observations, data freshness, maintenance actions, and recovery evidence.
+**Hackathon prototype:** actual ACME oneM2M CSE, MCP, API and model execution; simulated sensors and actuators. The local runtime and hosted-model recovery, non-recovery and stale-data checks have captured evidence. Independent release review is in progress. Codex **CLI 0.166.0** host integration is tested; a separate desktop UI flow and physical equipment are not verified.
 
-School kitchens are one reference case. Reporting on upgraded facilities that still failed performance assessments motivates the need to examine operation after installation. The product is intended to support food-production and other ventilation-required facilities through separate facility profiles. The reporting does not establish that vendor integration caused those deficiencies. [Reference reporting](https://www.yna.co.kr/view/AKR20261010032900004), [official inspection](https://www.moel.go.kr/news/enews/report/enewsView.do?news_seq=18528).
+## A concrete operating problem
 
-## Intended experience
+An installed ventilation system still needs operational verification. Yonhap reported on 11 October 2026 that 17.9% of 301 upgraded school kitchens in the cited performance assessment were rated inadequate. The report motivates checking performance after installation; it does not identify software interoperability as the cause. [Reporting](https://www.yna.co.kr/view/AKR20261010032900004), [official inspection background](https://www.moel.go.kr/news/enews/report/enewsView.do?news_seq=18528).
 
-The first supported host to validate is **Codex**. A facility manager should be able to use an openSoom plugin to check prerequisites, configure a facility, connect equipment, inspect an issue, and verify the outcome without editing application source.
+Our reference scenario is specific: a food-production zone reports a running exhaust fan while its airflow remains below that facility's configured target. openSoom checks data age, identifies the affected zone, requests an authorized damper action, waits for a separate equipment acknowledgement, and checks two later observations. An acknowledged command with continued deficient airflow stays unresolved and calls for maintenance.
 
-The proposed shared path is:
+School kitchens are one profile. The reusable problem is managing equipment and evidence consistently across food-production and other ventilation-required facilities. Targets remain site-specific. The prototype does not measure pollutant capture or personal exposure and does not establish health benefits or certified ventilation performance.
 
-```text
-Codex + openSoom plugin       Standalone real LLM API runner
-            \                         /
-               Shared MCP tools
-                       |
-             openSoom operations core
-                       |
-              Real oneM2M CSE services
-                       |
-          Device adapters / virtual equipment
+## Run the local demo
+
+The verified environment is macOS arm64, Python **3.12.12**, `uv`, OpenSSL and Git. Install Python 3.12 and `uv` first. Dependency downloads require Internet access; the deterministic demo needs no paid account, hardware or LLM key. Ports 8090, 8443 and 8883 must be available. Other operating systems need their own acceptance run.
+
+```sh
+git clone https://github.com/openSoom/openSoom.git
+cd openSoom
+uv sync --locked --python 3.12
+uv run --no-sync python scripts/cse_bootstrap.py secure
+uv run --no-sync opensoom start --secure
+uv run --no-sync opensoom doctor
 ```
 
-Plugin installation, MCP connection, runtime startup, and successful service execution are separate checks. Additional agent hosts will only be listed as supported after testing.
+Startup is asynchronous. If `doctor` reports `not_ready`, wait a few seconds and run it again. Open **http://127.0.0.1:8090/**. Choose a facility and run a scenario. The dashboard shows freshness, an incident timeline, command state, acknowledgement and observed result. A fixture pass means the expected scenario behavior occurred, including an expected unresolved outcome.
 
-Two execution modes are required:
+Run the same operations through MCP without a model account:
 
-- An account-free, deterministic local demonstration using real oneM2M software and simulated devices.
-- A real LLM API runner that generates tool calls, uses the same service path, and checks actual CSE outcomes. A scripted fixture or a successful text response is not equivalent to this test.
+```sh
+uv run --no-sync python -m opensoom.llm_runner --mode fixture --facility food-a --scenario exhaust_fault --expect recovered --prepare-scenario
+```
 
-No installation command is published yet because those paths have not been implemented or verified.
+Keep all listeners on loopback. Project-local TLS verifies the CSE and broker servers, but local clients are trusted. See [runtime instructions and trust boundaries](deploy/README.md).
 
-## What should be reusable
+## Use your agent
 
-- **Core:** facility and equipment identity, observations, discovery, incidents, permissions, commands, acknowledgements, and result verification.
-- **Facility profiles:** equipment relationships, relevant measurements, operating modes, approved rules, allowed actions, and recovery conditions.
-- **Device adapters:** vendor protocols, fields, units, capability and acknowledgement mappings.
-- **Examples:** a school kitchen or food-production area, plus a different ventilation scenario, using the same application code.
+Prepare an isolated Codex installation and check actual host calls:
 
-Consistent management does not mean identical ventilation thresholds. Facility-specific objectives and controls require appropriate validation. Real-device onboarding defaults to observation and diagnosis until scoped controls are explicitly configured.
+```sh
+uv run --no-sync python scripts/agent_install_plugin.py --install
+uv run --no-sync python scripts/agent_codex_check.py
+```
 
-## Why oneM2M
+To install into the Codex profile you normally use, run `uv run --no-sync python scripts/agent_install_plugin.py --install --current-host`. In a new Codex chat, select openSoom and ask: **“openSoom 가상 시설을 연결하고 현재 상태를 설명해주세요.”** The setup skill explains prerequisites, facility profiles and permissions. The operations skill reads evidence before action and checks results afterwards. The verified host transport is the CLI app-server; desktop UI selection is not claimed as separately tested.
 
-The design uses oneM2M discovery, subscriptions, groups, resource access policies, and distributed resource sharing so independent operations applications can reuse equipment data. The key interoperability acceptance target is adding a second vendor adapter without modifying diagnosis or operator application code.
+For an actual model run, supply `OPENAI_API_KEY` through your process environment or secret manager, then:
 
-The agent interface makes these services easier to use; it does not replace them. See the [product contract](docs/product-contract.json) for the planned tool contract and execution boundaries.
+```sh
+uv run --no-sync python -m opensoom.llm_runner --mode live --model gpt-5-mini --facility food-a --scenario exhaust_fault --expect recovered --prepare-scenario
+```
 
-## Development and review
+The model chooses tool calls. The service independently checks command, ACK and subsequent observations. A failed API call never falls back to a live pass. The [agent guide](docs/agent-integration.md) explains negative cases, supported Responses-compatible endpoints, fixed identities, the shared finite request/token allowance and its persistent accounting. Keys never belong in chat or committed files.
 
-Four independent GPT-6.1 Sol reviewers, using Max reasoning, own all 17 hackathon criteria. The main agent records each finding, accepts an improvement or documents an alternative/deferral, coordinates implementation, and requests independent re-verification.
+## Why oneM2M is part of the product
 
-| Team | Primary rubric criteria |
+```mermaid
+flowchart LR
+  A[Vendor adapters / virtual devices] -->|native MQTT over TLS| C[oneM2M CSE]
+  C -->|subscription notification| O[openSoom operations service]
+  O <-->|HTTPS discovery / group / command / ACK| C
+  H[Codex plugin] --> M[MCP tools]
+  L[Actual LLM API runner] --> M
+  M --> O
+  D[Facility dashboard] --> O
+  C <-->|Mcc in distributed profile| I[Central IN-CSE]
+```
+
+| Need | Standard behavior used | Observable evidence |
+| --- | --- | --- |
+| Applications find new equipment | Native discovery with resource type and facility labels | Discovery responses and request IDs |
+| Diagnosis reacts to observations | CSE subscriptions, followed by authoritative reread | Notification and CIN identifiers |
+| Operators inspect zones together | Native group `/fopt/la` | Per-member results or preserved native group failure |
+| Different actors share data | Distinct AEs and explicit ACPs | Allowed reads and denied unprivileged writes |
+| Vendors expose common meaning | Adapter conversion and a TS-0023 PM2.5 flexContainer | Discovered `cod:aiQSr` plus original observations |
+| Facilities share selected resources | MN/IN registration, remote requests and announcements | Actual three-CSE continuity demonstration |
+
+A single-vendor isolated installation could use a smaller custom API. oneM2M becomes useful here because separate diagnosis, operations and maintenance identities share the same equipment resources across vendors and facilities. The standard supplies common service behavior; facility-specific diagnosis remains openSoom code. [Architecture and resource tree](docs/architecture.md), [model mapping](docs/standard-model.md).
+
+## Stop, restart and clean up
+
+```sh
+uv run --no-sync opensoom restart
+uv run --no-sync opensoom stop
+uv run --no-sync opensoom start
+python3 scripts/cse_runtime.py stop --name secure
+python3 scripts/cse_broker.py stop
+```
+
+The service retains incidents, runs and selected connection settings across stop/start. Restart the secure CSE/broker with `python3 scripts/cse_bootstrap.py secure --skip-install` before starting the service again.
+
+`uv run --no-sync opensoom cleanup` stops the service and removes its operational database and scoped credentials. It deliberately retains CSE data and the shared model-test budget. Use it only when resetting this project's service state. CSE reset and plugin removal are separate, documented operations; no global trust or unrelated configuration is changed.
+
+If startup fails, inspect `doctor`, `.runtime/service.log` and the named CSE's runtime log. A missing dependency, occupied port or unreachable CSE must be fixed before an operational pass. All runtime state, private keys and generated Codex profiles are ignored by Git.
+
+## Explore and extend
+
+| Path | Responsibility |
 | --- | --- |
-| oneM2M architecture and interoperability | 1, 2, 3, 11 |
-| Open-source adoption and deliverables | 4, 5, 6, 7 |
-| Operations, trust and product AI | 8, 9, 10, 17 |
-| Edge and distributed standards | 12, 13, 14, 15, 16 |
+| `src/opensoom/core.py`, `policy.py`, `store.py` | Operations, profile-bound diagnosis, durable runs/incidents |
+| `models.py`, `adapters.py`, `profiles/`, `config/facilities.json` | Contracts, vendor conversions and facility setup |
+| `onem2m.py`, `federation.py`, `deploy/` | Native bindings and validated central intents |
+| `mcp_server.py`, `llm_runner.py`, `llm_budget.py`, `plugin/` | Shared tools, agent workflows and bounded inference |
+| `web/` | Dashboard, original facility visualization and runtime evidence |
+| `scripts/`, `tests/`, `evidence/` | Reproduction, failure checks and sanitized observations |
+| `docs/submission/`, `deliverables/` | English submission drafts, presentation and video assets |
 
-- [Contributor and agent guidance](AGENTS.md)
-- [Review charter](docs/review/review-charter.json)
-- [Findings and main-agent dispositions](docs/review/review-ledger.json)
-- [Rubric baseline and evidence requirements](docs/hackathon/rubric-baseline.json)
-- [Implementation stages and completion gates](docs/implementation-plan.md)
-- [Execution checkpoint](docs/execution-state.json)
-- [Goal-mode activation prompt (Korean)](docs/goal-mode-prompt.ko.md)
+The [extension guide](docs/extending.md) explains adding a facility or adapter. The two shipped examples use food-production/vendor A and learning-space/vendor B. One facility can run alone with `OPENSOOM_FACILITY_IDS=food-a`. No central topology is required for the local demo.
 
-Reviewer recommendations are internal acceptance targets, not additional official competition rules. Planned features do not receive implementation scores. No official aggregate score or automatic N/A policy is assumed.
+```sh
+uv run --no-sync pytest -q
+python3 scripts/cse_bootstrap.py multisite
+uv run --no-sync python scripts/cse_product_topology.py
+```
 
-## Implementation stages
+The distributed test actually stops the central CSE while a local facility completes a command/ACK/recovery flow. Replayed expired intents are rejected, and duplicate valid intents return the same command. This is a bounded replay demonstration, not an always-running central dispatcher or serving-CSE handover. [Evidence](evidence/runtime/product-multisite-continuity.json).
 
-| Stage | Intended result |
-| --- | --- |
-| 0 | Scenario/contracts, runtime choice, initial code structure and feasibility checks |
-| 1 | Actual CSE observation → incident → action → ACK → observed-result flow |
-| 2 | Two profiles/two adapters, native standard services, protocols and access control |
-| 3 | Verified Codex onboarding and actual LLM API execution through shared tools |
-| 4 | Distributed facility operation and justified edge extensions |
-| 5 | Dashboard, clear visualization and a playable evidence-based demo video |
-| 6 | Reproducible release and English submission-ready package |
+## Evidence, review and release scope
 
-All implementation stages are currently **not started**. Each stage has observable completion gates in the [implementation plan](docs/implementation-plan.md). The main agent may adjust order and implementation details, uses the four independent review teams, and continues other authorized work when an external dependency blocks one gate. Required runtime evidence is never replaced with a successful planning review. The [Goal prompt](docs/goal-mode-prompt.ko.md) is ready for a subsequent run; this documentation update does not activate it.
+[Agent evidence index](evidence/agent/index.json) identifies accepted captures and preserves failed attempts. Four independent GPT-6.1 Sol Max teams review all 17 rubric criteria against the same code snapshot. Scores are not official and no total or winning probability is invented. [Stages and gates](docs/implementation-plan.md), [execution checkpoint](docs/execution-state.json), [review ledger](docs/review/review-ledger.json), [Goal prompt](docs/goal-mode-prompt.ko.md).
 
-MEC deployment/services, CSE handover, federated learning, and geolocation require an operational justification and their own execution evidence. They are not added solely to fill rubric rows.
+MEC hosting/services, serving-CSE handover, federated learning and network geolocation have separate [extension decisions](docs/extension-decisions.md). Local CSE processes do not establish those capabilities. Human first-use usability, network deployment and real equipment remain further validation work.
 
-## Evidence boundaries
+The [English Hackster draft](docs/submission/hackster-article.md) and local media are submission preparation. Public Hackster/video URLs and the eventual article backlink remain pending separate publication. No Discord submission or authentic judge interaction is claimed.
 
-Physical measurements and device behavior in the planned hackathon demonstration are simulated. No certified ventilation performance, personal-exposure reduction, clinical benefit, or production readiness is claimed. Command acknowledgement, device-reported state, and observed physical response are separate evidence.
+## Licenses and contributions
 
-## Licensing
-
-Project source code is licensed under [Apache-2.0](LICENSE). Original project documentation and other non-code content are licensed under [CC BY 4.0](LICENSE-DOCS.md), consistent with the [event requirements](https://onem2m-hackathon.io/introduce.asp). Third-party code, standards, references, and assets retain their own licenses; linked sources and organizer attachments are not relicensed or redistributed by this repository.
+Project source: [Apache-2.0](LICENSE). Original documentation, diagrams and media: [CC BY 4.0](LICENSE-DOCS.md), attribution to openSoom contributors. Dependencies retain their own licenses: see [third-party notices](THIRD_PARTY_NOTICES.md). Organizer attachments and private runtime material are not redistributed. [Contributing](CONTRIBUTING.md).

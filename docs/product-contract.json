@@ -1,7 +1,7 @@
 {
   "version": 2,
   "date": "2026-11-18",
-  "status": "Accepted direction and documented acceptance targets; software implementation pending",
+  "status": "Implemented prototype with runtime evidence; independent release review in progress",
   "definition": "Reusable open-source operations layer for connecting ventilation and air-management equipment and tracing observations, diagnosis, authorized actions, result verification and maintenance across facilities and vendors.",
   "user_confirmed": {
     "reference_example_not_product_boundary": "School kitchen",
@@ -12,7 +12,8 @@
     "actual_llm_api_runner_required": true,
     "review_teams": 4,
     "implementation_delegation": "Main agent may use subagents as needed to improve accepted findings",
-    "physical_devices": "Simulated physical devices authorized by organizer according to user"
+    "physical_devices": "Simulated physical devices authorized by organizer according to user",
+    "pitching_artifact": "Single-page HTML with Three.js, intuitive architecture explanation and reusable landing-page quality"
   },
   "consistent_management": "Shared contracts, permissions, workflows and evidence; facility-specific targets and controls.",
   "boundaries": {
@@ -115,7 +116,7 @@
       "NOT_RUN"
     ],
     "pass_rule": "A live pass requires actual model-generated tool calls and checked service outcomes. Fixture fallback cannot be reported as a live-model success.",
-    "current_status": "NOT_RUN"
+    "current_status": "PASS_HOSTED_LLM_E2E captured; independent review pending"
   },
   "acceptance_targets_not_official_rubric": [
     "Fresh supported Codex environment completes guided setup without editing application source.",
@@ -157,7 +158,7 @@
     "repository_publication_authorized": "openSoom/openSoom via github-personal",
     "blocked_dependency_policy": "Record affected gate and permitted alternatives; continue independent authorized work; retain unverified required gates.",
     "review_policy": "Four GPT-6.1 Sol Max teams at major milestones; affected owners after meaningful changes; independent verification for closure.",
-    "activation": "Prepared for a subsequent user-started Goal run; this planning update does not start implementation.",
+    "activation": "Active user-started Goal; resume from execution-state.json",
     "host_policy": "Existing sandbox, approval, account access and resource limits still apply; no permission bypass.",
     "external_publication": "GitHub project changes authorized; Hackster/video-host/Discord publication and messages require separate explicit scope.",
     "project_test_security": "Least-privilege ACPs, test-role credentials and project-scoped TLS are authorized; host/account/organization/approval-policy and global-trust changes are not included.",

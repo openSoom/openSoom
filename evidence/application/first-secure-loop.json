@@ -1,0 +1,284 @@
+{
+  "description": "Actual secure CSE loop with simulated vendor-B equipment",
+  "run": {
+    "id": "demo-a0bb6e35df",
+    "facility_id": "learning-b",
+    "scenario": "exhaust_fault",
+    "mode": "fixture",
+    "status": "completed",
+    "started_at": "2026-11-17T18:39:43.116+00:00",
+    "steps": [
+      {
+        "timestamp": "2026-11-17T18:39:43.116+00:00",
+        "type": "scenario_started",
+        "message": "Exhaust fault · virtual equipment",
+        "facility_id": "learning-b",
+        "zone_id": null,
+        "run_id": "demo-a0bb6e35df",
+        "data": {},
+        "id": 166
+      },
+      {
+        "timestamp": "2026-11-17T18:39:43.127+00:00",
+        "type": "incident_opened",
+        "message": "Airflow is below this zone's configured simulation target; Particles exceed the configured simulation target; CO₂ exceeds the configured simulation target",
+        "facility_id": "learning-b",
+        "zone_id": "classroom",
+        "run_id": "demo-a0bb6e35df",
+        "data": {
+          "rqi": "opensoom-16e1548273014930a2f0b028af47445b"
+        },
+        "id": 167
+      },
+      {
+        "timestamp": "2026-11-17T18:39:43.154+00:00",
+        "type": "command_requested",
+        "message": "Damper adjustment requested: 100%",
+        "facility_id": "learning-b",
+        "zone_id": "classroom",
+        "run_id": "demo-a0bb6e35df",
+        "data": {
+          "command_id": "cmd-d7f160e1e971",
+          "rqi": "opensoom-ea23d0a7de044e7a99d422566f7695d7"
+        },
+        "id": 168
+      },
+      {
+        "timestamp": "2026-11-17T18:39:44.212+00:00",
+        "type": "device_ack",
+        "message": "Virtual device acknowledged; recovery still requires observations",
+        "facility_id": "learning-b",
+        "zone_id": "classroom",
+        "run_id": "demo-a0bb6e35df",
+        "data": {
+          "command_id": "cmd-d7f160e1e971",
+          "rqi": "opensoom-afe1660cbaf44bd2b56c6e1513d38d28"
+        },
+        "id": 169
+      },
+      {
+        "timestamp": "2026-11-17T18:39:46.288+00:00",
+        "type": "recovery_verified",
+        "message": "Fresh observations verify recovery after device acknowledgement",
+        "facility_id": "learning-b",
+        "zone_id": "classroom",
+        "run_id": "demo-a0bb6e35df",
+        "data": {
+          "rqi": "opensoom-0b0fb8fdcdb24b82bdfb91f334b2090c"
+        },
+        "id": 170
+      }
+    ],
+    "tool_calls": [],
+    "outcome": "PASS_FIXTURE",
+    "expected_behavior": "ack_and_post_action_recovery",
+    "completed_at": "2026-11-17T18:39:46.304+00:00",
+    "command_ids": [
+      "cmd-d7f160e1e971"
+    ]
+  },
+  "commands": [
+    {
+      "facility_id": "learning-b",
+      "zone_id": "classroom",
+      "action": "set_damper",
+      "value": 100.0,
+      "reason": "Preauthorized deterministic demonstration",
+      "request_id": "demo-a0bb6e35df:damper",
+      "id": "cmd-d7f160e1e971",
+      "status": "verified",
+      "ack": true,
+      "created_at": "2026-11-17T18:39:43.150502+00:00",
+      "expires_at": "2026-11-17T18:40:13.150502+00:00",
+      "profile_version": 1,
+      "run_id": "demo-a0bb6e35df",
+      "incident_id": "incident-bc1666f059",
+      "observed_result": "recovered",
+      "cse_rqi": "opensoom-ea23d0a7de044e7a99d422566f7695d7",
+      "cse_resource_id": "cin4OTLQXdcBB",
+      "ack_at": "2026-11-17T18:39:44.209+00:00",
+      "ack_rqi": "opensoom-afe1660cbaf44bd2b56c6e1513d38d28",
+      "verified_at": "2026-11-17T18:39:46.287+00:00",
+      "verification_rqi": "opensoom-0b0fb8fdcdb24b82bdfb91f334b2090c"
+    }
+  ],
+  "facility": {
+    "id": "learning-b",
+    "name": "Westside learning hub",
+    "profile": "learning-space",
+    "adapter": "vendor-b",
+    "scenario": "exhaust_fault",
+    "active_run": "demo-a0bb6e35df",
+    "zones": [
+      {
+        "id": "classroom",
+        "name": "Learning studio",
+        "target_airflow": 500,
+        "observations": {
+          "pm25": {
+            "value": 12.0,
+            "unit": "µg/m³",
+            "observed_at": "2026-11-17T18:40:44.284+00:00",
+            "received_at": "2026-11-17T18:40:44.284+00:00",
+            "source": "simulated",
+            "quality": "good"
+          },
+          "co2": {
+            "value": 620.0,
+            "unit": "ppm",
+            "observed_at": "2026-11-17T18:40:44.284+00:00",
+            "received_at": "2026-11-17T18:40:44.284+00:00",
+            "source": "simulated",
+            "quality": "good"
+          },
+          "airflow": {
+            "value": 575.0,
+            "unit": "m³/h",
+            "observed_at": "2026-11-17T18:40:44.284+00:00",
+            "received_at": "2026-11-17T18:40:44.284+00:00",
+            "source": "simulated",
+            "quality": "good"
+          },
+          "fan_running": {
+            "value": true,
+            "unit": "boolean",
+            "observed_at": "2026-11-17T18:40:44.284+00:00",
+            "received_at": "2026-11-17T18:40:44.284+00:00",
+            "source": "simulated",
+            "quality": "good"
+          },
+          "damper_pct": {
+            "value": 100.0,
+            "unit": "%",
+            "observed_at": "2026-11-17T18:40:44.284+00:00",
+            "received_at": "2026-11-17T18:40:44.284+00:00",
+            "source": "simulated",
+            "quality": "good"
+          }
+        },
+        "status": "nominal",
+        "freshness": 1.525528,
+        "reason": "Within configured operating targets",
+        "cse_rqi": "opensoom-2b64a24ad7a04c6a87d7fc4f3346f2fe"
+      },
+      {
+        "id": "meeting",
+        "name": "Meeting room",
+        "target_airflow": 300,
+        "observations": {
+          "pm25": {
+            "value": 12.0,
+            "unit": "µg/m³",
+            "observed_at": "2026-11-17T18:40:44.293+00:00",
+            "received_at": "2026-11-17T18:40:44.293+00:00",
+            "source": "simulated",
+            "quality": "good"
+          },
+          "co2": {
+            "value": 620.0,
+            "unit": "ppm",
+            "observed_at": "2026-11-17T18:40:44.293+00:00",
+            "received_at": "2026-11-17T18:40:44.293+00:00",
+            "source": "simulated",
+            "quality": "good"
+          },
+          "airflow": {
+            "value": 345.0,
+            "unit": "m³/h",
+            "observed_at": "2026-11-17T18:40:44.293+00:00",
+            "received_at": "2026-11-17T18:40:44.293+00:00",
+            "source": "simulated",
+            "quality": "good"
+          },
+          "fan_running": {
+            "value": true,
+            "unit": "boolean",
+            "observed_at": "2026-11-17T18:40:44.293+00:00",
+            "received_at": "2026-11-17T18:40:44.293+00:00",
+            "source": "simulated",
+            "quality": "good"
+          },
+          "damper_pct": {
+            "value": 70.0,
+            "unit": "%",
+            "observed_at": "2026-11-17T18:40:44.293+00:00",
+            "received_at": "2026-11-17T18:40:44.293+00:00",
+            "source": "simulated",
+            "quality": "good"
+          }
+        },
+        "status": "nominal",
+        "freshness": 1.516632,
+        "reason": "Within configured operating targets",
+        "cse_rqi": "opensoom-e288bce8bb884be5bb0a63f94b3c9a60"
+      },
+      {
+        "id": "lounge",
+        "name": "Shared lounge",
+        "target_airflow": 350,
+        "observations": {
+          "pm25": {
+            "value": 12.0,
+            "unit": "µg/m³",
+            "observed_at": "2026-11-17T18:40:44.302+00:00",
+            "received_at": "2026-11-17T18:40:44.302+00:00",
+            "source": "simulated",
+            "quality": "good"
+          },
+          "co2": {
+            "value": 620.0,
+            "unit": "ppm",
+            "observed_at": "2026-11-17T18:40:44.302+00:00",
+            "received_at": "2026-11-17T18:40:44.302+00:00",
+            "source": "simulated",
+            "quality": "good"
+          },
+          "airflow": {
+            "value": 402.49999999999994,
+            "unit": "m³/h",
+            "observed_at": "2026-11-17T18:40:44.302+00:00",
+            "received_at": "2026-11-17T18:40:44.302+00:00",
+            "source": "simulated",
+            "quality": "good"
+          },
+          "fan_running": {
+            "value": true,
+            "unit": "boolean",
+            "observed_at": "2026-11-17T18:40:44.302+00:00",
+            "received_at": "2026-11-17T18:40:44.302+00:00",
+            "source": "simulated",
+            "quality": "good"
+          },
+          "damper_pct": {
+            "value": 70.0,
+            "unit": "%",
+            "observed_at": "2026-11-17T18:40:44.302+00:00",
+            "received_at": "2026-11-17T18:40:44.302+00:00",
+            "source": "simulated",
+            "quality": "good"
+          }
+        },
+        "status": "nominal",
+        "freshness": 1.507737,
+        "reason": "Within configured operating targets",
+        "cse_rqi": "opensoom-03c40c8a3d41453b811028fd2cd643ce"
+      }
+    ],
+    "status": "nominal",
+    "simulation": true,
+    "controls_enabled": true
+  },
+  "runtime": {
+    "cse_connected": true,
+    "cse_name": "ACME oneM2M",
+    "simulation": true,
+    "last_error": null,
+    "last_notification": {
+      "at": "2026-11-17T18:40:44.314+00:00",
+      "subscription": "/opensoom-secure/sub1G7I3Jgjbb",
+      "cin_id": "cinZLylhD6zko"
+    }
+  },
+  "physical_data": "simulated",
+  "software_execution": "real HTTPS CSE and native MQTT/TLS"
+}

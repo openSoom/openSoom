@@ -1,0 +1,87 @@
+{
+  "date": "2026-11-18",
+  "scope": "Stage0 scenario/schema/runtime selection and code scaffold checks; not overall product completion",
+  "python": "3.12.12",
+  "checks": [
+    {
+      "command": [
+        ".venv/bin/python",
+        "-m",
+        "opensoom.cli",
+        "validate"
+      ],
+      "exit_status": 0,
+      "output": "{\"status\": \"valid\", \"profiles\": [\"food-production\", \"learning-space\"]}",
+      "stderr": ""
+    },
+    {
+      "command": [
+        ".venv/bin/python",
+        "-m",
+        "pytest",
+        "tests/test_contracts.py",
+        "-q"
+      ],
+      "exit_status": 0,
+      "output": "........                                                                 [100%]\n8 passed in 0.15s",
+      "stderr": ""
+    }
+  ],
+  "files": [
+    {
+      "path": "docs/scenario-contract.md",
+      "sha256": "66e1d6451197564456082fad106e69ea26cfb1cea6e759f2f4be1cacab94d151"
+    },
+    {
+      "path": "scenarios/scenarios.json",
+      "sha256": "145fe46c0ef7675ca04deaa8dab8298a7607fb19a12b627f89d6f34e905aefa7"
+    },
+    {
+      "path": "schemas/facility-profile.schema.json",
+      "sha256": "dd61c40a44498454b9ea06e01d5fd0a23b9124b2708b94f2c088191a07ee3ea1"
+    },
+    {
+      "path": "profiles/food-production.json",
+      "sha256": "402ae760ec4fe13c23e2a6c63e3ec80518d8ebdba30edde9e64cfdbb573e4c6e"
+    },
+    {
+      "path": "profiles/learning-space.json",
+      "sha256": "2bc00d56a3fcf15cb388d7b81892a33123492b4452105522d368e5b8daee14e3"
+    },
+    {
+      "path": "src/opensoom/models.py",
+      "sha256": "5a11e9a47b6446a4e9f2d77a222e962147a864a53869ee5875870e0d85061e48"
+    },
+    {
+      "path": "src/opensoom/adapters.py",
+      "sha256": "b6b2425832cb70d38795c9758b90531eba313304a19a8bbe8ce085e12a6a8840"
+    },
+    {
+      "path": "src/opensoom/policy.py",
+      "sha256": "801ba84bf1eea13404a19017359e4e01fcf11d33e812e3a571df68e34c110ad5"
+    },
+    {
+      "path": "tests/test_contracts.py",
+      "sha256": "fa322a1a4a84bf2ef5e4121abb508498a859d6848fc3c49ada13dd2b1e61bf54"
+    },
+    {
+      "path": "config/live-test-budget.json",
+      "sha256": "05465e8ce4cc65e23b2a1f4f761fca448e2b9ac65a1a4b78c273b1188a993bf9"
+    },
+    {
+      "path": "pyproject.toml",
+      "sha256": "e11444da9e053f97383c9cd0d16f19a9ab5a130e9d5105ada21cff8c4fd0f523"
+    },
+    {
+      "path": "uv.lock",
+      "sha256": "3e4e5b744d0e26f0f13b9d1fad48c3f8bf576a59b40444c19c9ccbc5d067ffa2"
+    }
+  ],
+  "runtime_evidence": [
+    "evidence/runtime/cse-smoke.json",
+    "evidence/runtime/cse-https-smoke.json",
+    "evidence/runtime/cse-mqtt-tls-smoke.json"
+  ],
+  "external_feasibility": "evidence/stage0/mec-feasibility.json",
+  "review_state": "awaiting_independent_review"
+}
