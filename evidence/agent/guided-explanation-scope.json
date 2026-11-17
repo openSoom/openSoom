@@ -1,0 +1,23 @@
+{
+  "case_prefix": "codex-explain-",
+  "limits": {
+    "max_requests": 1,
+    "max_tokens": 22000,
+    "max_output_tokens": 2048,
+    "provider_timeout_seconds": 45,
+    "turn_timeout_seconds": 90,
+    "retries": 0
+  },
+  "purpose": "Separate captured-record interpretation and user handoff check; no operational tool execution or setup replay.",
+  "prior_cases_unchanged": [
+    "guided-* six-request failed/partial case",
+    "codex-config-* three-request incomplete case"
+  ],
+  "review_basis": "docs/review/guided-onboarding-advisory-team2.json",
+  "shared_batch_unchanged": {
+    "max_requests": 100,
+    "max_tokens": 250000
+  },
+  "effective_reservation_bound": "min(22000 - case charged tokens, actual remaining shared allowance)",
+  "automatic_retries_or_limit_changes": false
+}

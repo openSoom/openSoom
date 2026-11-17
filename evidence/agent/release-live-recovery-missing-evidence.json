@@ -1,0 +1,620 @@
+{
+  "id": "agent-cf3f3dd9bb5d",
+  "mode": "live",
+  "facility_id": "food-a",
+  "scenario": "exhaust_fault",
+  "expected": "recovered",
+  "started_at": "2026-11-17T19:15:48.638553+00:00",
+  "outcome": "FAIL",
+  "physical_devices": "simulated",
+  "tool_calls": [
+    {
+      "name": "discover",
+      "arguments": {
+        "facility_id": "food-a"
+      },
+      "call_id": "call_3lpZF6BF9Wyj4Vblllyd5u5k",
+      "timestamp": "2026-11-17T19:15:52.674077+00:00",
+      "generated_by": "model",
+      "output": {
+        "is_error": false,
+        "result": {
+          "facilities": [
+            {
+              "id": "food-a",
+              "name": "Northworks food production",
+              "profile": "food-production",
+              "zones": [
+                {
+                  "id": "cook",
+                  "name": "Cooking line"
+                },
+                {
+                  "id": "wash",
+                  "name": "Wash station"
+                },
+                {
+                  "id": "pack",
+                  "name": "Packing area"
+                }
+              ]
+            }
+          ],
+          "cse_discovery": [
+            {
+              "rsc": 2000,
+              "rqi": "opensoom-4ac387a4d6664a5abaf946e8566a9e59",
+              "body": {
+                "m2m:uril": [
+                  "/opensoom-secure/cnt8xEdmADPH8",
+                  "/opensoom-secure/cnt2mQNmfBv2z",
+                  "/opensoom-secure/cnt9N3xCKDRHY",
+                  "/opensoom-secure/cntBihZ19zaZh",
+                  "/opensoom-secure/cntXwuAy9K6FY",
+                  "/opensoom-secure/cntSCHgBFyNpy",
+                  "/opensoom-secure/cntxeUWlRrtx0",
+                  "/opensoom-secure/cntX0gfVtHsVZ",
+                  "/opensoom-secure/cnthNe29u6bbr",
+                  "/opensoom-secure/cntVsXSYGCnGO",
+                  "/opensoom-secure/cnt48i9c46YpW",
+                  "/opensoom-secure/cnt07xzwevGcf"
+                ]
+              },
+              "http_status": 200
+            }
+          ],
+          "standard_model_discovery": [
+            {
+              "rsc": 2000,
+              "rqi": "opensoom-d8819e9d234343b19d0442649477feab",
+              "body": {
+                "m2m:uril": [
+                  "/opensoom-secure/aiQSrIRrWWHeKwE",
+                  "/opensoom-secure/aiQSrb2SdIngMEj",
+                  "/opensoom-secure/aiQSrpWpc1hHv7B"
+                ]
+              },
+              "http_status": 200
+            }
+          ],
+          "run_id": "agent-cf3f3dd9bb5d"
+        }
+      }
+    },
+    {
+      "name": "read_group",
+      "arguments": {
+        "facility_id": "food-a"
+      },
+      "call_id": "call_u1S0BJuDxTwqG4M5LbTUxMXd",
+      "timestamp": "2026-11-17T19:15:53.815828+00:00",
+      "generated_by": "model",
+      "output": {
+        "is_error": false,
+        "result": {
+          "facility_id": "food-a",
+          "group": {
+            "rsc": 2000,
+            "rqi": "opensoom-0869d0ac9e2b4628a956060ac38ca9f6",
+            "body": {
+              "m2m:agr": {
+                "m2m:rsp": [
+                  {
+                    "rsc": 2000,
+                    "rqi": "opensoom-0869d0ac9e2b4628a956060ac38ca9f6",
+                    "rvi": "4",
+                    "pc": {
+                      "m2m:cin": {
+                        "con": "{\"facility_id\": \"food-a\", \"zone_id\": \"cook\", \"observed_at\": \"2026-11-17T19:15:53.378+00:00\", \"received_at\": \"2026-11-17T19:15:53.378+00:00\", \"source\": \"simulated\", \"adapter\": \"vendor-a\", \"pm25\": 62.0, \"co2\": 1450.0, \"airflow\": 360.0, \"fan_running\": true, \"damper_pct\": 35.0}",
+                        "cnf": "application/json:0",
+                        "cs": 274,
+                        "pi": "cnt2mQNmfBv2z",
+                        "ri": "cinq62C9ykOVA",
+                        "rn": "cin_xEQIPRaaie",
+                        "ty": 4,
+                        "ct": "20261117T191553,380864",
+                        "lt": "20261117T191553,380864",
+                        "et": "20311116T183914,888248",
+                        "st": 988
+                      }
+                    }
+                  },
+                  {
+                    "rsc": 2000,
+                    "rqi": "opensoom-0869d0ac9e2b4628a956060ac38ca9f6",
+                    "rvi": "4",
+                    "pc": {
+                      "m2m:cin": {
+                        "con": "{\"facility_id\": \"food-a\", \"zone_id\": \"wash\", \"observed_at\": \"2026-11-17T19:15:53.405+00:00\", \"received_at\": \"2026-11-17T19:15:53.405+00:00\", \"source\": \"simulated\", \"adapter\": \"vendor-a\", \"pm25\": 12.0, \"co2\": 620.0, \"airflow\": 690.0, \"fan_running\": true, \"damper_pct\": 70.0}",
+                        "cnf": "application/json:0",
+                        "cs": 273,
+                        "pi": "cntSCHgBFyNpy",
+                        "ri": "cinmUVqDB8HVc",
+                        "rn": "cin_LrR8hi7hdN",
+                        "ty": 4,
+                        "ct": "20261117T191553,408025",
+                        "lt": "20261117T191553,408025",
+                        "et": "20311116T183914,888248",
+                        "st": 988
+                      }
+                    }
+                  },
+                  {
+                    "rsc": 2000,
+                    "rqi": "opensoom-0869d0ac9e2b4628a956060ac38ca9f6",
+                    "rvi": "4",
+                    "pc": {
+                      "m2m:cin": {
+                        "con": "{\"facility_id\": \"food-a\", \"zone_id\": \"pack\", \"observed_at\": \"2026-11-17T19:15:53.435+00:00\", \"received_at\": \"2026-11-17T19:15:53.435+00:00\", \"source\": \"simulated\", \"adapter\": \"vendor-a\", \"pm25\": 12.0, \"co2\": 620.0, \"airflow\": 517.5, \"fan_running\": true, \"damper_pct\": 70.0}",
+                        "cnf": "application/json:0",
+                        "cs": 273,
+                        "pi": "cntVsXSYGCnGO",
+                        "ri": "cinh4D3a2QK7H",
+                        "rn": "cin_gIY2issQvR",
+                        "ty": 4,
+                        "ct": "20261117T191553,438127",
+                        "lt": "20261117T191553,438127",
+                        "et": "20311116T183914,888248",
+                        "st": 988
+                      }
+                    }
+                  }
+                ]
+              }
+            },
+            "http_status": 200
+          },
+          "status": "ok",
+          "note": "Native fan-out returns latest observations; CSE results do not prove device execution.",
+          "run_id": "agent-cf3f3dd9bb5d"
+        }
+      }
+    },
+    {
+      "name": "request_action",
+      "arguments": {
+        "facility_id": "food-a",
+        "zone_id": "cook",
+        "action": "set_damper",
+        "reason": "Insufficient exhaust: high PM2.5/CO2 with fan running, increase damper to max",
+        "request_id": "agent-cf3f3dd9bb5d:set_damper_cook_01",
+        "value": 100
+      },
+      "call_id": "call_cuTI8QuRNLVsEqJ9pRemMoQ5",
+      "timestamp": "2026-11-17T19:15:57.546133+00:00",
+      "generated_by": "model",
+      "output": {
+        "is_error": false,
+        "result": {
+          "facility_id": "food-a",
+          "zone_id": "cook",
+          "action": "set_damper",
+          "value": 100.0,
+          "reason": "Insufficient exhaust: high PM2.5/CO2 with fan running, increase damper to max",
+          "request_id": "agent-cf3f3dd9bb5d:set_damper_cook_01",
+          "id": "cmd-b12d59b1e1b4",
+          "status": "requested",
+          "ack": false,
+          "created_at": "2026-11-17T19:15:57.531266+00:00",
+          "expires_at": "2026-11-17T19:16:27.531266+00:00",
+          "profile_version": 1,
+          "run_id": "agent-cf3f3dd9bb5d",
+          "incident_id": "incident-bd763c131c",
+          "observed_result": "pending",
+          "cse_rqi": "opensoom-6c0712bc808c42e9b15d256b779c8bc0",
+          "cse_resource_id": "cinsQSkJWUI31"
+        }
+      }
+    },
+    {
+      "name": "verify_result",
+      "arguments": {
+        "facility_id": "food-a",
+        "command_id": "cmd-b12d59b1e1b4"
+      },
+      "call_id": "call_HZW6HplnYsc7stgtXKoqePsc",
+      "timestamp": "2026-11-17T19:15:58.901646+00:00",
+      "generated_by": "model",
+      "output": {
+        "is_error": false,
+        "result": {
+          "facility_id": "food-a",
+          "zone_id": "cook",
+          "action": "set_damper",
+          "value": 100.0,
+          "reason": "Insufficient exhaust: high PM2.5/CO2 with fan running, increase damper to max",
+          "request_id": "agent-cf3f3dd9bb5d:set_damper_cook_01",
+          "id": "cmd-b12d59b1e1b4",
+          "status": "acknowledged",
+          "ack": true,
+          "created_at": "2026-11-17T19:15:57.531266+00:00",
+          "expires_at": "2026-11-17T19:16:27.531266+00:00",
+          "profile_version": 1,
+          "run_id": "agent-cf3f3dd9bb5d",
+          "incident_id": "incident-bd763c131c",
+          "observed_result": "awaiting_observations",
+          "cse_rqi": "opensoom-6c0712bc808c42e9b15d256b779c8bc0",
+          "cse_resource_id": "cinsQSkJWUI31",
+          "ack_at": "2026-11-17T19:15:57.767+00:00",
+          "ack_rqi": "opensoom-b80a77e31d544dd4b3b0285de95908f2",
+          "command_id": "cmd-b12d59b1e1b4",
+          "complete": false,
+          "outcome": "pending",
+          "observations": {
+            "pm25": {
+              "value": 12.0,
+              "unit": "µg/m³",
+              "observed_at": "2026-11-17T19:15:57.771+00:00",
+              "received_at": "2026-11-17T19:15:57.771+00:00",
+              "source": "simulated",
+              "quality": "good"
+            },
+            "co2": {
+              "value": 620.0,
+              "unit": "ppm",
+              "observed_at": "2026-11-17T19:15:57.771+00:00",
+              "received_at": "2026-11-17T19:15:57.771+00:00",
+              "source": "simulated",
+              "quality": "good"
+            },
+            "airflow": {
+              "value": 1035.0,
+              "unit": "m³/h",
+              "observed_at": "2026-11-17T19:15:57.771+00:00",
+              "received_at": "2026-11-17T19:15:57.771+00:00",
+              "source": "simulated",
+              "quality": "good"
+            },
+            "fan_running": {
+              "value": true,
+              "unit": "boolean",
+              "observed_at": "2026-11-17T19:15:57.771+00:00",
+              "received_at": "2026-11-17T19:15:57.771+00:00",
+              "source": "simulated",
+              "quality": "good"
+            },
+            "damper_pct": {
+              "value": 100.0,
+              "unit": "%",
+              "observed_at": "2026-11-17T19:15:57.771+00:00",
+              "received_at": "2026-11-17T19:15:57.771+00:00",
+              "source": "simulated",
+              "quality": "good"
+            }
+          },
+          "message": "CSE acceptance/ACK alone does not establish recovery"
+        }
+      }
+    },
+    {
+      "name": "verify_result",
+      "arguments": {
+        "facility_id": "food-a",
+        "command_id": "cmd-b12d59b1e1b4"
+      },
+      "call_id": "call_n3Wpj0qn8gH8QMlhTQKk7Rwi",
+      "timestamp": "2026-11-17T19:16:01.720500+00:00",
+      "generated_by": "model",
+      "output": {
+        "is_error": false,
+        "result": {
+          "facility_id": "food-a",
+          "zone_id": "cook",
+          "action": "set_damper",
+          "value": 100.0,
+          "reason": "Insufficient exhaust: high PM2.5/CO2 with fan running, increase damper to max",
+          "request_id": "agent-cf3f3dd9bb5d:set_damper_cook_01",
+          "id": "cmd-b12d59b1e1b4",
+          "status": "verified",
+          "ack": true,
+          "created_at": "2026-11-17T19:15:57.531266+00:00",
+          "expires_at": "2026-11-17T19:16:27.531266+00:00",
+          "profile_version": 1,
+          "run_id": "agent-cf3f3dd9bb5d",
+          "incident_id": "incident-bd763c131c",
+          "observed_result": "recovered",
+          "cse_rqi": "opensoom-6c0712bc808c42e9b15d256b779c8bc0",
+          "cse_resource_id": "cinsQSkJWUI31",
+          "ack_at": "2026-11-17T19:15:57.767+00:00",
+          "ack_rqi": "opensoom-b80a77e31d544dd4b3b0285de95908f2",
+          "verified_at": "2026-11-17T19:15:59.978+00:00",
+          "verification_rqi": "opensoom-209763681a5e4c69af405f70602f1b4b",
+          "command_id": "cmd-b12d59b1e1b4",
+          "complete": true,
+          "outcome": "recovered",
+          "observations": {
+            "pm25": {
+              "value": 12.0,
+              "unit": "µg/m³",
+              "observed_at": "2026-11-17T19:15:59.949+00:00",
+              "received_at": "2026-11-17T19:15:59.949+00:00",
+              "source": "simulated",
+              "quality": "good"
+            },
+            "co2": {
+              "value": 620.0,
+              "unit": "ppm",
+              "observed_at": "2026-11-17T19:15:59.949+00:00",
+              "received_at": "2026-11-17T19:15:59.949+00:00",
+              "source": "simulated",
+              "quality": "good"
+            },
+            "airflow": {
+              "value": 1035.0,
+              "unit": "m³/h",
+              "observed_at": "2026-11-17T19:15:59.949+00:00",
+              "received_at": "2026-11-17T19:15:59.949+00:00",
+              "source": "simulated",
+              "quality": "good"
+            },
+            "fan_running": {
+              "value": true,
+              "unit": "boolean",
+              "observed_at": "2026-11-17T19:15:59.949+00:00",
+              "received_at": "2026-11-17T19:15:59.949+00:00",
+              "source": "simulated",
+              "quality": "good"
+            },
+            "damper_pct": {
+              "value": 100.0,
+              "unit": "%",
+              "observed_at": "2026-11-17T19:15:59.949+00:00",
+              "received_at": "2026-11-17T19:15:59.949+00:00",
+              "source": "simulated",
+              "quality": "good"
+            }
+          },
+          "message": "Result verified from later CSE observations"
+        }
+      }
+    }
+  ],
+  "model_responses": [
+    {
+      "step": 0,
+      "id": "resp_041538b6cde62117016afca7e69fb887d2b1ffdf3ad4ecdd0c",
+      "model": "gpt-5-mini-2025-08-07",
+      "status": "completed",
+      "usage": {
+        "input_tokens": 814,
+        "input_tokens_details": "[redacted]",
+        "output_tokens": 60,
+        "output_tokens_details": "[redacted]",
+        "total_tokens": 874
+      },
+      "timestamp": "2026-11-17T19:15:52.540478+00:00",
+      "function_calls": [
+        {
+          "call_id": "call_3lpZF6BF9Wyj4Vblllyd5u5k",
+          "name": "discover",
+          "arguments": "{\"facility_id\":\"food-a\"}"
+        }
+      ]
+    },
+    {
+      "step": 1,
+      "id": "resp_041538b6cde62117016afca7e8f17c87d2be5c7d2fbda04270",
+      "model": "gpt-5-mini-2025-08-07",
+      "status": "completed",
+      "usage": {
+        "input_tokens": 1327,
+        "input_tokens_details": "[redacted]",
+        "output_tokens": 32,
+        "output_tokens_details": "[redacted]",
+        "total_tokens": 1359
+      },
+      "timestamp": "2026-11-17T19:15:53.793501+00:00",
+      "function_calls": [
+        {
+          "call_id": "call_u1S0BJuDxTwqG4M5LbTUxMXd",
+          "name": "read_group",
+          "arguments": "{\"facility_id\":\"food-a\"}"
+        }
+      ]
+    },
+    {
+      "step": 2,
+      "id": "resp_041538b6cde62117016afca7ead07487d28b4dfe3304507527",
+      "model": "gpt-5-mini-2025-08-07",
+      "status": "completed",
+      "usage": {
+        "input_tokens": 2360,
+        "input_tokens_details": "[redacted]",
+        "output_tokens": 206,
+        "output_tokens_details": "[redacted]",
+        "total_tokens": 2566
+      },
+      "timestamp": "2026-11-17T19:15:57.517606+00:00",
+      "function_calls": [
+        {
+          "call_id": "call_cuTI8QuRNLVsEqJ9pRemMoQ5",
+          "name": "request_action",
+          "arguments": "{\"facility_id\":\"food-a\",\"zone_id\":\"cook\",\"action\":\"set_damper\",\"reason\":\"Insufficient exhaust: high PM2.5/CO2 with fan running, increase damper to max\",\"request_id\":\"agent-cf3f3dd9bb5d:set_damper_cook_01\",\"value\":100}"
+        }
+      ]
+    },
+    {
+      "step": 3,
+      "id": "resp_041538b6cde62117016afca7edc75887d2a054ff3129bf19b8",
+      "model": "gpt-5-mini-2025-08-07",
+      "status": "completed",
+      "usage": {
+        "input_tokens": 2834,
+        "input_tokens_details": "[redacted]",
+        "output_tokens": 58,
+        "output_tokens_details": "[redacted]",
+        "total_tokens": 2892
+      },
+      "timestamp": "2026-11-17T19:15:58.882699+00:00",
+      "function_calls": [
+        {
+          "call_id": "call_HZW6HplnYsc7stgtXKoqePsc",
+          "name": "verify_result",
+          "arguments": "{\"facility_id\":\"food-a\",\"command_id\":\"cmd-b12d59b1e1b4\"}"
+        }
+      ]
+    },
+    {
+      "step": 4,
+      "id": "resp_041538b6cde62117016afca7ef21c887d2b9420323f90dcd45",
+      "model": "gpt-5-mini-2025-08-07",
+      "status": "completed",
+      "usage": {
+        "input_tokens": 3671,
+        "input_tokens_details": "[redacted]",
+        "output_tokens": 160,
+        "output_tokens_details": "[redacted]",
+        "total_tokens": 3831
+      },
+      "timestamp": "2026-11-17T19:16:01.703614+00:00",
+      "function_calls": [
+        {
+          "call_id": "call_n3Wpj0qn8gH8QMlhTQKk7Rwi",
+          "name": "verify_result",
+          "arguments": "{\"facility_id\":\"food-a\",\"command_id\":\"cmd-b12d59b1e1b4\"}"
+        }
+      ]
+    },
+    {
+      "step": 5,
+      "id": "resp_041538b6cde62117016afca7f1f30487d287b75deded54962e",
+      "model": "gpt-5-mini-2025-08-07",
+      "status": "completed",
+      "usage": {
+        "input_tokens": 4656,
+        "input_tokens_details": "[redacted]",
+        "output_tokens": 228,
+        "output_tokens_details": "[redacted]",
+        "total_tokens": 4884
+      },
+      "timestamp": "2026-11-17T19:16:04.471924+00:00",
+      "function_calls": []
+    }
+  ],
+  "model": "gpt-5-mini",
+  "provider_kind": "hosted",
+  "provider_endpoint": "https://api.openai.com/v1",
+  "live_model": true,
+  "scenario_run_id": "demo-d679edbf97",
+  "mcp": {
+    "transport": "stdio",
+    "protocol_version": "2026-07-28",
+    "server": "openSoom",
+    "tools": [
+      "doctor",
+      "prepare_setup",
+      "apply_setup",
+      "discover",
+      "read_group",
+      "read_evidence",
+      "request_action",
+      "verify_result"
+    ]
+  },
+  "report": {
+    "operational_outcome": "recovered",
+    "summary": "Read latest observations for facility food-a: cook zone showed high PM2.5 (62 µg/m³) and CO2 (1450 ppm) with fan running and damper at 35%. Requested set_damper to 100% (request_id agent-cf3f3dd9bb5d:set_damper_cook_01, command_id cmd-b12d59b1e1b4). Command was acknowledged by device (ack=true) and subsequent observations show damper_pct=100%, airflow increased to 1035 m³/h, PM2.5 dropped to 12 µg/m³ and CO2 to 620 ppm. Verification shows complete=true and observed_result=recovered, so the incident is recovered."
+  },
+  "summary": "Read latest observations for facility food-a: cook zone showed high PM2.5 (62 µg/m³) and CO2 (1450 ppm) with fan running and damper at 35%. Requested set_damper to 100% (request_id agent-cf3f3dd9bb5d:set_damper_cook_01, command_id cmd-b12d59b1e1b4). Command was acknowledged by device (ack=true) and subsequent observations show damper_pct=100%, airflow increased to 1035 m³/h, PM2.5 dropped to 12 µg/m³ and CO2 to 620 ppm. Verification shows complete=true and observed_result=recovered, so the incident is recovered.",
+  "trace_verification": {
+    "passed": false,
+    "reason": "No evidence read was recorded"
+  },
+  "budget": {
+    "batch_id": "opensoom-hackathon-2026-01",
+    "max_requests": 100,
+    "max_tokens": 250000,
+    "requests_consumed": 47,
+    "tokens_charged": 156514,
+    "tokens_reserved": 0,
+    "pending_requests": 0,
+    "requests_remaining": 53,
+    "tokens_remaining": 93486,
+    "requires_investigation": false
+  },
+  "finished_at": "2026-11-17T19:16:04.571183+00:00",
+  "service_verification": {
+    "id": "agent-cf3f3dd9bb5d",
+    "run_id": "agent-cf3f3dd9bb5d",
+    "facility_id": "food-a",
+    "scenario": "exhaust_fault",
+    "mode": "live",
+    "model": "gpt-5-mini",
+    "principal_role": "operator",
+    "status": "failed",
+    "started_at": "2026-11-17T19:15:48.749+00:00",
+    "tool_calls": [
+      {
+        "name": "discover",
+        "at": "2026-11-17T19:15:52.632+00:00",
+        "arguments": {
+          "facility_id": "food-a"
+        },
+        "result_status": "ok"
+      },
+      {
+        "name": "read_group",
+        "at": "2026-11-17T19:15:53.812+00:00",
+        "arguments": {
+          "facility_id": "food-a"
+        },
+        "result_status": "ok"
+      },
+      {
+        "name": "request_action",
+        "at": "2026-11-17T19:15:57.542+00:00",
+        "arguments": {
+          "facility_id": "food-a",
+          "zone_id": "cook",
+          "action": "set_damper",
+          "reason": "Insufficient exhaust: high PM2.5/CO2 with fan running, increase damper to max",
+          "request_id": "agent-cf3f3dd9bb5d:set_damper_cook_01",
+          "value": 100.0
+        },
+        "result_status": "requested"
+      },
+      {
+        "name": "verify_result",
+        "at": "2026-11-17T19:15:58.898+00:00",
+        "arguments": {
+          "facility_id": "food-a",
+          "command_id": "cmd-b12d59b1e1b4"
+        },
+        "result_status": "acknowledged"
+      },
+      {
+        "name": "verify_result",
+        "at": "2026-11-17T19:16:01.718+00:00",
+        "arguments": {
+          "facility_id": "food-a",
+          "command_id": "cmd-b12d59b1e1b4"
+        },
+        "result_status": "verified"
+      }
+    ],
+    "steps": 6,
+    "summary": "Read latest observations for facility food-a: cook zone showed high PM2.5 (62 µg/m³) and CO2 (1450 ppm) with fan running and damper at 35%. Requested set_damper to 100% (request_id agent-cf3f3dd9bb5d:set_damper_cook_01, command_id cmd-b12d59b1e1b4). Command was acknowledged by device (ack=true) and subsequent observations show damper_pct=100%, airflow increased to 1035 m³/h, PM2.5 dropped to 12 µg/m³ and CO2 to 620 ppm. Verification shows complete=true and observed_result=recovered, so the incident is recovered.",
+    "usage": {
+      "batch_id": "opensoom-hackathon-2026-01",
+      "max_requests": 100,
+      "max_tokens": 250000,
+      "requests_consumed": 47,
+      "tokens_charged": 156514,
+      "tokens_reserved": 0,
+      "pending_requests": 0,
+      "requests_remaining": 53,
+      "tokens_remaining": 93486,
+      "requires_investigation": false
+    },
+    "live_model": true,
+    "reported_outcome": "recovered",
+    "outcome": "FAIL",
+    "completed_at": "2026-11-17T19:16:04.579+00:00",
+    "server_validation": {
+      "verified_recovery": true,
+      "handled_failure": false,
+      "recorded_tool_calls": 5,
+      "requested_outcome": "FAIL"
+    }
+  }
+}

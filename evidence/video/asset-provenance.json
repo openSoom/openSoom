@@ -1,0 +1,169 @@
+{
+  "recorded_at": "2026-11-17T19:03:14.564107+00:00",
+  "license_original_noncode": "CC-BY-4.0",
+  "source_license": "Apache-2.0",
+  "rendering": "Original vector-like graphics and typography rendered by Pillow, encoded with FFmpeg; no generative or stock imagery, external upload or purchased media.",
+  "evidence_sources": [
+    {
+      "path": "scripts/render_video.py",
+      "sha256": "8f81fdadacc3b72237a82966fe1470a3bf7bf8f384d97d4fbaf4e25a95ac1a93"
+    },
+    {
+      "path": "evidence/video/dashboard-capture-trace.json",
+      "sha256": "3108172ec3ba46f843a458288ac1d2d930094518fd65888d18b274073f43ea98"
+    },
+    {
+      "path": "evidence/agent/secure-live-recovery.json",
+      "sha256": "07da6d99d170960a914485d339dc53d0653d10e3075e7852ad905470c2fe099c"
+    },
+    {
+      "path": "evidence/agent/secure-live-no-recovery.json",
+      "sha256": "eba6e0a590575fba0d04efd230cb8224c9091db379d0cede0273b289ed13a6ab"
+    },
+    {
+      "path": "evidence/agent/secure-codex-host-correlated.json",
+      "sha256": "272259c4c160dce458bcbc8d1271c5afa78fd0487dcb635f38f9556905306953"
+    },
+    {
+      "path": "evidence/agent/secure-protocol-correlation.json",
+      "sha256": "dbfec51c509b8de535ad7b7aa4039827b00c9d68eda8b012d29c955fe9c45fe5"
+    },
+    {
+      "path": "evidence/application/acceptance.json",
+      "sha256": "0792d32cab4526644e1f13fb93945e98f70c7a4170e3efa7bf865b9b2b6bd8b2"
+    },
+    {
+      "path": "profiles/food-production.json",
+      "sha256": "402ae760ec4fe13c23e2a6c63e3ec80518d8ebdba30edde9e64cfdbb573e4c6e"
+    },
+    {
+      "path": "profiles/learning-space.json",
+      "sha256": "2bc00d56a3fcf15cb388d7b81892a33123492b4452105522d368e5b8daee14e3"
+    },
+    {
+      "path": "docs/scenario-contract.md",
+      "sha256": "66e1d6451197564456082fad106e69ea26cfb1cea6e759f2f4be1cacab94d151"
+    },
+    {
+      "path": "src/opensoom/core.py",
+      "sha256": "711bff39bb875323b13b175a308086658fd37ec688d8d92bdc4199345ca1ce5f"
+    },
+    {
+      "path": "scripts/media_preview.py",
+      "sha256": "03061853838abc3507096f4e5bd9fab4de5169cff8cafd853c0bdf357675de40"
+    }
+  ],
+  "browser_assets": [
+    {
+      "path": "deliverables/video/assets/food-command-dashboard.jpg",
+      "sha256": "8f1a5a8e840aea5d14f17bfb5df1faf09221bcaf1714823851efa525b593321b",
+      "dimensions": [
+        1785,
+        1551
+      ],
+      "origin": "Actual Chrome capture of local openSoom dashboard, 2026-11-18 03:52 KST",
+      "run_id": "demo-eea1329dfb",
+      "command_id": "cmd-06e0054c4e85",
+      "mode": "interactive",
+      "used_in_film": false
+    },
+    {
+      "path": "deliverables/video/assets/food-fault-dashboard.jpg",
+      "sha256": "8a016658276a315609b2caa911f8bc48ca3bf3c322dceed3a97d690a7d707914",
+      "dimensions": [
+        1785,
+        1551
+      ],
+      "origin": "Actual Chrome capture of local openSoom dashboard, 2026-11-18 03:52 KST",
+      "run_id": "demo-eea1329dfb",
+      "command_id": "cmd-06e0054c4e85",
+      "mode": "interactive",
+      "used_in_film": true
+    },
+    {
+      "path": "deliverables/video/assets/food-fault-observations.jpg",
+      "sha256": "51562bb83ad84294758401bf92b76d1e181a2aaded82d9d5ed0ef707a6d69aa4",
+      "dimensions": [
+        1785,
+        1034
+      ],
+      "origin": "Actual Chrome capture of local openSoom dashboard, 2026-11-18 03:52 KST",
+      "run_id": "demo-eea1329dfb",
+      "command_id": "cmd-06e0054c4e85",
+      "mode": "interactive",
+      "used_in_film": false
+    },
+    {
+      "path": "deliverables/video/assets/food-recovered-dashboard.jpg",
+      "sha256": "d12e95ec36d00b9311f9120783972b84b2648f4c46c2a2b25b25c5f691c7da98",
+      "dimensions": [
+        1785,
+        1551
+      ],
+      "origin": "Actual Chrome capture of local openSoom dashboard, 2026-11-18 03:52 KST",
+      "run_id": "demo-eea1329dfb",
+      "command_id": "cmd-06e0054c4e85",
+      "mode": "interactive",
+      "used_in_film": true
+    }
+  ],
+  "claim_map": [
+    {
+      "scenes": [
+        1,
+        4,
+        5
+      ],
+      "source": "evidence/agent/secure-live-recovery.json",
+      "run_id": "agent-379720ef883c",
+      "command_id": "cmd-607d6d77947b",
+      "model": "gpt-5-mini",
+      "scope": "Recorded actual model-generated calls and verified software outcome; physical inputs are virtual."
+    },
+    {
+      "scenes": [
+        3
+      ],
+      "source": "evidence/video/dashboard-capture-trace.json",
+      "run_id": "demo-eea1329dfb",
+      "scope": "Actual interactive dashboard before/after captures, edited still sequence; this is not a live-model run or continuous screen recording."
+    },
+    {
+      "scenes": [
+        6
+      ],
+      "source": "evidence/agent/secure-live-no-recovery.json",
+      "run_id": "agent-479f866b7e84",
+      "command_id": "cmd-838cfc0f207e",
+      "scope": "Actual model run retained unresolved after fresh post-ACK evidence."
+    },
+    {
+      "scenes": [
+        4,
+        8
+      ],
+      "source": "evidence/agent/secure-codex-host-correlated.json",
+      "scope": "Codex CLI plugin and MCP host transport only; no Codex model turn is claimed."
+    },
+    {
+      "scenes": [
+        2,
+        7
+      ],
+      "source": "docs/scenario-contract.md",
+      "supporting_evidence": "evidence/application/acceptance.json",
+      "scope": "Reusable facility profiles/adapters and actual oneM2M software path; diagrams are illustrative."
+    }
+  ],
+  "font_voice": {
+    "font": "Avenir Next installed system font; file not redistributed",
+    "speech": "macOS Samantha synthetic narration; installed model not redistributed",
+    "original_narration": "deliverables/video/narration.en.txt"
+  },
+  "unclaimed": [
+    "Physical ventilation performance or health benefit",
+    "Universal safe airflow thresholds",
+    "MEC deployment, serving-CSE handover, federated learning, geolocation",
+    "Codex model inference or nontechnical human usability study"
+  ]
+}

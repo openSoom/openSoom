@@ -1,0 +1,23 @@
+# openSoom — English demonstration film
+
+`openSoom-demo-en.mp4` is a 108-second, 1920 × 1080 film with English synthetic narration and burned-in English captions. `captions.en.srt`, `narration.en.txt`, and `storyboard.json` provide editable companion materials. The local `preview.html` player is for review; nothing is hosted or uploaded by this package.
+
+The film moves from a specific virtual cooking-line fault to the shared oneM2M path, actual dashboard captures, a recorded hosted-model tool trace, command/ACK/result verification, a failed recovery, and reuse across two facilities and vendor formats.
+
+## Evidence boundaries
+
+- Dashboard pictures are actual browser captures of interactive run `demo-eea1329dfb`, command `cmd-06e0054c4e85`. The film displays the fault capture and the later recovered capture in sequence. This is an edited sequence of still captures, not continuous screen recording. The measurements and physical devices are virtual; the service/CSE operations are actual execution.
+- The recorded live-model example is `agent-379720ef883c`, command `cmd-607d6d77947b`, using `gpt-5-mini`. The failed-recovery example is `agent-479f866b7e84`, command `cmd-838cfc0f207e`. Their source evidence is in `evidence/agent/secure-live-recovery.json` and `secure-live-no-recovery.json`.
+- Codex CLI plugin registration and MCP transport were tested separately. The film does not claim a Codex model turn or a completed nontechnical-user study. Actual model decisions were executed by the standalone hosted API runner through the shared service path.
+- The 900 m³/h target belongs to the simulated food-production profile. It is not a universal ventilation requirement, a physical certification, or a health-outcome claim. Facility diagrams are illustrative.
+- Native oneM2M discovery, subscriptions, groups and access control are software claims. The film makes no claim of ETSI MEC deployment, serving-CSE handover, federated learning or geolocation integration.
+
+## Reproduce
+
+Run `python3 scripts/render_video.py` from the repository after installing Pillow and FFmpeg. The renderer reads an installed Avenir Next font on macOS, or DejaVu Sans on Linux. It does not bundle a font file. On macOS it uses the installed Samantha voice through `say`; a host restriction that prevents speech services must be resolved through the normal host permission mechanism. `--no-voice` renders a captioned silent alternative, and `--frames-only` renders the reviewable storyboard images.
+
+All rendering is local. The renderer creates temporary intermediate audio and clips, deletes them on exit, then writes the MP4, captions, storyboard and render manifest. `evidence/video/asset-provenance.json` maps assets and claims to exact source files/hashes. `evidence/video/qa.json` records final decoding, playback and visual checks.
+
+For browser review, run `python3 scripts/media_preview.py` and open `http://127.0.0.1:8768/preview.html`. This loopback-only server supports byte-range requests so native browser seeking works. Stop it with Ctrl-C after review. It is a temporary local viewer, not a production hosting service.
+
+Original script, diagrams, captions and media: CC BY 4.0, openSoom contributors. Renderer source: Apache-2.0 under the project source license. System fonts and voice models are not redistributed and retain their vendors' terms. There is no stock footage, third-party music, purchased media or external hosting dependency.

@@ -1,0 +1,53 @@
+{
+  "status": "COMPLETED_DELIVERY_WITH_UNSUPPORTED_INFERENCE_FOR_INDEPENDENT_REVIEW",
+  "author_side_check_only": true,
+  "live_evidence_sha256": "d117550a716b7d36a8b28e96cde0fecec8f770eb130a00af4b6901e9e53e6b95",
+  "provider_completed": true,
+  "codex_turn_completed": true,
+  "original_output_unmodified": true,
+  "source_checks": [
+    {
+      "tool": "prepare_setup",
+      "source_sha256_verified": true,
+      "selected_values_exact": true,
+      "capture_timestamp": "2026-11-17T20:00:04.730000+00:00"
+    },
+    {
+      "tool": "read_group",
+      "source_sha256_verified": true,
+      "selected_values_exact": true,
+      "capture_timestamp": "2026-11-17T20:00:06.523000+00:00"
+    },
+    {
+      "tool": "read_evidence",
+      "source_sha256_verified": true,
+      "selected_values_exact": true,
+      "capture_timestamp": "2026-11-17T19:38:25.554000+00:00"
+    }
+  ],
+  "supported_claims": [
+    "learning-space is simulation-only and the captured runtime/CSE reported ready",
+    "captured diagnostic classroom status is critical; meeting and lounge are nominal",
+    "incident-a3afad9928 is open/critical in the captured diagnostic record",
+    "all data are historical captures, not a fresh sensor read by this turn",
+    "physical equipment execution/ACK and physical ventilation performance are not established by the read-only records"
+  ],
+  "unsupported_claims": [
+    {
+      "exact_model_phrase": "복구 시도는 없으며",
+      "reason": "recovery_count counts qualifying post-ACK recovery samples, not attempts. Empty commands for the captured current run does not establish absence of earlier attempts.",
+      "source": "src/opensoom/core.py:240",
+      "disposition": "Do not accept this absence-of-attempts claim; independent reviewer must assess impact. No corrected model answer was substituted."
+    }
+  ],
+  "clarity_concerns": [
+    {
+      "phrase": "공기유량·미세입자·CO2 경계 초과",
+      "source_meaning": "Airflow is below target; particles and CO2 exceed their configured targets.",
+      "disposition": "Boundary wording is ambiguous about direction; original reason fields remain available."
+    }
+  ],
+  "next_step_is_proposed_not_performed": true,
+  "whole_onboarding_gate_passed": false,
+  "independent_review_required": true
+}

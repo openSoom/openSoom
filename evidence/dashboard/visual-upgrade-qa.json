@@ -1,0 +1,209 @@
+{
+  "result": "PASS_WITH_NOTED_SCOPE",
+  "recorded_at": "2026-11-17T19:51:21.708448+00:00",
+  "implementation_scope": "web/ visual-only enhancement since fd5e648fa1c74e425507a98247844be150265acb; no runtime core, API output, model call, scenario mutation or static-serving change performed by this task.",
+  "repository_head_during_qa": "fd5e648fa1c74e425507a98247844be150265acb",
+  "source_snapshot": {
+    "algorithm": "sha256(sorted web path UTF-8 + NUL + file bytes + NUL)",
+    "sha256": "97f19dc10c904122907696ff6622b4bbc8edf92b01ffbbf2d5c680d0ea62351c",
+    "files": {
+      "web/app.js": "60e30ba5895bd5944ed79f2e19e43c2014d3aef88ecc899259507dd921498a76",
+      "web/facility-3d.css": "7c893a7170840339198fd4b7b828276ad67ce71bc8d0a6f0b766337f7b4b9dbc",
+      "web/facility-3d.js": "5928136bbb7d21bea92a8553b48015cafef85ba4902fa8ced3218bcf60bdcf28",
+      "web/index.html": "a99f0afadf784c86074732c1f1aa0e06acdfd9728eff85eda05e315b46e5319a",
+      "web/mark.svg": "aec576466e147d1132f4f1f9d19c73964d02a18cd4159294cf6edcd528fd2968",
+      "web/styles.css": "6fe0829ce73a257fbe07b4c80de26686a14b0cb258378ff75fe33ef9ec6d63f1",
+      "web/vendor/LICENSE": "8b378ebe60e2fe500158cb0ac71cb5e8b7d92953c2abcc63a0eb90499653b5bc",
+      "web/vendor/provenance.json": "e1b218ed30804ffdc65847bec076edec7ca2a2221e18106f89ae72f9f5742366",
+      "web/vendor/three.core.js": "613e370f76638fdef83926642bf256dc9615684922de1ce1f63a8583e5d78578",
+      "web/vendor/three.module.js": "104f56145899722094556490d787aae0617cc2fc3382f31df02d724ea1aee341"
+    }
+  },
+  "library": {
+    "name": "three",
+    "version": "0.187.0",
+    "license": "MIT",
+    "delivery": "local /assets/vendor imports only; no CDN",
+    "byte_identical_to": "pitch/vendor",
+    "provenance": "web/vendor/provenance.json",
+    "license_file": "web/vendor/LICENSE"
+  },
+  "browser": {
+    "name": "Chrome",
+    "platform": "macOS",
+    "tool": "CUA",
+    "url": "http://127.0.0.1:8090/#zones-section",
+    "viewport_restored": true,
+    "owned_server_started": false,
+    "application_console": {
+      "since": "2026-11-17T19:49:56.599Z",
+      "until": "2026-11-17T19:50:25.868Z",
+      "warnings": 0,
+      "errors": 0
+    }
+  },
+  "viewports": [
+    {
+      "width": 1905,
+      "height": 900,
+      "kind": "natural desktop",
+      "scene_width": 1208,
+      "scene_height": 711,
+      "mesh_projected_width_ratio": 0.712,
+      "mesh_projected_height_ratio": 0.79,
+      "screenshot": "evidence/dashboard/visual-upgrade-desktop-stale.jpg"
+    },
+    {
+      "width": 1440,
+      "height": 1080,
+      "kind": "desktop responsive check",
+      "mesh_projected_width_ratio": 0.712,
+      "mesh_projected_height_ratio": 0.79,
+      "horizontal_overflow": false,
+      "screenshot": "evidence/dashboard/visual-upgrade-desktop-unresolved.jpg"
+    },
+    {
+      "width": 375,
+      "height": 812,
+      "kind": "mobile responsive check",
+      "scene_width": 328,
+      "scene_height": 285,
+      "mesh_projected_width_ratio": 0.84,
+      "mesh_projected_height_ratio": 0.632,
+      "horizontal_overflow": false,
+      "text_fallback": "Three visible zone cards with current values and status",
+      "screenshots": [
+        "evidence/dashboard/visual-upgrade-mobile-unresolved.jpg",
+        "evidence/dashboard/visual-upgrade-mobile-full.jpg"
+      ],
+      "zone_label_text_overlap_observed": false,
+      "projected_label_border_overlap_px_approx": 1,
+      "note": "Projected labels remain readable; learning-studio and lounge card borders are adjacent at 375px. Larger separate zone cards remain available below the scene."
+    }
+  ],
+  "runtime_correlation": [
+    {
+      "facility_id": "food-a",
+      "run_id": "demo-c63832935d",
+      "scenario": "stale",
+      "selected_zone": "cook",
+      "displayed_airflow": 360,
+      "unit": "m³/h",
+      "displayed_target": 900,
+      "status": "stale",
+      "flow_display": "hidden",
+      "device_rotation": "stopped by stale gate",
+      "command_in_current_run": null,
+      "displayed_result": "Fresh data required; No recovery claim",
+      "data_kind": "virtual physical observations read through actual service/CSE"
+    },
+    {
+      "facility_id": "learning-b",
+      "run_id": "demo-2d8213685e",
+      "scenario": "no_recovery",
+      "selected_zone": "classroom",
+      "displayed_airflow": 200,
+      "unit": "m³/h",
+      "displayed_target": 500,
+      "status": "critical",
+      "flow_display": "amber illustrative flow from current positive virtual airflow; not a recovery inference",
+      "command": {
+        "id": "cmd-6406eb6c6318",
+        "run_id": "demo-2d8213685e",
+        "status": "unresolved",
+        "ack": true,
+        "ack_at": "2026-11-17T19:14:34.931+00:00",
+        "observed_result": "unresolved",
+        "cse_rqi": "opensoom-5a18cbd97871481c956b0322db2e1083",
+        "ack_rqi": "opensoom-2979d7cbaf914216a97386952c606c3f"
+      },
+      "displayed_result": "Device ACK received; Not recovered · follow up",
+      "data_kind": "virtual physical observations read through actual service/CSE"
+    }
+  ],
+  "verified_browser_interactions": [
+    "3D renders actual selected facility zones and metric values",
+    "Native zone button click updates selection and evidence",
+    "Enter key activates a zone button",
+    "Another zone in the same run has no borrowed recovery/command",
+    "PM2.5 metric uses actual reported PM values and hides illustrative airflow",
+    "Pause and resume motion work on desktop and mobile",
+    "2D map toggle exposes original accessible SVG fallback",
+    "Facility picker rebuilds generic room geometry for the second profile",
+    "Stale zone hides flow while other current zones remain visible",
+    "ACK/unresolved remains distinct from verified recovery",
+    "Default viewport and original food-a selection restored"
+  ],
+  "automated_source_checks": {
+    "command": "node evidence/dashboard/visual-source-checks.mjs",
+    "result": "PASS",
+    "checks": 22,
+    "scope": "Synthetic presentation regression checks only; no CSE/device/model execution",
+    "details": [
+      "Earlier first RAF timestamp cannot produce a negative curve position",
+      "Resuming after a background pause caps visual time advancement",
+      "Current positive airflow can be illustrated",
+      "stale values do not animate",
+      "missing values do not animate",
+      "unknown values do not animate",
+      "Disconnected data do not animate",
+      "0 airflow has no invented flow",
+      "-1 airflow has no invented flow",
+      "NaN airflow has no invented flow",
+      "null airflow has no invented flow",
+      "Stale airflow has no invented flow",
+      "Stopped fan has no flow",
+      "Stale fan does not rotate",
+      "PM mode does not imply airflow visualization",
+      "Critical flow is a measured report, not recovery evidence",
+      "Missing ACK never displays acknowledged or recovered",
+      "ACK with failed later observations remains unresolved",
+      "Prior-run recovery cannot leak into current stale run",
+      "Another zone cannot supply selected-zone recovery",
+      "Verified result displays without fabricating absent sample count",
+      "Maintenance record is not represented as actuator ACK or recovery"
+    ]
+  },
+  "syntax_checks": [
+    "node --check web/app.js",
+    "node --input-type=module --check < web/facility-3d.js"
+  ],
+  "resolved_during_qa": [
+    "Clamped first RAF delta to zero when requestAnimationFrame timestamp precedes scheduling performance.now(); added regression assertion.",
+    "Replaced removed PCFSoftShadowMap with supported PCFShadowMap in pinned Three.js 0.187.0.",
+    "Changed wide scene to width-aware aspect ratio and fit camera to actual mesh bounds; building covers 71.2% desktop and 84% mobile scene width."
+  ],
+  "limitations": [
+    "Illustrative layout and airflow are explicitly not CFD or certified physical ventilation measurements.",
+    "No fresh runtime, live-model or Codex-host acceptance was rerun by this visual-only task; existing evidence remains separately scoped.",
+    "Missing-ACK and disconnected/zero/stale edge cases additionally use synthetic presentation regression checks; these are not claimed as new CSE runs.",
+    "Automatic WebGL-failure fallback and OS reduced-motion preference are source-inspected; manual 2D and motion pause were browser-verified. OS settings were not changed.",
+    "This author QA is not independent rubric closeout review."
+  ],
+  "artifacts": {
+    "evidence/dashboard/visual-upgrade-mobile-unresolved.jpg": {
+      "sha256": "d3618e19faef4eb5850ad1764f1652d5ef998ca0a6c0d7dffef97c12ff0fa504",
+      "bytes": 29181,
+      "pixel_width": 360,
+      "pixel_height": 780
+    },
+    "evidence/dashboard/visual-upgrade-desktop-unresolved.jpg": {
+      "sha256": "170669d715b6f004d5ef69ae0d4294c7201e5c6a1d7eac3836b1a30df13433b2",
+      "bytes": 101037,
+      "pixel_width": 1425,
+      "pixel_height": 1069
+    },
+    "evidence/dashboard/visual-upgrade-desktop-stale.jpg": {
+      "sha256": "c3a1fae390654e351a3196c3cfd6b8c14f2f8d8278b2e7951f590343915a0623",
+      "bytes": 84726,
+      "pixel_width": 1905,
+      "pixel_height": 900
+    },
+    "evidence/dashboard/visual-upgrade-mobile-full.jpg": {
+      "sha256": "69a3b1397cf9730a4e910524a90fd0b74211319a18b7f3c9fa396e89e14eb19e",
+      "bytes": 115219,
+      "pixel_width": 360,
+      "pixel_height": 2754
+    }
+  }
+}

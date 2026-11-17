@@ -1,0 +1,37 @@
+{
+  "source": {
+    "scripts/codex_guided_rehearsal.py": "a1a9b65c6f4054d0692a808b9cc74e7afbbc0eff7d20f13322eb8c70750809b0"
+  },
+  "evidence": {
+    "evidence/agent/guided-approval-scope-checks.json": "ab90ffa7da5a3dc46471b6de2a7de67353685d1bd67bae14114b4b52f7f907eb",
+    "evidence/agent/guided-correlation.json": "b955a6dacfcec2f67b1db0b6e041692e6209e4441a3e3aeb718398e63987deac",
+    "evidence/agent/guided-dry-capture.json": "f1ea1828de4cc402adbf9392f7b30ea4ce467e0cb6e94102ca93193920538eb1",
+    "evidence/agent/guided-first-live-approval-denied.json": "6c8728be72205a070f521306db3a8e4896cf7cb6fe1c82b2f9883a8bc3dbf1df",
+    "evidence/agent/guided-live.json": "a0cc9dfd26b2d9d50a4625a91d76c25c617dcfb500c5e3d133d3d7234c74a057",
+    "evidence/agent/guided-protocol-approved.json": "874765839b4d8cc3f125819e2f5101d1a001a9c1ccb306b23b3a8b7387222265",
+    "evidence/agent/guided-protocol-capture.json": "584f6a7104d89f88c0be23c6c8b97c5427fd78fef98c31906000349fde279ee2"
+  },
+  "fixed_rehearsal_scope": {
+    "max_requests": 6,
+    "max_tokens": 50000,
+    "requests_consumed": 6,
+    "tokens_charged": 20385,
+    "requests_remaining": 0,
+    "tokens_remaining": 29615
+  },
+  "shared_budget": {
+    "batch_id": "opensoom-hackathon-2026-01",
+    "max_requests": 100,
+    "max_tokens": 250000,
+    "requests_consumed": 66,
+    "tokens_charged": 218430,
+    "tokens_reserved": 0,
+    "pending_requests": 0,
+    "requests_remaining": 34,
+    "tokens_remaining": 31570,
+    "requires_investigation": false
+  },
+  "live_provider_endpoint": "https://api.openai.com/v1/responses",
+  "continued_inference_allowed": false,
+  "reason": "Six-request rehearsal scope is exhausted; the shared batch remains finite and unchanged."
+}

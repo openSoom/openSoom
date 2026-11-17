@@ -13,7 +13,8 @@
     "review_teams": 4,
     "implementation_delegation": "Main agent may use subagents as needed to improve accepted findings",
     "physical_devices": "Simulated physical devices authorized by organizer according to user",
-    "pitching_artifact": "Single-page HTML with Three.js, intuitive architecture explanation and reusable landing-page quality"
+    "pitching_artifact": "Single-page HTML with large Three.js facility/workflow views and detailed factual oneM2M architecture explorer, Korean project explanation and reusable landing-page quality",
+    "final_review": "After implementation, four rubric teams conduct a stricter review of the visual upgrade and final release"
   },
   "consistent_management": "Shared contracts, permissions, workflows and evidence; facility-specific targets and controls.",
   "boundaries": {

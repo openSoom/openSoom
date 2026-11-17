@@ -1,0 +1,63 @@
+<!-- Insert this fragment inside #system. Load architecture.css and architecture.js once. -->
+<div id="architecture-explorer" class="arch-explorer" aria-labelledby="arch-title" data-renderer="loading">
+  <div class="arch-heading">
+    <div><p class="arch-eyebrow">THE STANDARD, MADE VISIBLE</p><h3 id="arch-title">Every layer has a job.</h3><p class="arch-heading-ko" lang="ko">장비에서 표준 리소스, 판단과 결과 확인까지. 구조를 직접 펼쳐보세요.</p></div>
+    <div class="arch-model-mark"><span></span><div>EXPLANATORY MODEL<small>Actual software structure · simulated devices</small></div></div>
+  </div>
+
+  <div class="arch-toolbar">
+    <div class="arch-topologies" role="group" aria-label="Architecture deployment">
+      <button type="button" data-arch-topology="distributed" aria-pressed="true">Two facilities <span>Distributed demonstration</span></button>
+      <button type="button" data-arch-topology="single" aria-pressed="false">One installation <span>Secure local demonstration</span></button>
+    </div>
+    <div class="arch-tools" role="group" aria-label="Architecture view controls">
+      <button type="button" data-arch-action="fit" aria-label="Fit the complete architecture">Fit view</button>
+      <button type="button" data-arch-action="zoom-out" aria-label="Zoom out">−</button>
+      <button type="button" data-arch-action="zoom-in" aria-label="Zoom in">+</button>
+      <button type="button" data-arch-action="motion" aria-pressed="false">Pause paths</button>
+    </div>
+  </div>
+
+  <div class="arch-context"><p id="arch-topology-en"></p><p id="arch-topology-ko" lang="ko"></p></div>
+
+  <div class="arch-stage-wrap">
+    <div class="arch-stage-meta"><span id="arch-view-label">DISTRIBUTED / LOCALHOST LAB</span><span><b id="arch-component-count">—</b> inspectable components</span></div>
+    <div id="arch-stage" class="arch-stage" aria-label="Interactive explanatory architecture. Use the component index for keyboard access.">
+      <div class="arch-labels" aria-hidden="true"></div>
+      <div class="arch-loading">Building the architecture…</div>
+      <div class="arch-stage-key" aria-hidden="true"><span class="arch-key-process">Process</span><span class="arch-key-resource">Native resource</span><span class="arch-key-module">Logical module</span><span class="arch-key-virtual">Virtual device</span></div>
+      <p class="arch-drag-note">Drag to orbit · select a component · paths are illustrative</p>
+    </div>
+    <div class="arch-mobile" aria-label="Accessible architecture overview"></div>
+    <div class="arch-layers" role="group" aria-label="Visible architecture layers">
+      <span>LAYERS</span>
+      <label><input type="checkbox" data-arch-layer="devices" checked><i style="--layer-color:#d6a96e"></i>Devices</label>
+      <label><input type="checkbox" data-arch-layer="resources" checked><i style="--layer-color:#a9dec8"></i>oneM2M</label>
+      <label><input type="checkbox" data-arch-layer="operations" checked><i style="--layer-color:#c1b5e6"></i>Operations</label>
+      <label><input type="checkbox" data-arch-layer="interfaces" checked><i style="--layer-color:#a7cde8"></i>Agent &amp; UI</label>
+      <label><input type="checkbox" data-arch-layer="federation" checked><i style="--layer-color:#e1c785"></i>Resource sharing</label>
+    </div>
+  </div>
+
+  <div class="arch-paths">
+    <span class="arch-small-label">FOLLOW A PATH</span>
+    <div class="arch-traces" role="group" aria-label="Highlighted architecture path">
+      <button type="button" data-arch-trace="overview" aria-pressed="true">01 <span>Whole system</span></button>
+      <button type="button" data-arch-trace="observe" aria-pressed="false">02 <span>Observe &amp; diagnose</span></button>
+      <button type="button" data-arch-trace="act" aria-pressed="false">03 <span>Command → ACK → result</span></button>
+      <button type="button" data-arch-trace="share" aria-pressed="false">04 <span>Share &amp; reconcile</span></button>
+      <button type="button" data-arch-trace="agent" aria-pressed="false">05 <span>Agent tool boundary</span></button>
+    </div>
+    <p class="arch-path-description" id="arch-path-description"></p>
+    <div class="arch-path-steps" id="arch-path-steps" aria-label="Path components"></div>
+  </div>
+
+  <div class="arch-inspector" aria-live="polite" aria-atomic="true">
+    <div class="arch-inspector-title"><p class="arch-small-label" id="arch-node-kind">ACTUAL CSE PROCESS</p><h4 id="arch-node-title">A standard service layer.</h4><p id="arch-node-ko" lang="ko"></p><code id="arch-node-path"></code></div>
+    <div class="arch-inspector-explanation"><p id="arch-node-description"></p><p id="arch-node-description-ko" lang="ko"></p><p class="arch-inspector-boundary" id="arch-node-boundary"></p></div>
+    <div class="arch-inspector-proof"><p class="arch-small-label">TRACE IT TO SOURCE</p><ul id="arch-node-sources"></ul></div>
+  </div>
+
+  <details class="arch-index"><summary>Component index <span>Keyboard &amp; screen-reader selection · 구성요소 전체 보기</span></summary><div id="arch-node-index"></div></details>
+  <div class="arch-disclosure"><p>Separate views, separate evidence. Coloured platforms group responsibilities; they do not imply one process per block. The two deployment profiles are alternatives.</p><p lang="ko">물리 장비와 측정값은 가상입니다. 이 장면은 실시간 제어·공기 유동 해석이 아닙니다. MEC 배포, CSE 핸드오버, 연합학습을 구현했다고 표시하지 않습니다.</p></div>
+</div>

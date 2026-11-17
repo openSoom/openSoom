@@ -1,0 +1,48 @@
+/* Local 3D enhancement; the original map and all text remain available without WebGL. */
+.spatial-toolbar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:13px 24px 0}
+.spatial-view-toggle{display:inline-flex;gap:3px;align-items:center}
+.spatial-view-toggle button,.motion-toggle{border:1px solid transparent;border-radius:6px;padding:7px 9px;background:none;color:#778579;font-size:10px;line-height:1.2;cursor:pointer}
+.spatial-view-toggle button[aria-pressed=true]{background:#e9efe6;border-color:#dbe4d5;color:#2a5549;font-weight:600}
+.spatial-view-toggle button:disabled{opacity:.4;cursor:default}
+.motion-toggle{display:inline-flex;align-items:center;gap:6px;border-color:#dfe6d8;background:#fff;color:#557065}
+.motion-toggle::before{content:'Ⅱ';font-size:11px;font-weight:700}
+.motion-toggle[aria-pressed=true]::before{content:'▷'}
+.spatial-stage{height:380px;position:relative;overflow:hidden;background:radial-gradient(ellipse at 50% 53%,#e9efe178,transparent 65%),radial-gradient(#a6b8a342 .75px,transparent .75px);background-size:auto,17px 17px;margin-top:5px;isolation:isolate}
+.facility-3d,.spatial-labels{position:absolute;inset:0}
+.facility-3d canvas{width:100%;height:100%;display:block}
+.spatial-labels{pointer-events:none}
+.spatial-zone{position:absolute;transform:translate(-50%,-12%);min-width:115px;max-width:155px;pointer-events:auto;text-align:left;border:1px solid #d2ded0;border-radius:8px;background:#fffffff2;box-shadow:0 4px 12px #173e3512;padding:8px 11px;color:#234e43;cursor:pointer;transition:box-shadow .15s,border-color .15s}
+.spatial-zone:hover,.spatial-zone.selected{border-color:#397760;box-shadow:0 0 0 1px #397760,0 5px 14px #173e351a}
+.spatial-zone span{display:block;font-size:10px;font-weight:600;line-height:1.35;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.spatial-zone strong{display:block;font-size:16px;font-weight:600;letter-spacing:-.4px;line-height:1.5;white-space:nowrap}
+.spatial-zone small{display:block;font-size:7px;letter-spacing:.75px;font-weight:600;color:#5c7767}
+.spatial-zone.critical,.spatial-zone.warning{background:#fff9edf5;border-color:#d4ad68;color:#82561b}
+.spatial-zone.critical small,.spatial-zone.warning small{color:#966e29}
+.spatial-zone.critical.selected,.spatial-zone.warning.selected{box-shadow:0 0 0 1px #b98132,0 5px 14px #7e551f16}
+.spatial-zone.stale,.spatial-zone.missing,.spatial-zone.unknown{background:#f6f7f6f2;color:#68766f;border-color:#bbc5be}
+.spatial-zone.stale small,.spatial-zone.missing small,.spatial-zone.unknown small{color:#6d7a72}
+.spatial-caption{position:absolute;bottom:10px;left:24px;right:24px;display:flex;align-items:center;gap:7px;font-size:10px;color:#64806c;pointer-events:none}
+.spatial-marker{width:6px;height:6px;background:#709480;border-radius:50%;flex:none}
+.spatial-notice{margin:8px 24px 0;font-size:10px;color:#7c7764}
+.spatial-toolbar button:focus-visible,.spatial-zone:focus-visible{outline:3px solid #163e39;outline-offset:3px}
+.zone-proof{margin:1px 24px 15px;padding:14px 16px 12px;border:1px solid #dfe6d8;border-radius:10px;background:#f8faf4}
+.proof-title{display:flex;justify-content:space-between;gap:12px;font-size:10px;color:#446450;font-weight:600;margin-bottom:12px}
+.proof-title small{font-size:9px;font-weight:400;color:#778774;max-width:58%;text-align:right}
+.proof-steps{display:grid;grid-template-columns:1fr 1fr 1.25fr;gap:12px;position:relative}
+.proof-step{min-width:0;padding-left:21px;position:relative}
+.proof-step:before{content:'';position:absolute;top:2px;left:0;width:11px;height:11px;border:1px solid #b9c9b5;border-radius:50%;background:#f8faf4;z-index:1}
+.proof-step:not(:last-child):after{content:'';position:absolute;top:7px;left:16px;right:-7px;height:1px;background:#dce5d6;z-index:0}
+.proof-step strong{position:relative;z-index:1;font-size:10px;display:inline;background:#f8faf4;padding-right:4px;font-weight:600;color:#4d6751}
+.proof-step span{font-size:9px;display:block;line-height:1.5;color:#83907b;margin-top:5px}
+.proof-step.complete:before{border-color:#2f7962;background:#2f7962;box-shadow:inset 0 0 0 3px #f8faf4}
+.proof-step.attention:before{border-color:#b98a43;background:#b98a43;box-shadow:inset 0 0 0 3px #f8faf4}
+.proof-step.attention strong,.proof-step.attention span{color:#956b2e}
+.proof-context{margin:11px 0 0;font-size:9px;line-height:1.55;color:#6a7f66;border-top:1px solid #e4eade;padding-top:9px}
+.proof-context b{font-weight:600;color:#3f6451}
+#facility-map[hidden],.spatial-stage[hidden],.motion-toggle[hidden],.spatial-notice[hidden]{display:none}
+@media(min-width:1400px){.spatial-stage{height:420px}.spatial-zone{min-width:132px;padding:10px 13px}.spatial-zone span{font-size:11px}.spatial-zone strong{font-size:18px}.spatial-zone small{font-size:8px}}
+@media(max-width:850px){.spatial-stage{height:360px}.spatial-zone{min-width:105px;padding:7px 9px}.spatial-zone strong{font-size:14px}}
+@media(max-width:530px){.spatial-toolbar{padding:12px 17px 0}.spatial-stage{height:285px}.spatial-zone{min-width:82px;max-width:112px;padding:5px 7px;border-radius:6px}.spatial-zone span{font-size:8px}.spatial-zone strong{font-size:11px;letter-spacing:-.2px}.spatial-zone small{font-size:6px;letter-spacing:.25px}.spatial-caption{left:17px;right:17px;bottom:8px;font-size:9px;line-height:1.4}.zone-proof{margin:0 17px 14px;padding:12px}.proof-title{display:block;line-height:1.5}.proof-title small{display:block;max-width:none;text-align:left;margin-top:2px}.proof-steps{gap:8px}.proof-step{padding-left:17px}.proof-step strong{font-size:9px}.proof-step span{font-size:8px}.proof-context{font-size:9px}.map-footer{flex-direction:column;align-items:flex-start;gap:8px}}
+@media(prefers-reduced-motion:reduce){.spatial-zone{transition:none}}
+/* Keep the building large on wide desktop panels, rather than widening blank space. */
+@media(min-width:851px){.spatial-stage{height:auto;aspect-ratio:1.7;min-height:350px}.spatial-zone{min-width:142px;max-width:180px;padding:10px 13px}.spatial-zone span{font-size:12px}.spatial-zone strong{font-size:21px}.spatial-zone small{font-size:9px}.spatial-view-toggle button,.motion-toggle{font-size:11px}.spatial-caption{font-size:11px}.proof-title{font-size:12px}.proof-title small{font-size:10px}.proof-step strong{font-size:12px}.proof-step span,.proof-context{font-size:11px}}

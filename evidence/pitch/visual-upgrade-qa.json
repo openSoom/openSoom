@@ -1,0 +1,88 @@
+{
+  "status": "PASS_RENDERED_WORKFLOW_UPGRADE",
+  "captured_at": "2026-11-17T19:47:47.347952+00:00",
+  "scope": "Additional Three.js workflow and enlarged initial facility view; forthcoming full architecture explorer is separate",
+  "source_sha256": {
+    "pitch/index.html": "4954e5e94a97944dd0fee4706d068d485a6feb3abeea2c2f860a71f8afe84c72",
+    "pitch/style.css": "1f0d052101b29c0b949ef04292cd5b11eb577434da4d843480ee5aac5a91f309",
+    "pitch/main.js": "f06c13e88cada83d3b4e4747de20128c1854027db22f7ff3d3188b4106fe95a7",
+    "pitch/workflow.js": "fcfc0252307bff81049c98c3813ff325213538f7d5fb139437e5281e61b95d3c",
+    "docs/project-guide.ko.md": "134377c0347e68d8b62ea59fe5040f36d4c244bf331cea6f2a99cc81dabe8737"
+  },
+  "browser": "Chrome via CUA",
+  "viewports": [
+    {
+      "width": 1800,
+      "height": 980,
+      "note": "Natural desktop viewport"
+    },
+    {
+      "width": 375,
+      "height": 812,
+      "note": "Responsive override reset after checks"
+    }
+  ],
+  "checks": [
+    {
+      "name": "Two Three.js0.187.0 renderers loaded",
+      "result": "PASS"
+    },
+    {
+      "name": "Recovery terminal",
+      "result": "PASS",
+      "observed": "VERIFIED RECOVERY"
+    },
+    {
+      "name": "Missing ACK blocks verification stage",
+      "result": "PASS",
+      "observed": "UNRESOLVED · ACK TIMEOUT; step6 disabled"
+    },
+    {
+      "name": "ACK with deficient later observations",
+      "result": "PASS",
+      "observed": "UNRESOLVED · NO RECOVERY"
+    },
+    {
+      "name": "Stale data blocks command and later stages",
+      "result": "PASS",
+      "observed": "BLOCKED · STALE EVIDENCE; steps4–6disabled"
+    },
+    {
+      "name": "Explanation play/pause and particle pause controls",
+      "result": "PASS",
+      "note": "Pressed state verified; timed full autoplay was not exercised"
+    },
+    {
+      "name": "Korean guide and per-step Korean explanations",
+      "result": "PASS"
+    },
+    {
+      "name": "Hero tabs Home/End keyboard selection",
+      "result": "PASS"
+    },
+    {
+      "name": "375px no horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "name": "New JavaScript console errors",
+      "result": "PASS",
+      "note": "One retained error from2026-11-17T19:06:05 predates fixed main.js; no new error captured during this pass"
+    }
+  ],
+  "screenshots": [
+    "evidence/pitch/workflow-desktop.jpg",
+    "evidence/pitch/workflow-mobile.jpg",
+    "evidence/pitch/hero-enlarged.jpg"
+  ],
+  "limits": [
+    "Illustrative geometry and sequence, not live service calls or CFD",
+    "Device state/clinical performance are not established by this page",
+    "Independent rubric review still required"
+  ],
+  "initial_corrections": [
+    "Fit camera to avoid small meshes in wide canvas",
+    "Explicit initial/resize/state drawing alongside visible animation avoids blank initial view",
+    "Increase camera distance slightly to fit bottom labels"
+  ]
+}

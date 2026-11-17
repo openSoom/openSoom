@@ -10,6 +10,8 @@
   const state = { data: null, facilityId: '', zoneId: '', metric: 'airflow', connected: false, polling: false, busy: false, lastReceived: null, latestRunId: null, history: new Map() };
   try { state.facilityId = localStorage.getItem('opensoom.facility') || ''; } catch (_) { /* Local storage is optional. */ }
   let toastTimer;
+  let facilityVisual = null;
+  let visualMode = '2d';
 
   const units = { airflow: 'm³/h', pm25: 'µg/m³', co2: 'ppm', damper_pct: '%' };
   const labels = { airflow: 'Exhaust airflow', pm25: 'PM2.5', co2: 'CO₂', damper_pct: 'Damper opening' };
@@ -198,6 +200,7 @@
     $('map-updated').classList.toggle('live', state.connected && cse);
     $('map-updated').innerHTML = `<span class="tiny-dot"></span>${state.lastReceived ? `Updated ${clock(state.lastReceived)}` : 'No observations yet'}`;
     $('footer-updated').textContent = state.lastReceived ? `${state.connected ? 'Last sync' : 'Last received'} ${clock(state.lastReceived)} · ${state.data?.runtime?.cse_name || 'oneM2M'}` : 'Waiting for the service';
+    if (!state.connected || !cse) renderVisual();
   }
 
   function render() {
@@ -236,6 +239,7 @@
 
   function renderMap() {
     const zones = facility()?.zones || [];
+    renderVisual();
     setHTML('mobile-zones', zones.map((z) => {
       const o = observation(z, state.metric);
       return `<button class="mobile-zone ${status(z)}" type="button" data-zone="${esc(z.id)}" aria-pressed="${z.id === state.zoneId}"><span>${esc(z.name || z.id)}</span><strong>${esc(number(o.value, state.metric))}<small>${esc(o.unit)}</small></strong><em>${esc(statusLabel(z).toLowerCase())}</em></button>`;
@@ -261,8 +265,8 @@
       const observed = observation(z, state.metric);
       const fanRunning = observation(z, 'fan_running').value === true;
       const zStatus = status(z);
-      const currentFan = fanRunning && observation(z, 'fan_running').quality === 'good' && !['stale', 'missing'].includes(zStatus);
-      const flow = state.metric === 'airflow' && currentFan && observed.value != null && observed.quality === 'good';
+      const currentFan = state.connected && state.data?.runtime?.cse_connected === true && fanRunning && observation(z, 'fan_running').quality === 'good' && !['stale', 'missing'].includes(zStatus);
+      const flow = state.metric === 'airflow' && currentFan && typeof observed.value === 'number' && Number.isFinite(observed.value) && observed.value > 0 && observed.quality === 'good';
       const name = String(z.name || z.id);
       const readableName = name.length > 22 ? `${name.slice(0, 20)}…` : name;
       roomShapes += `<g class="zone-shape ${zStatus} ${z.id === state.zoneId ? 'selected' : ''}" data-zone="${esc(z.id)}" tabindex="0" role="button" aria-label="${esc(`${name}, ${labels[state.metric]} ${number(observed.value, state.metric)} ${observed.unit}, ${statusLabel(z).toLowerCase()}`)}">
@@ -299,6 +303,69 @@
   function hasAck(command) {
     if (!command) return false;
     return command.ack === true || !!command.ack_at || command.ack?.received === true || ['acknowledged', 'acked', 'verified', 'recovered'].includes(String(command.status).toLowerCase());
+  }
+
+  function renderVisual() {
+    const f = facility();
+    const z = zone();
+    const run = latestRun();
+    const runId = f?.active_run || run?.id || run?.run_id || '';
+    const connected = state.connected && state.data?.runtime?.cse_connected === true;
+    facilityVisual?.update({
+      facilityId: f?.id || '', selectedZoneId: z?.id || '', runId, connected,
+      metric: state.metric, metricLabel: labels[state.metric],
+      zones: (f?.zones || []).map((item) => {
+        const o = observation(item, state.metric);
+        return { id: item.id, name: item.name || item.id, status: status(item), statusLabel: statusLabel(item), reading: `${number(o.value, state.metric)} ${o.value == null ? '' : o.unit}`.trim(), fan: observation(item, 'fan_running'), airflow: observation(item, 'airflow') };
+      })
+    });
+    $('spatial-condition').textContent = !f ? 'Waiting for facility observations' : !connected ? 'Connection unavailable · motion stopped · last received values' : 'Select a zone · equipment reports and airflow are separate evidence';
+    if (!z) { setHTML('zone-proof', '<div class="empty-inline">Select a zone to follow its command and observed result.</div>'); return; }
+    // A prior successful run must never color the current zone's evidence as recovered.
+    const command = runId ? commands().find((item) => item.run_id === runId && item.zone_id === z.id) : null;
+    const issue = command?.incident_id ? incidents().find((item) => item.id === command.incident_id) : null;
+    const ack = hasAck(command);
+    const verified = isVerified(command);
+    const failed = !!command && failedStates.has(String(command.status).toLowerCase());
+    const maintenance = command?.action === 'request_maintenance';
+    const stale = ['stale', 'missing', 'unknown'].includes(status(z));
+    const observedCount = Number.isInteger(issue?.recovery_count) ? issue.recovery_count : null;
+    const steps = [
+      { title: 'Command', text: command ? actionName(command) : stale ? 'Fresh data required' : 'None in this run', kind: command ? 'complete' : stale ? 'attention' : '' },
+      { title: 'Device ACK', text: maintenance ? 'Not an equipment command' : ack ? `Received ${clock(command.ack_at)}` : command ? failed ? 'Not received' : 'Waiting for device' : 'No command to acknowledge', kind: ack ? 'complete' : failed ? 'attention' : '' },
+      { title: 'Observed result', text: verified ? observedCount !== null ? `Recovery verified · ${observedCount} fresh samples` : 'Recovery verified' : maintenance ? 'Follow-up recorded · no recovery claim' : command?.observed_result === 'unresolved' ? 'Not recovered · follow up' : command ? ack ? 'Recovery not yet verified' : 'Not verified' : 'No recovery claim', kind: verified ? 'complete' : failed ? 'attention' : '' }
+    ];
+    const fan = observation(z, 'fan_running');
+    const airflow = observation(z, 'airflow');
+    const fanText = fan.value === true ? 'Running' : fan.value === false ? 'Stopped' : 'Not reported';
+    const currentData = connected && !stale && fan.quality === 'good' && airflow.quality === 'good';
+    const target = typeof z.target_airflow === 'number' ? ` · profile target ${number(z.target_airflow)} ${esc(airflow.unit)}` : '';
+    setHTML('zone-proof', `<div class="proof-title"><span>${esc(z.name || z.id)} · follow the result</span><small>${command ? esc(human(command.status)) : 'Current run · no equipment action'}</small></div><div class="proof-steps">${steps.map((step) => `<div class="proof-step ${step.kind}"><strong>${esc(step.title)}</strong><span>${esc(step.text)}</span></div>`).join('')}</div><p class="proof-context"><b>Fan reported: ${esc(fanText)}.</b> ${currentData ? 'Airflow observed' : 'Last reported airflow'}: ${esc(number(airflow.value))} ${esc(airflow.unit)}${target}. ${currentData ? 'A running fan alone does not confirm adequate exhaust.' : 'Current observations are needed before control or a new recovery claim.'}</p>`);
+    $('zone-proof').dataset.runId = runId;
+    $('zone-proof').dataset.commandId = command?.id || '';
+  }
+
+  function setVisualMode(mode) {
+    visualMode = mode === '3d' && facilityVisual ? '3d' : '2d';
+    $('spatial-stage').hidden = visualMode !== '3d';
+    $('facility-map').hidden = visualMode === '3d';
+    $('motion-toggle').hidden = visualMode !== '3d';
+    $('view-3d').setAttribute('aria-pressed', String(visualMode === '3d'));
+    $('view-2d').setAttribute('aria-pressed', String(visualMode === '2d'));
+    facilityVisual?.setActive(visualMode === '3d');
+  }
+
+  function renderMotion() {
+    const paused = facilityVisual?.paused ?? true;
+    $('motion-toggle').setAttribute('aria-pressed', String(paused));
+    $('motion-toggle').textContent = paused ? 'Resume motion' : 'Pause motion';
+  }
+
+  function visualUnavailable() {
+    setVisualMode('2d');
+    $('view-3d').disabled = true;
+    $('spatial-notice').hidden = false;
+    $('spatial-notice').textContent = '3D is unavailable in this browser. The 2D map and all observations remain available.';
   }
 
   function runMode(run) {
@@ -497,6 +564,19 @@
     else button.disabled = false;
   });
   document.addEventListener('visibilitychange', () => { if (!document.hidden) poll(true); });
+  $('view-3d').addEventListener('click', () => setVisualMode('3d'));
+  $('view-2d').addEventListener('click', () => setVisualMode('2d'));
+  $('motion-toggle').addEventListener('click', () => { facilityVisual?.setPaused(!facilityVisual.paused); renderMotion(); });
+  $('facility-3d').addEventListener('motion-paused', renderMotion);
+  $('facility-3d').addEventListener('visual-unavailable', visualUnavailable);
+  import('/assets/facility-3d.js').then(({ createFacilityVisual }) => {
+    facilityVisual = createFacilityVisual({ host: $('facility-3d'), labelHost: $('spatial-labels'), onSelect: (id) => { state.zoneId = id; renderMap(); renderZoneDetail(); } });
+    $('view-3d').disabled = false;
+    setVisualMode('3d');
+    facilityVisual.setPaused(facilityVisual.paused);
+    renderMotion();
+    renderVisual();
+  }).catch(visualUnavailable);
   renderWorkflow();
   poll();
   setInterval(() => poll(), 2000);

@@ -1,0 +1,54 @@
+{
+  "status": "CAPTURED_INCOMPLETE_CONFIGURATION_CASE",
+  "sources": {
+    "scripts/codex_guided_rehearsal.py": "a1a9b65c6f4054d0692a808b9cc74e7afbbc0eff7d20f13322eb8c70750809b0",
+    "scripts/codex_configuration_rehearsal.py": "7c0d19d2166d215e34acb66209c98f5fde10ecfdd134f54afc436d975a89f2c6"
+  },
+  "evidence": {
+    "scripts/codex_configuration_rehearsal.py": "7c0d19d2166d215e34acb66209c98f5fde10ecfdd134f54afc436d975a89f2c6",
+    "evidence/agent/guided-config-continuation-dry.json": "acd47a2957cce70ce874d93c07662aaa09c2e77367d0c2393641936b47c67c1b",
+    "evidence/agent/guided-config-continuation-live.json": "88ce9a71c9b92326f9a90158a6a1c26a607c3e6972f1a23fe44671a996b2efdf",
+    "evidence/agent/guided-config-dry.json": "d94faa342d5f8903fd6581b45f87454fac132991cb0856c69a2a98cc44de0439",
+    "evidence/agent/guided-config-final-dry.json": "f7416d12a3354beb00da7c6f36354893b048b8a6af7b506b106b688cfce24438",
+    "evidence/agent/guided-config-first-settlement-race.json": "b7efc8ae797357221a74eb2defdb059c1b6b92e9a5d62213ee7ac86ff4a1c282",
+    "evidence/agent/guided-config-live.json": "b7efc8ae797357221a74eb2defdb059c1b6b92e9a5d62213ee7ac86ff4a1c282",
+    "evidence/agent/guided-config-preflight.json": "402040ee102ec54e3983f36acf65ae742fa81ed045f8a0d938162c7df55358fa",
+    "evidence/agent/guided-config-race-regression.json": "6c2f72a47ceecf41e7ca9264d9723368f620a7fd807414e7b13e0d5ff5600894",
+    "evidence/agent/guided-config-report.md": "ab6339739a6696dd52674ef8e4cc24b5a9f54162891f14ed2f0f688a09ea0f63",
+    "evidence/agent/guided-config-resume-check.json": "a54ab89b04f9e5a4b409b5b5b9577d197a83ea2a14a11fb17ac7fd8905e06f16",
+    "evidence/agent/guided-config-scope.json": "b33e8ffd54298d0743800f29e124a8f3ad94667347a08ecc2b7476c86dfb97e5"
+  },
+  "case_scope": {
+    "max_requests": 3,
+    "max_tokens": 30000,
+    "requests_consumed": 3,
+    "tokens_charged": 8030,
+    "requests_remaining": 0,
+    "tokens_remaining": 21970
+  },
+  "shared_budget": {
+    "batch_id": "opensoom-hackathon-2026-01",
+    "max_requests": 100,
+    "max_tokens": 250000,
+    "requests_consumed": 69,
+    "tokens_charged": 226460,
+    "tokens_reserved": 0,
+    "pending_requests": 0,
+    "requests_remaining": 31,
+    "tokens_remaining": 23540,
+    "requires_investigation": false
+  },
+  "original_guided_scope": {
+    "max_requests": 6,
+    "max_tokens": 50000,
+    "requests_consumed": 6,
+    "tokens_charged": 20385,
+    "requests_remaining": 0,
+    "tokens_remaining": 29615
+  },
+  "credential_value_matches": 0,
+  "script_syntax_valid": true,
+  "json_valid": true,
+  "independent_review_required": true,
+  "further_inference_in_this_case_allowed": false
+}

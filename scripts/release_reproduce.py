@@ -30,13 +30,14 @@ def main():
     checkout.mkdir(parents=True)
     for name in ("src", "profiles", "schemas", "config", "scenarios", "web", "plugin", "scripts", "deploy", "docs"):
         shutil.copytree(source / name, checkout / name, ignore=shutil.ignore_patterns("__pycache__", "*.pyc"))
-    for name in ("pyproject.toml", "uv.lock", "README.md", "LICENSE", "LICENSE-CONTENT"):
+    for name in ("pyproject.toml", "uv.lock", "README.md", "LICENSE", "LICENSE-DOCS.md"):
         if (source / name).is_file():
             shutil.copy2(source / name, checkout / name)
     env = {k: v for k, v in os.environ.items() if not k.startswith("OPENSOOM_") and not any(s in k for s in ("API_KEY", "TOKEN", "SECRET"))}
     evidence = {"status": "RUNNING", "isolation": "new source copy, two new Python environments, new HTTPS CSE database and application store",
                 "ports": {"api": args.api_port, "cse_https": args.cse_port}, "model_calls": 0,
                 "physical_devices": "simulated", "steps": [], "source_cli_sha256": hashlib.sha256((source / "src/opensoom/cli.py").read_bytes()).hexdigest()}
+    evidence["source_sha256"] = {str(p.relative_to(source)): hashlib.sha256(p.read_bytes()).hexdigest() for p in [*sorted((source / "src/opensoom").glob("*.py")), Path(__file__), source / "config/facilities.json", source / "uv.lock"]}
     main_record = source / ".runtime/service-process.json"
     main_pid = json.loads(main_record.read_text()).get("pid") if main_record.exists() else None
     python = checkout / ".venv/bin/python"
@@ -91,6 +92,17 @@ def main():
         run("seed_budget_preservation_check", [python, "-c", "from opensoom.llm_budget import SharedBudget,BudgetLimits; b=SharedBudget('.runtime/llm-budget.sqlite',BudgetLimits('isolated-lifecycle-test-no-model-calls',1,1)); b.reserve('sentinel','test',1); print(b.snapshot())"])
         budget_before = hashlib.sha256((runtime / "llm-budget.sqlite").read_bytes()).hexdigest()
         config_before = json.loads((runtime / "service-config.json").read_text())
+        # Persist an unresolved, unacknowledged command through actual process
+        # termination, then let the restarted service observe its real expiry.
+        pending_client = httpx.Client(base_url=f"http://127.0.0.1:{args.api_port}", headers={"Authorization": "Bearer " + credentials["operator_token"]}, timeout=15, trust_env=False)
+        response = pending_client.post("/api/demo/start", json={"facility_id": "food-a", "scenario": "missing_ack", "autorun": True})
+        response.raise_for_status()
+        pending_run = response.json()["run_id"]
+        pending_state = pending_client.get("/api/state").json()
+        pending_command = next(c for c in pending_state["commands"] if c.get("run_id") == pending_run)
+        pending_incident = next(i for i in pending_state["incidents"] if i["id"] == pending_command["incident_id"])
+        assert pending_command["status"] == "requested" and not pending_command["ack"]
+        evidence["restart_pending"] = {"run_id": pending_run, "before_command": pending_command, "incident_id": pending_incident["id"]}
         run("stop", [python, "-m", "opensoom.cli", "stop"])
         service_started = False
         run("stopped_diagnostic", [python, "-m", "opensoom.cli", "doctor"], expected=1)
@@ -99,6 +111,19 @@ def main():
         ready("doctor_after_stop_start")
         run("restart_without_flags_or_environment", [python, "-m", "opensoom.cli", "restart"])
         ready("doctor_after_restart")
+        deadline = time.monotonic() + 38
+        while time.monotonic() < deadline:
+            continued_state = pending_client.get("/api/state").json()
+            continued = next(c for c in continued_state["commands"] if c["id"] == pending_command["id"])
+            if continued["status"] == "timed_out":
+                break
+            time.sleep(.4)
+        assert continued["status"] == "timed_out" and not continued["ack"]
+        assert continued["run_id"] == pending_run and continued["incident_id"] == pending_incident["id"]
+        current_incident = next(i for i in continued_state["incidents"] if i["id"] == pending_incident["id"])
+        assert current_incident["status"] != "resolved"
+        evidence["restart_pending"].update(after_command=continued, after_incident=current_incident, outcome="PRESERVED_AND_TIMED_OUT_WITHOUT_FALSE_RECOVERY")
+        pending_client.close()
         run("cleanup_running_service", [python, "-m", "opensoom.cli", "cleanup"])
         service_started = False
         evidence["cleanup"] = {"operations_removed": not (runtime / "operations.sqlite").exists(),

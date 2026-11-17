@@ -1,0 +1,128 @@
+{
+  "schema_version": 1,
+  "team": "team_2",
+  "reviewer_role": "oss_experience_review",
+  "model": "gpt-6.1-sol",
+  "reasoning_effort": "max",
+  "reviewed_commit": "2b2a239270e70625e99e39a5b738e09c84c19822",
+  "criteria": [4, 5, 6, 7],
+  "scope": "Independent S0, first-CSE and S3 milestone review, emphasizing adoption, deliverables and truthful claims. Immutable commit content was read through git objects; current worktree core/app changes were excluded.",
+  "overall": "Substantial implemented and captured software evidence. Accept the scoped CLI-host transport and isolated lifecycle observations; do not close full release or final S3 execution gates against a different source revision. No official score is awarded.",
+  "milestone_assessment": {
+    "stage0": "Contracts, runtime selection, dependency pins, preflight and implementation exist. Team 2 supports the adoption/documentation portion; four-team reconciliation remains main-owned.",
+    "first_cse": "Captured actual application and isolated HTTPS lifecycle evidence distinguishes real CSE software from simulated devices. This review inspected evidence and ran offline tests; it did not independently rerun a live CSE.",
+    "S3_G1": "Fresh isolated Codex CLI 0.166.0 plugin registration, actual app-server MCP calls and persistent host-run correlation are captured. Public setup instructions, application diagnosis, stop/start, restart and cleanup have separate isolated lifecycle evidence. This supports technical CLI-host integration, not a Codex model-directed onboarding turn, desktop UI interaction or a nontechnical human first-use study. Main should record this exact acceptance scope; desktop UI must not be invented as an additional official requirement.",
+    "S3_G2_G3": "Actual hosted recovery, post-ACK non-recovery and stale refusal runs are captured separately from fixtures. The agent bundle records a different core/app source snapshot from this commit, so final gate closeout needs the source-impact reconciliation in T2-I01 and the other owners' correctness review.",
+    "release": "Not approved as a final release. Article is an unpublished draft; video/pitch examined as supplementary feedback are outside the reviewed commit. A unified release snapshot and all-team review remain necessary."
+  },
+  "criterion_assessments": [
+    {
+      "criterion": 4,
+      "evidence_status": "implemented_draft; public_publication_pending",
+      "evidence": ["docs/submission/hackster-article.md", "docs/submission/technical-qa.md", "docs/architecture.md", "docs/standard-model.md"],
+      "assessment": "English draft explains the sourced problem, simulated physical boundary, architecture/resource model, protocol and security limits, reuse and oneM2M tradeoffs. It clearly labels publication pending. Local media references are not present in this immutable snapshot and must be reconciled before the submission-ready release.",
+      "score": null
+    },
+    {
+      "criterion": 5,
+      "evidence_status": "not_in_immutable_snapshot; supplemental_media_feedback_only",
+      "evidence": [],
+      "assessment": "The reviewed commit contains dashboard captures and article references but no committed playable video. Later untracked media cannot earn a final snapshot acceptance in this review. Missing public hosting remains a separately authorized handoff, not an implementation failure or an automatic zero.",
+      "score": null
+    },
+    {
+      "criterion": 6,
+      "evidence_status": "implemented; captured_lifecycle; independently_offline_checked",
+      "evidence": ["README.md", "deploy/README.md", "docs/agent-integration.md", "docs/extending.md", "evidence/release/clean-lifecycle.json", "evidence/agent/secure-codex-host-correlated.json"],
+      "assessment": "README independently provides purpose, pinned source-checkout setup, account-free demonstration, source map, diagnostics, lifecycle and honest limits. Isolated lifecycle evidence covers installation, CSE readiness, fixture recovery, stop/start without repeated settings, restart and cleanup preserving the budget. Supported rehearsal is macOS arm64/Python 3.12 and Codex CLI 0.166.0. Bare-wheel installation, other OS acceptance, desktop UI and manager first-use are not verified and are appropriately disclosed.",
+      "score": null
+    },
+    {
+      "criterion": 7,
+      "evidence_status": "implemented_documentation; captured_standard_service_examples; final_alignment_pending",
+      "evidence": ["README.md", "docs/submission/hackster-article.md", "docs/extending.md", "evidence/application/acceptance.json", "evidence/runtime/product-multisite-continuity.json"],
+      "assessment": "Concrete discovery, subscription, fan-out, ACP and distributed-sharing benefits are explained alongside responsibilities still implemented by openSoom. It avoids claiming oneM2M is the only possible solution or that vendor fragmentation caused health outcomes. Final video/article/repository claims must be checked against the same final source and evidence snapshot.",
+      "score": null
+    }
+  ],
+  "verified_observations": [
+    "All indexed agent artifact hashes match the immutable commit's artifacts.",
+    "Ten of twelve agent source-snapshot hashes match this commit; core.py and app.py do not.",
+    "Codex evidence has four successful registration/list commands, six actual host tool calls, an expected operator apply_setup denial and persisted discover/read_group/read_evidence run correlation.",
+    "Codex evidence explicitly records zero model inference calls. A desktop-looking userAgent does not establish desktop UI execution.",
+    "The isolated lifecycle evidence records 18 steps, including expected nonzero not-ready diagnostics, fixture recovery, preserved secure settings and cleanup preserving the CSE/configuration/shared budget.",
+    "The lifecycle's source_cli_sha256 matches cli.py in the reviewed commit.",
+    "README, agent guide, article and extension guide distinguish a supported source checkout from an unsupported bare wheel and disclose the tested OS/host scope."
+  ],
+  "findings": [
+    {
+      "id": "T2-I01",
+      "criteria": [4, 6, 7],
+      "gate_ids": ["S3-G2", "S3-G3", "S3-G4", "S6-G3"],
+      "priority": "P1",
+      "kind": "evidence_revision_gap",
+      "blocks": "Final execution-gate closeout, not continued implementation or recognition of the captured historical runs.",
+      "observed_evidence": ["evidence/agent/index.json#source_hash_snapshot_at_bundle_capture", "src/opensoom/core.py", "src/opensoom/app.py"],
+      "gap_and_impact": "The accepted agent bundle's core.py and app.py SHA-256 values differ from the immutable review commit. These files enforce service outcomes, so the earlier captures alone cannot establish that the reviewed or subsequently corrected implementation passed the same live workflow.",
+      "minimum_change": "After correctness fixes settle, reconcile the source delta independently or capture the affected actual host/live-model scenarios against the final source revision, within the existing shared allowance. Preserve earlier captures and identify them as historical rather than relabeling their hashes.",
+      "product_reason": "Adopters and judges must be able to connect demonstrated agent outcomes to the implementation being released.",
+      "verification": "A final evidence index names the final code revision/hashes, all indexed artifacts match, and each affected host/live result is either freshly reproduced or covered by an explicit independent equivalence review."
+    },
+    {
+      "id": "T2-I02",
+      "criteria": [6],
+      "gate_ids": ["S3-G1", "S3-G4"],
+      "priority": "P2",
+      "kind": "acceptance_scope_and_adoption_gap",
+      "blocks": "Any unqualified claim of verified agent-guided manager onboarding; does not invalidate the observed CLI-host transport pass.",
+      "observed_evidence": ["scripts/agent_codex_check.py:114", "scripts/agent_codex_check.py:138", "evidence/agent/secure-codex-host-correlated.json", "docs/agent-integration.md:130"],
+      "gap_and_impact": "The fresh host test directly scripts six MCP calls against an already-running service; it deliberately performs no Codex model turn, and successful administrator profile activation is not exercised. It establishes registration/transport and a valid denial, not that a facility manager's natural-language setup request follows the onboarding skill successfully.",
+      "minimum_change": "Keep the technical CLI pass and its limits explicit. For the broader product onboarding outcome, add a bounded already-authorized Codex CLI guided setup/diagnosis rehearsal from a documented starting state, recording every helper action and the user's visible result. Desktop UI testing and a human study need not be invented as mandatory substitutes.",
+      "product_reason": "Nontechnical agent-guided adoption is a core product requirement beyond exposing an MCP endpoint.",
+      "verification": "Evidence separates plugin installation, host invocation, skill/model-directed guidance, runtime/CSE readiness and operational results; no developer supplies the operational decisions in place of the agent. Otherwise retain the broader onboarding claim as unverified."
+    },
+    {
+      "id": "T2-I03",
+      "criteria": [6],
+      "gate_ids": ["S3-G1", "S6-G1"],
+      "priority": "P2",
+      "kind": "reproduction_overwrites_historical_evidence",
+      "blocks": "No immediate runtime blocker; repair before final public reproduction instructions.",
+      "observed_evidence": ["scripts/agent_codex_check.py:163", "README.md", "evidence/agent/index.json#entries", "evidence/agent/codex-host.json"],
+      "gap_and_impact": "The documented default Codex check writes to evidence/agent/codex-host.json, which is a tracked retained failed attempt indexed by hash. Running the public verification command overwrites that historical evidence and leaves the index inconsistent.",
+      "minimum_change": "Default new acceptance output to an ignored per-run runtime file, or require an explicit output path for publishing a new named capture. Keep historical captures immutable and update the index deliberately.",
+      "product_reason": "A newcomer should be able to verify installation without erasing the project's failure history or dirtying accepted evidence.",
+      "verification": "The default check's chosen output is untracked/ignored and unique or clearly disposable; the tracked historical file and indexed hash remain unchanged."
+    }
+  ],
+  "offline_checks": {
+    "source": "git archive of reviewed_commit in an isolated temporary directory; current core/app worktree excluded",
+    "environment": "Existing project Python environment; isolated snapshot src prepended to import path; no dependency installation, provider calls or runtime service mutation",
+    "command": "PYTHONPATH=<isolated-snapshot>/src <project-python> -m pytest tests/test_cli_lifecycle.py tests/test_contracts.py tests/test_facility_registry.py -q -p no:cacheprovider",
+    "exit_status": 0,
+    "result": "19 passed in 0.33s",
+    "limit": "Offline contract/lifecycle regression checks do not independently reproduce captured CSE or model execution."
+  },
+  "supplemental_outside_snapshot": {
+    "scope": "Pre-release feedback only; untracked video/pitch are not part of reviewed_commit and were not accepted as final deliverables.",
+    "inspected": ["evidence/video/decoded-contact-sheet.jpg", "evidence/pitch/desktop.jpg", "evidence/video/qa.json", "evidence/video/ffprobe.json", "evidence/video/asset-provenance.json", "evidence/pitch/qa.json"],
+    "positive_observations": [
+      "Decoded video scene sheet has a coherent problem/action/ACK/recovery/non-recovery/reuse narrative, readable visual hierarchy and explicit virtual-device/model/CLI scope labels.",
+      "Media QA reports a 108.021-second H.264/AAC artifact, complete decode and browser playback; this reviewer inspected selected decoded visuals and metadata, not an independent complete audio/playback run.",
+      "Pitch capture has a clear facility model and explicitly labels its geometry as illustrative rather than airflow simulation or live measurements."
+    ],
+    "findings": [
+      {
+        "id": "T2-PR01",
+        "criteria": [5, 6],
+        "priority": "P2",
+        "observed_evidence": "evidence/video/ffprobe.json#format.filename",
+        "gap_and_impact": "The generated probe JSON includes the maintainer's absolute workstation path. This should not be added to the public release evidence.",
+        "minimum_change": "Replace the filename with the repository-relative artifact path when saving probe evidence; inspect the full final artifact set for private paths before publication.",
+        "verification": "The final sanitized JSON retains technical probe metadata and names only the relative video artifact, with no personal absolute path."
+      }
+    ],
+    "final_review_needed": "Commit the intended media/pitch/assets and sanitized evidence into one release snapshot, reconcile article references and deliverable manifest hashes, then perform the planned four-team release review. Public hosting, article publication and Discord submission remain separate authorized handoffs."
+  },
+  "scoring_boundary": "No official total, weight, winning probability or implementation score inferred. Unpublished or unreviewed evidence is not automatically zero or N/A."
+}

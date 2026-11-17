@@ -1,0 +1,279 @@
+{
+  "mode": "harness_selected_real_MCP_read",
+  "model_inference_calls": 0,
+  "model_selected_this_read": false,
+  "tool": "read_evidence",
+  "arguments": {
+    "facility_id": "learning-b"
+  },
+  "source_sha256": {
+    "src/opensoom/core.py": "00f4339ce5481d4daf13f8d44ab857f86173469f8da68eddf0db96d5ca6c32c5",
+    "src/opensoom/mcp_server.py": "71fd594289b16f085f6cc8b4ce3cbefefc2b7fe7d7296098f9820b41940d8bdc",
+    "plugin/skills/opensoom-operations/SKILL.md": "94d6345338491b24649b1390a059c6a7fc5a61b928262caed87180e43d95a5a2",
+    "plugin/skills/opensoom-setup/SKILL.md": "9b7c273f6926ee4c78c2bf86de694bd1bad2a6538c63e078a223ddec02b9ad88"
+  },
+  "captured_at": "2026-11-17T20:21:24.045559+00:00",
+  "response": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"id\": \"learning-b\",\n  \"name\": \"Westside learning hub\",\n  \"profile\": \"learning-space\",\n  \"adapter\": \"vendor-b\",\n  \"scenario\": \"no_recovery\",\n  \"active_run\": \"demo-2d8213685e\",\n  \"zones\": [\n    {\n      \"id\": \"classroom\",\n      \"name\": \"Learning studio\",\n      \"target_airflow\": 500,\n      \"observations\": {\n        \"pm25\": {\n          \"value\": 62.0,\n          \"unit\": \"µg/m³\",\n          \"observed_at\": \"2026-11-17T20:21:23.515+00:00\",\n          \"received_at\": \"2026-11-17T20:21:23.515+00:00\",\n          \"source\": \"simulated\",\n          \"quality\": \"good\"\n        },\n        \"co2\": {\n          \"value\": 1450.0,\n          \"unit\": \"ppm\",\n          \"observed_at\": \"2026-11-17T20:21:23.515+00:00\",\n          \"received_at\": \"2026-11-17T20:21:23.515+00:00\",\n          \"source\": \"simulated\",\n          \"quality\": \"good\"\n        },\n        \"airflow\": {\n          \"value\": 200.0,\n          \"unit\": \"m³/h\",\n          \"observed_at\": \"2026-11-17T20:21:23.515+00:00\",\n          \"received_at\": \"2026-11-17T20:21:23.515+00:00\",\n          \"source\": \"simulated\",\n          \"quality\": \"good\"\n        },\n        \"fan_running\": {\n          \"value\": true,\n          \"unit\": \"boolean\",\n          \"observed_at\": \"2026-11-17T20:21:23.515+00:00\",\n          \"received_at\": \"2026-11-17T20:21:23.515+00:00\",\n          \"source\": \"simulated\",\n          \"quality\": \"good\"\n        },\n        \"damper_pct\": {\n          \"value\": 100.0,\n          \"unit\": \"%\",\n          \"observed_at\": \"2026-11-17T20:21:23.515+00:00\",\n          \"received_at\": \"2026-11-17T20:21:23.515+00:00\",\n          \"source\": \"simulated\",\n          \"quality\": \"good\"\n        }\n      },\n      \"status\": \"critical\",\n      \"freshness\": 0.508035,\n      \"reason\": \"Airflow is below this zone's configured simulation target; Particles exceed the configured simulation target; CO₂ exceeds the configured simulation target\",\n      \"cse_rqi\": \"opensoom-58a4f6b7aca04d7d911d376b5e40a82b\"\n    },\n    {\n      \"id\": \"meeting\",\n      \"name\": \"Meeting room\",\n      \"target_airflow\": 300,\n      \"observations\": {\n        \"pm25\": {\n          \"value\": 12.0,\n          \"unit\": \"µg/m³\",\n          \"observed_at\": \"2026-11-17T20:21:23.558+00:00\",\n          \"received_at\": \"2026-11-17T20:21:23.558+00:00\",\n          \"source\": \"simulated\",\n          \"quality\": \"good\"\n        },\n        \"co2\": {\n          \"value\": 620.0,\n          \"unit\": \"ppm\",\n          \"observed_at\": \"2026-11-17T20:21:23.558+00:00\",\n          \"received_at\": \"2026-11-17T20:21:23.558+00:00\",\n          \"source\": \"simulated\",\n          \"quality\": \"good\"\n        },\n        \"airflow\": {\n          \"value\": 345.0,\n          \"unit\": \"m³/h\",\n          \"observed_at\": \"2026-11-17T20:21:23.558+00:00\",\n          \"received_at\": \"2026-11-17T20:21:23.558+00:00\",\n          \"source\": \"simulated\",\n          \"quality\": \"good\"\n        },\n        \"fan_running\": {\n          \"value\": true,\n          \"unit\": \"boolean\",\n          \"observed_at\": \"2026-11-17T20:21:23.558+00:00\",\n          \"received_at\": \"2026-11-17T20:21:23.558+00:00\",\n          \"source\": \"simulated\",\n          \"quality\": \"good\"\n        },\n        \"damper_pct\": {\n          \"value\": 70.0,\n          \"unit\": \"%\",\n          \"observed_at\": \"2026-11-17T20:21:23.558+00:00\",\n          \"received_at\": \"2026-11-17T20:21:23.558+00:00\",\n          \"source\": \"simulated\",\n          \"quality\": \"good\"\n        }\n      },\n      \"status\": \"nominal\",\n      \"freshness\": 0.465182,\n      \"reason\": \"Within configured operating targets\",\n      \"cse_rqi\": \"opensoom-897f1a3209c54760a9f5513c147d3111\"\n    },\n    {\n      \"id\": \"lounge\",\n      \"name\": \"Shared lounge\",\n      \"target_airflow\": 350,\n      \"observations\": {\n        \"pm25\": {\n          \"value\": 12.0,\n          \"unit\": \"µg/m³\",\n          \"observed_at\": \"2026-11-17T20:21:23.606+00:00\",\n          \"received_at\": \"2026-11-17T20:21:23.606+00:00\",\n          \"source\": \"simulated\",\n          \"quality\": \"good\"\n        },\n        \"co2\": {\n          \"value\": 620.0,\n          \"unit\": \"ppm\",\n          \"observed_at\": \"2026-11-17T20:21:23.606+00:00\",\n          \"received_at\": \"2026-11-17T20:21:23.606+00:00\",\n          \"source\": \"simulated\",\n          \"quality\": \"good\"\n        },\n        \"airflow\": {\n          \"value\": 402.49999999999994,\n          \"unit\": \"m³/h\",\n          \"observed_at\": \"2026-11-17T20:21:23.606+00:00\",\n          \"received_at\": \"2026-11-17T20:21:23.606+00:00\",\n          \"source\": \"simulated\",\n          \"quality\": \"good\"\n        },\n        \"fan_running\": {\n          \"value\": true,\n          \"unit\": \"boolean\",\n          \"observed_at\": \"2026-11-17T20:21:23.606+00:00\",\n          \"received_at\": \"2026-11-17T20:21:23.606+00:00\",\n          \"source\": \"simulated\",\n          \"quality\": \"good\"\n        },\n        \"damper_pct\": {\n          \"value\": 70.0,\n          \"unit\": \"%\",\n          \"observed_at\": \"2026-11-17T20:21:23.606+00:00\",\n          \"received_at\": \"2026-11-17T20:21:23.606+00:00\",\n          \"source\": \"simulated\",\n          \"quality\": \"good\"\n        }\n      },\n      \"status\": \"nominal\",\n      \"freshness\": 0.417308,\n      \"reason\": \"Within configured operating targets\",\n      \"cse_rqi\": \"opensoom-2aff2224ecfc4555a09b33272955da0b\"\n    }\n  ],\n  \"status\": \"critical\",\n  \"simulation\": true,\n  \"controls_enabled\": true,\n  \"incidents\": [\n    {\n      \"id\": \"incident-a3afad9928\",\n      \"facility_id\": \"learning-b\",\n      \"zone_id\": \"classroom\",\n      \"title\": \"Verify learning studio ventilation\",\n      \"status\": \"open\",\n      \"created_at\": \"2026-11-17T19:14:33.124+00:00\",\n      \"recovery_count\": 0,\n      \"reason\": \"Airflow is below this zone's configured simulation target; Particles exceed the configured simulation target; CO₂ exceeds the configured simulation target\",\n      \"severity\": \"critical\",\n      \"updated_at\": \"2026-11-17T20:21:23.557+00:00\",\n      \"latest_rqi\": \"opensoom-58a4f6b7aca04d7d911d376b5e40a82b\"\n    }\n  ],\n  \"commands\": [],\n  \"current_run_id\": \"mcp-731cdeb1bb37\",\n  \"evidence_scope\": {\n    \"incidents\": \"All stored incidents for this facility, across runs.\",\n    \"commands\": {\n      \"run_id\": \"mcp-731cdeb1bb37\",\n      \"limit\": 10,\n      \"complete_facility_history\": false,\n      \"meaning\": \"Only the latest 10 stored commands belonging to this run. An empty list does not rule out actions or ACKs in other runs.\"\n    },\n    \"recovery_count\": {\n      \"unit\": \"consecutive_qualifying_post_ack_observations\",\n      \"scope\": \"incident\",\n      \"required\": 2,\n      \"counts_action_attempts\": false,\n      \"meaning\": \"Consecutive qualifying healthy observations after an acknowledged command; resets to zero for a non-nominal observation, including critical, stale or missing. This is not a count of attempted actions, ACKs or recovered incidents.\"\n    },\n    \"diagnosis\": \"Use each zone's reason and configured targets: deficient airflow is below its minimum; excessive PM2.5 and CO2 are above their limits. These are simulation targets, not certified safety limits.\"\n  },\n  \"standard_models\": [\n    {\n      \"zone_id\": \"classroom\",\n      \"cnd\": \"org.onem2m.common.moduleclass.airQualitySensor\",\n      \"pm25\": 62,\n      \"unit\": \"µg/m³\",\n      \"specification\": \"oneM2M TS-0023 v5.6.0 5.3.1.6\",\n      \"rqi\": \"opensoom-ee278e7f81044e5db1221f9da07bf414\",\n      \"note\": \"Integer rounded value; full precision is retained in observations. CO₂ ppm is not mapped to the SDT mg/m³ field.\"\n    },\n    {\n      \"zone_id\": \"meeting\",\n      \"cnd\": \"org.onem2m.common.moduleclass.airQualitySensor\",\n      \"pm25\": 12,\n      \"unit\": \"µg/m³\",\n      \"specification\": \"oneM2M TS-0023 v5.6.0 5.3.1.6\",\n      \"rqi\": \"opensoom-62c1c8902097418f941a6a7be77b450a\",\n      \"note\": \"Integer rounded value; full precision is retained in observations. CO₂ ppm is not mapped to the SDT mg/m³ field.\"\n    },\n    {\n      \"zone_id\": \"lounge\",\n      \"cnd\": \"org.onem2m.common.moduleclass.airQualitySensor\",\n      \"pm25\": 12,\n      \"unit\": \"µg/m³\",\n      \"specification\": \"oneM2M TS-0023 v5.6.0 5.3.1.6\",\n      \"rqi\": \"opensoom-b5b3e3281ccf40c6a81547874f8ffacd\",\n      \"note\": \"Integer rounded value; full precision is retained in observations. CO₂ ppm is not mapped to the SDT mg/m³ field.\"\n    }\n  ],\n  \"run_id\": \"mcp-731cdeb1bb37\"\n}"
+      }
+    ],
+    "structuredContent": {
+      "id": "learning-b",
+      "name": "Westside learning hub",
+      "profile": "learning-space",
+      "adapter": "vendor-b",
+      "scenario": "no_recovery",
+      "active_run": "demo-2d8213685e",
+      "zones": [
+        {
+          "id": "classroom",
+          "name": "Learning studio",
+          "target_airflow": 500,
+          "observations": {
+            "pm25": {
+              "value": 62.0,
+              "unit": "µg/m³",
+              "observed_at": "2026-11-17T20:21:23.515+00:00",
+              "received_at": "2026-11-17T20:21:23.515+00:00",
+              "source": "simulated",
+              "quality": "good"
+            },
+            "co2": {
+              "value": 1450.0,
+              "unit": "ppm",
+              "observed_at": "2026-11-17T20:21:23.515+00:00",
+              "received_at": "2026-11-17T20:21:23.515+00:00",
+              "source": "simulated",
+              "quality": "good"
+            },
+            "airflow": {
+              "value": 200.0,
+              "unit": "m³/h",
+              "observed_at": "2026-11-17T20:21:23.515+00:00",
+              "received_at": "2026-11-17T20:21:23.515+00:00",
+              "source": "simulated",
+              "quality": "good"
+            },
+            "fan_running": {
+              "value": true,
+              "unit": "boolean",
+              "observed_at": "2026-11-17T20:21:23.515+00:00",
+              "received_at": "2026-11-17T20:21:23.515+00:00",
+              "source": "simulated",
+              "quality": "good"
+            },
+            "damper_pct": {
+              "value": 100.0,
+              "unit": "%",
+              "observed_at": "2026-11-17T20:21:23.515+00:00",
+              "received_at": "2026-11-17T20:21:23.515+00:00",
+              "source": "simulated",
+              "quality": "good"
+            }
+          },
+          "status": "critical",
+          "freshness": 0.508035,
+          "reason": "Airflow is below this zone's configured simulation target; Particles exceed the configured simulation target; CO₂ exceeds the configured simulation target",
+          "cse_rqi": "opensoom-58a4f6b7aca04d7d911d376b5e40a82b"
+        },
+        {
+          "id": "meeting",
+          "name": "Meeting room",
+          "target_airflow": 300,
+          "observations": {
+            "pm25": {
+              "value": 12.0,
+              "unit": "µg/m³",
+              "observed_at": "2026-11-17T20:21:23.558+00:00",
+              "received_at": "2026-11-17T20:21:23.558+00:00",
+              "source": "simulated",
+              "quality": "good"
+            },
+            "co2": {
+              "value": 620.0,
+              "unit": "ppm",
+              "observed_at": "2026-11-17T20:21:23.558+00:00",
+              "received_at": "2026-11-17T20:21:23.558+00:00",
+              "source": "simulated",
+              "quality": "good"
+            },
+            "airflow": {
+              "value": 345.0,
+              "unit": "m³/h",
+              "observed_at": "2026-11-17T20:21:23.558+00:00",
+              "received_at": "2026-11-17T20:21:23.558+00:00",
+              "source": "simulated",
+              "quality": "good"
+            },
+            "fan_running": {
+              "value": true,
+              "unit": "boolean",
+              "observed_at": "2026-11-17T20:21:23.558+00:00",
+              "received_at": "2026-11-17T20:21:23.558+00:00",
+              "source": "simulated",
+              "quality": "good"
+            },
+            "damper_pct": {
+              "value": 70.0,
+              "unit": "%",
+              "observed_at": "2026-11-17T20:21:23.558+00:00",
+              "received_at": "2026-11-17T20:21:23.558+00:00",
+              "source": "simulated",
+              "quality": "good"
+            }
+          },
+          "status": "nominal",
+          "freshness": 0.465182,
+          "reason": "Within configured operating targets",
+          "cse_rqi": "opensoom-897f1a3209c54760a9f5513c147d3111"
+        },
+        {
+          "id": "lounge",
+          "name": "Shared lounge",
+          "target_airflow": 350,
+          "observations": {
+            "pm25": {
+              "value": 12.0,
+              "unit": "µg/m³",
+              "observed_at": "2026-11-17T20:21:23.606+00:00",
+              "received_at": "2026-11-17T20:21:23.606+00:00",
+              "source": "simulated",
+              "quality": "good"
+            },
+            "co2": {
+              "value": 620.0,
+              "unit": "ppm",
+              "observed_at": "2026-11-17T20:21:23.606+00:00",
+              "received_at": "2026-11-17T20:21:23.606+00:00",
+              "source": "simulated",
+              "quality": "good"
+            },
+            "airflow": {
+              "value": 402.49999999999994,
+              "unit": "m³/h",
+              "observed_at": "2026-11-17T20:21:23.606+00:00",
+              "received_at": "2026-11-17T20:21:23.606+00:00",
+              "source": "simulated",
+              "quality": "good"
+            },
+            "fan_running": {
+              "value": true,
+              "unit": "boolean",
+              "observed_at": "2026-11-17T20:21:23.606+00:00",
+              "received_at": "2026-11-17T20:21:23.606+00:00",
+              "source": "simulated",
+              "quality": "good"
+            },
+            "damper_pct": {
+              "value": 70.0,
+              "unit": "%",
+              "observed_at": "2026-11-17T20:21:23.606+00:00",
+              "received_at": "2026-11-17T20:21:23.606+00:00",
+              "source": "simulated",
+              "quality": "good"
+            }
+          },
+          "status": "nominal",
+          "freshness": 0.417308,
+          "reason": "Within configured operating targets",
+          "cse_rqi": "opensoom-2aff2224ecfc4555a09b33272955da0b"
+        }
+      ],
+      "status": "critical",
+      "simulation": true,
+      "controls_enabled": true,
+      "incidents": [
+        {
+          "id": "incident-a3afad9928",
+          "facility_id": "learning-b",
+          "zone_id": "classroom",
+          "title": "Verify learning studio ventilation",
+          "status": "open",
+          "created_at": "2026-11-17T19:14:33.124+00:00",
+          "recovery_count": 0,
+          "reason": "Airflow is below this zone's configured simulation target; Particles exceed the configured simulation target; CO₂ exceeds the configured simulation target",
+          "severity": "critical",
+          "updated_at": "2026-11-17T20:21:23.557+00:00",
+          "latest_rqi": "opensoom-58a4f6b7aca04d7d911d376b5e40a82b"
+        }
+      ],
+      "commands": [],
+      "current_run_id": "mcp-731cdeb1bb37",
+      "evidence_scope": {
+        "incidents": "All stored incidents for this facility, across runs.",
+        "commands": {
+          "run_id": "mcp-731cdeb1bb37",
+          "limit": 10,
+          "complete_facility_history": false,
+          "meaning": "Only the latest 10 stored commands belonging to this run. An empty list does not rule out actions or ACKs in other runs."
+        },
+        "recovery_count": {
+          "unit": "consecutive_qualifying_post_ack_observations",
+          "scope": "incident",
+          "required": 2,
+          "counts_action_attempts": false,
+          "meaning": "Consecutive qualifying healthy observations after an acknowledged command; resets to zero for a non-nominal observation, including critical, stale or missing. This is not a count of attempted actions, ACKs or recovered incidents."
+        },
+        "diagnosis": "Use each zone's reason and configured targets: deficient airflow is below its minimum; excessive PM2.5 and CO2 are above their limits. These are simulation targets, not certified safety limits."
+      },
+      "standard_models": [
+        {
+          "zone_id": "classroom",
+          "cnd": "org.onem2m.common.moduleclass.airQualitySensor",
+          "pm25": 62,
+          "unit": "µg/m³",
+          "specification": "oneM2M TS-0023 v5.6.0 5.3.1.6",
+          "rqi": "opensoom-ee278e7f81044e5db1221f9da07bf414",
+          "note": "Integer rounded value; full precision is retained in observations. CO₂ ppm is not mapped to the SDT mg/m³ field."
+        },
+        {
+          "zone_id": "meeting",
+          "cnd": "org.onem2m.common.moduleclass.airQualitySensor",
+          "pm25": 12,
+          "unit": "µg/m³",
+          "specification": "oneM2M TS-0023 v5.6.0 5.3.1.6",
+          "rqi": "opensoom-62c1c8902097418f941a6a7be77b450a",
+          "note": "Integer rounded value; full precision is retained in observations. CO₂ ppm is not mapped to the SDT mg/m³ field."
+        },
+        {
+          "zone_id": "lounge",
+          "cnd": "org.onem2m.common.moduleclass.airQualitySensor",
+          "pm25": 12,
+          "unit": "µg/m³",
+          "specification": "oneM2M TS-0023 v5.6.0 5.3.1.6",
+          "rqi": "opensoom-b5b3e3281ccf40c6a81547874f8ffacd",
+          "note": "Integer rounded value; full precision is retained in observations. CO₂ ppm is not mapped to the SDT mg/m³ field."
+        }
+      ],
+      "run_id": "mcp-731cdeb1bb37"
+    },
+    "isError": false
+  },
+  "service_run": {
+    "id": "mcp-731cdeb1bb37",
+    "run_id": "mcp-731cdeb1bb37",
+    "facility_id": "learning-b",
+    "scenario": "no_recovery",
+    "mode": "mcp_host",
+    "model": null,
+    "principal_role": "operator",
+    "status": "running",
+    "started_at": "2026-11-17T20:21:23.989+00:00",
+    "tool_calls": [
+      {
+        "name": "read_evidence",
+        "at": "2026-11-17T20:21:24.039+00:00",
+        "arguments": {
+          "facility_id": "learning-b"
+        },
+        "result_status": "critical"
+      }
+    ],
+    "steps": []
+  },
+  "status": "CAPTURED_REVISED_PRODUCT_CONTRACT",
+  "test_process_stopped": true
+}

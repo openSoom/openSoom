@@ -1,0 +1,67 @@
+{
+  "mode": "zero-inference protocol boundary checks",
+  "checks": [
+    {
+      "name": "exact doctor once",
+      "expected_accept": true,
+      "actual_accept": true,
+      "pass": true
+    },
+    {
+      "name": "other server",
+      "expected_accept": false,
+      "actual_accept": false,
+      "pass": true
+    },
+    {
+      "name": "forged plugin",
+      "expected_accept": false,
+      "actual_accept": false,
+      "pass": true
+    },
+    {
+      "name": "write tool",
+      "expected_accept": false,
+      "actual_accept": false,
+      "pass": true
+    },
+    {
+      "name": "authorized profile",
+      "expected_accept": true,
+      "actual_accept": true,
+      "pass": true
+    },
+    {
+      "name": "other profile",
+      "expected_accept": false,
+      "actual_accept": false,
+      "pass": true
+    },
+    {
+      "name": "target group",
+      "expected_accept": true,
+      "actual_accept": true,
+      "pass": true
+    },
+    {
+      "name": "other facility group",
+      "expected_accept": false,
+      "actual_accept": false,
+      "pass": true
+    },
+    {
+      "name": "host command approval",
+      "expected_accept": false,
+      "actual_accept": false,
+      "pass": true
+    }
+  ],
+  "budget": {
+    "max_requests": 6,
+    "max_tokens": 50000,
+    "requests_consumed": 2,
+    "tokens_charged": 6052,
+    "requests_remaining": 4,
+    "tokens_remaining": 43948
+  }
+}

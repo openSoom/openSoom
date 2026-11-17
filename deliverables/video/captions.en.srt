@@ -1,0 +1,44 @@
+1
+00:00:00,000 --> 00:00:12,000
+In a food-production facility, a fan can report running while exhaust remains below the
+configured target. Open Soom connects that difference to an actionable, traceable response.
+
+2
+00:00:12,000 --> 00:00:24,000
+Device adapters publish a common observation contract to a real one M two M platform.
+Discovery, subscriptions, group queries, and access policies support one shared operating path.
+
+3
+00:00:24,000 --> 00:00:36,000
+The dashboard keeps every zone visible. This recorded interactive demo starts with a cooking-
+line fault, sends a permitted damper command, and then displays the observed recovery.
+
+4
+00:00:36,000 --> 00:00:50,000
+The same tools are available through a Codex plugin and a standalone model runner. Here, real
+model-generated calls discover equipment, inspect evidence, request action, and verify the
+result.
+
+5
+00:00:50,000 --> 00:01:04,000
+A command is only the beginning. The device must acknowledge it. Two fresh later observations
+must meet the facility profile before open Soom records a verified recovery.
+
+6
+00:01:04,000 --> 00:01:17,000
+When the damper opens but airflow does not recover, the incident stays unresolved. An
+acknowledgement never becomes a success claim. The evidence remains available for follow-up.
+
+7
+00:01:17,000 --> 00:01:30,000
+Food production is one reference profile. A learning facility and a second vendor format use
+the same core, with their own targets, units, and permitted controls.
+
+8
+00:01:30,000 --> 00:01:40,000
+Open source means easier adoption. Replay the local demo, use Codex workflows, and inspect the
+evidence.
+
+9
+00:01:40,000 --> 00:01:48,000
+Open Soom. Real software. Virtual equipment. Open-source air operations. Explore the code.

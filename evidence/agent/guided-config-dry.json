@@ -1,0 +1,611 @@
+{
+  "status": "CAPTURED_ZERO_API_DRY_REQUEST",
+  "case": "focused_configuration_group_review",
+  "case_id": "codex-config-076b84df57",
+  "mode": "dry_capture",
+  "earlier_case": "The original guided six-request case remains failed/partial and is not reset or enlarged.",
+  "starting_state": "Maintainer-installed, running virtual service and preactivated profiles; fresh Codex profile and empty workspace.",
+  "provider": "https://api.openai.com/v1/responses",
+  "model": "gpt-5-mini",
+  "limits": {
+    "max_provider_requests": 3,
+    "max_run_charged_tokens": 20000,
+    "max_output_tokens": 2048,
+    "provider_timeout_seconds": 45,
+    "turn_timeout_seconds": 120,
+    "request_max_retries": 0
+  },
+  "shared_budget_before": {
+    "batch_id": "opensoom-hackathon-2026-01",
+    "max_requests": 100,
+    "max_tokens": 250000,
+    "requests_consumed": 66,
+    "tokens_charged": 218430,
+    "tokens_reserved": 0,
+    "pending_requests": 0,
+    "requests_remaining": 34,
+    "tokens_remaining": 31570,
+    "requires_investigation": false
+  },
+  "case_scope_before": {
+    "max_requests": 3,
+    "max_tokens": 20000,
+    "requests_consumed": 0,
+    "tokens_charged": 0,
+    "requests_remaining": 3,
+    "tokens_remaining": 20000
+  },
+  "global_settings_changed": false,
+  "manual_operational_tool_calls": 0,
+  "model_decides_tool_order_and_arguments": true,
+  "exposed_tools": [
+    "prepare_setup",
+    "read_group"
+  ],
+  "test_transport_transformation": "Exact duplicate JSON removal and JSON whitespace canonicalization only; original Codex host results retained. This is an instrumented focused case, not an out-of-box Codex claim.",
+  "user_prompt": "관리자가 실행하고 가상 프로필을 활성화한 openSoom에서 learning-space 프로필의 설정 준비 상태와 learning-b 시설의 그룹 상태를 확인해주세요. 설정이나 장비는 바꾸지 말고, 확인 결과와 다음 할 일을 한국어 5문장 이내로 알려주세요.",
+  "scoped_base_instructions": "Follow the attached setup skill for this focused read-only configuration/group review. Choose tools, order and arguments yourself; combine independent checks when useful. At most three model responses are available. Never change settings, roles or equipment or disclose secrets. Report actual facts in at most five short Korean sentences, including simulation limits and that CSE group success is not device ACK.",
+  "source_sha256": {
+    "scripts/codex_configuration_rehearsal.py": "dd6126eadcf35cefddb53881841058f0d1207a047d0948e743d47a86c049503c",
+    "scripts/codex_guided_rehearsal.py": "a1a9b65c6f4054d0692a808b9cc74e7afbbc0eff7d20f13322eb8c70750809b0",
+    "src/opensoom/mcp_server.py": "a6dbe7d5785b224f2b74bbd03c9500dbae795bcf716c11e44d9b51293ddf90dc",
+    "plugin/skills/opensoom-operations/SKILL.md": "cffdd8369a43a9b2d3f048be2eb7b401282dd8f4d37a35155eeba47a9420e4f8",
+    "plugin/skills/opensoom-setup/SKILL.md": "6ea80c9ee267287342e90f81da69549cffd8dc5aabb0acaff248d0faa5796421"
+  },
+  "codex_version": "codex-cli 0.166.0",
+  "plugin_installation": [
+    {
+      "command": [
+        "plugin",
+        "list",
+        "--json"
+      ],
+      "exit_status": 0,
+      "output": {
+        "installed": [],
+        "available": []
+      }
+    },
+    {
+      "command": [
+        "plugin",
+        "marketplace",
+        "add",
+        "<checkout>/.runtime/plugin-marketplace",
+        "--json"
+      ],
+      "exit_status": 0,
+      "output": {
+        "marketplaceName": "opensoom-local",
+        "installedRoot": "<checkout>/.runtime/plugin-marketplace",
+        "alreadyAdded": false
+      }
+    },
+    {
+      "command": [
+        "plugin",
+        "add",
+        "opensoom@opensoom-local",
+        "--json"
+      ],
+      "exit_status": 0,
+      "output": {
+        "pluginId": "opensoom@opensoom-local",
+        "name": "opensoom",
+        "marketplaceName": "opensoom-local",
+        "version": "0.1.0",
+        "installedPath": "<checkout>/.runtime/codex-config-076b84df57/codex-profile/plugins/cache/opensoom-local/opensoom/0.1.0",
+        "authPolicy": "ON_INSTALL"
+      }
+    }
+  ],
+  "scoped_startup_overrides": [
+    "model=\"gpt-5-mini\"",
+    "model_provider=\"opensoom_bounded\"",
+    "model_reasoning_effort=\"minimal\"",
+    "web_search=\"disabled\"",
+    "features.shell_tool=false",
+    "features.multi_agent=false",
+    "model_providers.opensoom_bounded.name=\"openSoom focused configuration case\"",
+    "model_providers.opensoom_bounded.base_url=\"http://127.0.0.1:55508/v1\"",
+    "model_providers.opensoom_bounded.env_key=\"OPENSOOM_CODEX_PROXY_TOKEN\"",
+    "model_providers.opensoom_bounded.wire_api=\"responses\"",
+    "model_providers.opensoom_bounded.requires_openai_auth=false",
+    "model_providers.opensoom_bounded.request_max_retries=0",
+    "model_providers.opensoom_bounded.stream_max_retries=0",
+    "model_providers.opensoom_bounded.stream_idle_timeout_ms=50000"
+  ],
+  "plugin_inventory": {
+    "marketplaces": [
+      {
+        "name": "opensoom-local",
+        "path": "<checkout>/.runtime/plugin-marketplace/.agents/plugins/marketplace.json",
+        "interface": {
+          "displayName": "openSoom local development"
+        },
+        "plugins": [
+          {
+            "id": "opensoom@opensoom-local",
+            "remotePluginId": null,
+            "version": null,
+            "localVersion": "0.1.0",
+            "name": "opensoom",
+            "shareContext": null,
+            "source": {
+              "type": "local",
+              "path": "<checkout>/.runtime/plugin-marketplace/plugin"
+            },
+            "installed": true,
+            "installedAt": null,
+            "enabled": true,
+            "installPolicy": "AVAILABLE",
+            "installPolicySource": null,
+            "mustShowInstallationInterstitial": null,
+            "authPolicy": "ON_INSTALL",
+            "availability": "AVAILABLE",
+            "disabledReason": null,
+            "eligiblePlanTypes": null,
+            "interface": {
+              "displayName": "openSoom",
+              "shortDescription": "Understand your facility's air, act and verify.",
+              "longDescription": "A local open-source operations plugin for connecting equipment, checking fresh evidence and verifying allowed ventilation actions. The demonstration uses virtual physical equipment and actual oneM2M software.",
+              "developerName": "openSoom contributors",
+              "category": "Productivity",
+              "capabilities": [
+                "Read",
+                "Write"
+              ],
+              "websiteUrl": "https://github.com/openSoom/openSoom",
+              "privacyPolicyUrl": null,
+              "termsOfServiceUrl": null,
+              "defaultPrompt": [
+                "Help me set up the openSoom virtual facility.",
+                "Inspect the facility's ventilation and verify any permitted action."
+              ],
+              "brandColor": "#167C70",
+              "composerIcon": null,
+              "composerIconUrl": null,
+              "logo": null,
+              "logoDark": null,
+              "logoUrl": null,
+              "logoUrlDark": null,
+              "screenshots": [],
+              "screenshotUrls": []
+            },
+            "keywords": [
+              "onem2m",
+              "ventilation",
+              "facility",
+              "mcp"
+            ]
+          }
+        ]
+      }
+    ],
+    "marketplaceLoadErrors": [],
+    "featuredPluginIds": []
+  },
+  "selected_installed_skill": {
+    "name": "opensoom:opensoom-setup",
+    "description": "Set up and diagnose the local openSoom facility demo and its Codex connection. Use when someone wants to connect openSoom, configure a supplied facility profile, or recover a failed startup.",
+    "path": "<checkout>/.runtime/codex-config-076b84df57/codex-profile/plugins/cache/opensoom-local/opensoom/0.1.0/skills/opensoom-setup/SKILL.md",
+    "scope": "user",
+    "enabled": true,
+    "pluginId": "opensoom@opensoom-local"
+  },
+  "host_mcp_inventory": {
+    "data": [
+      {
+        "name": "opensoom",
+        "runtimeStatus": "connected",
+        "pluginId": "opensoom@opensoom-local",
+        "httpOrigin": null,
+        "serverInfo": {
+          "name": "openSoom",
+          "title": null,
+          "version": "0.1.0",
+          "description": null,
+          "icons": null,
+          "websiteUrl": null
+        },
+        "serverCapabilities": {
+          "prompts": {
+            "listChanged": false
+          },
+          "resources": {
+            "subscribe": false,
+            "listChanged": false
+          },
+          "tools": {
+            "listChanged": false
+          }
+        },
+        "toolListMeta": null,
+        "tools": {
+          "discover": {
+            "name": "discover",
+            "description": "Find accessible facilities and equipment using real oneM2M discovery. This tool is part of plugin `openSoom`.",
+            "inputSchema": {
+              "properties": {
+                "facility_id": {
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "default": null,
+                  "title": "Facility Id"
+                }
+              },
+              "type": "object",
+              "title": "discoverArguments"
+            },
+            "outputSchema": {
+              "type": "object",
+              "additionalProperties": true,
+              "title": "discoverDictOutput"
+            }
+          },
+          "doctor": {
+            "name": "doctor",
+            "description": "Check service/CSE readiness and actionable setup diagnostics without exposing credentials. This tool is part of plugin `openSoom`.",
+            "inputSchema": {
+              "properties": {},
+              "type": "object",
+              "title": "doctorArguments"
+            },
+            "outputSchema": {
+              "type": "object",
+              "additionalProperties": true,
+              "title": "doctorDictOutput"
+            }
+          },
+          "request_action": {
+            "name": "request_action",
+            "description": "Request a profile-authorized action. Reuse request_id when retrying the same intended action. Server validates freshness and scope. This tool is part of plugin `openSoom`.",
+            "inputSchema": {
+              "properties": {
+                "facility_id": {
+                  "title": "Facility Id",
+                  "type": "string"
+                },
+                "zone_id": {
+                  "title": "Zone Id",
+                  "type": "string"
+                },
+                "action": {
+                  "enum": [
+                    "set_damper",
+                    "request_maintenance"
+                  ],
+                  "title": "Action",
+                  "type": "string"
+                },
+                "reason": {
+                  "title": "Reason",
+                  "type": "string"
+                },
+                "request_id": {
+                  "title": "Request Id",
+                  "type": "string"
+                },
+                "value": {
+                  "anyOf": [
+                    {
+                      "type": "number"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "default": null,
+                  "title": "Value"
+                }
+              },
+              "required": [
+                "facility_id",
+                "zone_id",
+                "action",
+                "reason",
+                "request_id"
+              ],
+              "type": "object",
+              "title": "request_actionArguments"
+            },
+            "outputSchema": {
+              "type": "object",
+              "additionalProperties": true,
+              "title": "request_actionDictOutput"
+            }
+          },
+          "prepare_setup": {
+            "name": "prepare_setup",
+            "description": "Validate an existing facility profile and explain the setup plan without activating it. This tool is part of plugin `openSoom`.",
+            "inputSchema": {
+              "properties": {
+                "profile_id": {
+                  "title": "Profile Id",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "profile_id"
+              ],
+              "type": "object",
+              "title": "prepare_setupArguments"
+            },
+            "outputSchema": {
+              "type": "object",
+              "additionalProperties": true,
+              "title": "prepare_setupDictOutput"
+            }
+          },
+          "read_evidence": {
+            "name": "read_evidence",
+            "description": "Read current observations, freshness, incidents and commands before deciding on an action. This tool is part of plugin `openSoom`.",
+            "inputSchema": {
+              "properties": {
+                "facility_id": {
+                  "title": "Facility Id",
+                  "type": "string"
+                },
+                "zone_id": {
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "default": null,
+                  "title": "Zone Id"
+                }
+              },
+              "required": [
+                "facility_id"
+              ],
+              "type": "object",
+              "title": "read_evidenceArguments"
+            },
+            "outputSchema": {
+              "type": "object",
+              "additionalProperties": true,
+              "title": "read_evidenceDictOutput"
+            }
+          },
+          "apply_setup": {
+            "name": "apply_setup",
+            "description": "Apply a validated profile only if this server's fixed identity is already an administrator; never self-grant. This tool is part of plugin `openSoom`.",
+            "inputSchema": {
+              "properties": {
+                "profile_id": {
+                  "title": "Profile Id",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "profile_id"
+              ],
+              "type": "object",
+              "title": "apply_setupArguments"
+            },
+            "outputSchema": {
+              "type": "object",
+              "additionalProperties": true,
+              "title": "apply_setupDictOutput"
+            }
+          },
+          "read_group": {
+            "name": "read_group",
+            "description": "Query the facility's native oneM2M group and retain each member's result; group success is not device ACK. This tool is part of plugin `openSoom`.",
+            "inputSchema": {
+              "properties": {
+                "facility_id": {
+                  "title": "Facility Id",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "facility_id"
+              ],
+              "type": "object",
+              "title": "read_groupArguments"
+            },
+            "outputSchema": {
+              "type": "object",
+              "additionalProperties": true,
+              "title": "read_groupDictOutput"
+            }
+          },
+          "verify_result": {
+            "name": "verify_result",
+            "description": "Independently check command state, device ACK and later observations; report pending/failed/unresolved outcomes as returned. This tool is part of plugin `openSoom`.",
+            "inputSchema": {
+              "properties": {
+                "facility_id": {
+                  "title": "Facility Id",
+                  "type": "string"
+                },
+                "command_id": {
+                  "title": "Command Id",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "facility_id",
+                "command_id"
+              ],
+              "type": "object",
+              "title": "verify_resultArguments"
+            },
+            "outputSchema": {
+              "type": "object",
+              "additionalProperties": true,
+              "title": "verify_resultDictOutput"
+            }
+          }
+        },
+        "toolsError": null,
+        "resources": [],
+        "resourceTemplates": [],
+        "authStatus": "unsupported"
+      }
+    ],
+    "nextCursor": null
+  },
+  "turn": {
+    "id": "01a1eb0e-c8c6-7841-98ea-98ac8a614fe7",
+    "rootTurnId": "01a1eb0e-c8c6-7841-98ea-98ac8a614fe7",
+    "items": [],
+    "itemsView": "notLoaded",
+    "status": "failed",
+    "error": {
+      "message": "{\"error\": {\"type\": \"bounded_rehearsal\", \"code\": \"dry_capture_no_provider_call\", \"message\": \"dry_capture_no_provider_call\"}}",
+      "codexErrorInfo": "other",
+      "additionalDetails": null,
+      "misalignment": null
+    },
+    "startedAt": 1794944977,
+    "completedAt": 1794944977,
+    "durationMs": 10
+  },
+  "host_events": [
+    {
+      "method": "item/started",
+      "params": {
+        "item": {
+          "type": "userMessage",
+          "id": "01a1eb0e-c8cd-7b61-a37b-480e82ec01a3",
+          "clientId": null,
+          "content": [
+            {
+              "type": "text",
+              "text": "관리자가 실행하고 가상 프로필을 활성화한 openSoom에서 learning-space 프로필의 설정 준비 상태와 learning-b 시설의 그룹 상태를 확인해주세요. 설정이나 장비는 바꾸지 말고, 확인 결과와 다음 할 일을 한국어 5문장 이내로 알려주세요.",
+              "text_elements": []
+            },
+            {
+              "type": "skill",
+              "name": "opensoom:opensoom-setup",
+              "path": "<checkout>/.runtime/codex-config-076b84df57/codex-profile/plugins/cache/opensoom-local/opensoom/0.1.0/skills/opensoom-setup/SKILL.md"
+            }
+          ],
+          "startedAtMs": 1794944977101,
+          "completedAtMs": null
+        },
+        "threadId": "01a1eb0e-c5e2-7830-a9d5-72121fe6e3c6",
+        "turnId": "01a1eb0e-c8c6-7841-98ea-98ac8a614fe7",
+        "startedAtMs": 1794944977101
+      },
+      "emittedAtMs": 1794944977102
+    },
+    {
+      "method": "item/completed",
+      "params": {
+        "item": {
+          "type": "userMessage",
+          "id": "01a1eb0e-c8cd-7b61-a37b-480e82ec01a3",
+          "clientId": null,
+          "content": [
+            {
+              "type": "text",
+              "text": "관리자가 실행하고 가상 프로필을 활성화한 openSoom에서 learning-space 프로필의 설정 준비 상태와 learning-b 시설의 그룹 상태를 확인해주세요. 설정이나 장비는 바꾸지 말고, 확인 결과와 다음 할 일을 한국어 5문장 이내로 알려주세요.",
+              "text_elements": []
+            },
+            {
+              "type": "skill",
+              "name": "opensoom:opensoom-setup",
+              "path": "<checkout>/.runtime/codex-config-076b84df57/codex-profile/plugins/cache/opensoom-local/opensoom/0.1.0/skills/opensoom-setup/SKILL.md"
+            }
+          ],
+          "startedAtMs": 1794944977101,
+          "completedAtMs": 1794944977101
+        },
+        "threadId": "01a1eb0e-c5e2-7830-a9d5-72121fe6e3c6",
+        "turnId": "01a1eb0e-c8c6-7841-98ea-98ac8a614fe7",
+        "completedAtMs": 1794944977101
+      },
+      "emittedAtMs": 1794944977102
+    },
+    {
+      "method": "error",
+      "params": {
+        "error": {
+          "message": "{\"error\": {\"type\": \"bounded_rehearsal\", \"code\": \"dry_capture_no_provider_call\", \"message\": \"dry_capture_no_provider_call\"}}",
+          "codexErrorInfo": "other",
+          "additionalDetails": null,
+          "misalignment": null
+        },
+        "willRetry": false,
+        "threadId": "01a1eb0e-c5e2-7830-a9d5-72121fe6e3c6",
+        "turnId": "01a1eb0e-c8c6-7841-98ea-98ac8a614fe7"
+      },
+      "emittedAtMs": 1794944977108
+    },
+    {
+      "method": "turn/completed",
+      "params": {
+        "threadId": "01a1eb0e-c5e2-7830-a9d5-72121fe6e3c6",
+        "turn": {
+          "id": "01a1eb0e-c8c6-7841-98ea-98ac8a614fe7",
+          "rootTurnId": "01a1eb0e-c8c6-7841-98ea-98ac8a614fe7",
+          "items": [],
+          "itemsView": "notLoaded",
+          "status": "failed",
+          "error": {
+            "message": "{\"error\": {\"type\": \"bounded_rehearsal\", \"code\": \"dry_capture_no_provider_call\", \"message\": \"dry_capture_no_provider_call\"}}",
+            "codexErrorInfo": "other",
+            "additionalDetails": null,
+            "misalignment": null
+          },
+          "startedAt": 1794944977,
+          "completedAt": 1794944977,
+          "durationMs": 10
+        }
+      },
+      "emittedAtMs": 1794944977108
+    }
+  ],
+  "host_approval_decisions": [],
+  "provider_requests": [
+    {
+      "model": "gpt-5-mini",
+      "payload_bytes": 12226,
+      "conservative_reserved_tokens": 15298,
+      "tool_names": [
+        "mcp__opensoom"
+      ],
+      "payload_sha256": "ac7ad0980e57b4812550403dede622dba6b3729722e602a1306f793204168bbc",
+      "omitted_codex_transport_metadata": true,
+      "forwarded": false
+    }
+  ],
+  "provider_calls": 0,
+  "case_tokens_charged": 0,
+  "context_transformations": [],
+  "shared_budget_after": {
+    "batch_id": "opensoom-hackathon-2026-01",
+    "max_requests": 100,
+    "max_tokens": 250000,
+    "requests_consumed": 66,
+    "tokens_charged": 218430,
+    "tokens_reserved": 0,
+    "pending_requests": 0,
+    "requests_remaining": 34,
+    "tokens_remaining": 31570,
+    "requires_investigation": false
+  },
+  "case_scope_after": {
+    "max_requests": 3,
+    "max_tokens": 20000,
+    "requests_consumed": 0,
+    "tokens_charged": 0,
+    "requests_remaining": 3,
+    "tokens_remaining": 20000
+  },
+  "test_process_stopped": true,
+  "independent_review_required": true
+}

@@ -1,8 +1,8 @@
 {
-  "version": 2,
+  "version": 3,
   "date": "2026-11-18",
-  "review_round": "Initial product governance and pre-execution plan review",
-  "scope": "Documentation review and implementation findings; no product implementation or Goal activation claimed",
+  "review_round": "Implementation checkpoint 2b2a239, corrective fd5e648, release closeout underway",
+  "scope": "Actual implementation and artifact evidence with independent four-team findings; final release review pending.",
   "findings": [
     {
       "id": "R-001",
@@ -12,7 +12,7 @@
         6,
         11
       ],
-      "evidence_status": "design_only",
+      "evidence_status": "independently_reviewed",
       "observed_evidence": [
         "User requirements",
         "AGENTS.md",
@@ -25,10 +25,14 @@
       "verification": "Two different profiles and two vendor adapters use unchanged core/tool code.",
       "main_decision": "accept",
       "decision_reason": "Same installation serves different facilities.",
-      "implementation_state": "policy_documented; software_pending",
+      "implementation_state": "implemented_and_captured",
       "implementation_owner": "Main agent; delegate bounded work as needed",
-      "review_state": "not_verified",
-      "closure_evidence": []
+      "review_state": "resolved",
+      "closure_evidence": [
+        "docs/review/implementation-team3.json"
+      ],
+      "verification_result": "Two profiles/adapters and registry keep facility-specific names/config outside core behavior.",
+      "reviewed_by": "docs/review/implementation-team3.json"
     },
     {
       "id": "R-002",
@@ -39,7 +43,7 @@
         6,
         7
       ],
-      "evidence_status": "design_only",
+      "evidence_status": "implemented_with_captured_evidence",
       "observed_evidence": [
         "User requirements",
         "AGENTS.md",
@@ -52,7 +56,7 @@
       "verification": "Clean Codex host follows public instructions without application-source edits.",
       "main_decision": "accept",
       "decision_reason": "Installation convenience is a user requirement.",
-      "implementation_state": "planned",
+      "implementation_state": "independent_closeout_in_progress",
       "implementation_owner": "Main agent; delegate bounded work as needed",
       "review_state": "not_verified",
       "closure_evidence": []
@@ -65,7 +69,7 @@
         10,
         17
       ],
-      "evidence_status": "design_only",
+      "evidence_status": "implemented_with_captured_evidence",
       "observed_evidence": [
         "User requirements",
         "AGENTS.md",
@@ -78,7 +82,7 @@
       "verification": "Actual model tool calls reach the CSE and checked outcomes; record trace and errors.",
       "main_decision": "accept",
       "decision_reason": "User explicitly requires agent-operated setup and API-driven service tests.",
-      "implementation_state": "policy_corrected; software_pending",
+      "implementation_state": "independent_closeout_in_progress",
       "implementation_owner": "Main agent; delegate bounded work as needed",
       "review_state": "not_verified",
       "closure_evidence": []
@@ -91,7 +95,7 @@
         6,
         17
       ],
-      "evidence_status": "design_only",
+      "evidence_status": "independently_reviewed",
       "observed_evidence": [
         "User requirements",
         "AGENTS.md",
@@ -104,10 +108,14 @@
       "verification": "A live API failure cannot result in a live pass through fixture fallback.",
       "main_decision": "accept",
       "decision_reason": "Reproducibility and honest evidence are both needed.",
-      "implementation_state": "planned",
+      "implementation_state": "implemented_and_captured",
       "implementation_owner": "Main agent; delegate bounded work as needed",
-      "review_state": "not_verified",
-      "closure_evidence": []
+      "review_state": "resolved",
+      "closure_evidence": [
+        "docs/review/implementation-team3.json"
+      ],
+      "verification_result": "Fixture and actual model outcomes separated; retained failures cannot become live passes.",
+      "reviewed_by": "docs/review/implementation-team3.json"
     },
     {
       "id": "R-005",
@@ -116,7 +124,7 @@
         1,
         3
       ],
-      "evidence_status": "design_only",
+      "evidence_status": "independently_reviewed",
       "observed_evidence": [
         "User requirements",
         "AGENTS.md",
@@ -129,10 +137,14 @@
       "verification": "Capture native discovery and /fopt requests, per-member outcomes and distinct AE identities.",
       "main_decision": "accept",
       "decision_reason": "Reduce repeated integration work and expose standard services to operators.",
-      "implementation_state": "planned",
+      "implementation_state": "implemented_and_captured",
       "implementation_owner": "Main agent; delegate bounded work as needed",
-      "review_state": "not_verified",
-      "closure_evidence": []
+      "review_state": "resolved",
+      "closure_evidence": [
+        "docs/review/implementation-team1.json"
+      ],
+      "verification_result": "Actual native discovery/group/subscription and distinct AE/ACP evidence inspected.",
+      "reviewed_by": "docs/review/implementation-team1.json"
     },
     {
       "id": "R-006",
@@ -141,7 +153,7 @@
         2,
         11
       ],
-      "evidence_status": "design_only",
+      "evidence_status": "independently_reviewed",
       "observed_evidence": [
         "User requirements",
         "AGENTS.md",
@@ -154,10 +166,14 @@
       "verification": "Native binding traces and model validation; vendor replacement preserves applications.",
       "main_decision": "accept",
       "decision_reason": "Equipment telemetry and operator requests have different communication needs; adapters isolate vendor formats.",
-      "implementation_state": "planned",
+      "implementation_state": "implemented_and_captured",
       "implementation_owner": "Main agent; delegate bounded work as needed",
-      "review_state": "not_verified",
-      "closure_evidence": []
+      "review_state": "resolved",
+      "closure_evidence": [
+        "docs/review/implementation-team1.json"
+      ],
+      "verification_result": "Native MQTT/TLS and HTTPS plus limited actual PM2.5 SDT mapping inspected.",
+      "reviewed_by": "docs/review/implementation-team1.json"
     },
     {
       "id": "R-007",
@@ -166,7 +182,7 @@
         10,
         17
       ],
-      "evidence_status": "design_only",
+      "evidence_status": "implemented_with_captured_evidence",
       "observed_evidence": [
         "User requirements",
         "AGENTS.md",
@@ -179,10 +195,14 @@
       "verification": "Cross-facility, stale-evidence and out-of-scope requests fail; approved simulated workflow runs autonomously.",
       "main_decision": "accept",
       "decision_reason": "Convenient agent use must preserve facility ownership and explicit control configuration.",
-      "implementation_state": "planned",
+      "implementation_state": "fixed_and_independently_verified",
       "implementation_owner": "Main agent; delegate bounded work as needed",
-      "review_state": "not_verified",
-      "closure_evidence": []
+      "review_state": "resolved",
+      "closure_evidence": [
+        "docs/review/corrections-team3.json"
+      ],
+      "reviewed_by": "team_3 / architecture_reasonableness",
+      "verification_result": "Independent tests and actual CSE/API/lifecycle capture hashes confirm the correction in the declared virtual-device/trusted-loopback scope."
     },
     {
       "id": "R-008",
@@ -191,7 +211,7 @@
         13,
         16
       ],
-      "evidence_status": "design_only",
+      "evidence_status": "independently_reviewed",
       "observed_evidence": [
         "User requirements",
         "AGENTS.md",
@@ -204,10 +224,14 @@
       "verification": "Identify actual host/service/permissions; distinguish deployment from API consumption.",
       "main_decision": "accept",
       "decision_reason": "Onboarding/discovery can use MEC if actually available and operationally useful.",
-      "implementation_state": "feasibility_pending",
+      "implementation_state": "investigated_and_deferred",
       "implementation_owner": "Main agent; delegate bounded work as needed",
-      "review_state": "not_verified",
-      "closure_evidence": []
+      "review_state": "resolved",
+      "closure_evidence": [
+        "docs/review/implementation-team4.json"
+      ],
+      "verification_result": "Bounded MEC feasibility completed; unavailable execution deferred with review, no capability credit.",
+      "reviewed_by": "docs/review/implementation-team4.json"
     },
     {
       "id": "R-009",
@@ -215,7 +239,7 @@
       "criteria": [
         12
       ],
-      "evidence_status": "design_only",
+      "evidence_status": "independently_reviewed",
       "observed_evidence": [
         "User requirements",
         "AGENTS.md",
@@ -228,10 +252,14 @@
       "verification": "If adopted, prove identity/state/subscription/ACP restoration and interruption/loss measurements.",
       "main_decision": "defer",
       "decision_reason": "Avoid manufacturing mobility solely for points.",
-      "implementation_state": "deferred",
+      "implementation_state": "investigated_and_deferred",
       "implementation_owner": "Main agent; delegate bounded work as needed",
-      "review_state": "not_verified",
-      "closure_evidence": []
+      "review_state": "resolved",
+      "closure_evidence": [
+        "docs/review/implementation-team4.json"
+      ],
+      "verification_result": "Reviewed handover deferral with need, simpler continuity alternative and reopen tests.",
+      "reviewed_by": "docs/review/implementation-team4.json"
     },
     {
       "id": "R-010",
@@ -240,7 +268,7 @@
         14,
         15
       ],
-      "evidence_status": "design_only",
+      "evidence_status": "independently_reviewed",
       "observed_evidence": [
         "User requirements",
         "AGENTS.md",
@@ -253,10 +281,14 @@
       "verification": "Reopen when data-locality/location-dependent behavior and required environment are available.",
       "main_decision": "defer",
       "decision_reason": "Protect adoption simplicity and avoid forced architecture.",
-      "implementation_state": "deferred",
+      "implementation_state": "investigated_and_deferred",
       "implementation_owner": "Main agent; delegate bounded work as needed",
-      "review_state": "not_verified",
-      "closure_evidence": []
+      "review_state": "resolved",
+      "closure_evidence": [
+        "docs/review/implementation-team4.json"
+      ],
+      "verification_result": "Reviewed FL/geolocation deferral; no artificial need, dataset or environment evidence.",
+      "reviewed_by": "docs/review/implementation-team4.json"
     },
     {
       "id": "R-011",
@@ -267,7 +299,7 @@
         6,
         7
       ],
-      "evidence_status": "design_only",
+      "evidence_status": "implemented_with_captured_evidence",
       "observed_evidence": [
         "User requirements",
         "AGENTS.md",
@@ -280,7 +312,7 @@
       "verification": "Article-independent README reproduction and matching article/video claims.",
       "main_decision": "accept",
       "decision_reason": "Open-source reuse and oneM2M benefits must be understandable and reproducible.",
-      "implementation_state": "planned",
+      "implementation_state": "independent_closeout_in_progress",
       "implementation_owner": "Main agent; delegate bounded work as needed",
       "review_state": "not_verified",
       "closure_evidence": []
@@ -303,12 +335,15 @@
       "minimum_change": "Prepare technical discussion drafts and resource-tree/integration explanations from actual results.",
       "product_reason": "Explain standards choices honestly without manufactured interactions.",
       "verification": "User-authorized authentic exchanges and a substantive technical rehearsal.",
-      "main_decision": "accept",
-      "decision_reason": "Explain standards choices honestly without manufactured interactions.",
-      "implementation_state": "planned",
+      "main_decision": "defer_external_participation",
+      "decision_reason": "No authority to send external messages or substitute generated discussion for real participation. Submission preparation is completeable without that external action.",
+      "implementation_state": "English discussion/Q&A/pitch prepared; authentic external participation pending",
       "implementation_owner": "Main agent; delegate bounded work as needed",
-      "review_state": "not_verified",
-      "closure_evidence": []
+      "review_state": "external_handoff_not_evidenced",
+      "closure_evidence": [
+        "docs/submission/technical-qa.md",
+        "docs/review/implementation-team3.json"
+      ]
     },
     {
       "id": "R-013",
@@ -719,6 +754,261 @@
       "reviewed_by": "team_4 / edge_standards_review",
       "verification_result": "Approved documentation. Extension child gates and distributed reconnection/expired-command acceptance are explicit. Closure covers acceptance-document changes only; product_execution_pending remains.",
       "review_report": "docs/review/pre-execution-plan-review.json"
+    },
+    {
+      "id": "R-023",
+      "source_findings": [
+        "T1-I1",
+        "T3-002"
+      ],
+      "team": "team_1+team_3",
+      "criteria": [
+        3,
+        10,
+        17
+      ],
+      "evidence_status": "review_finding",
+      "gap_and_impact": "Virtual actuator ignored accepted requested percentage and fabricated full opening.",
+      "minimum_change": "Preserve requested percentage and derive the deterministic test response from it.",
+      "product_reason": "Trustworthy reusable operation, evidence and adoption within the agreed product scope.",
+      "verification": "Independent reviewer inspects changed code and reproducible behavior/evidence on the identified final snapshot.",
+      "main_decision": "accept",
+      "decision_reason": "Necessary correction or missing evidence for an existing requirement, without adding unrelated product scope.",
+      "implementation_state": "fixed_and_independently_verified",
+      "implementation_owner": "main with bounded delegated implementation",
+      "review_state": "resolved",
+      "closure_evidence": [
+        "evidence/release/review-regressions.json",
+        "docs/review/corrections-team3.json"
+      ],
+      "reviewed_by": "team_3 / architecture_reasonableness",
+      "verification_result": "Independent tests and actual CSE/API/lifecycle capture hashes confirm the correction in the declared virtual-device/trusted-loopback scope."
+    },
+    {
+      "id": "R-024",
+      "source_findings": [
+        "T3-001"
+      ],
+      "team": "team_3",
+      "criteria": [
+        10,
+        17
+      ],
+      "evidence_status": "review_finding",
+      "gap_and_impact": "Read-only actor could mutate another role run and append denied records to it.",
+      "minimum_change": "Enforce persisted role owner for run updates and tool/error records.",
+      "product_reason": "Trustworthy reusable operation, evidence and adoption within the agreed product scope.",
+      "verification": "Independent reviewer inspects changed code and reproducible behavior/evidence on the identified final snapshot.",
+      "main_decision": "accept",
+      "decision_reason": "Necessary correction or missing evidence for an existing requirement, without adding unrelated product scope.",
+      "implementation_state": "fixed_and_independently_verified",
+      "implementation_owner": "main with bounded delegated implementation",
+      "review_state": "resolved",
+      "closure_evidence": [
+        "evidence/release/review-regressions.json",
+        "docs/review/corrections-team3.json"
+      ],
+      "reviewed_by": "team_3 / architecture_reasonableness",
+      "verification_result": "Independent tests and actual CSE/API/lifecycle capture hashes confirm the correction in the declared virtual-device/trusted-loopback scope."
+    },
+    {
+      "id": "R-025",
+      "source_findings": [
+        "T1-I2",
+        "T2-I01"
+      ],
+      "team": "team_1+team_2",
+      "criteria": [
+        3,
+        4,
+        6,
+        7,
+        11,
+        17
+      ],
+      "evidence_status": "review_finding",
+      "gap_and_impact": "Earlier agent captures do not match current core/app hashes.",
+      "minimum_change": "Retain historical files and capture final positive plus a real-model negative case and Codex host path.",
+      "product_reason": "Trustworthy reusable operation, evidence and adoption within the agreed product scope.",
+      "verification": "Independent reviewer inspects changed code and reproducible behavior/evidence on the identified final snapshot.",
+      "main_decision": "accept",
+      "decision_reason": "Necessary correction or missing evidence for an existing requirement, without adding unrelated product scope.",
+      "implementation_state": "Final positive/stale/host captures present; backend source equivalence recorded. Final independent review pending.",
+      "implementation_owner": "main with bounded delegated implementation",
+      "review_state": "awaiting_independent_verification",
+      "closure_evidence": [
+        "evidence/agent/release-live-recovery.json",
+        "evidence/agent/release-live-stale.json",
+        "evidence/agent/release-codex-host.json",
+        "evidence/agent/index.json"
+      ]
+    },
+    {
+      "id": "R-026",
+      "source_findings": [
+        "T1-I3",
+        "T4-I001"
+      ],
+      "team": "team_1+team_4",
+      "criteria": [
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "evidence_status": "review_finding",
+      "gap_and_impact": "Extension decisions and execution checkpoint disagree.",
+      "minimum_change": "Record adoption child gates, reviewed deferrals, history and evidence.",
+      "product_reason": "Trustworthy reusable operation, evidence and adoption within the agreed product scope.",
+      "verification": "Independent reviewer inspects changed code and reproducible behavior/evidence on the identified final snapshot.",
+      "main_decision": "accept",
+      "decision_reason": "Necessary correction or missing evidence for an existing requirement, without adding unrelated product scope.",
+      "implementation_state": "Execution-state reconciled; final independent record check pending.",
+      "implementation_owner": "main with bounded delegated implementation",
+      "review_state": "awaiting_independent_verification",
+      "closure_evidence": [
+        "docs/execution-state.json"
+      ]
+    },
+    {
+      "id": "R-027",
+      "source_findings": [
+        "T2-I02"
+      ],
+      "team": "team_2",
+      "criteria": [
+        6,
+        17
+      ],
+      "evidence_status": "review_finding",
+      "gap_and_impact": "Direct scripted host calls do not prove natural-language agent-guided onboarding.",
+      "minimum_change": "Run an actual bounded Codex skill/model-guided setup and diagnosis rehearsal with declared prerequisites.",
+      "product_reason": "Trustworthy reusable operation, evidence and adoption within the agreed product scope.",
+      "verification": "Independent reviewer inspects changed code and reproducible behavior/evidence on the identified final snapshot.",
+      "main_decision": "accept",
+      "decision_reason": "Necessary correction or missing evidence for an existing requirement, without adding unrelated product scope.",
+      "implementation_state": "Correctedcounter/historycontract implemented and tests53+8passed; actualcompletedregressionfixedtheseclaims but omittedinputunit led to wrongL/min. Fullfactualhandoffremainsopen.",
+      "implementation_owner": "main with bounded delegated implementation",
+      "review_state": "awaiting_independent_verification",
+      "closure_evidence": [
+        "evidence/agent/guided-live.json",
+        "evidence/agent/guided-correlation.json",
+        "evidence/agent/guided-config-continuation-live.json",
+        "evidence/agent/guided-explanation-live.json",
+        "evidence/agent/guided-explanation-fact-check.json",
+        "evidence/agent/semantics-live.json",
+        "evidence/agent/semantics-fact-check.json"
+      ]
+    },
+    {
+      "id": "R-028",
+      "source_findings": [
+        "T2-I03"
+      ],
+      "team": "team_2",
+      "criteria": [
+        6
+      ],
+      "evidence_status": "review_finding",
+      "gap_and_impact": "Default host acceptance output overwrites indexed historical failed evidence.",
+      "minimum_change": "Write default output to unique ignored runtime path; explicit output can publish a named new capture.",
+      "product_reason": "Trustworthy reusable operation, evidence and adoption within the agreed product scope.",
+      "verification": "Independent reviewer inspects changed code and reproducible behavior/evidence on the identified final snapshot.",
+      "main_decision": "accept",
+      "decision_reason": "Necessary correction or missing evidence for an existing requirement, without adding unrelated product scope.",
+      "implementation_state": "Default output fixed to unique ignored runtime path; actual default invocation preserved historical failure hash.",
+      "implementation_owner": "main with bounded delegated implementation",
+      "review_state": "awaiting_independent_verification",
+      "closure_evidence": [
+        "scripts/agent_codex_check.py",
+        "evidence/agent/index.json"
+      ]
+    },
+    {
+      "id": "R-029",
+      "source_findings": [
+        "T2-media-feedback"
+      ],
+      "team": "team_2",
+      "criteria": [
+        4,
+        5,
+        6
+      ],
+      "evidence_status": "review_finding",
+      "gap_and_impact": "ffprobe metadata contained a private local absolute path.",
+      "minimum_change": "Use repository-relative media filename in public metadata.",
+      "product_reason": "Trustworthy reusable operation, evidence and adoption within the agreed product scope.",
+      "verification": "Independent reviewer inspects changed code and reproducible behavior/evidence on the identified final snapshot.",
+      "main_decision": "accept",
+      "decision_reason": "Necessary correction or missing evidence for an existing requirement, without adding unrelated product scope.",
+      "implementation_state": "Public metadata sanitized and renderer now writes repository-relative filename; private-path scan passed.",
+      "implementation_owner": "main with bounded delegated implementation",
+      "review_state": "awaiting_independent_verification",
+      "closure_evidence": [
+        "evidence/video/ffprobe.json",
+        "scripts/render_video.py"
+      ]
+    },
+    {
+      "id": "R-030",
+      "source_findings": [
+        "T3-pending-restart-scope"
+      ],
+      "team": "team_3",
+      "criteria": [
+        9,
+        17
+      ],
+      "evidence_status": "review_finding",
+      "gap_and_impact": "Completed lifecycle alone did not establish pending command/incident survival.",
+      "minimum_change": "Restart during actual missing-ACK command and verify same IDs, timeout and unresolved incident.",
+      "product_reason": "Trustworthy reusable operation, evidence and adoption within the agreed product scope.",
+      "verification": "Independent reviewer inspects changed code and reproducible behavior/evidence on the identified final snapshot.",
+      "main_decision": "accept",
+      "decision_reason": "Necessary correction or missing evidence for an existing requirement, without adding unrelated product scope.",
+      "implementation_state": "fixed_and_independently_verified",
+      "implementation_owner": "main with bounded delegated implementation",
+      "review_state": "resolved",
+      "closure_evidence": [
+        "evidence/release/final-clean-lifecycle.json",
+        "docs/review/corrections-team3.json"
+      ],
+      "reviewed_by": "team_3 / architecture_reasonableness",
+      "verification_result": "Independent tests and actual CSE/API/lifecycle capture hashes confirm the correction in the declared virtual-device/trusted-loopback scope."
+    },
+    {
+      "id": "R-031",
+      "source_findings": [
+        "T2-GE01",
+        "T2-GE02",
+        "explanation-semantics-team3"
+      ],
+      "team": "team_2+team_3",
+      "criteria": [
+        6,
+        17
+      ],
+      "evidence_status": "actual_model_factual_failure",
+      "gap_and_impact": "Completed Korean explanation incorrectly inferred no prior recovery attempts from zero healthy-sample counter and empty current-run command list; historical same-incident ACK/non-recovery contradicts the inference.",
+      "minimum_change": "Clarify real tool/skill counter/history semantics; verify prior ACK plus empty current observer run; independently review a bounded actual corrected-contract user explanation.",
+      "product_reason": "A facility manager must distinguish attempts, acknowledgements and verified outcomes across chats.",
+      "verification": "Deterministic semantic regression and actual completed model explanation against source records, with original failed output preserved.",
+      "main_decision": "accept",
+      "decision_reason": "Directly observed product ambiguity; additive read contract preserves behavior and prior evidence.",
+      "implementation_state": "Correctedcounter/historycontract implemented and tests53+8passed; actualcompletedregressionfixedtheseclaims but omittedinputunit led to wrongL/min. Fullfactualhandoffremainsopen.",
+      "implementation_owner": "main + runtime_onem2m for bounded capture",
+      "review_state": "awaiting_independent_verification",
+      "closure_evidence": [
+        "evidence/release/semantics-contract.patch",
+        "evidence/release/final-checks.json",
+        "docs/review/guided-explanation-review-team2.json",
+        "docs/review/explanation-semantics-team3.json",
+        "evidence/agent/semantics-live.json",
+        "evidence/agent/semantics-fact-check.json"
+      ]
     }
   ]
 }

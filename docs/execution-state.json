@@ -6,11 +6,11 @@
   "plan": "docs/implementation-plan.md",
   "goal_prompt": "docs/goal-mode-prompt.ko.md",
   "goal_activation": "active",
-  "implementation_status": "implemented_core_awaiting_independent_review",
-  "current_stage": 3,
-  "current_gate": "S3-G4",
+  "implementation_status": "release_preparation_and_independent_closeout",
+  "current_stage": 6,
+  "current_gate": "S3-G1",
   "foundation_commit": "b000f5537dbee213f8a63dac92a56fa074421885",
-  "last_verified_implementation_revision": null,
+  "last_verified_implementation_revision": "fd5e648fa1c74e425507a98247844be150265acb",
   "status_definitions": {
     "not_started": "No implementation or verification attempted.",
     "in_progress": "Work is underway; no completion claim.",
@@ -23,35 +23,72 @@
     {
       "id": 0,
       "title": "Specify and scaffold the first runnable scenario",
-      "status": "in_progress",
+      "status": "passed",
       "gates": [
         {
           "id": "S0-G1",
           "required": true,
-          "status": "in_progress",
-          "evidence": [],
-          "reviews": []
+          "status": "passed",
+          "evidence": [
+            "docs/scenario-contract.md",
+            "scenarios/scenarios.json",
+            "evidence/stage0/validation.json"
+          ],
+          "reviews": [
+            "docs/review/implementation-team1.json",
+            "docs/review/implementation-team2.json",
+            "docs/review/implementation-team3.json",
+            "docs/review/implementation-team4.json"
+          ]
         },
         {
           "id": "S0-G2",
           "required": true,
-          "status": "in_progress",
-          "evidence": [],
-          "reviews": []
+          "status": "passed",
+          "evidence": [
+            "evidence/runtime/runtime-decision.json",
+            "deploy/README.md",
+            "evidence/release/final-clean-lifecycle.json"
+          ],
+          "reviews": [
+            "docs/review/implementation-team1.json",
+            "docs/review/implementation-team2.json",
+            "docs/review/implementation-team3.json",
+            "docs/review/implementation-team4.json"
+          ]
         },
         {
           "id": "S0-G3",
           "required": true,
-          "status": "in_progress",
-          "evidence": [],
-          "reviews": []
+          "status": "passed",
+          "evidence": [
+            "evidence/stage0/mec-feasibility.json",
+            "evidence/agent/index.json",
+            "config/live-test-budget.json"
+          ],
+          "reviews": [
+            "docs/review/implementation-team1.json",
+            "docs/review/implementation-team2.json",
+            "docs/review/implementation-team3.json",
+            "docs/review/implementation-team4.json"
+          ]
         },
         {
           "id": "S0-G4",
           "required": true,
-          "status": "in_progress",
-          "evidence": [],
-          "reviews": []
+          "status": "passed",
+          "evidence": [
+            "docs/review/implementation-team1.json",
+            "docs/review/implementation-team2.json",
+            "docs/review/implementation-team3.json",
+            "docs/review/implementation-team4.json"
+          ],
+          "reviews": [
+            "docs/review/implementation-team1.json",
+            "docs/review/implementation-team2.json",
+            "docs/review/implementation-team3.json",
+            "docs/review/implementation-team4.json"
+          ]
         }
       ]
     },
@@ -64,29 +101,50 @@
           "id": "S1-G1",
           "required": true,
           "status": "in_progress",
-          "evidence": [],
+          "evidence": [
+            "evidence/application/release-acceptance.json",
+            "evidence/release/review-regressions.json"
+          ],
           "reviews": []
         },
         {
           "id": "S1-G2",
           "required": true,
           "status": "in_progress",
-          "evidence": [],
+          "evidence": [
+            "evidence/application/release-acceptance.json",
+            "evidence/release/review-regressions.json"
+          ],
           "reviews": []
         },
         {
           "id": "S1-G3",
           "required": true,
-          "status": "in_progress",
-          "evidence": [],
-          "reviews": []
+          "status": "passed",
+          "evidence": [
+            "evidence/release/final-clean-lifecycle.json",
+            "evidence/dashboard/qa.json"
+          ],
+          "reviews": [
+            "docs/review/corrections-team3.json"
+          ]
         },
         {
           "id": "S1-G4",
           "required": true,
           "status": "in_progress",
-          "evidence": [],
-          "reviews": []
+          "evidence": [
+            "docs/review/implementation-team1.json",
+            "docs/review/implementation-team2.json",
+            "docs/review/implementation-team3.json",
+            "docs/review/implementation-team4.json"
+          ],
+          "reviews": [
+            "docs/review/implementation-team1.json",
+            "docs/review/implementation-team2.json",
+            "docs/review/implementation-team3.json",
+            "docs/review/implementation-team4.json"
+          ]
         }
       ]
     },
@@ -99,35 +157,53 @@
           "id": "S2-G1",
           "required": true,
           "status": "in_progress",
-          "evidence": [],
+          "evidence": [
+            "evidence/application/release-acceptance.json",
+            "tests/test_contracts.py",
+            "tests/test_facility_registry.py"
+          ],
           "reviews": []
         },
         {
           "id": "S2-G2",
           "required": true,
           "status": "in_progress",
-          "evidence": [],
+          "evidence": [
+            "evidence/application/release-acceptance.json",
+            "evidence/runtime/cse-https-smoke.json"
+          ],
           "reviews": []
         },
         {
           "id": "S2-G3",
           "required": true,
           "status": "in_progress",
-          "evidence": [],
+          "evidence": [
+            "evidence/application/release-acceptance.json",
+            "evidence/runtime/cse-mqtt-tls-smoke.json",
+            "evidence/release/review-regressions.json"
+          ],
           "reviews": []
         },
         {
           "id": "S2-G4",
           "required": true,
           "status": "in_progress",
-          "evidence": [],
+          "evidence": [
+            "docs/standard-model.md",
+            "evidence/application/release-acceptance.json"
+          ],
           "reviews": []
         },
         {
           "id": "S2-G5",
           "required": false,
           "status": "in_progress",
-          "evidence": [],
+          "evidence": [
+            "docs/extension-decisions.md",
+            "docs/standard-model.md",
+            "evidence/application/release-acceptance.json"
+          ],
           "reviews": []
         }
       ]
@@ -141,29 +217,48 @@
           "id": "S3-G1",
           "required": true,
           "status": "in_progress",
-          "evidence": [],
+          "evidence": [
+            "evidence/agent/index.json",
+            "evidence/release/final-clean-lifecycle.json"
+          ],
           "reviews": []
         },
         {
           "id": "S3-G2",
           "required": true,
           "status": "in_progress",
-          "evidence": [],
+          "evidence": [
+            "evidence/agent/index.json"
+          ],
           "reviews": []
         },
         {
           "id": "S3-G3",
           "required": true,
           "status": "in_progress",
-          "evidence": [],
+          "evidence": [
+            "evidence/agent/index.json",
+            "evidence/release/review-regressions.json",
+            "evidence/application/release-acceptance.json"
+          ],
           "reviews": []
         },
         {
           "id": "S3-G4",
           "required": true,
           "status": "in_progress",
-          "evidence": [],
-          "reviews": []
+          "evidence": [
+            "docs/review/implementation-team1.json",
+            "docs/review/implementation-team2.json",
+            "docs/review/implementation-team3.json",
+            "docs/review/implementation-team4.json"
+          ],
+          "reviews": [
+            "docs/review/implementation-team1.json",
+            "docs/review/implementation-team2.json",
+            "docs/review/implementation-team3.json",
+            "docs/review/implementation-team4.json"
+          ]
         }
       ]
     },
@@ -176,29 +271,43 @@
           "id": "S4-G1",
           "required": true,
           "status": "in_progress",
-          "evidence": [],
+          "evidence": [
+            "evidence/runtime/product-multisite-continuity.json",
+            "evidence/runtime/cse-multisite-smoke.json"
+          ],
           "reviews": []
         },
         {
           "id": "S4-G2",
           "required": true,
           "status": "in_progress",
-          "evidence": [],
+          "evidence": [
+            "evidence/runtime/product-multisite-continuity.json",
+            "evidence/release/final-clean-lifecycle.json"
+          ],
           "reviews": []
         },
         {
           "id": "S4-G3",
           "required": true,
           "status": "in_progress",
-          "evidence": [],
+          "evidence": [
+            "docs/extension-decisions.md",
+            "docs/review/implementation-team4.json"
+          ],
           "reviews": []
         },
         {
           "id": "S4-G4",
           "required": false,
-          "status": "in_progress",
-          "evidence": [],
-          "reviews": []
+          "status": "deferred",
+          "evidence": [
+            "docs/extension-decisions.md",
+            "docs/review/implementation-team4.json"
+          ],
+          "reviews": [
+            "docs/review/implementation-team4.json"
+          ]
         }
       ]
     },
@@ -211,21 +320,31 @@
           "id": "S5-G1",
           "required": true,
           "status": "in_progress",
-          "evidence": [],
+          "evidence": [
+            "evidence/dashboard/qa.json",
+            "evidence/dashboard/visual-upgrade-qa.json"
+          ],
           "reviews": []
         },
         {
           "id": "S5-G2",
           "required": true,
           "status": "in_progress",
-          "evidence": [],
+          "evidence": [
+            "deliverables/video/openSoom-demo-en.mp4",
+            "evidence/video/qa.json"
+          ],
           "reviews": []
         },
         {
           "id": "S5-G3",
           "required": true,
           "status": "in_progress",
-          "evidence": [],
+          "evidence": [
+            "deliverables/video/storyboard.json",
+            "evidence/video/asset-provenance.json",
+            "scripts/render_video.py"
+          ],
           "reviews": []
         }
       ]
@@ -238,28 +357,43 @@
         {
           "id": "S6-G1",
           "required": true,
-          "status": "not_started",
-          "evidence": [],
+          "status": "in_progress",
+          "evidence": [
+            "evidence/release/final-clean-lifecycle.json",
+            "README.md",
+            "docs/extending.md",
+            "evidence/release/final-checks.json"
+          ],
           "reviews": []
         },
         {
           "id": "S6-G2",
           "required": true,
-          "status": "not_started",
-          "evidence": [],
+          "status": "in_progress",
+          "evidence": [
+            "docs/submission/hackster-article.md",
+            "docs/submission/technical-qa.md",
+            "pitch/index.html",
+            "deliverables/video/openSoom-demo-en.mp4"
+          ],
           "reviews": []
         },
         {
           "id": "S6-G3",
           "required": true,
-          "status": "not_started",
-          "evidence": [],
+          "status": "in_progress",
+          "evidence": [
+            "docs/review/implementation-team1.json",
+            "docs/review/implementation-team2.json",
+            "docs/review/implementation-team3.json",
+            "docs/review/implementation-team4.json"
+          ],
           "reviews": []
         },
         {
           "id": "S6-G4",
           "required": true,
-          "status": "not_started",
+          "status": "in_progress",
           "evidence": [],
           "reviews": []
         },
@@ -267,7 +401,14 @@
           "id": "S6-G5",
           "required": true,
           "status": "in_progress",
-          "evidence": [],
+          "evidence": [
+            "pitch/index.html",
+            "pitch/architecture.js",
+            "evidence/pitch/qa.json",
+            "evidence/pitch/visual-upgrade-qa.json",
+            "evidence/pitch/architecture-source-map.json",
+            "docs/project-guide.ko.md"
+          ],
           "reviews": []
         }
       ]
@@ -344,6 +485,18 @@
         "S6-G5"
       ],
       "review_ref": null
+    },
+    {
+      "id": "PC-004",
+      "old_choice": "Initial dashboard and single-page Three.js pitch prepared for release review",
+      "new_choice": "Further state-driven Three.js dashboard, enlarged facility/flow models, detailed source-mapped 3D oneM2M architecture explorer and complete Korean explainer; stricter four-team final review",
+      "reason": "Maintainer expanded active Goal on 2026-11-18",
+      "affected_gate_ids": [
+        "S5-G1",
+        "S6-G3",
+        "S6-G5"
+      ],
+      "review_ref": null
     }
   ],
   "review_rounds": [
@@ -351,20 +504,27 @@
       "id": "pre-execution-plan-2026-11-18",
       "scope": "Documentation readiness only; no stage or product verification.",
       "report": "docs/review/pre-execution-plan-review.json"
+    },
+    {
+      "id": "implementation-2b2a239",
+      "scope": "All four teams independently reviewed stage0/firstCSE/agent checkpoint; two defects fixed in fd5e648, broader guided onboarding and final recapture in progress.",
+      "reports": [
+        "docs/review/implementation-team1.json",
+        "docs/review/implementation-team2.json",
+        "docs/review/implementation-team3.json",
+        "docs/review/implementation-team4.json"
+      ],
+      "revision": "2b2a239270e70625e99e39a5b738e09c84c19822"
     }
   ],
   "next_actions": [
     {
-      "gate": "S0-G4/S1-G4/S3-G4",
-      "action": "Freeze implementation snapshot and obtain four-team independent review of stage0, actualCSE and agent evidence."
+      "gate": "S3-G1",
+      "action": "Resolve unsupported inference in completed Codex explanation under independent review; preserve original failed cases."
     },
     {
-      "gate": "S6-G1",
-      "action": "Complete isolated lifecycle and actual application acceptance checks."
-    },
-    {
-      "gate": "S5-G2/S6-G2/S6-G5",
-      "action": "Render English video, submission drafts and Three.js single-page pitching artifact."
+      "gate": "S6-G3/S6-G4",
+      "action": "Freeze combined release, obtain four-team final verification, then publish reviewed commit to authorized GitHub."
     }
   ],
   "external_handoff": [
@@ -407,9 +567,9 @@
         "docs/execution-state.json"
       ],
       "base_revision": "54e93ee64c55bf62a8527764ed1084e0dee6a1d9",
-      "status": "in_progress",
+      "status": "implemented_with_captured_evidence",
       "evidence": [],
-      "next_action": "Implement profile-bound durable service and scenario runner."
+      "next_action": "Independent release closeout; evidence is indexed by stage gates."
     },
     {
       "id": "W-002",
@@ -428,9 +588,9 @@
         "evidence/runtime/"
       ],
       "base_revision": "54e93ee64c55bf62a8527764ed1084e0dee6a1d9",
-      "status": "in_progress",
+      "status": "implemented_with_captured_evidence",
       "evidence": [],
-      "next_action": "Run pinned ACME2026.5.3 CSE and smoke."
+      "next_action": "Independent release closeout; evidence is indexed by stage gates."
     },
     {
       "id": "W-003",
@@ -444,9 +604,9 @@
         "docs/dashboard-design.md"
       ],
       "base_revision": "54e93ee64c55bf62a8527764ed1084e0dee6a1d9",
-      "status": "in_progress",
+      "status": "implemented_with_captured_evidence",
       "evidence": [],
-      "next_action": "Build data-driven facility dashboard."
+      "next_action": "Independent release closeout; evidence is indexed by stage gates."
     },
     {
       "id": "W-004",
@@ -465,9 +625,105 @@
         "docs/agent-integration.md"
       ],
       "base_revision": "54e93ee64c55bf62a8527764ed1084e0dee6a1d9",
-      "status": "in_progress",
+      "status": "implemented_with_captured_evidence",
       "evidence": [],
-      "next_action": "Build shared MCP, real API runner and Codex plugin."
+      "next_action": "Independent release closeout; evidence is indexed by stage gates."
+    },
+    {
+      "id": "W-005",
+      "gate_ids": [
+        "S3-G1"
+      ],
+      "owner_role": "runtime_onem2m",
+      "owned_paths": [
+        "scripts/codex_guided_rehearsal.py",
+        "evidence/agent/guided-*"
+      ],
+      "base_revision": "fd5e648fa1c74e425507a98247844be150265acb",
+      "status": "captured_awaiting_factual_review",
+      "evidence": [
+        "evidence/agent/guided-rehearsal.md",
+        "evidence/agent/guided-config-report.md",
+        "evidence/agent/guided-explanation-report.md"
+      ],
+      "next_action": "Independent factual review of completed explanation and minimum remaining correction."
+    },
+    {
+      "id": "W-006",
+      "gate_ids": [
+        "S6-G5"
+      ],
+      "owner_role": "main",
+      "owned_paths": [
+        "pitch/",
+        "evidence/pitch/"
+      ],
+      "base_revision": "fd5e648fa1c74e425507a98247844be150265acb",
+      "status": "implemented_awaiting_independent_review",
+      "evidence": [
+        "evidence/pitch/qa.json"
+      ],
+      "next_action": "Strict final combined candidate review after metadata reconciliation."
+    },
+    {
+      "id": "W-007",
+      "gate_ids": [
+        "S5-G1"
+      ],
+      "owner_role": "dashboard_implementation",
+      "owned_paths": [
+        "web/",
+        "docs/dashboard-design.md",
+        "evidence/dashboard/"
+      ],
+      "base_revision": "fd5e648fa1c74e425507a98247844be150265acb",
+      "status": "implemented_awaiting_independent_review",
+      "evidence": [
+        "evidence/dashboard/visual-upgrade-qa.json"
+      ],
+      "next_action": "Independent release review of current run/condition correspondence and visual accessibility"
+    },
+    {
+      "id": "W-008",
+      "gate_ids": [
+        "S6-G5"
+      ],
+      "owner_role": "agent_integration",
+      "owned_paths": [
+        "pitch/architecture.js",
+        "pitch/architecture.css",
+        "pitch/architecture.fragment.html",
+        "evidence/pitch/architecture-source-map.json"
+      ],
+      "base_revision": "fd5e648fa1c74e425507a98247844be150265acb",
+      "status": "implemented_awaiting_independent_review",
+      "evidence": [],
+      "next_action": "Strict final combined candidate review after metadata reconciliation."
+    },
+    {
+      "id": "W-009",
+      "gate_ids": [
+        "S3-G1",
+        "S3-G3"
+      ],
+      "owner_role": "runtime_onem2m",
+      "owned_paths": [
+        "scripts/codex_semantics_regression.py",
+        "evidence/agent/semantics-*"
+      ],
+      "base_revision": "fd5e648fa1c74e425507a98247844be150265acb",
+      "status": "captured_factual_gap",
+      "evidence": [
+        "evidence/release/semantics-contract.patch",
+        "evidence/release/final-checks.json",
+        "docs/review/guided-explanation-review-team2.json",
+        "docs/review/explanation-semantics-team3.json",
+        "evidence/agent/semantics-scope.json",
+        "evidence/agent/semantics-preflight-verification.json",
+        "evidence/agent/semantics-live.json",
+        "evidence/agent/semantics-fact-check.json"
+      ],
+      "next_action": "Independent review of unit-preserving validation input; no autonomous retry/reset."
     }
   ],
   "record_formats": {
@@ -541,26 +797,90 @@
       "max_attempts_per_step": 2
     },
     "persistent_accounting_path": ".runtime/llm-budget.sqlite",
-    "requests_consumed": 0,
-    "tokens_consumed": 0,
+    "requests_consumed": 71,
+    "tokens_consumed": 235310,
     "requests_reserved": 0,
     "tokens_reserved": 0,
-    "rule": "Configure finite limits before live tests; atomically reserve before calls; retain consumed/reserved usage across restarts; no automatic reset or increase; stop live calls at exhaustion and continue independent work."
+    "rule": "Configure finite limits before live tests; atomically reserve before calls; retain consumed/reserved usage across restarts; no automatic reset or increase; stop live calls at exhaustion and continue independent work.",
+    "usage_snapshot_note": "One corrected-contract Codex turn completed, counter/history/direction improved; validation input omitted airflow unit and model inventedL/min. Fact acceptance remainsopen, priorcasesunchanged.",
+    "post_correction_case": {
+      "purpose": "Actual Codex interpretation regression after reusable tool/skill semantics correction",
+      "max_requests": 1,
+      "max_reservation_tokens": 18000,
+      "max_output_tokens": 2048,
+      "requested_output_tokens": 768,
+      "timeout_seconds": 45,
+      "retries": 0,
+      "unchanged_shared_limits": true,
+      "previous_cases_preserved": true,
+      "live_status": "completed_factual_gap_unit_omission"
+    }
   },
   "conditional_extensions": [
     {
       "id": "advanced_data_model",
       "criterion": 11,
       "parent_gate": "S2-G5",
-      "decision": "not_decided",
-      "reason": "High-value SDT/semantic target; required FCNT/discovery gate is separate.",
-      "status": "not_started",
-      "gate_ids": [],
-      "gates": [],
-      "environment": null,
-      "evidence": [],
-      "review_ref": null,
-      "decision_history": [],
+      "decision": "adopted",
+      "reason": "Useful limited PM2.5 standard projection recognized across vendors; preserve original canonical precision and omit incompatible CO2/airflow properties.",
+      "status": "in_progress",
+      "gate_ids": [
+        "SDT-G1",
+        "SDT-G2",
+        "SDT-G3"
+      ],
+      "gates": [
+        {
+          "id": "SDT-G1",
+          "criterion": "Pinned model identifier, data type, unit, rounding and omission rules",
+          "status": "in_progress",
+          "evidence": [
+            "docs/standard-model.md",
+            "tests/test_contracts.py"
+          ],
+          "reviews": [
+            "docs/review/implementation-team1.json"
+          ]
+        },
+        {
+          "id": "SDT-G2",
+          "criterion": "Native FCNT creation/type validation/discovery",
+          "status": "in_progress",
+          "evidence": [
+            "evidence/runtime/cse-https-smoke.json",
+            "evidence/application/release-acceptance.json"
+          ],
+          "reviews": [
+            "docs/review/implementation-team1.json"
+          ]
+        },
+        {
+          "id": "SDT-G3",
+          "criterion": "Actual application read for both profiles/adapters with canonical precision retained",
+          "status": "in_progress",
+          "evidence": [
+            "evidence/application/release-acceptance.json"
+          ],
+          "reviews": [
+            "docs/review/implementation-team1.json"
+          ]
+        }
+      ],
+      "environment": "Actual ACME2026.5.3 HTTPS/MQTT TLS CSE, TS0023v5.6.0",
+      "evidence": [
+        "docs/standard-model.md",
+        "evidence/application/release-acceptance.json"
+      ],
+      "review_ref": "docs/review/implementation-team1.json",
+      "decision_history": [
+        {
+          "date": "2026-11-18",
+          "previous_decision": "not_decided",
+          "decision": "adopt",
+          "basis": "docs/extension-decisions.md",
+          "review": "docs/review/implementation-team1.json"
+        }
+      ],
       "completion_rule": "An adopted extension requires nonempty individually identified child gates with passed evidence/review. Reviewed deferral excludes only the extension, retaining earlier adoption/failure records."
     },
     {
@@ -568,29 +888,51 @@
       "criterion": 12,
       "parent_gate": "S4-G4",
       "decision": "deferred",
-      "reason": "Previous design review deferred until maintenance/availability need; investigate again at stages 0/4.",
-      "status": "not_started",
+      "reason": "Fixed facilities require tested central-outage local continuity now; no serving-CSE transition implemented. Reopen for justified gateway maintenance/failure with identity/state/subscription/ACP restoration and measured loss.",
+      "status": "deferred",
       "gate_ids": [],
       "gates": [],
-      "environment": null,
-      "evidence": [],
-      "review_ref": "docs/review/review-ledger.json#R-009",
-      "decision_history": [],
+      "environment": "No authenticated MEC environment; local CSE test only",
+      "evidence": [
+        "docs/extension-decisions.md",
+        "evidence/stage0/mec-feasibility.json"
+      ],
+      "review_ref": "docs/review/implementation-team4.json",
+      "decision_history": [
+        {
+          "date": "2026-11-18",
+          "previous_decision": "deferred",
+          "decision": "defer",
+          "basis": "docs/extension-decisions.md",
+          "review": "docs/review/implementation-team4.json"
+        }
+      ],
       "completion_rule": "An adopted extension requires nonempty individually identified child gates with passed evidence/review. Reviewed deferral excludes only the extension, retaining earlier adoption/failure records."
     },
     {
       "id": "mec_deployment",
       "criterion": 13,
       "parent_gate": "S4-G4",
-      "decision": "investigate",
-      "reason": "Verify actual platform access and deployment rights.",
-      "status": "not_started",
+      "decision": "deferred",
+      "reason": "Bounded investigation found no authenticated project host or custom-image deployment permission; public landing page is insufficient.",
+      "status": "deferred",
       "gate_ids": [],
       "gates": [],
-      "environment": null,
-      "evidence": [],
-      "review_ref": null,
-      "decision_history": [],
+      "environment": "No authenticated MEC environment; local CSE test only",
+      "evidence": [
+        "docs/extension-decisions.md",
+        "evidence/stage0/mec-feasibility.json"
+      ],
+      "review_ref": "docs/review/implementation-team4.json",
+      "decision_history": [
+        {
+          "date": "2026-11-18",
+          "previous_decision": "investigate",
+          "decision": "defer",
+          "basis": "docs/extension-decisions.md",
+          "review": "docs/review/implementation-team4.json"
+        }
+      ],
       "completion_rule": "An adopted extension requires nonempty individually identified child gates with passed evidence/review. Reviewed deferral excludes only the extension, retaining earlier adoption/failure records."
     },
     {
@@ -598,14 +940,25 @@
       "criterion": 14,
       "parent_gate": "S4-G4",
       "decision": "deferred",
-      "reason": "No justified multi-client data/learning need or ESTIMED VM path yet.",
-      "status": "not_started",
+      "reason": "No real multi-client learning dataset/need and no ESTIMED VM path; interpretable configured rules address current scenarios.",
+      "status": "deferred",
       "gate_ids": [],
       "gates": [],
-      "environment": null,
-      "evidence": [],
-      "review_ref": "docs/review/review-ledger.json#R-010",
-      "decision_history": [],
+      "environment": "No authenticated MEC environment; local CSE test only",
+      "evidence": [
+        "docs/extension-decisions.md",
+        "evidence/stage0/mec-feasibility.json"
+      ],
+      "review_ref": "docs/review/implementation-team4.json",
+      "decision_history": [
+        {
+          "date": "2026-11-18",
+          "previous_decision": "deferred",
+          "decision": "defer",
+          "basis": "docs/extension-decisions.md",
+          "review": "docs/review/implementation-team4.json"
+        }
+      ],
       "completion_rule": "An adopted extension requires nonempty individually identified child gates with passed evidence/review. Reviewed deferral excludes only the extension, retaining earlier adoption/failure records."
     },
     {
@@ -613,62 +966,117 @@
       "criterion": 15,
       "parent_gate": "S4-G4",
       "decision": "deferred",
-      "reason": "No operational location-change need yet.",
-      "status": "not_started",
+      "reason": "Fixed zones have no behavior driven by mobile network/MEC location; configured facility/zone identity is sufficient.",
+      "status": "deferred",
       "gate_ids": [],
       "gates": [],
-      "environment": null,
-      "evidence": [],
-      "review_ref": "docs/review/review-ledger.json#R-010",
-      "decision_history": [],
+      "environment": "No authenticated MEC environment; local CSE test only",
+      "evidence": [
+        "docs/extension-decisions.md",
+        "evidence/stage0/mec-feasibility.json"
+      ],
+      "review_ref": "docs/review/implementation-team4.json",
+      "decision_history": [
+        {
+          "date": "2026-11-18",
+          "previous_decision": "deferred",
+          "decision": "defer",
+          "basis": "docs/extension-decisions.md",
+          "review": "docs/review/implementation-team4.json"
+        }
+      ],
       "completion_rule": "An adopted extension requires nonempty individually identified child gates with passed evidence/review. Reviewed deferral excludes only the extension, retaining earlier adoption/failure records."
     },
     {
       "id": "mec_services",
       "criterion": 16,
       "parent_gate": "S4-G4",
-      "decision": "investigate",
-      "reason": "Verify an actual non-location service and oneM2M integration path.",
-      "status": "not_started",
+      "decision": "deferred",
+      "reason": "No authenticated non-location MEC service instance or verified MEC033 availability; oneM2M discovery serves current equipment use.",
+      "status": "deferred",
       "gate_ids": [],
       "gates": [],
-      "environment": null,
-      "evidence": [],
-      "review_ref": null,
-      "decision_history": [],
+      "environment": "No authenticated MEC environment; local CSE test only",
+      "evidence": [
+        "docs/extension-decisions.md",
+        "evidence/stage0/mec-feasibility.json"
+      ],
+      "review_ref": "docs/review/implementation-team4.json",
+      "decision_history": [
+        {
+          "date": "2026-11-18",
+          "previous_decision": "investigate",
+          "decision": "defer",
+          "basis": "docs/extension-decisions.md",
+          "review": "docs/review/implementation-team4.json"
+        }
+      ],
       "completion_rule": "An adopted extension requires nonempty individually identified child gates with passed evidence/review. Reviewed deferral excludes only the extension, retaining earlier adoption/failure records."
     }
   ],
   "deliverables": [
     {
       "id": "hackster_article",
-      "path": null,
-      "sha256": null,
-      "source_revision": null,
-      "run_ids": [],
-      "artifact_status": "not_started",
+      "path": "docs/submission/hackster-article.md",
+      "sha256": "fd0aa203dc151db35276b9150cf4242918049120f6a614f863f9b6dc2e007dad",
+      "source_revision": "fd5e648fa1c74e425507a98247844be150265acb",
+      "run_ids": [
+        "agent-379720ef883c",
+        "agent-479f866b7e84"
+      ],
+      "artifact_status": "prepared_awaiting_independent_release_review",
       "publication_status": "not_published",
-      "public_url": null
+      "public_url": null,
+      "provenance": "Artifact is prepared alongside code; cited execution IDs retain their original source scope.",
+      "artifact_manifest": "evidence/release/artifacts.json"
     },
     {
       "id": "demo_video",
-      "path": null,
-      "sha256": null,
-      "source_revision": null,
-      "run_ids": [],
-      "artifact_status": "not_started",
+      "path": "deliverables/video/openSoom-demo-en.mp4",
+      "sha256": "d4cc9e2ce19fcef31f97212edf54f0ae5caa5c32e2f17e5ae8ae7ce32721c0ee",
+      "source_revision": "fd5e648fa1c74e425507a98247844be150265acb",
+      "run_ids": [
+        "agent-379720ef883c",
+        "agent-479f866b7e84"
+      ],
+      "artifact_status": "prepared_awaiting_independent_release_review",
       "publication_status": "not_published",
-      "public_url": null
+      "public_url": null,
+      "provenance": "evidence/video/asset-provenance.json",
+      "artifact_manifest": "evidence/release/artifacts.json"
     },
     {
       "id": "presentation_and_qa",
-      "path": null,
-      "sha256": null,
-      "source_revision": null,
+      "path": "docs/submission/technical-qa.md",
+      "sha256": "39656b42ef763e07940cabed25df6f1007b4adc42e4540118ec7b4287ec2a23d",
+      "source_revision": "fd5e648fa1c74e425507a98247844be150265acb",
       "run_ids": [],
-      "artifact_status": "not_started",
+      "artifact_status": "prepared_awaiting_independent_release_review",
       "publication_status": "not_published",
-      "public_url": null
+      "public_url": null,
+      "provenance": "Artifact is prepared alongside code; cited execution IDs retain their original source scope.",
+      "artifact_manifest": "evidence/release/artifacts.json"
+    },
+    {
+      "id": "single_page_pitch",
+      "path": "pitch/index.html",
+      "sha256": "48987c5066890992f8213458917165ae9ccc31123e6dc97daf5ddfa8b6dfba6b",
+      "source_revision": "fd5e648fa1c74e425507a98247844be150265acb",
+      "run_ids": [],
+      "artifact_status": "prepared_awaiting_independent_release_review",
+      "publication_status": "not_published",
+      "public_url": null,
+      "provenance": "Artifact is prepared alongside code; cited execution IDs retain their original source scope.",
+      "artifact_manifest": "evidence/release/artifacts.json"
+    },
+    {
+      "id": "korean_explanation",
+      "path": "docs/project-guide.ko.md",
+      "sha256": "d7ea061a721fe62db6e3d8bd120396968d49e265977fc41098e2639d841f4ee4",
+      "artifact_status": "prepared_awaiting_independent_release_review",
+      "publication_status": "not_published",
+      "public_url": null,
+      "artifact_manifest": "evidence/release/artifacts.json"
     }
   ]
 }

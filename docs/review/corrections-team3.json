@@ -1,0 +1,625 @@
+{
+  "schema_version": 1,
+  "review_id": "team3-corrections-fd5e648",
+  "reviewed_at": "2026-11-17T19:21:19.722282+00:00",
+  "team": "team_3",
+  "reviewer_task": "architecture_reasonableness",
+  "immutable_product_revision": "fd5e648fa1c74e425507a98247844be150265acb",
+  "scope": "Independent close-out of T3-001/T3-002 and S1-G3 pending-command process restart evidence only. Final release/all-17 review is separate.",
+  "review_constraints": {
+    "product_code_edits": false,
+    "new_live_llm_calls": 0,
+    "real_service_or_cse_mutations": 0,
+    "output_only": "docs/review/corrections-team3.json"
+  },
+  "verdict": "PASS_BOUNDED_CORRECTION_REVIEW",
+  "new_blockers": [],
+  "independent_test": {
+    "command": ".venv/bin/python -m pytest tests/test_review_regressions.py tests/test_llm_budget.py tests/test_llm_runner.py tests/test_mcp_server.py tests/test_contracts.py tests/test_facility_registry.py -q",
+    "result": "33 passed in 0.96s",
+    "exit_status": 0,
+    "new_regression_cases": 5,
+    "note": "Provider error/retry checks use mocks; no actual model request was made. Core/app/regression tests matched the immutable fix commit."
+  },
+  "evidence_manifest": [
+    {
+      "path": "evidence/release/review-regressions.json",
+      "sha256": "d708b55e5a94a9cc1e910c8c72fa26974f7578e118a6c8929e94d18cd35ec3ee",
+      "classification": "Captured actual software/CSE execution with simulated physical equipment; audited in this review, not rerun against the current CSE."
+    },
+    {
+      "path": "evidence/application/release-acceptance.json",
+      "sha256": "5bde7e0f55f28854f085ce619622349c99e6993d8f119f194f4dacf79ff727b1",
+      "classification": "Captured actual software/CSE execution with simulated physical equipment; audited in this review, not rerun against the current CSE."
+    },
+    {
+      "path": "evidence/release/final-clean-lifecycle.json",
+      "sha256": "4cd45ee2671fc346f4f7e014b30a4804b0d566bb1cc1a99520c4ed5b353dce26",
+      "classification": "Captured actual software/CSE execution with simulated physical equipment; audited in this review, not rerun against the current CSE."
+    }
+  ],
+  "source_hash_checks": [
+    {
+      "capture": "evidence/release/review-regressions.json",
+      "field": "source_sha256_before",
+      "source": "src/opensoom/core.py",
+      "recorded_sha256": "91a8c15285d2c7b64fccf5105bcf7e4f8738e5f200c26c2af9abd2e9f72c56ef",
+      "matches_fix_commit": true,
+      "matches_current_file": true
+    },
+    {
+      "capture": "evidence/release/review-regressions.json",
+      "field": "source_sha256_before",
+      "source": "src/opensoom/app.py",
+      "recorded_sha256": "90b2b13f78732ed32ac22fa0e21c9669d4731180463e80bbe551f881e622a144",
+      "matches_fix_commit": true,
+      "matches_current_file": true
+    },
+    {
+      "capture": "evidence/release/review-regressions.json",
+      "field": "source_sha256_before",
+      "source": "scripts/review_regression_check.py",
+      "recorded_sha256": "a2e71ca359ae3e005f78529cbeac31ed21bcf52731c50716c945158ec03b83c7",
+      "matches_fix_commit": true,
+      "matches_current_file": true
+    },
+    {
+      "capture": "evidence/release/review-regressions.json",
+      "field": "source_sha256_after",
+      "source": "src/opensoom/core.py",
+      "recorded_sha256": "91a8c15285d2c7b64fccf5105bcf7e4f8738e5f200c26c2af9abd2e9f72c56ef",
+      "matches_fix_commit": true,
+      "matches_current_file": true
+    },
+    {
+      "capture": "evidence/release/review-regressions.json",
+      "field": "source_sha256_after",
+      "source": "src/opensoom/app.py",
+      "recorded_sha256": "90b2b13f78732ed32ac22fa0e21c9669d4731180463e80bbe551f881e622a144",
+      "matches_fix_commit": true,
+      "matches_current_file": true
+    },
+    {
+      "capture": "evidence/release/review-regressions.json",
+      "field": "source_sha256_after",
+      "source": "scripts/review_regression_check.py",
+      "recorded_sha256": "a2e71ca359ae3e005f78529cbeac31ed21bcf52731c50716c945158ec03b83c7",
+      "matches_fix_commit": true,
+      "matches_current_file": true
+    },
+    {
+      "capture": "evidence/application/release-acceptance.json",
+      "field": "source_sha256_before",
+      "source": "src/opensoom/core.py",
+      "recorded_sha256": "91a8c15285d2c7b64fccf5105bcf7e4f8738e5f200c26c2af9abd2e9f72c56ef",
+      "matches_fix_commit": true,
+      "matches_current_file": true
+    },
+    {
+      "capture": "evidence/application/release-acceptance.json",
+      "field": "source_sha256_before",
+      "source": "src/opensoom/app.py",
+      "recorded_sha256": "90b2b13f78732ed32ac22fa0e21c9669d4731180463e80bbe551f881e622a144",
+      "matches_fix_commit": true,
+      "matches_current_file": true
+    },
+    {
+      "capture": "evidence/application/release-acceptance.json",
+      "field": "source_sha256_before",
+      "source": "src/opensoom/models.py",
+      "recorded_sha256": "5a11e9a47b6446a4e9f2d77a222e962147a864a53869ee5875870e0d85061e48",
+      "matches_fix_commit": true,
+      "matches_current_file": true
+    },
+    {
+      "capture": "evidence/application/release-acceptance.json",
+      "field": "source_sha256_before",
+      "source": "src/opensoom/adapters.py",
+      "recorded_sha256": "b6b2425832cb70d38795c9758b90531eba313304a19a8bbe8ce085e12a6a8840",
+      "matches_fix_commit": true,
+      "matches_current_file": true
+    },
+    {
+      "capture": "evidence/application/release-acceptance.json",
+      "field": "source_sha256_before",
+      "source": "src/opensoom/policy.py",
+      "recorded_sha256": "801ba84bf1eea13404a19017359e4e01fcf11d33e812e3a571df68e34c110ad5",
+      "matches_fix_commit": true,
+      "matches_current_file": true
+    },
+    {
+      "capture": "evidence/application/release-acceptance.json",
+      "field": "source_sha256_before",
+      "source": "src/opensoom/store.py",
+      "recorded_sha256": "e7369b519f396f86074334e2de0a0c9bfaedcbd4081d6c245780178167e62318",
+      "matches_fix_commit": true,
+      "matches_current_file": true
+    },
+    {
+      "capture": "evidence/application/release-acceptance.json",
+      "field": "source_sha256_before",
+      "source": "src/opensoom/onem2m.py",
+      "recorded_sha256": "c4edcf610b9c82266d222dc63b69869cbd62000478405cdcd98f44178b0b123e",
+      "matches_fix_commit": true,
+      "matches_current_file": true
+    },
+    {
+      "capture": "evidence/application/release-acceptance.json",
+      "field": "source_sha256_before",
+      "source": "scripts/application_acceptance.py",
+      "recorded_sha256": "036f3bece2e766df26f739ef656f713c8e0952a232f5e48c5c88767f32dd1165",
+      "matches_fix_commit": true,
+      "matches_current_file": true
+    },
+    {
+      "capture": "evidence/application/release-acceptance.json",
+      "field": "source_sha256_before",
+      "source": "profiles/food-production.json",
+      "recorded_sha256": "402ae760ec4fe13c23e2a6c63e3ec80518d8ebdba30edde9e64cfdbb573e4c6e",
+      "matches_fix_commit": true,
+      "matches_current_file": true
+    },
+    {
+      "capture": "evidence/application/release-acceptance.json",
+      "field": "source_sha256_before",
+      "source": "profiles/learning-space.json",
+      "recorded_sha256": "2bc00d56a3fcf15cb388d7b81892a33123492b4452105522d368e5b8daee14e3",
+      "matches_fix_commit": true,
+      "matches_current_file": true
+    },
+    {
+      "capture": "evidence/application/release-acceptance.json",
+      "field": "source_sha256_before",
+      "source": "schemas/facilities.schema.json",
+      "recorded_sha256": "c9d5b5015a202ec63fe360e823d05d575eb44e80f7f3a746f6a3ab2651e37f06",
+      "matches_fix_commit": true,
+      "matches_current_file": true
+    },
+    {
+      "capture": "evidence/application/release-acceptance.json",
+      "field": "source_sha256_before",
+      "source": "schemas/facility-profile.schema.json",
+      "recorded_sha256": "dd61c40a44498454b9ea06e01d5fd0a23b9124b2708b94f2c088191a07ee3ea1",
+      "matches_fix_commit": true,
+      "matches_current_file": true
+    },
+    {
+      "capture": "evidence/application/release-acceptance.json",
+      "field": "source_sha256_before",
+      "source": "config/facilities.json",
+      "recorded_sha256": "0b385a82788c18673624b385798dd4b9f73ae75bf05f15102f5b5e8b432ba547",
+      "matches_fix_commit": true,
+      "matches_current_file": true
+    },
+    {
+      "capture": "evidence/application/release-acceptance.json",
+      "field": "source_sha256_after",
+      "source": "src/opensoom/core.py",
+      "recorded_sha256": "91a8c15285d2c7b64fccf5105bcf7e4f8738e5f200c26c2af9abd2e9f72c56ef",
+      "matches_fix_commit": true,
+      "matches_current_file": true
+    },
+    {
+      "capture": "evidence/application/release-acceptance.json",
+      "field": "source_sha256_after",
+      "source": "src/opensoom/app.py",
+      "recorded_sha256": "90b2b13f78732ed32ac22fa0e21c9669d4731180463e80bbe551f881e622a144",
+      "matches_fix_commit": true,
+      "matches_current_file": true
+    },
+    {
+      "capture": "evidence/application/release-acceptance.json",
+      "field": "source_sha256_after",
+      "source": "src/opensoom/models.py",
+      "recorded_sha256": "5a11e9a47b6446a4e9f2d77a222e962147a864a53869ee5875870e0d85061e48",
+      "matches_fix_commit": true,
+      "matches_current_file": true
+    },
+    {
+      "capture": "evidence/application/release-acceptance.json",
+      "field": "source_sha256_after",
+      "source": "src/opensoom/adapters.py",
+      "recorded_sha256": "b6b2425832cb70d38795c9758b90531eba313304a19a8bbe8ce085e12a6a8840",
+      "matches_fix_commit": true,
+      "matches_current_file": true
+    },
+    {
+      "capture": "evidence/application/release-acceptance.json",
+      "field": "source_sha256_after",
+      "source": "src/opensoom/policy.py",
+      "recorded_sha256": "801ba84bf1eea13404a19017359e4e01fcf11d33e812e3a571df68e34c110ad5",
+      "matches_fix_commit": true,
+      "matches_current_file": true
+    },
+    {
+      "capture": "evidence/application/release-acceptance.json",
+      "field": "source_sha256_after",
+      "source": "src/opensoom/store.py",
+      "recorded_sha256": "e7369b519f396f86074334e2de0a0c9bfaedcbd4081d6c245780178167e62318",
+      "matches_fix_commit": true,
+      "matches_current_file": true
+    },
+    {
+      "capture": "evidence/application/release-acceptance.json",
+      "field": "source_sha256_after",
+      "source": "src/opensoom/onem2m.py",
+      "recorded_sha256": "c4edcf610b9c82266d222dc63b69869cbd62000478405cdcd98f44178b0b123e",
+      "matches_fix_commit": true,
+      "matches_current_file": true
+    },
+    {
+      "capture": "evidence/application/release-acceptance.json",
+      "field": "source_sha256_after",
+      "source": "scripts/application_acceptance.py",
+      "recorded_sha256": "036f3bece2e766df26f739ef656f713c8e0952a232f5e48c5c88767f32dd1165",
+      "matches_fix_commit": true,
+      "matches_current_file": true
+    },
+    {
+      "capture": "evidence/application/release-acceptance.json",
+      "field": "source_sha256_after",
+      "source": "profiles/food-production.json",
+      "recorded_sha256": "402ae760ec4fe13c23e2a6c63e3ec80518d8ebdba30edde9e64cfdbb573e4c6e",
+      "matches_fix_commit": true,
+      "matches_current_file": true
+    },
+    {
+      "capture": "evidence/application/release-acceptance.json",
+      "field": "source_sha256_after",
+      "source": "profiles/learning-space.json",
+      "recorded_sha256": "2bc00d56a3fcf15cb388d7b81892a33123492b4452105522d368e5b8daee14e3",
+      "matches_fix_commit": true,
+      "matches_current_file": true
+    },
+    {
+      "capture": "evidence/application/release-acceptance.json",
+      "field": "source_sha256_after",
+      "source": "schemas/facilities.schema.json",
+      "recorded_sha256": "c9d5b5015a202ec63fe360e823d05d575eb44e80f7f3a746f6a3ab2651e37f06",
+      "matches_fix_commit": true,
+      "matches_current_file": true
+    },
+    {
+      "capture": "evidence/application/release-acceptance.json",
+      "field": "source_sha256_after",
+      "source": "schemas/facility-profile.schema.json",
+      "recorded_sha256": "dd61c40a44498454b9ea06e01d5fd0a23b9124b2708b94f2c088191a07ee3ea1",
+      "matches_fix_commit": true,
+      "matches_current_file": true
+    },
+    {
+      "capture": "evidence/application/release-acceptance.json",
+      "field": "source_sha256_after",
+      "source": "config/facilities.json",
+      "recorded_sha256": "0b385a82788c18673624b385798dd4b9f73ae75bf05f15102f5b5e8b432ba547",
+      "matches_fix_commit": true,
+      "matches_current_file": true
+    },
+    {
+      "capture": "evidence/release/final-clean-lifecycle.json",
+      "field": "source_sha256",
+      "source": "src/opensoom/__init__.py",
+      "recorded_sha256": "5ffc4e500ba7ba3baf818e8884c687a777b09f6d05fbde93d987629c7bbb2925",
+      "matches_fix_commit": true,
+      "matches_current_file": true
+    },
+    {
+      "capture": "evidence/release/final-clean-lifecycle.json",
+      "field": "source_sha256",
+      "source": "src/opensoom/adapters.py",
+      "recorded_sha256": "b6b2425832cb70d38795c9758b90531eba313304a19a8bbe8ce085e12a6a8840",
+      "matches_fix_commit": true,
+      "matches_current_file": true
+    },
+    {
+      "capture": "evidence/release/final-clean-lifecycle.json",
+      "field": "source_sha256",
+      "source": "src/opensoom/app.py",
+      "recorded_sha256": "90b2b13f78732ed32ac22fa0e21c9669d4731180463e80bbe551f881e622a144",
+      "matches_fix_commit": true,
+      "matches_current_file": true
+    },
+    {
+      "capture": "evidence/release/final-clean-lifecycle.json",
+      "field": "source_sha256",
+      "source": "src/opensoom/cli.py",
+      "recorded_sha256": "64f45b19309678a44e70437db3cab9685d4406a8c8471ccdf507ef584ddcbd60",
+      "matches_fix_commit": true,
+      "matches_current_file": true
+    },
+    {
+      "capture": "evidence/release/final-clean-lifecycle.json",
+      "field": "source_sha256",
+      "source": "src/opensoom/core.py",
+      "recorded_sha256": "91a8c15285d2c7b64fccf5105bcf7e4f8738e5f200c26c2af9abd2e9f72c56ef",
+      "matches_fix_commit": true,
+      "matches_current_file": true
+    },
+    {
+      "capture": "evidence/release/final-clean-lifecycle.json",
+      "field": "source_sha256",
+      "source": "src/opensoom/federation.py",
+      "recorded_sha256": "8aa9727ee7b028fb173f0375f033f74a874a29624cdf6cfd34a0baed9043e11d",
+      "matches_fix_commit": true,
+      "matches_current_file": true
+    },
+    {
+      "capture": "evidence/release/final-clean-lifecycle.json",
+      "field": "source_sha256",
+      "source": "src/opensoom/llm_budget.py",
+      "recorded_sha256": "306f6cfbdcdc3f7f0fe2718bd87b1d46ec371be66faf6cba8e68ac9dfcb781bc",
+      "matches_fix_commit": true,
+      "matches_current_file": true
+    },
+    {
+      "capture": "evidence/release/final-clean-lifecycle.json",
+      "field": "source_sha256",
+      "source": "src/opensoom/llm_runner.py",
+      "recorded_sha256": "5f66e3a4f77ac5c1d441c65e47dc445869a6b4af4c60113a383c3dded3de04d0",
+      "matches_fix_commit": true,
+      "matches_current_file": true
+    },
+    {
+      "capture": "evidence/release/final-clean-lifecycle.json",
+      "field": "source_sha256",
+      "source": "src/opensoom/mcp_server.py",
+      "recorded_sha256": "a6dbe7d5785b224f2b74bbd03c9500dbae795bcf716c11e44d9b51293ddf90dc",
+      "matches_fix_commit": true,
+      "matches_current_file": true
+    },
+    {
+      "capture": "evidence/release/final-clean-lifecycle.json",
+      "field": "source_sha256",
+      "source": "src/opensoom/models.py",
+      "recorded_sha256": "5a11e9a47b6446a4e9f2d77a222e962147a864a53869ee5875870e0d85061e48",
+      "matches_fix_commit": true,
+      "matches_current_file": true
+    },
+    {
+      "capture": "evidence/release/final-clean-lifecycle.json",
+      "field": "source_sha256",
+      "source": "src/opensoom/onem2m.py",
+      "recorded_sha256": "c4edcf610b9c82266d222dc63b69869cbd62000478405cdcd98f44178b0b123e",
+      "matches_fix_commit": true,
+      "matches_current_file": true
+    },
+    {
+      "capture": "evidence/release/final-clean-lifecycle.json",
+      "field": "source_sha256",
+      "source": "src/opensoom/policy.py",
+      "recorded_sha256": "801ba84bf1eea13404a19017359e4e01fcf11d33e812e3a571df68e34c110ad5",
+      "matches_fix_commit": true,
+      "matches_current_file": true
+    },
+    {
+      "capture": "evidence/release/final-clean-lifecycle.json",
+      "field": "source_sha256",
+      "source": "src/opensoom/store.py",
+      "recorded_sha256": "e7369b519f396f86074334e2de0a0c9bfaedcbd4081d6c245780178167e62318",
+      "matches_fix_commit": true,
+      "matches_current_file": true
+    },
+    {
+      "capture": "evidence/release/final-clean-lifecycle.json",
+      "field": "source_sha256",
+      "source": "scripts/release_reproduce.py",
+      "recorded_sha256": "8d45bb9ce1f2ec4e53ec9624e4e1a4f493ba6b6df354504eb280b2c21b6cb6e0",
+      "matches_fix_commit": false,
+      "matches_current_file": true
+    },
+    {
+      "capture": "evidence/release/final-clean-lifecycle.json",
+      "field": "source_sha256",
+      "source": "config/facilities.json",
+      "recorded_sha256": "0b385a82788c18673624b385798dd4b9f73ae75bf05f15102f5b5e8b432ba547",
+      "matches_fix_commit": true,
+      "matches_current_file": true
+    },
+    {
+      "capture": "evidence/release/final-clean-lifecycle.json",
+      "field": "source_sha256",
+      "source": "uv.lock",
+      "recorded_sha256": "3e4e5b744d0e26f0f13b9d1fad48c3f8bf576a59b40444c19c9ccbc5d067ffa2",
+      "matches_fix_commit": true,
+      "matches_current_file": true
+    }
+  ],
+  "source_provenance_assessment": {
+    "product_sources": "All captured product source hashes match the immutable fix commit and current corresponding files. Regression checker and application acceptance checker also match.",
+    "permitted_test_harness_change": {
+      "path": "scripts/release_reproduce.py",
+      "sha256": "8d45bb9ce1f2ec4e53ec9624e4e1a4f493ba6b6df354504eb280b2c21b6cb6e0",
+      "matches_fix_commit": false,
+      "matches_current": true,
+      "assessment": "Disclosed harness-only extension adds pending-command lifecycle capture. Product core/app/CLI/store hashes remain those of the fixed commit; this does not misattribute product behavior to changed product code."
+    }
+  },
+  "correction_results": [
+    {
+      "id": "T3-001",
+      "related_ledger": "R-007",
+      "criteria": [
+        10,
+        17
+      ],
+      "status": "resolved",
+      "evidence_status": "verified_and_captured",
+      "code_paths": [
+        "src/opensoom/app.py:139",
+        "src/opensoom/app.py:176",
+        "src/opensoom/core.py:258",
+        "tests/test_review_regressions.py"
+      ],
+      "verified_changes": [
+        "Run finalization rejects observer and roles differing from persisted principal_role.",
+        "Tool-call attachment rejects a mismatched owner even when the tool has no facility argument.",
+        "The exception-recording path checks run owner and does not append denial records into another role run.",
+        "Demo runs persist their actor role, preserving the same owner contract used by agent runs."
+      ],
+      "observed_regression": {
+        "capture": "evidence/release/review-regressions.json",
+        "observer_patch_error": "run_owner_required",
+        "observer_tool_append_error": "run_owner_required",
+        "target_state_unchanged": true,
+        "owner_update_allowed": true
+      },
+      "scope_limit": "The actor unit is the prototype fixed service role within the trusted-loopback boundary. This is not individual-user authentication or malicious-local-process isolation."
+    },
+    {
+      "id": "T3-002",
+      "also_reported_as": "Team 1 T1-I1",
+      "criteria": [
+        10,
+        17
+      ],
+      "status": "resolved",
+      "evidence_status": "verified_and_captured",
+      "code_paths": [
+        "src/opensoom/core.py:420",
+        "tests/test_review_regressions.py"
+      ],
+      "verified_changes": [
+        "The most recently applied acknowledged setpoint becomes reported damper state.",
+        "Deterministic modeled airflow depends on setpoint; zero/partial commands no longer borrow full-open recovery.",
+        "The explicit no_recovery scenario still constrains modeled response."
+      ],
+      "observed_regressions": [
+        {
+          "requested": 0,
+          "command_value": 0.0,
+          "reported_damper": 0.0,
+          "airflow": 0.0,
+          "ack": true,
+          "observed_result": "unresolved",
+          "complete": false,
+          "command_id": "cmd-ae8db570c241",
+          "ack_rqi": "opensoom-a5bbd6b5156f449f949f8e11ad4c0669",
+          "verification_rqi": "opensoom-08fc0d12cbe54f06aec1c29c1717fa71",
+          "post_ack_observation": true
+        },
+        {
+          "requested": 50,
+          "command_value": 50.0,
+          "reported_damper": 50.0,
+          "airflow": 517.5,
+          "ack": true,
+          "observed_result": "unresolved",
+          "complete": false,
+          "command_id": "cmd-24de75b954dc",
+          "ack_rqi": "opensoom-50b5806887604ffbb7456f5af337a02a",
+          "verification_rqi": "opensoom-e85408a7474c4a3986cb5e56111376d4",
+          "post_ack_observation": true
+        },
+        {
+          "requested": 100,
+          "command_value": 100.0,
+          "reported_damper": 100.0,
+          "airflow": 1035.0,
+          "ack": true,
+          "observed_result": "recovered",
+          "complete": true,
+          "command_id": "cmd-34d576ddec97",
+          "ack_rqi": "opensoom-1195fd0661a849dfa91e423af44772a5",
+          "verification_rqi": "opensoom-db592c9310294987a87d2ca88945915d",
+          "post_ack_observation": true
+        }
+      ],
+      "scope_limit": "This is a declared deterministic virtual-device model, not a physical airflow law or measured ventilation improvement."
+    }
+  ],
+  "S1_G3_assessment": {
+    "recommendation": "passed_for_documented_planned_process_restart_scope",
+    "evidence_status": "verified_and_captured",
+    "capture": "evidence/release/final-clean-lifecycle.json",
+    "observed": {
+      "run_id": "demo-4f3c717ec7",
+      "before_command_id": "cmd-e78845726c41",
+      "after_command_id": "cmd-e78845726c41",
+      "before_status": "requested",
+      "after_status": "timed_out",
+      "ack_before": false,
+      "ack_after": false,
+      "same_command_run_and_incident": true,
+      "after_observed_result": "unresolved",
+      "incident_status": "open",
+      "outcome": "PRESERVED_AND_TIMED_OUT_WITHOUT_FALSE_RECOVERY"
+    },
+    "process_evidence": [
+      "stop exits 0; stopped doctor exits 1 as expected",
+      "start without original flags/environment exits 0 and doctor confirms saved secure endpoint/port",
+      "restart exits 0; doctor becomes ready",
+      "The same pending command later times out without ACK, and the same incident remains open."
+    ],
+    "preservation_checks": {
+      "operations_removed": true,
+      "credentials_removed": true,
+      "process_record_removed": true,
+      "configuration_preserved": true,
+      "budget_preserved": true
+    },
+    "main_service_record_unchanged": true,
+    "limits": [
+      "Captured isolated process stop/start/restart, not an abrupt-crash or serving-CSE handover experiment.",
+      "CSE/MCP/software behavior is real; physical observations and device response are simulated.",
+      "This close-out audits the captured lifecycle and its executable harness; it does not restart the current service."
+    ]
+  },
+  "supporting_six_scenario_acceptance": {
+    "capture": "evidence/application/release-acceptance.json",
+    "result": "PASS_ACTUAL_APPLICATION_ACCEPTANCE",
+    "source_changed_during_run": false,
+    "scenarios": {
+      "normal": {
+        "outcome": "PASS_FIXTURE",
+        "expected_behavior": "normal_observations"
+      },
+      "exhaust_fault": {
+        "outcome": "PASS_FIXTURE",
+        "expected_behavior": "ack_and_post_action_recovery"
+      },
+      "stale": {
+        "outcome": "PASS_FIXTURE",
+        "expected_behavior": "unsafe_evidence_remains_unresolved"
+      },
+      "missing": {
+        "outcome": "PASS_FIXTURE",
+        "expected_behavior": "unsafe_evidence_remains_unresolved"
+      },
+      "missing_ack": {
+        "outcome": "PASS_FIXTURE",
+        "expected_behavior": "missing_ack_remains_unresolved"
+      },
+      "no_recovery": {
+        "outcome": "PASS_FIXTURE",
+        "expected_behavior": "ack_without_recovery_remains_unresolved"
+      }
+    },
+    "classification": "Deterministic actual API/CSE scenario evidence; no live model execution."
+  },
+  "ledger_recommendations": [
+    {
+      "id": "R-007",
+      "recommendation": "resolved_for_original_prototype_scope",
+      "basis": [
+        "The original server-owned role/facility/schema/profile/freshness/allowed-action boundaries and credential handling were inspected in the initial review.",
+        "Latest actual application acceptance retains scoped registered-AE ACP denials and protocol boundary labels.",
+        "T3-001 now independently passes run-owner write and no-denial-log-mutation checks.",
+        "T3-002 now independently passes intended-value/ACK/observation consistency and unsuccessful-action checks."
+      ],
+      "limits": [
+        "Resolution is restricted to the declared simulated-equipment, trusted-loopback prototype.",
+        "Do not claim authenticated device identity, production multiuser isolation, real equipment control or a full final-release approval."
+      ]
+    },
+    {
+      "id": "R-003",
+      "recommendation": "No final closure in this bounded review; blocker corrections passed, but updated live-model/host evidence and final common release snapshot remain separately reviewed."
+    }
+  ],
+  "remaining_review_scope": [
+    "Updated actual hosted-model positive/negative execution and final source provenance are deliberately excluded from this turn.",
+    "Final all-17 release review, overall S3 closure and final submission package review require the later shared immutable release commit."
+  ],
+  "official_score": null,
+  "official_total": null
+}

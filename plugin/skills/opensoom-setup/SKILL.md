@@ -13,4 +13,6 @@ Use `prepare_setup` to explain an existing profile. `apply_setup` requires the c
 
 Finish by using `discover`, `read_group` and `read_evidence` to show the connected facility, latest observations and any unresolved incident. Distinguish physical simulation from actual software execution. Keep API keys, CSE credentials and service tokens out of the chat, ordinary tool arguments and logs. Never ask the user to paste a secret into chat.
 
+Interpret `read_evidence` using its `evidence_scope`. Incident `recovery_count` counts consecutive qualifying healthy observations after an ACK, not attempted actions. The command list covers only its stated run and limit; an empty list does not establish that no earlier action or ACK occurred. Preserve the direction of each diagnosis: airflow below target differs from particles or CO2 above target.
+
 For real equipment, preserve observation/diagnosis until the facility configuration explicitly permits a control. Preauthorized virtual scenarios can run their bounded actions without repeated confirmation. Scope and permission checks belong to the service.

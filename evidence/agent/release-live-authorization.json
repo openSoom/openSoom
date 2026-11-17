@@ -1,0 +1,25 @@
+{
+  "destination": "https://api.openai.com/v1/responses",
+  "base_url_override_present": false,
+  "data_scope": "Synthetic Northworks/Westside facility observations, virtual device actions, local test CSE resource/request IDs and tool schemas; no physical facility data or personal information.",
+  "provenance": [
+    "config/facilities.json",
+    "profiles/food-production.json",
+    "src/opensoom/core.py:sample_facility"
+  ],
+  "secret_boundary": "Provider key is used only for provider Authorization; operator token is used only on loopback service requests. Both are excluded/redacted from model tool outputs and public traces.",
+  "user_approval": "Parent relayed explicit user approval of the rejected virtual-facility API tests: 요 부분은 제가 승인하겠습니다~",
+  "limits_unchanged": {
+    "batch_id": "opensoom-hackathon-2026-01",
+    "max_requests": 100,
+    "max_tokens": 250000,
+    "requests_consumed": 41,
+    "tokens_charged": 140108,
+    "tokens_reserved": 0,
+    "pending_requests": 0,
+    "requests_remaining": 59,
+    "tokens_remaining": 109892,
+    "requires_investigation": false
+  },
+  "fixed_revision": "fd5e648fa1c74e425507a98247844be150265acb"
+}

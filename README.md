@@ -121,6 +121,12 @@ uv run --no-sync python scripts/cse_product_topology.py
 
 The distributed test actually stops the central CSE while a local facility completes a command/ACK/recovery flow. Replayed expired intents are rejected, and duplicate valid intents return the same command. This is a bounded replay demonstration, not an always-running central dispatcher or serving-CSE handover. [Evidence](evidence/runtime/product-multisite-continuity.json).
 
+## Pitch and demonstration
+
+The [single-page Three.js presentation](pitch/) explains the facility, standard service layer and distributed topology. Its Korean presenter guide supports a five-minute English pitch. Serve it independently with `python3 -m http.server 8095 --bind 127.0.0.1 --directory pitch`. The geometry is explanatory and does not simulate airflow.
+
+The [108-second English demo](deliverables/video/openSoom-demo-en.mp4) combines actual application captures, recorded model traces and labeled motion graphics. [Storyboard and reproduction](deliverables/video/README.md).
+
 ## Evidence, review and release scope
 
 [Agent evidence index](evidence/agent/index.json) identifies accepted captures and preserves failed attempts. Four independent GPT-6.1 Sol Max teams review all 17 rubric criteria against the same code snapshot. Scores are not official and no total or winning probability is invented. [Stages and gates](docs/implementation-plan.md), [execution checkpoint](docs/execution-state.json), [review ledger](docs/review/review-ledger.json), [Goal prompt](docs/goal-mode-prompt.ko.md).
@@ -132,3 +138,5 @@ The [English Hackster draft](docs/submission/hackster-article.md) and local medi
 ## Licenses and contributions
 
 Project source: [Apache-2.0](LICENSE). Original documentation, diagrams and media: [CC BY 4.0](LICENSE-DOCS.md), attribution to openSoom contributors. Dependencies retain their own licenses: see [third-party notices](THIRD_PARTY_NOTICES.md). Organizer attachments and private runtime material are not redistributed. [Contributing](CONTRIBUTING.md).
+
+For the presenter: [한국어 프로젝트 해설과 5분 발표 대본](docs/project-guide.ko.md). The single-page pitch includes interactive Three.js models and Korean guided explanations.

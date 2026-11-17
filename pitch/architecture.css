@@ -1,0 +1,108 @@
+#architecture-explorer{--arch-ink:#edf4e9;--arch-muted:#b0c9be;--arch-line:#46665b;--arch-mint:#a9dec8;--arch-gold:#e1c785;--arch-blue:#a7cde8;--arch-purple:#c1b5e6;--arch-warm:#d6a96e;color:var(--arch-ink);width:100%;margin-top:52px;font-family:Inter,"Helvetica Neue",Arial,"Apple SD Gothic Neo",sans-serif}
+#architecture-explorer *{box-sizing:border-box}
+#architecture-explorer [hidden]{display:none!important}
+#architecture-explorer button{font:inherit;cursor:pointer;color:inherit;border:0;background:transparent}
+#architecture-explorer button:focus-visible,#architecture-explorer summary:focus-visible,#architecture-explorer input:focus-visible{outline:3px solid var(--arch-gold);outline-offset:4px}
+#architecture-explorer .arch-heading{display:flex;align-items:flex-end;justify-content:space-between;gap:30px;margin-bottom:30px}
+#architecture-explorer .arch-eyebrow,#architecture-explorer .arch-small-label{font-size:9px;letter-spacing:1.7px;line-height:1.6;font-weight:650;color:#a1bdad;margin:0 0 12px}
+#architecture-explorer .arch-heading h3{font-size:clamp(30px,3.1vw,51px);line-height:1.08;letter-spacing:-1.8px;font-weight:450;margin:0 0 14px}
+#architecture-explorer .arch-heading-ko{font-size:13px;line-height:1.8;color:var(--arch-muted);margin:0;word-break:keep-all}
+#architecture-explorer .arch-model-mark{display:flex;align-items:center;gap:10px;font-size:9px;letter-spacing:1.3px;white-space:nowrap;margin-bottom:3px}
+#architecture-explorer .arch-model-mark>span{width:25px;height:25px;border:1px solid #7da88f;border-radius:50%;position:relative}
+#architecture-explorer .arch-model-mark>span:after{content:"";position:absolute;inset:5px;border:1px solid #7da88f;border-radius:50%}
+#architecture-explorer .arch-model-mark small{display:block;margin-top:6px;color:#a1bdad;letter-spacing:0;font-size:10px}
+#architecture-explorer .arch-toolbar{display:flex;justify-content:space-between;gap:22px;align-items:center;padding:16px 0;border-top:1px solid var(--arch-line)}
+#architecture-explorer .arch-topologies{display:flex;gap:6px;padding:4px;border:1px solid #4c6d60;border-radius:7px;background:#17382f}
+#architecture-explorer .arch-topologies button{font-size:13px;text-align:left;line-height:1.2;padding:12px 20px;border-radius:4px;min-width:190px;transition:background .2s,color .2s}
+#architecture-explorer .arch-topologies button span{display:block;font-size:9px;color:#b3cabb;margin-top:6px}
+#architecture-explorer .arch-topologies button[aria-pressed=true]{background:#deead6;color:#173c36}
+#architecture-explorer .arch-topologies button[aria-pressed=true] span{color:#587260}
+#architecture-explorer .arch-tools{display:flex;gap:5px;align-items:center}
+#architecture-explorer .arch-tools button{border:1px solid #5a786b;padding:10px 13px;font-size:10px;border-radius:4px;min-width:36px;white-space:nowrap}
+#architecture-explorer .arch-tools button:hover{background:#3a5c4c}
+#architecture-explorer .arch-tools button[aria-pressed=true]{border-color:#d9c78f;color:#e8d39b}
+#architecture-explorer .arch-context{display:grid;grid-template-columns:1fr 1fr;gap:28px;min-height:87px;padding:7px 0 20px}
+#architecture-explorer .arch-context p{font-size:11px;line-height:1.8;color:#c3d5c9;margin:0;max-width:640px}
+#architecture-explorer .arch-context p[lang=ko]{color:#a9c5b8;word-break:keep-all}
+#architecture-explorer .arch-stage-wrap{border:1px solid #496d5f;border-radius:8px;overflow:hidden;background:#102f2a;box-shadow:0 22px 60px #071f2926}
+#architecture-explorer .arch-stage-meta{display:flex;justify-content:space-between;align-items:center;padding:18px 22px 0;font-size:9px;letter-spacing:1.3px;color:#aac7b7;position:relative;z-index:2}
+#architecture-explorer .arch-stage-meta b{font-size:13px;font-weight:550;color:#e2eedc;margin-right:4px}
+#architecture-explorer .arch-stage{height:clamp(580px,48vw,790px);min-width:0;position:relative;overflow:hidden;touch-action:pan-y;background:radial-gradient(ellipse at 50% 38%,#2b53483d 0%,#102e2900 67%)}
+#architecture-explorer .arch-stage canvas{position:absolute;inset:0;display:block;width:100%;height:100%;cursor:grab}
+#architecture-explorer .arch-stage canvas:active{cursor:grabbing}
+#architecture-explorer .arch-labels{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:1}
+#architecture-explorer .arch-label{position:absolute;transform:translate(-50%,-100%);font-size:9px;line-height:1.3;white-space:nowrap;color:#e2eddf;text-align:center;text-shadow:0 1px 8px #092a22;background:#102d27dd;border:1px solid #6d95834d;border-radius:3px;padding:5px 8px;box-shadow:0 3px 10px #031a2126}
+#architecture-explorer .arch-label b{font-size:10px;font-weight:600;display:block}
+#architecture-explorer .arch-label small{font-size:8px;font-weight:400;display:block;margin-top:3px;color:#b0cabc;letter-spacing:.2px}
+#architecture-explorer .arch-label.selected{background:#e6edda;color:#183e34;border-color:#e6edda;text-shadow:none;z-index:3}
+#architecture-explorer .arch-label.selected small{color:#4d6b56}
+#architecture-explorer .arch-label.major{border-color:#739d874d;padding:6px 10px}
+#architecture-explorer .arch-label.major b{font-size:11px}
+#architecture-explorer .arch-label.trace{border-color:#b6d49e;color:#f3f4dc}
+#architecture-explorer .arch-label.selected.trace{color:#183e34;border-color:#e6edda}
+#architecture-explorer .arch-label.selected.trace small{color:#4d6b56}
+#architecture-explorer .arch-loading{position:absolute;inset:0;display:grid;place-items:center;color:#adc5b6;font-size:13px}
+#architecture-explorer[data-renderer^=three] .arch-loading{display:none}
+#architecture-explorer .arch-stage-key{position:absolute;left:22px;top:20px;display:flex;flex-direction:column;gap:9px;font-size:8px;color:#9dbca9;letter-spacing:.4px;z-index:2;pointer-events:none}
+#architecture-explorer .arch-stage-key span{display:flex;gap:7px;align-items:center}
+#architecture-explorer .arch-stage-key span:before{content:"";width:7px;height:7px;display:inline-block;border:1px solid #9cccb6}
+#architecture-explorer .arch-key-process:before{background:#a9dec8}
+#architecture-explorer .arch-key-resource:before{border-radius:50%}
+#architecture-explorer .arch-key-module:before{border-style:dashed!important;border-color:#c1b5e6!important}
+#architecture-explorer .arch-key-virtual:before{border-color:#d6a96e!important;transform:rotate(45deg)}
+#architecture-explorer .arch-drag-note{position:absolute;bottom:13px;left:22px;font-size:9px;color:#a4c3b2;margin:0;z-index:2;pointer-events:none}
+#architecture-explorer .arch-layers{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:20px;padding:18px 22px;background:#0b2924;border-top:1px solid #345749}
+#architecture-explorer .arch-layers>span{font-size:8px;letter-spacing:1.4px;color:#83aa95;margin-right:8px}
+#architecture-explorer .arch-layers label{font-size:10px;display:flex;align-items:center;gap:7px;cursor:pointer;color:#c7dbce;min-height:24px}
+#architecture-explorer .arch-layers input{accent-color:#a9dec8;width:12px;height:12px;margin:0;cursor:pointer}
+#architecture-explorer .arch-layers i{width:5px;height:5px;border-radius:50%;background:var(--layer-color)}
+#architecture-explorer .arch-paths{margin-top:28px}
+#architecture-explorer .arch-traces{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
+#architecture-explorer .arch-traces button{border:1px solid #4d6e5f;border-radius:4px;text-align:left;padding:14px 12px;color:#90b29b;font-size:9px;line-height:1.4;min-height:53px}
+#architecture-explorer .arch-traces button span{display:block;margin-top:4px;font-size:11px;color:#d5e3d5}
+#architecture-explorer .arch-traces button[aria-pressed=true]{background:#dce8d5;color:#577b62;border-color:#dce8d5}
+#architecture-explorer .arch-traces button[aria-pressed=true] span{color:#173c36}
+#architecture-explorer .arch-traces button:disabled{opacity:.4;cursor:not-allowed}
+#architecture-explorer .arch-path-description{font-size:12px;line-height:1.9;color:#bad0bf;min-height:44px;max-width:1100px;margin:17px 0 11px;word-break:keep-all}
+#architecture-explorer .arch-path-steps{display:flex;gap:6px;flex-wrap:wrap;min-height:29px}
+#architecture-explorer .arch-path-steps button{font-size:9px;color:#c8dfc8;padding:6px 9px;border:1px solid #51735f;border-radius:3px}
+#architecture-explorer .arch-path-steps button:hover{background:#43654e}
+#architecture-explorer .arch-inspector{display:grid;grid-template-columns:.9fr 1.5fr .72fr;gap:32px;border-top:1px solid #597868;margin-top:27px;padding:28px 0 25px;min-height:226px}
+#architecture-explorer .arch-inspector h4{font-size:29px;line-height:1.12;font-weight:450;letter-spacing:-1px;margin:0 0 10px}
+#architecture-explorer #arch-node-ko{font-size:13px;color:#b8cdbb;margin:0 0 13px;line-height:1.5;word-break:keep-all}
+#architecture-explorer #arch-node-path{display:block;overflow-wrap:anywhere;white-space:normal;font:9px/1.7 ui-monospace,SFMono-Regular,Consolas,monospace;color:#a6c6ac;max-width:300px}
+#architecture-explorer .arch-inspector-explanation p{font-size:12px;line-height:1.85;color:#d6e2d5;margin:0 0 13px;word-break:keep-all}
+#architecture-explorer .arch-inspector-explanation p[lang=ko]{color:#b0cbb8;font-size:12px}
+#architecture-explorer .arch-inspector-explanation p.arch-inspector-boundary{border-left:2px solid #aabf89;padding-left:12px;color:#b7c99e;font-size:10px;margin-bottom:0}
+#architecture-explorer .arch-inspector-proof ul{list-style:none;margin:0;padding:0;display:grid;gap:13px}
+#architecture-explorer .arch-inspector-proof a{font-size:10px;line-height:1.6;color:#d2e5cf;text-decoration:underline;text-underline-offset:4px}
+#architecture-explorer .arch-index{border-top:1px solid #527160;border-bottom:1px solid #527160;padding:18px 0}
+#architecture-explorer .arch-index summary{font-size:12px;cursor:pointer;line-height:1.8}
+#architecture-explorer .arch-index summary span{font-size:9px;color:#a9c3af;margin-left:15px}
+#architecture-explorer #arch-node-index{display:grid;grid-template-columns:repeat(3,1fr);gap:23px;padding-top:24px}
+#architecture-explorer .arch-index-group h5{font-size:9px;font-weight:550;letter-spacing:1.2px;color:#acbfa0;text-transform:uppercase;margin:0 0 10px}
+#architecture-explorer .arch-index-group>div{display:flex;flex-wrap:wrap;gap:6px}
+#architecture-explorer .arch-index-group button{font-size:10px;line-height:1.5;padding:8px 10px;border:1px solid #496b57;border-radius:3px;text-align:left}
+#architecture-explorer .arch-index-group button[aria-pressed=true]{background:#dce8d5;color:#193e35;border-color:#dce8d5}
+#architecture-explorer .arch-index-group button span{font-size:8px;display:block;color:#9bbba5}
+#architecture-explorer .arch-index-group button[aria-pressed=true] span{color:#58765c}
+#architecture-explorer .arch-disclosure{display:grid;grid-template-columns:1fr 1fr;gap:35px;padding:20px 0 0}
+#architecture-explorer .arch-disclosure p{font-size:10px;line-height:1.8;color:#a5bfab;margin:0;word-break:keep-all}
+#architecture-explorer .arch-mobile{display:none;padding:23px}
+#architecture-explorer .arch-mobile>p{font-size:12px;color:#bcd2c1;line-height:1.8;margin:0 0 21px}
+#architecture-explorer .arch-mobile details{border:1px solid #466752;border-radius:4px;margin:10px 0;background:#17392d}
+#architecture-explorer .arch-mobile summary{font-size:12px;padding:13px;color:#ddebd6;cursor:pointer}
+#architecture-explorer .arch-mobile summary small{color:#a5bea3;font-size:10px;margin-left:8px}
+#architecture-explorer .arch-mobile details>div{padding:0 12px 13px;display:flex;flex-wrap:wrap;gap:6px}
+#architecture-explorer .arch-mobile button{border:1px solid #59765d;border-radius:3px;text-align:left;min-height:42px;padding:8px 11px;font-size:11px;flex:1 1 130px}
+#architecture-explorer .arch-mobile button small{display:block;color:#a7bea2;font-size:9px;margin-top:4px}
+#architecture-explorer .arch-mobile button[aria-pressed=true]{background:#dce8d5;color:#193e35}
+#architecture-explorer .arch-mobile button[aria-pressed=true] small{color:#58765c}
+#architecture-explorer[data-renderer=fallback] .arch-stage{display:none}
+#architecture-explorer[data-renderer=fallback] .arch-mobile{display:block}
+@media(min-width:1550px){#architecture-explorer .arch-stage{height:760px}}
+@media(max-width:1000px){#architecture-explorer .arch-heading{align-items:flex-start}.arch-model-mark{display:none!important}#architecture-explorer .arch-inspector{grid-template-columns:1fr 1.7fr;gap:25px}#architecture-explorer .arch-inspector-proof{grid-column:1/-1}#architecture-explorer .arch-inspector-proof ul{display:flex;flex-wrap:wrap;gap:24px}#architecture-explorer .arch-stage{height:590px}#architecture-explorer .arch-tools button{padding:10px}#architecture-explorer .arch-topologies button{min-width:165px;padding:11px 14px}#architecture-explorer .arch-layers{gap:12px}}
+@media(max-width:760px){#architecture-explorer .arch-toolbar{align-items:stretch;flex-direction:column;gap:12px}#architecture-explorer .arch-topologies button{flex:1;min-width:0}#architecture-explorer .arch-tools{justify-content:flex-end}#architecture-explorer .arch-context{grid-template-columns:1fr;gap:8px}#architecture-explorer .arch-traces{grid-template-columns:repeat(3,1fr)}#architecture-explorer .arch-inspector{grid-template-columns:1fr;gap:22px}#architecture-explorer .arch-inspector h4{font-size:30px}#architecture-explorer #arch-node-index{grid-template-columns:1fr 1fr}#architecture-explorer .arch-disclosure{grid-template-columns:1fr;gap:13px}#architecture-explorer .arch-index summary span{display:block;margin:6px 0 0}}
+@media(max-width:640px){#architecture-explorer{margin-top:30px}#architecture-explorer .arch-heading h3{font-size:35px}#architecture-explorer .arch-stage{display:none}#architecture-explorer .arch-mobile{display:block;padding:20px 14px}#architecture-explorer .arch-stage-meta{padding:16px 14px 0;font-size:8px;letter-spacing:.7px}#architecture-explorer .arch-tools button:not([data-arch-action=motion]){display:none}#architecture-explorer .arch-tools{justify-content:flex-start}#architecture-explorer .arch-layers{padding:13px;gap:9px;justify-content:flex-start}#architecture-explorer .arch-layers label{font-size:10px;min-height:30px}#architecture-explorer .arch-layers>span{display:none}#architecture-explorer .arch-traces{grid-template-columns:1fr 1fr;gap:6px}#architecture-explorer .arch-traces button{padding:11px}#architecture-explorer .arch-traces button span{font-size:11px}#architecture-explorer .arch-context p{font-size:11px}#architecture-explorer #arch-node-index{grid-template-columns:1fr}#architecture-explorer .arch-path-description{font-size:11px}#architecture-explorer .arch-disclosure p{font-size:10px}}
+@media(prefers-reduced-motion:reduce){#architecture-explorer *{transition:none!important;scroll-behavior:auto!important}}
+@media print{#architecture-explorer .arch-stage,#architecture-explorer .arch-toolbar,#architecture-explorer .arch-layers,#architecture-explorer .arch-paths{display:none}#architecture-explorer .arch-mobile{display:block}#architecture-explorer{color:#173c36}#architecture-explorer .arch-mobile details{break-inside:avoid}#architecture-explorer .arch-inspector{display:block}}

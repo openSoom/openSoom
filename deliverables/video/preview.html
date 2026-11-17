@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>openSoom · English demo film</title>
+<link rel="icon" href="data:,">
+<style>
+body{margin:0;background:#173d35;color:#eff5e6;font:16px system-ui,sans-serif}main{max-width:1280px;margin:auto;padding:32px 24px}h1{font-size:28px;letter-spacing:-.8px;margin:0 0 8px}p{color:#c0d2b6;line-height:1.6}video{width:100%;max-height:76vh;background:#102d27;border-radius:14px}button,a{display:inline-block;background:#c0d7aa;color:#173d35;border:0;border-radius:8px;padding:11px 17px;font:inherit;cursor:pointer;margin:8px 5px 0 0;text-decoration:none}button:focus-visible,a:focus-visible{outline:3px solid #fff;outline-offset:3px}small{display:block;margin-top:16px;color:#bed0b1}
+</style>
+<main>
+<h1>openSoom — From observation to verified outcome</h1>
+<p>108 seconds · English narration and captions · Actual software execution with virtual physical devices.</p>
+<video id="film" controls preload="metadata" poster="frames/scene-01.png"><source src="openSoom-demo-en.mp4" type="video/mp4"></video>
+<div><button id="play">Play film</button><button id="pause">Pause film</button><button id="verify">Verification scene</button><button id="end">Closing scene</button><a href="openSoom-demo-en.mp4" download>Download MP4</a></div>
+<small>Edited browser captures and recorded run evidence. This is not a physical ventilation experiment.</small>
+</main>
+<script>
+const film=document.getElementById('film');document.getElementById('play').onclick=()=>film.play();document.getElementById('pause').onclick=()=>film.pause();document.getElementById('verify').onclick=()=>{film.currentTime=50;film.play()};document.getElementById('end').onclick=()=>{film.currentTime=100;film.play()};
+</script>
+</html>

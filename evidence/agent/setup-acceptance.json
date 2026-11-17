@@ -1,0 +1,170 @@
+{
+  "captured_at": "2026-11-17T19:22:26.433750+00:00",
+  "outcome": "PASS_AUTHORIZED_SETUP",
+  "physical_devices": "simulated",
+  "scope": "Administrator bootstrap is a separate configured identity. The operator/model does not self-escalate. Existing virtual registry/profile activation is idempotent; no physical onboarding claimed.",
+  "checks": [
+    {
+      "fixed_role": "operator",
+      "tool": "prepare_setup",
+      "arguments": {
+        "profile_id": "learning-space"
+      },
+      "http_status": 200,
+      "response": {
+        "profile": {
+          "schema_version": 1,
+          "id": "learning-space",
+          "name": "Shared learning spaces",
+          "simulation_only": true,
+          "description": "Second profile demonstrates reuse across occupancy-driven rooms. Values are simulation parameters.",
+          "freshness_seconds": 45,
+          "command_ttl_seconds": 30,
+          "recovery_samples": 2,
+          "allowed_actions": [
+            "set_damper",
+            "request_maintenance"
+          ],
+          "zones": [
+            {
+              "id": "classroom",
+              "name": "Learning studio",
+              "minimum_airflow": 500,
+              "pm25_warning": 25,
+              "co2_warning": 1000
+            },
+            {
+              "id": "meeting",
+              "name": "Meeting room",
+              "minimum_airflow": 300,
+              "pm25_warning": 25,
+              "co2_warning": 1000
+            },
+            {
+              "id": "lounge",
+              "name": "Shared lounge",
+              "minimum_airflow": 350,
+              "pm25_warning": 30,
+              "co2_warning": 1100
+            }
+          ]
+        },
+        "configured_facilities": [
+          "learning-b"
+        ],
+        "mode": "virtual",
+        "activation_requires": "administrator",
+        "runtime": {
+          "status": "ready",
+          "cse": {
+            "connected": true,
+            "rsc": 2000,
+            "rqi": "opensoom-59f346e4d463474ca0f71b8cd2ced044",
+            "base": "cse-secure"
+          },
+          "profiles": [
+            "food-production",
+            "learning-space"
+          ],
+          "simulation": true,
+          "persistent_state": true,
+          "physical_devices_supported": false
+        }
+      }
+    },
+    {
+      "fixed_role": "operator",
+      "tool": "apply_setup",
+      "arguments": {
+        "profile_id": "learning-space"
+      },
+      "http_status": 403,
+      "response": {
+        "detail": {
+          "code": "admin_required",
+          "message": "Profile activation requires the configured administrator"
+        }
+      }
+    },
+    {
+      "fixed_role": "admin",
+      "tool": "apply_setup",
+      "arguments": {
+        "profile_id": "not-configured"
+      },
+      "http_status": 404,
+      "response": {
+        "detail": {
+          "code": "unknown_profile",
+          "message": "Choose a bundled profile"
+        }
+      }
+    },
+    {
+      "fixed_role": "admin",
+      "tool": "apply_setup",
+      "arguments": {
+        "profile_id": "learning-space"
+      },
+      "http_status": 200,
+      "response": {
+        "profile_id": "learning-space",
+        "activated_facilities": [
+          "learning-b"
+        ],
+        "runtime": {
+          "status": "ready",
+          "cse": {
+            "connected": true,
+            "rsc": 2000,
+            "rqi": "opensoom-f8198e91f4744ede9c436992b86108f2",
+            "base": "cse-secure"
+          },
+          "profiles": [
+            "food-production",
+            "learning-space"
+          ],
+          "simulation": true,
+          "persistent_state": true,
+          "physical_devices_supported": false
+        }
+      }
+    },
+    {
+      "fixed_role": "admin",
+      "tool": "apply_setup",
+      "arguments": {
+        "profile_id": "learning-space"
+      },
+      "http_status": 200,
+      "response": {
+        "profile_id": "learning-space",
+        "activated_facilities": [
+          "learning-b"
+        ],
+        "runtime": {
+          "status": "ready",
+          "cse": {
+            "connected": true,
+            "rsc": 2000,
+            "rqi": "opensoom-03ac8d66ad274cb29a266aa37f063728",
+            "base": "cse-secure"
+          },
+          "profiles": [
+            "food-production",
+            "learning-space"
+          ],
+          "simulation": true,
+          "persistent_state": true,
+          "physical_devices_supported": false
+        }
+      }
+    }
+  ],
+  "source_sha256": {
+    "src/opensoom/core.py": "91a8c15285d2c7b64fccf5105bcf7e4f8738e5f200c26c2af9abd2e9f72c56ef",
+    "src/opensoom/app.py": "90b2b13f78732ed32ac22fa0e21c9669d4731180463e80bbe551f881e622a144",
+    "config/facilities.json": "0b385a82788c18673624b385798dd4b9f73ae75bf05f15102f5b5e8b432ba547",
+    "scripts/setup_acceptance.py": "855d65cf6787f64ff959b2d39f3537f5bcb6a752ac8f4abc88529f45a5118a3b"
+  }
+}

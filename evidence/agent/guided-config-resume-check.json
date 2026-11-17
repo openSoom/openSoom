@@ -1,0 +1,7 @@
+{
+  "thread_id": "01a1eb13-4172-7a40-b4d0-5c4f119389b0",
+  "provider_calls": 0,
+  "path": "Supported thread/resume, no history override or rollout fabrication",
+  "status": "UNAVAILABLE_SUPPORTED_RESUME",
+  "error": "thread/resume failed: {'code': -32600, 'message': 'no rollout found for thread id 01a1eb13-4172-7a40-b4d0-5c4f119389b0'}"
+}

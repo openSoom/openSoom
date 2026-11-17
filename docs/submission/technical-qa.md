@@ -18,7 +18,7 @@ Use the single-page `pitch/index.html` for the presentation. Its Korean speaker 
 | Does a central outage stop local operation? | The actual test stops the IN-CSE. Each facility's local CSE/API continues the defined observation/action/ACK/recovery path. Expired and mutated central replays are rejected. |
 | Is that CSE handover or MEC? | No. The serving facility CSE does not change. MEC hosting/services and handover require separate execution. Their investigated deferral is recorded; they are not treated as official N/A. |
 | How would a manager adopt it? | A maintainer installs the supported local runtime. The Codex plugin guides readiness, profile inspection, discovery, diagnosis and verification. New facility records use configuration. A real device protocol and a nontechnical first-use study remain further work. |
-| What did testing change? | We fixed cross-run reuse of historical command success, distinguished pre-ACK negative observations from confirmed non-recovery, and preserved secure connection settings across stop/start. Failed captures remain traceable. |
+| What did testing change? | We fixed cross-run reuse of historical command success, preserved requested virtual actuator percentages, restricted run writes to the owning role, and preserved secure settings and pending incidents across stop/start. Failed captures remain traceable. |
 | What evidence should we inspect first? | The agent evidence index, actual CSE runtime traces, application acceptance, clean lifecycle rehearsal, distributed continuity capture and four-team review ledger. |
 
 ## Suggested five-minute sequence

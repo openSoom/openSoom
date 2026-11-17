@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "team": "team_2",
+  "reviewer_role": "oss_experience_review",
+  "model": "gpt-6.1-sol",
+  "reasoning_effort": "max",
+  "scope": "Focused independent review of completed captured-record explanation and R-027/S3-G1; not a final combined-release approval.",
+  "inputs": [
+    "evidence/agent/guided-explanation-live.json",
+    "evidence/agent/guided-explanation-fact-check.json",
+    "evidence/agent/guided-explanation-report.md",
+    "docs/review/guided-onboarding-advisory-team2.json",
+    "src/opensoom/core.py",
+    "plugin/skills/opensoom-setup/SKILL.md",
+    "plugin/skills/opensoom-operations/SKILL.md"
+  ],
+  "input_live_sha256": "d117550a716b7d36a8b28e96cde0fecec8f770eb130a00af4b6901e9e53e6b95",
+  "decision": {
+    "completed_response_delivery": "verified",
+    "source_provenance_and_selection": "verified",
+    "grounded_explanation_acceptance": "not_passed",
+    "R_027": "partially_verified_remains_open",
+    "S3_G1": "Do not close the entire gate from this response. Other independently verified components remain valid; only the factual user-handoff outcome identified below remains at issue.",
+    "final_release_approval": false
+  },
+  "independent_checks": [
+    "Actual Codex turn status is completed and provider completion is recorded; the six-sentence Korean text is delivered and unmodified.",
+    "The turn offered and executed zero operational tools, as declared for the explanation-only case.",
+    "All three attached source file hashes match their originals. Exact setup/group results and every selected diagnostic JSON-pointer value match those originals.",
+    "Earlier actual model-selected doctor/discover/read_evidence and prepare_setup/read_group executions remain separate from this explanation-only turn. No earlier failed turn is reclassified as completed.",
+    "Historical timestamps, simulation scope, maintainer prerequisites, unresolved classroom incident and unverified physical outcomes are substantially preserved.",
+    "Shared accounting reports 70 requests / 231264 tokens, 18736 tokens remaining and zero pending reservations. This review made no inference requests."
+  ],
+  "findings": [
+    {
+      "id": "T2-GE01",
+      "criteria": [6, 17],
+      "gate_ids": ["S3-G1", "S3-G4"],
+      "priority": "P2",
+      "blocks": "Factual acceptance of the remaining guided-onboarding user explanation; not the already verified host/tool execution or completed delivery.",
+      "exact_model_phrase": "복구 시도는 없으며",
+      "observed_evidence": [
+        "evidence/agent/guided-explanation-live.json#model_korean_explanation",
+        "src/opensoom/core.py:226",
+        "src/opensoom/core.py:228",
+        "src/opensoom/core.py:238",
+        "src/opensoom/core.py:240",
+        "src/opensoom/core.py:317"
+      ],
+      "source_meaning": "recovery_count is a count of qualifying healthy observations after a matching acknowledged command. It is reset to zero on a non-nominal diagnosis. It is not an action-attempt counter. read_evidence.commands is limited to the current run and its latest ten commands, not complete prior incident history.",
+      "gap_and_impact": "The model inferred absence of recovery attempts from data that cannot establish that absence. An operator could misinterpret earlier intervention history or repeat an action. This is not a fabricated healthy outcome or evidence of unauthorized control, but it violates the required grounded operational explanation.",
+      "minimum_remaining_requirement": "A completed user-facing explanation must report the recorded incident as unresolved and distinguish zero qualifying recovery samples from unknown or separately evidenced attempt history. It must not infer no prior attempts from recovery_count=0 or an empty scoped command list.",
+      "product_reason": "Facility managers need reliable action-versus-result history, especially when equipment remains deficient after an intervention.",
+      "reasonable_product_correction": [
+        "Add explicit machine-readable/display semantics for recovery progress: qualifying post-ACK sample count, required sample count and the fact that it does not count attempts. An additive projection can retain the legacy storage field without a migration.",
+        "Expose command-list scope, including the current run, the result limit and whether complete incident history is available. Do not invent a global attempt count from a truncated or filtered list.",
+        "Teach the shipped setup/operations skill to preserve unknown history and the original diagnostic direction. Apply the clarification at the real tool/skill boundary, rather than only adding a test prompt hint.",
+        "Add a focused deterministic regression with zero qualifying recovery samples plus a prior acknowledged unsuccessful command outside the current observer run; verify that returned semantics never equate zero samples or an empty scoped list to no attempts."
+      ],
+      "verification": "Keep this exact completed response and its failed factual assessment. Verify the product-contract clarification deterministically, then independently inspect a completed actual Codex user handoff under the corrected product contract, or an explicitly reviewed product-level delivery mechanism that prevents this unsupported claim. Documentation edits or a manually corrected transcript alone do not establish that outcome.",
+      "scope_limit": "No requirement to replay all five tool selections, reinstall the runtime, perform administrator writes, add a desktop UI test or recruit a human participant is introduced."
+    },
+    {
+      "id": "T2-GE02",
+      "criteria": [6],
+      "gate_ids": ["S3-G1"],
+      "priority": "P2",
+      "kind": "wording_precision",
+      "exact_model_phrase": "공기유량·미세입자·CO2 경계 초과",
+      "observed_evidence": "The retained diagnostic reason explicitly says airflow is below its configured target, while particles and CO2 exceed their configured targets.",
+      "minimum_change": "Preserve each metric's direction in the user explanation: deficient airflow and elevated particle/CO2 values against this simulation profile. The original reason is already sufficient; do not add universal safe thresholds.",
+      "verification": "The final user handoff agrees with the original below/above-target reasons. This can be covered in the same narrow factual validation as T2-GE01.",
+      "blocks": "No separate new test cycle; resolve alongside the remaining factual handoff."
+    }
+  ],
+  "acceptance_preserved": {
+    "composite_strategy": "Still acceptable as stated in the earlier advisory. Separate model-selected tool executions and a separately completed grounded Codex explanation can establish the documented components if all source/revision links and limitations remain explicit.",
+    "what_is_newly_closed": "The earlier output-truncation/missing-completed-response issue is resolved by genuine normal completion, not by editing a failed turn.",
+    "what_is_not_closed": "The present text does not meet factual handoff acceptance because it invents the absence of recovery attempts. A completed turn is necessary but not sufficient.",
+    "history_integrity": "Do not replace the original six sentences, insert a corrected model history, alter failed case caps or label the present response a grounded pass. Any correction must be separately versioned and attributed."
+  },
+  "resource_and_followup_boundary": "This review authorizes no inference and recommends no reset. Before any further live validation, main must record a distinct post-product-correction semantic regression, preflight its actual conservative reservation within the unchanged shared remainder, and keep all exhausted case policies and failed artifacts intact. If it cannot fit, retain the required outcome as open rather than forcing a pass.",
+  "reviewer_actions": "Read-only source/evidence inspection and this review JSON only. No additional inference, runtime/profile mutation, source/skill edits or external publication."
+}

@@ -1,0 +1,8 @@
+{
+  "status": "NOT_RECAPTURED_LIVE",
+  "fixed_revision": "fd5e648fa1c74e425507a98247844be150265acb",
+  "reason": "Main authorized one current positive and one current negative; preserve the shared API allowance for the required actual Codex guided-model rehearsal.",
+  "historical_live_evidence": "evidence/agent/secure-live-no-recovery.json",
+  "current_live_credit": false,
+  "source_equivalence": "Previous raw core/app hashes have no matching source objects in the two relevant Git revisions; no complete prior-source diff or equivalence is claimed."
+}

@@ -1,0 +1,161 @@
+{
+  "schema_version": 1,
+  "status": "PASS_REPORTED_ARCHITECTURE_BROWSER_CHECKS",
+  "recorded_at": "2026-11-17T20:16:41.344Z",
+  "evidence_origin": {
+    "observer": "Main agent /root",
+    "recorder": "Implementation agent /root/agent_integration",
+    "basis": "Direct browser observations reported by the main agent in a delegated metadata task; recorder performed no UI activity.",
+    "browser": "Chrome",
+    "capture_time": "Not independently recorded by metadata worker"
+  },
+  "scope": "Integrated full architecture explorer and final hero-camera capture. Static explanatory page, not live service or physical ventilation acceptance.",
+  "renderer": {
+    "library": "Three.js",
+    "version": "0.187.0",
+    "local_vendor": true
+  },
+  "source_snapshot_at_recording": {
+    "pitch/index.html": "48987c5066890992f8213458917165ae9ccc31123e6dc97daf5ddfa8b6dfba6b",
+    "pitch/style.css": "1f0d052101b29c0b949ef04292cd5b11eb577434da4d843480ee5aac5a91f309",
+    "pitch/main.js": "eefda4e00cf66ea910817eda590d3bdef49fdc706b974d33c20962399e9d19a9",
+    "pitch/workflow.js": "fcfc0252307bff81049c98c3813ff325213538f7d5fb139437e5281e61b95d3c",
+    "pitch/architecture.js": "42e28ffc2aa0daa3ca87c9c1c8bc4fae16446a66d94b3da896f140a42e9e9203",
+    "pitch/architecture.css": "c04101489775348b87f81bbb9092803b26031579baa178853e6dc6631b43317e",
+    "pitch/architecture.fragment.html": "417c78c3828222503d24fd6e6627a0a3f1af9adc08126e93fa1bf4439c5c2791",
+    "pitch/README.md": "fd040659059efc1e101c5a773809554db1fdd879e284cffb977a41c8fc17575f",
+    "docs/project-guide.ko.md": "d7ea061a721fe62db6e3d8bd120396968d49e265977fc41098e2639d841f4ee4"
+  },
+  "source_map": "evidence/pitch/architecture-source-map.json",
+  "viewports": [
+    {
+      "width": 1800,
+      "mode": "Natural desktop viewport",
+      "height": "Not supplied in delegated observation"
+    },
+    {
+      "width": 375,
+      "height": 812,
+      "mode": "Responsive mobile override",
+      "restored_after_check": true
+    }
+  ],
+  "observed_checks": [
+    {
+      "name": "Desktop geometry and complete-view rendering",
+      "result": "PASS",
+      "observed": "Main reported prominent geometry and good full-view screenshots at the natural 1800px desktop viewport."
+    },
+    {
+      "name": "Alternative topology selection",
+      "result": "PASS",
+      "observed": "Two facilities shows 46 inspectable components; One installation shows 34."
+    },
+    {
+      "name": "Command path and DOM component selection",
+      "result": "PASS",
+      "observed": "Act trace and step 04 Device acknowledgements update the Korean explanation and source inspector."
+    },
+    {
+      "name": "Native-resource layer visibility",
+      "result": "PASS",
+      "observed": "Resources layer toggle hides and restores the corresponding nodes."
+    },
+    {
+      "name": "Pause control state",
+      "result": "PASS",
+      "observed": "Pause control aria-pressed becomes true."
+    },
+    {
+      "name": "Cross-site claim boundaries",
+      "result": "PASS",
+      "observed": "Share trace states HTTP and selective announcements; it does not claim MEC or CSE handover."
+    },
+    {
+      "name": "Mobile readable component view",
+      "result": "PASS",
+      "observed": "At 375×812, five readable groups expose 46 components; the 3D canvas is hidden and no horizontal overflow was observed."
+    },
+    {
+      "name": "Mobile component inspector",
+      "result": "PASS",
+      "observed": "Selecting food-acks updates the inspector."
+    },
+    {
+      "name": "Responsive override cleanup",
+      "result": "PASS",
+      "observed": "Viewport override was reset after checks."
+    },
+    {
+      "name": "Selected traced-label contrast",
+      "result": "CORRECTED_SOURCE_CHECKED",
+      "observed": "Main added a selected.trace dark-text override after observing light trace text on the light selected background. The metadata worker confirmed the override exists; it did not conduct a separate visual contrast check."
+    },
+    {
+      "name": "New application errors and warnings after correction",
+      "result": "PASS",
+      "observed": "Main reported no new application error or warning after correction; historical browser log entries were retained."
+    }
+  ],
+  "unexercised_in_reported_browser_checks": [
+    {
+      "behavior": "Pointer orbit",
+      "status": "NOT_INTERACTIVELY_CHECKED"
+    },
+    {
+      "behavior": "3D raycast selection",
+      "status": "NOT_INTERACTIVELY_CHECKED",
+      "note": "Selection was exercised through DOM controls, not a canvas hit test."
+    },
+    {
+      "behavior": "Automatic WebGL context-loss fallback",
+      "status": "SOURCE_ONLY"
+    },
+    {
+      "behavior": "Automatic prefers-reduced-motion behavior",
+      "status": "SOURCE_ONLY"
+    }
+  ],
+  "retained_browser_log_context": {
+    "historical_application_error": "CatmullRom error at approximately 2026-11-17T19:06Z, before correction.",
+    "extension_warnings": [
+      "EventEmitter",
+      "ObjectMultiplex"
+    ],
+    "retention": "Prior entries remain in the browser developer log; they were not erased or relabelled as new application failures."
+  },
+  "screenshots": [
+    {
+      "path": "evidence/pitch/architecture-full-distributed.jpg",
+      "sha256": "1450b44937a2fbd86f4b05f73edb9f8ee0562d65ba905b2aaf25135973d60740",
+      "purpose": "Full architecture explorer browser capture"
+    },
+    {
+      "path": "evidence/pitch/architecture-full-single-command.jpg",
+      "sha256": "1e4a28edca3ae9b56cbf64a4e32058f88b0684210e3eba1c6f394868f2b9defd",
+      "purpose": "Full architecture explorer browser capture"
+    },
+    {
+      "path": "evidence/pitch/architecture-mobile.jpg",
+      "sha256": "4e6f89e99046046e8788b12489398a175e14687dd0c76596063979b57ad90bfa",
+      "purpose": "Full architecture explorer browser capture"
+    },
+    {
+      "path": "evidence/pitch/architecture-mobile-components.jpg",
+      "sha256": "0b547a353e98ac19d0a4d4f271311287f8b5f8cc0036e05a3886d28c5262aab5",
+      "purpose": "Full architecture explorer browser capture"
+    },
+    {
+      "path": "evidence/pitch/hero-final-desktop.jpg",
+      "sha256": "e77c95389328056a57e1ae4d24e6fc14f6441554f0bb36622704f5f6cfe0fbc5",
+      "purpose": "Related final hero-camera capture"
+    }
+  ],
+  "limits": [
+    "This record reports the main agent’s observations; it is not a second independent UI execution.",
+    "Pointer orbit, raycasting and automatic fallback/preference behavior remain outside the exercised interaction coverage.",
+    "Animated paths and geometry are illustrative; physical devices and values remain simulated.",
+    "Single secure CSE transport and distributed HTTP topology remain separate evidence profiles.",
+    "Independent rubric closeout is a separate review; this record does not advance a gate."
+  ]
+}

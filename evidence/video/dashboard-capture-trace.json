@@ -1,0 +1,166 @@
+{
+  "run": {
+    "id": "demo-eea1329dfb",
+    "facility_id": "food-a",
+    "scenario": "exhaust_fault",
+    "mode": "interactive",
+    "status": "completed",
+    "started_at": "2026-11-17T18:52:37.001+00:00",
+    "steps": [
+      {
+        "timestamp": "2026-11-17T18:52:37.001+00:00",
+        "type": "scenario_started",
+        "message": "Exhaust fault · virtual equipment",
+        "facility_id": "food-a",
+        "zone_id": null,
+        "run_id": "demo-eea1329dfb",
+        "data": {},
+        "id": 219
+      },
+      {
+        "timestamp": "2026-11-17T18:52:37.037+00:00",
+        "type": "incident_opened",
+        "message": "Airflow is below this zone's configured simulation target; Particles exceed the configured simulation target; CO₂ exceeds the configured simulation target",
+        "facility_id": "food-a",
+        "zone_id": "cook",
+        "run_id": "demo-eea1329dfb",
+        "data": {
+          "rqi": "opensoom-8eff8fd6ce384993bb1dd7c25839a0d2"
+        },
+        "id": 220
+      },
+      {
+        "timestamp": "2026-11-17T18:52:47.580+00:00",
+        "type": "command_requested",
+        "message": "Damper adjustment requested: 100%",
+        "facility_id": "food-a",
+        "zone_id": "cook",
+        "run_id": "demo-eea1329dfb",
+        "data": {
+          "command_id": "cmd-06e0054c4e85",
+          "rqi": "opensoom-b65b57d5925a4258a82c8c08b7b5ff1c"
+        },
+        "id": 221
+      },
+      {
+        "timestamp": "2026-11-17T18:52:48.691+00:00",
+        "type": "device_ack",
+        "message": "Virtual device acknowledged; recovery still requires observations",
+        "facility_id": "food-a",
+        "zone_id": "cook",
+        "run_id": "demo-eea1329dfb",
+        "data": {
+          "command_id": "cmd-06e0054c4e85",
+          "rqi": "opensoom-4e2f3dd9bfdf4d58b41cc7772cdd4c15"
+        },
+        "id": 223
+      },
+      {
+        "timestamp": "2026-11-17T18:52:50.880+00:00",
+        "type": "recovery_verified",
+        "message": "Fresh observations verify recovery after device acknowledgement",
+        "facility_id": "food-a",
+        "zone_id": "cook",
+        "run_id": "demo-eea1329dfb",
+        "data": {
+          "rqi": "opensoom-f0088e3dc46a41ceb379f3eb2da34bad"
+        },
+        "id": 224
+      }
+    ],
+    "tool_calls": [],
+    "outcome": "OBSERVED",
+    "expected_behavior": "ack_and_post_action_recovery",
+    "completed_at": "2026-11-17T18:52:50.934+00:00",
+    "command_ids": [
+      "cmd-06e0054c4e85"
+    ]
+  },
+  "commands": [
+    {
+      "facility_id": "food-a",
+      "zone_id": "cook",
+      "action": "set_damper",
+      "value": 100,
+      "reason": "Facility manager requested a profile-scoped virtual demonstration action.",
+      "request_id": "ui-23f22fde-62bd-4e4b-ac3d-2784a119a634",
+      "id": "cmd-06e0054c4e85",
+      "status": "verified",
+      "ack": true,
+      "created_at": "2026-11-17T18:52:47.561973+00:00",
+      "expires_at": "2026-11-17T18:53:17.561973+00:00",
+      "profile_version": 1,
+      "run_id": "demo-eea1329dfb",
+      "incident_id": "incident-90811e0103",
+      "observed_result": "recovered",
+      "cse_rqi": "opensoom-b65b57d5925a4258a82c8c08b7b5ff1c",
+      "cse_resource_id": "cing9WmzG0VfY",
+      "ack_at": "2026-11-17T18:52:48.687+00:00",
+      "ack_rqi": "opensoom-4e2f3dd9bfdf4d58b41cc7772cdd4c15",
+      "verified_at": "2026-11-17T18:52:50.880+00:00",
+      "verification_rqi": "opensoom-f0088e3dc46a41ceb379f3eb2da34bad"
+    }
+  ],
+  "events": [
+    {
+      "timestamp": "2026-11-17T18:52:37.001+00:00",
+      "type": "scenario_started",
+      "message": "Exhaust fault · virtual equipment",
+      "facility_id": "food-a",
+      "zone_id": null,
+      "run_id": "demo-eea1329dfb",
+      "data": {},
+      "id": 219
+    },
+    {
+      "timestamp": "2026-11-17T18:52:37.037+00:00",
+      "type": "incident_opened",
+      "message": "Airflow is below this zone's configured simulation target; Particles exceed the configured simulation target; CO₂ exceeds the configured simulation target",
+      "facility_id": "food-a",
+      "zone_id": "cook",
+      "run_id": "demo-eea1329dfb",
+      "data": {
+        "rqi": "opensoom-8eff8fd6ce384993bb1dd7c25839a0d2"
+      },
+      "id": 220
+    },
+    {
+      "timestamp": "2026-11-17T18:52:47.580+00:00",
+      "type": "command_requested",
+      "message": "Damper adjustment requested: 100%",
+      "facility_id": "food-a",
+      "zone_id": "cook",
+      "run_id": "demo-eea1329dfb",
+      "data": {
+        "command_id": "cmd-06e0054c4e85",
+        "rqi": "opensoom-b65b57d5925a4258a82c8c08b7b5ff1c"
+      },
+      "id": 221
+    },
+    {
+      "timestamp": "2026-11-17T18:52:48.691+00:00",
+      "type": "device_ack",
+      "message": "Virtual device acknowledged; recovery still requires observations",
+      "facility_id": "food-a",
+      "zone_id": "cook",
+      "run_id": "demo-eea1329dfb",
+      "data": {
+        "command_id": "cmd-06e0054c4e85",
+        "rqi": "opensoom-4e2f3dd9bfdf4d58b41cc7772cdd4c15"
+      },
+      "id": 223
+    },
+    {
+      "timestamp": "2026-11-17T18:52:50.880+00:00",
+      "type": "recovery_verified",
+      "message": "Fresh observations verify recovery after device acknowledgement",
+      "facility_id": "food-a",
+      "zone_id": "cook",
+      "run_id": "demo-eea1329dfb",
+      "data": {
+        "rqi": "opensoom-f0088e3dc46a41ceb379f3eb2da34bad"
+      },
+      "id": 224
+    }
+  ]
+}

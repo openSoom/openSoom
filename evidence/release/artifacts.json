@@ -1,0 +1,158 @@
+{
+  "captured_source_revision": "fd5e648fa1c74e425507a98247844be150265acb",
+  "note": "Artifact snapshot prepared after the final Three.js/full architecture pass. Historical runtime/video captures retain their own original hashes. The later additive tool interpretation contract and its regression are explicit source deltas, not retroactive live-test claims.",
+  "publication": "repository_release_pending; no Hackster/video-host/site publishing performed",
+  "files": [
+    {
+      "path": "docs/submission/hackster-article.md",
+      "sha256": "fd0aa203dc151db35276b9150cf4242918049120f6a614f863f9b6dc2e007dad",
+      "bytes": 11347
+    },
+    {
+      "path": "docs/submission/technical-qa.md",
+      "sha256": "39656b42ef763e07940cabed25df6f1007b4adc42e4540118ec7b4287ec2a23d",
+      "bytes": 4840
+    },
+    {
+      "path": "docs/submission/handoff.md",
+      "sha256": "5fbb35f818d8aee368767b1f8c2fa1714143dd2b5135aef83557add24db6179a",
+      "bytes": 2382
+    },
+    {
+      "path": "docs/project-guide.ko.md",
+      "sha256": "d7ea061a721fe62db6e3d8bd120396968d49e265977fc41098e2639d841f4ee4",
+      "bytes": 13835
+    },
+    {
+      "path": "pitch/README.md",
+      "sha256": "fd040659059efc1e101c5a773809554db1fdd879e284cffb977a41c8fc17575f",
+      "bytes": 4925
+    },
+    {
+      "path": "pitch/architecture.css",
+      "sha256": "c04101489775348b87f81bbb9092803b26031579baa178853e6dc6631b43317e",
+      "bytes": 15096
+    },
+    {
+      "path": "pitch/architecture.fragment.html",
+      "sha256": "417c78c3828222503d24fd6e6627a0a3f1af9adc08126e93fa1bf4439c5c2791",
+      "bytes": 5550
+    },
+    {
+      "path": "pitch/architecture.js",
+      "sha256": "42e28ffc2aa0daa3ca87c9c1c8bc4fae16446a66d94b3da896f140a42e9e9203",
+      "bytes": 83158
+    },
+    {
+      "path": "pitch/assets/dashboard.jpg",
+      "sha256": "170669d715b6f004d5ef69ae0d4294c7201e5c6a1d7eac3836b1a30df13433b2",
+      "bytes": 101037
+    },
+    {
+      "path": "pitch/index.html",
+      "sha256": "48987c5066890992f8213458917165ae9ccc31123e6dc97daf5ddfa8b6dfba6b",
+      "bytes": 21041
+    },
+    {
+      "path": "pitch/main.js",
+      "sha256": "eefda4e00cf66ea910817eda590d3bdef49fdc706b974d33c20962399e9d19a9",
+      "bytes": 20713
+    },
+    {
+      "path": "pitch/style.css",
+      "sha256": "1f0d052101b29c0b949ef04292cd5b11eb577434da4d843480ee5aac5a91f309",
+      "bytes": 17162
+    },
+    {
+      "path": "pitch/vendor/LICENSE",
+      "sha256": "8b378ebe60e2fe500158cb0ac71cb5e8b7d92953c2abcc63a0eb90499653b5bc",
+      "bytes": 1081
+    },
+    {
+      "path": "pitch/vendor/provenance.json",
+      "sha256": "abddd74eb2380d69443fe49250be2352c185636ab7596886c8a14f8f6b075759",
+      "bytes": 522
+    },
+    {
+      "path": "pitch/vendor/three.core.js",
+      "sha256": "613e370f76638fdef83926642bf256dc9615684922de1ce1f63a8583e5d78578",
+      "bytes": 1474799
+    },
+    {
+      "path": "pitch/vendor/three.module.js",
+      "sha256": "104f56145899722094556490d787aae0617cc2fc3382f31df02d724ea1aee341",
+      "bytes": 658900
+    },
+    {
+      "path": "pitch/workflow.js",
+      "sha256": "fcfc0252307bff81049c98c3813ff325213538f7d5fb139437e5281e61b95d3c",
+      "bytes": 12048
+    },
+    {
+      "path": "web/app.js",
+      "sha256": "60e30ba5895bd5944ed79f2e19e43c2014d3aef88ecc899259507dd921498a76",
+      "bytes": 45730
+    },
+    {
+      "path": "web/facility-3d.css",
+      "sha256": "7c893a7170840339198fd4b7b828276ad67ce71bc8d0a6f0b766337f7b4b9dbc",
+      "bytes": 6337
+    },
+    {
+      "path": "web/facility-3d.js",
+      "sha256": "5928136bbb7d21bea92a8553b48015cafef85ba4902fa8ced3218bcf60bdcf28",
+      "bytes": 13249
+    },
+    {
+      "path": "web/index.html",
+      "sha256": "a99f0afadf784c86074732c1f1aa0e06acdfd9728eff85eda05e315b46e5319a",
+      "bytes": 15595
+    },
+    {
+      "path": "web/mark.svg",
+      "sha256": "aec576466e147d1132f4f1f9d19c73964d02a18cd4159294cf6edcd528fd2968",
+      "bytes": 289
+    },
+    {
+      "path": "web/styles.css",
+      "sha256": "6fe0829ce73a257fbe07b4c80de26686a14b0cb258378ff75fe33ef9ec6d63f1",
+      "bytes": 36459
+    },
+    {
+      "path": "web/vendor/LICENSE",
+      "sha256": "8b378ebe60e2fe500158cb0ac71cb5e8b7d92953c2abcc63a0eb90499653b5bc",
+      "bytes": 1081
+    },
+    {
+      "path": "web/vendor/provenance.json",
+      "sha256": "e1b218ed30804ffdc65847bec076edec7ca2a2221e18106f89ae72f9f5742366",
+      "bytes": 753
+    },
+    {
+      "path": "web/vendor/three.core.js",
+      "sha256": "613e370f76638fdef83926642bf256dc9615684922de1ce1f63a8583e5d78578",
+      "bytes": 1474799
+    },
+    {
+      "path": "web/vendor/three.module.js",
+      "sha256": "104f56145899722094556490d787aae0617cc2fc3382f31df02d724ea1aee341",
+      "bytes": 658900
+    },
+    {
+      "path": "deliverables/video/openSoom-demo-en.mp4",
+      "sha256": "d4cc9e2ce19fcef31f97212edf54f0ae5caa5c32e2f17e5ae8ae7ce32721c0ee",
+      "bytes": 3429346
+    }
+  ],
+  "runtime_provenance": [
+    "evidence/agent/index.json",
+    "evidence/video/asset-provenance.json",
+    "evidence/pitch/qa.json",
+    "evidence/pitch/architecture-source-map.json",
+    "evidence/pitch/architecture-browser-qa.json",
+    "evidence/dashboard/visual-upgrade-qa.json",
+    "evidence/release/semantics-contract.patch"
+  ],
+  "independent_review": "pending final combined release snapshot",
+  "snapshot_updated_at": "2026-11-17T20:23:06.561705+00:00"
+}

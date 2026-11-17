@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "team": "team_2",
+  "reviewer_role": "oss_experience_review",
+  "model": "gpt-6.1-sol",
+  "reasoning_effort": "max",
+  "scope": "Focused advisory on the remaining user-visible guided-onboarding outcome; not a final release approval or a new runtime acceptance result.",
+  "inputs": [
+    "docs/implementation-plan.md#S3-G1",
+    "docs/review/implementation-team2.json#T2-I02",
+    "evidence/agent/guided-rehearsal.md",
+    "evidence/agent/guided-live.json",
+    "evidence/agent/guided-correlation.json",
+    "evidence/agent/guided-config-report.md",
+    "evidence/agent/guided-config-scope.json",
+    "evidence/agent/guided-config-resume-check.json",
+    "evidence/agent/guided-config-continuation-live.json"
+  ],
+  "observed": {
+    "original_guided_case": "Actual Codex selected and completed doctor, discover and read_evidence. The final turn failed at max_output_tokens; the partial Korean answer is not a completed user result. Its fixed six-request case remains exhausted.",
+    "configuration_case": "Actual Codex selected and completed prepare_setup and read_group. The latter is correlated with service run mcp-0f7558ccb301. A final explanation request was not forwarded because the three-request case was exhausted. Both the original settlement-race failure and the failed final turn remain failures.",
+    "starting_state": "Maintainer-installed, running virtual runtime and administrator-preactivated profiles; fresh Codex profiles. No demonstrated model installation or administrator profile activation may be inferred.",
+    "shared_allowance_at_review": {
+      "max_requests": 100,
+      "max_tokens": 250000,
+      "requests_consumed": 69,
+      "tokens_charged": 226460,
+      "tokens_remaining": 23540,
+      "pending_requests": 0
+    }
+  },
+  "minimum_missing_outcome": "An actual Codex turn must finish successfully and deliver a concise, intelligible, grounded explanation of the checked setup/permissions, recorded facility condition, simulation boundary and appropriate next step. Source data must support the answer and the interface must receive a completed response. A script PASS label or a useful prefix of a failed answer is insufficient.",
+  "gate_interpretation": {
+    "composite_evidence_strategy": "Conditionally acceptable. S3-G1 explicitly permits separate demonstrations of installation, MCP, readiness, guided setup, diagnosis and lifecycle. T2-I02 did not require every tool, installation and final explanation to occur in one uninterrupted chat.",
+    "not_required": [
+      "Repeating all five model-selected read tools merely to place them in one new chat",
+      "Making already-preactivated profiles undergo a new administrator write",
+      "A desktop UI test or a human usability study as a newly invented prerequisite",
+      "Converting the original failed cases to passed cases"
+    ],
+    "still_required": [
+      "Genuine model-selected tool executions, their original host results and their CSE/service correlations remain independently inspectable",
+      "A completed actual Codex response whose statements are checked against the supplied source records",
+      "A disclosed evidence chain tying all components to unchanged or independently reconciled runtime/plugin revisions",
+      "Explicit preinstalled-runtime and preactivated-profile prerequisites, instrumented provider scope, separate chats and recorded-data timestamps",
+      "No attribution of model-selected calls, installation or control decisions to a turn which did not perform them"
+    ],
+    "contiguous_evidence_needed": "Each claimed model tool call must remain tied to its own actual host result and service/CSE record. Any command-to-ACK-to-recovery claim must retain its original current-run/post-ACK chain. Those chains may not be assembled from unrelated commands or scenarios. The read-only onboarding components and a clearly attributed recorded-results explanation need not share one chat or service run.",
+    "current_disposition": "R-027 remains open now. This advisory approves an equivalent verification strategy conditionally; it does not establish that the missing completed explanation has occurred."
+  },
+  "recommended_next_verification": {
+    "purpose": "A distinct, narrowly scoped recorded-results interpretation and user-result delivery check, not a reset or disguised retry of either exhausted case.",
+    "before_any_live_call": [
+      "Main explicitly records the new remaining-outcome test, acceptance content, fixed allowance and relation to the two preserved failures",
+      "Read the current shared accounting; atomically reserve under the unchanged shared batch and keep both earlier case caps intact",
+      "Use a zero-provider-call preflight to prove the entire planned request can be reserved within the selected limit",
+      "Prepare an attributed data attachment from the original tool results, with paths/hashes, timestamps, facility/profile identifiers and run references; preserve originals and any transformation/selection mapping",
+      "Do not inject synthetic assistant/tool history, manufacture a rollout, copy an earlier partial answer as the model's completed answer, or weaken host/global approval settings"
+    ],
+    "execution": "Use a fresh genuine Codex turn with the installed setup skill and explicitly attributed recorded tool data. Ask for a short explanation of these recorded checks, not a claim to have re-run them or measured the current facility. An explanation-only scope can disallow new operational calls because tool selection/execution is already separately established. The model must generate its own wording and conclusion; no prepared answer should be supplied for it to repeat.",
+    "suggested_bounded_allocation": "For main to decide and persist before execution: one provider request, no retry, at most 20000 charged/reserved tokens including input and output, at most 2048 output tokens and a 45-second provider timeout. This fits within the recorded 23540 shared tokens, subject to actual conservative preflight. These are suggested new-test bounds, not a change to either exhausted case or an automatic authorization to enlarge limits.",
+    "context_reduction": "Prefer the coherent latest setup/group records and the independently verified diagnostic record only where needed. Exact duplicate wrapper removal is acceptable with originals/provenance retained. Do not lower the reservation estimator, drop unique contradictory facts, or omit stale/denied/unresolved conditions to force a fit.",
+    "acceptance": [
+      "Actual provider response and actual Codex turn both complete normally; no max-output or budget interruption is treated as success",
+      "The explanation accurately distinguishes maintainer prerequisites from agent checks and configuration inspection from administrator activation",
+      "Facility condition and next step agree with the attached records; historical observations are described as recorded, not freshly observed now",
+      "Physical equipment/data remain labeled simulated; unresolved state and permission limits are preserved; no recovery, control or certified safety is invented",
+      "The actual user-visible text, host completion event, input provenance and final settled shared accounting are saved and independently reviewed"
+    ],
+    "failure_path": "If conservative preflight cannot fit or the one request fails, preserve that result and leave the gate open. Do not enlarge/reset old case policies, retry under new prefixes, fabricate history or mark partial output complete."
+  },
+  "permitted_aggregate_claim_after_success": "On the supported instrumented Codex CLI and a maintainer-prepared virtual runtime, actual model-led setup/diagnostic tools plus a separately completed Codex explanation demonstrate the documented onboarding components. Captures span separate chats; earlier failed turns remain failed. No desktop, bare-machine installer or human first-use claim is established.",
+  "reviewer_actions": "Read-only evidence inspection and this advisory document only; no live/model requests, runtime changes, source edits or permission changes were performed.",
+  "final_release_approval": false
+}

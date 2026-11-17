@@ -9,6 +9,7 @@
   <title>openSoom · Facility overview</title>
   <link rel="icon" type="image/svg+xml" href="/assets/mark.svg">
   <link rel="stylesheet" href="/assets/styles.css">
+  <link rel="stylesheet" href="/assets/facility-3d.css">
   <script src="/assets/app.js" defer></script>
 </head>
 <body>
@@ -75,9 +76,13 @@
         <section class="panel facility-panel" id="zones-section" aria-labelledby="facility-map-heading">
           <div class="panel-heading"><div><span class="section-kicker">LIVE FACILITY VIEW</span><h2 id="facility-map-heading">Every zone, connected.</h2></div><span class="soft-badge" id="facility-profile">No profile loaded</span></div>
           <div class="map-toolbar"><div class="metric-tabs" role="group" aria-label="Observation shown on map"><button type="button" class="selected" data-metric="airflow" aria-pressed="true">Airflow</button><button type="button" data-metric="pm25" aria-pressed="false">PM2.5</button><button type="button" data-metric="co2" aria-pressed="false">CO₂</button></div><span class="map-live" id="map-updated"><span class="tiny-dot"></span>No observations yet</span></div>
+          <div class="spatial-toolbar"><div class="spatial-view-toggle" role="group" aria-label="Facility visualization"><button type="button" id="view-3d" aria-pressed="false" disabled>3D facility</button><button type="button" id="view-2d" aria-pressed="true">2D map</button></div><button type="button" id="motion-toggle" class="motion-toggle" aria-pressed="false" hidden>Pause motion</button></div>
+          <div class="spatial-stage" id="spatial-stage" hidden><div id="facility-3d" class="facility-3d" aria-hidden="true"></div><div id="spatial-labels" class="spatial-labels" role="group" aria-label="Select a zone in the 3D facility"></div><div class="spatial-caption"><span class="spatial-marker"></span><span id="spatial-condition">Waiting for facility observations</span></div></div>
+          <p class="spatial-notice" id="spatial-notice" hidden></p>
           <div class="map-frame" id="facility-map"><div class="map-empty"><svg><use href="#i-building"/></svg><strong>Your facility will appear here</strong><span>Connect the service to see current zones and observations.</span></div></div>
           <div id="mobile-zones" class="mobile-zones" role="group" aria-label="Facility zones"></div>
-          <div class="map-footer"><div class="map-legend"><span><i class="legend-dot nominal"></i>Within profile</span><span><i class="legend-dot warning"></i>Attention</span><span><i class="legend-dot stale"></i>Stale / missing</span></div><span>Illustrative layout · simulated readings</span></div>
+          <div class="map-footer"><div class="map-legend"><span><i class="legend-dot nominal"></i>Within profile</span><span><i class="legend-dot warning"></i>Attention</span><span><i class="legend-dot stale"></i>Stale / missing</span></div><span>Virtual telemetry · illustrative airflow, not CFD</span></div>
+          <div class="zone-proof" id="zone-proof" aria-label="Selected zone command evidence"></div>
           <div class="zone-detail" id="zone-detail"><div class="empty-inline">Select a zone to inspect its observations.</div></div>
         </section>
 

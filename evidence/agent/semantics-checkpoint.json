@@ -1,0 +1,58 @@
+{
+  "status": "COMPLETED_DELIVERY_COUNTER_HISTORY_IMPROVED_UNIT_ERROR_REMAINS",
+  "files": {
+    "scripts/codex_semantics_regression.py": "bbafdd18c10d04f7c3bd77ba18fb5f14b11465a0cf87202b31887d2c6ddaa063",
+    "evidence/agent/semantics-dry.json": "70be5b4291ecd8ea5df44ca8d8190435e2bd6df14be40d5717f75ccd3bc7d411",
+    "evidence/agent/semantics-fact-check.json": "5f60850bec32a648a2127e6ff276376f35d670c9836e6c53d01919a6614e2f37",
+    "evidence/agent/semantics-final-dry.json": "6c16ade50b5906d5f45d52422faafd610bd6d132af3552e810d9b4d34d5992d4",
+    "evidence/agent/semantics-initial-dry-over-bound.json": "70be5b4291ecd8ea5df44ca8d8190435e2bd6df14be40d5717f75ccd3bc7d411",
+    "evidence/agent/semantics-live.json": "d712da056e50a849a0e2421ead995440da723e8b37a0001f8fc87b4486adb898",
+    "evidence/agent/semantics-mcp-capture.json": "abba8916cd5be4009f156007bdcd82437d0627ae29875a2eab931b4cc0880d46",
+    "evidence/agent/semantics-preflight-verification.json": "a0479f2b25ceef51c143d3e4cde3cd28f2e99ccd8c00166bbb29de1376a7564c",
+    "evidence/agent/semantics-scope.json": "11c81ce6c466cdb498145a6dccbf776a82a53ad9fea58cbdd0b7dac12e073b58"
+  },
+  "prior_three_harnesses_unchanged": true,
+  "prior_case_records_unchanged": true,
+  "product_delta": {
+    "src/opensoom/core.py": {
+      "prior": "91a8c15285d2c7b64fccf5105bcf7e4f8738e5f200c26c2af9abd2e9f72c56ef",
+      "corrected": "00f4339ce5481d4daf13f8d44ab857f86173469f8da68eddf0db96d5ca6c32c5"
+    },
+    "src/opensoom/mcp_server.py": {
+      "prior": "a6dbe7d5785b224f2b74bbd03c9500dbae795bcf716c11e44d9b51293ddf90dc",
+      "corrected": "71fd594289b16f085f6cc8b4ce3cbefefc2b7fe7d7296098f9820b41940d8bdc"
+    },
+    "plugin/skills/opensoom-operations/SKILL.md": {
+      "prior": "cffdd8369a43a9b2d3f048be2eb7b401282dd8f4d37a35155eeba47a9420e4f8",
+      "corrected": "94d6345338491b24649b1390a059c6a7fc5a61b928262caed87180e43d95a5a2"
+    },
+    "plugin/skills/opensoom-setup/SKILL.md": {
+      "prior": "6ea80c9ee267287342e90f81da69549cffd8dc5aabb0acaff248d0faa5796421",
+      "corrected": "9b7c273f6926ee4c78c2bf86de694bd1bad2a6538c63e078a223ddec02b9ad88"
+    }
+  },
+  "scope": {
+    "max_requests": 1,
+    "max_tokens": 18000,
+    "requests_consumed": 1,
+    "tokens_charged": 4046,
+    "requests_remaining": 0,
+    "tokens_remaining": 13954
+  },
+  "shared_budget": {
+    "batch_id": "opensoom-hackathon-2026-01",
+    "max_requests": 100,
+    "max_tokens": 250000,
+    "requests_consumed": 71,
+    "tokens_charged": 235310,
+    "tokens_reserved": 0,
+    "pending_requests": 0,
+    "requests_remaining": 29,
+    "tokens_remaining": 14690,
+    "requires_investigation": false
+  },
+  "credential_value_matches": 0,
+  "test_processes_stopped": true,
+  "whole_gate_self_passed": false,
+  "further_case_inference_allowed": false
+}

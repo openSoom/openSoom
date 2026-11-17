@@ -1,0 +1,78 @@
+{
+  "duration_seconds": 108,
+  "language": "en",
+  "scenes": [
+    {
+      "scene": 1,
+      "start": 0,
+      "duration": 12,
+      "title": "The operating gap",
+      "narration": "In a food-production facility, a fan can report running while exhaust remains below the configured target. Open Soom connects that difference to an actionable, traceable response.",
+      "frame": "deliverables/video/frames/scene-01.png"
+    },
+    {
+      "scene": 2,
+      "start": 12,
+      "duration": 12,
+      "title": "A shared operating path",
+      "narration": "Device adapters publish a common observation contract to a real one M two M platform. Discovery, subscriptions, group queries, and access policies support one shared operating path.",
+      "frame": "deliverables/video/frames/scene-02.png"
+    },
+    {
+      "scene": 3,
+      "start": 24,
+      "duration": 12,
+      "title": "See the facility respond",
+      "narration": "The dashboard keeps every zone visible. This recorded interactive demo starts with a cooking-line fault, sends a permitted damper command, and then displays the observed recovery.",
+      "frame": "deliverables/video/frames/scene-03.png"
+    },
+    {
+      "scene": 4,
+      "start": 36,
+      "duration": 14,
+      "title": "AI with an evidence trail",
+      "narration": "The same tools are available through a Codex plugin and a standalone model runner. Here, real model-generated calls discover equipment, inspect evidence, request action, and verify the result.",
+      "frame": "deliverables/video/frames/scene-04.png"
+    },
+    {
+      "scene": 5,
+      "start": 50,
+      "duration": 14,
+      "title": "Close the verification loop",
+      "narration": "A command is only the beginning. The device must acknowledge it. Two fresh later observations must meet the facility profile before open Soom records a verified recovery.",
+      "frame": "deliverables/video/frames/scene-05.png"
+    },
+    {
+      "scene": 6,
+      "start": 64,
+      "duration": 13,
+      "title": "Keep unresolved outcomes visible",
+      "narration": "When the damper opens but airflow does not recover, the incident stays unresolved. An acknowledgement never becomes a success claim. The evidence remains available for follow-up.",
+      "frame": "deliverables/video/frames/scene-06.png"
+    },
+    {
+      "scene": 7,
+      "start": 77,
+      "duration": 13,
+      "title": "Reusable beyond one facility",
+      "narration": "Food production is one reference profile. A learning facility and a second vendor format use the same core, with their own targets, units, and permitted controls.",
+      "frame": "deliverables/video/frames/scene-07.png"
+    },
+    {
+      "scene": 8,
+      "start": 90,
+      "duration": 10,
+      "title": "Open-source adoption",
+      "narration": "Open source means easier adoption. Replay the local demo, use Codex workflows, and inspect the evidence.",
+      "frame": "deliverables/video/frames/scene-08.png"
+    },
+    {
+      "scene": 9,
+      "start": 100,
+      "duration": 8,
+      "title": "Room to breathe",
+      "narration": "Open Soom. Real software. Virtual equipment. Open-source air operations. Explore the code.",
+      "frame": "deliverables/video/frames/scene-09.png"
+    }
+  ]
+}

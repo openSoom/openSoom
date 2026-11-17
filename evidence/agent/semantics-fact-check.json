@@ -1,0 +1,93 @@
+{
+  "status": "COMPLETED_DELIVERY_COUNTER_HISTORY_IMPROVED_UNIT_ERROR_REMAINS",
+  "author_check_only": true,
+  "live_sha256": "d712da056e50a849a0e2421ead995440da723e8b37a0001f8fc87b4486adb898",
+  "original_model_answer_unmodified": true,
+  "completion": {
+    "codex_turn_completed": true,
+    "provider_completed": true,
+    "one_provider_request": true,
+    "no_operational_tool_calls": true,
+    "concise_korean": true
+  },
+  "provenance_checks": [
+    {
+      "source": "fresh",
+      "file": "evidence/agent/semantics-mcp-capture.json",
+      "sha256_matches": true,
+      "base_pointer": "/response/structuredContent",
+      "all_selected_values_exact": true
+    },
+    {
+      "source": "prior",
+      "file": "evidence/agent/guided-config-continuation-live.json",
+      "sha256_matches": true,
+      "base_pointer": "/model_selected_mcp_calls/0/result/structuredContent",
+      "all_selected_values_exact": true
+    },
+    {
+      "source": "prior",
+      "file": "evidence/agent/guided-config-continuation-live.json",
+      "sha256_matches": true,
+      "base_pointer": "/model_selected_mcp_calls/1/result/structuredContent",
+      "all_selected_values_exact": true
+    },
+    {
+      "source": "history",
+      "file": "evidence/application/release-acceptance.json",
+      "sha256_matches": true,
+      "base_pointer": "/scenarios/no_recovery/state/commands/0",
+      "all_selected_values_exact": true
+    }
+  ],
+  "product_contract_regression_observations": {
+    "previous_acknowledged_action_recognized": true,
+    "no_absence_of_attempts_inference": true,
+    "incident_stays_unresolved": true,
+    "recovery_requires_post_ack_healthy_observations": true,
+    "airflow_below_vs_pm_co2_above_direction_preserved": true
+  },
+  "factual_error": {
+    "exact_phrase": "송풍 200 L/min(목표 500)",
+    "actual_value": 200,
+    "actual_unit": "m³/h",
+    "source_file": "evidence/agent/semantics-mcp-capture.json",
+    "source_pointer": "/response/structuredContent/zones/0/observations/airflow/unit",
+    "projection_limitation": "The harness included the observed value but omitted its unit. The real MCP result includes the correct unit. The model inferred L/min, which is incorrect. This is a selection/input limitation plus model inference, not absence of units in the product tool.",
+    "disposition": "Not an unqualified factual user-handoff pass. Preserve the raw answer and require independent assessment; no manual correction or retry."
+  },
+  "additional_clarity": {
+    "phrase": "현재 관측값",
+    "note": "The heading and other sentences frame the response as past-record interpretation, but this phrase is temporally ambiguous; no operational model call freshly observed sensors.",
+    "ack_translation": "ACK(승인) is imprecise; the source is a virtual-device acknowledgement, not an administrator permission grant."
+  },
+  "timestamp_roles": {
+    "fresh": "Actual new MCP read completion timestamp in semantics-mcp-capture.json",
+    "prior": "The group tool completion time; setup completed two seconds earlier in the same preserved source capture. Source-level at is not an assertion that both tools completed at exactly that instant.",
+    "history": "The command ACK event time; the original acceptance capture completion time remains at release-acceptance.json /completed_at. These are separate historical records."
+  },
+  "no_operational_model_calls": true,
+  "no_runtime_or_actuator_changes_by_model": true,
+  "independent_review_required": true,
+  "whole_gate_self_passed": false,
+  "case_scope": {
+    "max_requests": 1,
+    "max_tokens": 18000,
+    "requests_consumed": 1,
+    "tokens_charged": 4046,
+    "requests_remaining": 0,
+    "tokens_remaining": 13954
+  },
+  "shared_budget": {
+    "batch_id": "opensoom-hackathon-2026-01",
+    "max_requests": 100,
+    "max_tokens": 250000,
+    "requests_consumed": 71,
+    "tokens_charged": 235310,
+    "tokens_reserved": 0,
+    "pending_requests": 0,
+    "requests_remaining": 29,
+    "tokens_remaining": 14690,
+    "requires_investigation": false
+  }
+}

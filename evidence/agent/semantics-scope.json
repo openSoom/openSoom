@@ -1,0 +1,24 @@
+{
+  "case_prefix": "codex-semantics-",
+  "limits": {
+    "max_requests": 1,
+    "max_tokens": 18000,
+    "max_output_tokens": 2048,
+    "provider_timeout_seconds": 45,
+    "turn_timeout_seconds": 90,
+    "retries": 0
+  },
+  "purpose": "Revised product-contract semantic regression after Core evidence_scope, MCP description and shipped skills changed.",
+  "prior_cases_unchanged": true,
+  "shared_batch_unchanged": {
+    "max_requests": 100,
+    "max_tokens": 250000
+  },
+  "effective_reservation_bound": "min(18000 - case charged tokens, current shared tokens remaining)",
+  "automatic_retry_or_reset": false,
+  "operational_model_calls": 0,
+  "review_basis": [
+    "docs/review/guided-explanation-review-team2.json",
+    "docs/review/explanation-semantics-team3.json"
+  ]
+}

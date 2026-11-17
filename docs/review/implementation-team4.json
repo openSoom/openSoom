@@ -1,0 +1,215 @@
+{
+  "schema_version": 1,
+  "reviewer": {
+    "team": "team_4",
+    "task_name": "edge_standards_review",
+    "model": "gpt-6.1-sol",
+    "reasoning_effort": "max"
+  },
+  "reviewed_revision": "2b2a239270e70625e99e39a5b738e09c84c19822",
+  "scope": "Independent implementation checkpoint review of criteria 12-16, S0 feasibility, S4 distributed operation and extension dispositions. Claims only; no official scores or N/A decisions.",
+  "source_isolation": "Read git show / git archive of the specified immutable revision. Did not inspect in-flight core/app changes as review evidence.",
+  "overall": {
+    "result": "accept_bounded_distributed_runtime_and_reviewed_extension_deferrals",
+    "product_runtime_blockers": [],
+    "completion_bookkeeping_pending": [
+      "T4-I001"
+    ],
+    "release_or_goal_completion_approved": false,
+    "reason": "Recorded S4-G1/G2 behavior is supported by matching sources, actual CSE traces and independent boundary tests. Runtime claims remain local and simulated at the device layer; checkpoint/ledger dispositions still need synchronization."
+  },
+  "methods": [
+    "Compared deploy/README.md, scripts/cse_product_topology.py, scripts/cse_multisite_smoke.py, src/opensoom/federation.py and relevant Core methods against recorded execution.",
+    "Verified 14 topology source hashes before/after against the reviewed revision; all match and source_changed_during_run is false.",
+    "Verified all 17 acceptance-checkpoint source hashes and its three artifact hashes; all match the reviewed revision.",
+    "Ran federation boundary tests from an isolated git archive with PYTHONPATH pointing to archived src: 4 passed, 3 subtests passed.",
+    "Did not restart shared CSEs or rerun the topology harness because it stops the central instance used by concurrent work. The live topology evidence was independently inspected, not independently recaptured.",
+    "Made no live LLM/API calls. Agent evidence was checked only for source/claim provenance."
+  ],
+  "independent_test": {
+    "command": "PYTHONPATH=<immutable-archive>/src <project>/.venv/bin/python -m pytest tests/integration/test_cse_federation.py -q",
+    "cwd": "immutable git archive of reviewed_revision",
+    "exit_status": 0,
+    "observed": "4 passed, 3 subtests passed in 0.15s",
+    "covers": [
+      "expired intent",
+      "wrong facility/profile",
+      "replay through a new receiver",
+      "reused request ID with changed content",
+      "payload role injection",
+      "wrong configured queue"
+    ],
+    "limitation": "Boundary tests use a local test Core; they are not substitutes for the separately recorded actual multi-CSE execution."
+  },
+  "gate_assessments": [
+    {
+      "gate": "S0-G3",
+      "scope": "MEC feasibility portion",
+      "result": "accepted_bounded_investigation_with_deferred_execution",
+      "evidence": [
+        "evidence/stage0/mec-feasibility.json",
+        "docs/extension-decisions.md"
+      ],
+      "observed": "ESTIMED public landing page returned 200; MEC platform connection was reset in this session. No project-specific authenticated host, custom-image right or actual service instance was established.",
+      "limitation": "This proves an investigated access condition, not global service downtime, actual deployment, API consumption or a hosted platform failure. Full S0-G3 also requires the other teams' model/Codex readiness review."
+    },
+    {
+      "gate": "S4-G1",
+      "result": "passed_recorded_bounded_scenario",
+      "evidence": [
+        "evidence/runtime/cse-multisite-smoke.json",
+        "evidence/runtime/product-multisite-continuity.json",
+        "scripts/cse_multisite_smoke.py",
+        "scripts/cse_product_topology.py"
+      ],
+      "observed": "Two MN-CSE registrations at the IN-CSE; native remote discovery/retrieval; read-only operator and outsider 4103 denials; selective announcements; actual product observations from both facilities.",
+      "limitation": "Three actual CSE processes on one host using loopback HTTP. Not physical geographic distribution, network client authentication, MEC or handover."
+    },
+    {
+      "gate": "S4-G2",
+      "result": "passed_recorded_bounded_scenario",
+      "evidence": [
+        "evidence/runtime/product-multisite-continuity.json",
+        "evidence/runtime/acceptance-checkpoint.json",
+        "src/opensoom/federation.py",
+        "scripts/cse_product_topology.py"
+      ],
+      "observed": {
+        "run_id": "topology-549e41103a",
+        "central_outage_seconds": 14.635,
+        "central_unavailable": "actual stopped IN-CSE; CSE read returns ConnectError/rsc 0",
+        "local_operation": "food-a exhaust_fault completes a real CSE command, virtual ACK and later CSE observation recovery while central is stopped",
+        "reconnection": "both facility snapshots fresh; state tags increased by 9 per food zone and 8 per learning zone",
+        "reconciliation": "delayed intent rejected as central_intent_expired; wrong profile rejected; food command IDs and incidents unchanged",
+        "authority": "direct central write to local commands denied by CSE ACP with rsc 4103",
+        "valid_intent": "learning-b fresh intent yields one locally authorized command, ACK and verified recovery; replay returns the same command"
+      },
+      "limitation": "Explicit harness-driven replay, not an always-running federation consumer. State-tag changes show a polling gap, not packet-loss counts or full history delivery. Not serving-CSE transition or abrupt facility-process crash recovery."
+    },
+    {
+      "gate": "S4-G3",
+      "result": "decision_substance_accepted_checkpoint_update_pending",
+      "evidence": [
+        "docs/extension-decisions.md",
+        "evidence/stage0/mec-feasibility.json"
+      ],
+      "observed": "All five extension decisions identify product reason, simpler alternative/environment and a reopening condition. They do not claim scores or official N/A.",
+      "pending": "Persist current decisions, this independent review and evidence references in execution-state and ledger before marking the gate passed."
+    },
+    {
+      "gate": "S4-G4",
+      "result": "no_criteria_12_16_extension_adopted",
+      "observed": "The reviewed product decision defers all five capabilities. No actual handover/MEC/FL/location execution gate is passed by the local continuity capture.",
+      "pending": "Reviewed deferrals may exclude only those extension child gates; required distributed-core and other required release gates remain."
+    }
+  ],
+  "criteria": [
+    {
+      "number": 12,
+      "status": "not_implemented_reviewed_deferral_accepted",
+      "product_need": "Gateway maintenance/availability is plausible but no current serving-CSE transition requirement is established.",
+      "simpler_alternative": "Actual local control through central-link loss with fixed serving MN-CSEs.",
+      "reopen": "Facility gateway replacement/failure requires target CSE identity/state/subscription/ACP restoration and measured interruption/loss; automatic condition-based switching needs its own evidence.",
+      "official_claim_limit": "Local continuity does not establish rubric CSE handover."
+    },
+    {
+      "number": 13,
+      "status": "not_implemented_reviewed_deferral_accepted",
+      "product_need": "Managed placement could assist deployment, but no project-specific permitted MEC host is available.",
+      "simpler_alternative": "Reproducible project-local processes without Docker.",
+      "reopen": "Permitted host, image rights, registration endpoint and runtime hosting logs become available.",
+      "official_claim_limit": "Landing-page access, Sandbox app IDs and local containers are not hosting/orchestration evidence."
+    },
+    {
+      "number": 14,
+      "status": "not_implemented_reviewed_deferral_accepted",
+      "product_need": "No multi-site dataset, learning task or data-locality benefit has been demonstrated.",
+      "simpler_alternative": "Interpretable configured rules cover current simulated cases; ESTIMED VM access is not established.",
+      "reopen": "Measurable multi-client learning need, suitable data and the rubric's ESTIMED VM path exist; demonstrate actual training/aggregation and applicable resilience/selection behavior.",
+      "official_claim_limit": "Model inference/API tool use is not federated learning."
+    },
+    {
+      "number": 15,
+      "status": "not_implemented_reviewed_deferral_accepted",
+      "product_need": "Fixed ventilation zones currently have no location-event-driven behavior.",
+      "simpler_alternative": "Configured facility/zone identity supplies operating scope.",
+      "reopen": "Moving equipment/responders require actual network/MEC/oneM2M location events that change policy, placement or handover.",
+      "official_claim_limit": "Static addresses/maps and application metadata are not location-service interworking."
+    },
+    {
+      "number": 16,
+      "status": "not_implemented_reviewed_deferral_accepted",
+      "product_need": "MEC-assisted platform onboarding is plausible but no authenticated supported service instance or MEC033 availability was established.",
+      "simpler_alternative": "Native oneM2M discovery serves current equipment discovery.",
+      "reopen": "Actual non-location service has a useful application behavior and a verifiable oneM2M -> IPE -> MEC -> CSE/application path.",
+      "official_claim_limit": "MCP and a direct MEC API call alongside an independent CSE do not establish consumption through oneM2M."
+    }
+  ],
+  "findings": [
+    {
+      "id": "T4-I001",
+      "priority": "P2",
+      "criteria": [
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "classification": "completion_bookkeeping_pending_not_runtime_failure",
+      "evidence": [
+        "docs/extension-decisions.md",
+        "docs/execution-state.json:conditional_extensions",
+        "docs/review/review-ledger.json:R-008/R-009/R-010"
+      ],
+      "gap_and_impact": "Decision document now defers MEC deployment/services after investigation, but execution-state still says investigate and R-008 still says feasibility_pending/not_verified. Current state cannot yet support S4-G3 or final completion under its own rule.",
+      "minimum_change": "Main should record independently reviewed current dispositions with evidence and this report; retain prior investigate/defer history and absence of capability execution. Do not mark the entire Goal complete from this review.",
+      "product_reason": "A resumed agent must distinguish investigated deferral from pending work without fabricating platform evidence.",
+      "verification": "All five criterion entries reference reviewed decisions and matching evidence; no investigate/not_decided entry remains at final completion, and required S4-G1/G2 cannot be waived."
+    }
+  ],
+  "claim_limits": [
+    {
+      "id": "T4-C001",
+      "scope": "related Codex/LLM checkpoint provenance; criterion 17 owned by Team 3",
+      "observed": "All agent index artifact hashes match, but evidence/agent/index.json captures earlier core.py/app.py hashes than this revision. Other ten listed source hashes match.",
+      "impact": "Historical real-model/MCP results remain evidence for their recorded source snapshot. They do not automatically verify later Core/app behavior at this checkpoint.",
+      "action": "Team 3/main should assess affected paths and recapture required affected live acceptance after fixes or provide an independently reviewed equivalence justification. This review performed no model calls.",
+      "blocks_s4_recorded_scenario": false
+    },
+    {
+      "id": "T4-C002",
+      "scope": "trust and distribution",
+      "observed": "Loopback HTTP, trusted local origin headers and explicit replay are disclosed consistently in README, deploy docs, architecture and submission draft.",
+      "impact": "Do not expand results to authenticated remote identities, encrypted inter-CSE deployment, automatic central dispatch, serving-CSE handover, migration, MEC, FL, network geolocation or physical ventilation performance."
+    }
+  ],
+  "prior_findings": [
+    {
+      "id": "R-008",
+      "recommendation": "Close only the accepted bounded-feasibility investigation scope after recording this independent report and current deferrals. Retain actual MEC deployment/service absence; this is not capability implementation."
+    },
+    {
+      "id": "R-009",
+      "recommendation": "Accept independently reviewed deferral; do not resolve the absent handover capability as implemented."
+    },
+    {
+      "id": "R-010",
+      "recommendation": "Accept independently reviewed FL/geolocation deferral with reopening conditions; no score/N-A inference."
+    },
+    {
+      "id": "R-021",
+      "recommendation": "Prior documentation closure remains valid; populate the per-extension records for the new decisions."
+    },
+    {
+      "id": "R-022",
+      "recommendation": "Recorded bounded actual-CSE reconciliation scenario now substantiates the internal acceptance case; runtime changes after reviewed_revision require affected-path verification."
+    }
+  ],
+  "scoring": {
+    "official_total": null,
+    "current_scores": null,
+    "not_applicable_inferred": false
+  },
+  "allowed_write": "docs/review/implementation-team4.json only"
+}

@@ -1,0 +1,103 @@
+{
+  "file": "deliverables/video/openSoom-demo-en.mp4",
+  "sha256": "d4cc9e2ce19fcef31f97212edf54f0ae5caa5c32e2f17e5ae8ae7ce32721c0ee",
+  "bytes": 3429346,
+  "nominal_duration": 108,
+  "actual_duration": "108.021333",
+  "font": "/System/Library/Fonts/Avenir Next.ttc",
+  "font_redistributed": false,
+  "narration": {
+    "engine": "macOS say",
+    "voice": "Samantha",
+    "rate_wpm": 162,
+    "checks": [
+      {
+        "scene": 1,
+        "voice_seconds": 10.202177,
+        "slot_seconds": 12
+      },
+      {
+        "scene": 2,
+        "voice_seconds": 11.663855,
+        "slot_seconds": 12
+      },
+      {
+        "scene": 3,
+        "voice_seconds": 9.915374,
+        "slot_seconds": 12
+      },
+      {
+        "scene": 4,
+        "voice_seconds": 11.575601,
+        "slot_seconds": 14
+      },
+      {
+        "scene": 5,
+        "voice_seconds": 9.853605,
+        "slot_seconds": 14
+      },
+      {
+        "scene": 6,
+        "voice_seconds": 10.03288,
+        "slot_seconds": 13
+      },
+      {
+        "scene": 7,
+        "voice_seconds": 9.591293,
+        "slot_seconds": 13
+      },
+      {
+        "scene": 8,
+        "voice_seconds": 6.796735,
+        "slot_seconds": 10
+      },
+      {
+        "scene": 9,
+        "voice_seconds": 6.448435,
+        "slot_seconds": 8
+      }
+    ]
+  },
+  "frames": [
+    {
+      "path": "deliverables/video/frames/scene-01.png",
+      "sha256": "f966b9fca6d8654c5d7c43b3acc7ec7e6deb278735e8fd60e47b448accd38abf"
+    },
+    {
+      "path": "deliverables/video/frames/scene-02.png",
+      "sha256": "1ec67956707532a6accf241f4346941f048ef30c89e91f5a1d4c8d2720d7589a"
+    },
+    {
+      "path": "deliverables/video/frames/scene-03-recovered.png",
+      "sha256": "01db841c2544f04789b80a7f3e582e1700b294f4e6cb36da7d24cd5f99e6b0f3"
+    },
+    {
+      "path": "deliverables/video/frames/scene-03.png",
+      "sha256": "1398d96b64ea760e31f85bfbd9f9ec4680ed7187ccb728fcd8fc3b1ce7b9fb6d"
+    },
+    {
+      "path": "deliverables/video/frames/scene-04.png",
+      "sha256": "882fdcf6a2c3ad5aea2d3676d7fc81d2ecf151d212cd65eb8a16233e8a980fa8"
+    },
+    {
+      "path": "deliverables/video/frames/scene-05.png",
+      "sha256": "4d4e925c36ede71df59c19cf108eb08c1e31fccfab5751dc43224c5e3c72a65d"
+    },
+    {
+      "path": "deliverables/video/frames/scene-06.png",
+      "sha256": "6a8d8452d1bcae168f92433326963323e691482ffa77db34142df5016dc9697f"
+    },
+    {
+      "path": "deliverables/video/frames/scene-07.png",
+      "sha256": "7785617e261657418f87d19afac924cde388cea0920879f8471eba28585081b6"
+    },
+    {
+      "path": "deliverables/video/frames/scene-08.png",
+      "sha256": "29c0f4d5252ae429c05711263f0c8db5d00c4e31484b933388feadc03fbfaa42"
+    },
+    {
+      "path": "deliverables/video/frames/scene-09.png",
+      "sha256": "c16c8ad297728ab7006a858b792c96e9876d540a47903b52ee7fb610c16e194b"
+    }
+  ]
+}

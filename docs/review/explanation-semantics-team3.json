@@ -1,0 +1,212 @@
+{
+  "schema_version": 1,
+  "review_id": "team3-explanation-semantics",
+  "reviewed_at": "2026-11-17T20:19:15.314257+00:00",
+  "team": "team_3",
+  "reviewer_task": "architecture_reasonableness",
+  "criteria": [
+    9,
+    10,
+    17
+  ],
+  "baseline_product_revision": "fd5e648fa1c74e425507a98247844be150265acb",
+  "scope": "Read-only fact review of a completed historical-record explanation and proposal for the smallest reusable evidence semantics correction. No implementation or inference in this review.",
+  "review_constraints": {
+    "new_provider_calls": 0,
+    "current_cse_or_service_changes": 0,
+    "product_code_edits": false,
+    "only_written_file": "docs/review/explanation-semantics-team3.json"
+  },
+  "evidence_preservation": {
+    "path": "evidence/agent/guided-explanation-live.json",
+    "sha256": "d117550a716b7d36a8b28e96cde0fecec8f770eb130a00af4b6901e9e53e6b95",
+    "original_model_output_preserved": true,
+    "original_status": "OBSERVED_COMPLETED_CAPTURED_RECORD_EXPLANATION",
+    "turn_status": "completed",
+    "completion_checks": {
+      "codex_turn_completed": true,
+      "provider_completed": true,
+      "one_provider_request": true,
+      "no_operational_tool_calls": true,
+      "concise_korean": true
+    },
+    "operational_tools_offered": 0,
+    "independent_result": "Completed delivery with a factual error; not an unqualified factual explanation pass or a complete onboarding pass."
+  },
+  "provenance_checks": [
+    {
+      "source_file": "evidence/agent/guided-config-continuation-live.json",
+      "source_sha256": "88ce9a71c9b92326f9a90158a6a1c26a607c3e6972f1a23fe44671a996b2efdf",
+      "source_sha256_matches": true,
+      "base_json_pointer": "/model_selected_mcp_calls/0/result/structuredContent",
+      "all_presented_values_exact": true,
+      "actual_model_selected_tool": "prepare_setup",
+      "captured_at": "2026-11-17T20:00:04.730000+00:00"
+    },
+    {
+      "source_file": "evidence/agent/guided-config-continuation-live.json",
+      "source_sha256": "88ce9a71c9b92326f9a90158a6a1c26a607c3e6972f1a23fe44671a996b2efdf",
+      "source_sha256_matches": true,
+      "base_json_pointer": "/model_selected_mcp_calls/1/result/structuredContent",
+      "all_presented_values_exact": true,
+      "actual_model_selected_tool": "read_group",
+      "captured_at": "2026-11-17T20:00:06.523000+00:00"
+    },
+    {
+      "source_file": "evidence/agent/guided-live.json",
+      "source_sha256": "a0cc9dfd26b2d9d50a4625a91d76c25c617dcfb500c5e3d133d3d7234c74a057",
+      "source_sha256_matches": true,
+      "base_json_pointer": "/model_selected_mcp_calls/2/result/structuredContent",
+      "all_presented_values_exact": true,
+      "actual_model_selected_tool": "read_evidence",
+      "captured_at": "2026-11-17T19:38:25.554000+00:00"
+    }
+  ],
+  "finding": {
+    "id": "T3-EXPLAIN-001",
+    "priority": "P2",
+    "classification": "factual_acceptance_blocker_and_reusable_tool_contract_gap",
+    "evidence_status": "verified_from_original_capture_and_source",
+    "exact_original_phrase": "복구 시도는 없으며",
+    "exact_original_sentence": "기록에서 learning-b의 classroom에 대한 미해결 문제(incident-a3afad9928)가 열려 있고 복구 시도는 없으며 심각도는 critical로 표시됩니다.",
+    "verdict": "Unsupported by the explanation input and contradicted by earlier captured evidence for the same incident.",
+    "counter_semantics": {
+      "field": "incidents[].recovery_count",
+      "actual_meaning": "Consecutive qualifying nominal observations processed after an acknowledged set_damper command associated with this incident. It measures recovery verification progress, not control requests or recovery attempts.",
+      "scope": "incident",
+      "increments": "A nominal observation later than the matching command ACK, with source processing guarded against rereading the same CSE content instance.",
+      "reset": "Any non-nominal diagnosis resets the count to zero, including critical/stale/missing; it is also zero when an incident is created.",
+      "source": "src/opensoom/core.py:218-248"
+    },
+    "empty_list_semantics": {
+      "field": "commands",
+      "actual_scope": "The requested/current service run, facility, latest at most ten stored commands; not complete facility/incident action history.",
+      "captured_run_id": "mcp-66f29931a3bb",
+      "captured_current_run_commands": [],
+      "source": "src/opensoom/core.py:305-318",
+      "inference_not_supported": "No command in this run does not imply no prior attempt for the incident."
+    },
+    "contradicting_prior_evidence": {
+      "path": "evidence/application/release-acceptance.json",
+      "sha256": "5bde7e0f55f28854f085ce619622349c99e6993d8f119f194f4dacf79ff727b1",
+      "json_pointer": "/scenarios/no_recovery/verification",
+      "incident_id": "incident-a3afad9928",
+      "run_id": "demo-2d8213685e",
+      "command_id": "cmd-6406eb6c6318",
+      "action": "set_damper",
+      "value": 100.0,
+      "created_at": "2026-11-17T19:14:33.188604+00:00",
+      "virtual_device_ack": true,
+      "ack_at": "2026-11-17T19:14:34.931+00:00",
+      "command_rqi": "opensoom-5a18cbd97871481c956b0322db2e1083",
+      "ack_rqi": "opensoom-2979d7cbaf914216a97386952c606c3f",
+      "unresolved_samples": 2,
+      "verification_rqi": "opensoom-f806ec830aff45a1b70df05f7d29a6f8",
+      "observed_result": "unresolved",
+      "meaning": "A previous permitted virtual control action was acknowledged but failed to recover this same incident. It was omitted from the new run-scoped command list by design, not absent from retained incident history."
+    },
+    "impact": {
+      "observed": "The manager-facing explanation erases a prior unsuccessful attempt and misdescribes verification progress. The incident itself remains correctly open/critical.",
+      "plausible_operational_effect": "A user could repeat an already ineffective action or misunderstand a maintenance handoff because the new chat appears to have no previous attempts. This risk recurs whenever a persistent incident is viewed from a new run.",
+      "direct_control_effect_in_this_case": "None: zero operational tools were offered or executed. No physical or clinical harm is established.",
+      "scope": "Explanation/tool evidence semantics, not an ACP or actuation-policy bypass."
+    }
+  },
+  "smallest_reusable_correction": {
+    "recommendation": "Accept the main agent proposed additive evidence_scope contract in read_evidence; retain underlying operational state/control behavior.",
+    "required_content": [
+      "Define recovery_count as consecutive healthy post-ACK observations for the incident, state the required profile recovery_samples and reset-on-non-nominal rule, and explicitly distinguish it from attempt/request counts.",
+      "Declare commands scope as this facility and current_run_id, latest ten, not complete facility or incident history. Empty means no returned record in that declared scope; prior attempts remain unknown from this list alone.",
+      "Declare incidents scope as the facility (including a persistent incident originating in an earlier run), so consumers do not assume incidents and commands have identical scope.",
+      "Expose these facts in the actual MCP/service result, not only in developer docs. Preserve them in any attributed captured-data projection used for explanations."
+    ],
+    "minimal_surface_changes": [
+      "Add stable additive evidence_scope metadata in Core.read_evidence.",
+      "Describe the same operational meanings in the MCP read_evidence tool description and setup/operations skills.",
+      "Document scope/absence rules in the shared tool contract.",
+      "Leave legacy storage/field compatibility and permissions unchanged."
+    ],
+    "not_required_for_this_fix": [
+      "A new action-history service, new database, alternate LLM, broadened permissions or extra setup flow.",
+      "A hardcoded Korean final answer, exact incident identifiers in product guidance, or a canned claim substituted for model output.",
+      "An asserted global attempt count derived from a truncated/current-run list."
+    ],
+    "optional_future_extension": "If attempt-history reporting becomes a product requirement, add a separately scoped retained-incident-history query/count with provenance and completeness limits. It is not needed to correct the present inference."
+  },
+  "required_regression_evidence": [
+    {
+      "kind": "deterministic_contract_regression",
+      "case": "Same incident has an acknowledged failed control command in an older run, recovery_count=0, and a new run returns commands=[].",
+      "assertions": [
+        "Prior command remains in the isolated durable store.",
+        "New response preserves current-run command isolation and exposes precise count/list/incident scope metadata.",
+        "The metadata cannot be interpreted as a global absence-of-attempts assertion.",
+        "No ownership, facility, freshness or actuation permission is changed."
+      ],
+      "reason": "Exercises the actual ambiguity rather than testing a hardcoded output sentence."
+    },
+    {
+      "kind": "count_definition_regression",
+      "case": "At least one qualifying post-ACK healthy observation increments progress; a subsequent non-nominal observation resets it while the acknowledged command remains recorded.",
+      "assertions": [
+        "Verification sample count and action history diverge as documented.",
+        "Documentation/metadata match the actual reset behavior."
+      ],
+      "reason": "Prevents renaming/documenting an incorrect meaning without checking state semantics."
+    },
+    {
+      "kind": "capture_contract_integrity",
+      "case": "A fresh tool result or an exact attributed captured-data projection is used for any later explanation.",
+      "assertions": [
+        "Source hashes, timestamps, call/run IDs and evidence_scope metadata are retained.",
+        "Different historical timestamps are not promoted to a fresh combined current-state observation.",
+        "No fabricated assistant/tool chat history or omission of a known contradictory condition is introduced."
+      ]
+    }
+  ],
+  "proposed_bounded_model_regression": {
+    "assessment": "Reasonable after a genuine product contract delta and deterministic tests, but not preapproval of the model result. It is a focused corrected-contract interpretation test, not a reset or replacement of the original setup/configuration/explanation cases.",
+    "purpose": "Check whether the model uses the emitted field meanings and scope when reporting verification progress and unknown previous-attempt history.",
+    "conditions": [
+      "Record the code/contract delta and main decision before execution.",
+      "Use the real installed tool result or transparently attributed captured record plus the genuine emitted contract; do not supply a prewritten desired final answer.",
+      "At most one request, no retry, maximum output 2048, provider timeout 45 seconds, within the existing shared batch.",
+      "Measure the conservative reservation with a zero-API preflight and reserve before calling. The reservation must fit the actual remaining shared allowance; no limit increase or counter/prefix reset.",
+      "If it does not fit or does not complete, retain the blocked/failed/partial result and continue independent authorized work.",
+      "Independently inspect any returned facts. Provider/turn completion, tool execution, correct interpretation and complete onboarding are separate acceptance claims."
+    ],
+    "factual_acceptance": [
+      "No inference from zero verification samples or an empty scoped list to absence of earlier attempts.",
+      "Incident remains unresolved unless actual verification evidence establishes recovery.",
+      "Airflow is below its target while PM/CO2 are above their configured thresholds, with direction preserved.",
+      "Historical capture status and simulated physical measurements stay distinct from current observations, virtual ACK, real software execution and real field performance.",
+      "Next steps are proposals and do not imply unsupported real-device integration is already available."
+    ],
+    "original_cases": "Retain the bounded guided six-request case, configuration three-request case and explanation one-request case with their original failed/partial/factually-unaccepted outcomes and original files. A later focused pass does not retroactively pass them or full onboarding.",
+    "model_result_approval": "not_given; no new model result exists in this review"
+  },
+  "fixed_allowance_basis": {
+    "source": "guided-explanation-live.json /shared_budget_after",
+    "max_requests": 100,
+    "max_tokens": 250000,
+    "requests_consumed": 70,
+    "tokens_charged": 231264,
+    "requests_remaining": 30,
+    "tokens_remaining": 18736,
+    "pending_requests": 0,
+    "reset_or_increase_authorized": false,
+    "explanation_case_requests_remaining": 0,
+    "note": "Recorded post-case accounting, not an authorization to reuse an exhausted case or a new live call made by this reviewer."
+  },
+  "secondary_clarity_concern": {
+    "exact_phrase": "공기유량·미세입자·CO2 경계 초과",
+    "assessment": "Ambiguous direction: the source says low airflow, high PM and high CO2. Preserve the original wording and use precise directional facts in later factual acceptance; do not rewrite the original answer."
+  },
+  "decision_recommendation": "Accept the reusable metadata/skill/tool-description correction. Keep original factual explanation unaccepted and preserve all original outcomes. Permit a separately recorded one-request corrected-contract regression only if main elects it and preflight fits the unchanged shared bound; assess the returned result afterward.",
+  "scope_limitations": [
+    "No inference, current service query or product change was performed here.",
+    "This is not final all-17 review or overall Goal completion.",
+    "No official aggregate score or probability is assigned."
+  ],
+  "original_live_capture_unchanged_during_review": true
+}

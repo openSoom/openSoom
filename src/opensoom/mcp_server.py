@@ -176,7 +176,7 @@ def create_server(proxy: ServiceProxy | None = None) -> MCPServer:
 
     @server.tool(structured_output=True)
     def read_evidence(facility_id: str, zone_id: str | None = None) -> dict[str, Any]:
-        """Read current observations, freshness, incidents and commands before deciding on an action."""
+        """Read observations, freshness and incidents. evidence_scope explains sample counters and run-limited command history; an empty command list does not prove no prior action."""
         return call("read_evidence", {"facility_id": facility_id, "zone_id": zone_id})
 
     @server.tool(structured_output=True)

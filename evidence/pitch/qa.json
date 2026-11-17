@@ -1,0 +1,21 @@
+{
+  "captured_at": "2026-11-17T19:10:20.339Z",
+  "url": "http://127.0.0.1:8095/pitch/",
+  "browser": "Chrome",
+  "three_version": "0.187.0",
+  "checks": {
+    "three_webgl_rendered": true,
+    "three_views": true,
+    "condition_switch": true,
+    "korean_guide": true,
+    "architecture_layer_selection": true,
+    "mobile_width_no_overflow": true,
+    "temporary_viewport_restored": true
+  },
+  "correction": "Clamped first animation delta to nonnegative and moved protocol labels after observed initial-frame error/label overlap.",
+  "console": "One earlier first-frame error retained by browser logs; no new error after corrected reload.",
+  "limitations": [
+    "Visual model is illustrative, not airflow simulation or live telemetry.",
+    "External GitHub links are pending authorized release push at capture time."
+  ]
+}

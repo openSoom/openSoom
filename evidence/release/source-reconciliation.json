@@ -1,0 +1,165 @@
+{
+  "captured_at": "2026-11-17T20:23:28.806420+00:00",
+  "runtime_capture_base": "fd5e648fa1c74e425507a98247844be150265acb",
+  "changed_runtime_contract_files": [
+    "src/opensoom/core.py",
+    "src/opensoom/mcp_server.py",
+    "plugin/skills/opensoom-operations/SKILL.md",
+    "plugin/skills/opensoom-setup/SKILL.md"
+  ],
+  "delta_assessment": "Additive read_evidence metadata, MCP tool description and two shipped skills clarify counter/history meanings. No control/policy/CSE adapter/budget/lifecycle implementation change. Presentation has separate rendered evidence; final independent reviewers must verify this bounded delta.",
+  "regression_evidence": "evidence/release/final-checks.json",
+  "patch": "evidence/release/semantics-contract.patch",
+  "files": [
+    {
+      "path": "src/opensoom/__init__.py",
+      "capture_base_sha256": "5ffc4e500ba7ba3baf818e8884c687a777b09f6d05fbde93d987629c7bbb2925",
+      "release_sha256": "5ffc4e500ba7ba3baf818e8884c687a777b09f6d05fbde93d987629c7bbb2925",
+      "same": true
+    },
+    {
+      "path": "src/opensoom/adapters.py",
+      "capture_base_sha256": "b6b2425832cb70d38795c9758b90531eba313304a19a8bbe8ce085e12a6a8840",
+      "release_sha256": "b6b2425832cb70d38795c9758b90531eba313304a19a8bbe8ce085e12a6a8840",
+      "same": true
+    },
+    {
+      "path": "src/opensoom/app.py",
+      "capture_base_sha256": "90b2b13f78732ed32ac22fa0e21c9669d4731180463e80bbe551f881e622a144",
+      "release_sha256": "90b2b13f78732ed32ac22fa0e21c9669d4731180463e80bbe551f881e622a144",
+      "same": true
+    },
+    {
+      "path": "src/opensoom/cli.py",
+      "capture_base_sha256": "64f45b19309678a44e70437db3cab9685d4406a8c8471ccdf507ef584ddcbd60",
+      "release_sha256": "64f45b19309678a44e70437db3cab9685d4406a8c8471ccdf507ef584ddcbd60",
+      "same": true
+    },
+    {
+      "path": "src/opensoom/core.py",
+      "capture_base_sha256": "91a8c15285d2c7b64fccf5105bcf7e4f8738e5f200c26c2af9abd2e9f72c56ef",
+      "release_sha256": "00f4339ce5481d4daf13f8d44ab857f86173469f8da68eddf0db96d5ca6c32c5",
+      "same": false
+    },
+    {
+      "path": "src/opensoom/federation.py",
+      "capture_base_sha256": "8aa9727ee7b028fb173f0375f033f74a874a29624cdf6cfd34a0baed9043e11d",
+      "release_sha256": "8aa9727ee7b028fb173f0375f033f74a874a29624cdf6cfd34a0baed9043e11d",
+      "same": true
+    },
+    {
+      "path": "src/opensoom/llm_budget.py",
+      "capture_base_sha256": "306f6cfbdcdc3f7f0fe2718bd87b1d46ec371be66faf6cba8e68ac9dfcb781bc",
+      "release_sha256": "306f6cfbdcdc3f7f0fe2718bd87b1d46ec371be66faf6cba8e68ac9dfcb781bc",
+      "same": true
+    },
+    {
+      "path": "src/opensoom/llm_runner.py",
+      "capture_base_sha256": "5f66e3a4f77ac5c1d441c65e47dc445869a6b4af4c60113a383c3dded3de04d0",
+      "release_sha256": "5f66e3a4f77ac5c1d441c65e47dc445869a6b4af4c60113a383c3dded3de04d0",
+      "same": true
+    },
+    {
+      "path": "src/opensoom/mcp_server.py",
+      "capture_base_sha256": "a6dbe7d5785b224f2b74bbd03c9500dbae795bcf716c11e44d9b51293ddf90dc",
+      "release_sha256": "71fd594289b16f085f6cc8b4ce3cbefefc2b7fe7d7296098f9820b41940d8bdc",
+      "same": false
+    },
+    {
+      "path": "src/opensoom/models.py",
+      "capture_base_sha256": "5a11e9a47b6446a4e9f2d77a222e962147a864a53869ee5875870e0d85061e48",
+      "release_sha256": "5a11e9a47b6446a4e9f2d77a222e962147a864a53869ee5875870e0d85061e48",
+      "same": true
+    },
+    {
+      "path": "src/opensoom/onem2m.py",
+      "capture_base_sha256": "c4edcf610b9c82266d222dc63b69869cbd62000478405cdcd98f44178b0b123e",
+      "release_sha256": "c4edcf610b9c82266d222dc63b69869cbd62000478405cdcd98f44178b0b123e",
+      "same": true
+    },
+    {
+      "path": "src/opensoom/policy.py",
+      "capture_base_sha256": "801ba84bf1eea13404a19017359e4e01fcf11d33e812e3a571df68e34c110ad5",
+      "release_sha256": "801ba84bf1eea13404a19017359e4e01fcf11d33e812e3a571df68e34c110ad5",
+      "same": true
+    },
+    {
+      "path": "src/opensoom/store.py",
+      "capture_base_sha256": "e7369b519f396f86074334e2de0a0c9bfaedcbd4081d6c245780178167e62318",
+      "release_sha256": "e7369b519f396f86074334e2de0a0c9bfaedcbd4081d6c245780178167e62318",
+      "same": true
+    },
+    {
+      "path": "plugin/mcp.json",
+      "capture_base_sha256": "554e2340c31c98469c00f840d652a0cf0a9a2a4a770b057bfe15c145fc8b237b",
+      "release_sha256": "554e2340c31c98469c00f840d652a0cf0a9a2a4a770b057bfe15c145fc8b237b",
+      "same": true
+    },
+    {
+      "path": "plugin/plugin.json",
+      "capture_base_sha256": "214a1b69f07e834b7cc2703bd6f0b859e95f75b2af4bd010a6c7bc86b9487d0b",
+      "release_sha256": "214a1b69f07e834b7cc2703bd6f0b859e95f75b2af4bd010a6c7bc86b9487d0b",
+      "same": true
+    },
+    {
+      "path": "plugin/skills/opensoom-operations/SKILL.md",
+      "capture_base_sha256": "cffdd8369a43a9b2d3f048be2eb7b401282dd8f4d37a35155eeba47a9420e4f8",
+      "release_sha256": "94d6345338491b24649b1390a059c6a7fc5a61b928262caed87180e43d95a5a2",
+      "same": false
+    },
+    {
+      "path": "plugin/skills/opensoom-setup/SKILL.md",
+      "capture_base_sha256": "6ea80c9ee267287342e90f81da69549cffd8dc5aabb0acaff248d0faa5796421",
+      "release_sha256": "9b7c273f6926ee4c78c2bf86de694bd1bad2a6538c63e078a223ddec02b9ad88",
+      "same": false
+    },
+    {
+      "path": "profiles/food-production.json",
+      "capture_base_sha256": "402ae760ec4fe13c23e2a6c63e3ec80518d8ebdba30edde9e64cfdbb573e4c6e",
+      "release_sha256": "402ae760ec4fe13c23e2a6c63e3ec80518d8ebdba30edde9e64cfdbb573e4c6e",
+      "same": true
+    },
+    {
+      "path": "profiles/learning-space.json",
+      "capture_base_sha256": "2bc00d56a3fcf15cb388d7b81892a33123492b4452105522d368e5b8daee14e3",
+      "release_sha256": "2bc00d56a3fcf15cb388d7b81892a33123492b4452105522d368e5b8daee14e3",
+      "same": true
+    },
+    {
+      "path": "schemas/facilities.schema.json",
+      "capture_base_sha256": "c9d5b5015a202ec63fe360e823d05d575eb44e80f7f3a746f6a3ab2651e37f06",
+      "release_sha256": "c9d5b5015a202ec63fe360e823d05d575eb44e80f7f3a746f6a3ab2651e37f06",
+      "same": true
+    },
+    {
+      "path": "schemas/facility-profile.schema.json",
+      "capture_base_sha256": "dd61c40a44498454b9ea06e01d5fd0a23b9124b2708b94f2c088191a07ee3ea1",
+      "release_sha256": "dd61c40a44498454b9ea06e01d5fd0a23b9124b2708b94f2c088191a07ee3ea1",
+      "same": true
+    },
+    {
+      "path": "config/facilities.json",
+      "capture_base_sha256": "0b385a82788c18673624b385798dd4b9f73ae75bf05f15102f5b5e8b432ba547",
+      "release_sha256": "0b385a82788c18673624b385798dd4b9f73ae75bf05f15102f5b5e8b432ba547",
+      "same": true
+    },
+    {
+      "path": "config/live-test-budget.json",
+      "capture_base_sha256": "05465e8ce4cc65e23b2a1f4f761fca448e2b9ac65a1a4b78c273b1188a993bf9",
+      "release_sha256": "05465e8ce4cc65e23b2a1f4f761fca448e2b9ac65a1a4b78c273b1188a993bf9",
+      "same": true
+    },
+    {
+      "path": "pyproject.toml",
+      "capture_base_sha256": "e11444da9e053f97383c9cd0d16f19a9ab5a130e9d5105ada21cff8c4fd0f523",
+      "release_sha256": "e11444da9e053f97383c9cd0d16f19a9ab5a130e9d5105ada21cff8c4fd0f523",
+      "same": true
+    },
+    {
+      "path": "uv.lock",
+      "capture_base_sha256": "3e4e5b744d0e26f0f13b9d1fad48c3f8bf576a59b40444c19c9ccbc5d067ffa2",
+      "release_sha256": "3e4e5b744d0e26f0f13b9d1fad48c3f8bf576a59b40444c19c9ccbc5d067ffa2",
+      "same": true
+    }
+  ]
+}

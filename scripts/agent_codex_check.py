@@ -71,6 +71,7 @@ async def check(root: Path, facility: str) -> dict:
     catalog = prepare(root)
     result = {"test": "codex-plugin-host", "status": "RUNNING", "profile": "fresh isolated Codex data directory",
               "normal_user_profile_changed": False, "model_inference_calls": 0,
+              "check_script_sha256": hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
               "physical_devices": "simulated", "commands": [], "host_calls": [],
               "source_sha256": {str(p.relative_to(root)): hashlib.sha256(p.read_bytes()).hexdigest()
                                   for p in sorted((root / "plugin").rglob("*")) if p.is_file()}}
@@ -160,11 +161,12 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--project", type=Path, default=Path(__file__).resolve().parents[1])
     parser.add_argument("--facility", default="food-a")
-    parser.add_argument("--output", type=Path, default=Path("evidence/agent/codex-host.json"))
+    parser.add_argument("--output", type=Path, help="Explicit evidence destination; default is a unique ignored runtime file")
     args = parser.parse_args()
     result = asyncio.run(check(args.project.resolve(), args.facility))
-    args.output.parent.mkdir(parents=True, exist_ok=True)
-    args.output.write_text(json.dumps(result, ensure_ascii=False, indent=2) + "\n")
+    output = args.output or args.project.resolve() / ".runtime/agent-checks" / ("codex-host-" + uuid.uuid4().hex[:12] + ".json")
+    output.parent.mkdir(parents=True, exist_ok=True)
+    output.write_text(json.dumps(result, ensure_ascii=False, indent=2) + "\n")
     print(json.dumps({"status": result["status"], "codex_version": result["codex_version"],
                       "host_tool_calls": len(result["host_calls"]), "error": result.get("error")}, ensure_ascii=False))
     raise SystemExit(0 if result["status"].startswith("PASS") else 1)

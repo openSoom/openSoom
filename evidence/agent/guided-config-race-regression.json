@@ -1,0 +1,47 @@
+{
+  "status": "VERIFIED_ACCOUNTING_SERIALIZATION",
+  "provider_calls": 0,
+  "bounded_lock_timeout_seconds_in_harness": 45,
+  "no_reservation_released_before_actual_settlement": true,
+  "timeout_grants_no_provider_permission": true,
+  "states": {
+    "before_settlement": {
+      "batch_id": "serialization-regression",
+      "max_requests": 3,
+      "max_tokens": 1000,
+      "requests_consumed": 1,
+      "tokens_charged": 1000,
+      "tokens_reserved": 1000,
+      "pending_requests": 1,
+      "requests_remaining": 2,
+      "tokens_remaining": 0,
+      "requires_investigation": false
+    },
+    "unserialized_reservation_rejected": true,
+    "second_entry": {
+      "batch_id": "serialization-regression",
+      "max_requests": 3,
+      "max_tokens": 1000,
+      "requests_consumed": 1,
+      "tokens_charged": 200,
+      "tokens_reserved": 0,
+      "pending_requests": 0,
+      "requests_remaining": 2,
+      "tokens_remaining": 800,
+      "requires_investigation": false
+    },
+    "after": {
+      "batch_id": "serialization-regression",
+      "max_requests": 3,
+      "max_tokens": 1000,
+      "requests_consumed": 2,
+      "tokens_charged": 350,
+      "tokens_reserved": 0,
+      "pending_requests": 0,
+      "requests_remaining": 1,
+      "tokens_remaining": 650,
+      "requires_investigation": false
+    }
+  },
+  "implementation": "scripts/codex_configuration_rehearsal.py CaptureHandler.do_POST serializes the entire existing handler, including its finally settlement."
+}

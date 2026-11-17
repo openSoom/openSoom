@@ -77,7 +77,8 @@
     "First real CSE end-to-end flow",
     "Codex onboarding and live LLM acceptance",
     "Release candidate",
-    "Final article/video/repository package"
+    "Final article/video/repository package",
+    "Maintainer-requested stricter final review after larger Three.js dashboard/landing architecture visualization and Korean guide"
   ],
   "review_cycle": [
     "Identify revision or file-hash snapshot and evidence bundle",

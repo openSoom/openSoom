@@ -1,0 +1,19 @@
+{
+  "case_prefix": "codex-config-",
+  "limits": {
+    "max_provider_requests": 3,
+    "max_run_charged_tokens": 30000,
+    "max_output_tokens": 2048,
+    "provider_timeout_seconds": 45,
+    "turn_timeout_seconds": 120,
+    "request_max_retries": 0
+  },
+  "revision": "pre-live-allocation-2026-11-18",
+  "previous_provisional_tokens": 20000,
+  "reason": "The zero-call preflight projected a 19553-token final request reservation. Main explicitly allocated up to30000 from the unchanged31570 shared tokens before any case inference. No allocation changes after live begins.",
+  "preflight_evidence": "evidence/agent/guided-config-preflight.json",
+  "shared_batch_unchanged": true,
+  "original_six_request_case_unchanged": true,
+  "calls_before_fixed_policy": 0,
+  "effective_bound": "Every provider request must fit both the case remaining tokens and the atomic unchanged shared budget; equivalent to their minimum."
+}

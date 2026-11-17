@@ -1,0 +1,49 @@
+{
+  "provider_calls": 0,
+  "all_parsed_data_unchanged_from_initial_dry": true,
+  "input_provenance_sha256": "6763ad868b0c7b188bac2c1bb2bb44d44974aee6c85c88df1b0d45abdde218f7",
+  "actual_requested_max_output_tokens": 768,
+  "fixed_policy_max_output_tokens": 2048,
+  "unchanged_estimator_recomputed_tokens": 17954,
+  "within_18000": true,
+  "within_actual_shared_remaining": true,
+  "source_delta": {
+    "src/opensoom/core.py": {
+      "prior": "91a8c15285d2c7b64fccf5105bcf7e4f8738e5f200c26c2af9abd2e9f72c56ef",
+      "corrected": "00f4339ce5481d4daf13f8d44ab857f86173469f8da68eddf0db96d5ca6c32c5"
+    },
+    "src/opensoom/mcp_server.py": {
+      "prior": "a6dbe7d5785b224f2b74bbd03c9500dbae795bcf716c11e44d9b51293ddf90dc",
+      "corrected": "71fd594289b16f085f6cc8b4ce3cbefefc2b7fe7d7296098f9820b41940d8bdc"
+    },
+    "plugin/skills/opensoom-operations/SKILL.md": {
+      "prior": "cffdd8369a43a9b2d3f048be2eb7b401282dd8f4d37a35155eeba47a9420e4f8",
+      "corrected": "94d6345338491b24649b1390a059c6a7fc5a61b928262caed87180e43d95a5a2"
+    },
+    "plugin/skills/opensoom-setup/SKILL.md": {
+      "prior": "6ea80c9ee267287342e90f81da69549cffd8dc5aabb0acaff248d0faa5796421",
+      "corrected": "9b7c273f6926ee4c78c2bf86de694bd1bad2a6538c63e078a223ddec02b9ad88"
+    }
+  },
+  "scope": {
+    "max_requests": 1,
+    "max_tokens": 18000,
+    "requests_consumed": 0,
+    "tokens_charged": 0,
+    "requests_remaining": 1,
+    "tokens_remaining": 18000
+  },
+  "shared": {
+    "batch_id": "opensoom-hackathon-2026-01",
+    "max_requests": 100,
+    "max_tokens": 250000,
+    "requests_consumed": 70,
+    "tokens_charged": 231264,
+    "tokens_reserved": 0,
+    "pending_requests": 0,
+    "requests_remaining": 30,
+    "tokens_remaining": 18736,
+    "requires_investigation": false
+  },
+  "live_requires_explicit_main_go": true
+}

@@ -1,0 +1,111 @@
+{
+  "status": "PASS",
+  "captured_at": "2026-11-17T20:20:33.270900+00:00",
+  "commands": [
+    {
+      "command": ".venv/bin/pytest -q",
+      "exit_status": 0,
+      "observed": "53 passed, 8 subtests passed in1.56s; includes zero-recovery samples plus prior ACK outside current run for critical/stale/missing"
+    },
+    {
+      "command": "node --check pitch/architecture.js && node --check pitch/main.js",
+      "exit_status": 0,
+      "observed": "Passed after final architecture and camera changes"
+    },
+    {
+      "command": "skill-creator quick_validate.py on both plugin skills",
+      "exit_status": 0,
+      "observed": "Both valid; isolated uv PyYAML6.0.3 environment used; product lock unchanged"
+    },
+    {
+      "command": "git diff --check",
+      "exit_status": 0,
+      "observed": "No whitespace errors"
+    }
+  ],
+  "source_sha256": {
+    "src/opensoom/__init__.py": "5ffc4e500ba7ba3baf818e8884c687a777b09f6d05fbde93d987629c7bbb2925",
+    "src/opensoom/adapters.py": "b6b2425832cb70d38795c9758b90531eba313304a19a8bbe8ce085e12a6a8840",
+    "src/opensoom/app.py": "90b2b13f78732ed32ac22fa0e21c9669d4731180463e80bbe551f881e622a144",
+    "src/opensoom/cli.py": "64f45b19309678a44e70437db3cab9685d4406a8c8471ccdf507ef584ddcbd60",
+    "src/opensoom/core.py": "00f4339ce5481d4daf13f8d44ab857f86173469f8da68eddf0db96d5ca6c32c5",
+    "src/opensoom/federation.py": "8aa9727ee7b028fb173f0375f033f74a874a29624cdf6cfd34a0baed9043e11d",
+    "src/opensoom/llm_budget.py": "306f6cfbdcdc3f7f0fe2718bd87b1d46ec371be66faf6cba8e68ac9dfcb781bc",
+    "src/opensoom/llm_runner.py": "5f66e3a4f77ac5c1d441c65e47dc445869a6b4af4c60113a383c3dded3de04d0",
+    "src/opensoom/mcp_server.py": "71fd594289b16f085f6cc8b4ce3cbefefc2b7fe7d7296098f9820b41940d8bdc",
+    "src/opensoom/models.py": "5a11e9a47b6446a4e9f2d77a222e962147a864a53869ee5875870e0d85061e48",
+    "src/opensoom/onem2m.py": "c4edcf610b9c82266d222dc63b69869cbd62000478405cdcd98f44178b0b123e",
+    "src/opensoom/policy.py": "801ba84bf1eea13404a19017359e4e01fcf11d33e812e3a571df68e34c110ad5",
+    "src/opensoom/store.py": "e7369b519f396f86074334e2de0a0c9bfaedcbd4081d6c245780178167e62318",
+    "tests/integration/test_cse_client.py": "c2e13aa23e54c7be7f5760c5e5247ab2b7babb6e63838bbb422e53ea0265c46a",
+    "tests/integration/test_cse_federation.py": "10ecbfb1a97e3c73343fe26dba2eb4f75f0c2a6a735c6da402f4235528a6adee",
+    "tests/test_cli_lifecycle.py": "9d6c8c3c381b2689c5c011a437c1fb3a077f13c41115c6ca1719cfa0c12ada30",
+    "tests/test_contracts.py": "fa322a1a4a84bf2ef5e4121abb508498a859d6848fc3c49ada13dd2b1e61bf54",
+    "tests/test_facility_registry.py": "9bf0c47513c17c4448c29f0f98da28d602d563bce42a04a6ac334f202d54ab7d",
+    "tests/test_llm_budget.py": "5caec8ddd1b8f238e25addcc12c169a3f129fc558c320f692228d45e02d2913b",
+    "tests/test_llm_runner.py": "9b335d55551af881559c6ebd2d12d175ae47eae502ce2182ce4b2da4380a03fe",
+    "tests/test_mcp_server.py": "16de17d7f782875572c576dbf1f55dfba000340a10f1c3567b193d18ef4bd5a0",
+    "tests/test_review_regressions.py": "3d2d22affca26267d81d1590317bdcbd21fe7a445c4a8f087446993d55f0a776",
+    "plugin/skills/opensoom-operations/SKILL.md": "94d6345338491b24649b1390a059c6a7fc5a61b928262caed87180e43d95a5a2",
+    "plugin/skills/opensoom-setup/SKILL.md": "9b7c273f6926ee4c78c2bf86de694bd1bad2a6538c63e078a223ddec02b9ad88",
+    "pitch/architecture.js": "42e28ffc2aa0daa3ca87c9c1c8bc4fae16446a66d94b3da896f140a42e9e9203",
+    "pitch/main.js": "eefda4e00cf66ea910817eda590d3bdef49fdc706b974d33c20962399e9d19a9",
+    "pitch/workflow.js": "fcfc0252307bff81049c98c3813ff325213538f7d5fb139437e5281e61b95d3c",
+    "web/app.js": "60e30ba5895bd5944ed79f2e19e43c2014d3aef88ecc899259507dd921498a76",
+    "web/facility-3d.js": "5928136bbb7d21bea92a8553b48015cafef85ba4902fa8ced3218bcf60bdcf28"
+  },
+  "scope": "Current backend/agent-contract regression suite, plugin structure and final pitch JavaScript syntax. Earlier22dashboard sourcechecks remain unchanged-source evidence; rendered fullarchitecture has separateQA.",
+  "previous_verification": {
+    "captured_at": "2026-11-17T19:54:34.526687+00:00",
+    "commands": [
+      {
+        "command": ".venv/bin/pytest -q",
+        "exit_status": 0,
+        "observed": "50 passed, 8 subtests passed in 1.31s"
+      },
+      {
+        "command": "node evidence/dashboard/visual-source-checks.mjs",
+        "exit_status": 0,
+        "observed": "22 presentation checks passed; no CSE/device/model inference claim"
+      },
+      {
+        "command": "node --check web/app.js; node --check web/facility-3d.js; node --check pitch/workflow.js; node --check pitch/main.js",
+        "exit_status": 0,
+        "observed": "Syntax checks passed"
+      },
+      {
+        "command": "git diff --check",
+        "exit_status": 0,
+        "observed": "No whitespace errors in current tracked diff"
+      }
+    ],
+    "source_sha256": {
+      "src/opensoom/__init__.py": "5ffc4e500ba7ba3baf818e8884c687a777b09f6d05fbde93d987629c7bbb2925",
+      "src/opensoom/adapters.py": "b6b2425832cb70d38795c9758b90531eba313304a19a8bbe8ce085e12a6a8840",
+      "src/opensoom/app.py": "90b2b13f78732ed32ac22fa0e21c9669d4731180463e80bbe551f881e622a144",
+      "src/opensoom/cli.py": "64f45b19309678a44e70437db3cab9685d4406a8c8471ccdf507ef584ddcbd60",
+      "src/opensoom/core.py": "91a8c15285d2c7b64fccf5105bcf7e4f8738e5f200c26c2af9abd2e9f72c56ef",
+      "src/opensoom/federation.py": "8aa9727ee7b028fb173f0375f033f74a874a29624cdf6cfd34a0baed9043e11d",
+      "src/opensoom/llm_budget.py": "306f6cfbdcdc3f7f0fe2718bd87b1d46ec371be66faf6cba8e68ac9dfcb781bc",
+      "src/opensoom/llm_runner.py": "5f66e3a4f77ac5c1d441c65e47dc445869a6b4af4c60113a383c3dded3de04d0",
+      "src/opensoom/mcp_server.py": "a6dbe7d5785b224f2b74bbd03c9500dbae795bcf716c11e44d9b51293ddf90dc",
+      "src/opensoom/models.py": "5a11e9a47b6446a4e9f2d77a222e962147a864a53869ee5875870e0d85061e48",
+      "src/opensoom/onem2m.py": "c4edcf610b9c82266d222dc63b69869cbd62000478405cdcd98f44178b0b123e",
+      "src/opensoom/policy.py": "801ba84bf1eea13404a19017359e4e01fcf11d33e812e3a571df68e34c110ad5",
+      "src/opensoom/store.py": "e7369b519f396f86074334e2de0a0c9bfaedcbd4081d6c245780178167e62318",
+      "tests/integration/test_cse_client.py": "c2e13aa23e54c7be7f5760c5e5247ab2b7babb6e63838bbb422e53ea0265c46a",
+      "tests/integration/test_cse_federation.py": "10ecbfb1a97e3c73343fe26dba2eb4f75f0c2a6a735c6da402f4235528a6adee",
+      "tests/test_cli_lifecycle.py": "9d6c8c3c381b2689c5c011a437c1fb3a077f13c41115c6ca1719cfa0c12ada30",
+      "tests/test_contracts.py": "fa322a1a4a84bf2ef5e4121abb508498a859d6848fc3c49ada13dd2b1e61bf54",
+      "tests/test_facility_registry.py": "9bf0c47513c17c4448c29f0f98da28d602d563bce42a04a6ac334f202d54ab7d",
+      "tests/test_llm_budget.py": "5caec8ddd1b8f238e25addcc12c169a3f129fc558c320f692228d45e02d2913b",
+      "tests/test_llm_runner.py": "9b335d55551af881559c6ebd2d12d175ae47eae502ce2182ce4b2da4380a03fe",
+      "tests/test_mcp_server.py": "16de17d7f782875572c576dbf1f55dfba000340a10f1c3567b193d18ef4bd5a0",
+      "tests/test_review_regressions.py": "bda878cb50c45a6b93a508b36a656c9fc06f5ad7ed8bd298925fbbf74a980f69",
+      "web/app.js": "60e30ba5895bd5944ed79f2e19e43c2014d3aef88ecc899259507dd921498a76",
+      "web/facility-3d.js": "5928136bbb7d21bea92a8553b48015cafef85ba4902fa8ced3218bcf60bdcf28",
+      "pitch/workflow.js": "fcfc0252307bff81049c98c3813ff325213538f7d5fb139437e5281e61b95d3c",
+      "pitch/main.js": "ddd2b1d259fdcf948753a6102954614d3b5d28a28744bc52af0341e1fdea5d91"
+    }
+  }
+}

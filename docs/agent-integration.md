@@ -43,7 +43,7 @@ For a reproducible clean application lifecycle check, run:
 uv run --no-sync python scripts/release_reproduce.py
 ```
 
-This creates a separate source copy, installs two new Python environments (dependency caches may be reused), starts a new certificate-verified HTTPS CSE on 8643 and an application on 8179, then checks diagnosis, deterministic recovery, stop/start without repeated settings, restart and cleanup. It leaves the ordinary 8090 service alone and stops its own service/CSE. [Lifecycle evidence](../evidence/release/clean-lifecycle.json) records the outcomes; the [initial failed copier attempt](../evidence/release/clean-lifecycle-initial-failed.json) is retained separately. The synthetic budget-preservation sentinel performs no model request. This check does not add a desktop UI or MQTT acceptance claim.
+This creates a separate source copy, installs two new Python environments (dependency caches may be reused), starts a new certificate-verified HTTPS CSE on 8643 and an application on 8179, then checks diagnosis, deterministic recovery, stop/start without repeated settings, restart, pending-command preservation through timeout, and cleanup. It leaves the ordinary 8090 service alone and stops its own service/CSE. [Final lifecycle evidence](../evidence/release/final-clean-lifecycle.json) records the outcomes; the [initial failed copier attempt](../evidence/release/clean-lifecycle-initial-failed.json) is retained separately. The synthetic budget-preservation sentinel performs no model request. This check does not add a desktop UI or MQTT acceptance claim.
 
 ## Tool and permission contract
 
@@ -61,6 +61,14 @@ This creates a separate source copy, installs two new Python environments (depen
 The MCP process uses the operator token in `.runtime/service-credentials.json`, or an explicitly supplied `OPENSOOM_SERVICE_TOKEN`. It never changes identity when a tool is denied. Roles, facilities, profile permissions, schema validation, idempotency and data freshness are enforced by the service. The live runner exposes only the six operational tools; it does not offer setup/profile activation to the model.
 
 `request_id` identifies one intended action and is reused only when retrying the same arguments within the same run. Prefix it with the current returned `run_id`; historical commands cannot establish a new incident's recovery. `verify_result` must return all of `complete: true`, `ack: true`, and `observed_result: "recovered"` before the agent reports recovery. Pending, timed-out, stale, denied and observed non-recovery outcomes remain distinct. The service owns run/incident state and correlates `X-OpenSoom-Run-ID` with actual tool calls, CSE request IDs, command IDs and acknowledgements. The standalone runner creates its explicit run. A Codex MCP connection lazily creates a separate `mcp_host` run for each accessed facility, keeps its identity across tool calls, and returns the ID. Creating a read-only observer run does not grant control privileges.
+
+`read_evidence.evidence_scope` states the limits of its evidence. Incidents span
+the facility's stored runs, but `commands` contains only the latest ten commands
+for the stated run. An empty list cannot establish that no earlier action or
+ACK occurred. Incident `recovery_count` counts consecutive qualifying healthy
+post-ACK observations and resets for a non-nominal observation; it does not
+count attempts. The returned contract gives its unit, required sample count
+and history scope so clients can preserve that distinction.
 
 For real equipment, observation and diagnosis remain the default until a facility configuration authorizes controls. The bundled virtual profiles support preauthorized simulated actions. Changing the MCP identity is not a remedy for an operator denial.
 
@@ -116,20 +124,38 @@ The provider key is not inherited by the MCP subprocess. Ordinary tool results, 
 
 The [agent evidence directory](../evidence/agent/) contains sanitized traces, exact model response IDs/usage, generated tool arguments and results, service validation, and Codex host checks. Private runtime diagnostics remain under ignored `.runtime/`.
 
-The [evidence index](../evidence/agent/index.json) identifies the final accepted implementation checks and retains rejected or superseded attempts. On the final secure CSE backend, these executed checks passed:
+The [evidence index](../evidence/agent/index.json) identifies the final accepted implementation checks and retains rejected or superseded attempts. The current-source accepted checks and retained historical evidence are separated below:
 
 | Check | Captured evidence |
 | --- | --- |
-| Real model recovers an exhaust incident after ACK and later observations | [Recovery run](../evidence/agent/secure-live-recovery.json) |
-| Real model retains non-recovery after ACK and two later deficient samples | [Non-recovery run](../evidence/agent/secure-live-no-recovery.json) |
-| Real model refuses control on stale evidence and reports unresolved | [Stale-data run](../evidence/agent/secure-live-stale-refusal.json) |
-| Fresh Codex plugin installation, six actual host tool calls, administrator denial and persistent run correlation | [Codex host check](../evidence/agent/secure-codex-host-correlated.json) |
+| Current-source real model recovers after ACK and later observations | [Release recovery](../evidence/agent/release-live-recovery.json) |
+| Historical real-model non-recovery after ACK and two deficient samples | [Historical non-recovery](../evidence/agent/secure-live-no-recovery.json); latest code has a separate deterministic actual-CSE check |
+| Current-source model attempts control, server rejects stale evidence before CSE write, model reports unresolved | [Release stale-data run](../evidence/agent/release-live-stale.json) |
+| Fresh Codex plugin installation, six actual host tool calls, administrator denial and persistent run correlation | [Release Codex host check](../evidence/agent/release-codex-host.json) |
 
-[Correlated protocol records](../evidence/agent/secure-protocol-correlation.json) match 25 CSE request IDs from those checks. MCP uses local stdio and the service uses local HTTP; HTTPS and native MQTT/TLS are the distinct service/device-to-CSE bindings. Their separate [HTTPS](../evidence/runtime/cse-https-smoke.json) and [MQTT/TLS](../evidence/runtime/cse-mqtt-tls-smoke.json) checks establish those bindings.
+[Correlated protocol records](../evidence/agent/release-protocol-correlation.json) match 33 CSE request IDs from those checks. MCP uses local stdio and the service uses local HTTP; HTTPS and native MQTT/TLS are the distinct service/device-to-CSE bindings. Their separate [HTTPS](../evidence/runtime/cse-https-smoke.json) and [MQTT/TLS](../evidence/runtime/cse-mqtt-tls-smoke.json) checks establish those bindings.
 
 The clean-host test installs the actual plugin into Codex CLI 0.166.0, opens an ephemeral app-server session, discovers its MCP server and calls tools through the host. It does not run a Codex model turn, change normal authentication/security settings, or establish a separately tested desktop UI flow. The standalone API tests separately establish real-model operation. Human first-use usability and other agent hosts require their own evidence.
 
-Early failed attempts are retained: the first fixture ended before recovery samples arrived; the first portable plugin used an unsupported absolute executable command. Both were corrected and retested. The first no-recovery live run observed a pre-ACK state and is weak negative evidence. A later run exposed reuse of a previous incident's idempotency key; current-run checks now reject it. Acceptance uses the final secure traces above. Independent rubric review remains separate from these implementation checks.
+Separate instrumented Codex model turns now also have preserved evidence. In
+the [guided diagnosis](../evidence/agent/guided-rehearsal.md), Codex chose and
+executed `doctor`, `discover` and `read_evidence`. In the
+[configuration check](../evidence/agent/guided-config-report.md), it chose
+`prepare_setup` and `read_group`; the native group returned three members.
+Both cases reached their fixed limits before delivering a completed final
+explanation, so neither is a passed end-to-end onboarding conversation.
+The runtime and profiles had been installed and activated by the maintainer;
+these checks do not establish autonomous installation or administrator access.
+
+A distinct [recorded-results explanation](../evidence/agent/guided-explanation-report.md)
+completed in an actual Codex turn without operational tools. Its original
+Korean text and source mappings are retained. Independent factual acceptance
+is separate: the model inferred that no recovery had been attempted from a
+zero recovery-sample counter, which does not support that conclusion. A
+completed response alone is therefore not the complete onboarding gate.
+These are separate chats, not a reconstructed uninterrupted conversation.
+
+Early failed attempts are retained: the first fixture ended before recovery samples arrived; the first portable plugin used an unsupported absolute executable command. Both were corrected and retested. The first no-recovery live run observed a pre-ACK state and is weak negative evidence. A later run exposed reuse of a previous incident's idempotency key; current-run checks now reject it. The first release recapture also failed because the model skipped the required read_evidence step despite eventual device recovery. That failure is retained; a later run satisfied the full workflow. Acceptance uses the explicitly indexed current-source traces above. Independent rubric review remains separate from these implementation checks.
 
 ## Primary references
 
@@ -139,3 +165,5 @@ Early failed attempts are retained: the first fixture ended before recovery samp
 - [GPT-5 mini model reference](https://developers.openai.com/api/docs/models/gpt-5-mini): the public model used by the hosted tests.
 
 The host acceptance script uses the app-server schemas generated by the installed Codex 0.166.0 CLI. Plugin format validation and successful installation are recorded separately from successful host tool execution.
+
+The [setup-role check](../evidence/agent/setup-acceptance.json) separately verifies operator preparation, operator activation denial, unknown-profile rejection, and repeated successful activation through the preconfigured administrator identity. It does not give the operational model administrator authority.

@@ -1,0 +1,41 @@
+{
+  "status": "COMPLETED_RESPONSE_AWAITING_INDEPENDENT_FACT_REVIEW",
+  "source_hashes": {
+    "scripts/codex_explanation_rehearsal.py": "10e6d33a83fbcf1ffb21771293c052e0184ed0e95923157d339318be7bfef21c",
+    "scripts/codex_guided_rehearsal.py": "a1a9b65c6f4054d0692a808b9cc74e7afbbc0eff7d20f13322eb8c70750809b0",
+    "scripts/codex_configuration_rehearsal.py": "7c0d19d2166d215e34acb66209c98f5fde10ecfdd134f54afc436d975a89f2c6"
+  },
+  "evidence_hashes": {
+    "scripts/codex_explanation_rehearsal.py": "10e6d33a83fbcf1ffb21771293c052e0184ed0e95923157d339318be7bfef21c",
+    "evidence/agent/guided-explanation-dry-over-bound.json": "8a92b56ff529af048ba3f93ebc4b2dc5f248f2278f8ed71ebe4564ae1f6552ee",
+    "evidence/agent/guided-explanation-dry.json": "e838254ca44ee0228f1b511b8b53a9a89d7c93cafdbbdf0c1a067c1ed860ac23",
+    "evidence/agent/guided-explanation-fact-check.json": "47005c271744aedac6864950a5a507f27ca0c04bbf6dccf6a5d0f7b5e68d3416",
+    "evidence/agent/guided-explanation-live.json": "d117550a716b7d36a8b28e96cde0fecec8f770eb130a00af4b6901e9e53e6b95",
+    "evidence/agent/guided-explanation-report.md": "1ff6238c199daee0798faa3b6cb1543ec37c2700ba66b2fb23ff000f697b0928",
+    "evidence/agent/guided-explanation-scope.json": "91bcd7e962d63139d9c1134aedf1c3e5937c2f2fd8ccf675e3a984791a8f10aa"
+  },
+  "scope": {
+    "max_requests": 1,
+    "max_tokens": 22000,
+    "requests_consumed": 1,
+    "tokens_charged": 4804,
+    "requests_remaining": 0,
+    "tokens_remaining": 17196
+  },
+  "shared_budget": {
+    "batch_id": "opensoom-hackathon-2026-01",
+    "max_requests": 100,
+    "max_tokens": 250000,
+    "requests_consumed": 70,
+    "tokens_charged": 231264,
+    "tokens_reserved": 0,
+    "pending_requests": 0,
+    "requests_remaining": 30,
+    "tokens_remaining": 18736,
+    "requires_investigation": false
+  },
+  "prior_case_sources_unchanged": true,
+  "credential_value_matches": 0,
+  "whole_gate_self_passed": false,
+  "further_case_inference_allowed": false
+}

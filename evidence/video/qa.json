@@ -1,0 +1,138 @@
+{
+  "recorded_at": "2026-11-17T19:07:31.073002+00:00",
+  "status": "PASS_IMPLEMENTATION_MEDIA_QA",
+  "video_file": "deliverables/video/openSoom-demo-en.mp4",
+  "sha256": "d4cc9e2ce19fcef31f97212edf54f0ae5caa5c32e2f17e5ae8ae7ce32721c0ee",
+  "bytes": 3429346,
+  "duration_seconds": 108.021333,
+  "video": {
+    "codec": "H.264",
+    "width": 1920,
+    "height": 1080,
+    "fps": 24,
+    "pixel_format": "yuv420p"
+  },
+  "audio": {
+    "codec": "AAC",
+    "sample_rate": 48000,
+    "channels": 2,
+    "synthetic_voice": "macOS Samantha",
+    "all_narration_fits_scene_slots": true,
+    "mean_dbfs": -19.4,
+    "peak_dbfs": -4.5,
+    "clipping_detected": false
+  },
+  "checks": {
+    "full_file_ffmpeg_decode": "PASS: no decode errors",
+    "scene_decode_and_visual_inspection": "PASS: all nine scenes and the later recovered UI capture; first sparse-image fade issue was fixed using fps normalization before fades.",
+    "caption_readability": "PASS: burned-in English captions, 32\u201334px source text inside safe margins; no clipped lines in decoded samples.",
+    "browser_playback": "Chrome started and advanced from0.23s to31.11s, readyState4, video1920x1080, audio unmuted, no media error. Range-enabled preview supports seeking0\u2013108.021333s; verification scene visibly played at57.53s.",
+    "browser_limit_resolved": "Python simple HTTP server did not support seeking; scripts/media_preview.py supplies local byte-range support.",
+    "source_static": "Python compilation and git diff --check passed.",
+    "final_browser_end": {
+      "currentTime": 108.021333,
+      "duration": 108.021333,
+      "ended": true,
+      "paused": true,
+      "readyState": 4,
+      "error": null,
+      "console_errors": []
+    }
+  },
+  "decoded_samples": [
+    {
+      "seconds": 6,
+      "file": "evidence/video/decoded-6s.jpg",
+      "mean_rgb": [
+        35.0470703125,
+        70.19341531635803,
+        60.426832561728396
+      ]
+    },
+    {
+      "seconds": 18,
+      "file": "evidence/video/decoded-18s.jpg",
+      "mean_rgb": [
+        213.16600646219135,
+        218.42695601851852,
+        210.83358410493827
+      ]
+    },
+    {
+      "seconds": 27,
+      "file": "evidence/video/decoded-27s.jpg",
+      "mean_rgb": [
+        216.81018952546296,
+        221.3374754050926,
+        214.51366801697532
+      ]
+    },
+    {
+      "seconds": 42,
+      "file": "evidence/video/decoded-42s.jpg",
+      "mean_rgb": [
+        35.30534577546296,
+        70.77000096450617,
+        61.3455328896605
+      ]
+    },
+    {
+      "seconds": 55,
+      "file": "evidence/video/decoded-55s.jpg",
+      "mean_rgb": [
+        209.25467833719136,
+        215.60854311342592,
+        206.30937837577162
+      ]
+    },
+    {
+      "seconds": 69,
+      "file": "evidence/video/decoded-69s.jpg",
+      "mean_rgb": [
+        36.794487364969136,
+        69.9370418595679,
+        59.710202546296294
+      ]
+    },
+    {
+      "seconds": 82,
+      "file": "evidence/video/decoded-82s.jpg",
+      "mean_rgb": [
+        213.52769048996913,
+        219.0533410493827,
+        211.35549286265433
+      ]
+    },
+    {
+      "seconds": 94,
+      "file": "evidence/video/decoded-94s.jpg",
+      "mean_rgb": [
+        213.16795283564815,
+        218.3959230324074,
+        210.9029267939815
+      ]
+    },
+    {
+      "seconds": 104,
+      "file": "evidence/video/decoded-104s.jpg",
+      "mean_rgb": [
+        30.591269290123456,
+        66.06347415123457,
+        57.29133487654321
+      ]
+    }
+  ],
+  "browser_screenshot": "evidence/video/browser-playback.jpg",
+  "limits": [
+    "Implementation-author media QA; independent reviewer acceptance remains separate.",
+    "Edited still captures and motion graphics, not continuous screen recording.",
+    "The video does not establish physical ventilation or health outcomes.",
+    "Synthetic narration verified for duration, encoded audio and headroom; no human voice recording was used."
+  ],
+  "tools": {
+    "python": "3.14.3",
+    "pillow": "12.1.1",
+    "ffmpeg": "ffmpeg version 9.0.2 Copyright (c) 2000-2026 the FFmpeg developers"
+  },
+  "temporary_preview_servers": "Stopped after QA; no external hosting or upload."
+}

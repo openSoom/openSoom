@@ -316,6 +316,17 @@ class Core:
             result["incidents"] = [i for i in self.store.list("incidents") if i["facility_id"] == fid]
             result["commands"] = [c for c in self.store.list("commands") if c["facility_id"] == fid and c.get("run_id") == (run_id or facility.get("active_run"))][-10:]
             result["current_run_id"] = run_id or facility.get("active_run")
+            result["evidence_scope"] = {
+                "incidents": "All stored incidents for this facility, across runs.",
+                "commands": {"run_id": result["current_run_id"], "limit": 10,
+                             "complete_facility_history": False,
+                             "meaning": "Only the latest 10 stored commands belonging to this run. An empty list does not rule out actions or ACKs in other runs."},
+                "recovery_count": {"unit": "consecutive_qualifying_post_ack_observations",
+                                   "scope": "incident", "required": self.profiles[facility["profile"]]["recovery_samples"],
+                                   "counts_action_attempts": False,
+                                   "meaning": "Consecutive qualifying healthy observations after an acknowledged command; resets to zero for a non-nominal observation, including critical, stale or missing. This is not a count of attempted actions, ACKs or recovered incidents."},
+                "diagnosis": "Use each zone's reason and configured targets: deficient airflow is below its minimum; excessive PM2.5 and CO2 are above their limits. These are simulation targets, not certified safety limits.",
+            }
             result["standard_models"] = []
             for zone in zones:
                 model = self.cse.retrieve(zone["standard_path"], origin=self.identities.get(principal["role"], "CAdmin"))
