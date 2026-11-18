@@ -112,3 +112,7 @@ Working-set hashes observed at completion of this first pass; no immutable candi
 | `src/opensoom/app.py` | `90b2b13f78732ed32ac22fa0e21c9669d4731180463e80bbe551f881e622a144` |
 | `evidence/pitch/architecture-source-map.json` | `dc328c6e85abdeed24908b63798d11d2d2177514242143b4fcb7608b90fb9c83` |
 | `deliverables/video/openSoom-demo-en.mp4` | `d4cc9e2ce19fcef31f97212edf54f0ae5caa5c32e2f17e5ae8ae7ce32721c0ee` |
+
+## Subsequent implementation and independent verification
+
+The five OPEN entries above are the first-pass finding. The maintainer subsequently adopted the proposed serving-CSE maintenance test. Team 4 implemented it and recorded a normal [transfer](../../evidence/runtime/handover/acceptance.json) and a [retry after a deliberately injected target-write failure](../../evidence/runtime/handover/failure-recovery.json). These experiments are separate from the central outage shown in the five-minute film. The [independent reviewer](handover-independent.md) owns the final verification for criterion 12, and the [current assessment](../hackathon/current-assessment.md) records the main reviewer's decision. Criteria 13–16 retain the limits described above.

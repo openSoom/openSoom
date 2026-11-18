@@ -179,6 +179,8 @@ The distributed test stops the central IN-CSE while a facility completes its loc
 
 Selective announcements are not whole-state replication. The demonstrated replay is explicit, not an always-running central dispatcher. This is local continuity during a central outage; it is not serving-CSE handover, process migration or ETSI MEC deployment. [Actual distributed continuity record](https://github.com/openSoom/openSoom/blob/main/evidence/runtime/product-multisite-continuity.json).
 
+An optional, separate maintenance lab (`handover-b6e82ef69f`) automatically switches the logical facility endpoint from CSE A to an independent CSE B after two failed transport probes. It restores the last observation, open incident, profile version and pending command identity/expiry, rebuilds native subscriptions and scoped ACPs, and rejects stale-source commands. The virtual device records one applied effect despite replay. This application-managed transition uses two same-host HTTP CSEs and a shared local authority database; CSE-local AEs are re-registered. It is separate from the film's central-outage experiment and does not establish native AE-ID mobility, node-failure HA or MEC deployment. [Maintenance lab](https://github.com/openSoom/openSoom/blob/main/docs/handover.md), [captured execution and receipts](https://github.com/openSoom/openSoom/blob/main/evidence/runtime/handover/handover-b6e82ef69f.json).
+
 ## What testing changed
 
 The most useful results were the distinctions the system had to preserve:

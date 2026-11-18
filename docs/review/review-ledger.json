@@ -1339,6 +1339,29 @@
         "evidence/video/cinematic/dashboard-recordings.json",
         "evidence/video/cinematic/pr-dashboard-recording.json"
       ]
+    },
+    {
+      "id": "R-038",
+      "team": "team_4",
+      "criteria": [
+        12
+      ],
+      "review_round": "maintenance-cse-transfer",
+      "evidence_status": "review_finding",
+      "gap_and_impact": "The filmed central outage did not exercise serving-CSE handover. Reviews of the separate implementation found a source-ID fencing gap and a transition that could select a partially restored target.",
+      "minimum_change": "Bind the issuing CSE and epoch, retain command identity on retry, restore target permissions and subscription, and safely retry interrupted target restoration. Instrument endpoint reads before and after.",
+      "product_reason": "A facility with an unresolved incident needs its operating context and restricted command path during planned maintenance of the serving CSE.",
+      "verification": "Independent isolated A-to-B run and failure-injection regression plus actual CSE and device-state receipts.",
+      "main_decision": "accept",
+      "decision_reason": "The maintenance scenario justifies a second local serving CSE without needing a managed MEC dependency.",
+      "implementation_state": "implemented_and_independently_verified_in_declared_scope",
+      "review_state": "resolved",
+      "closure_evidence": [
+        "evidence/runtime/handover/acceptance.json",
+        "docs/review/handover-independent.md",
+        "docs/handover.md",
+        "tests/test_handover.py"
+      ]
     }
   ]
 }

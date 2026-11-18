@@ -123,6 +123,8 @@ uv run --no-sync python scripts/cse_product_topology.py
 
 The distributed test actually stops the central CSE while a local facility completes a command/ACK/recovery flow. Replayed expired intents are rejected, and duplicate valid intents return the same command. This is a bounded replay demonstration, not an always-running central dispatcher or serving-CSE handover. [Evidence](evidence/runtime/product-multisite-continuity.json).
 
+For maintenance of the serving facility CSE itself, a separate two-CSE experiment uses two failed transport probes to move a logical application endpoint from A to B. B rebuilds its local permissions and subscriptions, restores the incident and resumes a pending virtual-device command. Both CSEs run on one host. [Run the maintenance transfer](docs/handover.md) · [Inspect the request and outcome record](evidence/runtime/handover/acceptance.json)
+
 ## Pitch and demonstration
 
 The [single-page Three.js presentation](pitch/) explains the facility, standard service layer and distributed topology. The [English evaluation plan](docs/submission/technical-qa.md#twelve-minute-evaluation-presentation) includes the demo video in a twelve-minute talk. The Korean presenter guide includes a five-minute practice version. Serve the pitch with `python3 -m http.server 8095 --bind 127.0.0.1 --directory pitch`. The geometry illustrates the installation.
@@ -133,7 +135,7 @@ Watch the [45-second introduction](deliverables/video/openSoom-pr-45s.mp4) or th
 
 [Agent evidence index](evidence/agent/index.json) identifies accepted captures and preserves failed attempts. Four independent GPT-6.1 Sol Max teams review all 17 rubric criteria against the same code snapshot. Scores are not official and no total or winning probability is invented. [Stages and gates](docs/implementation-plan.md), [execution checkpoint](docs/execution-state.json), [review ledger](docs/review/review-ledger.json), [Goal prompt](docs/goal-mode-prompt.ko.md).
 
-MEC hosting/services, serving-CSE handover, federated learning and network geolocation have separate [extension decisions](docs/extension-decisions.md). Local CSE processes do not establish those capabilities. Human first-use usability, network deployment and real equipment remain further validation work.
+Managed MEC hosting and services, federated learning and network geolocation remain open. [Extension decisions](docs/extension-decisions.md). Human first-use usability, network deployment and real equipment remain further validation work.
 
 The [English article prepared for Hackster](docs/submission/hackster-article.md) includes both films, the independent applications, installation steps and the source records. The public Hackster article URL and team-channel submission are pending.
 

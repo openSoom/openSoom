@@ -1,0 +1,122 @@
+{
+  "scope": "Implementation self-check; independent criterion-12 closeout remains separate",
+  "result": "PASS_AUTHOR_CHECKS",
+  "source_sha256": {
+    "src/opensoom/handover.py": "c5b0a07fb7ff3e2845992e26200de8bd84463f37e286f5ad121fe353302f745c",
+    "scripts/cse_handover_demo.py": "d6a771af8ed36f4e8884e2794206fb5c1dd15f4ed3fdd40562806654cbc3b18d",
+    "tests/test_handover.py": "0da8427574d630d23a8f0b274fecdc852f2dac4ce7c46da33661d637f9688971",
+    "docs/handover.md": "b265fd31dfbe12ea6b1e249f21eec72d3f5281530b2ff72f5981d66d1c30f6ad"
+  },
+  "checks": [
+    {
+      "command": ".venv/bin/python -m pytest tests/test_handover.py tests/integration/test_cse_federation.py -q",
+      "exit_status": 0,
+      "observed": "17 passed, 3 subtests passed in 0.25s"
+    },
+    {
+      "command": ".venv/bin/python scripts/cse_handover_demo.py",
+      "exit_status": 0,
+      "run_id": "handover-b6e82ef69f"
+    },
+    {
+      "command": ".venv/bin/python scripts/cse_handover_demo.py --inject-target-write-failure --evidence evidence/runtime/handover/failure-recovery.json",
+      "exit_status": 0,
+      "run_id": "handover-e19e38fe77",
+      "fault_scope": "Exactly one explicitly synthetic pre-HTTP-dispatch target incident-write transport failure, after actual target state write/readback. Source CSE outage and all other CSE requests are actual."
+    }
+  ],
+  "runs": [
+    {
+      "path": "evidence/runtime/handover/acceptance.json",
+      "sha256": "067c9498426ff171b0dcb12b954f92725cdc93b3d8a33221b40df22b2467da42",
+      "run_id": "handover-b6e82ef69f",
+      "result": "PASS_REAL_SERVING_CSE_MAINTENANCE_HANDOVER",
+      "observed_read_interruption_seconds": 0.164379,
+      "cleanup": {
+        "owned_children_exited": true,
+        "temporary_cse_directories_removed": true,
+        "existing_process_records_unchanged": true,
+        "ports": [
+          54150,
+          54152
+        ],
+        "listeners_closed": [
+          {
+            "port": 54150,
+            "closed": true
+          },
+          {
+            "port": 54152,
+            "closed": true
+          },
+          {
+            "port": 54137,
+            "closed": true
+          }
+        ]
+      },
+      "request_traces": {
+        "A": {
+          "path": "evidence/runtime/handover/handover-b6e82ef69f-A-requests.jsonl",
+          "sha256": "70452bc6f315896f9cbbfccf5291b6cb95a74805b5ebaa06794c438975a46157",
+          "records": 109
+        },
+        "B": {
+          "path": "evidence/runtime/handover/handover-b6e82ef69f-B-requests.jsonl",
+          "sha256": "587c6d58f62e5b4b0a095f9d35c27c1c51191ab14642759cfd48b58d9c181f8a",
+          "records": 39
+        }
+      }
+    },
+    {
+      "path": "evidence/runtime/handover/failure-recovery.json",
+      "sha256": "e60d5bb30cebf5471c9b0502c8565f19d23576349e165c1366542c9a033a1fa3",
+      "run_id": "handover-e19e38fe77",
+      "result": "PASS_REAL_SERVING_CSE_MAINTENANCE_HANDOVER",
+      "observed_read_interruption_seconds": 0.373669,
+      "cleanup": {
+        "owned_children_exited": true,
+        "temporary_cse_directories_removed": true,
+        "existing_process_records_unchanged": true,
+        "ports": [
+          54311,
+          54313
+        ],
+        "listeners_closed": [
+          {
+            "port": 54311,
+            "closed": true
+          },
+          {
+            "port": 54313,
+            "closed": true
+          },
+          {
+            "port": 54279,
+            "closed": true
+          }
+        ]
+      },
+      "request_traces": {
+        "A": {
+          "path": "evidence/runtime/handover/handover-e19e38fe77-A-requests.jsonl",
+          "sha256": "0e26c10e5d070e26215e332795ad6ac6c191414851c67a6a6b5da3d74961bef9",
+          "records": 109
+        },
+        "B": {
+          "path": "evidence/runtime/handover/handover-e19e38fe77-B-requests.jsonl",
+          "sha256": "0b8c68e924308e327ccf7dccaac916b9443ffb5a395c828c67730066d09423eb",
+          "records": 70
+        }
+      }
+    }
+  ],
+  "host_scope": "Loopback socket/owned child-process execution required host approval; no global host policy, trust store or account settings were changed. Initial sandbox callback bind was denied before starting any CSE.",
+  "source_unchanged_during_both_captures": true,
+  "historical_runs": [
+    "handover-750c6e79c6 and handover-97188bc15e predate staged restoration and remain historical",
+    "handover-6836c1f2f6 independent earlier normal-path replay is retained in its reviewer-owned output location"
+  ],
+  "official_score": null,
+  "independent_review_owner": "rubric_reviewer; main owns ledger/article/video disposition"
+}

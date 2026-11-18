@@ -1,0 +1,1732 @@
+{
+  "run_id": "handover-6dbcd9ef97",
+  "started_at": "2026-11-18T11:59:53.769+00:00",
+  "kind": "actual_serving_CSE_maintenance_transition",
+  "physical_device": "simulated",
+  "source_sha256_before": {
+    "src/opensoom/handover.py": "c5b0a07fb7ff3e2845992e26200de8bd84463f37e286f5ad121fe353302f745c",
+    "src/opensoom/onem2m.py": "c4edcf610b9c82266d222dc63b69869cbd62000478405cdcd98f44178b0b123e",
+    "scripts/cse_handover_demo.py": "d6a771af8ed36f4e8884e2794206fb5c1dd15f4ed3fdd40562806654cbc3b18d",
+    "deploy/acme-single.ini": "d7a97bf87dee84edff1b9dd2bff0ef21d4c1f96469f76bacd82f202f8abcccd5"
+  },
+  "checks": {
+    "cse_A": {
+      "rsc": 2000,
+      "rqi": "opensoom-269e1e71791a4bb28c0cd1a01153b4ba",
+      "body": {
+        "m2m:cb": {
+          "ri": "opensoom-ho-a-6dbcd9ef97",
+          "rn": "cse-ho-a",
+          "csi": "/opensoom-ho-a-6dbcd9ef97",
+          "spi": "//opensoom.example",
+          "csz": [
+            "application/json",
+            "application/vnd.onem2m-res+json",
+            "application/cbor",
+            "application/vnd.onem2m-res+cbor"
+          ],
+          "acpi": [
+            "/opensoom-ho-a-6dbcd9ef97/acpCreateRootResources"
+          ],
+          "poa": [
+            "http://127.0.0.1:55238"
+          ],
+          "cst": 1,
+          "srt": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            9,
+            10,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            34,
+            43,
+            44,
+            47,
+            48,
+            58,
+            60,
+            62,
+            63,
+            64,
+            65,
+            66,
+            10001,
+            10002,
+            10003,
+            10004,
+            10009,
+            10010,
+            10013,
+            10014,
+            10016,
+            10018,
+            10024,
+            10028,
+            10029,
+            10030,
+            10058,
+            10060,
+            10062,
+            10063,
+            10064,
+            10065,
+            10066
+          ],
+          "srv": [
+            "2a",
+            "3",
+            "4",
+            "5"
+          ],
+          "pi": "",
+          "ty": 5,
+          "ct": "20261118T120005,602067",
+          "lt": "20261118T120005,602067",
+          "ici": "/opensoom-ho-a-6dbcd9ef97",
+          "ctm": "20261118T120005,698854"
+        }
+      },
+      "http_status": 200
+    },
+    "cse_B": {
+      "rsc": 2000,
+      "rqi": "opensoom-82093ead274c4e13a0d84e6d0c1f20fe",
+      "body": {
+        "m2m:cb": {
+          "ri": "opensoom-ho-b-6dbcd9ef97",
+          "rn": "cse-ho-b",
+          "csi": "/opensoom-ho-b-6dbcd9ef97",
+          "spi": "//opensoom.example",
+          "csz": [
+            "application/json",
+            "application/vnd.onem2m-res+json",
+            "application/cbor",
+            "application/vnd.onem2m-res+cbor"
+          ],
+          "acpi": [
+            "/opensoom-ho-b-6dbcd9ef97/acpCreateRootResources"
+          ],
+          "poa": [
+            "http://127.0.0.1:55239"
+          ],
+          "cst": 1,
+          "srt": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            9,
+            10,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            34,
+            43,
+            44,
+            47,
+            48,
+            58,
+            60,
+            62,
+            63,
+            64,
+            65,
+            66,
+            10001,
+            10002,
+            10003,
+            10004,
+            10009,
+            10010,
+            10013,
+            10014,
+            10016,
+            10018,
+            10024,
+            10028,
+            10029,
+            10030,
+            10058,
+            10060,
+            10062,
+            10063,
+            10064,
+            10065,
+            10066
+          ],
+          "srv": [
+            "2a",
+            "3",
+            "4",
+            "5"
+          ],
+          "pi": "",
+          "ty": 5,
+          "ct": "20261118T120005,601723",
+          "lt": "20261118T120005,601723",
+          "ici": "/opensoom-ho-b-6dbcd9ef97",
+          "ctm": "20261118T120005,700753"
+        }
+      },
+      "http_status": 200
+    },
+    "initial_provisioning": {
+      "cse_base": {
+        "rsc": 2000,
+        "rqi": "opensoom-fc2ce820c0804934a2a96f2945f990c4",
+        "body": {
+          "m2m:cb": {
+            "ri": "opensoom-ho-a-6dbcd9ef97",
+            "rn": "cse-ho-a",
+            "csi": "/opensoom-ho-a-6dbcd9ef97",
+            "spi": "//opensoom.example",
+            "csz": [
+              "application/json",
+              "application/vnd.onem2m-res+json",
+              "application/cbor",
+              "application/vnd.onem2m-res+cbor"
+            ],
+            "acpi": [
+              "/opensoom-ho-a-6dbcd9ef97/acpCreateRootResources"
+            ],
+            "poa": [
+              "http://127.0.0.1:55238"
+            ],
+            "cst": 1,
+            "srt": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              9,
+              10,
+              13,
+              14,
+              15,
+              16,
+              17,
+              18,
+              23,
+              24,
+              25,
+              26,
+              27,
+              28,
+              29,
+              30,
+              34,
+              43,
+              44,
+              47,
+              48,
+              58,
+              60,
+              62,
+              63,
+              64,
+              65,
+              66,
+              10001,
+              10002,
+              10003,
+              10004,
+              10009,
+              10010,
+              10013,
+              10014,
+              10016,
+              10018,
+              10024,
+              10028,
+              10029,
+              10030,
+              10058,
+              10060,
+              10062,
+              10063,
+              10064,
+              10065,
+              10066
+            ],
+            "srv": [
+              "2a",
+              "3",
+              "4",
+              "5"
+            ],
+            "pi": "",
+            "ty": 5,
+            "ct": "20261118T120005,602067",
+            "lt": "20261118T120005,602067",
+            "ici": "/opensoom-ho-a-6dbcd9ef97",
+            "ctm": "20261118T120005,704676"
+          }
+        },
+        "http_status": 200
+      },
+      "registrations": {
+        "controller": {
+          "rsc": 2001,
+          "rqi": "opensoom-bec00ae8a84446c5b1917b00af979e15",
+          "body": {
+            "m2m:ae": {
+              "rn": "ho6dbcd9ef97-controller",
+              "api": "N.org.opensoom.handover",
+              "rr": false,
+              "srv": [
+                "4"
+              ],
+              "pi": "opensoom-ho-a-6dbcd9ef97",
+              "ri": "Cho79d3859581e8d6b79f",
+              "ty": 2,
+              "aei": "Cho79d3859581e8d6b79f",
+              "ct": "20261118T120005,706273",
+              "lt": "20261118T120005,706273",
+              "et": "20311117T120005,706684"
+            }
+          },
+          "http_status": 201
+        },
+        "device": {
+          "rsc": 2001,
+          "rqi": "opensoom-f1666255b4404081936ce8387c84b03f",
+          "body": {
+            "m2m:ae": {
+              "rn": "ho6dbcd9ef97-device",
+              "api": "N.org.opensoom.handover",
+              "rr": false,
+              "srv": [
+                "4"
+              ],
+              "pi": "opensoom-ho-a-6dbcd9ef97",
+              "ri": "Chob2fa4e7f92e9d2a458",
+              "ty": 2,
+              "aei": "Chob2fa4e7f92e9d2a458",
+              "ct": "20261118T120005,708075",
+              "lt": "20261118T120005,708075",
+              "et": "20311117T120005,708437"
+            }
+          },
+          "http_status": 201
+        },
+        "observer": {
+          "rsc": 2001,
+          "rqi": "opensoom-8a248871252b434babd74f44e1ba9ebb",
+          "body": {
+            "m2m:ae": {
+              "rn": "ho6dbcd9ef97-observer",
+              "api": "N.org.opensoom.handover",
+              "rr": false,
+              "srv": [
+                "4"
+              ],
+              "pi": "opensoom-ho-a-6dbcd9ef97",
+              "ri": "Choe01c0cdb30718ff4cd",
+              "ty": 2,
+              "aei": "Choe01c0cdb30718ff4cd",
+              "ct": "20261118T120005,709686",
+              "lt": "20261118T120005,709686",
+              "et": "20311117T120005,710050"
+            }
+          },
+          "http_status": 201
+        }
+      },
+      "policies": {
+        "state": {
+          "rsc": 2001,
+          "rqi": "opensoom-44447893a21549899a404c9ebf9fd812",
+          "body": {
+            "m2m:acp": {
+              "rn": "ho6dbcd9ef97-state-policy",
+              "pv": {
+                "acr": [
+                  {
+                    "acor": [
+                      "CAdmin"
+                    ],
+                    "acop": 63
+                  },
+                  {
+                    "acor": [
+                      "Cho79d3859581e8d6b79f"
+                    ],
+                    "acop": 35
+                  }
+                ]
+              },
+              "pvs": {
+                "acr": [
+                  {
+                    "acor": [
+                      "CAdmin"
+                    ],
+                    "acop": 63
+                  }
+                ]
+              },
+              "pi": "opensoom-ho-a-6dbcd9ef97",
+              "ri": "acpvJYhazw3TI",
+              "ty": 1,
+              "ct": "20261118T120005,711570",
+              "lt": "20261118T120005,711570",
+              "et": "20311117T120005,711814"
+            }
+          },
+          "http_status": 201
+        },
+        "observations": {
+          "rsc": 2001,
+          "rqi": "opensoom-4fdb1dcf7744463d9c944b40b9eca32a",
+          "body": {
+            "m2m:acp": {
+              "rn": "ho6dbcd9ef97-observations-policy",
+              "pv": {
+                "acr": [
+                  {
+                    "acor": [
+                      "CAdmin"
+                    ],
+                    "acop": 63
+                  },
+                  {
+                    "acor": [
+                      "Cho79d3859581e8d6b79f"
+                    ],
+                    "acop": 34
+                  },
+                  {
+                    "acor": [
+                      "Chob2fa4e7f92e9d2a458"
+                    ],
+                    "acop": 35
+                  },
+                  {
+                    "acor": [
+                      "Choe01c0cdb30718ff4cd"
+                    ],
+                    "acop": 34
+                  }
+                ]
+              },
+              "pvs": {
+                "acr": [
+                  {
+                    "acor": [
+                      "CAdmin"
+                    ],
+                    "acop": 63
+                  }
+                ]
+              },
+              "pi": "opensoom-ho-a-6dbcd9ef97",
+              "ri": "acpontU6bJWH7",
+              "ty": 1,
+              "ct": "20261118T120005,713696",
+              "lt": "20261118T120005,713696",
+              "et": "20311117T120005,713927"
+            }
+          },
+          "http_status": 201
+        },
+        "commands": {
+          "rsc": 2001,
+          "rqi": "opensoom-7ef40824ccda431bbe7ad2a84985f8c6",
+          "body": {
+            "m2m:acp": {
+              "rn": "ho6dbcd9ef97-commands-policy",
+              "pv": {
+                "acr": [
+                  {
+                    "acor": [
+                      "CAdmin"
+                    ],
+                    "acop": 63
+                  },
+                  {
+                    "acor": [
+                      "Cho79d3859581e8d6b79f"
+                    ],
+                    "acop": 35
+                  },
+                  {
+                    "acor": [
+                      "Chob2fa4e7f92e9d2a458"
+                    ],
+                    "acop": 34
+                  },
+                  {
+                    "acor": [
+                      "Choe01c0cdb30718ff4cd"
+                    ],
+                    "acop": 34
+                  }
+                ]
+              },
+              "pvs": {
+                "acr": [
+                  {
+                    "acor": [
+                      "CAdmin"
+                    ],
+                    "acop": 63
+                  }
+                ]
+              },
+              "pi": "opensoom-ho-a-6dbcd9ef97",
+              "ri": "acph44TJbM7xz",
+              "ty": 1,
+              "ct": "20261118T120005,715742",
+              "lt": "20261118T120005,715742",
+              "et": "20311117T120005,715972"
+            }
+          },
+          "http_status": 201
+        },
+        "acks": {
+          "rsc": 2001,
+          "rqi": "opensoom-8f09e5daf0fe42ab81ab67e3b15b91a8",
+          "body": {
+            "m2m:acp": {
+              "rn": "ho6dbcd9ef97-acks-policy",
+              "pv": {
+                "acr": [
+                  {
+                    "acor": [
+                      "CAdmin"
+                    ],
+                    "acop": 63
+                  },
+                  {
+                    "acor": [
+                      "Cho79d3859581e8d6b79f"
+                    ],
+                    "acop": 34
+                  },
+                  {
+                    "acor": [
+                      "Chob2fa4e7f92e9d2a458"
+                    ],
+                    "acop": 35
+                  },
+                  {
+                    "acor": [
+                      "Choe01c0cdb30718ff4cd"
+                    ],
+                    "acop": 34
+                  }
+                ]
+              },
+              "pvs": {
+                "acr": [
+                  {
+                    "acor": [
+                      "CAdmin"
+                    ],
+                    "acop": 63
+                  }
+                ]
+              },
+              "pi": "opensoom-ho-a-6dbcd9ef97",
+              "ri": "acpJTOwtCZVPH",
+              "ty": 1,
+              "ct": "20261118T120005,717511",
+              "lt": "20261118T120005,717511",
+              "et": "20311117T120005,717737"
+            }
+          },
+          "http_status": 201
+        }
+      },
+      "subscription": {
+        "rsc": 2001,
+        "rqi": "opensoom-eb9cdf4a61224b1c88307703cd5655e2",
+        "body": {
+          "m2m:sub": {
+            "rn": "diagnosis",
+            "nu": [
+              "http://127.0.0.1:55214/notify"
+            ],
+            "enc": {
+              "net": [
+                3
+              ]
+            },
+            "nct": 1,
+            "pi": "cntqJdh13rUla",
+            "ri": "subOJ1ydwXU2R",
+            "ty": 23,
+            "ct": "20261118T120005,729438",
+            "lt": "20261118T120005,729438",
+            "et": "20311117T120005,706684"
+          }
+        },
+        "http_status": 201
+      },
+      "root": "cse-ho-a/ho6dbcd9ef97-controller"
+    },
+    "baseline_subscription_observations": [
+      {
+        "write": {
+          "rsc": 2001,
+          "rqi": "opensoom-82a9fa4a32c34e3da20bd585393b3c88",
+          "body": {
+            "m2m:cin": {
+              "con": "{\"facility_id\": \"maintenance-demo\", \"sequence\": 1, \"observed_at\": \"2026-11-18T12:00:05.741+00:00\", \"airflow_m3_h\": 360, \"fan_running\": true, \"simulated\": true}",
+              "cnf": "application/json:0",
+              "cs": 159,
+              "pi": "cntqJdh13rUla",
+              "ri": "cinuj2DDJSa0E",
+              "rn": "cin_wJOke05S7H",
+              "ty": 4,
+              "ct": "20261118T120005,742766",
+              "lt": "20261118T120005,742766",
+              "et": "20311117T120005,706684",
+              "st": 1
+            }
+          },
+          "http_status": 201
+        },
+        "notification": {
+          "at": "2026-11-18T12:00:05.753+00:00",
+          "authority": {
+            "target": "A",
+            "cse_id": "/opensoom-ho-a-6dbcd9ef97",
+            "epoch": 1
+          },
+          "callback": {
+            "at": "2026-11-18T12:00:05.745+00:00",
+            "rqi": "avyr6e0TPi",
+            "body": {
+              "m2m:sgn": {
+                "nev": {
+                  "net": 3,
+                  "rep": {
+                    "m2m:cin": {
+                      "con": "{\"facility_id\": \"maintenance-demo\", \"sequence\": 1, \"observed_at\": \"2026-11-18T12:00:05.741+00:00\", \"airflow_m3_h\": 360, \"fan_running\": true, \"simulated\": true}",
+                      "cnf": "application/json:0",
+                      "cs": 159,
+                      "pi": "cntqJdh13rUla",
+                      "ri": "cinuj2DDJSa0E",
+                      "rn": "cin_wJOke05S7H",
+                      "ty": 4,
+                      "ct": "20261118T120005,742766",
+                      "lt": "20261118T120005,742766",
+                      "et": "20311117T120005,706684",
+                      "st": 1
+                    }
+                  }
+                },
+                "sur": "/opensoom-ho-a-6dbcd9ef97/subOJ1ydwXU2R"
+              }
+            }
+          },
+          "authoritative_read": {
+            "rsc": 2000,
+            "rqi": "opensoom-f269a194970a499890099534afc61cb2",
+            "body": {
+              "m2m:cin": {
+                "con": "{\"facility_id\": \"maintenance-demo\", \"sequence\": 1, \"observed_at\": \"2026-11-18T12:00:05.741+00:00\", \"airflow_m3_h\": 360, \"fan_running\": true, \"simulated\": true}",
+                "cnf": "application/json:0",
+                "cs": 159,
+                "pi": "cntqJdh13rUla",
+                "ri": "cinuj2DDJSa0E",
+                "rn": "cin_wJOke05S7H",
+                "ty": 4,
+                "ct": "20261118T120005,742766",
+                "lt": "20261118T120005,742766",
+                "et": "20311117T120005,706684",
+                "st": 1
+              }
+            },
+            "http_status": 200
+          },
+          "sequence": 1
+        }
+      },
+      {
+        "write": {
+          "rsc": 2001,
+          "rqi": "opensoom-a096e0489908488bb98a22072a6d35ac",
+          "body": {
+            "m2m:cin": {
+              "con": "{\"facility_id\": \"maintenance-demo\", \"sequence\": 2, \"observed_at\": \"2026-11-18T12:00:05.753+00:00\", \"airflow_m3_h\": 360, \"fan_running\": true, \"simulated\": true}",
+              "cnf": "application/json:0",
+              "cs": 159,
+              "pi": "cntqJdh13rUla",
+              "ri": "cinMvoEnjfRDc",
+              "rn": "cin_TvZzXWlTNp",
+              "ty": 4,
+              "ct": "20261118T120005,754593",
+              "lt": "20261118T120005,754593",
+              "et": "20311117T120005,706684",
+              "st": 2
+            }
+          },
+          "http_status": 201
+        },
+        "notification": {
+          "at": "2026-11-18T12:00:05.763+00:00",
+          "authority": {
+            "target": "A",
+            "cse_id": "/opensoom-ho-a-6dbcd9ef97",
+            "epoch": 1
+          },
+          "callback": {
+            "at": "2026-11-18T12:00:05.757+00:00",
+            "rqi": "Do39lKofQZ",
+            "body": {
+              "m2m:sgn": {
+                "nev": {
+                  "net": 3,
+                  "rep": {
+                    "m2m:cin": {
+                      "con": "{\"facility_id\": \"maintenance-demo\", \"sequence\": 2, \"observed_at\": \"2026-11-18T12:00:05.753+00:00\", \"airflow_m3_h\": 360, \"fan_running\": true, \"simulated\": true}",
+                      "cnf": "application/json:0",
+                      "cs": 159,
+                      "pi": "cntqJdh13rUla",
+                      "ri": "cinMvoEnjfRDc",
+                      "rn": "cin_TvZzXWlTNp",
+                      "ty": 4,
+                      "ct": "20261118T120005,754593",
+                      "lt": "20261118T120005,754593",
+                      "et": "20311117T120005,706684",
+                      "st": 2
+                    }
+                  }
+                },
+                "sur": "/opensoom-ho-a-6dbcd9ef97/subOJ1ydwXU2R"
+              }
+            }
+          },
+          "authoritative_read": {
+            "rsc": 2000,
+            "rqi": "opensoom-b1208f956b244aa6883dc45fbabe0eed",
+            "body": {
+              "m2m:cin": {
+                "con": "{\"facility_id\": \"maintenance-demo\", \"sequence\": 2, \"observed_at\": \"2026-11-18T12:00:05.753+00:00\", \"airflow_m3_h\": 360, \"fan_running\": true, \"simulated\": true}",
+                "cnf": "application/json:0",
+                "cs": 159,
+                "pi": "cntqJdh13rUla",
+                "ri": "cinMvoEnjfRDc",
+                "rn": "cin_TvZzXWlTNp",
+                "ty": 4,
+                "ct": "20261118T120005,754593",
+                "lt": "20261118T120005,754593",
+                "et": "20311117T120005,706684",
+                "st": 2
+              }
+            },
+            "http_status": 200
+          },
+          "sequence": 2
+        }
+      },
+      {
+        "write": {
+          "rsc": 2001,
+          "rqi": "opensoom-1d1f665fcffe4d8dbbbe0ca70319dd68",
+          "body": {
+            "m2m:cin": {
+              "con": "{\"facility_id\": \"maintenance-demo\", \"sequence\": 3, \"observed_at\": \"2026-11-18T12:00:05.764+00:00\", \"airflow_m3_h\": 360, \"fan_running\": true, \"simulated\": true}",
+              "cnf": "application/json:0",
+              "cs": 159,
+              "pi": "cntqJdh13rUla",
+              "ri": "cintniT8rPrnz",
+              "rn": "cin_2rXtREWrII",
+              "ty": 4,
+              "ct": "20261118T120005,765818",
+              "lt": "20261118T120005,765818",
+              "et": "20311117T120005,706684",
+              "st": 3
+            }
+          },
+          "http_status": 201
+        },
+        "notification": {
+          "at": "2026-11-18T12:00:05.775+00:00",
+          "authority": {
+            "target": "A",
+            "cse_id": "/opensoom-ho-a-6dbcd9ef97",
+            "epoch": 1
+          },
+          "callback": {
+            "at": "2026-11-18T12:00:05.768+00:00",
+            "rqi": "EsolascumN",
+            "body": {
+              "m2m:sgn": {
+                "nev": {
+                  "net": 3,
+                  "rep": {
+                    "m2m:cin": {
+                      "con": "{\"facility_id\": \"maintenance-demo\", \"sequence\": 3, \"observed_at\": \"2026-11-18T12:00:05.764+00:00\", \"airflow_m3_h\": 360, \"fan_running\": true, \"simulated\": true}",
+                      "cnf": "application/json:0",
+                      "cs": 159,
+                      "pi": "cntqJdh13rUla",
+                      "ri": "cintniT8rPrnz",
+                      "rn": "cin_2rXtREWrII",
+                      "ty": 4,
+                      "ct": "20261118T120005,765818",
+                      "lt": "20261118T120005,765818",
+                      "et": "20311117T120005,706684",
+                      "st": 3
+                    }
+                  }
+                },
+                "sur": "/opensoom-ho-a-6dbcd9ef97/subOJ1ydwXU2R"
+              }
+            }
+          },
+          "authoritative_read": {
+            "rsc": 2000,
+            "rqi": "opensoom-fece199555a94a518f88ac38d62213ca",
+            "body": {
+              "m2m:cin": {
+                "con": "{\"facility_id\": \"maintenance-demo\", \"sequence\": 3, \"observed_at\": \"2026-11-18T12:00:05.764+00:00\", \"airflow_m3_h\": 360, \"fan_running\": true, \"simulated\": true}",
+                "cnf": "application/json:0",
+                "cs": 159,
+                "pi": "cntqJdh13rUla",
+                "ri": "cintniT8rPrnz",
+                "rn": "cin_2rXtREWrII",
+                "ty": 4,
+                "ct": "20261118T120005,765818",
+                "lt": "20261118T120005,765818",
+                "et": "20311117T120005,706684",
+                "st": 3
+              }
+            },
+            "http_status": 200
+          },
+          "sequence": 3
+        }
+      }
+    ],
+    "pending_at_A": {
+      "rsc": 2001,
+      "rqi": "opensoom-73dec33d06cf4e6dbf8b581427725118",
+      "body": {
+        "m2m:cin": {
+          "con": "{\"command_id\": \"handover-6dbcd9ef97:pending\", \"facility_id\": \"maintenance-demo\", \"profile_version\": 1, \"action\": \"set_damper\", \"value\": 100.0, \"issued_at\": \"2026-11-18T12:00:05.775667+00:00\", \"expires_at\": \"2026-11-18T12:01:05.775396+00:00\", \"target\": \"A\", \"cse_id\": \"/opensoom-ho-a-6dbcd9ef97\", \"epoch\": 1, \"source_cse_id\": \"/opensoom-ho-a-6dbcd9ef97\"}",
+          "cnf": "application/json:0",
+          "cs": 353,
+          "pi": "cntlgof53GtSH",
+          "ri": "cinruOafofPy4",
+          "rn": "cin_TVBuRNj1Vd",
+          "ty": 4,
+          "ct": "20261118T120005,776693",
+          "lt": "20261118T120005,776693",
+          "et": "20311117T120005,706684",
+          "st": 1
+        }
+      },
+      "http_status": 201
+    },
+    "logical_endpoint_before": {
+      "logical_facility_id": "maintenance-demo",
+      "serving_cse_id": "/opensoom-ho-a-6dbcd9ef97",
+      "serving_url": "http://127.0.0.1:55238",
+      "authority": {
+        "target": "A",
+        "cse_id": "/opensoom-ho-a-6dbcd9ef97",
+        "epoch": 1
+      },
+      "state": {
+        "rsc": 2000,
+        "rqi": "opensoom-9a7b611d6d3f4ac1b5c53bcc5e41aa0d",
+        "body": {
+          "m2m:cin": {
+            "con": "{\"facility_id\": \"maintenance-demo\", \"profile_id\": \"food-production-maintenance\", \"profile_version\": 1, \"command_ttl_seconds\": 60, \"last_sequence\": 3, \"last_observation\": {\"facility_id\": \"maintenance-demo\", \"sequence\": 3, \"observed_at\": \"2026-11-18T12:00:05.764+00:00\", \"airflow_m3_h\": 360, \"fan_running\": true, \"simulated\": true}, \"incident\": {\"id\": \"incident-handover-6dbcd9ef97\", \"status\": \"open\", \"reason\": \"Planned ventilation controller maintenance; diagnosis must continue\", \"created_at\": \"2026-11-18T12:00:05.703+00:00\"}, \"pending_command\": {\"command_id\": \"handover-6dbcd9ef97:pending\", \"facility_id\": \"maintenance-demo\", \"profile_version\": 1, \"action\": \"set_damper\", \"value\": 100.0, \"issued_at\": \"2026-11-18T12:00:05.775667+00:00\", \"expires_at\": \"2026-11-18T12:01:05.775396+00:00\", \"target\": \"A\", \"cse_id\": \"/opensoom-ho-a-6dbcd9ef97\", \"epoch\": 1, \"source_cse_id\": \"/opensoom-ho-a-6dbcd9ef97\"}, \"simulated\": true}",
+            "cnf": "application/json:0",
+            "cs": 921,
+            "pi": "cntmihcMo7KAC",
+            "ri": "cin1Nz2WfTHiW",
+            "rn": "cin_k7X4fHgVAr",
+            "ty": 4,
+            "ct": "20261118T120005,779413",
+            "lt": "20261118T120005,779413",
+            "et": "20311117T120005,706684",
+            "st": 5
+          }
+        },
+        "http_status": 200
+      },
+      "incident": {
+        "rsc": 2000,
+        "rqi": "opensoom-d4194ffcc5f646b789054a8be84791a2",
+        "body": {
+          "m2m:cin": {
+            "con": "{\"id\": \"incident-handover-6dbcd9ef97\", \"status\": \"open\", \"reason\": \"Planned ventilation controller maintenance; diagnosis must continue\", \"created_at\": \"2026-11-18T12:00:05.703+00:00\"}",
+            "cnf": "application/json:0",
+            "cs": 184,
+            "pi": "cnteWD7zrG7Af",
+            "ri": "cinRXHdiK1BIC",
+            "rn": "cin_axVwjoBHkf",
+            "ty": 4,
+            "ct": "20261118T120005,781373",
+            "lt": "20261118T120005,781373",
+            "et": "20311117T120005,706684",
+            "st": 5
+          }
+        },
+        "http_status": 200
+      }
+    },
+    "logical_endpoint_after": {
+      "logical_facility_id": "maintenance-demo",
+      "serving_cse_id": "/opensoom-ho-b-6dbcd9ef97",
+      "serving_url": "http://127.0.0.1:55239",
+      "authority": {
+        "target": "B",
+        "cse_id": "/opensoom-ho-b-6dbcd9ef97",
+        "epoch": 2
+      },
+      "state": {
+        "rsc": 2000,
+        "rqi": "opensoom-6962f369ea464dcf8e9a11b93da76eda",
+        "body": {
+          "m2m:cin": {
+            "rn": "restored-state-e2",
+            "con": "{\"facility_id\": \"maintenance-demo\", \"profile_id\": \"food-production-maintenance\", \"profile_version\": 1, \"command_ttl_seconds\": 60, \"last_sequence\": 3, \"last_observation\": {\"facility_id\": \"maintenance-demo\", \"sequence\": 3, \"observed_at\": \"2026-11-18T12:00:05.764+00:00\", \"airflow_m3_h\": 360, \"fan_running\": true, \"simulated\": true}, \"incident\": {\"id\": \"incident-handover-6dbcd9ef97\", \"status\": \"open\", \"reason\": \"Planned ventilation controller maintenance; diagnosis must continue\", \"created_at\": \"2026-11-18T12:00:05.703+00:00\"}, \"pending_command\": {\"command_id\": \"handover-6dbcd9ef97:pending\", \"facility_id\": \"maintenance-demo\", \"profile_version\": 1, \"action\": \"set_damper\", \"value\": 100.0, \"issued_at\": \"2026-11-18T12:00:05.775667+00:00\", \"expires_at\": \"2026-11-18T12:01:05.775396+00:00\", \"target\": \"B\", \"cse_id\": \"/opensoom-ho-b-6dbcd9ef97\", \"epoch\": 2, \"source_cse_id\": \"/opensoom-ho-b-6dbcd9ef97\"}, \"simulated\": true}",
+            "cnf": "application/json:0",
+            "cs": 921,
+            "pi": "cnt3fFcfnBIg9",
+            "ri": "cinJ2Rh1OTdxZ",
+            "ty": 4,
+            "ct": "20261118T120005,947514",
+            "lt": "20261118T120005,947514",
+            "et": "20311117T120005,916238",
+            "st": 1
+          }
+        },
+        "http_status": 200
+      },
+      "incident": {
+        "rsc": 2000,
+        "rqi": "opensoom-907dd8349fcc422e9b3b2abc797f4b03",
+        "body": {
+          "m2m:cin": {
+            "rn": "restored-incident-e2",
+            "con": "{\"id\": \"incident-handover-6dbcd9ef97\", \"status\": \"open\", \"reason\": \"Planned ventilation controller maintenance; diagnosis must continue\", \"created_at\": \"2026-11-18T12:00:05.703+00:00\"}",
+            "cnf": "application/json:0",
+            "cs": 184,
+            "pi": "cntgRQ3M7YHqQ",
+            "ri": "cinMesIDFQJ0F",
+            "ty": 4,
+            "ct": "20261118T120005,951222",
+            "lt": "20261118T120005,951222",
+            "et": "20311117T120005,916238",
+            "st": 1
+          }
+        },
+        "http_status": 200
+      }
+    },
+    "automatic_transition": {
+      "history": [
+        {
+          "at": "2026-11-18T12:00:05.798+00:00",
+          "kind": "transport_failure",
+          "target": "A",
+          "count": 1,
+          "response": {
+            "rsc": 0,
+            "rqi": "opensoom-b31550bbebb24525a8dbcc2a9c3ea105",
+            "body": {
+              "error": "ConnectError"
+            },
+            "http_status": 0
+          }
+        },
+        {
+          "at": "2026-11-18T12:00:05.909+00:00",
+          "kind": "transport_failure",
+          "target": "A",
+          "count": 2,
+          "response": {
+            "rsc": 0,
+            "rqi": "opensoom-22e59245188449b3bba133106ba8beda",
+            "body": {
+              "error": "ConnectError"
+            },
+            "http_status": 0
+          }
+        },
+        {
+          "at": "2026-11-18T12:00:05.962+00:00",
+          "kind": "serving_cse_changed",
+          "trigger": "consecutive_transport_failures",
+          "from": {
+            "target": "A",
+            "cse_id": "/opensoom-ho-a-6dbcd9ef97",
+            "epoch": 1
+          },
+          "to": {
+            "target": "B",
+            "cse_id": "/opensoom-ho-b-6dbcd9ef97",
+            "epoch": 2
+          },
+          "restoration": {
+            "cse_base": {
+              "rsc": 2000,
+              "rqi": "opensoom-c2c151ba21804484a3a9ced8ad65bab1",
+              "body": {
+                "m2m:cb": {
+                  "ri": "opensoom-ho-b-6dbcd9ef97",
+                  "rn": "cse-ho-b",
+                  "csi": "/opensoom-ho-b-6dbcd9ef97",
+                  "spi": "//opensoom.example",
+                  "csz": [
+                    "application/json",
+                    "application/vnd.onem2m-res+json",
+                    "application/cbor",
+                    "application/vnd.onem2m-res+cbor"
+                  ],
+                  "acpi": [
+                    "/opensoom-ho-b-6dbcd9ef97/acpCreateRootResources"
+                  ],
+                  "poa": [
+                    "http://127.0.0.1:55239"
+                  ],
+                  "cst": 1,
+                  "srt": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5,
+                    9,
+                    10,
+                    13,
+                    14,
+                    15,
+                    16,
+                    17,
+                    18,
+                    23,
+                    24,
+                    25,
+                    26,
+                    27,
+                    28,
+                    29,
+                    30,
+                    34,
+                    43,
+                    44,
+                    47,
+                    48,
+                    58,
+                    60,
+                    62,
+                    63,
+                    64,
+                    65,
+                    66,
+                    10001,
+                    10002,
+                    10003,
+                    10004,
+                    10009,
+                    10010,
+                    10013,
+                    10014,
+                    10016,
+                    10018,
+                    10024,
+                    10028,
+                    10029,
+                    10030,
+                    10058,
+                    10060,
+                    10062,
+                    10063,
+                    10064,
+                    10065,
+                    10066
+                  ],
+                  "srv": [
+                    "2a",
+                    "3",
+                    "4",
+                    "5"
+                  ],
+                  "pi": "",
+                  "ty": 5,
+                  "ct": "20261118T120005,601723",
+                  "lt": "20261118T120005,601723",
+                  "ici": "/opensoom-ho-b-6dbcd9ef97",
+                  "ctm": "20261118T120005,914065"
+                }
+              },
+              "http_status": 200
+            },
+            "registrations": {
+              "controller": {
+                "rsc": 2001,
+                "rqi": "opensoom-454ddebf496e4d5290537ec14e84b26e",
+                "body": {
+                  "m2m:ae": {
+                    "rn": "ho6dbcd9ef97-controller",
+                    "api": "N.org.opensoom.handover",
+                    "rr": false,
+                    "srv": [
+                      "4"
+                    ],
+                    "pi": "opensoom-ho-b-6dbcd9ef97",
+                    "ri": "Chocaa17892096e3f6fda",
+                    "ty": 2,
+                    "aei": "Chocaa17892096e3f6fda",
+                    "ct": "20261118T120005,915741",
+                    "lt": "20261118T120005,915741",
+                    "et": "20311117T120005,916238"
+                  }
+                },
+                "http_status": 201
+              },
+              "device": {
+                "rsc": 2001,
+                "rqi": "opensoom-8c0c981cda68401688f53066893d0131",
+                "body": {
+                  "m2m:ae": {
+                    "rn": "ho6dbcd9ef97-device",
+                    "api": "N.org.opensoom.handover",
+                    "rr": false,
+                    "srv": [
+                      "4"
+                    ],
+                    "pi": "opensoom-ho-b-6dbcd9ef97",
+                    "ri": "Cho787126d7b22f99a4e6",
+                    "ty": 2,
+                    "aei": "Cho787126d7b22f99a4e6",
+                    "ct": "20261118T120005,917735",
+                    "lt": "20261118T120005,917735",
+                    "et": "20311117T120005,918113"
+                  }
+                },
+                "http_status": 201
+              },
+              "observer": {
+                "rsc": 2001,
+                "rqi": "opensoom-91c82367cd564bac8a63f1a6b8a38378",
+                "body": {
+                  "m2m:ae": {
+                    "rn": "ho6dbcd9ef97-observer",
+                    "api": "N.org.opensoom.handover",
+                    "rr": false,
+                    "srv": [
+                      "4"
+                    ],
+                    "pi": "opensoom-ho-b-6dbcd9ef97",
+                    "ri": "Chof3744a738e15123ca6",
+                    "ty": 2,
+                    "aei": "Chof3744a738e15123ca6",
+                    "ct": "20261118T120005,919590",
+                    "lt": "20261118T120005,919590",
+                    "et": "20311117T120005,919972"
+                  }
+                },
+                "http_status": 201
+              }
+            },
+            "policies": {
+              "state": {
+                "rsc": 2001,
+                "rqi": "opensoom-860e79fd8c5a44159e9d64036cbdb7bb",
+                "body": {
+                  "m2m:acp": {
+                    "rn": "ho6dbcd9ef97-state-policy",
+                    "pv": {
+                      "acr": [
+                        {
+                          "acor": [
+                            "CAdmin"
+                          ],
+                          "acop": 63
+                        },
+                        {
+                          "acor": [
+                            "Chocaa17892096e3f6fda"
+                          ],
+                          "acop": 35
+                        }
+                      ]
+                    },
+                    "pvs": {
+                      "acr": [
+                        {
+                          "acor": [
+                            "CAdmin"
+                          ],
+                          "acop": 63
+                        }
+                      ]
+                    },
+                    "pi": "opensoom-ho-b-6dbcd9ef97",
+                    "ri": "acpvwh7p2UaUT",
+                    "ty": 1,
+                    "ct": "20261118T120005,921640",
+                    "lt": "20261118T120005,921640",
+                    "et": "20311117T120005,921895"
+                  }
+                },
+                "http_status": 201
+              },
+              "observations": {
+                "rsc": 2001,
+                "rqi": "opensoom-4c76246f8ed749388b33f1af480ad1dc",
+                "body": {
+                  "m2m:acp": {
+                    "rn": "ho6dbcd9ef97-observations-policy",
+                    "pv": {
+                      "acr": [
+                        {
+                          "acor": [
+                            "CAdmin"
+                          ],
+                          "acop": 63
+                        },
+                        {
+                          "acor": [
+                            "Chocaa17892096e3f6fda"
+                          ],
+                          "acop": 34
+                        },
+                        {
+                          "acor": [
+                            "Cho787126d7b22f99a4e6"
+                          ],
+                          "acop": 35
+                        },
+                        {
+                          "acor": [
+                            "Chof3744a738e15123ca6"
+                          ],
+                          "acop": 34
+                        }
+                      ]
+                    },
+                    "pvs": {
+                      "acr": [
+                        {
+                          "acor": [
+                            "CAdmin"
+                          ],
+                          "acop": 63
+                        }
+                      ]
+                    },
+                    "pi": "opensoom-ho-b-6dbcd9ef97",
+                    "ri": "acpoTZ1KdKxYx",
+                    "ty": 1,
+                    "ct": "20261118T120005,923708",
+                    "lt": "20261118T120005,923708",
+                    "et": "20311117T120005,923955"
+                  }
+                },
+                "http_status": 201
+              },
+              "commands": {
+                "rsc": 2001,
+                "rqi": "opensoom-812d0ac8772240d3953e6748a3bc7cf5",
+                "body": {
+                  "m2m:acp": {
+                    "rn": "ho6dbcd9ef97-commands-policy",
+                    "pv": {
+                      "acr": [
+                        {
+                          "acor": [
+                            "CAdmin"
+                          ],
+                          "acop": 63
+                        },
+                        {
+                          "acor": [
+                            "Chocaa17892096e3f6fda"
+                          ],
+                          "acop": 35
+                        },
+                        {
+                          "acor": [
+                            "Cho787126d7b22f99a4e6"
+                          ],
+                          "acop": 34
+                        },
+                        {
+                          "acor": [
+                            "Chof3744a738e15123ca6"
+                          ],
+                          "acop": 34
+                        }
+                      ]
+                    },
+                    "pvs": {
+                      "acr": [
+                        {
+                          "acor": [
+                            "CAdmin"
+                          ],
+                          "acop": 63
+                        }
+                      ]
+                    },
+                    "pi": "opensoom-ho-b-6dbcd9ef97",
+                    "ri": "acpVRytNnuK1x",
+                    "ty": 1,
+                    "ct": "20261118T120005,925624",
+                    "lt": "20261118T120005,925624",
+                    "et": "20311117T120005,925851"
+                  }
+                },
+                "http_status": 201
+              },
+              "acks": {
+                "rsc": 2001,
+                "rqi": "opensoom-c9b441f1f4d94d04be8f2b4d4ddc0d61",
+                "body": {
+                  "m2m:acp": {
+                    "rn": "ho6dbcd9ef97-acks-policy",
+                    "pv": {
+                      "acr": [
+                        {
+                          "acor": [
+                            "CAdmin"
+                          ],
+                          "acop": 63
+                        },
+                        {
+                          "acor": [
+                            "Chocaa17892096e3f6fda"
+                          ],
+                          "acop": 34
+                        },
+                        {
+                          "acor": [
+                            "Cho787126d7b22f99a4e6"
+                          ],
+                          "acop": 35
+                        },
+                        {
+                          "acor": [
+                            "Chof3744a738e15123ca6"
+                          ],
+                          "acop": 34
+                        }
+                      ]
+                    },
+                    "pvs": {
+                      "acr": [
+                        {
+                          "acor": [
+                            "CAdmin"
+                          ],
+                          "acop": 63
+                        }
+                      ]
+                    },
+                    "pi": "opensoom-ho-b-6dbcd9ef97",
+                    "ri": "acpXy1Dii0kpq",
+                    "ty": 1,
+                    "ct": "20261118T120005,927517",
+                    "lt": "20261118T120005,927517",
+                    "et": "20311117T120005,927744"
+                  }
+                },
+                "http_status": 201
+              }
+            },
+            "subscription": {
+              "rsc": 2001,
+              "rqi": "opensoom-55df82660131452a9f8deab0d693878f",
+              "body": {
+                "m2m:sub": {
+                  "rn": "diagnosis",
+                  "nu": [
+                    "http://127.0.0.1:55214/notify"
+                  ],
+                  "enc": {
+                    "net": [
+                      3
+                    ]
+                  },
+                  "nct": 1,
+                  "pi": "cntKsdPdb1bS6",
+                  "ri": "sub8sGlZIxJzy",
+                  "ty": 23,
+                  "ct": "20261118T120005,939231",
+                  "lt": "20261118T120005,939231",
+                  "et": "20311117T120005,916238"
+                }
+              },
+              "http_status": 201
+            },
+            "root": "cse-ho-b/ho6dbcd9ef97-controller"
+          },
+          "prepared_readbacks": {
+            "state": {
+              "rsc": 2000,
+              "rqi": "opensoom-2ade4ad4c2234d75a357b88b733876d6",
+              "body": {
+                "m2m:cin": {
+                  "rn": "restored-state-e2",
+                  "con": "{\"facility_id\": \"maintenance-demo\", \"profile_id\": \"food-production-maintenance\", \"profile_version\": 1, \"command_ttl_seconds\": 60, \"last_sequence\": 3, \"last_observation\": {\"facility_id\": \"maintenance-demo\", \"sequence\": 3, \"observed_at\": \"2026-11-18T12:00:05.764+00:00\", \"airflow_m3_h\": 360, \"fan_running\": true, \"simulated\": true}, \"incident\": {\"id\": \"incident-handover-6dbcd9ef97\", \"status\": \"open\", \"reason\": \"Planned ventilation controller maintenance; diagnosis must continue\", \"created_at\": \"2026-11-18T12:00:05.703+00:00\"}, \"pending_command\": {\"command_id\": \"handover-6dbcd9ef97:pending\", \"facility_id\": \"maintenance-demo\", \"profile_version\": 1, \"action\": \"set_damper\", \"value\": 100.0, \"issued_at\": \"2026-11-18T12:00:05.775667+00:00\", \"expires_at\": \"2026-11-18T12:01:05.775396+00:00\", \"target\": \"B\", \"cse_id\": \"/opensoom-ho-b-6dbcd9ef97\", \"epoch\": 2, \"source_cse_id\": \"/opensoom-ho-b-6dbcd9ef97\"}, \"simulated\": true}",
+                  "cnf": "application/json:0",
+                  "cs": 921,
+                  "pi": "cnt3fFcfnBIg9",
+                  "ri": "cinJ2Rh1OTdxZ",
+                  "ty": 4,
+                  "ct": "20261118T120005,947514",
+                  "lt": "20261118T120005,947514",
+                  "et": "20311117T120005,916238",
+                  "st": 1
+                }
+              },
+              "http_status": 200
+            },
+            "incident": {
+              "rsc": 2000,
+              "rqi": "opensoom-2f323fec903b46cc8f4599c8bbe2384c",
+              "body": {
+                "m2m:cin": {
+                  "rn": "restored-incident-e2",
+                  "con": "{\"id\": \"incident-handover-6dbcd9ef97\", \"status\": \"open\", \"reason\": \"Planned ventilation controller maintenance; diagnosis must continue\", \"created_at\": \"2026-11-18T12:00:05.703+00:00\"}",
+                  "cnf": "application/json:0",
+                  "cs": 184,
+                  "pi": "cntgRQ3M7YHqQ",
+                  "ri": "cinMesIDFQJ0F",
+                  "ty": 4,
+                  "ct": "20261118T120005,951222",
+                  "lt": "20261118T120005,951222",
+                  "et": "20311117T120005,916238",
+                  "st": 1
+                }
+              },
+              "http_status": 200
+            },
+            "observations": {
+              "rsc": 2000,
+              "rqi": "opensoom-6b75917dce0b4c9a93cf1849943b235c",
+              "body": {
+                "m2m:cin": {
+                  "rn": "restored-observations-e2",
+                  "con": "{\"facility_id\": \"maintenance-demo\", \"sequence\": 3, \"observed_at\": \"2026-11-18T12:00:05.764+00:00\", \"airflow_m3_h\": 360, \"fan_running\": true, \"simulated\": true}",
+                  "cnf": "application/json:0",
+                  "cs": 159,
+                  "pi": "cntKsdPdb1bS6",
+                  "ri": "cin73FaB2FLGw",
+                  "ty": 4,
+                  "ct": "20261118T120005,954449",
+                  "lt": "20261118T120005,954449",
+                  "et": "20311117T120005,916238",
+                  "st": 1
+                }
+              },
+              "http_status": 200
+            },
+            "commands": {
+              "rsc": 2000,
+              "rqi": "opensoom-7943c97b48e14683a1666920d74d120b",
+              "body": {
+                "m2m:cin": {
+                  "rn": "restored-commands-e2",
+                  "con": "{\"command_id\": \"handover-6dbcd9ef97:pending\", \"facility_id\": \"maintenance-demo\", \"profile_version\": 1, \"action\": \"set_damper\", \"value\": 100.0, \"issued_at\": \"2026-11-18T12:00:05.775667+00:00\", \"expires_at\": \"2026-11-18T12:01:05.775396+00:00\", \"target\": \"B\", \"cse_id\": \"/opensoom-ho-b-6dbcd9ef97\", \"epoch\": 2, \"source_cse_id\": \"/opensoom-ho-b-6dbcd9ef97\"}",
+                  "cnf": "application/json:0",
+                  "cs": 353,
+                  "pi": "cntjafcPS4EcG",
+                  "ri": "cinoYCUvmU6BB",
+                  "ty": 4,
+                  "ct": "20261118T120005,959020",
+                  "lt": "20261118T120005,959020",
+                  "et": "20311117T120005,916238",
+                  "st": 1
+                }
+              },
+              "http_status": 200
+            }
+          },
+          "resumed_after_failures": 0
+        }
+      ],
+      "stable_logical_url": "http://127.0.0.1:55214/facility/maintenance-demo",
+      "attempts": [
+        {
+          "at": "2026-11-18T12:00:05.799+00:00",
+          "status": 503,
+          "health": "transport_failure"
+        },
+        {
+          "at": "2026-11-18T12:00:05.965+00:00",
+          "status": 200,
+          "health": "serving_cse_changed"
+        }
+      ],
+      "last_success_A_at": "2026-11-18T12:00:05.792+00:00",
+      "source_stop_requested_at": "2026-11-18T12:00:05.792+00:00",
+      "first_success_B_at": "2026-11-18T12:00:05.965+00:00",
+      "observed_read_interruption_seconds": 0.173037,
+      "measure": "Time from the last successful A-backed stable endpoint read to its first successful B-backed read, including stop and rebuild; one run, not an SLA."
+    },
+    "stale_source_command_fenced": {
+      "status": "rejected",
+      "code": "stale_authority",
+      "command_id": "handover-6dbcd9ef97:pending"
+    },
+    "old_source_cannot_claim_new_epoch": {
+      "status": "rejected",
+      "code": "stale_authority",
+      "command_id": "handover-6dbcd9ef97:pending"
+    },
+    "target_pending_command_deduped": {
+      "actual_command_read": {
+        "rsc": 2000,
+        "rqi": "opensoom-ffb3d6be085a444491d4abb9fef2058e",
+        "body": {
+          "m2m:cin": {
+            "rn": "restored-commands-e2",
+            "con": "{\"command_id\": \"handover-6dbcd9ef97:pending\", \"facility_id\": \"maintenance-demo\", \"profile_version\": 1, \"action\": \"set_damper\", \"value\": 100.0, \"issued_at\": \"2026-11-18T12:00:05.775667+00:00\", \"expires_at\": \"2026-11-18T12:01:05.775396+00:00\", \"target\": \"B\", \"cse_id\": \"/opensoom-ho-b-6dbcd9ef97\", \"epoch\": 2, \"source_cse_id\": \"/opensoom-ho-b-6dbcd9ef97\"}",
+            "cnf": "application/json:0",
+            "cs": 353,
+            "pi": "cntjafcPS4EcG",
+            "ri": "cinoYCUvmU6BB",
+            "ty": 4,
+            "ct": "20261118T120005,959020",
+            "lt": "20261118T120005,959020",
+            "et": "20311117T120005,916238",
+            "st": 1
+          }
+        },
+        "http_status": 200
+      },
+      "first": {
+        "status": "applied",
+        "command_id": "handover-6dbcd9ef97:pending",
+        "applied_at": "2026-11-18T12:00:05.968+00:00",
+        "epoch": 2,
+        "target": "B",
+        "damper_pct": 100.0,
+        "simulated": true
+      },
+      "after_reopened_database": {
+        "status": "duplicate",
+        "command_id": "handover-6dbcd9ef97:pending",
+        "applied_at": "2026-11-18T12:00:05.968+00:00",
+        "epoch": 2,
+        "target": "B",
+        "damper_pct": 100.0,
+        "simulated": true,
+        "applied_again": false
+      },
+      "execution_count": 1,
+      "ack_read": {
+        "rsc": 2000,
+        "rqi": "opensoom-234cffaaecd4466891131f7d57563360",
+        "body": {
+          "m2m:cin": {
+            "rn": "ack-374c8bd8d58d0d9b88f5",
+            "con": "{\"status\": \"applied\", \"command_id\": \"handover-6dbcd9ef97:pending\", \"applied_at\": \"2026-11-18T12:00:05.968+00:00\", \"epoch\": 2, \"target\": \"B\", \"damper_pct\": 100.0, \"simulated\": true}",
+            "cnf": "application/json:0",
+            "cs": 180,
+            "pi": "cntqdVnpsgnaM",
+            "ri": "cinVmXmhfgqlY",
+            "ty": 4,
+            "ct": "20261118T120005,969372",
+            "lt": "20261118T120005,969372",
+            "et": "20311117T120005,916238",
+            "st": 1
+          }
+        },
+        "http_status": 200
+      }
+    },
+    "rebuilt_target_acp_denied_writer": {
+      "rsc": 4103,
+      "rqi": "opensoom-d7ae92185bc54c3ebe246fa1687984ba",
+      "body": {
+        "m2m:dbg": "originator: Chof3744a738e15123ca6 has no CREATE privileges for resource: cntjafcPS4EcG"
+      },
+      "http_status": 403
+    },
+    "old_cse_controller_not_authorized_at_target": {
+      "rsc": 4103,
+      "rqi": "opensoom-076bfcc8b14a42dda5db0df363bd36e7",
+      "body": {
+        "m2m:dbg": "originator: Cho79d3859581e8d6b79f has no CREATE privileges for resource: cntjafcPS4EcG"
+      },
+      "http_status": 403
+    },
+    "post_switch_native_subscription": {
+      "at": "2026-11-18T12:00:06.059+00:00",
+      "authority": {
+        "target": "B",
+        "cse_id": "/opensoom-ho-b-6dbcd9ef97",
+        "epoch": 2
+      },
+      "callback": {
+        "at": "2026-11-18T12:00:06.049+00:00",
+        "rqi": "dQbcphWDcX",
+        "body": {
+          "m2m:sgn": {
+            "nev": {
+              "net": 3,
+              "rep": {
+                "m2m:cin": {
+                  "con": "{\"facility_id\": \"maintenance-demo\", \"sequence\": 4, \"observed_at\": \"2026-11-18T12:00:06.045+00:00\", \"airflow_m3_h\": 365, \"fan_running\": true, \"simulated\": true}",
+                  "cnf": "application/json:0",
+                  "cs": 159,
+                  "pi": "cntKsdPdb1bS6",
+                  "ri": "cinZSzLeizwk6",
+                  "rn": "cin_MK9Ty3ny1u",
+                  "ty": 4,
+                  "ct": "20261118T120006,046432",
+                  "lt": "20261118T120006,046432",
+                  "et": "20311117T120005,916238",
+                  "st": 2
+                }
+              }
+            },
+            "sur": "/opensoom-ho-b-6dbcd9ef97/sub8sGlZIxJzy"
+          }
+        }
+      },
+      "authoritative_read": {
+        "rsc": 2000,
+        "rqi": "opensoom-9138c9c99129469cb91d87e81c22bf7e",
+        "body": {
+          "m2m:cin": {
+            "con": "{\"facility_id\": \"maintenance-demo\", \"sequence\": 4, \"observed_at\": \"2026-11-18T12:00:06.045+00:00\", \"airflow_m3_h\": 365, \"fan_running\": true, \"simulated\": true}",
+            "cnf": "application/json:0",
+            "cs": 159,
+            "pi": "cntKsdPdb1bS6",
+            "ri": "cinZSzLeizwk6",
+            "rn": "cin_MK9Ty3ny1u",
+            "ty": 4,
+            "ct": "20261118T120006,046432",
+            "lt": "20261118T120006,046432",
+            "et": "20311117T120005,916238",
+            "st": 2
+          }
+        },
+        "http_status": 200
+      },
+      "sequence": 4
+    },
+    "native_subscription_verification_callbacks": [
+      {
+        "at": "2026-11-18T12:00:05.735+00:00",
+        "rqi": "iyCFVjXKCd",
+        "body": {
+          "m2m:sgn": {
+            "vrq": true,
+            "sur": "/opensoom-ho-a-6dbcd9ef97/subOJ1ydwXU2R",
+            "cr": "CAdmin"
+          }
+        }
+      },
+      {
+        "at": "2026-11-18T12:00:05.945+00:00",
+        "rqi": "qj0Qtedde8",
+        "body": {
+          "m2m:sgn": {
+            "vrq": true,
+            "sur": "/opensoom-ho-b-6dbcd9ef97/sub8sGlZIxJzy",
+            "cr": "CAdmin"
+          }
+        }
+      }
+    ],
+    "observation_sequence": {
+      "injected": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "accepted_from_native_callbacks": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "meaning": "Four discrete injected samples, no missing injected sample. Not an asynchronous packet-loss or complete-history-replication claim."
+    }
+  },
+  "limitations": [
+    "Two independent ACME IN-CSE processes on one host, using loopback HTTP and trusted claimed AE origins.",
+    "Application-managed logical endpoint routing and new CSE-local AE mapping; not native AE-ID registration mobility.",
+    "Controller and virtual device share one durable local SQLite authority/dedupe database; not distributed consensus or node-failure HA.",
+    "Privileged provisioning rebuilds scoped ACPs and native subscriptions; ordinary operations use their registered role origins.",
+    "No MEC hosting, MEC services, VM/process migration, physical ventilation or health outcome."
+  ],
+  "cse_version": "2026.5.3",
+  "source_sha256_after": {
+    "src/opensoom/handover.py": "c5b0a07fb7ff3e2845992e26200de8bd84463f37e286f5ad121fe353302f745c",
+    "src/opensoom/onem2m.py": "c4edcf610b9c82266d222dc63b69869cbd62000478405cdcd98f44178b0b123e",
+    "scripts/cse_handover_demo.py": "d6a771af8ed36f4e8884e2794206fb5c1dd15f4ed3fdd40562806654cbc3b18d",
+    "deploy/acme-single.ini": "d7a97bf87dee84edff1b9dd2bff0ef21d4c1f96469f76bacd82f202f8abcccd5"
+  },
+  "request_traces": {
+    "A": {
+      "path": "tmp/handover-independent-final/handover-6dbcd9ef97-A-requests.jsonl",
+      "sha256": "05212c584e8a2499fd15d37a246a57b90e5a170ba120e7a29389d3cffabc7b4a",
+      "records": 107
+    },
+    "B": {
+      "path": "tmp/handover-independent-final/handover-6dbcd9ef97-B-requests.jsonl",
+      "sha256": "aad685e3ee8b16fca4f4a1448b6fae43a0adc8e671b321dfa3e29feaccdc66eb",
+      "records": 39
+    }
+  },
+  "result": "PASS_REAL_SERVING_CSE_MAINTENANCE_HANDOVER",
+  "cleanup": {
+    "owned_children_exited": true,
+    "temporary_cse_directories_removed": true,
+    "existing_process_records_unchanged": true,
+    "ports": [
+      55238,
+      55239
+    ],
+    "listeners_closed": [
+      {
+        "port": 55238,
+        "closed": true
+      },
+      {
+        "port": 55239,
+        "closed": true
+      },
+      {
+        "port": 55214,
+        "closed": true
+      }
+    ]
+  },
+  "completed_at": "2026-11-18T12:00:06.553+00:00"
+}

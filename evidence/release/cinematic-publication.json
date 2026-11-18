@@ -1,0 +1,205 @@
+{
+  "verified_at": "2026-11-18T11:40:58.030429+00:00",
+  "repository": "https://github.com/openSoom/openSoom",
+  "release_revision": "c7d068e4992b1c0adca7c81c1c0011cd6c828062",
+  "authentication": "Anonymous HTTPS, without credentials or session cookies.",
+  "checks": [
+    {
+      "url": "https://github.com/openSoom/openSoom",
+      "http_status": 200
+    },
+    {
+      "url": "https://github.com/openSoom/openSoom/blob/main/LICENSE",
+      "http_status": 200
+    },
+    {
+      "url": "https://github.com/openSoom/openSoom/blob/main/LICENSE-DOCS.md",
+      "http_status": 200
+    },
+    {
+      "url": "https://github.com/openSoom/openSoom/blob/main/THIRD_PARTY_NOTICES.md",
+      "http_status": 200
+    },
+    {
+      "url": "https://github.com/openSoom/openSoom/blob/main/deploy/README.md",
+      "http_status": 200
+    },
+    {
+      "url": "https://github.com/openSoom/openSoom/blob/main/docs/agent-integration.md",
+      "http_status": 200
+    },
+    {
+      "url": "https://github.com/openSoom/openSoom/blob/main/docs/architecture.md",
+      "http_status": 200
+    },
+    {
+      "url": "https://github.com/openSoom/openSoom/blob/main/docs/extending.md",
+      "http_status": 200
+    },
+    {
+      "url": "https://github.com/openSoom/openSoom/blob/main/docs/extension-decisions.md",
+      "http_status": 200
+    },
+    {
+      "url": "https://github.com/openSoom/openSoom/blob/main/docs/multi-application-scenario.md",
+      "http_status": 200
+    },
+    {
+      "url": "https://github.com/openSoom/openSoom/blob/main/docs/review/review-ledger.json",
+      "http_status": 200
+    },
+    {
+      "url": "https://github.com/openSoom/openSoom/blob/main/docs/standard-model.md",
+      "http_status": 200
+    },
+    {
+      "url": "https://github.com/openSoom/openSoom/blob/main/evidence/agent/index.json",
+      "http_status": 200
+    },
+    {
+      "url": "https://github.com/openSoom/openSoom/blob/main/evidence/agent/release-live-recovery.json",
+      "http_status": 200
+    },
+    {
+      "url": "https://github.com/openSoom/openSoom/blob/main/evidence/agent/semantics-mcp-capture.json",
+      "http_status": 200
+    },
+    {
+      "url": "https://github.com/openSoom/openSoom/blob/main/evidence/agent/units-live.json",
+      "http_status": 200
+    },
+    {
+      "url": "https://github.com/openSoom/openSoom/blob/main/evidence/application/release-acceptance.json",
+      "http_status": 200
+    },
+    {
+      "url": "https://github.com/openSoom/openSoom/blob/main/evidence/release/final-clean-lifecycle.json",
+      "http_status": 200
+    },
+    {
+      "url": "https://github.com/openSoom/openSoom/blob/main/evidence/runtime/multiapp-revalidation/index.json",
+      "http_status": 200
+    },
+    {
+      "url": "https://github.com/openSoom/openSoom/blob/main/evidence/runtime/product-multisite-continuity.json",
+      "http_status": 200
+    },
+    {
+      "url": "https://github.com/openSoom/openSoom/blob/main/evidence/video/cinematic/dashboard-recordings.json",
+      "http_status": 200
+    },
+    {
+      "url": "https://github.com/openSoom/openSoom/raw/refs/heads/main/deliverables/video/openSoom-demo-5min.mp4",
+      "http_status": 200,
+      "path": "deliverables/video/openSoom-demo-5min.mp4",
+      "bytes": 23331960,
+      "sha256": "c47b134ce2202c57a6089cad7a262eb0e16927e69e58af9593c95dcc7b2158ab"
+    },
+    {
+      "url": "https://github.com/openSoom/openSoom/raw/refs/heads/main/deliverables/video/openSoom-pr-45s.mp4",
+      "http_status": 200,
+      "path": "deliverables/video/openSoom-pr-45s.mp4",
+      "bytes": 13897316,
+      "sha256": "7cd91a052221c4c54baccf7560bda93cb595b905c8aeab0c7d3e441051220960"
+    },
+    {
+      "url": "https://github.com/openSoom/openSoom/tree/main/evidence/runtime",
+      "http_status": 200
+    },
+    {
+      "url": "https://github.com/openSoom/openSoom/tree/main/evidence/runtime/multiapp",
+      "http_status": 200
+    },
+    {
+      "url": "https://raw.githubusercontent.com/openSoom/openSoom/1e525fe2dfe1afe8ed6fc4391c1a060513c5e879/evidence/dashboard/visual-upgrade-desktop-unresolved.jpg",
+      "http_status": 200,
+      "path": "evidence/dashboard/visual-upgrade-desktop-unresolved.jpg",
+      "bytes": 101037,
+      "sha256": "170669d715b6f004d5ef69ae0d4294c7201e5c6a1d7eac3836b1a30df13433b2"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/openSoom/openSoom/1e525fe2dfe1afe8ed6fc4391c1a060513c5e879/evidence/pitch/architecture-release-desktop.jpg",
+      "http_status": 200,
+      "path": "evidence/pitch/architecture-release-desktop.jpg",
+      "bytes": 140427,
+      "sha256": "ec9f207ae4c55555fdf4d93c2a2a720bec466ca3069c6d812f14364f874b22d8"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/openSoom/openSoom/c7d068e4992b1c0adca7c81c1c0011cd6c828062/docs/submission/hackster-article.md",
+      "http_status": 200,
+      "path": "docs/submission/hackster-article.md",
+      "bytes": 21380,
+      "sha256": "63edb6d121fb8578a43e14da3e2376d200184a4feaa9fa45fbc6f25b4957dd1b"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/openSoom/openSoom/c7d068e4992b1c0adca7c81c1c0011cd6c828062/docs/multi-application-scenario.md",
+      "http_status": 200,
+      "path": "docs/multi-application-scenario.md",
+      "bytes": 8965,
+      "sha256": "285e0c75c3d3205af8b950a6821d975795943edf6f1bead2390ea505edc02c81"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/openSoom/openSoom/c7d068e4992b1c0adca7c81c1c0011cd6c828062/src/opensoom/multiapp.py",
+      "http_status": 200,
+      "path": "src/opensoom/multiapp.py",
+      "bytes": 19993,
+      "sha256": "f98d90fae2525f6dbf512a6439506367a7c1ba722b35f7f1f9ba833e3087aad2"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/openSoom/openSoom/c7d068e4992b1c0adca7c81c1c0011cd6c828062/evidence/runtime/multiapp/index.json",
+      "http_status": 200,
+      "path": "evidence/runtime/multiapp/index.json",
+      "bytes": 8077,
+      "sha256": "1a971c9915d4725ee76e3f4a4e23a24ed18928f2e1ac4d3bebef2074fef2f25c"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/openSoom/openSoom/c7d068e4992b1c0adca7c81c1c0011cd6c828062/evidence/runtime/multiapp-revalidation/index.json",
+      "http_status": 200,
+      "path": "evidence/runtime/multiapp-revalidation/index.json",
+      "bytes": 8077,
+      "sha256": "483f24e1529d90fafe44439e803791301c053964ca39a0f1b7b76fce8e8784ac"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/openSoom/openSoom/c7d068e4992b1c0adca7c81c1c0011cd6c828062/evidence/video/cinematic/pr-qa.json",
+      "http_status": 200,
+      "path": "evidence/video/cinematic/pr-qa.json",
+      "bytes": 5485,
+      "sha256": "2f2501a71b244340da99aa05688989b83fb164411e4c533e10c9c490149b77f5"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/openSoom/openSoom/c7d068e4992b1c0adca7c81c1c0011cd6c828062/evidence/video/cinematic/demo-qa.json",
+      "http_status": 200,
+      "path": "evidence/video/cinematic/demo-qa.json",
+      "bytes": 8090,
+      "sha256": "b6655fd79eca3ab7352c8913f792d8af7a62de2fa7e01eb97e9dcbe2562bf2bd"
+    }
+  ],
+  "external_status": "Hackster posting and its in-page video playback remain pending.",
+  "purpose": "Public downloads for the initial cinematic release. The two encoded masters remain the same in the follow-up CSE maintenance experiment.",
+  "local_browser_readback": {
+    "surface": "Google Chrome local-file native video, headless Playwright",
+    "films": [
+      {
+        "name": "pr",
+        "duration_seconds": 45,
+        "evidence_scene_seconds": 13,
+        "closing_scene_seconds": 38.5,
+        "selectable_english_cues": 10
+      },
+      {
+        "name": "demo",
+        "duration_seconds": 300,
+        "evidence_scene_seconds": 145,
+        "closing_scene_seconds": 286,
+        "english_captions": "burned in"
+      },
+      {
+        "name": "earlier",
+        "duration_seconds": 108.021333,
+        "evidence_scene_seconds": 50,
+        "closing_scene_seconds": 100
+      }
+    ],
+    "observations": "Each selector loaded its own metadata, played and paused at the expected scene. The PR preview exposes a WebVTT track for browsers that omit embedded MP4 text tracks. On the local-file entry Chrome loaded all ten cues."
+  }
+}

@@ -681,6 +681,15 @@
         "docs/review/cinematic-team3.md",
         "docs/review/cinematic-team4.md"
       ]
+    },
+    {
+      "id": "planned-serving-cse-maintenance",
+      "scope": "Application-managed single-host CSE maintenance transfer, state and least-privilege restoration, stale authority fencing, deduplication and retry during partial target restoration.",
+      "revision": "c5b0a07fb7ff3e2845992e26200de8bd84463f37e286f5ad121fe353302f745c",
+      "reports": [
+        "docs/review/cinematic-team4.md",
+        "docs/review/handover-independent.md"
+      ]
     }
   ],
   "next_actions": [],
@@ -1137,17 +1146,58 @@
       "id": "cse_handover",
       "criterion": 12,
       "parent_gate": "S4-G4",
-      "decision": "deferred",
-      "reason": "Fixed facilities require tested central-outage local continuity now; no serving-CSE transition implemented. Reopen for justified gateway maintenance/failure with identity/state/subscription/ACP restoration and measured loss.",
-      "status": "deferred",
-      "gate_ids": [],
-      "gates": [],
-      "environment": "No authenticated MEC environment; local CSE test only",
-      "evidence": [
-        "docs/extension-decisions.md",
-        "evidence/stage0/mec-feasibility.json"
+      "decision": "adopted",
+      "reason": "Serving-CSE maintenance while a virtual-device command and incident remain pending.",
+      "status": "passed",
+      "gate_ids": [
+        "HO-G1",
+        "HO-G2",
+        "HO-G3"
       ],
-      "review_ref": "docs/review/final-closeout-team4.json",
+      "gates": [
+        {
+          "id": "HO-G1",
+          "criterion": "Automatic A to B transition after availability probes and measured interruption",
+          "status": "passed",
+          "evidence": [
+            "evidence/runtime/handover/acceptance.json",
+            "tests/test_handover.py"
+          ],
+          "reviews": [
+            "docs/review/handover-independent.md"
+          ]
+        },
+        {
+          "id": "HO-G2",
+          "criterion": "Logical facility, state, subscriptions and scoped access restored at B",
+          "status": "passed",
+          "evidence": [
+            "evidence/runtime/handover/acceptance.json",
+            "tests/test_handover.py"
+          ],
+          "reviews": [
+            "docs/review/handover-independent.md"
+          ]
+        },
+        {
+          "id": "HO-G3",
+          "criterion": "Reject stale source and replay, handle partial target writes and act once on the virtual device",
+          "status": "passed",
+          "evidence": [
+            "evidence/runtime/handover/acceptance.json",
+            "tests/test_handover.py"
+          ],
+          "reviews": [
+            "docs/review/handover-independent.md"
+          ]
+        }
+      ],
+      "environment": "Two independent ACME 2026.5.3 loopback HTTP CSEs on one host, trusted clients and local durable authority.",
+      "evidence": [
+        "docs/handover.md",
+        "evidence/runtime/handover/acceptance.json"
+      ],
+      "review_ref": "docs/review/handover-independent.md",
       "decision_history": [
         {
           "date": "2026-11-18",
@@ -1155,6 +1205,13 @@
           "decision": "defer",
           "basis": "docs/extension-decisions.md",
           "review": "docs/review/implementation-team4.json"
+        },
+        {
+          "date": "2026-11-18",
+          "previous_decision": "deferred",
+          "decision": "adopt",
+          "basis": "docs/handover.md",
+          "review": "docs/review/handover-independent.md"
         }
       ],
       "completion_rule": "An adopted extension requires nonempty individually identified child gates with passed evidence/review. Reviewed deferral excludes only the extension, retaining earlier adoption/failure records."
@@ -1268,8 +1325,8 @@
     {
       "id": "hackster_article",
       "path": "docs/submission/hackster-article.md",
-      "sha256": "8aa3a6176d1a2959003780d060260b7259353cd28c32b85528ce1b029357c51d",
-      "source_revision": "fd5e648fa1c74e425507a98247844be150265acb",
+      "sha256": "88782f3a564b8c64c710acedb60f6341be1ff8c1ecacbb8b68523e40513a372b",
+      "source_revision": "Mixed frozen source and run IDs identified in the article; see cinematic_release and the independent handover review.",
       "run_ids": [
         "agent-379720ef883c",
         "agent-479f866b7e84"
@@ -1277,9 +1334,8 @@
       "artifact_status": "independently_reviewed",
       "publication_status": "available_in_public_repository",
       "public_url": "https://github.com/openSoom/openSoom/blob/main/docs/submission/hackster-article.md",
-      "provenance": "Artifact is prepared alongside code; cited execution IDs retain their original source scope.",
-      "artifact_manifest": "evidence/release/artifacts.json",
-      "release_candidate_revision": "ca10412ed1da62b92684e8163c2b6d092f450a5f",
+      "provenance": "Current English article with two encoded masters, both independent applications, and a separate maintenance-transfer addendum.",
+      "artifact_manifest": "evidence/release/cinematic-publication.json",
       "external_publication_status": "Hackster draft; no article post or public Hackster URL"
     },
     {
@@ -1297,7 +1353,8 @@
       "provenance": "evidence/video/asset-provenance.json",
       "artifact_manifest": "evidence/release/artifacts.json",
       "release_candidate_revision": "ca10412ed1da62b92684e8163c2b6d092f450a5f",
-      "external_publication_status": "Downloadable repository MP4; no separate video-host upload"
+      "external_publication_status": "Downloadable repository MP4; no separate video-host upload",
+      "usage": "Earlier 108-second archive. The current 45-second PR and 300-second evaluation masters have separate records."
     },
     {
       "id": "presentation_and_qa",
@@ -1335,6 +1392,26 @@
       "public_url": "https://github.com/openSoom/openSoom/blob/main/docs/project-guide.ko.md",
       "artifact_manifest": "evidence/release/artifacts.json",
       "release_candidate_revision": "ca10412ed1da62b92684e8163c2b6d092f450a5f"
+    },
+    {
+      "id": "cinematic_pr",
+      "path": "deliverables/video/openSoom-pr-45s.mp4",
+      "sha256": "7cd91a052221c4c54baccf7560bda93cb595b905c8aeab0c7d3e441051220960",
+      "duration_seconds": 45,
+      "publication_status": "available_in_public_repository",
+      "artifact_status": "independently_reviewed",
+      "public_url": "https://github.com/openSoom/openSoom/raw/refs/heads/main/deliverables/video/openSoom-pr-45s.mp4",
+      "artifact_manifest": "evidence/video/cinematic/pr-qa.json"
+    },
+    {
+      "id": "cinematic_demo",
+      "path": "deliverables/video/openSoom-demo-5min.mp4",
+      "sha256": "c47b134ce2202c57a6089cad7a262eb0e16927e69e58af9593c95dcc7b2158ab",
+      "duration_seconds": 300,
+      "publication_status": "available_in_public_repository",
+      "artifact_status": "independently_reviewed",
+      "public_url": "https://github.com/openSoom/openSoom/raw/refs/heads/main/deliverables/video/openSoom-demo-5min.mp4",
+      "artifact_manifest": "evidence/video/cinematic/demo-qa.json"
     }
   ],
   "publication_preflight": {
@@ -1356,7 +1433,7 @@
   },
   "cinematic_release": {
     "date": "2026-11-18",
-    "review_scope": "Nine criteria meet the internal Expert standard on this revision. Criterion 12 has its own subsequent review. See docs/hackathon/current-assessment.md for the latest verdict.",
+    "review_scope": "Ten Expert criteria in the internal declared scope. See docs/hackathon/current-assessment.md.",
     "original_multiapp_run": "ma-d1a54f066e",
     "corrected_multiapp_run": "ma-b9129cb90a",
     "article": "docs/submission/hackster-article.md",
@@ -1370,6 +1447,9 @@
       "evidence/video/cinematic/demo-qa.json"
     ],
     "cost_record": "evidence/video/cinematic/adobe-production.json",
-    "distribution": "GitHub is authorized. A public Hackster URL, actual backlink, team submission, schedule confirmation, slide upload and interview remain external handoff items."
+    "distribution": "GitHub is authorized. A public Hackster URL, actual backlink, team submission, schedule confirmation, slide upload and interview remain external handoff items.",
+    "maintenance_run": "handover-b6e82ef69f",
+    "maintenance_review": "docs/review/handover-independent.md",
+    "public_downloads": "evidence/release/cinematic-publication.json"
   }
 }

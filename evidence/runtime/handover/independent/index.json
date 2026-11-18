@@ -1,0 +1,26 @@
+{
+  "review": "docs/review/handover-independent.md",
+  "origin": "Independent reviewer reran the frozen implementation in two fresh pairs of ACME CSE processes. Files below are byte-for-byte copies from its private run directory. For the original trace path fields, use the archived basename in this directory.",
+  "runs": [
+    {
+      "case": "acceptance",
+      "run": "handover-6dbcd9ef97",
+      "observed_read_interruption_seconds": 0.173037,
+      "files": {
+        "handover-6dbcd9ef97.json": "9f7728f4c6683f37b4e920e3e5841e9d6e470a0395633a8bfcfdc805d3d5782a",
+        "handover-6dbcd9ef97-A-requests.jsonl": "05212c584e8a2499fd15d37a246a57b90e5a170ba120e7a29389d3cffabc7b4a",
+        "handover-6dbcd9ef97-B-requests.jsonl": "aad685e3ee8b16fca4f4a1448b6fae43a0adc8e671b321dfa3e29feaccdc66eb"
+      }
+    },
+    {
+      "case": "failure",
+      "run": "handover-0e9d59cb52",
+      "observed_read_interruption_seconds": 0.379308,
+      "files": {
+        "handover-0e9d59cb52.json": "36b9c005523e5ed03d699b5733f28dfd670ec16634b6acb6e1d1a9f5f7acfeee",
+        "handover-0e9d59cb52-A-requests.jsonl": "16935c54173494b818812192be706a70532f73ecdc67549f8ac9a3190ca758e2",
+        "handover-0e9d59cb52-B-requests.jsonl": "5f8782d1e12b38840e5406d52987b18437a7771b83d12387c4697f1d2d1b9b70"
+      }
+    }
+  ]
+}
