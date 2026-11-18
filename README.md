@@ -11,22 +11,73 @@
 <p align="center">
   <a href="https://github.com/openSoom/openSoom/raw/refs/heads/main/deliverables/video/openSoom-pr-45s.mp4">45-second introduction</a> ·
   <a href="https://github.com/openSoom/openSoom/raw/refs/heads/main/deliverables/video/openSoom-demo-5min.mp4">5-minute demo</a> ·
+  <a href="#follow-a-ventilation-incident">Workflow</a> ·
+  <a href="#why-onem2m-is-part-of-the-product">Architecture</a> ·
   <a href="#run-the-local-demo">Quickstart</a> ·
   <a href="CONTRIBUTING.md">Contribute</a> ·
   <a href="docs/project-guide.ko.md">한국어 안내</a>
 </p>
 
-A fan can be running while the room still gets too little airflow. openSoom compares each zone with its own target, requests an authorized adjustment, and checks fresh readings after acknowledgement against the facility’s recovery rule. When a device acknowledges the command but airflow stays low, the incident stays open for maintenance.
+A running fan can still leave a room below its airflow target. openSoom helps operators find the affected zone, authorize an adjustment and check the outcome against the facility's own targets. The dashboard, Codex plugin and standalone LLM runner share the same operations service.
 
-The dashboard, a Codex plugin and a standalone LLM runner share the same operations service. This hackathon prototype runs a real oneM2M Common Services Entity (CSE) with virtual sensors, dampers and fans. **You can run the demo locally without hardware or a model API key.**
+## Follow a ventilation incident
 
-![Learning-space dashboard showing an acknowledged damper command and airflow below the zone target](evidence/dashboard/visual-upgrade-desktop-unresolved.jpg)
+<picture>
+  <source media="(prefers-reduced-motion: reduce)" srcset="docs/assets/opensoom-dashboard-demo-poster.jpg">
+  <img src="docs/assets/opensoom-dashboard-demo.gif" width="840" alt="Actual dashboard run in a virtual cooking line. Airflow starts at 360 m³/h with a target of 900 m³/h. After the damper command and device acknowledgement, two fresh readings verify recovery at 1,035 m³/h.">
+</picture>
 
-*In this recorded simulation, the learning studio still delivers 200 m³/h against its configured target of 500 m³/h after the damper acknowledges the command.* [Inspect the recorded run](evidence/video/cinematic/dashboard-recordings.json)
+This excerpt follows the landing page’s **Observe → Authorize → Acknowledge → Verify** sequence. The dashboard runs against a real oneM2M CSE with virtual equipment. [Original screen recording](deliverables/video/cinematic/demo/food-session.webm) · [Run and command receipts](evidence/video/cinematic/dashboard-recordings.json)
+
+| What the device reported | What later readings showed |
+| --- | --- |
+| **Cooking line:** the device acknowledged the damper command | Airflow reached 1,035 m³/h. Two fresh readings verified recovery against the 900 m³/h target. |
+| **Learning studio:** the device also acknowledged the command | Airflow stayed at 200 m³/h against the 500 m³/h target. The incident stayed open. [Dashboard screenshot](evidence/dashboard/visual-upgrade-desktop-unresolved.jpg) |
+
+## Why oneM2M is part of the product
+
+School-kitchen inspections illustrate the problem. Yonhap reported that 17.9% of 301 upgraded schools in one ventilation assessment were still rated inadequate. openSoom uses that case to model a reusable operating workflow for food production, learning spaces and other ventilated facilities. Targets, permitted actions and recovery conditions belong to each facility profile. [Reporting](https://www.yna.co.kr/view/AKR20261010032900004) · [Ministry inspection](https://www.moel.go.kr/news/enews/report/enewsView.do?news_seq=18528)
+
+<picture>
+  <source media="(prefers-reduced-motion: reduce)" srcset="docs/assets/opensoom-landing-explorer-poster.jpg">
+  <img src="docs/assets/opensoom-landing-explorer.gif" width="680" alt="Recorded walkthrough of the landing page's three illustrated views: facility zones, the shared oneM2M layer, and two facilities during a central disconnection.">
+</picture>
+
+The landing page's 3D model moves from **the room** to **the shared layer** and then **across facilities**, where the local loop continues during a central disconnection. This animation illustrates the topology. [Launch the interactive landing page locally](pitch/README.md) · [Full architecture view](evidence/pitch/architecture-release-desktop.jpg)
+
+In the independent-app demo, the CSE notifies two applications about the same fault. Each reads the original observation under its own identity. **Operations** can issue a damper command and verify recovery. **Maintenance** creates an inspection order that remains open even after airflow recovers. The CSE enforces their different permissions. [Run the independent applications](docs/multi-application-scenario.md)
+
+| What the facility needs | What oneM2M provides |
+| --- | --- |
+| Find equipment and compare zones | Resource discovery and native group fan-out through `/fopt/la` |
+| Reuse one observation across applications | Subscriptions, a shared content-instance ID and separate application identities |
+| Give each application appropriate access | Access Control Policies (ACPs) for observation, command and work-order resources |
+| Read the same quantity from different vendors | A discoverable TS-0023 PM2.5 flexContainer exposes readings normalized by openSoom adapters |
+| Share selected resources across facilities | MN/IN registration, remote requests and selective announcements |
+
+The local demo works with a single facility. A separate three-CSE test demonstrates local control during a central outage. In another experiment, two same-host CSEs transfer service during planned maintenance and restore a pending command. [Architecture and resource tree](docs/architecture.md) · [Data model](docs/standard-model.md) · [Central outage evidence](evidence/runtime/product-multisite-continuity.json) · [Serving-CSE transfer](docs/handover.md)
+
+<details>
+<summary>System diagram</summary>
+
+```mermaid
+flowchart LR
+  Device[Virtual device or adapter] -->|Publish observation| CSE[oneM2M CSE]
+  CSE -->|Notify subscribers| Ops[Operations service]
+  Ops <-->|Read observation / write command / read ACK| CSE
+  Dashboard[Facility dashboard] --> Ops
+  Codex[Codex plugin] --> Tools[MCP tools]
+  LLM[Standalone LLM runner] --> Tools
+  Tools --> Ops
+```
+
+The protocol tests exercise native MQTT/TLS and HTTPS. The separate maintenance application and its work orders are shown in the [independent-app scenario](docs/multi-application-scenario.md).
+
+</details>
 
 ## Run the local demo
 
-The verified setup uses macOS on Apple Silicon, Python 3.12.12, Git, uv and OpenSSL. The first run downloads dependencies and uses local ports 8090, 8443 and 8883.
+The verified setup uses macOS on Apple Silicon, Python 3.12.12, Git, uv and OpenSSL. The first run downloads dependencies and uses local ports 8090, 8443 and 8883. The demo runs without hardware or a model API key.
 
 ```sh
 git clone https://github.com/openSoom/openSoom.git
@@ -66,40 +117,6 @@ To bring it back, run `python3 scripts/cse_bootstrap.py secure --skip-install`, 
 For startup failures, check `opensoom doctor`, `.runtime/service.log`, port availability and the named CSE runtime log. Use `uv run --no-sync opensoom cleanup` only when you intend to remove the operational database and scoped credentials. CSE data and the shared model-test budget are retained.
 
 The secure lab profile uses TLS for the CSE and broker. It trusts local clients and binds its listeners to loopback. [Deployment and trust boundaries](deploy/README.md)
-
-</details>
-
-## Why oneM2M is part of the product
-
-School-kitchen inspections illustrate the problem. Yonhap reported that 17.9% of 301 upgraded schools in one ventilation assessment were still rated inadequate. openSoom uses that case to model a reusable operating workflow for food production, learning spaces and other ventilated facilities. Targets, permitted actions and recovery conditions belong to each facility profile. [Reporting](https://www.yna.co.kr/view/AKR20261010032900004) · [Ministry inspection](https://www.moel.go.kr/news/enews/report/enewsView.do?news_seq=18528)
-
-In the independent-app demo, the CSE notifies two applications about the same fault. Each reads the original observation under its own identity. **Operations** can issue a damper command and verify recovery. **Maintenance** creates an inspection order that remains open even after airflow recovers. The CSE enforces their different permissions. [Run the independent applications](docs/multi-application-scenario.md)
-
-| What the facility needs | What oneM2M provides |
-| --- | --- |
-| Find equipment and compare zones | Resource discovery and native group fan-out through `/fopt/la` |
-| Reuse one observation across applications | Subscriptions, a shared content-instance ID and separate application identities |
-| Give each application appropriate access | Access Control Policies (ACPs) for observation, command and work-order resources |
-| Read the same quantity from different vendors | A discoverable TS-0023 PM2.5 flexContainer exposes readings normalized by openSoom adapters |
-| Share selected resources across facilities | MN/IN registration, remote requests and selective announcements |
-
-The local demo works with a single facility. A separate three-CSE test demonstrates local control during a central outage. In another experiment, two same-host CSEs transfer service during planned maintenance and restore a pending command. [Architecture and resource tree](docs/architecture.md) · [Data model](docs/standard-model.md) · [Central outage evidence](evidence/runtime/product-multisite-continuity.json) · [Serving-CSE transfer](docs/handover.md)
-
-<details>
-<summary>System diagram</summary>
-
-```mermaid
-flowchart LR
-  Device[Virtual device or adapter] -->|Publish observation| CSE[oneM2M CSE]
-  CSE -->|Notify subscribers| Ops[Operations service]
-  Ops <-->|Read observation / write command / read ACK| CSE
-  Dashboard[Facility dashboard] --> Ops
-  Codex[Codex plugin] --> Tools[MCP tools]
-  LLM[Standalone LLM runner] --> Tools
-  Tools --> Ops
-```
-
-The protocol tests exercise native MQTT/TLS and HTTPS. The separate maintenance application and its work orders are shown in the [independent-app scenario](docs/multi-application-scenario.md).
 
 </details>
 
