@@ -1,0 +1,142 @@
+{
+  "created_at": "2026-11-18T11:30:03.533789+00:00",
+  "artifact": "deliverables/video/openSoom-pr-45s.mp4",
+  "result": "PASS_MASTER_STREAMS_DECODE_CAPTIONS_SOURCE_CHECK",
+  "verification": {
+    "contact_sheet": "pr-contact-sheet.jpg",
+    "physical_devices": "virtual",
+    "model_calls_during_filming": 0,
+    "score": "Adobe original stereo rendering, dynamically reduced 8.5 dB beneath the centered Adobe Jennifer narration",
+    "captions": "Ten embedded optional English cues and an SRT sidecar",
+    "editing": "Real three-shot Adobe motion, separately filmed food-facility non-recovery and learning-facility dashboard recordings, original animated reconstruction, project logo editorial.",
+    "caption_cues": 10,
+    "audio_loudness_LUFS": -17.5,
+    "true_peak_dBFS": -1.6,
+    "decode": "ffmpeg -v error -xerror -nostdin -i FINAL -f null - exited 0",
+    "contact_sheet_sha256": "ed1bb68422b01ae7a342481ef146c7eeab414cee391a3d4ffa2de450671db763"
+  },
+  "audio_video_sources_sha256": {
+    "deliverables/video/cinematic/firefly/kitchen-motion.mp4": "c9c176e4c610eab21eed48b190c01a504d332b3f38d56a607c1a79aa95cd769d",
+    "deliverables/video/cinematic/firefly/plant-motion.mp4": "6edfec79a3aa30ec49a02a58016e75e9414b51b3bf22dd14289e7cda6c452ac9",
+    "deliverables/video/cinematic/firefly/learning-motion.mp4": "f21893e699d039f75cbecc1a7c417aaa6bd39561439ad38af97edb31544d8857",
+    "deliverables/video/cinematic/firefly/pr-narration.wav": "a78220a51ffdc0973e15d613a0e5867a5bedd49b3a7b223982379190979a6181",
+    "deliverables/video/cinematic/firefly/pr-score.wav": "6ead6e0b3492f2839a04b13336c15c01e5219975f56ddc47d120de3e1f2b8fab",
+    "deliverables/video/cinematic/pr/food-unresolved-session.webm": "8d5823ae61cb1127147cebdd3c62c88135c1650bc2010ca613c3181c31b0aa34",
+    "deliverables/video/cinematic/demo/learning-session.webm": "e67ade199d238de74dd34f0fd022a74b88c3787237d0fa114ca2f609f4ba74be",
+    "deliverables/video/cinematic/pr/brand-mark.png": "ea3d2fea6f95328d0e5fcbdf5ca80739d05838e19b90548069880a31a9d0de96",
+    "deliverables/video/cinematic/pr/captions.en.srt": "0fa516c354901ef30a69801137fa1da12d15bdef8225fc3c00c6d5068a7a049b",
+    "web/mark.svg": "aec576466e147d1132f4f1f9d19c73964d02a18cd4159294cf6edcd528fd2968",
+    "evidence/video/cinematic/pr-dashboard-recording.json": "c872756e24794dcf851a578e6513c2a204fdcebcd215d645677dd48e1369b3b3",
+    "evidence/video/cinematic/dashboard-recordings.json": "7fe7f051d65069dbb8369529d1818f7d48cfad13a2405471483ce6c97c22f9d6",
+    "evidence/runtime/multiapp/no_recovery/result.json": "8b8fd8579f8492f0ec7bbd7e1c772cb44b9e9a6484f673fe7e83bae3329bdfbc",
+    "scripts/cinematic/capture_demo.py": "35710d7d62114e9c0233395e4b1e594953e7d6db11bbba1ffdcf462eb9df6e39",
+    "scripts/cinematic/capture_demo.cjs": "4a18b611f068273d932ab994accdc2b96b6a0b69a41ebce763f5e136d561773d",
+    "scripts/cinematic/pr_audio.py": "631aec1643cf135aa459bb114e74d313709d858ca244d9ee5b8c9cec88eaf4a7",
+    "scripts/render_pr_film.py": "7e839092ecff7167f26ffce8eb6b8242df96ae0d4f4317dd7e7866b91a802e75",
+    "scripts/cinematic/check_master.py": "b8588b2bbafe73208ca73f59fb1bd4873443781b8d585ecc47f530f274f299c1"
+  },
+  "source_records": {
+    "food": {
+      "run_id": "demo-49a9dd79ed",
+      "command_id": "cmd-57931cb2b1ea",
+      "observed": "acknowledged and unresolved",
+      "measured_m3_h": 360,
+      "target_m3_h": 900
+    },
+    "learning": {
+      "run_id": "demo-6afdf15ef2",
+      "command_id": "cmd-f2dc39c093da",
+      "measured_m3_h": 200,
+      "target_m3_h": 500
+    },
+    "independent_multi_application": {
+      "incident": "ma-d1a54f066e-no-recovery",
+      "source_observation_ri": "cinixzfLRPrDC",
+      "source": "evidence/runtime/multiapp/no_recovery/result.json",
+      "view": "reconstructed graphic; separate from the two dashboard takes"
+    }
+  },
+  "review_frames": [
+    {
+      "shot": "Kitchen",
+      "sample": 1.4
+    },
+    {
+      "shot": "Airflow question",
+      "sample": 3.7
+    },
+    {
+      "shot": "Cooking-line target",
+      "sample": 7.8
+    },
+    {
+      "shot": "Dashboard reading",
+      "sample": 11.6
+    },
+    {
+      "shot": "Application fan-out",
+      "sample": 18.1
+    },
+    {
+      "shot": "Unresolved after ACK",
+      "sample": 25.5
+    },
+    {
+      "shot": "Learning space",
+      "sample": 31.5
+    },
+    {
+      "shot": "Studio target",
+      "sample": 36.0
+    },
+    {
+      "shot": "Open source",
+      "sample": 42.8
+    }
+  ],
+  "media": {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 1920,
+        "height": 1080,
+        "r_frame_rate": "24/1",
+        "duration": "45.000000",
+        "nb_frames": "1080",
+        "tags": {
+          "language": "und"
+        }
+      },
+      {
+        "codec_name": "aac",
+        "codec_type": "audio",
+        "sample_rate": "48000",
+        "channels": 2,
+        "r_frame_rate": "0/0",
+        "duration": "45.000000",
+        "nb_frames": "2111",
+        "tags": {
+          "language": "eng"
+        }
+      },
+      {
+        "codec_name": "mov_text",
+        "codec_type": "subtitle",
+        "r_frame_rate": "0/0",
+        "duration": "43.122000",
+        "nb_frames": "21",
+        "tags": {
+          "language": "eng"
+        }
+      }
+    ],
+    "format": {
+      "duration": "45.000000",
+      "size": "13897316"
+    }
+  },
+  "sha256": "7cd91a052221c4c54baccf7560bda93cb595b905c8aeab0c7d3e441051220960"
+}

@@ -1,0 +1,185 @@
+{
+  "run_id": "ma-b9129cb90a",
+  "started_at": "2026-11-18T11:17:09.902+00:00",
+  "kind": "actual_CSE_independent_application_processes",
+  "cse": "ACME 2026.5.3",
+  "physical_devices": "simulated",
+  "transport": "HTTP_loopback",
+  "source_sha256_before": {
+    "scripts/cse_multiapp_smoke.py": "a449d1a6168a120eda618c3cd940a79a6c2cce616abcfbec3f49f16c1df36ebd",
+    "src/opensoom/multiapp.py": "f98d90fae2525f6dbf512a6439506367a7c1ba722b35f7f1f9ba833e3087aad2",
+    "src/opensoom/onem2m.py": "c4edcf610b9c82266d222dc63b69869cbd62000478405cdcd98f44178b0b123e",
+    "src/opensoom/models.py": "5a11e9a47b6446a4e9f2d77a222e962147a864a53869ee5875870e0d85061e48",
+    "src/opensoom/policy.py": "801ba84bf1eea13404a19017359e4e01fcf11d33e812e3a571df68e34c110ad5",
+    "profiles/food-production.json": "402ae760ec4fe13c23e2a6c63e3ec80518d8ebdba30edde9e64cfdbb573e4c6e",
+    "deploy/acme-single.ini": "d7a97bf87dee84edff1b9dd2bff0ef21d4c1f96469f76bacd82f202f8abcccd5",
+    "deploy/cse-requirements.txt": "d34b9bb305370cd52c73f7e901309d456304892ddb0af783d14867087756d69c"
+  },
+  "scenarios": {
+    "recovery": {
+      "result": "PASS_INDEPENDENT_APPLICATIONS_RECOVERY",
+      "event_id": "ma-b9129cb90a-recovery",
+      "evidence": "recovery/result.json"
+    },
+    "missing_ack": {
+      "result": "PASS_INDEPENDENT_APPLICATIONS_MISSING_ACK",
+      "event_id": "ma-b9129cb90a-missing-ack",
+      "evidence": "missing_ack/result.json"
+    },
+    "no_recovery": {
+      "result": "PASS_INDEPENDENT_APPLICATIONS_NO_RECOVERY",
+      "event_id": "ma-b9129cb90a-no-recovery",
+      "evidence": "no_recovery/result.json"
+    }
+  },
+  "result": "PASS_ACTUAL_CSE_MULTI_APPLICATION",
+  "existing_process_records_before": {
+    ".runtime/service-process.json": {
+      "sha256": "3da0cf74988e15c5a1a3b380697323e8bcb0baf3481a924fb2f7160cbcbea11b",
+      "pids_alive": {
+        "80696": true
+      }
+    },
+    ".runtime/mqtt/process.json": {
+      "sha256": "25bc2262c8e5530098cec1035fc8511993f37bb86cc8b3ff24c25869fb8fefbb",
+      "pids_alive": {
+        "57075": true
+      }
+    },
+    ".runtime/product-topology/processes.json": {
+      "sha256": "f7e15847ae158a72b92b60360390050a446abbf7b3b1790ad81385d0b6e148f5",
+      "pids_alive": {
+        "64678": false,
+        "64679": false
+      }
+    },
+    ".runtime/cse-secure/process.json": {
+      "sha256": "011c3679c73b52338ebb0da10896154c49cd0d10d19838568f678db1153ce9b0",
+      "pids_alive": {
+        "57202": true
+      }
+    }
+  },
+  "limitations": [
+    "Three application processes and one actual CSE run on one host; no MEC, handover or physical deployment claim.",
+    "AE originators and ACPs are exercised on trusted loopback; no cryptographic identity binding is claimed.",
+    "OneM2M subscriptions are provisioned by an administrator; workers use only their own assigned non-admin origins.",
+    "Facility-specific bundled simulation targets govern the virtual example; no ventilation safety or health outcome is established.",
+    "Maintenance work orders remain open pending authorized inspection, including after simulated recovery."
+  ],
+  "runtime": {
+    "isolated_cse_pid": 63494,
+    "url": "http://127.0.0.1:50573",
+    "base": "cse-multiapp",
+    "installed_acmecse_version": "2026.5.3",
+    "existing_runtime_modified": false
+  },
+  "cleanup": {
+    "owned_processes": [
+      {
+        "pid": 63695,
+        "returncode": 0
+      },
+      {
+        "pid": 63687,
+        "returncode": 0
+      },
+      {
+        "pid": 63673,
+        "returncode": 0
+      },
+      {
+        "pid": 63590,
+        "returncode": 0
+      },
+      {
+        "pid": 63583,
+        "returncode": 0
+      },
+      {
+        "pid": 63582,
+        "returncode": 0
+      },
+      {
+        "pid": 63572,
+        "returncode": 0
+      },
+      {
+        "pid": 63571,
+        "returncode": 0
+      },
+      {
+        "pid": 63570,
+        "returncode": 0
+      },
+      {
+        "pid": 63494,
+        "returncode": -15
+      }
+    ],
+    "all_owned_processes_stopped": true
+  },
+  "existing_process_records_after": {
+    ".runtime/service-process.json": {
+      "sha256": "3da0cf74988e15c5a1a3b380697323e8bcb0baf3481a924fb2f7160cbcbea11b",
+      "pids_alive": {
+        "80696": true
+      }
+    },
+    ".runtime/mqtt/process.json": {
+      "sha256": "25bc2262c8e5530098cec1035fc8511993f37bb86cc8b3ff24c25869fb8fefbb",
+      "pids_alive": {
+        "57075": true
+      }
+    },
+    ".runtime/product-topology/processes.json": {
+      "sha256": "f7e15847ae158a72b92b60360390050a446abbf7b3b1790ad81385d0b6e148f5",
+      "pids_alive": {
+        "64678": false,
+        "64679": false
+      }
+    },
+    ".runtime/cse-secure/process.json": {
+      "sha256": "011c3679c73b52338ebb0da10896154c49cd0d10d19838568f678db1153ce9b0",
+      "pids_alive": {
+        "57202": true
+      }
+    }
+  },
+  "existing_process_records_preserved": true,
+  "source_sha256_after": {
+    "scripts/cse_multiapp_smoke.py": "a449d1a6168a120eda618c3cd940a79a6c2cce616abcfbec3f49f16c1df36ebd",
+    "src/opensoom/multiapp.py": "f98d90fae2525f6dbf512a6439506367a7c1ba722b35f7f1f9ba833e3087aad2",
+    "src/opensoom/onem2m.py": "c4edcf610b9c82266d222dc63b69869cbd62000478405cdcd98f44178b0b123e",
+    "src/opensoom/models.py": "5a11e9a47b6446a4e9f2d77a222e962147a864a53869ee5875870e0d85061e48",
+    "src/opensoom/policy.py": "801ba84bf1eea13404a19017359e4e01fcf11d33e812e3a571df68e34c110ad5",
+    "profiles/food-production.json": "402ae760ec4fe13c23e2a6c63e3ec80518d8ebdba30edde9e64cfdbb573e4c6e",
+    "deploy/acme-single.ini": "d7a97bf87dee84edff1b9dd2bff0ef21d4c1f96469f76bacd82f202f8abcccd5",
+    "deploy/cse-requirements.txt": "d34b9bb305370cd52c73f7e901309d456304892ddb0af783d14867087756d69c"
+  },
+  "source_unchanged_during_run": true,
+  "completed_at": "2026-11-18T11:17:31.171+00:00",
+  "artifact_sha256": {
+    "missing_ack/device-requests.jsonl": "6ca39d05f79b2e03ed8ce507572441c3390694b55642cb5143dee5b29a05c014",
+    "missing_ack/device-state.json": "81ebe7cc4e8a47a7818c9dc686f38a7c0ac0b4b29fa13fdc813db758c65258bb",
+    "missing_ack/maintenance-requests.jsonl": "7dee4842c14b307f8f26534274ef32c40fdacf137f7f23a8a698471b9aaaa9da",
+    "missing_ack/maintenance-state.json": "8db16fa2573a656ac49d202f93c5437a9cfad409f7a389cc1b927b8be4c81c8f",
+    "missing_ack/operations-requests.jsonl": "864e720724cbd934773d6e61fed193a0bdb1714d5e26eb70aad1af2333cdc942",
+    "missing_ack/operations-state.json": "952cafab942c5e767cc6f0c6c6183132eb4518ab3618167de3ef9c5b153e72d8",
+    "missing_ack/result.json": "bd3eff5103efc9b8f7989225e7ae73e53da93d8f4fa35cbbb2f7d2c8485e24a8",
+    "no_recovery/device-requests.jsonl": "25d9b8023ac150e429db52b322618f629b651a117209e254855f5e301a7f53b6",
+    "no_recovery/device-state.json": "f23ee92f789580587f9b61dfd873a06b0b1e9b9539672b327265a6698b8cb2e1",
+    "no_recovery/maintenance-requests.jsonl": "e6c863ee207cb8a07c1385c1c9427275a90bab5c77fdcdae3f84819feb645a83",
+    "no_recovery/maintenance-state.json": "f8ad048491b004850533914ee46ff88ce6043b4bf632079394b4b239274b1e44",
+    "no_recovery/operations-requests.jsonl": "541c4dcf3bc298d78d1e886a80a73a6491a1fda69693e3997532e64313f37040",
+    "no_recovery/operations-state.json": "7180a8124c353ee073f224fb3b06a0faeae19e72bd4954b522487c42f07ad0b9",
+    "no_recovery/result.json": "e450dbf7bdf2df90478f8073bb5f5906c4aad15244452f1149633e9552aad8a1",
+    "recovery/device-requests.jsonl": "a4dcc97ee27e47d3452756613c51bfec01470e7642c6ecc551963d785eb5ef35",
+    "recovery/device-state.json": "be113989b933c3009884356707bcb4192f4a42291b20bcf73fd4675fcccf21ae",
+    "recovery/maintenance-requests.jsonl": "4a76b61fd9fa12b4319d6972bd0ea678ca7b1dd99cd8aa707f8772aa244fed4b",
+    "recovery/maintenance-state.json": "686449ec0ad6938d79aabfb1545bdb067cfedd1b0c3b873d2881ea7940a5384c",
+    "recovery/operations-requests.jsonl": "8c05d8508a0896daedd0b79d9bb0d5cdefb2ffa87bca492f6506e6329922d33a",
+    "recovery/operations-state.json": "5a35f4067682d7a9c481c28df3113db2cac6b31d383e2cb74436b8663b52b7c3",
+    "recovery/result.json": "d9320e5947a25de057eaacb030a67982407c57867c440299a58b111faf0e7121"
+  }
+}

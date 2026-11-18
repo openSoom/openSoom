@@ -1,0 +1,39 @@
+1
+00:00:00,551 --> 00:00:01,801
+The fan is running.
+
+2
+00:00:02,440 --> 00:00:03,983
+But is the air moving?
+
+3
+00:00:05,361 --> 00:00:09,310
+On this cooking line, the airflow is less than half its target.
+
+4
+00:00:10,326 --> 00:00:14,641
+openSoom follows a single reading into two applications.
+
+5
+00:00:15,117 --> 00:00:17,230
+Operations checks the damper.
+
+6
+00:00:17,906 --> 00:00:21,404
+Maintenance sees which fault still needs attention.
+
+7
+00:00:22,126 --> 00:00:26,544
+A device can acknowledge a command while the airflow stays low.
+
+8
+00:00:29,478 --> 00:00:34,441
+From the production floor to the classroom, each space keeps its own target.
+
+9
+00:00:37,186 --> 00:00:39,759
+oneM2M connects the devices.
+
+10
+00:00:40,709 --> 00:00:43,122
+openSoom shows what happened next.

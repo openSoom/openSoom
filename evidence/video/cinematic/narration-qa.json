@@ -1,0 +1,385 @@
+{
+  "method": "Independent offline ASR of decoded final AAC mixes using faster-whisper base.en, CPU int8. Proper names and units can be misrecognized. Captions and the application receipts remain authoritative. The transcripts verify audible speech and timing, not human subjective listening.",
+  "files": {
+    "openSoom-pr-45s.mp4": {
+      "sha256": "7cd91a052221c4c54baccf7560bda93cb595b905c8aeab0c7d3e441051220960",
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 3.56,
+          "text": "The fan is running, but is the air moving?"
+        },
+        {
+          "start": 5.04,
+          "end": 9.08,
+          "text": "On this cooking line, the airflow is less than half its target."
+        },
+        {
+          "start": 10.06,
+          "end": 13.96,
+          "text": "Open Zoom follows a single reading into two applications."
+        },
+        {
+          "start": 15.5,
+          "end": 17.0,
+          "text": "Operations checks the damper."
+        },
+        {
+          "start": 17.86,
+          "end": 20.66,
+          "text": "Maintenance sees which fault still needs attention."
+        },
+        {
+          "start": 22.08,
+          "end": 25.9,
+          "text": "A device can acknowledge a command while the airflow stays low."
+        },
+        {
+          "start": 28.78,
+          "end": 34.14,
+          "text": "From the production floor to the classroom, each space keeps its own target."
+        },
+        {
+          "start": 37.4,
+          "end": 39.32,
+          "text": "1M2M connects the devices."
+        },
+        {
+          "start": 41.02,
+          "end": 42.76,
+          "text": "Open Zoom shows what happens next."
+        }
+      ]
+    },
+    "openSoom-demo-5min.mp4": {
+      "sha256": "c47b134ce2202c57a6089cad7a262eb0e16927e69e58af9593c95dcc7b2158ab",
+      "segments": [
+        {
+          "start": 0.0,
+          "end": 2.12,
+          "text": "A running fan sounds reassuring."
+        },
+        {
+          "start": 2.92,
+          "end": 6.52,
+          "text": "In this food production zone, the airflow tells a different story."
+        },
+        {
+          "start": 7.28,
+          "end": 11.9,
+          "text": "Open Zoom follows one ventilation decision, from the first observation through to the"
+        },
+        {
+          "start": 11.9,
+          "end": 13.46,
+          "text": "result a manager can verify."
+        },
+        {
+          "start": 15.4,
+          "end": 20.48,
+          "text": "A Korean performance assessment covered 301 schools after their kitchens had received ventilation"
+        },
+        {
+          "start": 20.48,
+          "end": 21.04,
+          "text": "improvements."
+        },
+        {
+          "start": 21.92,
+          "end": 28.22,
+          "text": "In that group, 17.9% still received an inadequate rating that finding raises a practical question."
+        },
+        {
+          "start": 28.22,
+          "end": 32.26,
+          "text": "Once equipment is operating, how do you check the result in each zone?"
+        },
+        {
+          "start": 33.24,
+          "end": 39.32,
+          "text": "This is the actual Open Zoom dashboard, connected to a running 1M2M service, its sensors"
+        },
+        {
+          "start": 39.32,
+          "end": 40.7,
+          "text": "and actuators are simulated."
+        },
+        {
+          "start": 42.0,
+          "end": 46.58,
+          "text": "The cooking line, wash station and packing area each have their own profile, selecting"
+        },
+        {
+          "start": 46.58,
+          "end": 49.66,
+          "text": "the cooking line brings up the measurements behind its alert."
+        },
+        {
+          "start": 50.3,
+          "end": 56.34,
+          "text": "The fan reports that it is running, airflow is 360 cubic meters per hour, this zone calls"
+        },
+        {
+          "start": 56.34,
+          "end": 56.96,
+          "text": "for 900."
+        },
+        {
+          "start": 58.04,
+          "end": 64.12,
+          "text": "From the zone inspection, the operator requests a fully open damper, the service checks the facility,"
+        },
+        {
+          "start": 64.6,
+          "end": 69.86,
+          "text": "permission and freshness of the observation, the device acknowledges the command, Open Zoom"
+        },
+        {
+          "start": 69.86,
+          "end": 72.74,
+          "text": "waits for two fresh observations after that acknowledgement."
+        },
+        {
+          "start": 73.62,
+          "end": 78.16,
+          "text": "On this run the airflow reaches 1035 and the incident can close."
+        },
+        {
+          "start": 79.42,
+          "end": 83.5,
+          "text": "A second supplier should be able to join without rewriting the dashboard, here is a recorded"
+        },
+        {
+          "start": 83.5,
+          "end": 85.28,
+          "text": "example of what 1M2M contributes."
+        },
+        {
+          "start": 86.18,
+          "end": 90.92,
+          "text": "A device creates an observation over MQTT with TLSA management application retrieves"
+        },
+        {
+          "start": 90.92,
+          "end": 92.1,
+          "text": "the same resource over HTTPS."
+        },
+        {
+          "start": 93.34,
+          "end": 98.12,
+          "text": "Both responses carry the same resource identifier, the standard platform connects the two protocols."
+        },
+        {
+          "start": 99.36,
+          "end": 104.98,
+          "text": "At the second facility, the same dashboard opens a learning studio, a meeting room and"
+        },
+        {
+          "start": 104.98,
+          "end": 105.76,
+          "text": "a shared lounge."
+        },
+        {
+          "start": 106.36,
+          "end": 111.64,
+          "text": "This supplier reports airflow in liters per second, the adapter converts it into cubic"
+        },
+        {
+          "start": 111.64,
+          "end": 117.82,
+          "text": "meters per hour before the operating tools read it, the studio is a 200 against its own"
+        },
+        {
+          "start": 117.82,
+          "end": 122.08,
+          "text": "500 target, the operator requests the same damper action."
+        },
+        {
+          "start": 123.56,
+          "end": 129.08,
+          "text": "In this run the damper acknowledges the request and reaches 100%, the next observation still"
+        },
+        {
+          "start": 129.08,
+          "end": 134.46,
+          "text": "show only 200, the service keeps the incident open, a maintenance technician can inspect"
+        },
+        {
+          "start": 134.46,
+          "end": 139.24,
+          "text": "the equipment with the command, acknowledgement and later measurements together, these two"
+        },
+        {
+          "start": 139.24,
+          "end": 143.94,
+          "text": "runs demonstrate how the same operating procedure produces different, traceable decisions."
+        },
+        {
+          "start": 145.38,
+          "end": 149.54,
+          "text": "We also tested a separate deployment with an operations application and a maintenance application"
+        },
+        {
+          "start": 149.54,
+          "end": 151.16,
+          "text": "running as independent processes."
+        },
+        {
+          "start": 151.86,
+          "end": 156.54,
+          "text": "Each has its own 1M2M application identity and subscription, a device publishes one abnormal"
+        },
+        {
+          "start": 156.54,
+          "end": 161.0,
+          "text": "observation, both applications receive a notification and retrieve the underlying resource."
+        },
+        {
+          "start": 161.94,
+          "end": 165.88,
+          "text": "Operations checks the zone and requests a permitted action, maintenance uses the same event identifier"
+        },
+        {
+          "start": 165.88,
+          "end": 170.6,
+          "text": "to create a work order for inspection, the service platform handles delivery and access"
+        },
+        {
+          "start": 170.6,
+          "end": 173.2,
+          "text": "control, the two applications own different decisions."
+        },
+        {
+          "start": 174.36,
+          "end": 179.32,
+          "text": "These records come from that separate software run, the event identifier connects the original"
+        },
+        {
+          "start": 179.32,
+          "end": 184.18,
+          "text": "observation to both outputs, the operations report records what happened to the command,"
+        },
+        {
+          "start": 184.68,
+          "end": 189.72,
+          "text": "the maintenance work order gives inspection staff a traceable reason to investigate, a recorded"
+        },
+        {
+          "start": 189.72,
+          "end": 194.82,
+          "text": "airflow recovery cannot certify that a technician inspected the equipment, the work order remains"
+        },
+        {
+          "start": 194.82,
+          "end": 196.02,
+          "text": "a separate responsibility."
+        },
+        {
+          "start": 197.48,
+          "end": 201.58,
+          "text": "A different role should not silently inherit equipment control, the separate applications"
+        },
+        {
+          "start": 201.58,
+          "end": 207.32,
+          "text": "test includes an attempted command from maintenance, the 1M2M platform denies the right, separate"
+        },
+        {
+          "start": 207.32,
+          "end": 211.86,
+          "text": "role tests also block an observer reading another facility, the demonstration runs locally,"
+        },
+        {
+          "start": 212.36,
+          "end": 216.44,
+          "text": "a deployment in a working facility would also need site authentication and commissioning."
+        },
+        {
+          "start": 217.08,
+          "end": 222.7,
+          "text": "A manager can also use an agent, the codecs plug-in and a standalone model runner share"
+        },
+        {
+          "start": 222.7,
+          "end": 224.12,
+          "text": "the same operating tools."
+        },
+        {
+          "start": 224.78,
+          "end": 230.96,
+          "text": "Here a hosted model discovered resources, read a group, examined evidence, requested an action"
+        },
+        {
+          "start": 230.96,
+          "end": 236.28,
+          "text": "and checked the result twice, the first check was still waiting, the second found the required"
+        },
+        {
+          "start": 236.28,
+          "end": 241.24,
+          "text": "observations, the server retained the run independently of the model's written answer."
+        },
+        {
+          "start": 242.26,
+          "end": 247.48,
+          "text": "In a separate recorded experiment, a central service connected to local facilities, we interrupted"
+        },
+        {
+          "start": 247.48,
+          "end": 252.64,
+          "text": "the central service for just over 14 seconds, the food facility continued its local command,"
+        },
+        {
+          "start": 253.04,
+          "end": 257.36,
+          "text": "acknowledgement and recovery check, when the connection returned, the service rejected an"
+        },
+        {
+          "start": 257.36,
+          "end": 262.16,
+          "text": "expired request, the local facility kept the same serving platform throughout this experiment."
+        },
+        {
+          "start": 263.28,
+          "end": 268.34,
+          "text": "The repository includes both facility profiles, the two supplier adapters, and a deterministic"
+        },
+        {
+          "start": 268.34,
+          "end": 272.9,
+          "text": "demonstration that runs without an AI account, a maintainer installs the local service and"
+        },
+        {
+          "start": 272.9,
+          "end": 276.66,
+          "text": "checks readiness, a manager can then inspect the facility from the dashboard or through"
+        },
+        {
+          "start": 276.66,
+          "end": 281.58,
+          "text": "the code explug-in, to adapt another site, configure its zones and targets, map the supplier"
+        },
+        {
+          "start": 281.58,
+          "end": 285.34,
+          "text": "units, and validate observations before enabling any physical control."
+        },
+        {
+          "start": 286.82,
+          "end": 291.64,
+          "text": "OpenSUM gives facilities a shared way to ask what changed after ventilation equipment"
+        },
+        {
+          "start": 291.64,
+          "end": 297.88,
+          "text": "acted, explore the code, replay the scenarios and inspect the underlying evidence in the OpenSUM"
+        },
+        {
+          "start": 297.88,
+          "end": 298.14,
+          "text": "repository."
+        }
+      ]
+    }
+  }
+}

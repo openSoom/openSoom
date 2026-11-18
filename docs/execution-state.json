@@ -670,6 +670,17 @@
         "docs/review/final-closeout-team3.json",
         "docs/review/final-closeout-team4.json"
       ]
+    },
+    {
+      "id": "cinematic-and-multiapp",
+      "scope": "Recheck all 17 criteria across four teams; inspect the final English article, two encoded films and three independent oneM2M applications. Trace each runtime claim to its own case.",
+      "revision": "Source and final film hashes in the linked review reports and evidence manifests.",
+      "reports": [
+        "docs/review/cinematic-team1.md",
+        "docs/review/cinematic-team2.md",
+        "docs/review/cinematic-team3.md",
+        "docs/review/cinematic-team4.md"
+      ]
     }
   ],
   "next_actions": [],
@@ -1342,5 +1353,23 @@
     "reviewed_implementation_revision": "ca10412ed1da62b92684e8163c2b6d092f450a5f",
     "visibility": "public",
     "unauthenticated_access_verified": true
+  },
+  "cinematic_release": {
+    "date": "2026-11-18",
+    "review_scope": "Nine criteria meet the internal Expert standard on this revision. Criterion 12 has its own subsequent review. See docs/hackathon/current-assessment.md for the latest verdict.",
+    "original_multiapp_run": "ma-d1a54f066e",
+    "corrected_multiapp_run": "ma-b9129cb90a",
+    "article": "docs/submission/hackster-article.md",
+    "brief": "deliverables/video/cinematic/CinematicDemo.ko.md",
+    "validated_film_seconds": [
+      45,
+      300
+    ],
+    "film_manifests": [
+      "evidence/video/cinematic/pr-qa.json",
+      "evidence/video/cinematic/demo-qa.json"
+    ],
+    "cost_record": "evidence/video/cinematic/adobe-production.json",
+    "distribution": "GitHub is authorized. A public Hackster URL, actual backlink, team submission, schedule confirmation, slide upload and interview remain external handoff items."
   }
 }

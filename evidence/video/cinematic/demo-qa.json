@@ -1,0 +1,254 @@
+{
+  "created_at": "2026-11-18T11:30:03.532910+00:00",
+  "result": "PASS_FULL_FILM_TECHNICAL_AND_SOURCE_CHECK",
+  "artifact": "deliverables/video/openSoom-demo-5min.mp4",
+  "sha256": "c47b134ce2202c57a6089cad7a262eb0e16927e69e58af9593c95dcc7b2158ab",
+  "media": {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 1920,
+        "height": 1080,
+        "r_frame_rate": "24/1",
+        "duration": "300.000000",
+        "nb_frames": "7200",
+        "tags": {
+          "language": "und"
+        }
+      },
+      {
+        "codec_name": "aac",
+        "codec_type": "audio",
+        "sample_rate": "48000",
+        "channels": 1,
+        "r_frame_rate": "0/0",
+        "duration": "300.000000",
+        "nb_frames": "14064",
+        "tags": {
+          "language": "und"
+        }
+      }
+    ],
+    "format": {
+      "duration": "300.000000",
+      "size": "23331960"
+    }
+  },
+  "verification": {
+    "decode": "ffmpeg -v error -xerror -nostdin -i FINAL -f null - exited 0",
+    "audio_loudness_LUFS": -19.5,
+    "true_peak_dBFS": -5.2,
+    "speaker": "English macOS Samantha",
+    "narration_source": "original English text",
+    "music": "original synthesized low-level harmonic bed",
+    "caption_cues": 80,
+    "longest_gap_between_caption_cues_seconds": 1.567,
+    "contact_sheet": "demo-contact-sheet.jpg",
+    "visual_review": "Representative frames for every shot checked at decode; screen recording, numerical labels, slide titles and caption position reviewed.",
+    "physical_devices": "virtual",
+    "model_calls_for_filming": 0,
+    "independent_MEC_or_handover_claims": false,
+    "contact_sheet_sha256": "7808089d5092c3f0be0d310c0d6bf283455c99e3415c236dffac8f9644dc95df"
+  },
+  "audio_video_sources_sha256": {
+    "deliverables/video/cinematic/demo/script.en.json": "de71a21f9b5be5c1f38390c9fcb8a2b3919693c6be64df97f67b8f7169d3c4f7",
+    "deliverables/video/cinematic/demo/captions.en.srt": "f5ab8ab29b2e96147f1c65f559b384c5b5e44d3a30b09c5a81fcfa09b93a35c8",
+    "deliverables/video/cinematic/demo/food-session.webm": "de744386b8f66666fda7cb632e100800c59dd8233e17ef185caa02bfc2c926b3",
+    "deliverables/video/cinematic/demo/learning-session.webm": "e67ade199d238de74dd34f0fd022a74b88c3787237d0fa114ca2f609f4ba74be",
+    "deliverables/video/cinematic/firefly/kitchen-motion.mp4": "c9c176e4c610eab21eed48b190c01a504d332b3f38d56a607c1a79aa95cd769d",
+    "deliverables/video/cinematic/firefly/kitchen.png": "00ecdd9e7df51d38f74667cd4a9a7ebca5058b2246eb95421d2bea3eff27e424",
+    "deliverables/video/cinematic/firefly/learning.png": "a5718071e5d5a339654267d26bc55b248893c1b45362e4a1e7656c4b0eafa303",
+    "deliverables/video/cinematic/firefly/plant.png": "ca8196f110859d9a70390f9e1925fd38d519b5e91b8d0003db2a713e8802782c",
+    "evidence/video/cinematic/dashboard-recordings.json": "7fe7f051d65069dbb8369529d1818f7d48cfad13a2405471483ce6c97c22f9d6",
+    "evidence/runtime/cse-mqtt-tls-smoke.json": "84078e28aef99361d7c0e197c8e23993f2e7c4686de7be66837a6f6c6bde082f",
+    "evidence/runtime/multiapp/no_recovery/result.json": "8b8fd8579f8492f0ec7bbd7e1c772cb44b9e9a6484f673fe7e83bae3329bdfbc",
+    "evidence/application/release-acceptance.json": "5bde7e0f55f28854f085ce619622349c99e6993d8f119f194f4dacf79ff727b1",
+    "evidence/agent/release-live-recovery.json": "6b4aeb6f6342207655815791ab002acfc7b733e8fb19b52d2174d683edb1ffc8",
+    "evidence/runtime/product-multisite-continuity.json": "177da67f736ae8887debc8b02474c03f4a73d1330221ebeb4d8ca4aada85fed2",
+    "scripts/cinematic/demo_audio.py": "f6d73a12742e278c433f624ce8ff32e3964d2d748a6b13ea9c7d910205e10df4",
+    "scripts/cinematic/render_demo.py": "51c27979dfdc24ca74cd7bc5617107d63a15b8b7e3d7076e80f95a18d2ddf0e8",
+    "scripts/cinematic/capture_demo.py": "35710d7d62114e9c0233395e4b1e594953e7d6db11bbba1ffdcf462eb9df6e39",
+    "scripts/cinematic/capture_demo.cjs": "4a18b611f068273d932ab994accdc2b96b6a0b69a41ebce763f5e136d561773d",
+    "scripts/cinematic/check_master.py": "b8588b2bbafe73208ca73f59fb1bd4873443781b8d585ecc47f530f274f299c1"
+  },
+  "dashboard_recordings": [
+    {
+      "facility": "food-a",
+      "source_run": "demo-ca9cc112d5",
+      "source_command": "cmd-f9d8c1c6e245",
+      "source_result": "recovered",
+      "observed_airflow_m3h": 1035,
+      "target_m3h": 900
+    },
+    {
+      "facility": "learning-b",
+      "source_run": "demo-6afdf15ef2",
+      "source_command": "cmd-f2dc39c093da",
+      "source_result": "unresolved",
+      "observed_airflow_m3h": 200,
+      "target_m3h": 500
+    }
+  ],
+  "two_application_source": {
+    "event_id": "ma-d1a54f066e-no-recovery",
+    "source_observation_ri": "cinixzfLRPrDC",
+    "operations_read_rqi": "opensoom-9cfc522c70b048f3bdaf22ac4bd04a58",
+    "maintenance_read_rqi": "opensoom-8c579e3eb084448380ad7d1ffa0e52b3"
+  },
+  "shots": [
+    {
+      "shot": "opening",
+      "starts": 0,
+      "ends": 15,
+      "narration_cues": 4
+    },
+    {
+      "shot": "context",
+      "starts": 15,
+      "ends": 33,
+      "narration_cues": 5
+    },
+    {
+      "shot": "food",
+      "starts": 33,
+      "ends": 58,
+      "narration_cues": 6
+    },
+    {
+      "shot": "operate",
+      "starts": 58,
+      "ends": 79,
+      "narration_cues": 6
+    },
+    {
+      "shot": "protocol",
+      "starts": 79,
+      "ends": 99,
+      "narration_cues": 6
+    },
+    {
+      "shot": "learning",
+      "starts": 99,
+      "ends": 123,
+      "narration_cues": 6
+    },
+    {
+      "shot": "unresolved",
+      "starts": 123,
+      "ends": 145,
+      "narration_cues": 6
+    },
+    {
+      "shot": "twoapps",
+      "starts": 145,
+      "ends": 174,
+      "narration_cues": 8
+    },
+    {
+      "shot": "receipts",
+      "starts": 174,
+      "ends": 197,
+      "narration_cues": 6
+    },
+    {
+      "shot": "rights",
+      "starts": 197,
+      "ends": 217,
+      "narration_cues": 6
+    },
+    {
+      "shot": "agent",
+      "starts": 217,
+      "ends": 242,
+      "narration_cues": 6
+    },
+    {
+      "shot": "outage",
+      "starts": 242,
+      "ends": 263,
+      "narration_cues": 5
+    },
+    {
+      "shot": "adopt",
+      "starts": 263,
+      "ends": 286,
+      "narration_cues": 6
+    },
+    {
+      "shot": "close",
+      "starts": 286,
+      "ends": 300,
+      "narration_cues": 4
+    }
+  ],
+  "previous_master_sha256": "da78876a685750be257dc142e383f72aea4a76c607f980d1c92dc2765ee33987",
+  "recorder_lineage": {
+    "at_original_demo_capture_sha256": {
+      "scripts/cinematic/capture_demo.py": "0306390f8bcc8e2535426ea10d748e601e565aafe524b6f2661949a514fa38bc",
+      "scripts/cinematic/capture_demo.cjs": "6577dbcd93987bd846dea7b9334564600d3b98676f8f8636baa48184f02f9296"
+    },
+    "currently_in_repository": "Current hashes for these two paths are in audio_video_sources_sha256. After the two untouched demo WebMs had been filmed, the recorder added --take food-unresolved for a separate PR-only run. The default demo route still captures food-a exhaust_fault followed by learning-b no_recovery using the shared shoot routine.",
+    "release_revision": "Second editorial cut labels 1,035 m³/h as the final food outcome and simplifies the fastest English captions. The original demo and raw dashboard captures are distinct artifacts."
+  },
+  "review_frames": [
+    {
+      "shot": "opening",
+      "sample": 6
+    },
+    {
+      "shot": "context",
+      "sample": 22
+    },
+    {
+      "shot": "food",
+      "sample": 42
+    },
+    {
+      "shot": "operate",
+      "sample": 61
+    },
+    {
+      "shot": "protocol",
+      "sample": 87
+    },
+    {
+      "shot": "learning",
+      "sample": 110
+    },
+    {
+      "shot": "unresolved",
+      "sample": 132
+    },
+    {
+      "shot": "twoapps",
+      "sample": 159
+    },
+    {
+      "shot": "receipts",
+      "sample": 183
+    },
+    {
+      "shot": "rights",
+      "sample": 204
+    },
+    {
+      "shot": "agent",
+      "sample": 231
+    },
+    {
+      "shot": "outage",
+      "sample": 251
+    },
+    {
+      "shot": "adopt",
+      "sample": 273
+    },
+    {
+      "shot": "close",
+      "sample": 292
+    }
+  ]
+}

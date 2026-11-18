@@ -1,0 +1,61 @@
+{
+  "provider": "Adobe Firefly",
+  "date": "2026-11-18",
+  "requested_credit_ceiling": 2000,
+  "video": {
+    "model": "Adobe Firefly Video",
+    "count": 3,
+    "seconds_per_clip": 5,
+    "format": "1920x1080, 24 fps",
+    "displayed_credits_per_generation": 500,
+    "displayed_total": 1500
+  },
+  "speech": {
+    "model": "Firefly Speech",
+    "voice": "Jennifer",
+    "language": "English (US)",
+    "displayed_generation_cost": 4,
+    "raw_seconds": 26.5
+  },
+  "music": {
+    "model": "Firefly Generate Music",
+    "prompt_tags": [
+      "warm",
+      "cinematic",
+      "ambient",
+      "brand"
+    ],
+    "energy": "medium",
+    "tempo": "medium",
+    "duration_seconds": 45,
+    "displayed_generation_cost": 15,
+    "exported_variant": "Track 1"
+  },
+  "images": {
+    "tool": "Adobe connector / Firefly Text to Image",
+    "count": 3,
+    "variations_per_request": 1,
+    "resolution": "2.4 MP, 16:9 requested",
+    "reported_dimensions": "2016 x 1152",
+    "credit_meter_exposed": false,
+    "internal_reserve_per_image": 100,
+    "prompts": {
+      "kitchen": "A cinematic photograph for an industrial design film. Dawn blue hour in a real-looking Korean central food production kitchen. Immense brushed stainless steel exhaust canopy and rows of slatted baffle filters, camera low at cooktop height, dramatic diagonal leading lines across upper right, a thin silver plume of steam catches one warm shaft of light at the right. Restrained graphite teal shadows, natural steel highlights, warm amber practicals, ultra-fine photographic grain, beautiful dark negative space on the left half for editorial typography. Shot on a cinema camera, 35mm lens, sophisticated international industrial campaign, photorealistic documentary texture. Full bleed 16:9, unbranded, no visible people, no text or graphics.",
+      "plant": "International industrial design campaign photograph, intimate macro side view of a brushed metal circular HVAC duct and a sturdy air regulation damper linkage inside an orderly food-production plant mechanical room. Metal pivot joint and smooth brushed steel surfaces sharply focused at right third, deep graphite teal shadows at left, soft brass rim light; shallow depth of field, full frame anamorphic lens, diagonal form, subtle fine photographic grain. Real utilitarian equipment, restraint, tactile materials, no logos, no text, no hands, no diagrams, no air-stream effects.",
+      "learning": "Premium architectural documentary photograph of a quiet contemporary learning studio in South Korea just before opening, wide low angle with a carefully framed linear ventilation diffuser in the ceiling, late afternoon sunlight and soft amber floor reflection, pale oak tables, calm dark teal palette, architectural grid, grounded civic interior rather than luxury CGI. Full bleed widescreen composition, interesting visual subject on the right and gentle dark area on left, cinema lens, no text, no people, no graphics, no logos."
+    }
+  },
+  "displayed_cost_subtotal": 1519,
+  "budget_with_still_reserve": 1819,
+  "resolution_review": {
+    "default_for_future_paid_broll": "720p at 24 fps; keep actual UI, type and the edit master at 1080p",
+    "published_firefly_video_720p_credits_per_second": 50,
+    "published_firefly_video_1080p_credits_per_second": 100,
+    "same_three_five_second_clips_at_720p": 750,
+    "extra_displayed_video_cost_of_this_1080p_choice": 750,
+    "additional_paid_regeneration_for_delivery": 0
+  },
+  "extra_credit_purchases": 0,
+  "note": "The 1,519 figure sums prices displayed in the Firefly web interface. The connector returned images without a billing field. The 300-credit reserve covers these three single-image requests for internal planning. Account-level settlement was not exposed. All footage and site imagery are illustrations of virtual deployments; application/browser footage and oneM2M receipts have independent provenance.",
+  "credit_reference": "https://helpx.adobe.com/creative-cloud/apps/generative-ai/generative-credits-faq.html"
+}

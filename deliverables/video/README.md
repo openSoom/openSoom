@@ -1,4 +1,13 @@
-# openSoom — English demonstration film
+# openSoom films
+
+| Film | Use | Editorial and technical sources |
+| --- | --- | --- |
+| [45-second introduction](openSoom-pr-45s.mp4) | Public project introduction, with Firefly cinematography, original generated score, English voice and selectable English captions | [PR sources](cinematic/pr/), [production budget](../../evidence/video/cinematic/adobe-production.json) |
+| [Five-minute demonstration](openSoom-demo-5min.mp4) | English evaluation presentation. Includes filmed dashboard operation in two facilities and a reconstruction from the independent application receipts | [Scene list, captions, recordings and reproduction](cinematic/demo/README.md) |
+
+The [CinematicDemo editing brief](cinematic/CinematicDemo.ko.md) identifies the sources behind each scene. The [presenter guide](../../docs/submission/technical-qa.md) reserves five minutes of the twelve-minute talk for the full demo.
+
+## Earlier 108-second film
 
 `openSoom-demo-en.mp4` is a 108-second, 1920 × 1080 film with English synthetic narration and burned-in English captions. `captions.en.srt`, `narration.en.txt`, and `storyboard.json` provide editable companion materials. The local `preview.html` player is for review; nothing is hosted or uploaded by this package.
 

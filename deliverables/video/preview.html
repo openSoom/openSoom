@@ -2,19 +2,102 @@
 <html lang="en">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>openSoom · English demo film</title>
+<title>openSoom films</title>
 <link rel="icon" href="data:,">
 <style>
 body{margin:0;background:#173d35;color:#eff5e6;font:16px system-ui,sans-serif}main{max-width:1280px;margin:auto;padding:32px 24px}h1{font-size:28px;letter-spacing:-.8px;margin:0 0 8px}p{color:#c0d2b6;line-height:1.6}video{width:100%;max-height:76vh;background:#102d27;border-radius:14px}button,a{display:inline-block;background:#c0d7aa;color:#173d35;border:0;border-radius:8px;padding:11px 17px;font:inherit;cursor:pointer;margin:8px 5px 0 0;text-decoration:none}button:focus-visible,a:focus-visible{outline:3px solid #fff;outline-offset:3px}small{display:block;margin-top:16px;color:#bed0b1}
+nav button[aria-pressed="true"]{background:#f3f8e8;box-shadow:inset 0 -3px #80b690}nav{margin:16px 0}video{display:block}
 </style>
 <main>
-<h1>openSoom — From observation to verified outcome</h1>
-<p>108 seconds · English narration and captions · Actual software execution with virtual physical devices.</p>
-<video id="film" controls preload="metadata" poster="frames/scene-01.png"><source src="openSoom-demo-en.mp4" type="video/mp4"></video>
-<div><button id="play">Play film</button><button id="pause">Pause film</button><button id="verify">Verification scene</button><button id="end">Closing scene</button><a href="openSoom-demo-en.mp4" download>Download MP4</a></div>
-<small>Edited browser captures and recorded run evidence. This is not a physical ventilation experiment.</small>
+<h1>openSoom films</h1>
+<p>English films about a working oneM2M service with simulated equipment.</p>
+<nav aria-label="Choose a film">
+  <button type="button" data-film="pr">45-second introduction</button>
+  <button type="button" data-film="demo">Five-minute evaluation demo</button>
+  <button type="button" data-film="earlier">Earlier 108-second film</button>
+</nav>
+<p id="summary" aria-live="polite"></p>
+<video id="film" controls playsinline preload="metadata" aria-label="Selected openSoom film"></video>
+<div><button id="play">Play film</button><button id="pause">Pause film</button><button id="verify">Evidence scene</button><button id="end">Closing scene</button><a id="download" download>Download MP4</a></div>
 </main>
+<script id="pr-captions" type="text/vtt">WEBVTT
+
+1
+00:00:00.551 --> 00:00:01.801
+The fan is running.
+
+2
+00:00:02.440 --> 00:00:03.983
+But is the air moving?
+
+3
+00:00:05.361 --> 00:00:09.310
+On this cooking line, the airflow is less than half its target.
+
+4
+00:00:10.326 --> 00:00:14.641
+openSoom follows a single reading into two applications.
+
+5
+00:00:15.117 --> 00:00:17.230
+Operations checks the damper.
+
+6
+00:00:17.906 --> 00:00:21.404
+Maintenance sees which fault still needs attention.
+
+7
+00:00:22.126 --> 00:00:26.544
+A device can acknowledge a command while the airflow stays low.
+
+8
+00:00:29.478 --> 00:00:34.441
+From the production floor to the classroom, each space keeps its own target.
+
+9
+00:00:37.186 --> 00:00:39.759
+oneM2M connects the devices.
+
+10
+00:00:40.709 --> 00:00:43.122
+openSoom shows what happened next.
+</script>
 <script>
-const film=document.getElementById('film');document.getElementById('play').onclick=()=>film.play();document.getElementById('pause').onclick=()=>film.pause();document.getElementById('verify').onclick=()=>{film.currentTime=50;film.play()};document.getElementById('end').onclick=()=>{film.currentTime=100;film.play()};
+const films = {
+  pr: {file: 'openSoom-pr-45s.mp4', summary: '45 seconds · Introduction · Selectable English captions', evidence: 13, closing: 38.5},
+  demo: {file: 'openSoom-demo-5min.mp4', summary: '5 minutes · Two facilities and two independent oneM2M applications · English captions', evidence: 145, closing: 286},
+  earlier: {file: 'openSoom-demo-en.mp4', summary: '108 seconds · Earlier project walkthrough · English captions', evidence: 50, closing: 100}
+};
+const film = document.getElementById('film');
+const prCaptions = URL.createObjectURL(new Blob(
+  [document.getElementById('pr-captions').textContent],
+  {type: 'text/vtt;charset=utf-8'}
+));
+const buttons = document.querySelectorAll('[data-film]');
+let selected;
+function selectFilm(key) {
+  selected = films[key];
+  film.replaceChildren();
+  film.src = selected.file;
+  if (key === 'pr') {
+    const captions = document.createElement('track');
+    captions.kind = 'captions';
+    captions.label = 'English';
+    captions.srclang = 'en';
+    captions.src = prCaptions;
+    film.append(captions);
+  }
+  document.getElementById('summary').textContent = selected.summary;
+  document.getElementById('download').href = selected.file;
+  buttons.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.film === key)));
+}
+buttons.forEach(button => button.addEventListener('click', () => selectFilm(button.dataset.film)));
+document.getElementById('play').onclick = () => film.play();
+document.getElementById('pause').onclick = () => film.pause();
+function jumpTo(time) { film.currentTime = time; film.play(); }
+document.getElementById('verify').onclick = () => jumpTo(selected.evidence);
+document.getElementById('end').onclick = () => jumpTo(selected.closing);
+const requested = new URLSearchParams(location.search).get('film');
+selectFilm(Object.hasOwn(films, requested) ? requested : 'pr');
 </script>
 </html>

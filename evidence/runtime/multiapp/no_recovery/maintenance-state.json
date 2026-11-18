@@ -1,0 +1,228 @@
+{
+  "role": "maintenance",
+  "ae_origin": "Cmaintenancemad1a54f066enorecovery",
+  "event_id": "ma-d1a54f066e-no-recovery",
+  "seen": [
+    "cinixzfLRPrDC",
+    "cinb6XQjtklGx",
+    "cinKN0S4IYYyj"
+  ],
+  "receipts": [
+    {
+      "received_at": "2026-11-18T11:10:06.835+00:00",
+      "rqi": "KPJNhh49Lz",
+      "body": {
+        "m2m:sgn": {
+          "vrq": true,
+          "sur": "/opensoom-multiapp/subTjzhLVjr2D",
+          "cr": "CAdmin"
+        }
+      }
+    },
+    {
+      "received_at": "2026-11-18T11:10:07.078+00:00",
+      "rqi": "9fw7eJit8a",
+      "body": {
+        "m2m:sgn": {
+          "nev": {
+            "net": 3,
+            "rep": {
+              "m2m:cin": {
+                "con": "{\"schema_version\": 1, \"event_id\": \"ma-d1a54f066e-no-recovery\", \"asset_id\": \"cook-exhaust-01\", \"sequence\": 1, \"observation\": {\"facility_id\": \"food-a\", \"zone_id\": \"cook\", \"observed_at\": \"2026-11-18T11:10:07.072+00:00\", \"received_at\": \"2026-11-18T11:10:07.072+00:00\", \"source\": \"simulated\", \"adapter\": \"vendor-a\", \"pm25\": 67.5, \"co2\": 720.0, \"airflow\": 360.0, \"fan_running\": true, \"damper_pct\": 35.0}}",
+                "cnf": "application/json:0",
+                "cs": 398,
+                "pi": "cntaKgMoTUIDG",
+                "ri": "cinixzfLRPrDC",
+                "rn": "cin_RUnvNHvaDt",
+                "ty": 4,
+                "ct": "20261118T111007,073451",
+                "lt": "20261118T111007,073451",
+                "et": "20311117T111006,348983",
+                "st": 1
+              }
+            }
+          },
+          "sur": "/opensoom-multiapp/subTjzhLVjr2D"
+        }
+      }
+    },
+    {
+      "received_at": "2026-11-18T11:10:07.256+00:00",
+      "rqi": "DOWNGYLqWM",
+      "body": {
+        "m2m:sgn": {
+          "nev": {
+            "net": 3,
+            "rep": {
+              "m2m:cin": {
+                "con": "{\"schema_version\": 1, \"event_id\": \"ma-d1a54f066e-no-recovery\", \"asset_id\": \"cook-exhaust-01\", \"sequence\": 2, \"observation\": {\"facility_id\": \"food-a\", \"zone_id\": \"cook\", \"observed_at\": \"2026-11-18T11:10:07.249+00:00\", \"received_at\": \"2026-11-18T11:10:07.249+00:00\", \"source\": \"simulated\", \"adapter\": \"vendor-a\", \"pm25\": 67.5, \"co2\": 720.0, \"airflow\": 360.0, \"fan_running\": true, \"damper_pct\": 35.0}}",
+                "cnf": "application/json:0",
+                "cs": 398,
+                "pi": "cntaKgMoTUIDG",
+                "ri": "cinb6XQjtklGx",
+                "rn": "cin_X5sBfJUNfL",
+                "ty": 4,
+                "ct": "20261118T111007,251728",
+                "lt": "20261118T111007,251728",
+                "et": "20311117T111006,348983",
+                "st": 2
+              }
+            }
+          },
+          "sur": "/opensoom-multiapp/subTjzhLVjr2D"
+        }
+      }
+    },
+    {
+      "received_at": "2026-11-18T11:10:07.413+00:00",
+      "rqi": "DodBBLqbAj",
+      "body": {
+        "m2m:sgn": {
+          "nev": {
+            "net": 3,
+            "rep": {
+              "m2m:cin": {
+                "con": "{\"schema_version\": 1, \"event_id\": \"ma-d1a54f066e-no-recovery\", \"asset_id\": \"cook-exhaust-01\", \"sequence\": 3, \"observation\": {\"facility_id\": \"food-a\", \"zone_id\": \"cook\", \"observed_at\": \"2026-11-18T11:10:07.406+00:00\", \"received_at\": \"2026-11-18T11:10:07.407+00:00\", \"source\": \"simulated\", \"adapter\": \"vendor-a\", \"pm25\": 67.5, \"co2\": 720.0, \"airflow\": 360.0, \"fan_running\": true, \"damper_pct\": 35.0}}",
+                "cnf": "application/json:0",
+                "cs": 398,
+                "pi": "cntaKgMoTUIDG",
+                "ri": "cinKN0S4IYYyj",
+                "rn": "cin_FnK1PI2hlP",
+                "ty": 4,
+                "ct": "20261118T111007,408690",
+                "lt": "20261118T111007,408690",
+                "et": "20311117T111006,348983",
+                "st": 3
+              }
+            }
+          },
+          "sur": "/opensoom-multiapp/subTjzhLVjr2D"
+        }
+      }
+    }
+  ],
+  "transitions": [
+    {
+      "at": "2026-11-18T11:10:07.080+00:00",
+      "application": "maintenance",
+      "event_id": "ma-d1a54f066e-no-recovery",
+      "asset_id": "cook-exhaust-01",
+      "facility_id": "food-a",
+      "zone_id": "cook",
+      "status": "inspection_required",
+      "simulated": true,
+      "work_order_id": "work-order-ma-d1a54f066e-no-recovery",
+      "action": "Inspect exhaust fan, damper and capture path; verify airflow with facility procedure",
+      "reason": "Airflow is below this zone's configured simulation target; Particles exceed the configured simulation target",
+      "source": {
+        "rsc": 2000,
+        "rqi": "opensoom-8c579e3eb084448380ad7d1ffa0e52b3",
+        "body": {
+          "m2m:cin": {
+            "con": "{\"schema_version\": 1, \"event_id\": \"ma-d1a54f066e-no-recovery\", \"asset_id\": \"cook-exhaust-01\", \"sequence\": 1, \"observation\": {\"facility_id\": \"food-a\", \"zone_id\": \"cook\", \"observed_at\": \"2026-11-18T11:10:07.072+00:00\", \"received_at\": \"2026-11-18T11:10:07.072+00:00\", \"source\": \"simulated\", \"adapter\": \"vendor-a\", \"pm25\": 67.5, \"co2\": 720.0, \"airflow\": 360.0, \"fan_running\": true, \"damper_pct\": 35.0}}",
+            "cnf": "application/json:0",
+            "cs": 398,
+            "pi": "cntaKgMoTUIDG",
+            "ri": "cinixzfLRPrDC",
+            "rn": "cin_RUnvNHvaDt",
+            "ty": 4,
+            "ct": "20261118T111007,073451",
+            "lt": "20261118T111007,073451",
+            "et": "20311117T111006,348983",
+            "st": 1
+          }
+        },
+        "http_status": 200
+      }
+    },
+    {
+      "at": "2026-11-18T11:10:07.259+00:00",
+      "application": "maintenance",
+      "event_id": "ma-d1a54f066e-no-recovery",
+      "asset_id": "cook-exhaust-01",
+      "facility_id": "food-a",
+      "zone_id": "cook",
+      "status": "inspection_required",
+      "simulated": true,
+      "work_order_id": "work-order-ma-d1a54f066e-no-recovery",
+      "source": {
+        "rsc": 2000,
+        "rqi": "opensoom-45786ce2bb834b5b8e5c4efecb4f13bb",
+        "body": {
+          "m2m:cin": {
+            "con": "{\"schema_version\": 1, \"event_id\": \"ma-d1a54f066e-no-recovery\", \"asset_id\": \"cook-exhaust-01\", \"sequence\": 2, \"observation\": {\"facility_id\": \"food-a\", \"zone_id\": \"cook\", \"observed_at\": \"2026-11-18T11:10:07.249+00:00\", \"received_at\": \"2026-11-18T11:10:07.249+00:00\", \"source\": \"simulated\", \"adapter\": \"vendor-a\", \"pm25\": 67.5, \"co2\": 720.0, \"airflow\": 360.0, \"fan_running\": true, \"damper_pct\": 35.0}}",
+            "cnf": "application/json:0",
+            "cs": 398,
+            "pi": "cntaKgMoTUIDG",
+            "ri": "cinb6XQjtklGx",
+            "rn": "cin_X5sBfJUNfL",
+            "ty": 4,
+            "ct": "20261118T111007,251728",
+            "lt": "20261118T111007,251728",
+            "et": "20311117T111006,348983",
+            "st": 2
+          }
+        },
+        "http_status": 200
+      },
+      "action": "Retain work order until an authorized inspection; simulated recovery cannot close physical maintenance"
+    },
+    {
+      "at": "2026-11-18T11:10:07.416+00:00",
+      "application": "maintenance",
+      "event_id": "ma-d1a54f066e-no-recovery",
+      "asset_id": "cook-exhaust-01",
+      "facility_id": "food-a",
+      "zone_id": "cook",
+      "status": "inspection_required",
+      "simulated": true,
+      "work_order_id": "work-order-ma-d1a54f066e-no-recovery",
+      "source": {
+        "rsc": 2000,
+        "rqi": "opensoom-8673dc653bd743cf96eb4b30b83e6958",
+        "body": {
+          "m2m:cin": {
+            "con": "{\"schema_version\": 1, \"event_id\": \"ma-d1a54f066e-no-recovery\", \"asset_id\": \"cook-exhaust-01\", \"sequence\": 3, \"observation\": {\"facility_id\": \"food-a\", \"zone_id\": \"cook\", \"observed_at\": \"2026-11-18T11:10:07.406+00:00\", \"received_at\": \"2026-11-18T11:10:07.407+00:00\", \"source\": \"simulated\", \"adapter\": \"vendor-a\", \"pm25\": 67.5, \"co2\": 720.0, \"airflow\": 360.0, \"fan_running\": true, \"damper_pct\": 35.0}}",
+            "cnf": "application/json:0",
+            "cs": 398,
+            "pi": "cntaKgMoTUIDG",
+            "ri": "cinKN0S4IYYyj",
+            "rn": "cin_FnK1PI2hlP",
+            "ty": 4,
+            "ct": "20261118T111007,408690",
+            "lt": "20261118T111007,408690",
+            "et": "20311117T111006,348983",
+            "st": 3
+          }
+        },
+        "http_status": 200
+      },
+      "action": "Retain work order until an authorized inspection; simulated recovery cannot close physical maintenance"
+    }
+  ],
+  "status": "inspection_required",
+  "errors": [],
+  "endpoint": "http://127.0.0.1:63112/notify",
+  "running": false,
+  "work_order_id": "work-order-ma-d1a54f066e-no-recovery",
+  "output": {
+    "rsc": 2001,
+    "rqi": "opensoom-2a96ac935c7a4068b2cdc502b6e47b91",
+    "body": {
+      "m2m:cin": {
+        "con": "{\"at\": \"2026-11-18T11:10:07.416+00:00\", \"application\": \"maintenance\", \"event_id\": \"ma-d1a54f066e-no-recovery\", \"asset_id\": \"cook-exhaust-01\", \"facility_id\": \"food-a\", \"zone_id\": \"cook\", \"status\": \"inspection_required\", \"simulated\": true, \"work_order_id\": \"work-order-ma-d1a54f066e-no-recovery\", \"source\": {\"rsc\": 2000, \"rqi\": \"opensoom-8673dc653bd743cf96eb4b30b83e6958\", \"body\": {\"m2m:cin\": {\"con\": \"{\\\"schema_version\\\": 1, \\\"event_id\\\": \\\"ma-d1a54f066e-no-recovery\\\", \\\"asset_id\\\": \\\"cook-exhaust-01\\\", \\\"sequence\\\": 3, \\\"observation\\\": {\\\"facility_id\\\": \\\"food-a\\\", \\\"zone_id\\\": \\\"cook\\\", \\\"observed_at\\\": \\\"2026-11-18T11:10:07.406+00:00\\\", \\\"received_at\\\": \\\"2026-11-18T11:10:07.407+00:00\\\", \\\"source\\\": \\\"simulated\\\", \\\"adapter\\\": \\\"vendor-a\\\", \\\"pm25\\\": 67.5, \\\"co2\\\": 720.0, \\\"airflow\\\": 360.0, \\\"fan_running\\\": true, \\\"damper_pct\\\": 35.0}}\", \"cnf\": \"application/json:0\", \"cs\": 398, \"pi\": \"cntaKgMoTUIDG\", \"ri\": \"cinKN0S4IYYyj\", \"rn\": \"cin_FnK1PI2hlP\", \"ty\": 4, \"ct\": \"20261118T111007,408690\", \"lt\": \"20261118T111007,408690\", \"et\": \"20311117T111006,348983\", \"st\": 3}}, \"http_status\": 200}, \"action\": \"Retain work order until an authorized inspection; simulated recovery cannot close physical maintenance\"}",
+        "cnf": "application/json:0",
+        "cs": 1211,
+        "pi": "cntFNlXPK43pW",
+        "ri": "cinzPePp5m2WG",
+        "rn": "cin_mBcw2b9BHA",
+        "ty": 4,
+        "ct": "20261118T111007,420416",
+        "lt": "20261118T111007,420416",
+        "et": "20311117T111006,348983",
+        "st": 3
+      }
+    },
+    "http_status": 201
+  }
+}

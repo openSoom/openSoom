@@ -1,0 +1,211 @@
+{
+  "role": "device",
+  "ae_origin": "Cdevicemad1a54f066enorecovery",
+  "event_id": "ma-d1a54f066e-no-recovery",
+  "seen": [
+    "cinfz8tMikDFa"
+  ],
+  "receipts": [
+    {
+      "received_at": "2026-11-18T11:10:07.063+00:00",
+      "rqi": "KbxbJocxbP",
+      "body": {
+        "m2m:sgn": {
+          "vrq": true,
+          "sur": "/opensoom-multiapp/sub4TTNN1sco7",
+          "cr": "CAdmin"
+        }
+      }
+    },
+    {
+      "received_at": "2026-11-18T11:10:07.094+00:00",
+      "rqi": "lq6E6dUDfK",
+      "body": {
+        "m2m:sgn": {
+          "nev": {
+            "net": 3,
+            "rep": {
+              "m2m:cin": {
+                "con": "{\"schema_version\": 1, \"event_id\": \"ma-d1a54f066e-no-recovery\", \"command_id\": \"command-ma-d1a54f066e-no-recovery\", \"facility_id\": \"food-a\", \"zone_id\": \"cook\", \"asset_id\": \"cook-exhaust-01\", \"profile_id\": \"food-production\", \"profile_version\": 1, \"action\": \"set_damper\", \"value\": 100, \"simulated\": true, \"issued_at\": \"2026-11-18T11:10:07.087576+00:00\", \"expires_at\": \"2026-11-18T11:10:10.087576+00:00\", \"source_observation_ri\": \"cinixzfLRPrDC\"}",
+                "cnf": "application/json:0",
+                "cs": 441,
+                "pi": "cnthgSCfVrsFE",
+                "ri": "cinfz8tMikDFa",
+                "rn": "cin_bysTduVtE7",
+                "ty": 4,
+                "ct": "20261118T111007,088354",
+                "lt": "20261118T111007,088354",
+                "et": "20311117T111006,348983",
+                "st": 1
+              }
+            }
+          },
+          "sur": "/opensoom-multiapp/sub4TTNN1sco7"
+        }
+      }
+    }
+  ],
+  "transitions": [
+    {
+      "at": "2026-11-18T11:10:07.098+00:00",
+      "application": "device",
+      "event_id": "ma-d1a54f066e-no-recovery",
+      "asset_id": "cook-exhaust-01",
+      "facility_id": "food-a",
+      "zone_id": "cook",
+      "status": "simulated_ack_written",
+      "simulated": true,
+      "ack": {
+        "event_id": "ma-d1a54f066e-no-recovery",
+        "command_id": "command-ma-d1a54f066e-no-recovery",
+        "command_ri": "cinfz8tMikDFa",
+        "ack_at": "2026-11-18T11:10:07.095+00:00",
+        "simulated": true,
+        "device_state": "damper_changed",
+        "value": 100
+      }
+    }
+  ],
+  "status": "simulated_ack_written",
+  "errors": [],
+  "endpoint": "http://127.0.0.1:63119/notify",
+  "running": false,
+  "observations": [
+    {
+      "rsc": 2001,
+      "rqi": "opensoom-68dd8949fe7c4e21ace07f1e3aa31594",
+      "body": {
+        "m2m:cin": {
+          "con": "{\"schema_version\": 1, \"event_id\": \"ma-d1a54f066e-no-recovery\", \"asset_id\": \"cook-exhaust-01\", \"sequence\": 1, \"observation\": {\"facility_id\": \"food-a\", \"zone_id\": \"wash\", \"observed_at\": \"2026-11-18T11:10:07.068+00:00\", \"received_at\": \"2026-11-18T11:10:07.068+00:00\", \"source\": \"simulated\", \"adapter\": \"vendor-a\", \"pm25\": 17.5, \"co2\": 780.0, \"airflow\": 720.0, \"fan_running\": true, \"damper_pct\": 100.0}}",
+          "cnf": "application/json:0",
+          "cs": 399,
+          "pi": "cntNK1RPr2Ge2",
+          "ri": "cinwB3GwtJ5Me",
+          "rn": "cin_pMAsru8lml",
+          "ty": 4,
+          "ct": "20261118T111007,070329",
+          "lt": "20261118T111007,070329",
+          "et": "20311117T111006,348983",
+          "st": 1
+        }
+      },
+      "http_status": 201
+    },
+    {
+      "rsc": 2001,
+      "rqi": "opensoom-8d05488c6150499baa66ba48937727cb",
+      "body": {
+        "m2m:cin": {
+          "con": "{\"schema_version\": 1, \"event_id\": \"ma-d1a54f066e-no-recovery\", \"asset_id\": \"cook-exhaust-01\", \"sequence\": 1, \"observation\": {\"facility_id\": \"food-a\", \"zone_id\": \"cook\", \"observed_at\": \"2026-11-18T11:10:07.072+00:00\", \"received_at\": \"2026-11-18T11:10:07.072+00:00\", \"source\": \"simulated\", \"adapter\": \"vendor-a\", \"pm25\": 67.5, \"co2\": 720.0, \"airflow\": 360.0, \"fan_running\": true, \"damper_pct\": 35.0}}",
+          "cnf": "application/json:0",
+          "cs": 398,
+          "pi": "cntaKgMoTUIDG",
+          "ri": "cinixzfLRPrDC",
+          "rn": "cin_RUnvNHvaDt",
+          "ty": 4,
+          "ct": "20261118T111007,073451",
+          "lt": "20261118T111007,073451",
+          "et": "20311117T111006,348983",
+          "st": 1
+        }
+      },
+      "http_status": 201
+    },
+    {
+      "rsc": 2001,
+      "rqi": "opensoom-3b47456725f9433d919511248a1a9496",
+      "body": {
+        "m2m:cin": {
+          "con": "{\"schema_version\": 1, \"event_id\": \"ma-d1a54f066e-no-recovery\", \"asset_id\": \"cook-exhaust-01\", \"sequence\": 2, \"observation\": {\"facility_id\": \"food-a\", \"zone_id\": \"cook\", \"observed_at\": \"2026-11-18T11:10:07.249+00:00\", \"received_at\": \"2026-11-18T11:10:07.249+00:00\", \"source\": \"simulated\", \"adapter\": \"vendor-a\", \"pm25\": 67.5, \"co2\": 720.0, \"airflow\": 360.0, \"fan_running\": true, \"damper_pct\": 35.0}}",
+          "cnf": "application/json:0",
+          "cs": 398,
+          "pi": "cntaKgMoTUIDG",
+          "ri": "cinb6XQjtklGx",
+          "rn": "cin_X5sBfJUNfL",
+          "ty": 4,
+          "ct": "20261118T111007,251728",
+          "lt": "20261118T111007,251728",
+          "et": "20311117T111006,348983",
+          "st": 2
+        }
+      },
+      "http_status": 201
+    },
+    {
+      "rsc": 2001,
+      "rqi": "opensoom-9c4fccaf32dd4557a01ee8f1d939dec5",
+      "body": {
+        "m2m:cin": {
+          "con": "{\"schema_version\": 1, \"event_id\": \"ma-d1a54f066e-no-recovery\", \"asset_id\": \"cook-exhaust-01\", \"sequence\": 3, \"observation\": {\"facility_id\": \"food-a\", \"zone_id\": \"cook\", \"observed_at\": \"2026-11-18T11:10:07.406+00:00\", \"received_at\": \"2026-11-18T11:10:07.407+00:00\", \"source\": \"simulated\", \"adapter\": \"vendor-a\", \"pm25\": 67.5, \"co2\": 720.0, \"airflow\": 360.0, \"fan_running\": true, \"damper_pct\": 35.0}}",
+          "cnf": "application/json:0",
+          "cs": 398,
+          "pi": "cntaKgMoTUIDG",
+          "ri": "cinKN0S4IYYyj",
+          "rn": "cin_FnK1PI2hlP",
+          "ty": 4,
+          "ct": "20261118T111007,408690",
+          "lt": "20261118T111007,408690",
+          "et": "20311117T111006,348983",
+          "st": 3
+        }
+      },
+      "http_status": 201
+    }
+  ],
+  "received_command": {
+    "schema_version": 1,
+    "event_id": "ma-d1a54f066e-no-recovery",
+    "command_id": "command-ma-d1a54f066e-no-recovery",
+    "facility_id": "food-a",
+    "zone_id": "cook",
+    "asset_id": "cook-exhaust-01",
+    "profile_id": "food-production",
+    "profile_version": 1,
+    "action": "set_damper",
+    "value": 100,
+    "simulated": true,
+    "issued_at": "2026-11-18T11:10:07.087576+00:00",
+    "expires_at": "2026-11-18T11:10:10.087576+00:00",
+    "source_observation_ri": "cinixzfLRPrDC"
+  },
+  "command_retrieval": {
+    "rsc": 2000,
+    "rqi": "opensoom-b7dabd259c7f4a639c82dda5d54d4093",
+    "body": {
+      "m2m:cin": {
+        "con": "{\"schema_version\": 1, \"event_id\": \"ma-d1a54f066e-no-recovery\", \"command_id\": \"command-ma-d1a54f066e-no-recovery\", \"facility_id\": \"food-a\", \"zone_id\": \"cook\", \"asset_id\": \"cook-exhaust-01\", \"profile_id\": \"food-production\", \"profile_version\": 1, \"action\": \"set_damper\", \"value\": 100, \"simulated\": true, \"issued_at\": \"2026-11-18T11:10:07.087576+00:00\", \"expires_at\": \"2026-11-18T11:10:10.087576+00:00\", \"source_observation_ri\": \"cinixzfLRPrDC\"}",
+        "cnf": "application/json:0",
+        "cs": 441,
+        "pi": "cnthgSCfVrsFE",
+        "ri": "cinfz8tMikDFa",
+        "rn": "cin_bysTduVtE7",
+        "ty": 4,
+        "ct": "20261118T111007,088354",
+        "lt": "20261118T111007,088354",
+        "et": "20311117T111006,348983",
+        "st": 1
+      }
+    },
+    "http_status": 200
+  },
+  "ack_creation": {
+    "rsc": 2001,
+    "rqi": "opensoom-096fea27436d4411835bc610000b1be4",
+    "body": {
+      "m2m:cin": {
+        "con": "{\"event_id\": \"ma-d1a54f066e-no-recovery\", \"command_id\": \"command-ma-d1a54f066e-no-recovery\", \"command_ri\": \"cinfz8tMikDFa\", \"ack_at\": \"2026-11-18T11:10:07.095+00:00\", \"simulated\": true, \"device_state\": \"damper_changed\", \"value\": 100}",
+        "cnf": "application/json:0",
+        "cs": 233,
+        "pi": "cnt2TQ573zXiB",
+        "ri": "cinemPIIwDDUb",
+        "rn": "cin_9MiTChBGLf",
+        "ty": 4,
+        "ct": "20261118T111007,096681",
+        "lt": "20261118T111007,096681",
+        "et": "20311117T111006,348983",
+        "st": 1
+      }
+    },
+    "http_status": 201
+  }
+}

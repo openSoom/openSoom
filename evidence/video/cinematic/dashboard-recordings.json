@@ -1,0 +1,243 @@
+{
+  "kind": "actual_isolated_dashboard_screen_recording",
+  "physical_devices": "simulated",
+  "model_calls": 0,
+  "runs": [
+    {
+      "name": "food",
+      "cues": {
+        "facility": 10.46,
+        "detail": 23.44,
+        "action": 29.64,
+        "result": 39.97,
+        "end": 62.48
+      },
+      "runId": "demo-ca9cc112d5",
+      "facility": "food-a",
+      "scenario": "exhaust_fault",
+      "commands": [
+        {
+          "facility_id": "food-a",
+          "zone_id": "cook",
+          "action": "set_damper",
+          "value": 100,
+          "reason": "Facility manager requested a profile-scoped virtual demonstration action.",
+          "request_id": "ui-25d103ec-bb16-4a7e-8ce4-aef3f35500ae",
+          "id": "cmd-f9d8c1c6e245",
+          "status": "verified",
+          "ack": true,
+          "created_at": "2026-11-18T11:06:39.357003+00:00",
+          "expires_at": "2026-11-18T11:07:09.357003+00:00",
+          "profile_version": 1,
+          "run_id": "demo-ca9cc112d5",
+          "incident_id": "incident-8f674a3d93",
+          "observed_result": "recovered",
+          "cse_rqi": "opensoom-99744ce019d24a2d8c4cfa998e8618c8",
+          "cse_resource_id": "cinv3ev5SxpmL",
+          "ack_at": "2026-11-18T11:06:40.293+00:00",
+          "ack_rqi": "opensoom-add372357c424f969c093b9b9d7aeee6",
+          "verified_at": "2026-11-18T11:06:42.350+00:00",
+          "verification_rqi": "opensoom-8af9c15ce6ff48b7a8296941c4709aba"
+        }
+      ],
+      "core": {
+        "id": "cook",
+        "name": "Cooking line",
+        "target_airflow": 900,
+        "observations": {
+          "pm25": {
+            "value": 12,
+            "unit": "µg/m³",
+            "observed_at": "2026-11-18T11:07:13.060+00:00",
+            "received_at": "2026-11-18T11:07:13.060+00:00",
+            "source": "simulated",
+            "quality": "good"
+          },
+          "co2": {
+            "value": 620,
+            "unit": "ppm",
+            "observed_at": "2026-11-18T11:07:13.060+00:00",
+            "received_at": "2026-11-18T11:07:13.060+00:00",
+            "source": "simulated",
+            "quality": "good"
+          },
+          "airflow": {
+            "value": 1035,
+            "unit": "m³/h",
+            "observed_at": "2026-11-18T11:07:13.060+00:00",
+            "received_at": "2026-11-18T11:07:13.060+00:00",
+            "source": "simulated",
+            "quality": "good"
+          },
+          "fan_running": {
+            "value": true,
+            "unit": "boolean",
+            "observed_at": "2026-11-18T11:07:13.060+00:00",
+            "received_at": "2026-11-18T11:07:13.060+00:00",
+            "source": "simulated",
+            "quality": "good"
+          },
+          "damper_pct": {
+            "value": 100,
+            "unit": "%",
+            "observed_at": "2026-11-18T11:07:13.060+00:00",
+            "received_at": "2026-11-18T11:07:13.060+00:00",
+            "source": "simulated",
+            "quality": "good"
+          }
+        },
+        "status": "nominal",
+        "freshness": 0.451395,
+        "reason": "Within configured operating targets",
+        "cse_rqi": "opensoom-c5b872d3cd7e48f38f780c2dcdb28e3d"
+      },
+      "events": [
+        {
+          "type": "scenario_started",
+          "facility_id": "food-a",
+          "message": "Exhaust fault · virtual equipment",
+          "timestamp": "2026-11-18T11:06:16.271+00:00"
+        },
+        {
+          "type": "incident_opened",
+          "facility_id": "food-a",
+          "message": "Airflow is below this zone's configured simulation target; Particles exceed the configured simulation target; CO₂ exceeds the configured simulation target",
+          "timestamp": "2026-11-18T11:06:16.286+00:00"
+        },
+        {
+          "type": "command_requested",
+          "facility_id": "food-a",
+          "message": "Damper adjustment requested: 100%",
+          "timestamp": "2026-11-18T11:06:39.360+00:00"
+        },
+        {
+          "type": "device_ack",
+          "facility_id": "food-a",
+          "message": "Virtual device acknowledged; recovery still requires observations",
+          "timestamp": "2026-11-18T11:06:40.296+00:00"
+        },
+        {
+          "type": "recovery_verified",
+          "facility_id": "food-a",
+          "message": "Fresh observations verify recovery after device acknowledgement",
+          "timestamp": "2026-11-18T11:06:42.351+00:00"
+        }
+      ]
+    },
+    {
+      "name": "learning",
+      "cues": {
+        "facility": 7.98,
+        "detail": 20.97,
+        "action": 27.23,
+        "result": 37.65,
+        "end": 60.11
+      },
+      "runId": "demo-6afdf15ef2",
+      "facility": "learning-b",
+      "scenario": "no_recovery",
+      "commands": [
+        {
+          "facility_id": "learning-b",
+          "zone_id": "classroom",
+          "action": "set_damper",
+          "value": 100,
+          "reason": "Facility manager requested a profile-scoped virtual demonstration action.",
+          "request_id": "ui-8d6fe939-016e-4c30-8d47-32bf0db3337a",
+          "id": "cmd-f2dc39c093da",
+          "status": "unresolved",
+          "ack": true,
+          "created_at": "2026-11-18T11:07:41.352385+00:00",
+          "expires_at": "2026-11-18T11:08:11.352385+00:00",
+          "profile_version": 1,
+          "run_id": "demo-6afdf15ef2",
+          "incident_id": "incident-cfd3b75ae8",
+          "observed_result": "unresolved",
+          "cse_rqi": "opensoom-6719c85ab1994f8d8326541f60264202",
+          "cse_resource_id": "cinNj9duVwy4h",
+          "ack_at": "2026-11-18T11:07:42.327+00:00",
+          "ack_rqi": "opensoom-24e9a24d512647279df72e9b5d868365",
+          "unresolved_samples": 16,
+          "verification_rqi": "opensoom-b01072ec8b944de09019aa5f9d1a10c5"
+        }
+      ],
+      "core": {
+        "id": "classroom",
+        "name": "Learning studio",
+        "target_airflow": 500,
+        "observations": {
+          "pm25": {
+            "value": 62,
+            "unit": "µg/m³",
+            "observed_at": "2026-11-18T11:08:13.995+00:00",
+            "received_at": "2026-11-18T11:08:13.995+00:00",
+            "source": "simulated",
+            "quality": "good"
+          },
+          "co2": {
+            "value": 1450,
+            "unit": "ppm",
+            "observed_at": "2026-11-18T11:08:13.995+00:00",
+            "received_at": "2026-11-18T11:08:13.995+00:00",
+            "source": "simulated",
+            "quality": "good"
+          },
+          "airflow": {
+            "value": 200,
+            "unit": "m³/h",
+            "observed_at": "2026-11-18T11:08:13.995+00:00",
+            "received_at": "2026-11-18T11:08:13.995+00:00",
+            "source": "simulated",
+            "quality": "good"
+          },
+          "fan_running": {
+            "value": true,
+            "unit": "boolean",
+            "observed_at": "2026-11-18T11:08:13.995+00:00",
+            "received_at": "2026-11-18T11:08:13.995+00:00",
+            "source": "simulated",
+            "quality": "good"
+          },
+          "damper_pct": {
+            "value": 100,
+            "unit": "%",
+            "observed_at": "2026-11-18T11:08:13.995+00:00",
+            "received_at": "2026-11-18T11:08:13.995+00:00",
+            "source": "simulated",
+            "quality": "good"
+          }
+        },
+        "status": "critical",
+        "freshness": 1.864165,
+        "reason": "Airflow is below this zone's configured simulation target; Particles exceed the configured simulation target; CO₂ exceeds the configured simulation target",
+        "cse_rqi": "opensoom-b01072ec8b944de09019aa5f9d1a10c5"
+      },
+      "events": [
+        {
+          "type": "scenario_started",
+          "facility_id": "learning-b",
+          "message": "No recovery · virtual equipment",
+          "timestamp": "2026-11-18T11:07:18.135+00:00"
+        },
+        {
+          "type": "incident_opened",
+          "facility_id": "learning-b",
+          "message": "Airflow is below this zone's configured simulation target; Particles exceed the configured simulation target; CO₂ exceeds the configured simulation target",
+          "timestamp": "2026-11-18T11:07:18.150+00:00"
+        },
+        {
+          "type": "command_requested",
+          "facility_id": "learning-b",
+          "message": "Damper adjustment requested: 100%",
+          "timestamp": "2026-11-18T11:07:41.356+00:00"
+        },
+        {
+          "type": "device_ack",
+          "facility_id": "learning-b",
+          "message": "Virtual device acknowledged; recovery still requires observations",
+          "timestamp": "2026-11-18T11:07:42.332+00:00"
+        }
+      ]
+    }
+  ]
+}

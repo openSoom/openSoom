@@ -1,0 +1,122 @@
+{
+  "kind": "actual_isolated_dashboard_screen_recording",
+  "physical_devices": "simulated",
+  "model_calls": 0,
+  "runs": [
+    {
+      "name": "food-unresolved",
+      "cues": {
+        "facility": 8.56,
+        "detail": 21.8,
+        "action": 28.1,
+        "result": 38.52,
+        "end": 61.12
+      },
+      "runId": "demo-49a9dd79ed",
+      "facility": "food-a",
+      "scenario": "no_recovery",
+      "commands": [
+        {
+          "facility_id": "food-a",
+          "zone_id": "cook",
+          "action": "set_damper",
+          "value": 100,
+          "reason": "Facility manager requested a profile-scoped virtual demonstration action.",
+          "request_id": "ui-85ac0bc8-b191-458e-a01c-8b2c06d7de60",
+          "id": "cmd-57931cb2b1ea",
+          "status": "unresolved",
+          "ack": true,
+          "created_at": "2026-11-18T11:19:26.767901+00:00",
+          "expires_at": "2026-11-18T11:19:56.767901+00:00",
+          "profile_version": 1,
+          "run_id": "demo-49a9dd79ed",
+          "incident_id": "incident-8fab994450",
+          "observed_result": "unresolved",
+          "cse_rqi": "opensoom-a7c27f410b294a7881e862aceddcbe21",
+          "cse_resource_id": "cintWL9eks7bj",
+          "ack_at": "2026-11-18T11:19:27.600+00:00",
+          "ack_rqi": "opensoom-b089b32ce18a4b28926848dfc3d29b51",
+          "unresolved_samples": 16,
+          "verification_rqi": "opensoom-48136c4f10c14f1d85bcc38109ec2856"
+        }
+      ],
+      "core": {
+        "id": "cook",
+        "name": "Cooking line",
+        "target_airflow": 900,
+        "observations": {
+          "pm25": {
+            "value": 62,
+            "unit": "µg/m³",
+            "observed_at": "2026-11-18T11:19:58.601+00:00",
+            "received_at": "2026-11-18T11:19:58.601+00:00",
+            "source": "simulated",
+            "quality": "good"
+          },
+          "co2": {
+            "value": 1450,
+            "unit": "ppm",
+            "observed_at": "2026-11-18T11:19:58.601+00:00",
+            "received_at": "2026-11-18T11:19:58.601+00:00",
+            "source": "simulated",
+            "quality": "good"
+          },
+          "airflow": {
+            "value": 360,
+            "unit": "m³/h",
+            "observed_at": "2026-11-18T11:19:58.601+00:00",
+            "received_at": "2026-11-18T11:19:58.601+00:00",
+            "source": "simulated",
+            "quality": "good"
+          },
+          "fan_running": {
+            "value": true,
+            "unit": "boolean",
+            "observed_at": "2026-11-18T11:19:58.601+00:00",
+            "received_at": "2026-11-18T11:19:58.601+00:00",
+            "source": "simulated",
+            "quality": "good"
+          },
+          "damper_pct": {
+            "value": 100,
+            "unit": "%",
+            "observed_at": "2026-11-18T11:19:58.601+00:00",
+            "received_at": "2026-11-18T11:19:58.601+00:00",
+            "source": "simulated",
+            "quality": "good"
+          }
+        },
+        "status": "critical",
+        "freshness": 1.789083,
+        "reason": "Airflow is below this zone's configured simulation target; Particles exceed the configured simulation target; CO₂ exceeds the configured simulation target",
+        "cse_rqi": "opensoom-48136c4f10c14f1d85bcc38109ec2856"
+      },
+      "events": [
+        {
+          "type": "scenario_started",
+          "facility_id": "food-a",
+          "message": "No recovery · virtual equipment",
+          "timestamp": "2026-11-18T11:19:03.211+00:00"
+        },
+        {
+          "type": "incident_opened",
+          "facility_id": "food-a",
+          "message": "Airflow is below this zone's configured simulation target; Particles exceed the configured simulation target; CO₂ exceeds the configured simulation target",
+          "timestamp": "2026-11-18T11:19:03.243+00:00"
+        },
+        {
+          "type": "command_requested",
+          "facility_id": "food-a",
+          "message": "Damper adjustment requested: 100%",
+          "timestamp": "2026-11-18T11:19:26.772+00:00"
+        },
+        {
+          "type": "device_ack",
+          "facility_id": "food-a",
+          "message": "Virtual device acknowledged; recovery still requires observations",
+          "timestamp": "2026-11-18T11:19:27.604+00:00"
+        }
+      ]
+    }
+  ]
+}

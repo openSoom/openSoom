@@ -1,0 +1,61 @@
+{
+  "title": "openSoom — the ventilation decision, from start to finish",
+  "language": "English",
+  "shots": [
+    {"id":"opening","seconds":15,"section":"Field observation","lines":[
+      "A running fan sounds reassuring. In this food production zone, the airflow tells a different story.",
+      "OpenSoom follows one ventilation decision, from the first observation through to the result a manager can verify."]},
+    {"id":"context","seconds":18,"section":"The operating question","lines":[
+      "A Korean performance assessment covered three hundred and one schools after their kitchens had received ventilation improvements.",
+      "In that group, seventeen point nine percent still received an inadequate rating. That finding raises a practical question.",
+      "Once equipment is operating, how do you check the result in each zone?"]},
+    {"id":"food","seconds":25,"section":"Food production","lines":[
+      "This is the actual openSoom dashboard, connected to a running oneM2M service. Its sensors and actuators are simulated.",
+      "The cooking line, wash station and packing area each have their own profile. Selecting the cooking line brings up the measurements behind its alert.",
+      "The fan reports that it is running. Airflow is three hundred and sixty cubic metres per hour. This zone calls for nine hundred."]},
+    {"id":"operate","seconds":21,"section":"An operator takes action","lines":[
+      "From the zone inspection, the operator requests a fully open damper. The service checks the facility, permission and freshness of the observation.",
+      "The device acknowledges the command. OpenSoom waits for two fresh observations after that acknowledgement.",
+      "On this run the airflow reaches one thousand and thirty five, and the incident can close."]},
+    {"id":"protocol","seconds":20,"section":"The common service layer","lines":[
+      "A second supplier should be able to join without rewriting the dashboard. Here is a recorded example of what oneM2M contributes.",
+      "A device creates an observation over MQTT with TLS. A management application retrieves the same resource over HTTPS.",
+      "Both responses carry the same resource identifier. The standard platform connects the two protocols."]},
+    {"id":"learning","seconds":24,"section":"A learning facility","lines":[
+      "At the second facility, the same dashboard opens a learning studio, a meeting room and a shared lounge.",
+      "This supplier reports airflow in litres per second. The adapter converts it into cubic metres per hour before the operating tools read it.",
+      "The studio is at two hundred against its own five hundred target. The operator requests the same damper action."]},
+    {"id":"unresolved","seconds":22,"section":"When the equipment responds","lines":[
+      "In this run the damper acknowledges the request and reaches one hundred percent. The next observations still show only two hundred.",
+      "The service keeps the incident open. A maintenance technician can inspect the equipment with the command, acknowledgement and later measurements together.",
+      "These two runs demonstrate how the same operating procedure produces different, traceable decisions."]},
+    {"id":"twoapps","seconds":29,"section":"One event, two applications","lines":[
+      "We also tested a separate deployment with an operations application and a maintenance application running as independent processes.",
+      "Each has its own oneM2M application identity and subscription. A device publishes one abnormal observation. Both applications receive a notification and retrieve the underlying resource.",
+      "Operations checks the zone and requests a permitted action. Maintenance uses the same event identifier to create a work order for inspection.",
+      "The service platform handles delivery and access control. The two applications own different decisions."]},
+    {"id":"receipts","seconds":23,"section":"Two durable outputs","lines":[
+      "These records come from that separate software run. The event identifier connects the original observation to both outputs.",
+      "The operations report records what happened to the command. The maintenance work order gives inspection staff a traceable reason to investigate.",
+      "A recorded airflow recovery cannot certify that a technician inspected the equipment. The work order remains a separate responsibility."]},
+    {"id":"rights","seconds":20,"section":"Permission at the resource","lines":[
+      "A different role should not silently inherit equipment control. The separate applications test includes an attempted command from maintenance.",
+      "The oneM2M platform denies the write. Separate role tests also block an observer reading another facility.",
+      "The demonstration runs locally. A deployment in a working facility would also need site authentication and commissioning."]},
+    {"id":"agent","seconds":25,"section":"An actual model run","lines":[
+      "A manager can also use an agent. The Codex plugin and a standalone model runner share the same operating tools.",
+      "Here a hosted model discovered resources, read a group, examined evidence, requested an action and checked the result twice.",
+      "The first check was still waiting. The second found the required observations. The server retained the run independently of the model's written answer."]},
+    {"id":"outage","seconds":21,"section":"Central connection interrupted","lines":[
+      "In a separate recorded experiment, a central service connected two local facilities. We interrupted the central service for just over fourteen seconds.",
+      "The food facility continued its local command, acknowledgement and recovery check. When the connection returned, the service rejected an expired request.",
+      "The local facility kept the same serving platform throughout this experiment."]},
+    {"id":"adopt","seconds":23,"section":"An open-source installation","lines":[
+      "The repository includes both facility profiles, the two supplier adapters, and a deterministic demonstration that runs without an AI account.",
+      "A maintainer installs the local service and checks readiness. A manager can then inspect the facility from the dashboard or through the Codex plugin.",
+      "To adapt another site, configure its zones and targets, map the supplier units, and validate observations before enabling any physical control."]},
+    {"id":"close","seconds":14,"section":"openSoom","lines":[
+      "OpenSoom gives facilities a shared way to ask what changed after ventilation equipment acted.",
+      "Explore the code, replay the scenarios and inspect the underlying evidence in the openSoom repository."]}
+  ]
+}

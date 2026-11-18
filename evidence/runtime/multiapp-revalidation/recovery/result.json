@@ -1,0 +1,757 @@
+{
+  "ae_registrations": {
+    "operations": {
+      "rsc": 2001,
+      "rqi": "opensoom-f7dd928ea548455b9842c7128ebe813d",
+      "body": {
+        "m2m:ae": {
+          "rn": "multiapp-ma-b9129cb90a-recovery-operations",
+          "api": "N.org.opensoom.operations",
+          "rr": false,
+          "srv": [
+            "4"
+          ],
+          "pi": "opensoom-multiapp",
+          "ri": "Coperationsmab9129cb90arecovery",
+          "ty": 2,
+          "aei": "Coperationsmab9129cb90arecovery",
+          "ct": "20261118T111721,021526",
+          "lt": "20261118T111721,021526",
+          "et": "20311117T111721,021985"
+        }
+      },
+      "http_status": 201
+    },
+    "maintenance": {
+      "rsc": 2001,
+      "rqi": "opensoom-34ac4e09cc2d4710b58bf06bc20c6dd9",
+      "body": {
+        "m2m:ae": {
+          "rn": "multiapp-ma-b9129cb90a-recovery-maintenance",
+          "api": "N.org.opensoom.maintenance",
+          "rr": false,
+          "srv": [
+            "4"
+          ],
+          "pi": "opensoom-multiapp",
+          "ri": "Cmaintenancemab9129cb90arecovery",
+          "ty": 2,
+          "aei": "Cmaintenancemab9129cb90arecovery",
+          "ct": "20261118T111721,024537",
+          "lt": "20261118T111721,024537",
+          "et": "20311117T111721,024923"
+        }
+      },
+      "http_status": 201
+    },
+    "device": {
+      "rsc": 2001,
+      "rqi": "opensoom-25d07119a4944eccbefc3b45833ac2c4",
+      "body": {
+        "m2m:ae": {
+          "rn": "multiapp-ma-b9129cb90a-recovery-device",
+          "api": "N.org.opensoom.device",
+          "rr": false,
+          "srv": [
+            "4"
+          ],
+          "pi": "opensoom-multiapp",
+          "ri": "Cdevicemab9129cb90arecovery",
+          "ty": 2,
+          "aei": "Cdevicemab9129cb90arecovery",
+          "ct": "20261118T111721,026771",
+          "lt": "20261118T111721,026771",
+          "et": "20311117T111721,027141"
+        }
+      },
+      "http_status": 201
+    },
+    "outsider": {
+      "rsc": 2001,
+      "rqi": "opensoom-3e72305d48214bd2a81d27f11270a660",
+      "body": {
+        "m2m:ae": {
+          "rn": "multiapp-ma-b9129cb90a-recovery-outsider",
+          "api": "N.org.opensoom.outsider",
+          "rr": false,
+          "srv": [
+            "4"
+          ],
+          "pi": "opensoom-multiapp",
+          "ri": "Coutsidermab9129cb90arecovery",
+          "ty": 2,
+          "aei": "Coutsidermab9129cb90arecovery",
+          "ct": "20261118T111721,028602",
+          "lt": "20261118T111721,028602",
+          "et": "20311117T111721,028978"
+        }
+      },
+      "http_status": 201
+    }
+  },
+  "role_origins": {
+    "operations": "Coperationsmab9129cb90arecovery",
+    "maintenance": "Cmaintenancemab9129cb90arecovery",
+    "device": "Cdevicemab9129cb90arecovery",
+    "outsider": "Coutsidermab9129cb90arecovery"
+  },
+  "access_policies": {
+    "structure": {
+      "rsc": 2001,
+      "rqi": "opensoom-8f8f7d9a36f5469dac7e897077276aeb",
+      "body": {
+        "m2m:acp": {
+          "rn": "policy-structure",
+          "pv": {
+            "acr": [
+              {
+                "acor": [
+                  "CAdmin"
+                ],
+                "acop": 63
+              },
+              {
+                "acor": [
+                  "Coperationsmab9129cb90arecovery",
+                  "Cmaintenancemab9129cb90arecovery",
+                  "Cdevicemab9129cb90arecovery"
+                ],
+                "acop": 34
+              }
+            ]
+          },
+          "pvs": {
+            "acr": [
+              {
+                "acor": [
+                  "CAdmin"
+                ],
+                "acop": 63
+              }
+            ]
+          },
+          "pi": "Cprovisionmab9129cb90arecovery",
+          "ri": "acpDQiAdaa2py",
+          "ty": 1,
+          "ct": "20261118T111721,032586",
+          "lt": "20261118T111721,032586",
+          "et": "20311117T111721,030997"
+        }
+      },
+      "http_status": 201
+    },
+    "observations": {
+      "rsc": 2001,
+      "rqi": "opensoom-e477282db37c4d03b05c90929fc59905",
+      "body": {
+        "m2m:acp": {
+          "rn": "policy-observations",
+          "pv": {
+            "acr": [
+              {
+                "acor": [
+                  "CAdmin"
+                ],
+                "acop": 63
+              },
+              {
+                "acor": [
+                  "Coperationsmab9129cb90arecovery",
+                  "Cmaintenancemab9129cb90arecovery",
+                  "Cdevicemab9129cb90arecovery"
+                ],
+                "acop": 34
+              },
+              {
+                "acor": [
+                  "Cdevicemab9129cb90arecovery"
+                ],
+                "acop": 1,
+                "acod": [
+                  {
+                    "chty": [
+                      4
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          "pvs": {
+            "acr": [
+              {
+                "acor": [
+                  "CAdmin"
+                ],
+                "acop": 63
+              }
+            ]
+          },
+          "pi": "Cprovisionmab9129cb90arecovery",
+          "ri": "acpBv7hkB5hRt",
+          "ty": 1,
+          "ct": "20261118T111721,034819",
+          "lt": "20261118T111721,034819",
+          "et": "20311117T111721,030997"
+        }
+      },
+      "http_status": 201
+    },
+    "commands": {
+      "rsc": 2001,
+      "rqi": "opensoom-1b214919825846bf8b41b6439bba2ebc",
+      "body": {
+        "m2m:acp": {
+          "rn": "policy-commands",
+          "pv": {
+            "acr": [
+              {
+                "acor": [
+                  "CAdmin"
+                ],
+                "acop": 63
+              },
+              {
+                "acor": [
+                  "Coperationsmab9129cb90arecovery",
+                  "Cmaintenancemab9129cb90arecovery",
+                  "Cdevicemab9129cb90arecovery"
+                ],
+                "acop": 34
+              },
+              {
+                "acor": [
+                  "Coperationsmab9129cb90arecovery"
+                ],
+                "acop": 1,
+                "acod": [
+                  {
+                    "chty": [
+                      4
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          "pvs": {
+            "acr": [
+              {
+                "acor": [
+                  "CAdmin"
+                ],
+                "acop": 63
+              }
+            ]
+          },
+          "pi": "Cprovisionmab9129cb90arecovery",
+          "ri": "acpuPf22RFxCU",
+          "ty": 1,
+          "ct": "20261118T111721,036898",
+          "lt": "20261118T111721,036898",
+          "et": "20311117T111721,030997"
+        }
+      },
+      "http_status": 201
+    },
+    "acks": {
+      "rsc": 2001,
+      "rqi": "opensoom-73825eb2ca87496b858caf71d2f00440",
+      "body": {
+        "m2m:acp": {
+          "rn": "policy-acks",
+          "pv": {
+            "acr": [
+              {
+                "acor": [
+                  "CAdmin"
+                ],
+                "acop": 63
+              },
+              {
+                "acor": [
+                  "Coperationsmab9129cb90arecovery",
+                  "Cmaintenancemab9129cb90arecovery",
+                  "Cdevicemab9129cb90arecovery"
+                ],
+                "acop": 34
+              },
+              {
+                "acor": [
+                  "Cdevicemab9129cb90arecovery"
+                ],
+                "acop": 1,
+                "acod": [
+                  {
+                    "chty": [
+                      4
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          "pvs": {
+            "acr": [
+              {
+                "acor": [
+                  "CAdmin"
+                ],
+                "acop": 63
+              }
+            ]
+          },
+          "pi": "Cprovisionmab9129cb90arecovery",
+          "ri": "acpcXs1lwzw0t",
+          "ty": 1,
+          "ct": "20261118T111721,038804",
+          "lt": "20261118T111721,038804",
+          "et": "20311117T111721,030997"
+        }
+      },
+      "http_status": 201
+    },
+    "operations_reports": {
+      "rsc": 2001,
+      "rqi": "opensoom-09873710821a4200b3bab1c858b3f8fa",
+      "body": {
+        "m2m:acp": {
+          "rn": "policy-operations_reports",
+          "pv": {
+            "acr": [
+              {
+                "acor": [
+                  "CAdmin"
+                ],
+                "acop": 63
+              },
+              {
+                "acor": [
+                  "Coperationsmab9129cb90arecovery",
+                  "Cmaintenancemab9129cb90arecovery",
+                  "Cdevicemab9129cb90arecovery"
+                ],
+                "acop": 34
+              },
+              {
+                "acor": [
+                  "Coperationsmab9129cb90arecovery"
+                ],
+                "acop": 1,
+                "acod": [
+                  {
+                    "chty": [
+                      4
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          "pvs": {
+            "acr": [
+              {
+                "acor": [
+                  "CAdmin"
+                ],
+                "acop": 63
+              }
+            ]
+          },
+          "pi": "Cprovisionmab9129cb90arecovery",
+          "ri": "acpiGtcFirhlh",
+          "ty": 1,
+          "ct": "20261118T111721,040653",
+          "lt": "20261118T111721,040653",
+          "et": "20311117T111721,030997"
+        }
+      },
+      "http_status": 201
+    },
+    "work_orders": {
+      "rsc": 2001,
+      "rqi": "opensoom-253a813a122d4bdf8004c1d7e630e955",
+      "body": {
+        "m2m:acp": {
+          "rn": "policy-work_orders",
+          "pv": {
+            "acr": [
+              {
+                "acor": [
+                  "CAdmin"
+                ],
+                "acop": 63
+              },
+              {
+                "acor": [
+                  "Coperationsmab9129cb90arecovery",
+                  "Cmaintenancemab9129cb90arecovery",
+                  "Cdevicemab9129cb90arecovery"
+                ],
+                "acop": 34
+              },
+              {
+                "acor": [
+                  "Cmaintenancemab9129cb90arecovery"
+                ],
+                "acop": 1,
+                "acod": [
+                  {
+                    "chty": [
+                      4
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          "pvs": {
+            "acr": [
+              {
+                "acor": [
+                  "CAdmin"
+                ],
+                "acop": 63
+              }
+            ]
+          },
+          "pi": "Cprovisionmab9129cb90arecovery",
+          "ri": "acpMXrSwfw7Ey",
+          "ty": 1,
+          "ct": "20261118T111721,042380",
+          "lt": "20261118T111721,042380",
+          "et": "20311117T111721,030997"
+        }
+      },
+      "http_status": 201
+    }
+  },
+  "native_group": {
+    "rsc": 2001,
+    "rqi": "opensoom-31a18a332cfd49d2b3e7f772ce9dd817",
+    "body": {
+      "m2m:grp": {
+        "rn": "zone-observations",
+        "mt": 3,
+        "mnm": 2,
+        "mid": [
+          "cntBV6gIwLTXb",
+          "cntdmJ8qJoVS7"
+        ],
+        "acpi": [
+          "acpDQiAdaa2py"
+        ],
+        "ssi": false,
+        "cnm": 2,
+        "mtv": true,
+        "csy": 1,
+        "pi": "Cprovisionmab9129cb90arecovery",
+        "ri": "grpJ7IIhA0r9e",
+        "ty": 9,
+        "ct": "20261118T111721,057662",
+        "lt": "20261118T111721,057662",
+        "et": "20311117T111721,030997"
+      }
+    },
+    "http_status": 201
+  },
+  "event_id": "ma-b9129cb90a-recovery",
+  "scenario": "recovery",
+  "started_at": "2026-11-18T11:17:21.058+00:00",
+  "subscriptions": {
+    "operations_observation": {
+      "rsc": 2001,
+      "rqi": "opensoom-9c856c850f7145ddbd7a692c0de31672",
+      "body": {
+        "m2m:sub": {
+          "rn": "operations-watch",
+          "nu": [
+            "http://127.0.0.1:50896/notify"
+          ],
+          "enc": {
+            "net": [
+              3
+            ],
+            "chty": [
+              4
+            ]
+          },
+          "nct": 1,
+          "pi": "cntBV6gIwLTXb",
+          "ri": "subt6LJb16H5c",
+          "ty": 23,
+          "ct": "20261118T111721,492385",
+          "lt": "20261118T111721,492385",
+          "et": "20311117T111721,030997"
+        }
+      },
+      "http_status": 201
+    },
+    "operations_ack": {
+      "rsc": 2001,
+      "rqi": "opensoom-8a8d7a2fe2fc46298f98c73c5d6f0a5a",
+      "body": {
+        "m2m:sub": {
+          "rn": "ack-watch",
+          "nu": [
+            "http://127.0.0.1:50896/notify"
+          ],
+          "enc": {
+            "net": [
+              3
+            ],
+            "chty": [
+              4
+            ]
+          },
+          "nct": 1,
+          "pi": "cntTVAMgm2YH5",
+          "ri": "subugmBCtqQwF",
+          "ty": 23,
+          "ct": "20261118T111721,508577",
+          "lt": "20261118T111721,508577",
+          "et": "20311117T111721,030997"
+        }
+      },
+      "http_status": 201
+    },
+    "maintenance_observation": {
+      "rsc": 2001,
+      "rqi": "opensoom-edccd84139cb4e7a8e931cfe6e47a531",
+      "body": {
+        "m2m:sub": {
+          "rn": "maintenance-watch",
+          "nu": [
+            "http://127.0.0.1:50897/notify"
+          ],
+          "enc": {
+            "net": [
+              3
+            ],
+            "chty": [
+              4
+            ]
+          },
+          "nct": 1,
+          "pi": "cntBV6gIwLTXb",
+          "ri": "subRpKcoMVQ4r",
+          "ty": 23,
+          "ct": "20261118T111721,513645",
+          "lt": "20261118T111721,513645",
+          "et": "20311117T111721,030997"
+        }
+      },
+      "http_status": 201
+    },
+    "device_command": {
+      "rsc": 2001,
+      "rqi": "opensoom-e7a3a144da6d4c9abbc838f29cd18cbb",
+      "body": {
+        "m2m:sub": {
+          "rn": "device-watch",
+          "nu": [
+            "http://127.0.0.1:50904/notify"
+          ],
+          "enc": {
+            "net": [
+              3
+            ],
+            "chty": [
+              4
+            ]
+          },
+          "nct": 1,
+          "pi": "cntbtqzK8MMqq",
+          "ri": "subA4dCZPnA5z",
+          "ty": 23,
+          "ct": "20261118T111721,739391",
+          "lt": "20261118T111721,739391",
+          "et": "20311117T111721,030997"
+        }
+      },
+      "http_status": 201
+    }
+  },
+  "access_checks": {
+    "maintenance_control_denied": {
+      "rsc": 4103,
+      "rqi": "opensoom-bec9b9e4ab7f4164829e5091ba17dbf7",
+      "body": {
+        "m2m:dbg": "originator: Cmaintenancemab9129cb90arecovery has no CREATE privileges for resource: cntbtqzK8MMqq"
+      },
+      "http_status": 403
+    },
+    "maintenance_cannot_forge_observation": {
+      "rsc": 4103,
+      "rqi": "opensoom-ef72d2d8cf4d4438a50c02f719015e3d",
+      "body": {
+        "m2m:dbg": "originator: Cmaintenancemab9129cb90arecovery has no CREATE privileges for resource: cntBV6gIwLTXb"
+      },
+      "http_status": 403
+    },
+    "outsider_observation_denied": {
+      "rsc": 4103,
+      "rqi": "opensoom-c08d5e8e032f46f4823c7946d675db60",
+      "body": {
+        "m2m:dbg": "originator has no permission for RETRIEVE"
+      },
+      "http_status": 403
+    },
+    "operations_cannot_write_work_order": {
+      "rsc": 4103,
+      "rqi": "opensoom-0743097521634d3c84c677b5a85e31e1",
+      "body": {
+        "m2m:dbg": "originator: Coperationsmab9129cb90arecovery has no CREATE privileges for resource: cntFHh7rSn9C4"
+      },
+      "http_status": 403
+    },
+    "maintenance_cannot_write_operations_report": {
+      "rsc": 4103,
+      "rqi": "opensoom-6a9152252aa44129a61c832e4161e782",
+      "body": {
+        "m2m:dbg": "originator: Cmaintenancemab9129cb90arecovery has no CREATE privileges for resource: cntglXS4uX1ef"
+      },
+      "http_status": 403
+    },
+    "device_cannot_register_subscription": {
+      "rsc": 4103,
+      "rqi": "opensoom-c28a1060c84344ca9d97e02819bd0dba",
+      "body": {
+        "m2m:dbg": "originator: Cdevicemab9129cb90arecovery has no CREATE privileges for resource: cntBV6gIwLTXb"
+      },
+      "http_status": 403
+    }
+  },
+  "independent_CSE_readback": {
+    "operations_report": {
+      "rsc": 2000,
+      "rqi": "opensoom-63f071f97f7847068e42e913b7a940ae",
+      "body": {
+        "m2m:cin": {
+          "con": "{\"at\": \"2026-11-18T11:17:22.115+00:00\", \"application\": \"operations\", \"event_id\": \"ma-b9129cb90a-recovery\", \"asset_id\": \"cook-exhaust-01\", \"facility_id\": \"food-a\", \"zone_id\": \"cook\", \"status\": \"verified_recovery\", \"simulated\": true, \"command_id\": \"command-ma-b9129cb90a-recovery\", \"ack\": {\"event_id\": \"ma-b9129cb90a-recovery\", \"command_id\": \"command-ma-b9129cb90a-recovery\", \"command_ri\": \"cinOW0Or5KZf9\", \"ack_at\": \"2026-11-18T11:17:21.791+00:00\", \"simulated\": true, \"device_state\": \"damper_changed\", \"value\": 100}, \"source\": {\"rsc\": 2000, \"rqi\": \"opensoom-c97904e7156240ac8a71b3427c8e0d4a\", \"body\": {\"m2m:cin\": {\"con\": \"{\\\"schema_version\\\": 1, \\\"event_id\\\": \\\"ma-b9129cb90a-recovery\\\", \\\"asset_id\\\": \\\"cook-exhaust-01\\\", \\\"sequence\\\": 3, \\\"observation\\\": {\\\"facility_id\\\": \\\"food-a\\\", \\\"zone_id\\\": \\\"cook\\\", \\\"observed_at\\\": \\\"2026-11-18T11:17:22.104+00:00\\\", \\\"received_at\\\": \\\"2026-11-18T11:17:22.104+00:00\\\", \\\"source\\\": \\\"simulated\\\", \\\"adapter\\\": \\\"vendor-a\\\", \\\"pm25\\\": 22.5, \\\"co2\\\": 720.0, \\\"airflow\\\": 1080.0, \\\"fan_running\\\": true, \\\"damper_pct\\\": 100.0}}\", \"cnf\": \"application/json:0\", \"cs\": 397, \"pi\": \"cntBV6gIwLTXb\", \"ri\": \"cinU8v7xhjDYL\", \"rn\": \"cin_Wno2YroA2C\", \"ty\": 4, \"ct\": \"20261118T111722,107046\", \"lt\": \"20261118T111722,107046\", \"et\": \"20311117T111721,030997\", \"st\": 3}}, \"http_status\": 200}, \"diagnosis\": {\"status\": \"nominal\", \"reason\": \"Within configured operating targets\", \"freshness\": 0.011117}, \"post_ack_samples\": 2}",
+          "cnf": "application/json:0",
+          "cs": 1446,
+          "pi": "cntglXS4uX1ef",
+          "ri": "cingNUi0kXSYf",
+          "rn": "cin_xjBJithYBt",
+          "ty": 4,
+          "ct": "20261118T111722,117648",
+          "lt": "20261118T111722,117648",
+          "et": "20311117T111721,030997",
+          "st": 3
+        }
+      },
+      "http_status": 200
+    },
+    "maintenance_work_order": {
+      "rsc": 2000,
+      "rqi": "opensoom-caa318b68f744fd58784f65a6c8ab45f",
+      "body": {
+        "m2m:cin": {
+          "con": "{\"at\": \"2026-11-18T11:17:22.114+00:00\", \"application\": \"maintenance\", \"event_id\": \"ma-b9129cb90a-recovery\", \"asset_id\": \"cook-exhaust-01\", \"facility_id\": \"food-a\", \"zone_id\": \"cook\", \"status\": \"observations_recovered_inspection_pending\", \"simulated\": true, \"work_order_id\": \"work-order-ma-b9129cb90a-recovery\", \"source\": {\"rsc\": 2000, \"rqi\": \"opensoom-e417e87788d84cfe86ab1afa35deffb5\", \"body\": {\"m2m:cin\": {\"con\": \"{\\\"schema_version\\\": 1, \\\"event_id\\\": \\\"ma-b9129cb90a-recovery\\\", \\\"asset_id\\\": \\\"cook-exhaust-01\\\", \\\"sequence\\\": 3, \\\"observation\\\": {\\\"facility_id\\\": \\\"food-a\\\", \\\"zone_id\\\": \\\"cook\\\", \\\"observed_at\\\": \\\"2026-11-18T11:17:22.104+00:00\\\", \\\"received_at\\\": \\\"2026-11-18T11:17:22.104+00:00\\\", \\\"source\\\": \\\"simulated\\\", \\\"adapter\\\": \\\"vendor-a\\\", \\\"pm25\\\": 22.5, \\\"co2\\\": 720.0, \\\"airflow\\\": 1080.0, \\\"fan_running\\\": true, \\\"damper_pct\\\": 100.0}}\", \"cnf\": \"application/json:0\", \"cs\": 397, \"pi\": \"cntBV6gIwLTXb\", \"ri\": \"cinU8v7xhjDYL\", \"rn\": \"cin_Wno2YroA2C\", \"ty\": 4, \"ct\": \"20261118T111722,107046\", \"lt\": \"20261118T111722,107046\", \"et\": \"20311117T111721,030997\", \"st\": 3}}, \"http_status\": 200}, \"action\": \"Retain work order until an authorized inspection; simulated recovery cannot close physical maintenance\"}",
+          "cnf": "application/json:0",
+          "cs": 1226,
+          "pi": "cntFHh7rSn9C4",
+          "ri": "cingKEBMWBZVG",
+          "rn": "cin_c4p1qLMR1h",
+          "ty": 4,
+          "ct": "20261118T111722,115933",
+          "lt": "20261118T111722,115933",
+          "et": "20311117T111721,030997",
+          "st": 3
+        }
+      },
+      "http_status": 200
+    },
+    "command_count": {
+      "rsc": 2000,
+      "rqi": "opensoom-d222944defab4a6b8697d812c3fda9f5",
+      "body": {
+        "m2m:cnt": {
+          "rn": "commands",
+          "mni": 100,
+          "acpi": [
+            "acpuPf22RFxCU"
+          ],
+          "lbl": [
+            "opensoom:multiapp",
+            "stream:commands",
+            "event:ma-b9129cb90a-recovery"
+          ],
+          "cni": 1,
+          "cbs": 435,
+          "st": 1,
+          "pi": "Cprovisionmab9129cb90arecovery",
+          "ri": "cntbtqzK8MMqq",
+          "ty": 3,
+          "ct": "20261118T111721,049621",
+          "lt": "20261118T111721,049621",
+          "et": "20311117T111721,030997"
+        }
+      },
+      "http_status": 200
+    },
+    "ack_count": {
+      "rsc": 2000,
+      "rqi": "opensoom-4e47822f79bf434981d931965248bc43",
+      "body": {
+        "m2m:cnt": {
+          "rn": "acks",
+          "mni": 100,
+          "acpi": [
+            "acpcXs1lwzw0t"
+          ],
+          "lbl": [
+            "opensoom:multiapp",
+            "stream:acks",
+            "event:ma-b9129cb90a-recovery"
+          ],
+          "cni": 1,
+          "cbs": 227,
+          "st": 1,
+          "pi": "Cprovisionmab9129cb90arecovery",
+          "ri": "cntTVAMgm2YH5",
+          "ty": 3,
+          "ct": "20261118T111721,051597",
+          "lt": "20261118T111721,051597",
+          "et": "20311117T111721,030997"
+        }
+      },
+      "http_status": 200
+    }
+  },
+  "same_source_event": {
+    "event_id": "ma-b9129cb90a-recovery",
+    "source_observation_ri": "cinuoFGO0S6hp",
+    "operations_read_rqi": "opensoom-5a88d79a50bd4d29b9f28d817353dbd8",
+    "maintenance_read_rqi": "opensoom-b96891d84ecc43e9bdeadc9d98e7a51e"
+  },
+  "applications": {
+    "operations": {
+      "pid": 63570,
+      "module": "opensoom.multiapp",
+      "role": "operations",
+      "ae_origin": "Coperationsmab9129cb90arecovery",
+      "state_path": "recovery/operations-state.json",
+      "request_trace": "recovery/operations-requests.jsonl"
+    },
+    "maintenance": {
+      "pid": 63571,
+      "module": "opensoom.multiapp",
+      "role": "maintenance",
+      "ae_origin": "Cmaintenancemab9129cb90arecovery",
+      "state_path": "recovery/maintenance-state.json",
+      "request_trace": "recovery/maintenance-requests.jsonl"
+    },
+    "device": {
+      "pid": 63572,
+      "module": "opensoom.multiapp",
+      "role": "device",
+      "ae_origin": "Cdevicemab9129cb90arecovery",
+      "state_path": "recovery/device-state.json",
+      "request_trace": "recovery/device-requests.jsonl"
+    }
+  },
+  "result": "PASS_INDEPENDENT_APPLICATIONS_RECOVERY",
+  "completed_at": "2026-11-18T11:17:23.358+00:00"
+}

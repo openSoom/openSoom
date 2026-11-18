@@ -8,7 +8,7 @@ python3 -m http.server 8095 --bind 127.0.0.1 --directory pitch
 
 Open http://127.0.0.1:8095/. ES modules require HTTP serving; opening `index.html` directly as a file is not the supported preview path. Stop the preview with Ctrl-C. A future static host can serve this directory unchanged. No hosting account or public deployment has been created.
 
-The English story covers the concrete reference case, oneM2M responsibilities, evidence-based control, actual prototype traces, reuse and limitations. **한국어 발표 가이드** opens a six-part presenter guide with section navigation and suggested demonstrations. See `docs/submission/technical-qa.md` for the five-minute outline and English Q&A.
+The English story covers the concrete reference case, oneM2M responsibilities, evidence-based control, actual prototype traces, reuse and limitations. **한국어 발표 가이드** opens a six-part presenter guide with section navigation and suggested demonstrations. The [twelve-minute evaluation plan and English Q&A](../docs/submission/technical-qa.md#twelve-minute-evaluation-presentation) include playback of the recorded demo.
 
 Three interactive views explain the facility, shared service layer and two-facility topology. Conditions illustrate a fault, verified recovery and central disconnection. These views are explanatory geometry and particles, not a computational airflow simulation, physical experiment or live runtime. The actual dashboard screenshot and linked repository evidence are labeled separately.
 

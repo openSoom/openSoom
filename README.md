@@ -4,7 +4,9 @@
 
 openSoom connects facility observations, diagnosis, authorized actions and outcome checks through oneM2M. A Codex plugin and a standalone LLM API runner use the same tools as the facility dashboard. Food production is the first example. Different facility profiles and device adapters reuse the same core.
 
-![Actual openSoom dashboard with a simulated unresolved exhaust incident](evidence/dashboard/desktop-no-recovery.jpg)
+**[Watch the 45-second film](deliverables/video/openSoom-pr-45s.mp4)** · [Five-minute technical demo](deliverables/video/openSoom-demo-5min.mp4) · [Run it locally](#run-the-local-demo)
+
+![The actual openSoom learning-space dashboard with an acknowledged damper command and unresolved airflow](evidence/dashboard/visual-upgrade-desktop-unresolved.jpg)
 
 **Hackathon prototype:** actual ACME oneM2M CSE, MCP, API and model execution; simulated sensors and actuators. The local runtime and hosted-model recovery, non-recovery and stale-data checks have captured evidence. Four independent GPT-6.1 Sol Max teams completed stricter release review and correction verification; see the [review summary](docs/review/release-summary.md). Codex **CLI 0.166.0** host integration is tested; a separate desktop UI flow and physical equipment are not verified.
 
@@ -123,9 +125,9 @@ The distributed test actually stops the central CSE while a local facility compl
 
 ## Pitch and demonstration
 
-The [single-page Three.js presentation](pitch/) explains the facility, standard service layer and distributed topology. Its Korean presenter guide supports a five-minute English pitch. Serve it independently with `python3 -m http.server 8095 --bind 127.0.0.1 --directory pitch`. The geometry is explanatory and does not simulate airflow.
+The [single-page Three.js presentation](pitch/) explains the facility, standard service layer and distributed topology. The [English evaluation plan](docs/submission/technical-qa.md#twelve-minute-evaluation-presentation) includes the demo video in a twelve-minute talk. The Korean presenter guide includes a five-minute practice version. Serve the pitch with `python3 -m http.server 8095 --bind 127.0.0.1 --directory pitch`. The geometry illustrates the installation.
 
-The [108-second English demo](deliverables/video/openSoom-demo-en.mp4) combines actual application captures, recorded model traces and labeled motion graphics. [Storyboard and reproduction](deliverables/video/README.md).
+Watch the [45-second introduction](deliverables/video/openSoom-pr-45s.mp4) or the [five-minute narrated demo](deliverables/video/openSoom-demo-5min.mp4). The demo follows two facilities on the actual dashboard, then shows how two independent oneM2M applications process one fault observation. Operations verifies the ventilation response. Maintenance owns an inspection work order that remains open for follow-up. [Run the two applications](docs/multi-application-scenario.md) · [Video sources and production notes](deliverables/video/README.md)
 
 ## Evidence, review and release scope
 
@@ -133,7 +135,7 @@ The [108-second English demo](deliverables/video/openSoom-demo-en.mp4) combines 
 
 MEC hosting/services, serving-CSE handover, federated learning and network geolocation have separate [extension decisions](docs/extension-decisions.md). Local CSE processes do not establish those capabilities. Human first-use usability, network deployment and real equipment remain further validation work.
 
-The [English Hackster draft](docs/submission/hackster-article.md) and local media are submission preparation. Public Hackster/video URLs and the eventual article backlink remain pending separate publication. No Discord submission or authentic judge interaction is claimed.
+The [English article prepared for Hackster](docs/submission/hackster-article.md) includes both films, the independent applications, installation steps and the source records. The public Hackster article URL and team-channel submission are pending.
 
 ## Licenses and contributions
 

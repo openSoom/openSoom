@@ -1,0 +1,162 @@
+{
+  "role": "device",
+  "ae_origin": "Cdevicemab9129cb90amissingack",
+  "event_id": "ma-b9129cb90a-missing-ack",
+  "seen": [
+    "cinI35fekPD5g"
+  ],
+  "receipts": [
+    {
+      "received_at": "2026-11-18T11:17:24.125+00:00",
+      "rqi": "OrUQyKnAfl",
+      "body": {
+        "m2m:sgn": {
+          "vrq": true,
+          "sur": "/opensoom-multiapp/subCN2U5LLfI9",
+          "cr": "CAdmin"
+        }
+      }
+    },
+    {
+      "received_at": "2026-11-18T11:17:24.180+00:00",
+      "rqi": "nXLbkX3cOE",
+      "body": {
+        "m2m:sgn": {
+          "nev": {
+            "net": 3,
+            "rep": {
+              "m2m:cin": {
+                "con": "{\"schema_version\": 1, \"event_id\": \"ma-b9129cb90a-missing-ack\", \"command_id\": \"command-ma-b9129cb90a-missing-ack\", \"facility_id\": \"food-a\", \"zone_id\": \"cook\", \"asset_id\": \"cook-exhaust-01\", \"profile_id\": \"food-production\", \"profile_version\": 1, \"action\": \"set_damper\", \"value\": 100, \"simulated\": true, \"issued_at\": \"2026-11-18T11:17:24.174467+00:00\", \"expires_at\": \"2026-11-18T11:17:27.174467+00:00\", \"source_observation_ri\": \"cinvWZqYz61bN\"}",
+                "cnf": "application/json:0",
+                "cs": 441,
+                "pi": "cnttyXoXv8poH",
+                "ri": "cinI35fekPD5g",
+                "rn": "cin_6Rf6o5Ftfy",
+                "ty": 4,
+                "ct": "20261118T111724,175377",
+                "lt": "20261118T111724,175377",
+                "et": "20311117T111723,374412",
+                "st": 1
+              }
+            }
+          },
+          "sur": "/opensoom-multiapp/subCN2U5LLfI9"
+        }
+      }
+    }
+  ],
+  "transitions": [
+    {
+      "at": "2026-11-18T11:17:24.182+00:00",
+      "application": "device",
+      "event_id": "ma-b9129cb90a-missing-ack",
+      "asset_id": "cook-exhaust-01",
+      "facility_id": "food-a",
+      "zone_id": "cook",
+      "status": "simulated_no_ack",
+      "simulated": true,
+      "source": {
+        "rsc": 2000,
+        "rqi": "opensoom-63b973a8459948e999690cc15eb007ee",
+        "body": {
+          "m2m:cin": {
+            "con": "{\"schema_version\": 1, \"event_id\": \"ma-b9129cb90a-missing-ack\", \"command_id\": \"command-ma-b9129cb90a-missing-ack\", \"facility_id\": \"food-a\", \"zone_id\": \"cook\", \"asset_id\": \"cook-exhaust-01\", \"profile_id\": \"food-production\", \"profile_version\": 1, \"action\": \"set_damper\", \"value\": 100, \"simulated\": true, \"issued_at\": \"2026-11-18T11:17:24.174467+00:00\", \"expires_at\": \"2026-11-18T11:17:27.174467+00:00\", \"source_observation_ri\": \"cinvWZqYz61bN\"}",
+            "cnf": "application/json:0",
+            "cs": 441,
+            "pi": "cnttyXoXv8poH",
+            "ri": "cinI35fekPD5g",
+            "rn": "cin_6Rf6o5Ftfy",
+            "ty": 4,
+            "ct": "20261118T111724,175377",
+            "lt": "20261118T111724,175377",
+            "et": "20311117T111723,374412",
+            "st": 1
+          }
+        },
+        "http_status": 200
+      }
+    }
+  ],
+  "status": "simulated_no_ack",
+  "errors": [],
+  "endpoint": "http://127.0.0.1:50997/notify",
+  "running": false,
+  "observations": [
+    {
+      "rsc": 2001,
+      "rqi": "opensoom-55718317cd4347cd911d37cb32b8665e",
+      "body": {
+        "m2m:cin": {
+          "con": "{\"schema_version\": 1, \"event_id\": \"ma-b9129cb90a-missing-ack\", \"asset_id\": \"cook-exhaust-01\", \"sequence\": 1, \"observation\": {\"facility_id\": \"food-a\", \"zone_id\": \"wash\", \"observed_at\": \"2026-11-18T11:17:24.153+00:00\", \"received_at\": \"2026-11-18T11:17:24.153+00:00\", \"source\": \"simulated\", \"adapter\": \"vendor-a\", \"pm25\": 17.5, \"co2\": 780.0, \"airflow\": 720.0, \"fan_running\": true, \"damper_pct\": 100.0}}",
+          "cnf": "application/json:0",
+          "cs": 399,
+          "pi": "cnt8vJUPXCQdR",
+          "ri": "cinSG9rhLr6Rg",
+          "rn": "cin_J23jgNjXMI",
+          "ty": 4,
+          "ct": "20261118T111724,155566",
+          "lt": "20261118T111724,155566",
+          "et": "20311117T111723,374412",
+          "st": 1
+        }
+      },
+      "http_status": 201
+    },
+    {
+      "rsc": 2001,
+      "rqi": "opensoom-39040795a48c4dfd93f06d2b5d08944f",
+      "body": {
+        "m2m:cin": {
+          "con": "{\"schema_version\": 1, \"event_id\": \"ma-b9129cb90a-missing-ack\", \"asset_id\": \"cook-exhaust-01\", \"sequence\": 1, \"observation\": {\"facility_id\": \"food-a\", \"zone_id\": \"cook\", \"observed_at\": \"2026-11-18T11:17:24.157+00:00\", \"received_at\": \"2026-11-18T11:17:24.157+00:00\", \"source\": \"simulated\", \"adapter\": \"vendor-a\", \"pm25\": 67.5, \"co2\": 720.0, \"airflow\": 360.0, \"fan_running\": true, \"damper_pct\": 35.0}}",
+          "cnf": "application/json:0",
+          "cs": 398,
+          "pi": "cntUaLHGBukb0",
+          "ri": "cinvWZqYz61bN",
+          "rn": "cin_bIOHBVcyew",
+          "ty": 4,
+          "ct": "20261118T111724,159033",
+          "lt": "20261118T111724,159033",
+          "et": "20311117T111723,374412",
+          "st": 1
+        }
+      },
+      "http_status": 201
+    }
+  ],
+  "received_command": {
+    "schema_version": 1,
+    "event_id": "ma-b9129cb90a-missing-ack",
+    "command_id": "command-ma-b9129cb90a-missing-ack",
+    "facility_id": "food-a",
+    "zone_id": "cook",
+    "asset_id": "cook-exhaust-01",
+    "profile_id": "food-production",
+    "profile_version": 1,
+    "action": "set_damper",
+    "value": 100,
+    "simulated": true,
+    "issued_at": "2026-11-18T11:17:24.174467+00:00",
+    "expires_at": "2026-11-18T11:17:27.174467+00:00",
+    "source_observation_ri": "cinvWZqYz61bN"
+  },
+  "command_retrieval": {
+    "rsc": 2000,
+    "rqi": "opensoom-63b973a8459948e999690cc15eb007ee",
+    "body": {
+      "m2m:cin": {
+        "con": "{\"schema_version\": 1, \"event_id\": \"ma-b9129cb90a-missing-ack\", \"command_id\": \"command-ma-b9129cb90a-missing-ack\", \"facility_id\": \"food-a\", \"zone_id\": \"cook\", \"asset_id\": \"cook-exhaust-01\", \"profile_id\": \"food-production\", \"profile_version\": 1, \"action\": \"set_damper\", \"value\": 100, \"simulated\": true, \"issued_at\": \"2026-11-18T11:17:24.174467+00:00\", \"expires_at\": \"2026-11-18T11:17:27.174467+00:00\", \"source_observation_ri\": \"cinvWZqYz61bN\"}",
+        "cnf": "application/json:0",
+        "cs": 441,
+        "pi": "cnttyXoXv8poH",
+        "ri": "cinI35fekPD5g",
+        "rn": "cin_6Rf6o5Ftfy",
+        "ty": 4,
+        "ct": "20261118T111724,175377",
+        "lt": "20261118T111724,175377",
+        "et": "20311117T111723,374412",
+        "st": 1
+      }
+    },
+    "http_status": 200
+  }
+}

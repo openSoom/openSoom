@@ -1269,6 +1269,76 @@
         "team_2"
       ],
       "verification_result": "Required outcome supported by the identified independent base and correction reviews; their evidence limits remain binding."
+    },
+    {
+      "id": "R-035",
+      "team": "team_1",
+      "criteria": [
+        3
+      ],
+      "review_round": "cinematic-and-multiapp",
+      "evidence_status": "review_finding",
+      "gap_and_impact": "An intervening invalid observation did not reset the consecutive-outcome counter.",
+      "minimum_change": "Reset outcome counters on invalid samples, including delayed-ACK replays; retain the original film evidence.",
+      "product_reason": "Operations must establish two consecutive qualifying observations before closing the fault.",
+      "verification": "Corrective unit cases, three real revalidation cases, independent source and receipt readback.",
+      "main_decision": "accept",
+      "decision_reason": "Operations must establish two consecutive qualifying observations before closing the fault.",
+      "implementation_state": "implemented_and_verified_in_stated_scope",
+      "review_state": "resolved",
+      "closure_evidence": [
+        "tests/test_multiapp.py",
+        "evidence/runtime/multiapp-revalidation/index.json",
+        "docs/review/cinematic-team1.md"
+      ]
+    },
+    {
+      "id": "R-036",
+      "team": "team_2",
+      "criteria": [
+        4,
+        5,
+        7
+      ],
+      "review_round": "cinematic-and-multiapp",
+      "evidence_status": "review_finding",
+      "gap_and_impact": "An early overlay could read as a current airflow value while the recorded UI still showed the fault. Some English cues were too fast.",
+      "minimum_change": "Qualify the later outcome on screen, retime affected captions and verify the final masters.",
+      "product_reason": "The film must accurately convey when the equipment acknowledged a command and when airflow recovered.",
+      "verification": "Inspect final frames, timing, both decoded masters, and the comparison of final audio to the narration.",
+      "main_decision": "accept",
+      "decision_reason": "The film must accurately convey when the equipment acknowledged a command and when airflow recovered.",
+      "implementation_state": "implemented_and_verified_in_stated_scope",
+      "review_state": "resolved",
+      "closure_evidence": [
+        "docs/review/cinematic-team2.md",
+        "evidence/video/cinematic/demo-qa.json",
+        "evidence/video/cinematic/narration-qa.json"
+      ]
+    },
+    {
+      "id": "R-037",
+      "team": "team_3",
+      "criteria": [
+        3,
+        5,
+        17
+      ],
+      "review_round": "cinematic-and-multiapp",
+      "evidence_status": "review_finding",
+      "gap_and_impact": "Two capture tools were extended after the recorded demo; current file hashes alone could obscure provenance.",
+      "minimum_change": "Retain capture-time hashes, declare the later PR extension, and identify each evidence run separately.",
+      "product_reason": "A viewer can distinguish dashboard footage, separate CSE workers, an archived LLM run and the central outage.",
+      "verification": "Read the manifests and compare the film, article, captured outputs and file hashes.",
+      "main_decision": "accept",
+      "decision_reason": "A viewer can distinguish dashboard footage, separate CSE workers, an archived LLM run and the central outage.",
+      "implementation_state": "implemented_and_verified_in_stated_scope",
+      "review_state": "resolved",
+      "closure_evidence": [
+        "docs/review/cinematic-team3.md",
+        "evidence/video/cinematic/dashboard-recordings.json",
+        "evidence/video/cinematic/pr-dashboard-recording.json"
+      ]
     }
   ]
 }
