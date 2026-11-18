@@ -193,5 +193,48 @@
     "published_product_revision": "6a8d6b2d8e1a33affc11a305fa3fd870e17f8636",
     "public_assets": "evidence/release/inspection-publication.json",
     "clean_public_install": "evidence/release/inspection-public-install.json"
+  },
+  "measurement_integrity_release": {
+    "product_source_revision": "25a64ac6128bbcfaecd33bf1925bb24e58d84d92",
+    "published_product_revision": "2f1c8b03fcdfdf129f30fe15acf2522e93726651",
+    "evidence": [
+      "evidence/runtime/observation-sequence.json",
+      "evidence/runtime/field-recovery.json",
+      "evidence/runtime/technician-queue-reads.json",
+      "evidence/runtime/ornl-measured-trends.json",
+      "evidence/runtime/inspection-benchmark.json"
+    ],
+    "technician_browser": "evidence/application/field-recovery-browser.json",
+    "public_clean_install": "evidence/release/measurement-integrity.json",
+    "technical_changes": [
+      "Verify source time and native sequence continuity before recovery.",
+      "Record operational recovery with its original ACK and observations on the same open work order.",
+      "Read paged/delta technician queues and invalidate deletions while preserving ACL checks.",
+      "Provide an installable read-only CLI with attributed measured ORNL archives."
+    ],
+    "comparison": "docs/review/public-project-comparison.ko.md",
+    "scoped_expert": [
+      1,
+      2,
+      3,
+      5,
+      7,
+      10,
+      11,
+      12,
+      13,
+      16,
+      17
+    ],
+    "open_criteria": [
+      4,
+      6,
+      8,
+      9,
+      14,
+      15
+    ],
+    "execution_scope": "Field workflow and new sequence/queue tests ran on local native ACME with virtual devices. Archived ORNL BMS data were analyzed separately. Cloud and hosted-model receipts are historical and version-bound.",
+    "user_handoff": "Public Hackster publication is scheduled by the maintainer for 2026-11-20."
   }
 }

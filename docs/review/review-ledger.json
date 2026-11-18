@@ -1884,5 +1884,89 @@
         "verification": "Landing browser receipt verifies both decisions, source and live app destinations at 1440 and 390 pixels."
       }
     ]
+  },
+  "measurement_integrity_review": {
+    "product_source_revision": "25a64ac6128bbcfaecd33bf1925bb24e58d84d92",
+    "publication_with_editorial_and_queue_receipt_updates": "2f1c8b03fcdfdf129f30fe15acf2522e93726651",
+    "model": "gpt-6.2-sol",
+    "reasoning_effort": "max",
+    "evidence_sha256": {
+      "evidence/runtime/observation-sequence.json": "1e05ae9ad9d8c9a59b295e186a19c86f793218267515de6d5c68834f9cb2276c",
+      "evidence/runtime/field-recovery.json": "67a8635636118d167ccd79953a75a57364fcf7c6d3598e45627eeb5e5e3c323f",
+      "evidence/runtime/technician-queue-reads.json": "48992f803e43c52d654745c80a924ec1478336a88b7dd2895a88922516d34652",
+      "evidence/runtime/ornl-measured-trends.json": "310a9e81c1d97e9d41827677e9b21114bd9a9ffc22ac45aadb47b614730c49cf",
+      "evidence/runtime/inspection-benchmark.json": "6fb752aa86c98de6c5038a83df3ee287e55d83f062398bf8a5216a610c425ca9"
+    },
+    "teams": [
+      {
+        "team": "A",
+        "criteria": [
+          1,
+          2,
+          3
+        ],
+        "verdict": "Scoped Expert. Native group fan-out, native MQTT/TLS and HTTPS from a separate secure run, and actual independent operations and maintenance AEs. Current decision-time observation and field tests use local HTTP ACME.",
+        "decision": "Accepted. Cite the actual product protocol trace. Label HTTP callbacks, delayed records and decision-time evidence explicitly."
+      },
+      {
+        "team": "B",
+        "criteria": [
+          4,
+          5,
+          7
+        ],
+        "verdict": "4 remains open for the actual public Hackster rendering. 5 and 7 retain Expert for the verified 720p film and the documented case for oneM2M reuse.",
+        "decision": "Accepted and independently rechecked. Updated the article to distinguish the 95% acknowledged command from shaft position and to reproduce the 6 of 18 comparison with measured archived supply air."
+      },
+      {
+        "team": "C",
+        "criteria": [
+          6,
+          8,
+          9
+        ],
+        "verdict": "6 stays Proficient pending the public article backlink. 8 needs a real public technical exchange and 9 needs the actual interview.",
+        "decision": "Accepted and independently rechecked. Refreshed the queue capture against all four frozen source hashes. A public checkout replay is recorded separately."
+      },
+      {
+        "team": "D",
+        "criteria": [
+          10,
+          11,
+          17
+        ],
+        "verdict": "Scoped Expert. Historical secure lab and hosted-agent provenance retained. In current HTTP replay the native PM2.5 FCNT held 63 despite late 10. Warm cache honored CSE denial (4103).",
+        "decision": "Accepted. Distinguish server TLS and trusted local actors, scope results to available CSE records, and distinguish standalone model calls from the Codex compound tool."
+      },
+      {
+        "team": "E",
+        "criteria": [
+          12,
+          13,
+          16
+        ],
+        "verdict": "Scoped Expert. CSE handover ran across two CSEs on one machine, with a 0.173037s nominal read gap in the independent run. Historical MEC/Helm placements shared a VM. MEC 033 enrollment and 046 subscription used native services, with the virtual shaft reading retrieved by a separate 046 query.",
+        "decision": "Accepted. Corrected handover link and cloud source description. Current operations, technician, and worker changes were validated locally. Native cloud receipt identities are preserved."
+      },
+      {
+        "team": "F",
+        "criteria": [
+          14,
+          15
+        ],
+        "verdict": "Both open. Archived records from one building provide neither federated training nor network/MEC geolocation. Fixed asset identity identifies equipment. It does not locate mobile agents.",
+        "decision": "Accepted. Keep both open. EdgeGuard describes simulated site learning on ACME, plus a location subscription test with a simulated MEC service; its Sandbox polling path is a separate test."
+      }
+    ],
+    "product_limitation": "An older acquisition delivered after two accepted healthy readings does not retroactively change a verdict. The raw CSE retains the late reading. Treat delayed-conflict review as future work if a deployment needs retrospective reassessment.",
+    "publication_handoff": "Hackster publication stays with the maintainer on Nov 20. No contest posting, schedule entry or communication is inferred.",
+    "idea_model": {
+      "separate_reviewer": "gpt-6.2-sol",
+      "reasoning_effort": "max",
+      "verdict": "Adopt for the hackathon prototype and a read-only pilot. Field adoption remains unverified.",
+      "baseline": "An existing building management and work-order system with a trusted flow reading and physical travel check can make the same decision. The demonstrated value is retaining precise evidence across independent roles and integrating a separately operated sensor when needed.",
+      "verification": "Independently reran all five archived histories, matched 6/18 fixed-damper days, reviewed queue provenance and confirmed all four hashes in the republished capture.",
+      "accepted": "Clarified the two EdgeGuard experiment denominators, the scope of the mock location subscription, and the 23ms interval between readings in the accelerated workflow. Documented a real-site comparison using commissioned recovery duration, uncoached users, correct first inspection, setup effort and evidence retrieval after restart."
+    }
   }
 }

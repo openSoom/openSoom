@@ -1,0 +1,188 @@
+{
+  "status": "passed",
+  "captured_at": "2026-11-18T18:52:32.476427+00:00",
+  "published_revision": "2f1c8b03fcdfdf129f30fe15acf2522e93726651",
+  "method": "Anonymous HTTPS public clone into an empty directory, normal uv install, isolated real ACME with virtual equipment and independent public asset downloads compared byte-for-byte to Git.",
+  "tests": "108 passed, 29 subtests passed in 1.39s",
+  "clean_after_replay": true,
+  "archived_building_history": {
+    "room_days": 31,
+    "minute_rows": 44640,
+    "matched_published_daily_results": true
+  },
+  "field_recovery": {
+    "order": "work-incident-e760d6e2c9",
+    "ack_and_consecutive_observations": {
+      "verified_at": "2026-11-18T18:51:57.318790+00:00",
+      "limits": {
+        "minimum_airflow": 900,
+        "co2_warning": 1200,
+        "pm25_warning": 45,
+        "freshness_seconds": 45
+      },
+      "ack": {
+        "cin_ri": "cinnvDLkqypvV",
+        "cin_path": "cse-multiapp/opensoom/facilities/food-a/cook/acks/cin_3LRd4u5tao",
+        "ack_at": "2026-11-18T18:51:57.206+00:00",
+        "read_rqi": "opensoom-2562a048788a4974a25ff85a4612d603"
+      },
+      "observations": [
+        {
+          "cin_ri": "cinTK8N8xSFdM",
+          "cin_path": "cse-multiapp/opensoom/facilities/food-a/cook/observations/cin_AV8hFcaQMS",
+          "observed_at": "2026-11-18T18:51:57.290+00:00",
+          "rqi": "opensoom-dafe4030f9624a89827171c8636cb7cd",
+          "read_rqi": "opensoom-3d7cc267cd1e4c6da2d7ae83320ee0db",
+          "airflow": 940.0,
+          "pm25": 12.0,
+          "co2": 610.0,
+          "fan_running": true
+        },
+        {
+          "cin_ri": "cin3APmUfvffa",
+          "cin_path": "cse-multiapp/opensoom/facilities/food-a/cook/observations/cin_hKHXPDv7HL",
+          "observed_at": "2026-11-18T18:51:57.312+00:00",
+          "rqi": "opensoom-d44bf2aff4d842e981cb2d6f6ff1673b",
+          "read_rqi": "opensoom-0ee5b5f9a1984fb3b79174452e81e1df",
+          "airflow": 945.0,
+          "pm25": 12.0,
+          "co2": 610.0,
+          "fan_running": true
+        }
+      ]
+    },
+    "field_status": "open",
+    "device_command_count_before_and_after": [
+      1,
+      1
+    ]
+  },
+  "sequence_cases": [
+    "retransmission",
+    "delayed",
+    "contradictory",
+    "future",
+    "sensor_gap",
+    "unread_interval"
+  ],
+  "queue": {
+    "cold_reads": [
+      112,
+      11
+    ],
+    "append_reads": [
+      86,
+      6
+    ]
+  },
+  "landing_desktop_mobile": [
+    {
+      "width": 1440,
+      "visible": true,
+      "completeDenominator": true,
+      "sourceLink": true,
+      "overflow": false,
+      "pageErrors": []
+    },
+    {
+      "width": 390,
+      "visible": true,
+      "completeDenominator": true,
+      "sourceLink": true,
+      "overflow": false,
+      "pageErrors": []
+    }
+  ],
+  "public_files": [
+    {
+      "path": "README.md",
+      "bytes": 20360,
+      "sha256": "91b40fe1a5538e9142a8b002ce0b6c4df47f25ee149faa473f2adcad16ac9ef9"
+    },
+    {
+      "path": "docs/submission/hackster-article.md",
+      "bytes": 32215,
+      "sha256": "2844b093c263e52ed89b194ab968f13af9a01cd5ba18673414795680b2005b74"
+    },
+    {
+      "path": "docs/review/public-project-comparison.ko.md",
+      "bytes": 7632,
+      "sha256": "17d04134bc1360aa9501d8b91a58b121df57208d7526d9ff71533327557b2794"
+    },
+    {
+      "path": "docs/assets/ornl-vav-airflow.png",
+      "bytes": 89091,
+      "sha256": "f9c2575e10587a25a8c4c86dc2fb73265564818518e82bf198a3b1ab798a7524"
+    },
+    {
+      "path": "examples/ornl-vav/README.md",
+      "bytes": 4984,
+      "sha256": "cd737c2fa17d810f9c522984b879fcf921d6a1d3dab35103411496b2d15e9ec3"
+    },
+    {
+      "path": "apps/technician/README.md",
+      "bytes": 4776,
+      "sha256": "ad23893d042ab61bb55f4e53d9dbb333daaaf074b464b699710e49c94fc8eb58"
+    },
+    {
+      "path": "pitch/index.html",
+      "bytes": 29650,
+      "sha256": "c1010a1923f1736f8ca64445a68954b86a5f4e1588456eb28c5af733fbbf98a3"
+    },
+    {
+      "path": "evidence/application/field-recovery-browser.json",
+      "bytes": 570,
+      "sha256": "80ed6954fddb180e8982de9f7b2b8a9aa6e0ba17ef6d44cb9cd25850ddbb71f8"
+    },
+    {
+      "path": "evidence/runtime/field-recovery.json",
+      "bytes": 2967,
+      "sha256": "67a8635636118d167ccd79953a75a57364fcf7c6d3598e45627eeb5e5e3c323f"
+    },
+    {
+      "path": "evidence/runtime/observation-sequence.json",
+      "bytes": 32670,
+      "sha256": "1e05ae9ad9d8c9a59b295e186a19c86f793218267515de6d5c68834f9cb2276c"
+    },
+    {
+      "path": "evidence/runtime/ornl-measured-trends.json",
+      "bytes": 18563,
+      "sha256": "310a9e81c1d97e9d41827677e9b21114bd9a9ffc22ac45aadb47b614730c49cf"
+    },
+    {
+      "path": "evidence/runtime/technician-queue-reads.json",
+      "bytes": 6624,
+      "sha256": "48992f803e43c52d654745c80a924ec1478336a88b7dd2895a88922516d34652"
+    },
+    {
+      "path": "evidence/runtime/inspection-benchmark.json",
+      "bytes": 41582,
+      "sha256": "6fb752aa86c98de6c5038a83df3ee287e55d83f062398bf8a5216a610c425ca9"
+    },
+    {
+      "path": "examples/ornl-vav/airflow-bias-205-a.csv.gz",
+      "bytes": 55437,
+      "sha256": "6721af9da7c59f41cc28bce6337ddfc7dcd93cf3820b2f53cd2339609e86a3b2"
+    },
+    {
+      "path": "examples/ornl-vav/airflow-bias-205-b.csv.gz",
+      "bytes": 56326,
+      "sha256": "eb1a4c40dbdfdd3ea025a5a5b9edf935fcc8ea57896653a832b3a75fd3d98037"
+    },
+    {
+      "path": "examples/ornl-vav/damper-104.csv.gz",
+      "bytes": 74722,
+      "sha256": "495c312e34a87384182495bd4ddd353de14f25aeae8326bbfbd5eaac78a0491b"
+    },
+    {
+      "path": "examples/ornl-vav/damper-106.csv.gz",
+      "bytes": 75015,
+      "sha256": "3806049f234f17a50ac446360a43906547d4e6fa2fa4655ee46befc4d3746a30"
+    },
+    {
+      "path": "examples/ornl-vav/damper-205.csv.gz",
+      "bytes": 74065,
+      "sha256": "9f0a63edcac3db5c9df7e8837d420832c69f108c57519cc1d00178cf80e1611c"
+    }
+  ]
+}
