@@ -7,6 +7,8 @@
   const human = (value) => String(value ?? '').replace(/[_-]+/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase());
   const tokenValue = document.querySelector('meta[name="opensoom-token"]')?.content || '';
   const token = tokenValue.startsWith('__') ? '' : tokenValue;
+  const workbench = document.querySelector('meta[name="technician-workbench"]');
+  const localShaftFacility = document.querySelector('meta[name="local-shaft-replay"]')?.content;
   const state = { data: null, facilityId: '', zoneId: '', metric: 'airflow', connected: false, polling: false, busy: false, lastReceived: null, latestRunId: null, history: new Map() };
   try { state.facilityId = localStorage.getItem('opensoom.facility') || ''; } catch (_) { /* Local storage is optional. */ }
   let toastTimer;
@@ -426,6 +428,13 @@
 
   function renderMaintenance() {
     const f = facility();
+    const scenarios = $('scenario-select');
+    const matching = scenarios.querySelector('option[value="no_recovery_matching_shaft"]');
+    if (localShaftFacility && f?.id === localShaftFacility && !matching) {
+      scenarios.add(new Option('Low airflow, shaft follows command', 'no_recovery_matching_shaft'));
+    } else if (f?.id !== localShaftFacility && matching) {
+      matching.remove();
+    }
     const panel = $('maintenance-panel');
     panel.hidden = !f?.maintenance_enabled;
     if (panel.hidden) return;
@@ -445,6 +454,17 @@
       const zone = f.zones.find(item => item.id === order.zone_id);
       const requested = order.requested_pct ?? cmd?.value;
       const sample = order.sample;
+      const activity = order.latest_technician_activity;
+      const activityNames = {scheduled: 'Inspection scheduled', checked: 'Inspection performed', escalated: 'Specialist requested'};
+      const fieldStatus = activity && activity.work_order_ri === order.resource_id && activityNames[activity.action]
+        ? `<p class="field-activity"><strong>Technician activity</strong> ${esc(activityNames[activity.action])} <small>· ${esc(activity.resource_id)}</small></p>`
+        : '';
+      let handoff = '';
+      if (workbench?.dataset.facility === f.id) {
+        const address = new URL(workbench.content);
+        address.searchParams.set('order', order.work_order_id);
+        handoff = `<a class="button secondary" href="${esc(address.href)}" target="_blank" rel="noopener noreferrer">Open this order in the technician workbench ${icon('arrow')}</a>`;
+      }
       return `<article class="maintenance-order">
       <div><span class="status-pill warning">${esc(human(order.status))}</span>
       <strong>${esc(actions[order.priority] || human(order.priority))}</strong></div>
@@ -453,7 +473,7 @@
       <div><dt>Follow-up airflow</dt><dd>${order.airflow == null ? 'See source observation' : esc(number(order.airflow)) + ' m³/h'}</dd></div></dl>
       <p>${esc(zone?.name || order.zone_id)} · ${esc(order.asset_id)} · ${esc(order.work_order_id)}</p>
       <p>${sample ? esc(order.mode === 'mec046' ? 'ETSI MEC 046 sensor sharing' : 'Local oneM2M sensor') + ' · ' + esc(sample.sensor_id) : esc(human(order.evidence_status))}</p>
-      <details><summary>Work order evidence</summary><pre>${esc(JSON.stringify(sanitize(order), null, 2))}</pre></details>
+      ${fieldStatus}${handoff}<details><summary>Work order evidence</summary><pre>${esc(JSON.stringify(sanitize(order), null, 2))}</pre></details>
     </article>`;
     }).join(''));
   }

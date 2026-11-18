@@ -8,6 +8,7 @@
     {"id": "stale", "input": "First zone observation timestamp is older than freshness_seconds", "expected": "Unknown/stale state; reject control based on that evidence; retain unresolved incident", "failure": "Treat old readings as current or issue physical-control command"},
     {"id": "missing", "input": "First zone airflow is absent", "expected": "Missing-data incident; no unsupported recovery assertion", "failure": "Treat an absent measurement as zero or healthy"},
     {"id": "missing_ack", "input": "Anomaly, authorized command, virtual device withholds its ACK", "expected": "Pending then timed-out command; incident remains unresolved", "failure": "CSE accepted write treated as device execution"},
-    {"id": "no_recovery", "input": "Anomaly and ACK, but airflow remains deficient after action", "expected": "Unresolved incident and a maintenance path", "failure": "ACK or fan-running flag establishes recovery"}
+    {"id": "no_recovery", "input": "Anomaly and ACK, but airflow remains deficient after action", "expected": "Unresolved incident and a maintenance path", "failure": "ACK or fan-running flag establishes recovery"},
+    {"id": "no_recovery_matching_shaft", "input": "The same low airflow and ACK; the independent virtual position sensor in the local maintenance lab reports 98% open", "expected": "The incident stays open. The maintenance app prioritizes the airflow path when the separate sensor reading agrees with the accepted setting.", "failure": "Device self-report alone selects a first inspection"}
   ]
 }

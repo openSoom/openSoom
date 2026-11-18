@@ -9,7 +9,9 @@ openSoom separates facility configuration, vendor integration, standard shared s
 | Adapter AE | Normalize virtual vendor payloads, write observations, read commands, send ACK | Vendor replacement must not change diagnosis or agent tools |
 | Diagnostic AE | Read CSE observations and apply profile targets | A fan-running report alone cannot establish sufficient airflow |
 | Operator AE | Inspect zones and issue allowed bounded commands | Facility operation has different authority from observation |
-| Maintenance AE | Record maintenance requests and inspect evidence | A failed recovery needs a distinct follow-up path |
+| Edge maintenance AE | Read the site outcome, request an independently measured shaft position and revise a work order | An unresolved airflow shortfall can have several causes |
+| MEC service bridge | Discover the configured provider, commission the connection through MEC 033 and return a MEC 046 reading with its source and time | A provider can manage its own sensor independently of the damper controller |
+| Technician web app | Append a field disposition for the exact order revision using a dedicated site identity and keep field notes in a separate private stream | The operator needs the inspection status. The technician owns the field record and has no equipment command permission |
 | Observer AE | Read only configured facilities | Validate restricted sharing independently of administrator access |
 | CSE | Store resources, discover, notify, fan out and enforce ACP | Shared behavior must be provided by the standard layer |
 | Service | Persist runs/incidents and enforce tool policies | State must survive a chat or service restart |
@@ -23,6 +25,10 @@ These are distinct application identities and responsibilities. The local protot
 The operations AE alone can command a device. The maintenance AE opens an inspection and requests independent shaft position for that asset. The separate service bridge is allowed to contact a configured provider and return its response to the facility MN-CSE. Maintenance reads that response through its own scoped identity. The bridge and maintenance cannot write device commands. An administrator commissions a missing provider via MEC 033. MEC 046 then supplies a fresh reading. A facility that already receives the same independent observation locally can use that route. [Services and work-order revisions](../evidence/runtime/mec-provider-commissioning.json)
 
 In Option C, the Sandbox controller and its Helm engine install the ACME MN and the maintenance workload on the same logical edge. The scenario author selected north and then south in a two-edge topology on one physical VM. In each deployment the MN registered to its IN-CSE over Mcc and a new case reached revision four. The persisted earlier case could be read after the move. [Deployment and repeatable commands](../deploy/mec-sandbox/README.md) · [North and south receipts](../evidence/runtime/option-c/index.json)
+
+## What the two people see
+
+The operator console follows an authorized command from ACK to two new observations. When airflow stays below the commissioned target, the operator opens that exact work order in the independently served technician workbench. The technician compares the requested and measured positions, then records an inspection status against the immutable work-order revision. The operator sees the status. A private field note stays accessible only to the technician role. Saving the entry leaves the device command count and incident outcome unchanged. The worker selects a first check. An onsite inspection determines the physical cause. [Live replay and role boundaries](../apps/technician/README.md) · [Browser evidence](../evidence/application/technician-browser.json) · [18-case comparison](inspection-benchmark.md)
 
 ## Resource tree
 

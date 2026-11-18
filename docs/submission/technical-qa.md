@@ -1,6 +1,6 @@
 # Technical interview notes
 
-Use the [English slides](../../deliverables/presentation/openSoom-evaluation.pptx), [English script](presenter-script.en.md) and [Korean rehearsal script](presenter-script.ko.md) for the 10–15 minute presentation and video. The organizer allocates 20 minutes including questions.
+Use the [English slides](../../deliverables/presentation/openSoom-evaluation.pptx), [English script](presenter-script.en.md) and [Korean rehearsal script](presenter-script.ko.md) for the 10–15 minute presentation and video. The organizer allocates 20 minutes including questions. The 720p film records the operating case. The workbench is a separate local application.
 
 ### Which problem did you observe, and which part is a product hypothesis?
 
@@ -9,6 +9,18 @@ A November 2025 inspection in Seoul documented inadequate ventilation performanc
 ### What did the operator and technician each decide?
 
 In the cooking-line simulation, airflow after a 100% damper command remained at 360 m³/h against a 900 m³/h zone target. The operator kept the incident open. An independent 35% shaft-position reading made actuator travel and position feedback the first inspection. The same work order changed priority. Confirming a fault requires inspection. The virtual measurement gives no clinical or certified ventilation outcome. [Filmed local run](../../evidence/runtime/maintenance-release-local.json)
+
+### What can the two people record, and who changes the work order?
+
+The shift supervisor uses the operator console to compare the acknowledged setting with fresh airflow from the same zone. The facility technician opens an independent workbench, selects an order and sees the particular revision, command and sensor evidence. Selecting **Inspection scheduled** and **Save inspection entry** records the activity against that revision and returns its oneM2M resource ID. The technician identity can write inspection entries for that facility. The background maintenance AE owns work-order changes, and site operations owns commands and evaluates airflow recovery. In a field pilot a person would perform the inspection and establish its result. [Local operator console](http://127.0.0.1:19490/) · [Local technician workbench](http://127.0.0.1:19492/) · [Technician service](../../src/opensoom/technician.py) · [Local browser receipts](../../evidence/application/technician-browser.json)
+
+### Would the system always suggest inspecting the actuator?
+
+In the archive workshop’s conservation zone, the measured airflow stayed at 515 m³/h against the facility’s 560 m³/h target. An 80% command paired with 35% independent shaft position directed the technician to actuator travel and feedback. A later 95% command paired with 93% shaft position directed the technician to the airflow path. The configured position tolerance was nine percentage points. Both updates retained `work-incident-bcd88d20e6` and each referenced its own command and settled virtual encoder reading. This run used the local sensor route. [Archive workshop commissioning](../../evidence/agent/facility-worker-generalization.json)
+
+### Which simpler policy did you compare against, and what is the denominator?
+
+Nine predeclared cases ran in each of two virtual facilities. Sixteen of the eighteen runs should stay unresolved. An acknowledgement-only rule declared 14 of those recovered, a two-fresh-airflow rule declared 2, and openSoom declared 0. All three handled the two expected recoveries. Four runs had a specific expected first inspection. openSoom matched all four, while the simpler rules offered general inspections. The paired low-flow cases for each site used the same command and airflow with different virtual shaft values. These designed cases test the reasoning and implementation. A field pilot would need to measure diagnostic accuracy and maintenance outcomes separately. [Case definitions and comparison](../../docs/inspection-benchmark.md) · [Executed cases](../../evidence/runtime/inspection-benchmark.json)
 
 ### Why use oneM2M?
 
@@ -68,4 +80,4 @@ Start with one zone under observation. Establish the facility’s own targets wi
 
 ### Before the interview
 
-Download the [PPTX](../../deliverables/presentation/openSoom-evaluation.pptx), [PDF](../../deliverables/presentation/openSoom-evaluation.pdf) and [720p MP4](../../deliverables/video/openSoom-work-order-720p.mp4). Use the PDF capture on slide 6 if the live lab is unavailable. Upload the slides to the designated Drive folder by Sunday, 22 November 2026, confirm the organizer’s assigned `PICK` slot and join before it begins. [Submission handoff](handoff.md)
+Download the [PPTX](../../deliverables/presentation/openSoom-evaluation.pptx), [PDF](../../deliverables/presentation/openSoom-evaluation.pdf) and [720p MP4](../../deliverables/video/openSoom-work-order-720p.mp4). Open both local applications for slide 6. If the lab is unavailable, use the role comparison on slide 6 and the recorded operator case on slide 5. Upload the slides to the designated Drive folder by Sunday, 22 November 2026, confirm the organizer’s assigned `PICK` slot and join before it begins. [Submission handoff](handoff.md)

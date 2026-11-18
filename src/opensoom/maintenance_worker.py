@@ -107,6 +107,8 @@ class MaintenanceWorker:
                    "command_id": event.get("command_id"), "observed_at": event["observed_at"],
                    "status": "open", "priority": priority, "evidence_status": evidence_status,
                    "revision": revision, **details}
+        if event.get("target_airflow_m3_h") is not None:
+            payload["target_airflow_m3_h"] = event["target_airflow_m3_h"]
         self.put("work_orders", key("order", work_id, source_ri, revision), payload)
 
     def outcome(self, event, resource):
@@ -140,6 +142,8 @@ class MaintenanceWorker:
                    "observed_at": event["observed_at"], "ack_at": event["ack_at"],
                    "airflow": obs.get("airflow"), "profile_version": event["profile_version"],
                    "command_id": event["command_id"], "requested_pct": percentage(event["requested_pct"])}
+        if event.get("target_airflow_m3_h") is not None:
+            request["target_airflow_m3_h"] = event["target_airflow_m3_h"]
         self.put("sensor_requests", request_id, request)
 
     def local_sample(self, request):

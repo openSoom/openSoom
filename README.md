@@ -1,6 +1,6 @@
 <h1 align="center"><img src="docs/assets/opensoom-horizontal.png" width="540" alt="openSoom"></h1>
 
-<p align="center"><strong>Open-source ventilation monitoring and control for multi-zone facilities.</strong></p>
+<p align="center"><strong>Find the first ventilation inspection and verify recovery across shifts.</strong></p>
 
 <p align="center">
   <a href="LICENSE"><img src="https://img.shields.io/badge/code-Apache_2.0-173f39?style=flat" alt="Code license: Apache 2.0"></a>
@@ -18,7 +18,15 @@
   <a href="docs/project-guide.ko.md">한국어 안내</a>
 </p>
 
-A running fan can still leave a room below its airflow target. openSoom helps operators find the affected zone, authorize an adjustment and check the outcome against the facility's own targets. The dashboard, Codex plugin and standalone LLM runner share the same operations service.
+Two ventilation faults can look identical to the operator. In a virtual conservation workshop, two trials both acknowledged **95% opening** and then measured **515 m³/h against a 560 m³/h target**. An independent shaft reading of **35%** sent the technician to the actuator and its position feedback. A reading of **93%** sent the technician to the airflow path. Both incidents stayed open. A competent person still needs to establish the physical cause. [Paired trials and comparison method](docs/inspection-benchmark.md)
+
+| Who uses it | What the application lets them decide |
+| --- | --- |
+| Facility operator · **Operator console** | Apply an allowed adjustment and check recovery against the facility’s commissioned profile. Open the related order in the technician workbench. |
+| Service technician · **Technician workbench** | Select the first inspection, check its source measurements and record a scheduled, performed or escalated inspection against the exact work-order revision. |
+| Facility manager · **Codex plugin or independent LLM** | Configure supported facility profiles, author a virtual scenario, run it and read the original oneM2M result. The site administrator activates facility changes. |
+
+Behind those interfaces, the **site operations app** owns control and recovery. The **edge maintenance app** owns the work order. Its **service bridge** gets the independent reading from a local sensor or a commissioned external provider through MEC. All three use separate application identities. [Architecture, placement and permissions](docs/architecture.md)
 
 ## Which inspection comes first?
 
@@ -33,15 +41,19 @@ Two executions exercised the same decision. In the local run, the independent se
 
 At a facility whose external provider was still unregistered, the facility owner used oneM2M to commission that provider through MEC 033 and register a MEC 046 sensor subscription. The bridge verified the test callback. A separate 046 lookup supplied the virtual 35% reading. The same subscription survived a bridge restart. [Full commissioning and work-order record](evidence/runtime/option-c/commissioned-sensor-roundtrip.json)
 
-To replay the work order after cloning the repo, run the following from its root. The first two commands install the software. The third launches an isolated lab and keeps its dashboard open. Select **No recovery after action** to replay, then press Ctrl+C in the terminal to close this lab.
+To replay the work order after cloning the repo, run the following from its root. The first two commands install the software. The third launches an isolated lab and keeps its dashboard open. Select **No recovery after action** for a shaft that falls short, or **Low airflow, shaft follows command** for a shaft that reaches the accepted setting. Choose **Run scenario**, wait for the independent measurement, then open the order in the technician workbench. Record **Inspection scheduled** to try the handoff. Press Ctrl+C in the terminal to close both apps and the test CSEs.
 
 ```sh
 uv sync --locked --python 3.12
 uv run --no-sync python scripts/cse_runtime.py install
-uv run --no-sync python scripts/maintenance_demo.py --dashboard-port 19490 --hold
+uv run --no-sync python scripts/maintenance_demo.py --dashboard-port 19490 --technician-port 19492 --hold
 ```
 
-[Open the running work-order dashboard](http://127.0.0.1:19490/) · [Agent-authored trials and original CSE observations](evidence/agent/scenario-authoring/README.md)
+[Operator console](http://127.0.0.1:19490/) · [Technician workbench](http://127.0.0.1:19492/) · [Agent-authored trials and original CSE observations](evidence/agent/scenario-authoring/README.md)
+
+![Actual local handoff from the operator console to the technician workbench and its recorded inspection](docs/assets/technician-handoff.gif)
+
+In 18 designed virtual trials across two facility profiles, ACK-only, airflow-only and openSoom rules declared false recovery in **14, 2 and 0** of the 16 cases that required further investigation. All three recognized both recoveries. openSoom matched the four prespecified first inspections, two sensor conditions repeated at two sites. These figures describe the designed cases. [Inputs, decision rules and all denominators](docs/inspection-benchmark.md)
 
 ## Bring another facility
 
@@ -91,16 +103,18 @@ The local demo works with a single facility. A separate three-CSE test demonstra
 
 ```mermaid
 flowchart LR
-  Device[Virtual device or adapter] -->|Publish observation| CSE[oneM2M CSE]
-  CSE -->|Notify subscribers| Ops[Operations service]
-  Ops <-->|Read observation / write command / read ACK| CSE
-  Dashboard[Facility dashboard] --> Ops
-  Codex[Codex plugin] --> Tools[MCP tools]
-  LLM[Standalone LLM runner] --> Tools
-  Tools --> Ops
+    O[Operator console] --> Ops[Site operations AE]
+    M[Codex or standalone LLM] -->|Scoped MCP tools| Ops
+    T[Technician workbench] -->|Read order and append inspection entry| MN[(Facility MN-CSE)]
+    Ops <-->|Commands, ACKs and outcome| MN
+    Devices[Sensor and device AEs] <--> MN
+    MN <-->|Orders and sensor requests| Maint[Edge maintenance AE]
+    MN <-->|Sensor requests and results| Bridge[Provider bridge AE]
+    Bridge -->|033 provider / 046 sensor| MEC[ETSI MEC services]
+    MN <-->|Mcc registration and shared state| IN[(Central IN-CSE)]
 ```
 
-The protocol tests exercise native MQTT/TLS and HTTPS. The separate maintenance application and its work orders are shown in the [independent-app scenario](docs/multi-application-scenario.md).
+The protocol tests exercise native MQTT/TLS and HTTPS. For the Option C installation the platform places the MN-CSE and maintenance workload on a selected logical edge. The human workbench reads the facility CSE under its own identity. [Placement evidence](evidence/runtime/option-c/index.json) · [Application boundaries](docs/mec-application-contract.ko.md).
 
 </details>
 

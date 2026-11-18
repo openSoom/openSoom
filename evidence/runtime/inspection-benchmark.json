@@ -1,0 +1,1142 @@
+{
+  "status": "passed",
+  "captured_at": "2026-11-18T17:49:42.856+00:00",
+  "fixture": "scenarios/inspection-benchmark.json",
+  "scope": "Scripted virtual equipment and reference inspection priorities, real isolated ACME over HTTP, production operations core and separate maintenance/bridge CLI processes using local oneM2M shaft evidence. Baselines calculated on these same records. No cloud MEC, hosted model, field trial or elapsed-time benefit measured by this experiment.",
+  "acme_version": "2026.5.3",
+  "source_sha256": {
+    "scenarios/inspection-benchmark.json": "370a0806e22189571f6de9bc37b5efa20b645d0b5878b99601368fdc166fab2b",
+    "scripts/inspection_benchmark.py": "7b745633b220cf7239f158cccf75e089987dc86fb28af84ba830939d5c514af9",
+    "scripts/cse_multiapp_smoke.py": "a449d1a6168a120eda618c3cd940a79a6c2cce616abcfbec3f49f16c1df36ebd",
+    "scripts/facility_worker_acceptance.py": "01233377331d437976c5579bb98d040a8f753a0ea88060f2edb8407e4520111b",
+    "scripts/facility_pack_acceptance.py": "1553042cdcc76bc356eb31befc552fa812f91b0f21415a61eb71318a92487980",
+    "src/opensoom/core.py": "23b74fb4e70d65e668aec36f299a93dd206516d01c81267182918f652cd91eb5",
+    "src/opensoom/maintenance.py": "22f912f6ed863315e584a5534e70473599f34d8fc2a4639da1deaaa694fbdae9",
+    "src/opensoom/maintenance_worker.py": "11494b157eee9cbae07dd4491dd3597a299fedaa403d715f406a0aa5e886d7a1",
+    "src/opensoom/onem2m.py": "c4edcf610b9c82266d222dc63b69869cbd62000478405cdcd98f44178b0b123e",
+    "src/opensoom/facility_pack.py": "55de4cc24c622b427867899df62591bc02fcbdf537374ffeee5fd6599a11ce17",
+    "src/opensoom/policy.py": "801ba84bf1eea13404a19017359e4e01fcf11d33e812e3a571df68e34c110ad5",
+    "src/opensoom/models.py": "5a11e9a47b6446a4e9f2d77a222e962147a864a53869ee5875870e0d85061e48",
+    "src/opensoom/mec_sensor.py": "9bd57e88070be6e7ea24c0a459a641708da74d5b9e0a4494f684f3d438058aca",
+    "src/opensoom/store.py": "4c6200d7e9fb5aebb72d00b5334969eb68de3245e8febe2d7383f63c36d2a37a",
+    "config/facilities.json": "b4d1149b3599608fdb1bf4bdb1d4d559cd30c1c25c81b866d84eab6d2bbf4a7e",
+    "profiles/food-production.json": "402ae760ec4fe13c23e2a6c63e3ec80518d8ebdba30edde9e64cfdbb573e4c6e",
+    "profiles/learning-space.json": "2bc00d56a3fcf15cb388d7b81892a33123492b4452105522d368e5b8daee14e3",
+    "deploy/acme-single.ini": "d7a97bf87dee84edff1b9dd2bff0ef21d4c1f96469f76bacd82f202f8abcccd5",
+    "deploy/cse-requirements.txt": "d34b9bb305370cd52c73f7e901309d456304892ddb0af783d14867087756d69c"
+  },
+  "scores": {
+    "false_recoveries": {
+      "eligible": 16,
+      "ack_only": 14,
+      "airflow_only": 2,
+      "opensoom": 0
+    },
+    "missed_recoveries": {
+      "eligible": 2,
+      "ack_only": 0,
+      "airflow_only": 0,
+      "opensoom": 0
+    },
+    "specific_first_checks_matching_reference": {
+      "eligible": 4,
+      "ack_only": 0,
+      "airflow_only": 0,
+      "opensoom": 4
+    },
+    "unsupported_specific_checks_missing_or_stale_shaft": {
+      "eligible": 4,
+      "ack_only": 0,
+      "airflow_only": 0,
+      "opensoom": 0
+    }
+  },
+  "cases": [
+    {
+      "case": "shaft_short",
+      "facility": "food-a",
+      "zone": "cook",
+      "run_id": "demo-3fb51705cf",
+      "target_m3_h": 900,
+      "incident_id": "incident-5535cc5b62",
+      "command_id": "cmd-aeb93860f762",
+      "command_cin": "cinKyNfIEjuaX",
+      "initial_low_flow_cin": "cinBFUrNuzOPp",
+      "ack": {
+        "cin": "cinweVzxQKxvj",
+        "read_rqi": "opensoom-e3713a6ffc424bb2aec810fd2409759a",
+        "at": "2026-11-18T17:47:34.768+00:00",
+        "opening_pct": 95.0
+      },
+      "post_command_measurements": [
+        {
+          "cin": "cin2QMmCuR6wD",
+          "read_rqi": "opensoom-15b2d20c5bb44effae7d568588caefc8",
+          "measured_at": "2026-11-18T17:47:34.774+00:00",
+          "airflow_m3_h": 855.0,
+          "pm25_ug_m3": 10.0
+        },
+        {
+          "cin": "cinzMbJCSwZIV",
+          "read_rqi": "opensoom-0f0acb457df84c8abbc90c7af82f156d",
+          "measured_at": "2026-11-18T17:47:34.785+00:00",
+          "airflow_m3_h": 855.0,
+          "pm25_ug_m3": 10.0
+        }
+      ],
+      "shaft": {
+        "cin": "cinTzlJ0jJdbV",
+        "read_rqi": "opensoom-00141e7e40684a1fbeb1b5d1da055cdf",
+        "measured_at": "2026-11-18T17:47:37.802+00:00",
+        "opening_pct": 35
+      },
+      "work_order_id": "work-incident-5535cc5b62",
+      "opening_order_cin": "cinXWypHMLMhv",
+      "final_order_cin": "cinkwwAOVKVdy",
+      "order_read_rqi": "opensoom-bfe36ddcb5b247f38984f2e5ca19cf33",
+      "final_order_revision": 4,
+      "order_status": "open",
+      "evidence_status": "verified_independent_sample",
+      "sensor_requests": 1,
+      "request_cin": "cinY1s80Sh4YV",
+      "response_cin": "cin5cYFCpYsHZ",
+      "incident_status": "open",
+      "current_command_observed_result": "unresolved",
+      "decisions": {
+        "ack_only": {
+          "recovered": true,
+          "inspection": "unavailable"
+        },
+        "airflow_only": {
+          "recovered": false,
+          "inspection": "inspection"
+        },
+        "opensoom": {
+          "recovered": false,
+          "inspection": "inspect_actuator_feedback"
+        }
+      }
+    },
+    {
+      "case": "shaft_short",
+      "facility": "archive-workshop",
+      "zone": "conservation",
+      "run_id": "demo-b69bdb9085",
+      "target_m3_h": 560,
+      "incident_id": "incident-d9e4677252",
+      "command_id": "cmd-7dfa6fd81af5",
+      "command_cin": "cinUG4MOzYxP1",
+      "initial_low_flow_cin": "cintU9Ge21NYa",
+      "ack": {
+        "cin": "cinV4vEUxwf2e",
+        "read_rqi": "opensoom-fa4733c101374bca9479e5d61c30cd40",
+        "at": "2026-11-18T17:47:38.469+00:00",
+        "opening_pct": 95.0
+      },
+      "post_command_measurements": [
+        {
+          "cin": "cinLhTixABnlU",
+          "read_rqi": "opensoom-6fbf60aca84d4e39a4b13d23b34d669d",
+          "measured_at": "2026-11-18T17:47:38.477+00:00",
+          "airflow_m3_h": 515.0,
+          "pm25_ug_m3": 10.0
+        },
+        {
+          "cin": "cinfZcFN9U54F",
+          "read_rqi": "opensoom-caedf2b25ce44b9e8ee39de99146728f",
+          "measured_at": "2026-11-18T17:47:38.492+00:00",
+          "airflow_m3_h": 515.0,
+          "pm25_ug_m3": 10.0
+        }
+      ],
+      "shaft": {
+        "cin": "cinKU9RONxYXJ",
+        "read_rqi": "opensoom-1c0e864bb5474fd5aa9105b22656221d",
+        "measured_at": "2026-11-18T17:47:42.500+00:00",
+        "opening_pct": 35
+      },
+      "work_order_id": "work-incident-d9e4677252",
+      "opening_order_cin": "cinL162qGhEGj",
+      "final_order_cin": "cincInZB0XchC",
+      "order_read_rqi": "opensoom-09b00760499540c786ab0fdbe7327f05",
+      "final_order_revision": 4,
+      "order_status": "open",
+      "evidence_status": "verified_independent_sample",
+      "sensor_requests": 1,
+      "request_cin": "cinHrIZZbwZb1",
+      "response_cin": "cinHjMK8rjfe2",
+      "incident_status": "open",
+      "current_command_observed_result": "unresolved",
+      "decisions": {
+        "ack_only": {
+          "recovered": true,
+          "inspection": "unavailable"
+        },
+        "airflow_only": {
+          "recovered": false,
+          "inspection": "inspection"
+        },
+        "opensoom": {
+          "recovered": false,
+          "inspection": "inspect_actuator_feedback"
+        }
+      }
+    },
+    {
+      "case": "shaft_at_setpoint",
+      "facility": "food-a",
+      "zone": "cook",
+      "run_id": "demo-72f54e108f",
+      "target_m3_h": 900,
+      "incident_id": "incident-4fcabf709c",
+      "command_id": "cmd-c11d9a3d6387",
+      "command_cin": "cinfV4fcSFUag",
+      "initial_low_flow_cin": "cin7k90iMECmm",
+      "ack": {
+        "cin": "cingDAEY0pX0C",
+        "read_rqi": "opensoom-8700bd1b6fd04f7393e47e24daeb0626",
+        "at": "2026-11-18T17:47:54.582+00:00",
+        "opening_pct": 95.0
+      },
+      "post_command_measurements": [
+        {
+          "cin": "cingdCiF4xQYA",
+          "read_rqi": "opensoom-144cab224a064cf68129cdf75f4a5f8a",
+          "measured_at": "2026-11-18T17:47:54.588+00:00",
+          "airflow_m3_h": 855.0,
+          "pm25_ug_m3": 10.0
+        },
+        {
+          "cin": "cin0xy1DLloDr",
+          "read_rqi": "opensoom-524803a1b9274a4aa58710ead44ef436",
+          "measured_at": "2026-11-18T17:47:54.599+00:00",
+          "airflow_m3_h": 855.0,
+          "pm25_ug_m3": 10.0
+        }
+      ],
+      "shaft": {
+        "cin": "cinlabSQhltjO",
+        "read_rqi": "opensoom-c170e1af43ae4a30b119dfe323d1a639",
+        "measured_at": "2026-11-18T17:47:57.616+00:00",
+        "opening_pct": 93
+      },
+      "work_order_id": "work-incident-4fcabf709c",
+      "opening_order_cin": "cinJOSg48g3Sr",
+      "final_order_cin": "cinohs2KsvBbt",
+      "order_read_rqi": "opensoom-c6f4c95f18b5469f95fc2d426da1f9dc",
+      "final_order_revision": 4,
+      "order_status": "open",
+      "evidence_status": "verified_independent_sample",
+      "sensor_requests": 1,
+      "request_cin": "cinwg7WJyyve7",
+      "response_cin": "cinMXvJ0iqaFL",
+      "incident_status": "open",
+      "current_command_observed_result": "unresolved",
+      "decisions": {
+        "ack_only": {
+          "recovered": true,
+          "inspection": "unavailable"
+        },
+        "airflow_only": {
+          "recovered": false,
+          "inspection": "inspection"
+        },
+        "opensoom": {
+          "recovered": false,
+          "inspection": "inspect_airflow_path"
+        }
+      }
+    },
+    {
+      "case": "shaft_at_setpoint",
+      "facility": "archive-workshop",
+      "zone": "conservation",
+      "run_id": "demo-da42b785f7",
+      "target_m3_h": 560,
+      "incident_id": "incident-56a70cc116",
+      "command_id": "cmd-6f6007d036f7",
+      "command_cin": "cinYgTSIMbmOs",
+      "initial_low_flow_cin": "cinpVQzyug9e0",
+      "ack": {
+        "cin": "cinm01vySNIKI",
+        "read_rqi": "opensoom-e672650a8e50431ba37548299b3a3a69",
+        "at": "2026-11-18T17:47:58.255+00:00",
+        "opening_pct": 95.0
+      },
+      "post_command_measurements": [
+        {
+          "cin": "cinHi9SXPOQtk",
+          "read_rqi": "opensoom-af2d82f292f249918854bc3587dc83cf",
+          "measured_at": "2026-11-18T17:47:58.261+00:00",
+          "airflow_m3_h": 515.0,
+          "pm25_ug_m3": 10.0
+        },
+        {
+          "cin": "cinvWWAD46x9L",
+          "read_rqi": "opensoom-755e9576bb224aa49a88561485d9e870",
+          "measured_at": "2026-11-18T17:47:58.272+00:00",
+          "airflow_m3_h": 515.0,
+          "pm25_ug_m3": 10.0
+        }
+      ],
+      "shaft": {
+        "cin": "cinBVsi5x4PS1",
+        "read_rqi": "opensoom-53b5184e484a49518182c856b3a8090c",
+        "measured_at": "2026-11-18T17:48:02.288+00:00",
+        "opening_pct": 93
+      },
+      "work_order_id": "work-incident-56a70cc116",
+      "opening_order_cin": "cinKCCglSfi2B",
+      "final_order_cin": "cinIMnieQyizW",
+      "order_read_rqi": "opensoom-01e180f14f214d04a00ad53dd86ba858",
+      "final_order_revision": 4,
+      "order_status": "open",
+      "evidence_status": "verified_independent_sample",
+      "sensor_requests": 1,
+      "request_cin": "cinRgwWJMcmA3",
+      "response_cin": "cinkDeHZ8tAMH",
+      "incident_status": "open",
+      "current_command_observed_result": "unresolved",
+      "decisions": {
+        "ack_only": {
+          "recovered": true,
+          "inspection": "unavailable"
+        },
+        "airflow_only": {
+          "recovered": false,
+          "inspection": "inspection"
+        },
+        "opensoom": {
+          "recovered": false,
+          "inspection": "inspect_airflow_path"
+        }
+      }
+    },
+    {
+      "case": "shaft_missing",
+      "facility": "food-a",
+      "zone": "cook",
+      "run_id": "demo-ddb0ef97e0",
+      "target_m3_h": 900,
+      "incident_id": "incident-ef1e5de829",
+      "command_id": "cmd-75bb8efda1c9",
+      "command_cin": "cinDZfK46aaK0",
+      "initial_low_flow_cin": "cinRlVqvYihRM",
+      "ack": {
+        "cin": "cinEw1PVEp0AH",
+        "read_rqi": "opensoom-36fa8215f14f48359fdea27d90d8f2c9",
+        "at": "2026-11-18T17:48:14.354+00:00",
+        "opening_pct": 95.0
+      },
+      "post_command_measurements": [
+        {
+          "cin": "cinKj4A5pWef8",
+          "read_rqi": "opensoom-aed9114fb5414ffd8802fbfd5ae23832",
+          "measured_at": "2026-11-18T17:48:14.359+00:00",
+          "airflow_m3_h": 855.0,
+          "pm25_ug_m3": 10.0
+        },
+        {
+          "cin": "cin2lyRm3IY4k",
+          "read_rqi": "opensoom-f1b52913bc794b50b9347804b3f5f4c3",
+          "measured_at": "2026-11-18T17:48:14.371+00:00",
+          "airflow_m3_h": 855.0,
+          "pm25_ug_m3": 10.0
+        }
+      ],
+      "shaft": null,
+      "work_order_id": "work-incident-ef1e5de829",
+      "opening_order_cin": "cin6iwtrHmjHT",
+      "final_order_cin": "cinrYK13hKBhj",
+      "order_read_rqi": "opensoom-b84b2e6836054c3cbea55461d2c9df80",
+      "final_order_revision": 3,
+      "order_status": "open",
+      "evidence_status": "unknown",
+      "sensor_requests": 1,
+      "request_cin": "cinoVKC8uxdDS",
+      "response_cin": "cinP5tLp8q1Tk",
+      "incident_status": "open",
+      "current_command_observed_result": "unresolved",
+      "decisions": {
+        "ack_only": {
+          "recovered": true,
+          "inspection": "unavailable"
+        },
+        "airflow_only": {
+          "recovered": false,
+          "inspection": "inspection"
+        },
+        "opensoom": {
+          "recovered": false,
+          "inspection": "inspection"
+        }
+      }
+    },
+    {
+      "case": "shaft_missing",
+      "facility": "archive-workshop",
+      "zone": "conservation",
+      "run_id": "demo-bfc08472b6",
+      "target_m3_h": 560,
+      "incident_id": "incident-4ca22bb38f",
+      "command_id": "cmd-bea8bf65935b",
+      "command_cin": "cin1nFoLTTdzv",
+      "initial_low_flow_cin": "cinP1dk3ZySQ8",
+      "ack": {
+        "cin": "cinPKpPQVYX2b",
+        "read_rqi": "opensoom-920e4dc0dddf4d14970c6ca2406b73d2",
+        "at": "2026-11-18T17:48:15.415+00:00",
+        "opening_pct": 95.0
+      },
+      "post_command_measurements": [
+        {
+          "cin": "cin6y2iXtzZqx",
+          "read_rqi": "opensoom-f6473874145542c2a520a0ec749b08f9",
+          "measured_at": "2026-11-18T17:48:15.422+00:00",
+          "airflow_m3_h": 515.0,
+          "pm25_ug_m3": 10.0
+        },
+        {
+          "cin": "cinbIdbkC2esT",
+          "read_rqi": "opensoom-189a24e1238445d9ab6be882287c01f5",
+          "measured_at": "2026-11-18T17:48:15.437+00:00",
+          "airflow_m3_h": 515.0,
+          "pm25_ug_m3": 10.0
+        }
+      ],
+      "shaft": null,
+      "work_order_id": "work-incident-4ca22bb38f",
+      "opening_order_cin": "cinGfmEuqkRyv",
+      "final_order_cin": "cint0V7HpGzLY",
+      "order_read_rqi": "opensoom-c21ea97e3fa1433792e628b42964d76b",
+      "final_order_revision": 3,
+      "order_status": "open",
+      "evidence_status": "unknown",
+      "sensor_requests": 1,
+      "request_cin": "cinKHv7biQzK2",
+      "response_cin": "cinwhFYh6CZLh",
+      "incident_status": "open",
+      "current_command_observed_result": "unresolved",
+      "decisions": {
+        "ack_only": {
+          "recovered": true,
+          "inspection": "unavailable"
+        },
+        "airflow_only": {
+          "recovered": false,
+          "inspection": "inspection"
+        },
+        "opensoom": {
+          "recovered": false,
+          "inspection": "inspection"
+        }
+      }
+    },
+    {
+      "case": "shaft_stale",
+      "facility": "food-a",
+      "zone": "cook",
+      "run_id": "demo-e0a83ca3db",
+      "target_m3_h": 900,
+      "incident_id": "incident-7ba8b7f808",
+      "command_id": "cmd-8215b655c916",
+      "command_cin": "cindnkEbCMrwe",
+      "initial_low_flow_cin": "cingSDqCPFhvo",
+      "ack": {
+        "cin": "cinR9and9s7zS",
+        "read_rqi": "opensoom-abfa845b114546c2a377191ba6753cbe",
+        "at": "2026-11-18T17:48:27.889+00:00",
+        "opening_pct": 95.0
+      },
+      "post_command_measurements": [
+        {
+          "cin": "cinCW1xQkUlNc",
+          "read_rqi": "opensoom-32fb40697d1a42aba2c6e7de30588f0d",
+          "measured_at": "2026-11-18T17:48:27.895+00:00",
+          "airflow_m3_h": 855.0,
+          "pm25_ug_m3": 10.0
+        },
+        {
+          "cin": "cinYLjvNcQ7L9",
+          "read_rqi": "opensoom-35a8c2ed4d384cacae766c06fa5cfc79",
+          "measured_at": "2026-11-18T17:48:27.908+00:00",
+          "airflow_m3_h": 855.0,
+          "pm25_ug_m3": 10.0
+        }
+      ],
+      "shaft": {
+        "cin": "cinXkg03evuWL",
+        "read_rqi": "opensoom-ec79055030854cdd9817a8aa4f78dad8",
+        "measured_at": "2026-11-18T17:43:30.923+00:00",
+        "opening_pct": 35
+      },
+      "work_order_id": "work-incident-7ba8b7f808",
+      "opening_order_cin": "cinvkOkEBJgEB",
+      "final_order_cin": "cinqNzEIh7bxn",
+      "order_read_rqi": "opensoom-cf35ff9c4c8f480cb80ab647fa24d9f9",
+      "final_order_revision": 3,
+      "order_status": "open",
+      "evidence_status": "unknown",
+      "sensor_requests": 1,
+      "request_cin": "cingEUPTiY8pm",
+      "response_cin": "cingTKndlPDQb",
+      "incident_status": "open",
+      "current_command_observed_result": "unresolved",
+      "decisions": {
+        "ack_only": {
+          "recovered": true,
+          "inspection": "unavailable"
+        },
+        "airflow_only": {
+          "recovered": false,
+          "inspection": "inspection"
+        },
+        "opensoom": {
+          "recovered": false,
+          "inspection": "inspection"
+        }
+      }
+    },
+    {
+      "case": "shaft_stale",
+      "facility": "archive-workshop",
+      "zone": "conservation",
+      "run_id": "demo-80728623ab",
+      "target_m3_h": 560,
+      "incident_id": "incident-01a6413b79",
+      "command_id": "cmd-10ce2994d61d",
+      "command_cin": "cinM91apayM2N",
+      "initial_low_flow_cin": "cin85BtsHA55D",
+      "ack": {
+        "cin": "cinBJoB5qZlVm",
+        "read_rqi": "opensoom-d834506e8a1d490698b75fc0ddb80ddf",
+        "at": "2026-11-18T17:48:31.584+00:00",
+        "opening_pct": 95.0
+      },
+      "post_command_measurements": [
+        {
+          "cin": "cinDFQZClyBTJ",
+          "read_rqi": "opensoom-4f79eab24120494a93661d73a388eca1",
+          "measured_at": "2026-11-18T17:48:31.590+00:00",
+          "airflow_m3_h": 515.0,
+          "pm25_ug_m3": 10.0
+        },
+        {
+          "cin": "cinBIYYsHSy7W",
+          "read_rqi": "opensoom-5f1f9005490a4e8289df8842e2a14095",
+          "measured_at": "2026-11-18T17:48:31.601+00:00",
+          "airflow_m3_h": 515.0,
+          "pm25_ug_m3": 10.0
+        }
+      ],
+      "shaft": {
+        "cin": "cin98zpVa1KKZ",
+        "read_rqi": "opensoom-9655624437354aaca5dfca5fd46a65ab",
+        "measured_at": "2026-11-18T17:43:35.616+00:00",
+        "opening_pct": 35
+      },
+      "work_order_id": "work-incident-01a6413b79",
+      "opening_order_cin": "cin6pXdHH7n9e",
+      "final_order_cin": "cin1TA2MXjxGV",
+      "order_read_rqi": "opensoom-b9a2e7a88cde4305a712bfd50360d639",
+      "final_order_revision": 3,
+      "order_status": "open",
+      "evidence_status": "unknown",
+      "sensor_requests": 1,
+      "request_cin": "cinv6gPNEe129",
+      "response_cin": "cinNJ0tVSuPnn",
+      "incident_status": "open",
+      "current_command_observed_result": "unresolved",
+      "decisions": {
+        "ack_only": {
+          "recovered": true,
+          "inspection": "unavailable"
+        },
+        "airflow_only": {
+          "recovered": false,
+          "inspection": "inspection"
+        },
+        "opensoom": {
+          "recovered": false,
+          "inspection": "inspection"
+        }
+      }
+    },
+    {
+      "case": "particles_still_high",
+      "facility": "food-a",
+      "zone": "cook",
+      "run_id": "demo-c85d4abe42",
+      "target_m3_h": 900,
+      "incident_id": "incident-ab2911f639",
+      "command_id": "cmd-91ff453783f2",
+      "command_cin": "cinNmevkb3VYi",
+      "initial_low_flow_cin": "cinx1wlRdwTyl",
+      "ack": {
+        "cin": "cin4vOAbkyQHJ",
+        "read_rqi": "opensoom-757b0ad131ae4a41bf3d4cd9f46711ff",
+        "at": "2026-11-18T17:48:47.530+00:00",
+        "opening_pct": 95.0
+      },
+      "post_command_measurements": [
+        {
+          "cin": "cinjjqQbsc6oJ",
+          "read_rqi": "opensoom-3278e206ce4843aba67601de2e77aca1",
+          "measured_at": "2026-11-18T17:48:47.535+00:00",
+          "airflow_m3_h": 940.0,
+          "pm25_ug_m3": 75.0
+        },
+        {
+          "cin": "cinlwS9CbPAAS",
+          "read_rqi": "opensoom-8a6516e019a940a4b0b21843db55f812",
+          "measured_at": "2026-11-18T17:48:47.547+00:00",
+          "airflow_m3_h": 940.0,
+          "pm25_ug_m3": 75.0
+        }
+      ],
+      "shaft": null,
+      "work_order_id": "work-incident-ab2911f639",
+      "opening_order_cin": "cinb7dZECVK65",
+      "final_order_cin": "cinb7dZECVK65",
+      "order_read_rqi": "opensoom-c92a51c6fd2a4b14af574f718a346e9f",
+      "final_order_revision": 1,
+      "order_status": "open",
+      "evidence_status": "awaiting_outcome",
+      "sensor_requests": 0,
+      "request_cin": null,
+      "response_cin": null,
+      "incident_status": "open",
+      "current_command_observed_result": "unresolved",
+      "decisions": {
+        "ack_only": {
+          "recovered": true,
+          "inspection": "unavailable"
+        },
+        "airflow_only": {
+          "recovered": true,
+          "inspection": "inspection"
+        },
+        "opensoom": {
+          "recovered": false,
+          "inspection": "inspection"
+        }
+      }
+    },
+    {
+      "case": "particles_still_high",
+      "facility": "archive-workshop",
+      "zone": "conservation",
+      "run_id": "demo-c51986a633",
+      "target_m3_h": 560,
+      "incident_id": "incident-b9b4bafaf0",
+      "command_id": "cmd-1b7702ef9f4f",
+      "command_cin": "cineocs5YkHP4",
+      "initial_low_flow_cin": "cinudavuPR9eh",
+      "ack": {
+        "cin": "cin3pIH3SZwce",
+        "read_rqi": "opensoom-4009cfbac55e4a9b841e5983ce65cbaa",
+        "at": "2026-11-18T17:48:48.439+00:00",
+        "opening_pct": 95.0
+      },
+      "post_command_measurements": [
+        {
+          "cin": "cincZ4fLzdgXt",
+          "read_rqi": "opensoom-6d6b63032bd44b2b8e85b32cac3a5756",
+          "measured_at": "2026-11-18T17:48:48.446+00:00",
+          "airflow_m3_h": 600.0,
+          "pm25_ug_m3": 48.0
+        },
+        {
+          "cin": "cinxb9k5gYrGE",
+          "read_rqi": "opensoom-87536c791a5644eea04cdc5490c29102",
+          "measured_at": "2026-11-18T17:48:48.459+00:00",
+          "airflow_m3_h": 600.0,
+          "pm25_ug_m3": 48.0
+        }
+      ],
+      "shaft": null,
+      "work_order_id": "work-incident-b9b4bafaf0",
+      "opening_order_cin": "cindw90cLDJkc",
+      "final_order_cin": "cindw90cLDJkc",
+      "order_read_rqi": "opensoom-2917d748ab4045b29ba7bb9264f635fb",
+      "final_order_revision": 1,
+      "order_status": "open",
+      "evidence_status": "awaiting_outcome",
+      "sensor_requests": 0,
+      "request_cin": null,
+      "response_cin": null,
+      "incident_status": "open",
+      "current_command_observed_result": "unresolved",
+      "decisions": {
+        "ack_only": {
+          "recovered": true,
+          "inspection": "unavailable"
+        },
+        "airflow_only": {
+          "recovered": true,
+          "inspection": "inspection"
+        },
+        "opensoom": {
+          "recovered": false,
+          "inspection": "inspection"
+        }
+      }
+    },
+    {
+      "case": "airflow_stale",
+      "facility": "food-a",
+      "zone": "cook",
+      "run_id": "demo-dc1e2dd87b",
+      "target_m3_h": 900,
+      "incident_id": "incident-3ef39abe26",
+      "command_id": "cmd-0b356517bd77",
+      "command_cin": "cinvKaUA0bXp7",
+      "initial_low_flow_cin": "cintq6USpCwFe",
+      "ack": {
+        "cin": "cinxkpYqatmrq",
+        "read_rqi": "opensoom-e6c04302ad0f4f2d9ebb7d020ba9400c",
+        "at": "2026-11-18T17:49:00.962+00:00",
+        "opening_pct": 95.0
+      },
+      "post_command_measurements": [
+        {
+          "cin": "cinS3Dq4iBO1a",
+          "read_rqi": "opensoom-6dcf50c25f4c417488ec6da259043e4e",
+          "measured_at": "2026-11-18T17:44:00.968+00:00",
+          "airflow_m3_h": 940.0,
+          "pm25_ug_m3": 10.0
+        },
+        {
+          "cin": "cinzTPapns6Ec",
+          "read_rqi": "opensoom-a2b3b1de47954bf594c5ed2d3caa8fa8",
+          "measured_at": "2026-11-18T17:44:00.980+00:00",
+          "airflow_m3_h": 940.0,
+          "pm25_ug_m3": 10.0
+        }
+      ],
+      "shaft": null,
+      "work_order_id": "work-incident-3ef39abe26",
+      "opening_order_cin": "cinYcasyMZs1B",
+      "final_order_cin": "cinYcasyMZs1B",
+      "order_read_rqi": "opensoom-8e817fbda6114be59ba582da2ff237e6",
+      "final_order_revision": 1,
+      "order_status": "open",
+      "evidence_status": "awaiting_outcome",
+      "sensor_requests": 0,
+      "request_cin": null,
+      "response_cin": null,
+      "incident_status": "open",
+      "current_command_observed_result": "awaiting_observations",
+      "decisions": {
+        "ack_only": {
+          "recovered": true,
+          "inspection": "unavailable"
+        },
+        "airflow_only": {
+          "recovered": false,
+          "inspection": "inspection"
+        },
+        "opensoom": {
+          "recovered": false,
+          "inspection": "inspection"
+        }
+      }
+    },
+    {
+      "case": "airflow_stale",
+      "facility": "archive-workshop",
+      "zone": "conservation",
+      "run_id": "demo-1f973c76fd",
+      "target_m3_h": 560,
+      "incident_id": "incident-0ee1f5b3fc",
+      "command_id": "cmd-f1a662a65a94",
+      "command_cin": "cinTL6coaBLnS",
+      "initial_low_flow_cin": "cin9hvhRkwcVd",
+      "ack": {
+        "cin": "cinzPnGUZwAyQ",
+        "read_rqi": "opensoom-e3b607fdcafc4d1e851b7c1c55da8eef",
+        "at": "2026-11-18T17:49:01.858+00:00",
+        "opening_pct": 95.0
+      },
+      "post_command_measurements": [
+        {
+          "cin": "cintWpx45Jvba",
+          "read_rqi": "opensoom-1737937086714560ad96f4d469bddcf7",
+          "measured_at": "2026-11-18T17:44:01.864+00:00",
+          "airflow_m3_h": 600.0,
+          "pm25_ug_m3": 10.0
+        },
+        {
+          "cin": "cinx06DGRSo9F",
+          "read_rqi": "opensoom-da1a26264ca140f2b1867404a02b92f2",
+          "measured_at": "2026-11-18T17:44:01.877+00:00",
+          "airflow_m3_h": 600.0,
+          "pm25_ug_m3": 10.0
+        }
+      ],
+      "shaft": null,
+      "work_order_id": "work-incident-0ee1f5b3fc",
+      "opening_order_cin": "cinWcPrsPRiDF",
+      "final_order_cin": "cinWcPrsPRiDF",
+      "order_read_rqi": "opensoom-8683137ceed0421c9c382bb4b9071419",
+      "final_order_revision": 1,
+      "order_status": "open",
+      "evidence_status": "awaiting_outcome",
+      "sensor_requests": 0,
+      "request_cin": null,
+      "response_cin": null,
+      "incident_status": "open",
+      "current_command_observed_result": "awaiting_observations",
+      "decisions": {
+        "ack_only": {
+          "recovered": true,
+          "inspection": "unavailable"
+        },
+        "airflow_only": {
+          "recovered": false,
+          "inspection": "inspection"
+        },
+        "opensoom": {
+          "recovered": false,
+          "inspection": "inspection"
+        }
+      }
+    },
+    {
+      "case": "one_healthy_reading",
+      "facility": "food-a",
+      "zone": "cook",
+      "run_id": "demo-bb2e7e4780",
+      "target_m3_h": 900,
+      "incident_id": "incident-4cd3e38ce2",
+      "command_id": "cmd-6b9dbc2cb465",
+      "command_cin": "cinhXfZL5YJBz",
+      "initial_low_flow_cin": "cinPjS9WHLAAI",
+      "ack": {
+        "cin": "cinHoqLSsjW91",
+        "read_rqi": "opensoom-5384e2ca79eb4a50bb07129d1aca0eef",
+        "at": "2026-11-18T17:49:14.319+00:00",
+        "opening_pct": 95.0
+      },
+      "post_command_measurements": [
+        {
+          "cin": "cin7gWKHVIFlJ",
+          "read_rqi": "opensoom-5e47ee228fbc4107937d26cefc9cd15d",
+          "measured_at": "2026-11-18T17:49:14.325+00:00",
+          "airflow_m3_h": 940.0,
+          "pm25_ug_m3": 10.0
+        }
+      ],
+      "shaft": null,
+      "work_order_id": "work-incident-4cd3e38ce2",
+      "opening_order_cin": "cinLHtNpdLbud",
+      "final_order_cin": "cinLHtNpdLbud",
+      "order_read_rqi": "opensoom-49fafefda6e14ae09cf727da137fe981",
+      "final_order_revision": 1,
+      "order_status": "open",
+      "evidence_status": "awaiting_outcome",
+      "sensor_requests": 0,
+      "request_cin": null,
+      "response_cin": null,
+      "incident_status": "recovering",
+      "current_command_observed_result": "awaiting_observations",
+      "decisions": {
+        "ack_only": {
+          "recovered": true,
+          "inspection": "unavailable"
+        },
+        "airflow_only": {
+          "recovered": false,
+          "inspection": "inspection"
+        },
+        "opensoom": {
+          "recovered": false,
+          "inspection": "inspection"
+        }
+      }
+    },
+    {
+      "case": "one_healthy_reading",
+      "facility": "archive-workshop",
+      "zone": "conservation",
+      "run_id": "demo-9ceee78ddf",
+      "target_m3_h": 560,
+      "incident_id": "incident-f93675646d",
+      "command_id": "cmd-76481a0b9bc1",
+      "command_cin": "cintigs46WbS1",
+      "initial_low_flow_cin": "cin7T9zz9sRf4",
+      "ack": {
+        "cin": "cinQVQtDtIxYp",
+        "read_rqi": "opensoom-d996e6af071943f9ac99e1c3a17b01b7",
+        "at": "2026-11-18T17:49:15.212+00:00",
+        "opening_pct": 95.0
+      },
+      "post_command_measurements": [
+        {
+          "cin": "cin2c0zvm1yRr",
+          "read_rqi": "opensoom-78e16a1401ef4862b9ad194b1331f855",
+          "measured_at": "2026-11-18T17:49:15.217+00:00",
+          "airflow_m3_h": 600.0,
+          "pm25_ug_m3": 10.0
+        }
+      ],
+      "shaft": null,
+      "work_order_id": "work-incident-f93675646d",
+      "opening_order_cin": "cin9KMJby8xwh",
+      "final_order_cin": "cin9KMJby8xwh",
+      "order_read_rqi": "opensoom-428b56c6d35748c69df2a84633bf3a19",
+      "final_order_revision": 1,
+      "order_status": "open",
+      "evidence_status": "awaiting_outcome",
+      "sensor_requests": 0,
+      "request_cin": null,
+      "response_cin": null,
+      "incident_status": "recovering",
+      "current_command_observed_result": "awaiting_observations",
+      "decisions": {
+        "ack_only": {
+          "recovered": true,
+          "inspection": "unavailable"
+        },
+        "airflow_only": {
+          "recovered": false,
+          "inspection": "inspection"
+        },
+        "opensoom": {
+          "recovered": false,
+          "inspection": "inspection"
+        }
+      }
+    },
+    {
+      "case": "two_healthy_readings",
+      "facility": "food-a",
+      "zone": "cook",
+      "run_id": "demo-3787e5571a",
+      "target_m3_h": 900,
+      "incident_id": "incident-33b43b8aef",
+      "command_id": "cmd-ef27762834e3",
+      "command_cin": "cinX123cp9Vqm",
+      "initial_low_flow_cin": "cinfR1FD3RNvx",
+      "ack": {
+        "cin": "cinaWd6Jegi8q",
+        "read_rqi": "opensoom-2554454bfb59419d908a5a04dd48be40",
+        "at": "2026-11-18T17:49:27.603+00:00",
+        "opening_pct": 95.0
+      },
+      "post_command_measurements": [
+        {
+          "cin": "cinFOuUJDOnEP",
+          "read_rqi": "opensoom-b21e9bb539254cc19e6fdb9761720dad",
+          "measured_at": "2026-11-18T17:49:27.608+00:00",
+          "airflow_m3_h": 940.0,
+          "pm25_ug_m3": 10.0
+        },
+        {
+          "cin": "cinGeaqWVGmsl",
+          "read_rqi": "opensoom-601387e7dc5d4ee6bb313eac5abbfdd4",
+          "measured_at": "2026-11-18T17:49:27.619+00:00",
+          "airflow_m3_h": 940.0,
+          "pm25_ug_m3": 10.0
+        }
+      ],
+      "shaft": null,
+      "work_order_id": "work-incident-33b43b8aef",
+      "opening_order_cin": "cinm61SlANwkA",
+      "final_order_cin": "cinm61SlANwkA",
+      "order_read_rqi": "opensoom-bd542b46034f4a4288e27a1907e0f628",
+      "final_order_revision": 1,
+      "order_status": "open",
+      "evidence_status": "awaiting_outcome",
+      "sensor_requests": 0,
+      "request_cin": null,
+      "response_cin": null,
+      "incident_status": "resolved",
+      "current_command_observed_result": "recovered",
+      "decisions": {
+        "ack_only": {
+          "recovered": true,
+          "inspection": "unavailable"
+        },
+        "airflow_only": {
+          "recovered": true,
+          "inspection": "inspection"
+        },
+        "opensoom": {
+          "recovered": true,
+          "inspection": "inspection"
+        }
+      }
+    },
+    {
+      "case": "two_healthy_readings",
+      "facility": "archive-workshop",
+      "zone": "conservation",
+      "run_id": "demo-ce5932bc16",
+      "target_m3_h": 560,
+      "incident_id": "incident-c5fba0baaf",
+      "command_id": "cmd-b0ca49c08e44",
+      "command_cin": "cinNDpSEnsz08",
+      "initial_low_flow_cin": "cinEM5boSCVpl",
+      "ack": {
+        "cin": "cinseVoc5HzGf",
+        "read_rqi": "opensoom-6b51669fe04e42de9de42c05ed8b0c23",
+        "at": "2026-11-18T17:49:28.505+00:00",
+        "opening_pct": 95.0
+      },
+      "post_command_measurements": [
+        {
+          "cin": "cinR1oW9YW60a",
+          "read_rqi": "opensoom-9c0b250881c54f6a94f73dad1a61a238",
+          "measured_at": "2026-11-18T17:49:28.511+00:00",
+          "airflow_m3_h": 600.0,
+          "pm25_ug_m3": 10.0
+        },
+        {
+          "cin": "cinFcVLpOYqVr",
+          "read_rqi": "opensoom-a778f726e31b44eb9378c9a8d3a54b6e",
+          "measured_at": "2026-11-18T17:49:28.522+00:00",
+          "airflow_m3_h": 600.0,
+          "pm25_ug_m3": 10.0
+        }
+      ],
+      "shaft": null,
+      "work_order_id": "work-incident-c5fba0baaf",
+      "opening_order_cin": "cinxUJX35CU0B",
+      "final_order_cin": "cinxUJX35CU0B",
+      "order_read_rqi": "opensoom-4ea3471154e3407e86874b50c0b6d0d8",
+      "final_order_revision": 1,
+      "order_status": "open",
+      "evidence_status": "awaiting_outcome",
+      "sensor_requests": 0,
+      "request_cin": null,
+      "response_cin": null,
+      "incident_status": "resolved",
+      "current_command_observed_result": "recovered",
+      "decisions": {
+        "ack_only": {
+          "recovered": true,
+          "inspection": "unavailable"
+        },
+        "airflow_only": {
+          "recovered": true,
+          "inspection": "inspection"
+        },
+        "opensoom": {
+          "recovered": true,
+          "inspection": "inspection"
+        }
+      }
+    },
+    {
+      "case": "no_ack",
+      "facility": "food-a",
+      "zone": "cook",
+      "run_id": "demo-781e162027",
+      "target_m3_h": 900,
+      "incident_id": "incident-ce62d2db97",
+      "command_id": "cmd-80804f2a9264",
+      "command_cin": "cinhR215XY6S5",
+      "initial_low_flow_cin": "cinWZSbaQPpLJ",
+      "ack": null,
+      "post_command_measurements": [
+        {
+          "cin": "cinFBYZffery3",
+          "read_rqi": "opensoom-6d755eb634be40a887487354e5542431",
+          "measured_at": "2026-11-18T17:49:40.936+00:00",
+          "airflow_m3_h": 940.0,
+          "pm25_ug_m3": 10.0
+        },
+        {
+          "cin": "cinDLtMdtH2fQ",
+          "read_rqi": "opensoom-f84b51492b9044179221f71f4a1bf78a",
+          "measured_at": "2026-11-18T17:49:40.947+00:00",
+          "airflow_m3_h": 940.0,
+          "pm25_ug_m3": 10.0
+        }
+      ],
+      "shaft": null,
+      "work_order_id": "work-incident-ce62d2db97",
+      "opening_order_cin": "cin6bFxJr5afG",
+      "final_order_cin": "cin6bFxJr5afG",
+      "order_read_rqi": "opensoom-f15272f0072142f49196c0372aecffa8",
+      "final_order_revision": 1,
+      "order_status": "open",
+      "evidence_status": "awaiting_outcome",
+      "sensor_requests": 0,
+      "request_cin": null,
+      "response_cin": null,
+      "incident_status": "open",
+      "current_command_observed_result": "pending",
+      "decisions": {
+        "ack_only": {
+          "recovered": false,
+          "inspection": "unavailable"
+        },
+        "airflow_only": {
+          "recovered": false,
+          "inspection": "inspection"
+        },
+        "opensoom": {
+          "recovered": false,
+          "inspection": "inspection"
+        }
+      }
+    },
+    {
+      "case": "no_ack",
+      "facility": "archive-workshop",
+      "zone": "conservation",
+      "run_id": "demo-8ce2e9913b",
+      "target_m3_h": 560,
+      "incident_id": "incident-60fe1d2aac",
+      "command_id": "cmd-c2a64776431f",
+      "command_cin": "cinxXRkmIFTAR",
+      "initial_low_flow_cin": "cini80ozZUoLj",
+      "ack": null,
+      "post_command_measurements": [
+        {
+          "cin": "cinj5jm3u56Wl",
+          "read_rqi": "opensoom-50b9a3b3c67d48b8914991a7b9021000",
+          "measured_at": "2026-11-18T17:49:41.819+00:00",
+          "airflow_m3_h": 600.0,
+          "pm25_ug_m3": 10.0
+        },
+        {
+          "cin": "cinDwytTwzTIy",
+          "read_rqi": "opensoom-88de73b30cbc4efa9ebb5b944b08af3c",
+          "measured_at": "2026-11-18T17:49:41.831+00:00",
+          "airflow_m3_h": 600.0,
+          "pm25_ug_m3": 10.0
+        }
+      ],
+      "shaft": null,
+      "work_order_id": "work-incident-60fe1d2aac",
+      "opening_order_cin": "cinZwwG137ouN",
+      "final_order_cin": "cinZwwG137ouN",
+      "order_read_rqi": "opensoom-d8d78fd6b7da4e96baafb7725d3593f1",
+      "final_order_revision": 1,
+      "order_status": "open",
+      "evidence_status": "awaiting_outcome",
+      "sensor_requests": 0,
+      "request_cin": null,
+      "response_cin": null,
+      "incident_status": "open",
+      "current_command_observed_result": "pending",
+      "decisions": {
+        "ack_only": {
+          "recovered": false,
+          "inspection": "unavailable"
+        },
+        "airflow_only": {
+          "recovered": false,
+          "inspection": "inspection"
+        },
+        "opensoom": {
+          "recovered": false,
+          "inspection": "inspection"
+        }
+      }
+    }
+  ]
+}

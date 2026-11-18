@@ -9,6 +9,8 @@ import threading
 import time
 import uuid
 from contextlib import asynccontextmanager
+from html import escape
+from urllib.parse import urlsplit
 
 from fastapi import BackgroundTasks, FastAPI, HTTPException, Request
 from fastapi.responses import HTMLResponse, JSONResponse
@@ -123,6 +125,24 @@ def home():
         html = re.sub(r'<meta\s+name=[\"\']opensoom-token[\"\'][^>]*>', meta, html)
     else:
         html = html.replace("</head>", meta + "</head>")
+    technician_url = os.getenv("OPENSOOM_TECHNICIAN_URL", "")
+    facility = os.getenv("OPENSOOM_TECHNICIAN_FACILITY", "")
+    if technician_url and facility:
+        address = urlsplit(technician_url)
+        allowed = address.scheme == "https" or (
+            address.scheme == "http" and address.hostname in {"localhost", "127.0.0.1", "::1"}
+        )
+        if allowed and address.hostname and not (address.username or address.password or address.query or address.fragment):
+            html = html.replace(
+                "<!-- technician-workbench -->",
+                f'<meta name="technician-workbench" content="{escape(technician_url)}" data-facility="{escape(facility)}">',
+            )
+    virtual_shaft_site = os.getenv("OPENSOOM_LOCAL_SHAFT_REPLAY_FACILITY")
+    if virtual_shaft_site:
+        html = html.replace(
+            "<!-- local-shaft-replay -->",
+            f'<meta name="local-shaft-replay" content="{escape(virtual_shaft_site)}">',
+        )
     return html
 
 

@@ -146,6 +146,8 @@ class Core:
             readers = list(all_readers)
             if workers and kind in ("observations", "acks"):
                 readers.append(workers["maintenance"])
+            if workers and kind == "acks":
+                readers.append(workers["technician"])
             rules = [{"acor": readers, "acop": 34}]
             if writers:
                 rules.append({"acor": writers, "acop": permissions})
@@ -496,7 +498,9 @@ class Core:
             actual = json.loads(raw) if isinstance(raw, str) else raw
             if actual["id"] != command["id"] or actual["profile_version"] != facility["profile_version"]:
                 continue
-            ack = {"command_id": command["id"], "facility_id": facility["id"], "zone_id": command["zone_id"], "ack_at": utcnow(), "simulated": True, "device_state": "maintenance_recorded" if command["action"] == "request_maintenance" else "damper_changed", "value": command["value"]}
+            ack = {"command_id": command["id"], "incident_id": command.get("incident_id"),
+                   "facility_id": facility["id"], "zone_id": command["zone_id"], "ack_at": utcnow(), "simulated": True,
+                   "device_state": "maintenance_recorded" if command["action"] == "request_maintenance" else "damper_changed", "value": command["value"]}
             ack_result = self.create_content(zone["path"] + "/acks", ack, self.identities["adapter"])
             command.update(ack=True, ack_at=ack["ack_at"], ack_rqi=ack_result["rqi"], ack_sequence=ack_result["body"]["m2m:cin"].get("st", 0), status="acknowledged", observed_result="awaiting_observations")
             if command["action"] == "request_maintenance":
@@ -517,7 +521,7 @@ class Core:
             # an acknowledged setpoint must become the reported device state.
             # Partial/closed requests cannot borrow a full-open recovery.
             flow_ratio = 1.15 * damper / 100 if applied else (0.4 if faulty else 1.15)
-            if faulty and scenario == "no_recovery":
+            if faulty and scenario in ("no_recovery", "no_recovery_matching_shaft"):
                 flow_ratio = min(flow_ratio, 0.4)
             deficient = flow_ratio < 1
             values = {"observed_at": utcnow(), "pm25": 62.0 if deficient else 12.0, "co2": 1450.0 if deficient else 620.0, "airflow": zone["minimum_airflow"] * flow_ratio, "fan_running": True, "damper_pct": damper}
@@ -581,7 +585,7 @@ class Core:
             expected = "ack_and_post_action_recovery"
         elif scenario == "missing_ack" and any(c["status"] == "timed_out" for c in commands):
             expected = "missing_ack_remains_unresolved"
-        elif scenario == "no_recovery" and any(c["status"] == "unresolved" and c.get("unresolved_samples", 0) >= 2 for c in commands):
+        elif scenario in ("no_recovery", "no_recovery_matching_shaft") and any(c["status"] == "unresolved" and c.get("unresolved_samples", 0) >= 2 for c in commands):
             expected = "ack_without_recovery_remains_unresolved"
         if expected:
             run.update(status="completed", outcome="PASS_FIXTURE" if run["mode"] == "fixture" else "OBSERVED", expected_behavior=expected, completed_at=utcnow(), command_ids=[c["id"] for c in commands], steps=[e for e in self.store.events() if e.get("run_id") == run["id"]])

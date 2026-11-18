@@ -9,7 +9,7 @@ from datetime import datetime, timezone
 from urllib.parse import urlsplit
 
 from .onem2m import CSEError
-from .maintenance_worker import key
+from .maintenance_worker import key, read_content, safe_rn
 
 
 def commission(core, operation, args, error):
@@ -65,7 +65,7 @@ def create_policy(core, fid, name, rules):
 def register_workers(core, fid):
     identities = {}
     suffix = hashlib.sha256(fid.encode()).hexdigest()[:16]
-    for role in ("maintenance", "bridge", "sensor"):
+    for role in ("maintenance", "bridge", "sensor", "technician"):
         _, ae, _ = core.ensure(core.base, 2, "m2m:ae", {
             "rn": f"os-{role}-{suffix}", "api": f"N.org.opensoom.{role}", "rr": False,
             "srv": ["4"], "lbl": ["opensoom", "facility:" + fid, role],
@@ -80,9 +80,12 @@ def provision_streams(core, fid, facility_path, workers):
     bridge = workers["bridge"]
     operator = core.identities["operator"]
     sensor = workers["sensor"]
+    technician = workers["technician"]
     streams = {
         "outcomes": (operator, [operator, maintenance]),
-        "work_orders": (maintenance, [maintenance, operator]),
+        "work_orders": (maintenance, [maintenance, operator, technician]),
+        "inspections": (technician, [technician, operator]),
+        "inspection_notes": (technician, [technician]),
         "sensor_requests": (maintenance, [maintenance, bridge]),
         "sensor_responses": (bridge, [bridge, maintenance]),
         "independent_samples": (sensor, [sensor, bridge]),
@@ -115,7 +118,7 @@ def provision_streams(core, fid, facility_path, workers):
 def disable_streams(core, fid):
     # Revoke old worker rights before returning a site to its operations-only profile.
     for name in ("outcomes", "work_orders", "sensor_requests", "sensor_responses", "independent_samples",
-                 "provider_requests", "provider_responses"):
+                 "provider_requests", "provider_responses", "inspections", "inspection_notes"):
         create_policy(core, fid, name, [])
     installed = core.store.get("facilities", fid)
     if installed:
@@ -128,7 +131,7 @@ def disable_streams(core, fid):
                     raise
     # Raw device data survives removal. Strip the retired AE from each shared
     # device policy while retaining the normal readers and writers.
-    origin = core.identities.get("maintenance:" + fid)
+    retired = {core.identities.get(role + ":" + fid) for role in ("maintenance", "technician")}
     for stream in ("observations", "acks"):
         path = f"{core.root}/acp-{fid}-{stream}"
         try:
@@ -137,13 +140,13 @@ def disable_streams(core, fid):
             if exc.rsc != 4004:
                 raise
             continue
-        if any(origin in rule["acor"] for rule in acp["pv"]["acr"]):
-            rules = [{**rule, "acor": [value for value in rule["acor"] if value != origin]}
+        if any(retired.intersection(rule["acor"]) for rule in acp["pv"]["acr"]):
+            rules = [{**rule, "acor": [value for value in rule["acor"] if value not in retired]}
                      for rule in acp["pv"]["acr"]]
             core.cse.update(path, {"m2m:acp": {"pv": {"acr": [rule for rule in rules if rule["acor"]]}}})
     core.store.delete("work_order_cursor", fid)
     core.store.delete("work_order_projection", fid)
-    for role in ("maintenance", "bridge", "sensor"):
+    for role in ("maintenance", "bridge", "sensor", "technician"):
         core.identities.pop(f"{role}:{fid}", None)
 
 
@@ -158,6 +161,7 @@ def queue_outcome(core, kind, incident, observation, facility, zone, rqi, comman
         "incident_id": incident["id"], "run_id": facility.get("active_run"), "source_cin_ri": record["cin_id"],
         "source_cin_path": record["source_cin_path"], "rqi": rqi, "profile_version": facility["profile_version"],
         "observed_at": observation.observed_at,
+        "target_airflow_m3_h": zone["minimum_airflow"],
     }
     if command:
         content.update(command_id=command["id"], ack_at=command["ack_at"], requested_pct=command["value"])
@@ -216,6 +220,36 @@ def current_order_view(order, acknowledged):
             "historical_work_order_ri": order.get("resource_id")}
 
 
+def read_facility_stream(cse, path, container_ri, fid, origin=None):
+    uris = cse.discover(path, {"ty": 4, "drt": 1, "lvl": 1}, origin=origin)["body"]["m2m:uril"]
+    for uri in uris:
+        try:
+            reply = cse.retrieve(path + "/" + safe_rn(uri.rsplit("/", 1)[-1]), origin=origin)
+        except CSEError as exc:
+            if exc.rsc == 4004:  # A bounded container may roll over during discovery.
+                continue
+            raise
+        cin = reply["body"]["m2m:cin"]
+        payload = read_content(cin)
+        if cin["pi"] != container_ri or payload.get("facility_id") != fid:
+            raise ValueError("Record has inconsistent facility provenance")
+        yield {**payload, "resource_id": cin["ri"], "read_rqi": reply["rqi"],
+               "recorded_at": cin["ct"], "state_tag": cin.get("st", 0)}
+
+
+def select_work_orders(records, acknowledged):
+    latest = {}
+    for item in records:
+        order_id = item["work_order_id"]
+        current = acknowledged.get((item["facility_id"], item["zone_id"], item["incident_id"]))
+        is_current = bool(current and item.get("command_id") == current["id"])
+        rank = (is_current, datetime.fromisoformat(item["observed_at"]), int(item["revision"]),
+                item["recorded_at"], item["resource_id"])
+        if order_id not in latest or rank > latest[order_id][0]:
+            latest[order_id] = rank, item
+    return [item for _, item in latest.values()]
+
+
 def refresh_work_orders(core):
     acknowledged = latest_damper_commands(core.store.list("commands"))
     for fid, config in core.registry.items():
@@ -224,26 +258,25 @@ def refresh_work_orders(core):
         path = core.facility(fid)["path"] + "/work_orders"
         origin = core.identities["operator"]
         container = core.cse.retrieve(path, origin=origin)["body"]["m2m:cnt"]
+        activity_path = core.facility(fid)["path"] + "/inspections"
+        try:
+            activity = core.cse.retrieve(activity_path, origin=origin)["body"]["m2m:cnt"]
+        except CSEError as exc:
+            if exc.rsc not in (4004, 4103):
+                raise
+            activity = None
         active_ids = sorted(cmd["id"] for key, cmd in acknowledged.items() if key[0] == fid)
-        version = [container["ri"], container["st"], active_ids]
+        version = [container["ri"], container["st"], active_ids, [activity["ri"], activity["st"]] if activity else None]
         if core.store.get("work_order_cursor", fid) == version:
             continue
-        discovery = core.cse.retrieve(path, origin=origin, params={"fu": 1, "ty": 4, "drt": 1})
-        latest = {}
-        for uri in discovery["body"]["m2m:uril"]:
-            reply = core.cse.retrieve(path + "/" + uri.rsplit("/", 1)[-1], origin=origin)
-            cin = reply["body"]["m2m:cin"]
-            item = json.loads(cin["con"])
-            if cin["pi"] != container["ri"] or item.get("facility_id") != fid:
-                raise ValueError("Work order does not belong to this facility")
-            key = item["work_order_id"]
-            # A later command can open a new investigation on the same order.
-            # Compare its source observation before evidence quality within it.
-            current = acknowledged.get((fid, item["zone_id"], item["incident_id"]))
-            is_current = bool(current and item.get("command_id") == current["id"])
-            rank = (is_current, datetime.fromisoformat(item["observed_at"]), int(item["revision"]), cin["ct"], cin["ri"])
-            if key not in latest or rank > latest[key][0]:
-                latest[key] = (rank, {**item, "resource_id": cin["ri"], "read_rqi": reply["rqi"]})
+        orders = select_work_orders(read_facility_stream(core.cse, path, container["ri"], fid, origin), acknowledged)
+        if activity:
+            by_source = {order["resource_id"]: order for order in orders}
+            actions = read_facility_stream(core.cse, activity_path, activity["ri"], fid, origin)
+            for entry in sorted(actions, key=lambda item: (item["recorded_at"], item["state_tag"])):
+                order = by_source.get(entry.get("work_order_ri"))
+                if order and entry.get("work_order_id") == order["work_order_id"] and entry.get("kind") == "technician.inspection":
+                    order["latest_technician_activity"] = {k: entry[k] for k in ("action", "recorded_at", "resource_id", "work_order_ri")}
         with core.store.transaction():
-            core.store.put("work_order_projection", fid, [value for _, value in latest.values()])
+            core.store.put("work_order_projection", fid, orders)
             core.store.put("work_order_cursor", fid, version)

@@ -1,0 +1,31 @@
+{
+  "status": "passed",
+  "views": [
+    {
+      "width": 1440,
+      "keyboard_comparison": true,
+      "live_workspaces": [
+        19490,
+        19492
+      ],
+      "capture_shows_single_order": true,
+      "three_provider_paths": true,
+      "network_view": true,
+      "overflow_px": 0,
+      "page_errors": []
+    },
+    {
+      "width": 390,
+      "keyboard_comparison": true,
+      "live_workspaces": [
+        19490,
+        19492
+      ],
+      "capture_shows_single_order": true,
+      "three_provider_paths": true,
+      "network_view": true,
+      "overflow_px": 0,
+      "page_errors": []
+    }
+  ]
+}

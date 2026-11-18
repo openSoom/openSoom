@@ -1,8 +1,8 @@
 # Hackster paste and asset notes
 
-Use `docs/submission/hackster-article.md` as the English article body. It contains full source URLs, immutable public image URLs and a text resource tree; no repository-relative links or Mermaid renderer are required. Place the 720p work-order film first in the demo-video field. After the release is pushed, open the article’s source and video links in a signed-out browser before submitting the public article URL.
+Use `docs/submission/hackster-article.md` as the English article body. It contains full source URLs, public image URLs and a text resource tree; no repository-relative links or Mermaid renderer are required. Place the 720p work-order film first in the demo-video field. After the release is pushed, open the article’s source and video links in a signed-out browser before submitting the public article URL.
 
-Suggested project summary: **Connect ventilation evidence, authorized actions and verified results across vendors and facilities with oneM2M and agent tools.**
+Suggested project summary: **Give operators and technicians different decisions from the same ventilation incident using oneM2M and an independent edge sensor.**
 
 Hardware field: **No physical hardware required for the demonstration.** Fans, dampers and sensor measurements are virtual. A Mac arm64/Python 3.12 environment is the verified source-checkout route; other OS or real devices need separate acceptance.
 
@@ -16,14 +16,14 @@ Software field: openSoom source, ACME CSE 2026.5.3, Python 3.12, uv, OpenSSL, MC
 | Near the opening | `deliverables/video/openSoom-pr-45s.mp4` | Actual 45-second master reviewed and published; anonymous full download matches the master hash |
 | Extended historical walkthrough | `deliverables/video/openSoom-demo-5min.mp4` | Actual 300-second English demo reviewed and published; anonymous full download matches the master hash |
 | Current work-order image | `evidence/video/work-order/dashboard-order.png` | Actual screenshot of the same work order as the 720p demo. Upload beside the current main case or retain the pinned image URL. |
-| Opening image | learning-space dashboard image already linked in the body | Original application screenshot; virtual measurements, actual software |
+| Opening image | `evidence/application/technician-workbench.png` | Actual human technician workspace in the cooking-line lab; the opening text separately compares two conservation-workshop trials |
 | Architecture | source-mapped distributed-lab image already linked in the body | Explanatory geometry; separate processes versus logical/resource cards are captioned |
 
 For the current film, verify the complete public MP4 against SHA-256 `313c78416e3dec940d6b32486c57bf028b0525b3f140aaa316bb0235952ba7b8`. Check the 100% ACK at 29.19 s, 360 m³/h at 37.75 s, 35% shaft reading at 47.15 s and the open work-order receipt at 66.44 s. Run `python3 scripts/cinematic/render_work_order.py --verify-screen` on the source checkout to compare all six screens, and test playback with sound and English captions in the published article. [Reproduction commands](../../deliverables/video/README.md) · [Film manifest](../../evidence/video/work-order/film.json)
 
 The two earlier film URLs are public GitHub raw-file locations. Both dedicated masters have been reviewed as actual encoded files: the PR is exactly 45 seconds (`7cd91a052221c4c54baccf7560bda93cb595b905c8aeab0c7d3e441051220960`) and the demo is exactly 300 seconds (`c47b134ce2202c57a6089cad7a262eb0e16927e69e58af9593c95dcc7b2158ab`). Their technical/source QA is in `evidence/video/cinematic/`; the scoped review is `docs/review/cinematic-team2.md`. The maintainer completed a logged-out check at public commit `c7d068e4992b1c0adca7c81c1c0011cd6c828062`: all 34 article/asset targets returned HTTP 200, and both complete MP4 downloads matched the published master hashes byte for byte. No separate video-host upload is claimed. Replace links with video-host URLs only if those services are separately authorized and actually used.
 
-The learning-space screenshot and distributed architecture illustration use commit `1e525fe2dfe1afe8ed6fc4391c1a060513c5e879`. The current work-order screenshot also uses a pinned GitHub URL. All three image downloads match the referenced Git objects. [Anonymous asset check](../../evidence/release/final-work-order-publication.json) Existing code/evidence links use full canonical repository URLs so new reviewed evidence can be published without breaking article links.
+The workshop comparison links to its case matrix. The first image shows the separate technician workspace. The original operator work order and distributed architecture images retain their pinned GitHub URLs. [Anonymous asset check](../../evidence/release/final-work-order-publication.json) Existing code/evidence links use full canonical repository URLs so new reviewed evidence can be published without breaking article links.
 
 ## Claims and final readback
 

@@ -1,16 +1,24 @@
-# openSoom: Verify Ventilation Across Facilities and Vendors
+# openSoom: Which ventilation inspection comes first?
 
-A fan reports **running**. Its controller acknowledges a request for **100% damper opening**. The room still has an unresolved airflow problem.
+Two technicians see the same warning. In each trial a damper acknowledged **95% open** and airflow stayed at **515 m³/h**, short of the workshop’s **560 m³/h** target. Where should they start?
 
-openSoom connects those observations to an operating decision and checks what happened afterwards. It combines oneM2M equipment resources, facility-specific rules, a visual dashboard and AI-agent tools so a manager can follow a problem from fresh evidence to an authorized action, a separate device acknowledgement and a verified result.
+In the first trial an independent shaft sensor measured **35%**. The work order prioritized actuator travel and position feedback. In the second it measured **93%**. Now the airflow path came first. The operator kept both incidents open. The technician could record the inspection they scheduled and the precise evidence they had reviewed. A field examination would establish the physical cause.
 
-**This is a working software demonstration with virtual physical equipment.** The CSE, protocol operations, access checks, MCP calls and recorded model inference actually execute. Sensor readings, fan/damper behavior and recovery values are simulated. The project demonstrates integration and operational verification; it does not certify ventilation performance or establish a health benefit.
+![Real openSoom technician workbench showing a facility-scoped order, a recommended first inspection and the form to record the activity](https://raw.githubusercontent.com/openSoom/openSoom/main/evidence/application/technician-workbench.png)
 
-![Actual openSoom learning-space dashboard showing an acknowledged action with an unresolved result](https://raw.githubusercontent.com/openSoom/openSoom/1e525fe2dfe1afe8ed6fc4391c1a060513c5e879/evidence/dashboard/visual-upgrade-desktop-unresolved.jpg)
+*The workbench screenshot is a separate cooking-line run. The paired workshop trials above use the same command and airflow in two different runs. All equipment and physical measurements are simulated. The oneM2M requests, application permissions and recorded decisions were executed by the software.*
 
-*A recorded application screen, not a rendered physical experiment: the learning studio reports 200 m³/h against its configured simulation target of 500 m³/h. Command, device ACK and observed result remain separate.*
+[Source and local demo](https://github.com/openSoom/openSoom) · [Watch the operator work-order film, 720p](https://github.com/openSoom/openSoom/raw/refs/heads/main/deliverables/video/openSoom-work-order-720p.mp4) · [45-second introduction](https://github.com/openSoom/openSoom/raw/refs/heads/main/deliverables/video/openSoom-pr-45s.mp4) · [5-minute walkthrough](https://github.com/openSoom/openSoom/raw/refs/heads/main/deliverables/video/openSoom-demo-5min.mp4)
 
-[Source and quickstart](https://github.com/openSoom/openSoom) · [English work-order demo in 720p](https://github.com/openSoom/openSoom/raw/refs/heads/main/deliverables/video/openSoom-work-order-720p.mp4) · [45-second introduction — MP4](https://github.com/openSoom/openSoom/raw/refs/heads/main/deliverables/video/openSoom-pr-45s.mp4) · [Full narrated demonstration — MP4](https://github.com/openSoom/openSoom/raw/refs/heads/main/deliverables/video/openSoom-demo-5min.mp4)
+## What changed when the system had more evidence?
+
+We defined nine conditions and repeated each at two virtual sites. We recorded what three decision rules would conclude from the same oneM2M inputs. Of 16 cases needing further investigation, a rule that accepted the device ACK as recovery closed 14 incorrectly. A rule that required two fresh in-target airflow measurements closed two incorrectly, when particles remained elevated. The openSoom operations app kept all 16 open. All three rules recognized the two normal recoveries. The distinct maintenance app matched the prescribed first inspection in all four informative trials. These are results for the specified examples. Real-world diagnostic accuracy and maintenance-time savings need field measurements. [Case matrix, methods and receipts](https://github.com/openSoom/openSoom/blob/main/docs/inspection-benchmark.md)
+
+## The people and the software they rely on
+
+The **operator console** is where a facility checks whether airflow recovered. The **technician workbench** is where the next shift reads an order, checks source measurements and records what it will inspect. Each entry points to the exact oneM2M resource that the technician reviewed. The **Codex plugin or independent model** lets a facility manager prepare a new site profile or virtual trial under normal facility permissions.
+
+The **site operations app** sends permitted device commands and determines recovery. The separate **maintenance app** subscribes to the outcome and updates a work order. When an external provider owns the independent sensor, a **service bridge** connects that provider through MEC 033 and looks up the shaft measurement through MEC 046. The bridge writes the result to the facility MN-CSE. The maintenance app reads it under its own identity. A site that already has an independent local sensor can reach the same decision with a simpler installation. [Application and deployment architecture](https://github.com/openSoom/openSoom/blob/main/docs/architecture.md)
 
 ## What should the technician check first?
 

@@ -1,0 +1,163 @@
+{
+  "status": "passed",
+  "capture_time_utc": "2026-11-18T17:48:07.412Z",
+  "client": "Chromium using the normal operator and technician browser interfaces on two isolated loopback origins",
+  "scope": "Local ACME and local independent virtual shaft sensor. Two different public UI runs with the same command and follow-up flow. This is an automated software run with simulated equipment.",
+  "clean_state": "The isolated lab started with fresh ACME state and virtual equipment. The startup check and rehearsals created other orders. Each browser case asserts its newly created run has exactly one logical work order and zero prior technician activities on that order.",
+  "cases": [
+    {
+      "scenario": "no_recovery",
+      "run_id": "demo-444eeac437",
+      "facility_id": "food-a",
+      "zone_id": "cook",
+      "incident_id": "incident-385117a51e",
+      "work_order": "work-incident-385117a51e",
+      "command": "cmd-c52b6889b158",
+      "ack_request_id": "opensoom-e6796fce722742f2a19ff958268ebab2",
+      "requested_pct": 100,
+      "flow_m3_h": 360,
+      "configured_target_m3_h": 900,
+      "target_source": "work_order_cin",
+      "independent_position_pct": 35,
+      "source": "local",
+      "airflow_cin": "cinLYjpST9KUR",
+      "position_response_cin": "cinQFlWgaqePJ",
+      "pending_work_order_cin": "cinLAaJyjiLcK",
+      "reviewed_work_order_cin": "cinyNiEOFxH1c",
+      "priority": "inspect_actuator_feedback",
+      "rendered_priority": "Check actuator travel and position feedback first",
+      "inspection_cin": "cinGV1BalMM32",
+      "inspection_read_request_id": "opensoom-5240db0017f04c3e9830a8b451ff7b8b",
+      "recorded_activity": "scheduled",
+      "inspections_after_reload": 1,
+      "technician_private_note_readable_after_reload": true,
+      "operator_activity": {
+        "action": "scheduled",
+        "recorded_at": "20261118T174748,397594",
+        "resource_id": "cinGV1BalMM32",
+        "work_order_ri": "cinyNiEOFxH1c"
+      },
+      "operator_rendered_activity": "Inspection scheduled",
+      "operator_received_private_field_note": false,
+      "operator_incident_after": "open",
+      "new_device_commands_from_inspection": 0,
+      "deep_link_keyboard": true,
+      "source_details_keyboard": true,
+      "submit_keyboard": true
+    },
+    {
+      "scenario": "no_recovery_matching_shaft",
+      "run_id": "demo-c891dfb625",
+      "facility_id": "food-a",
+      "zone_id": "cook",
+      "incident_id": "incident-db62421a09",
+      "work_order": "work-incident-db62421a09",
+      "command": "cmd-4962e91203cd",
+      "ack_request_id": "opensoom-7e1e8a1f82364014ae6a1947d98a5986",
+      "requested_pct": 100,
+      "flow_m3_h": 360,
+      "configured_target_m3_h": 900,
+      "target_source": "work_order_cin",
+      "independent_position_pct": 98,
+      "source": "local",
+      "airflow_cin": "cinPH5lrp5jB6",
+      "position_response_cin": "cinJJEfIrCc8k",
+      "pending_work_order_cin": "cinyg4I6tKBeo",
+      "reviewed_work_order_cin": "cinh6CbZisyOK",
+      "priority": "inspect_airflow_path",
+      "rendered_priority": "Inspect the airflow path first",
+      "inspection_cin": "cinhpK1qIvM8M",
+      "inspection_read_request_id": "opensoom-7e7d4c3c41ac4697a00628bc02441826",
+      "recorded_activity": "scheduled",
+      "inspections_after_reload": 1,
+      "technician_private_note_readable_after_reload": true,
+      "operator_activity": {
+        "action": "scheduled",
+        "recorded_at": "20261118T174804,380948",
+        "resource_id": "cinhpK1qIvM8M",
+        "work_order_ri": "cinh6CbZisyOK"
+      },
+      "operator_rendered_activity": "Inspection scheduled",
+      "operator_received_private_field_note": false,
+      "operator_incident_after": "open",
+      "new_device_commands_from_inspection": 0,
+      "deep_link_keyboard": true,
+      "source_details_keyboard": true,
+      "submit_keyboard": true
+    }
+  ],
+  "facility_switch": {
+    "facility": "learning-b",
+    "technician_link_visible": false,
+    "independent_sensor_replay_option_visible": false
+  },
+  "mobile": {
+    "viewport": 390,
+    "document_width": 390,
+    "requested_order_selected": true,
+    "keyboard_opens_source_details": true,
+    "unknown_order_discloses_no_work_order": true
+  },
+  "app_page_errors": [],
+  "screenshot": {
+    "file": "evidence/application/technician-workbench.png",
+    "sha256": "f04e3582dec2498aaf1329144d9158cd4b8260e50a8c12b4ac9e0ddb5f6ebaf7",
+    "width": 1280,
+    "height": 1120,
+    "run_id": "demo-444eeac437"
+  },
+  "source_sha256": {
+    "scripts/maintenance_demo.py": "7f382c15093308f9a9a7f91607f7e5ab534ce83bcf91bdc257f755e35bf5dfff",
+    "src/opensoom/app.py": "89058f48c7fb960292337d98ffbb4966060f6f2050047a695322fef6118a282a",
+    "src/opensoom/core.py": "23b74fb4e70d65e668aec36f299a93dd206516d01c81267182918f652cd91eb5",
+    "src/opensoom/maintenance.py": "22f912f6ed863315e584a5534e70473599f34d8fc2a4639da1deaaa694fbdae9",
+    "src/opensoom/maintenance_worker.py": "11494b157eee9cbae07dd4491dd3597a299fedaa403d715f406a0aa5e886d7a1",
+    "src/opensoom/technician.py": "070a638b11c73aa1a0beb2387ee31a319de3bf2f6f27ef81706121ed2aa5a592",
+    "src/opensoom/technician_web/index.html": "d3531ed806b7fc8e10983c5ed37d529e980171e30dc8cd65413503bfdd3b7fac",
+    "src/opensoom/technician_web/workbench.js": "4a585ef587f4dd013983f772397d258080202a28bc06ab1d35e35c179ffec08a",
+    "src/opensoom/technician_web/workbench.css": "0e13af8fc401bb970a23aed0567c6c99c3e3c4f1c4c50dd2d24eee4203bd220b",
+    "web/index.html": "20538f4dc30e8e1746325c1e4e372bda116e88a0b204ab3ebe69b07692e395ab",
+    "web/app.js": "7583cc622f510f31f10fae73f30848300bb39c000162287d4af265b531f8b1f0",
+    "scenarios/scenarios.json": "d3ec61a4fae8eb9465282bab0f1076cb52bcc1ef0f08b2e85e81fe037b7e9739"
+  },
+  "isolated_lab_startup_check": {
+    "run_id": "demo-539b20d1a9",
+    "scope": "Companion service startup check before the two independent browser scenarios above.",
+    "inspection_cin": "cincSU7egfi9i",
+    "read_rqi": "opensoom-8b27a2f4461d42d3abbd74139e6b3da8",
+    "operator_private_field_note_retrieve": {
+      "rsc": 4103,
+      "rqi": "opensoom-81e82259e39f4bd0bf427913ea0691a9"
+    },
+    "maintenance_private_field_note_retrieve": {
+      "rsc": 4103,
+      "rqi": "opensoom-bd006733db334f32854790b0d3ab0eb6"
+    },
+    "entry_count_after_service_restart": 1,
+    "duplicate_request_returns_same_cin": true
+  },
+  "reproduce": [
+    "Run .venv/bin/python scripts/maintenance_demo.py --hold --dashboard-port 19530 --technician-port 19532.",
+    "In the operator dashboard, choose food-a and run each listed scenario with Allowed actions enabled. Wait for the independent shaft reading. Follow the technician link for that exact work order.",
+    "Open source measurements, select Inspection scheduled, enter a private field note and save. Reload the workbench and compare the activity receipt with the operator activity on the same work order. Switch the operator to learning-b."
+  ],
+  "handoff_recording": {
+    "file": "docs/assets/technician-handoff.gif",
+    "sha256": "ff3f885005e6000c7a78da0d6f17c9391dcf014f7c79ce65e532d36a73853a12",
+    "source": "Five screenshots from the same running Chromium session, resized and timed for playback.",
+    "run_id": "demo-444eeac437",
+    "work_order": "work-incident-385117a51e",
+    "inspection_cin": "cinGV1BalMM32",
+    "ordered_frames": [
+      "Operator opens the work order",
+      "Technician reviews independent position and airflow",
+      "Technician selects Inspection scheduled and enters a field note",
+      "Technician confirms saved history",
+      "Operator receives the shared inspection disposition"
+    ],
+    "frame_count": 5,
+    "width": 960,
+    "height": 690,
+    "duration_ms": 11300
+  }
+}

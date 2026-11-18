@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "scope": "Scripted virtual facility decisions. Each case starts with its own low-airflow incident and requests 95% damper opening. Offsets below are relative to each commissioned zone target.",
+  "command_pct": 95,
+  "sites": {"food-a": "cook", "archive-workshop": "conservation"},
+  "cases": [
+    {"id": "shaft_short", "ack": true, "followup_offsets_m3_h": [-45,-45], "shaft_pct": 35, "expect": {"recovered": false, "inspection": "inspect_actuator_feedback", "shaft_requests": 1}},
+    {"id": "shaft_at_setpoint", "ack": true, "followup_offsets_m3_h": [-45,-45], "shaft_pct": 93, "expect": {"recovered": false, "inspection": "inspect_airflow_path", "shaft_requests": 1}},
+    {"id": "shaft_missing", "ack": true, "followup_offsets_m3_h": [-45,-45], "expect": {"recovered": false, "inspection": "inspection", "shaft_requests": 1}},
+    {"id": "shaft_stale", "ack": true, "followup_offsets_m3_h": [-45,-45], "shaft_pct": 35, "shaft_age_seconds": 300, "expect": {"recovered": false, "inspection": "inspection", "shaft_requests": 1}},
+    {"id": "particles_still_high", "ack": true, "followup_offsets_m3_h": [40,40], "particles_above_warning": true, "expect": {"recovered": false, "inspection": "inspection", "shaft_requests": 0}},
+    {"id": "airflow_stale", "ack": true, "followup_offsets_m3_h": [40,40], "airflow_age_seconds": 300, "expect": {"recovered": false, "inspection": "inspection", "shaft_requests": 0}},
+    {"id": "one_healthy_reading", "ack": true, "followup_offsets_m3_h": [40], "expect": {"recovered": false, "inspection": "inspection", "shaft_requests": 0}},
+    {"id": "two_healthy_readings", "ack": true, "followup_offsets_m3_h": [40,40], "expect": {"recovered": true, "inspection": "inspection", "shaft_requests": 0}},
+    {"id": "no_ack", "ack": false, "followup_offsets_m3_h": [40,40], "expect": {"recovered": false, "inspection": "inspection", "shaft_requests": 0}}
+  ]
+}
