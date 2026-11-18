@@ -4,7 +4,7 @@ The automated goal prepares the project and publishes reviewed source/artifacts 
 
 | Item | Prepared location | External state |
 | --- | --- | --- |
-| Source and reproduction | https://github.com/openSoom/openSoom | [Technician workbench clean installation and 93 tests](../../evidence/release/inspection-clean-install.json) · [Cloud handoff](../../evidence/runtime/option-c/technician-handoff.json) · [Earlier three-facility checks](../../evidence/release/final-work-order-acceptance.json) |
+| Source and reproduction | https://github.com/openSoom/openSoom | [29 anonymous public asset checks](../../evidence/release/inspection-publication.json) · [Technician workbench clean installation and 93 tests](../../evidence/release/inspection-public-install.json) · [Cloud handoff](../../evidence/runtime/option-c/technician-handoff.json) · [Earlier three-facility checks](../../evidence/release/final-work-order-acceptance.json) |
 | English Hackster article | docs/submission/hackster-article.md | English publication copy and a separate paste guide prepared. Public Hackster URL pending |
 | English evaluation film | [720p work-order demonstration](../../deliverables/video/openSoom-work-order-720p.mp4) · [English captions](../../deliverables/video/openSoom-work-order.en.srt) | Play the complete 1:45 film on slide 5. Download it alongside the deck for offline playback. |
 | Single-page Three.js pitch | pitch/index.html | Static repository artifact; no public hosting created |

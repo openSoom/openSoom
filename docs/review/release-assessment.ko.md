@@ -9,6 +9,8 @@
 
 이번 제품의 새 근거는 같은 사건을 다루는 두 사람용 앱, 임무가 분리된 엣지 워커, 동일 입력을 사용한 18개 가상 시험이다. 현재 브라우저 기록과 클라우드 HTTP 기록은 다른 실행이다. 이전 혼합 프로토콜·SDT·실제 LLM 실행은 각 기록에 쓰인 소스 버전을 유지한다. 검토 후 동일 시설의 관찰자에게 운영 API가 작업지시서를 반환하던 동작을 수정했다. 관찰자는 시설 상태를 읽고, 정비 역할은 작업지시서를 읽고, 운영자는 현재 판본의 점검 상태까지 확인하도록 실제 역할별 요청으로 재검증했다. [브라우저 인계](../../evidence/application/technician-browser.json) · [클라우드 인계](../../evidence/runtime/option-c/technician-handoff.json) · [최종 역할별 확인](../../evidence/runtime/technician-workbench.json) · [판단 비교](../inspection-benchmark.md)
 
+기술자 워크벤치 공개판의 동영상·발표자료·기사 이미지 등 29개 URL은 로그인 없이 원본 바이트까지 대조했다. [공개 릴리스 확인](../../evidence/release/inspection-publication.json)
+
 ## 항목별 판정과 적용 범위
 
 | # | 항목 | 판정과 근거 |

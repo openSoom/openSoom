@@ -1844,7 +1844,9 @@
       "evidence/runtime/technician-workbench.json",
       "evidence/runtime/option-c/technician-handoff.json",
       "evidence/release/inspection-clean-install.json",
-      "evidence/presentation/acceptance.json"
+      "evidence/presentation/acceptance.json",
+      "evidence/release/inspection-publication.json",
+      "evidence/release/inspection-public-install.json"
     ],
     "decisions": [
       {

@@ -1,0 +1,104 @@
+{
+  "status": "passed",
+  "checked_at_utc": "2026-11-18T18:06:58.931326+00:00",
+  "source": "https://github.com/openSoom/openSoom.git",
+  "revision": "6a8d6b2d8e1a33affc11a305fa3fd870e17f8636",
+  "tree": "53f1e869c10ac27e8cd41ef3c3c687a33517a8f8",
+  "method": "Public HTTPS shallow clone into an empty directory, a new locked uv environment and its own ACME install. Local virtual oneM2M and technician acceptance through normal process entrypoints.",
+  "commands": [
+    "git clone --depth=1 https://github.com/openSoom/openSoom.git",
+    "uv sync --locked --python 3.12",
+    "uv run --no-sync python scripts/cse_runtime.py install",
+    "uv run --no-sync python scripts/maintenance_demo.py --output .runtime/inspection-release-acceptance.json",
+    "uv run --no-sync python -m pytest -q",
+    "git status --porcelain"
+  ],
+  "test_summary": "93 passed, 29 subtests passed",
+  "working_tree_changes_after_checks": [],
+  "native_run_id": "demo-4921348334",
+  "technician": {
+    "separate_web_process": true,
+    "facility_id": "food-a",
+    "work_order_ri": "cin7yEftgdBc5",
+    "inspection_cin": "cinLC5Zj8R8LJ",
+    "action": "scheduled",
+    "read_rqi": "opensoom-f49b520a04fc4e49921d38a5ffd5f901",
+    "profile_target_m3_h": 900,
+    "target_source": "work_order_cin",
+    "operator_disposition": {
+      "action": "scheduled",
+      "recorded_at": "20261118T180629,628639",
+      "resource_id": "cinLC5Zj8R8LJ",
+      "work_order_ri": "cin7yEftgdBc5"
+    },
+    "unauthenticated_http": 401,
+    "foreign_origin_http": 403,
+    "stale_work_order_http": 409,
+    "conflicting_retry_http": 409,
+    "retry_same_cin": true,
+    "observer_order_count": 0,
+    "maintenance_saw_order": true,
+    "maintenance_saw_technician_activity": false,
+    "restarted_entries": 1,
+    "new_device_commands": 0,
+    "incident_after_entry": "open"
+  },
+  "native_denials": {
+    "maintenance_command": {
+      "rsc": 4103,
+      "rqi": "opensoom-3f856a9a10084eae9681b36c145d9dd4"
+    },
+    "bridge_command": {
+      "rsc": 4103,
+      "rqi": "opensoom-a43914abb0d745c8a15acb433873eebc"
+    },
+    "maintenance_response": {
+      "rsc": 4103,
+      "rqi": "opensoom-66b69bee4449417f8927308650db070b"
+    },
+    "bridge_work_order": {
+      "rsc": 4103,
+      "rqi": "opensoom-f73e54e2ea21426a8f9f0ea27b5af5d2"
+    },
+    "bridge_request": {
+      "rsc": 4103,
+      "rqi": "opensoom-24729238fafb4fc1aa11c7da20204a03"
+    },
+    "other_facility": {
+      "rsc": 4103,
+      "rqi": "opensoom-d282331eae8741598a841a6745a6ece2"
+    },
+    "credential_origin_mismatch": {
+      "rsc": 4103,
+      "rqi": "opensoom-97e8ea9e1c3344828ec8355c82d594fe"
+    },
+    "technician_command": {
+      "rsc": 4103,
+      "rqi": "opensoom-f1a138151f4f485c9236c5e20f686fd1"
+    },
+    "technician_work_order": {
+      "rsc": 4103,
+      "rqi": "opensoom-14eb5e14c6054f29b8293d15182132d1"
+    },
+    "technician_sensor_response": {
+      "rsc": 4103,
+      "rqi": "opensoom-4c5d36f0425945a3814ab7a40a26d6b8"
+    },
+    "technician_other_facility": {
+      "rsc": 4103,
+      "rqi": "opensoom-08b49f99901f483289c4c4f3d85c0def"
+    },
+    "maintenance_inspection": {
+      "rsc": 4103,
+      "rqi": "opensoom-e8367118a6ac4bfeab45db0021c82fcc"
+    },
+    "operator_private_field_note": {
+      "rsc": 4103,
+      "rqi": "opensoom-8f5e24dcfb2b44c6a5d46f31896509f4"
+    },
+    "maintenance_private_field_note": {
+      "rsc": 4103,
+      "rqi": "opensoom-63ca9ebdcfe24ef5b998eb23ef139f1c"
+    }
+  }
+}

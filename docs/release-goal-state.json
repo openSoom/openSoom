@@ -189,6 +189,9 @@
     "runtime_evidence_scope": "Cloud Option C and Chromium captures are on 462d4d9; subsequent observer and maintenance API response scoping was independently checked in a fresh local lab.",
     "rubric_teams": 6,
     "separate_idea_reviewers": 1,
-    "external_handoff": "docs/submission/handoff.md"
+    "external_handoff": "docs/submission/handoff.md",
+    "published_product_revision": "6a8d6b2d8e1a33affc11a305fa3fd870e17f8636",
+    "public_assets": "evidence/release/inspection-publication.json",
+    "clean_public_install": "evidence/release/inspection-public-install.json"
   }
 }

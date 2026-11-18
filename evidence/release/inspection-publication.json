@@ -1,0 +1,241 @@
+{
+  "status": "passed",
+  "revision": "6a8d6b2d8e1a33affc11a305fa3fd870e17f8636",
+  "time_utc": "2026-11-18T18:05:38.573574+00:00",
+  "method": "Anonymous HTTPS GET, all bytes compared to the referenced Git object. Main movie paths are the article hyperlinks; image URLs are taken directly from the article.",
+  "hackster_public_url": "awaiting organizer submission handoff",
+  "assets": [
+    {
+      "file": "evidence/application/technician-workbench.png",
+      "url": "https://raw.githubusercontent.com/openSoom/openSoom/main/evidence/application/technician-workbench.png",
+      "http": 200,
+      "bytes": 139521,
+      "sha256": "f04e3582dec2498aaf1329144d9158cd4b8260e50a8c12b4ac9e0ddb5f6ebaf7",
+      "reference": "6a8d6b2d8e1a33affc11a305fa3fd870e17f8636"
+    },
+    {
+      "file": "evidence/video/work-order/dashboard-order.png",
+      "url": "https://raw.githubusercontent.com/openSoom/openSoom/449850c43ea0d45e735284eb95bd29ee13d83065/evidence/video/work-order/dashboard-order.png",
+      "http": 200,
+      "bytes": 132507,
+      "sha256": "f668306b7136896e55e6b039cfdb152464412539191b65731ffa665af25e9fbc",
+      "reference": "449850c43ea0d45e735284eb95bd29ee13d83065"
+    },
+    {
+      "file": "evidence/pitch/architecture-release-desktop.jpg",
+      "url": "https://raw.githubusercontent.com/openSoom/openSoom/1e525fe2dfe1afe8ed6fc4391c1a060513c5e879/evidence/pitch/architecture-release-desktop.jpg",
+      "http": 200,
+      "bytes": 140427,
+      "sha256": "ec9f207ae4c55555fdf4d93c2a2a720bec466ca3069c6d812f14364f874b22d8",
+      "reference": "1e525fe2dfe1afe8ed6fc4391c1a060513c5e879"
+    },
+    {
+      "file": "deliverables/video/openSoom-work-order-720p.mp4",
+      "url": "https://github.com/openSoom/openSoom/raw/refs/heads/main/deliverables/video/openSoom-work-order-720p.mp4",
+      "http": 200,
+      "bytes": 3285072,
+      "sha256": "313c78416e3dec940d6b32486c57bf028b0525b3f140aaa316bb0235952ba7b8",
+      "reference": "6a8d6b2d8e1a33affc11a305fa3fd870e17f8636"
+    },
+    {
+      "file": "deliverables/video/openSoom-pr-45s.mp4",
+      "url": "https://github.com/openSoom/openSoom/raw/refs/heads/main/deliverables/video/openSoom-pr-45s.mp4",
+      "http": 200,
+      "bytes": 13897316,
+      "sha256": "7cd91a052221c4c54baccf7560bda93cb595b905c8aeab0c7d3e441051220960",
+      "reference": "6a8d6b2d8e1a33affc11a305fa3fd870e17f8636"
+    },
+    {
+      "file": "deliverables/video/openSoom-demo-5min.mp4",
+      "url": "https://github.com/openSoom/openSoom/raw/refs/heads/main/deliverables/video/openSoom-demo-5min.mp4",
+      "http": 200,
+      "bytes": 23331960,
+      "sha256": "c47b134ce2202c57a6089cad7a262eb0e16927e69e58af9593c95dcc7b2158ab",
+      "reference": "6a8d6b2d8e1a33affc11a305fa3fd870e17f8636"
+    },
+    {
+      "file": "README.md",
+      "url": "https://raw.githubusercontent.com/openSoom/openSoom/6a8d6b2d8e1a33affc11a305fa3fd870e17f8636/README.md",
+      "http": 200,
+      "bytes": 18723,
+      "sha256": "de505ca3256a029bac1f46a69e2fb3b131ab9b806a0ac8f8a19a57018b68121c",
+      "reference": "6a8d6b2d8e1a33affc11a305fa3fd870e17f8636"
+    },
+    {
+      "file": "docs/submission/hackster-article.md",
+      "url": "https://raw.githubusercontent.com/openSoom/openSoom/6a8d6b2d8e1a33affc11a305fa3fd870e17f8636/docs/submission/hackster-article.md",
+      "http": 200,
+      "bytes": 31451,
+      "sha256": "b78e9a7f48db15e033575b2800d32399f81d95346304184a84f8a70493372c46",
+      "reference": "6a8d6b2d8e1a33affc11a305fa3fd870e17f8636"
+    },
+    {
+      "file": "docs/submission/hackster-publish-notes.md",
+      "url": "https://raw.githubusercontent.com/openSoom/openSoom/6a8d6b2d8e1a33affc11a305fa3fd870e17f8636/docs/submission/hackster-publish-notes.md",
+      "http": 200,
+      "bytes": 6611,
+      "sha256": "896154ac03d3f725e3f10f0d6d431c9a065fc719f07f849ac5d7d3775bae1a12",
+      "reference": "6a8d6b2d8e1a33affc11a305fa3fd870e17f8636"
+    },
+    {
+      "file": "deliverables/presentation/openSoom-evaluation.pptx",
+      "url": "https://raw.githubusercontent.com/openSoom/openSoom/6a8d6b2d8e1a33affc11a305fa3fd870e17f8636/deliverables/presentation/openSoom-evaluation.pptx",
+      "http": 200,
+      "bytes": 546335,
+      "sha256": "310434dc897d1159f99f4ab6f9cea4101fdcaaf5dc004f2538f9b1b74b7c2445",
+      "reference": "6a8d6b2d8e1a33affc11a305fa3fd870e17f8636"
+    },
+    {
+      "file": "deliverables/presentation/openSoom-evaluation.pdf",
+      "url": "https://raw.githubusercontent.com/openSoom/openSoom/6a8d6b2d8e1a33affc11a305fa3fd870e17f8636/deliverables/presentation/openSoom-evaluation.pdf",
+      "http": 200,
+      "bytes": 694465,
+      "sha256": "40f5d3665f57995a35444c544418612691e9408388127795b03f55dae3a1f9a2",
+      "reference": "6a8d6b2d8e1a33affc11a305fa3fd870e17f8636"
+    },
+    {
+      "file": "deliverables/video/openSoom-work-order.en.srt",
+      "url": "https://raw.githubusercontent.com/openSoom/openSoom/6a8d6b2d8e1a33affc11a305fa3fd870e17f8636/deliverables/video/openSoom-work-order.en.srt",
+      "http": 200,
+      "bytes": 2099,
+      "sha256": "15d6306c6ab1b29f7e1087287b68c2ba5e493757a4150444995c18afe0c1d19a",
+      "reference": "6a8d6b2d8e1a33affc11a305fa3fd870e17f8636"
+    },
+    {
+      "file": "docs/assets/opensoom-work-order.gif",
+      "url": "https://raw.githubusercontent.com/openSoom/openSoom/6a8d6b2d8e1a33affc11a305fa3fd870e17f8636/docs/assets/opensoom-work-order.gif",
+      "http": 200,
+      "bytes": 1089154,
+      "sha256": "ae8f2cf55e67cbf4afa78ffb3224d033f8b42df5cb0893e225930798fcafe2b2",
+      "reference": "6a8d6b2d8e1a33affc11a305fa3fd870e17f8636"
+    },
+    {
+      "file": "docs/assets/technician-handoff.gif",
+      "url": "https://raw.githubusercontent.com/openSoom/openSoom/6a8d6b2d8e1a33affc11a305fa3fd870e17f8636/docs/assets/technician-handoff.gif",
+      "http": 200,
+      "bytes": 311146,
+      "sha256": "ff3f885005e6000c7a78da0d6f17c9391dcf014f7c79ce65e532d36a73853a12",
+      "reference": "6a8d6b2d8e1a33affc11a305fa3fd870e17f8636"
+    },
+    {
+      "file": "apps/technician/README.md",
+      "url": "https://raw.githubusercontent.com/openSoom/openSoom/6a8d6b2d8e1a33affc11a305fa3fd870e17f8636/apps/technician/README.md",
+      "http": 200,
+      "bytes": 3551,
+      "sha256": "cec1219c3c639f5901c3172e24ab9a3b3a74515c9f932495abf5e823cae48847",
+      "reference": "6a8d6b2d8e1a33affc11a305fa3fd870e17f8636"
+    },
+    {
+      "file": "evidence/application/technician-browser.json",
+      "url": "https://raw.githubusercontent.com/openSoom/openSoom/6a8d6b2d8e1a33affc11a305fa3fd870e17f8636/evidence/application/technician-browser.json",
+      "http": 200,
+      "bytes": 7728,
+      "sha256": "a8a4bc061fe5d6e818400f1fb1099ec055c609d04f2d15aaae479f3e84a4ea67",
+      "reference": "6a8d6b2d8e1a33affc11a305fa3fd870e17f8636"
+    },
+    {
+      "file": "evidence/application/inspection-landing.json",
+      "url": "https://raw.githubusercontent.com/openSoom/openSoom/6a8d6b2d8e1a33affc11a305fa3fd870e17f8636/evidence/application/inspection-landing.json",
+      "http": 200,
+      "bytes": 613,
+      "sha256": "09f5687f2b019314a42f4bf5e6ce3d5f6b659380d244497453c6103c5e15717e",
+      "reference": "6a8d6b2d8e1a33affc11a305fa3fd870e17f8636"
+    },
+    {
+      "file": "evidence/application/technician-workbench.png",
+      "url": "https://raw.githubusercontent.com/openSoom/openSoom/6a8d6b2d8e1a33affc11a305fa3fd870e17f8636/evidence/application/technician-workbench.png",
+      "http": 200,
+      "bytes": 139521,
+      "sha256": "f04e3582dec2498aaf1329144d9158cd4b8260e50a8c12b4ac9e0ddb5f6ebaf7",
+      "reference": "6a8d6b2d8e1a33affc11a305fa3fd870e17f8636"
+    },
+    {
+      "file": "evidence/runtime/inspection-benchmark.json",
+      "url": "https://raw.githubusercontent.com/openSoom/openSoom/6a8d6b2d8e1a33affc11a305fa3fd870e17f8636/evidence/runtime/inspection-benchmark.json",
+      "http": 200,
+      "bytes": 37779,
+      "sha256": "85eda1c74f82fdbc9693739dbab50f6c260a7a5a2e4a7a57f559b89384b9ff34",
+      "reference": "6a8d6b2d8e1a33affc11a305fa3fd870e17f8636"
+    },
+    {
+      "file": "docs/inspection-benchmark.md",
+      "url": "https://raw.githubusercontent.com/openSoom/openSoom/6a8d6b2d8e1a33affc11a305fa3fd870e17f8636/docs/inspection-benchmark.md",
+      "http": 200,
+      "bytes": 5856,
+      "sha256": "e2a8cf844d98429c25413ddd66709f007a95285f7651b2f4b5d7b1ea6ec4a3e2",
+      "reference": "6a8d6b2d8e1a33affc11a305fa3fd870e17f8636"
+    },
+    {
+      "file": "evidence/runtime/technician-workbench.json",
+      "url": "https://raw.githubusercontent.com/openSoom/openSoom/6a8d6b2d8e1a33affc11a305fa3fd870e17f8636/evidence/runtime/technician-workbench.json",
+      "http": 200,
+      "bytes": 8229,
+      "sha256": "ac385a93bb36172eb860fcc3e41dfa5e21d353779168309a414ccdf5668c474f",
+      "reference": "6a8d6b2d8e1a33affc11a305fa3fd870e17f8636"
+    },
+    {
+      "file": "docs/review/public-project-comparison.ko.md",
+      "url": "https://raw.githubusercontent.com/openSoom/openSoom/6a8d6b2d8e1a33affc11a305fa3fd870e17f8636/docs/review/public-project-comparison.ko.md",
+      "http": 200,
+      "bytes": 5970,
+      "sha256": "3cceb6f7e4d83ac30bc66d8008252b23bc672a497472bc352f045af342e31071",
+      "reference": "6a8d6b2d8e1a33affc11a305fa3fd870e17f8636"
+    },
+    {
+      "file": "pitch/index.html",
+      "url": "https://raw.githubusercontent.com/openSoom/openSoom/6a8d6b2d8e1a33affc11a305fa3fd870e17f8636/pitch/index.html",
+      "http": 200,
+      "bytes": 28753,
+      "sha256": "42a63799993206e41a120d57144a1ba13b28164b32b0ab4cd8552f4016df146f",
+      "reference": "6a8d6b2d8e1a33affc11a305fa3fd870e17f8636"
+    },
+    {
+      "file": "evidence/release/inspection-clean-install.json",
+      "url": "https://raw.githubusercontent.com/openSoom/openSoom/6a8d6b2d8e1a33affc11a305fa3fd870e17f8636/evidence/release/inspection-clean-install.json",
+      "http": 200,
+      "bytes": 9475,
+      "sha256": "70c684cd9e25fd9003d56fba65eb24fcdb482231d529d96672872f1a4aecd7ed",
+      "reference": "6a8d6b2d8e1a33affc11a305fa3fd870e17f8636"
+    },
+    {
+      "file": "evidence/runtime/option-c/technician-handoff.json",
+      "url": "https://raw.githubusercontent.com/openSoom/openSoom/6a8d6b2d8e1a33affc11a305fa3fd870e17f8636/evidence/runtime/option-c/technician-handoff.json",
+      "http": 200,
+      "bytes": 25906,
+      "sha256": "8abb401d1ef9471bf57f147d5ed62efe377f4f3cb41f1835ea14c6d71af3d7a4",
+      "reference": "6a8d6b2d8e1a33affc11a305fa3fd870e17f8636"
+    },
+    {
+      "file": "evidence/runtime/option-c/index.json",
+      "url": "https://raw.githubusercontent.com/openSoom/openSoom/6a8d6b2d8e1a33affc11a305fa3fd870e17f8636/evidence/runtime/option-c/index.json",
+      "http": 200,
+      "bytes": 3864,
+      "sha256": "901714d43f0c57cb298c19155c116c4f2f278199ddbc66783ab225df3a0b74af",
+      "reference": "6a8d6b2d8e1a33affc11a305fa3fd870e17f8636"
+    },
+    {
+      "file": "evidence/runtime/option-c/commissioned-sensor-roundtrip.json",
+      "url": "https://raw.githubusercontent.com/openSoom/openSoom/6a8d6b2d8e1a33affc11a305fa3fd870e17f8636/evidence/runtime/option-c/commissioned-sensor-roundtrip.json",
+      "http": 200,
+      "bytes": 18325,
+      "sha256": "d711abe22f028b2e9a8f8bd0f9ff35b0a8c05a3633f50bfb854e60296381c4e6",
+      "reference": "6a8d6b2d8e1a33affc11a305fa3fd870e17f8636"
+    },
+    {
+      "file": "evidence/agent/facility-worker-generalization.json",
+      "url": "https://raw.githubusercontent.com/openSoom/openSoom/6a8d6b2d8e1a33affc11a305fa3fd870e17f8636/evidence/agent/facility-worker-generalization.json",
+      "http": 200,
+      "bytes": 159299,
+      "sha256": "b0c1c2f616ef0940283f65397e13e735fe17940d0091e03cefb1feb01cac1fa0",
+      "reference": "6a8d6b2d8e1a33affc11a305fa3fd870e17f8636"
+    },
+    {
+      "file": "docs/review/release-assessment.ko.md",
+      "url": "https://raw.githubusercontent.com/openSoom/openSoom/6a8d6b2d8e1a33affc11a305fa3fd870e17f8636/docs/review/release-assessment.ko.md",
+      "http": 200,
+      "bytes": 10856,
+      "sha256": "a82cc1dc95e747254dda9e88153aa14895aaeeeb9a596dc2a81a60cf6290e546",
+      "reference": "6a8d6b2d8e1a33affc11a305fa3fd870e17f8636"
+    }
+  ]
+}
