@@ -1,15 +1,15 @@
 {
   "method": "Local English synthesized presenter read-through, actual film audio inserted after slide 5. No live human performance was measured.",
   "synthesis": "macOS Samantha, say rate argument 135",
-  "spoken_words": 1501,
-  "narration_seconds": 566.31,
+  "spoken_words": 1499,
+  "narration_seconds": 562.82,
   "film_seconds": 104.94,
-  "combined_seconds": 671.25,
+  "combined_seconds": 667.76,
   "architecture_slide": 8,
-  "architecture_seconds": 48.5,
+  "architecture_seconds": 45.02,
   "source_hashes": {
-    "spoken_script_sections_sha256": "22fb7388b80ff8ce083b87673deaba52441167993a56cf5478eb0a37fc6033ea",
-    "film_sha256": "9ca85b4c3b7eff22f50333c3f2119aa532146c3c2c6783ff9313568a644d1628"
+    "spoken_script_sections_sha256": "b6cab8f4095f8134b1c9b9a512ec5d141f5415607e874c6a0bda90e79596e9db",
+    "film_sha256": "313c78416e3dec940d6b32486c57bf028b0525b3f140aaa316bb0235952ba7b8"
   },
   "timeline": [
     {
@@ -64,25 +64,25 @@
       "slide": 8,
       "section": "spoken script",
       "start_seconds": 487.82,
-      "duration_seconds": 48.5
+      "duration_seconds": 45.02
     },
     {
       "slide": 9,
       "section": "spoken script",
-      "start_seconds": 536.32,
+      "start_seconds": 532.84,
       "duration_seconds": 74.13
     },
     {
       "slide": 10,
       "section": "spoken script",
-      "start_seconds": 610.45,
+      "start_seconds": 606.97,
       "duration_seconds": 60.8
     }
   ],
   "real_time_playback": {
-    "started_utc": "2026-11-18T16:27:48.940066+00:00",
-    "finished_utc": "2026-11-18T16:39:01.827628+00:00",
-    "elapsed_wall_seconds": 670.81,
+    "started_utc": "2026-11-18T16:49:40.550215+00:00",
+    "finished_utc": "2026-11-18T17:00:47.884972+00:00",
+    "elapsed_wall_seconds": 667.32,
     "decoder": "ffmpeg -re PCM audio to null output",
     "exit_code": 0
   }

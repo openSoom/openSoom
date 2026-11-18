@@ -1,0 +1,32 @@
+{
+  "revision": "f8fd12f38030b9984c0cc76d7f502fd0904086f4",
+  "status": "passed",
+  "client": "Chromium desktop, dashboard Run scenario with Allowed actions enabled",
+  "scenario": "no_recovery",
+  "virtual_equipment": true,
+  "previous_run": "demo-d0ee038b08",
+  "run_id": "demo-b9fd8d5181",
+  "command_id": "cmd-5866cef82ae7",
+  "ack_rqi": "opensoom-f154f43defa840c09803f042a013722b",
+  "observed_result": "unresolved",
+  "before_independent_shaft_reading": {
+    "id": "work-incident-223637b7ec",
+    "revision": 3,
+    "option": "inspection"
+  },
+  "after": {
+    "id": "work-incident-223637b7ec",
+    "revision": 4,
+    "priority": "inspect_actuator_feedback",
+    "work_order_count": 1,
+    "status": "open",
+    "requested_opening_pct": 100,
+    "measured_airflow_m3_h": 360,
+    "observed_shaft_pct": 35,
+    "airflow_cin": "cinJ34tW2KdAU",
+    "sensor_result_cin": "cinqAnND4wDwP",
+    "work_order_cin": "cingcGOmlL52V"
+  },
+  "dashboard_values_rendered": true,
+  "page_errors": []
+}

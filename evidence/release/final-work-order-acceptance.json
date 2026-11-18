@@ -1,0 +1,398 @@
+{
+  "status": "passed",
+  "source_revision": "f8fd12f38030b9984c0cc76d7f502fd0904086f4",
+  "source_tree": "a7f349dc707eacbdcf3efaa024ef305efa5a790a",
+  "working_tree_changes_after_checks": [],
+  "method": "A fresh Git clone installed the application from its lockfile and the pinned ACME distribution into two new virtual environments. No facility data or virtual environments were copied. Package downloads may use shared caches. Tests used fresh loopback ports and simulated physical equipment.",
+  "commands": [
+    "uv sync --locked --python 3.12",
+    "uv run --no-sync python scripts/cse_runtime.py install",
+    "uv run --no-sync python scripts/maintenance_demo.py --output .runtime/clean-acceptance.json",
+    "uv run --no-sync python scripts/facility_worker_acceptance.py --output .runtime/new-facility.json",
+    "uv run --no-sync python scripts/facility_retirement_check.py --output .runtime/retired.json",
+    "uv run --no-sync python -m pytest -q"
+  ],
+  "test_summary": {
+    "passed": 90,
+    "subtests_passed": 29
+  },
+  "original_facility": {
+    "run_id": "demo-45bc690893",
+    "site_cse_id": "/opensoom-food",
+    "central_remote_cses": [
+      "/opensoom-central/opensoom-food"
+    ],
+    "airflow": {
+      "observed": 360.0,
+      "target": 900,
+      "unit": "m³/h",
+      "observation_ri": "cintVxqeifOHY"
+    },
+    "before_independent_sample": {
+      "facility_id": "food-a",
+      "zone_id": "cook",
+      "asset_id": "extract-damper-01",
+      "incident_id": "incident-bc12c56d55",
+      "run_id": "demo-45bc690893",
+      "source_cin_ri": "cintVxqeifOHY",
+      "kind": "work_order",
+      "work_order_id": "work-incident-bc12c56d55",
+      "command_id": "cmd-e191270d130e",
+      "observed_at": "2026-11-18T16:57:17.736+00:00",
+      "status": "open",
+      "priority": "inspection",
+      "evidence_status": "unknown",
+      "revision": 3,
+      "reason": "no_mapped_sensor_sample",
+      "request_id": "sensor-577d55c67b58d00a316c4d12d3d1989b",
+      "request_ri": "cinw2sPbjivQx",
+      "response_ri": "cinaS4Jojt8Bt",
+      "outcome_ri": "cinp8l9HuHqU8",
+      "mode": "local",
+      "airflow": 360.0,
+      "profile_version": 1,
+      "resource_id": "cinITER5G8CVY",
+      "read_rqi": "opensoom-0479c8db068b4ca8839293010ac1a63e"
+    },
+    "after": {
+      "facility_id": "food-a",
+      "zone_id": "cook",
+      "asset_id": "extract-damper-01",
+      "incident_id": "incident-bc12c56d55",
+      "run_id": "demo-45bc690893",
+      "source_cin_ri": "cintVxqeifOHY",
+      "kind": "work_order",
+      "work_order_id": "work-incident-bc12c56d55",
+      "command_id": "cmd-e191270d130e",
+      "observed_at": "2026-11-18T16:57:17.736+00:00",
+      "status": "open",
+      "priority": "inspect_actuator_feedback",
+      "evidence_status": "verified_independent_sample",
+      "revision": 4,
+      "requested_pct": 100.0,
+      "sample": {
+        "sensor_id": "shaft-position-01",
+        "value": 35,
+        "unit": "%",
+        "source": "independent_position_sensor",
+        "observed_at": "2026-11-18T16:57:25.054968+00:00"
+      },
+      "provider_receipt": {
+        "sample_cin_ri": "cinbYzZtINa4p"
+      },
+      "request_id": "sensor-577d55c67b58d00a316c4d12d3d1989b",
+      "request_ri": "cinw2sPbjivQx",
+      "response_ri": "cinc0HBR6D9Nm",
+      "outcome_ri": "cinp8l9HuHqU8",
+      "mode": "local",
+      "airflow": 360.0,
+      "profile_version": 1,
+      "resource_id": "cinm4phAnWIch",
+      "read_rqi": "opensoom-ea07be6926e64bf88f3de93e54d373a0"
+    },
+    "logical_order_count": 1,
+    "replay": {
+      "duplicate_callback_hints": 2,
+      "restarted_after_write": true,
+      "revision_cins_before": [
+        "cin4LIFg9gw1I",
+        "cinHpzygzVm7o",
+        "cinITER5G8CVY",
+        "cinM70e48hsnH",
+        "cingHcpI4pH4O",
+        "cinm4phAnWIch",
+        "cinyTc65L7HyH"
+      ],
+      "revision_cins_after": [
+        "cin4LIFg9gw1I",
+        "cinHpzygzVm7o",
+        "cinITER5G8CVY",
+        "cinM70e48hsnH",
+        "cingHcpI4pH4O",
+        "cinm4phAnWIch",
+        "cinyTc65L7HyH"
+      ]
+    },
+    "denials": {
+      "maintenance_command": {
+        "rsc": 4103,
+        "rqi": "opensoom-d85e82421cd0420986aa34218405e642"
+      },
+      "bridge_command": {
+        "rsc": 4103,
+        "rqi": "opensoom-16dea4c3fa5e44fbbfbabfb20f56b97f"
+      },
+      "maintenance_response": {
+        "rsc": 4103,
+        "rqi": "opensoom-3029bdc62ae54fefa35b50b3d5230650"
+      },
+      "bridge_work_order": {
+        "rsc": 4103,
+        "rqi": "opensoom-82fcd3d328b540d2a4af4460e4047745"
+      },
+      "bridge_request": {
+        "rsc": 4103,
+        "rqi": "opensoom-741b8686bae74ea688531a38fded9e17"
+      },
+      "other_facility": {
+        "rsc": 4103,
+        "rqi": "opensoom-1a655da91a344834bd6893814e4bf189"
+      },
+      "credential_origin_mismatch": {
+        "rsc": 4103,
+        "rqi": "opensoom-9edfeccc22424050a0f0acc4ad8df586"
+      }
+    }
+  },
+  "manager_added_facility": {
+    "facility_id": "archive-workshop",
+    "zone_id": "conservation",
+    "zone_index": 1,
+    "target_airflow_m3_h": 560,
+    "run_id": "demo-8c2151778c",
+    "sensor_requests_before_late_low_flow": 0,
+    "same_logical_work_order": true,
+    "mismatch_order": {
+      "facility_id": "archive-workshop",
+      "zone_id": "conservation",
+      "asset_id": "bench-extract",
+      "incident_id": "incident-3984746d5f",
+      "run_id": "demo-8c2151778c",
+      "source_cin_ri": "cinJHK5NiKBNe",
+      "kind": "work_order",
+      "work_order_id": "work-incident-3984746d5f",
+      "command_id": "cmd-39fb1ea8c64e",
+      "observed_at": "2026-11-18T16:57:50.668+00:00",
+      "status": "open",
+      "priority": "inspect_actuator_feedback",
+      "evidence_status": "verified_independent_sample",
+      "revision": 4,
+      "requested_pct": 80.0,
+      "sample": {
+        "sensor_id": "bench-shaft",
+        "value": 35,
+        "unit": "%",
+        "source": "independent_position_sensor",
+        "observed_at": "2026-11-18T16:57:54.277+00:00"
+      },
+      "provider_receipt": {
+        "sample_cin_ri": "cinJUS2QsEiDI"
+      },
+      "request_id": "sensor-c539b797d56f28026ee604d82b177166",
+      "request_ri": "cin08FTaYwLfa",
+      "response_ri": "cintVYQeXrUYt",
+      "outcome_ri": "cinNjs2fnklgm",
+      "mode": "local",
+      "airflow": 515.0,
+      "profile_version": 1,
+      "resource_id": "cinugBtaHasWL",
+      "read_rqi": "opensoom-376a28b6656c4c4789db8275159da706"
+    },
+    "matched_order": {
+      "facility_id": "archive-workshop",
+      "zone_id": "conservation",
+      "asset_id": "bench-extract",
+      "incident_id": "incident-3984746d5f",
+      "run_id": "demo-8c2151778c",
+      "source_cin_ri": "cinFCPV5U7Wjo",
+      "kind": "work_order",
+      "work_order_id": "work-incident-3984746d5f",
+      "command_id": "cmd-611b550d415d",
+      "observed_at": "2026-11-18T16:57:54.687+00:00",
+      "status": "open",
+      "priority": "inspect_airflow_path",
+      "evidence_status": "verified_independent_sample",
+      "revision": 4,
+      "requested_pct": 95.0,
+      "sample": {
+        "sensor_id": "bench-shaft",
+        "value": 93,
+        "unit": "%",
+        "source": "independent_position_sensor",
+        "observed_at": "2026-11-18T16:57:58.689+00:00"
+      },
+      "provider_receipt": {
+        "sample_cin_ri": "cinPIRiCJnlCI"
+      },
+      "request_id": "sensor-26810e64c35a31d500dfc4f4aec02c61",
+      "request_ri": "cinzzlCdCDZxk",
+      "response_ri": "cinoOj1oklvL9",
+      "outcome_ri": "cinPj7lG51nGs",
+      "mode": "local",
+      "airflow": 515.0,
+      "profile_version": 1,
+      "resource_id": "cinuHOxSOZx3P",
+      "read_rqi": "opensoom-ef015ecd5e6c45a7be97a4d8940a44de"
+    }
+  },
+  "third_site_scope": {
+    "same_worker_sources": true,
+    "permission_denials": [
+      {
+        "facility_id": "food-a",
+        "role": "maintenance",
+        "origin": "Cosmaintenance39095aa155887ebe",
+        "method": "GET",
+        "path": "cse-multiapp/opensoom/facilities/archive-workshop/outcomes",
+        "receipt": {
+          "rsc": 4103,
+          "rqi": "opensoom-1318912a172b42ffa4948c689a2673ff",
+          "body": {
+            "m2m:dbg": "originator: Cosmaintenance39095aa155887ebe has no RETRIEVE privileges for resource: cntKP5uclaF1y"
+          },
+          "http_status": 403
+        }
+      },
+      {
+        "facility_id": "food-a",
+        "role": "bridge",
+        "origin": "Cosbridge39095aa155887ebe",
+        "method": "GET",
+        "path": "cse-multiapp/opensoom/facilities/archive-workshop/independent_samples",
+        "receipt": {
+          "rsc": 4103,
+          "rqi": "opensoom-9cc6c56c724a4e9bacc5325bbf6577e4",
+          "body": {
+            "m2m:dbg": "originator: Cosbridge39095aa155887ebe has no RETRIEVE privileges for resource: cnt8EPxkvCdqV"
+          },
+          "http_status": 403
+        }
+      },
+      {
+        "facility_id": "food-a",
+        "role": "maintenance",
+        "origin": "Cosmaintenance39095aa155887ebe",
+        "method": "POST",
+        "path": "cse-multiapp/opensoom/facilities/food-a/cook/commands",
+        "receipt": {
+          "rsc": 4103,
+          "rqi": "opensoom-2ca9d4da3d7042198bbf137ea74a77fd",
+          "body": {
+            "m2m:dbg": "originator: Cosmaintenance39095aa155887ebe has no CREATE privileges for resource: cnty9Fd7u3GX5"
+          },
+          "http_status": 403
+        }
+      },
+      {
+        "facility_id": "food-a",
+        "role": "bridge",
+        "origin": "Cosbridge39095aa155887ebe",
+        "method": "POST",
+        "path": "cse-multiapp/opensoom/facilities/food-a/work_orders",
+        "receipt": {
+          "rsc": 4103,
+          "rqi": "opensoom-09581f4241204f2e8bd65964eb10e5b5",
+          "body": {
+            "m2m:dbg": "originator: Cosbridge39095aa155887ebe has no CREATE privileges for resource: cnt7vjabJNaxI"
+          },
+          "http_status": 403
+        }
+      },
+      {
+        "facility_id": "archive-workshop",
+        "role": "maintenance",
+        "origin": "Cosmaintenance1897faf469cba17c",
+        "method": "GET",
+        "path": "cse-multiapp/opensoom/facilities/food-a/outcomes",
+        "receipt": {
+          "rsc": 4103,
+          "rqi": "opensoom-3922bc5f1b114158a68523ebe228a0f9",
+          "body": {
+            "m2m:dbg": "originator: Cosmaintenance1897faf469cba17c has no RETRIEVE privileges for resource: cntPxnSWs1is0"
+          },
+          "http_status": 403
+        }
+      },
+      {
+        "facility_id": "archive-workshop",
+        "role": "bridge",
+        "origin": "Cosbridge1897faf469cba17c",
+        "method": "GET",
+        "path": "cse-multiapp/opensoom/facilities/food-a/independent_samples",
+        "receipt": {
+          "rsc": 4103,
+          "rqi": "opensoom-2b34eb486913426bab06be17379566cb",
+          "body": {
+            "m2m:dbg": "originator: Cosbridge1897faf469cba17c has no RETRIEVE privileges for resource: cntmgN1huVyZe"
+          },
+          "http_status": 403
+        }
+      },
+      {
+        "facility_id": "archive-workshop",
+        "role": "maintenance",
+        "origin": "Cosmaintenance1897faf469cba17c",
+        "method": "POST",
+        "path": "cse-multiapp/opensoom/facilities/archive-workshop/conservation/commands",
+        "receipt": {
+          "rsc": 4103,
+          "rqi": "opensoom-38e9df3ef0164ec29d333ddff962b629",
+          "body": {
+            "m2m:dbg": "originator: Cosmaintenance1897faf469cba17c has no CREATE privileges for resource: cntabJyhFK3tE"
+          },
+          "http_status": 403
+        }
+      },
+      {
+        "facility_id": "archive-workshop",
+        "role": "bridge",
+        "origin": "Cosbridge1897faf469cba17c",
+        "method": "POST",
+        "path": "cse-multiapp/opensoom/facilities/archive-workshop/work_orders",
+        "receipt": {
+          "rsc": 4103,
+          "rqi": "opensoom-59073b79ad9f483caaa2e2799433c8c9",
+          "body": {
+            "m2m:dbg": "originator: Cosbridge1897faf469cba17c has no CREATE privileges for resource: cntyAt0DYvmyD"
+          },
+          "http_status": 403
+        }
+      }
+    ],
+    "other_facility_unchanged": true
+  },
+  "retired_facility": {
+    "status": "passed",
+    "scope": "Actual ACME CSE on loopback, same historical CIN before and after a site is removed from configuration",
+    "active_sites_after": [
+      "learning-b"
+    ],
+    "records": {
+      "observations": {
+        "ri": "cin1XXIpu7nU6",
+        "before": {
+          "rsc": 2000,
+          "rqi": "opensoom-6f22df9bcc674e00bc7498662a206e43"
+        },
+        "retired_after": {
+          "rsc": 4103,
+          "rqi": "opensoom-71bd339559b04df29d9313f3781cb858"
+        },
+        "operator_after": {
+          "rsc": 2000,
+          "rqi": "opensoom-37665d6d3c9447f4a2603a6269189f8d"
+        }
+      },
+      "acks": {
+        "ri": "cinLHsh2BslVk",
+        "before": {
+          "rsc": 2000,
+          "rqi": "opensoom-9c038ce74bda4e4b8eac318da535cc36"
+        },
+        "retired_after": {
+          "rsc": 4103,
+          "rqi": "opensoom-bc582560577a41468253dc2825d7bcd2"
+        },
+        "operator_after": {
+          "rsc": 2000,
+          "rqi": "opensoom-ef799c4ba49d442b9b9fc6c11b539c46"
+        }
+      }
+    },
+    "source_sha256": {
+      "src/opensoom/core.py": "84a492b83e8dec65317cbb1abb2ab7ce261734b3032daafa59f470d9c96135ea",
+      "src/opensoom/maintenance.py": "5032abae3e8c694da180290e97acba624f82e383ffa6c92c4ff04777271feffc",
+      "scripts/facility_retirement_check.py": "7106843c5886495b67715fc7a3958516a9ec0aac10e695a0e83b51e522a4f535"
+    }
+  }
+}

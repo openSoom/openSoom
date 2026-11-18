@@ -4,7 +4,7 @@ The automated goal prepares the project and publishes reviewed source/artifacts 
 
 | Item | Prepared location | External state |
 | --- | --- | --- |
-| Source and reproduction | https://github.com/openSoom/openSoom | Authorized repository publication tracked by release evidence |
+| Source and reproduction | https://github.com/openSoom/openSoom | Frozen product revision `f8fd12f` published. [17 public assets verified anonymously](../../evidence/release/final-work-order-publication.json) · [Fresh installation and three facility checks](../../evidence/release/final-work-order-acceptance.json) |
 | English Hackster article | docs/submission/hackster-article.md | English publication copy and a separate paste guide prepared. Public Hackster URL pending |
 | English evaluation film | [720p work-order demonstration](../../deliverables/video/openSoom-work-order-720p.mp4) · [English captions](../../deliverables/video/openSoom-work-order.en.srt) | Play the complete 1:45 film on slide 5. Download it alongside the deck for offline playback. |
 | Single-page Three.js pitch | pitch/index.html | Static repository artifact; no public hosting created |
@@ -12,7 +12,7 @@ The automated goal prepares the project and publishes reviewed source/artifacts 
 | English evaluation script and Q&A | [Read-aloud script](presenter-script.en.md) · [Judge questions](technical-qa.md) | 11:08 in the automated English rehearsal, including the 1:45 film. The architecture explanation took 45 seconds. |
 | English evaluation slides | [Editable PowerPoint](../../deliverables/presentation/openSoom-evaluation.pptx) · [Presentation PDF](../../deliverables/presentation/openSoom-evaluation.pdf) | Ten slides with the filmed local work order, cloud sensor service and managed Option C deployments at two logical edges on one VM. Upload the PPTX and PDF to the organizer’s Drive folder by Sunday, 22 November. External upload is pending. |
 | Evaluation scheduling | The organizer's evaluation spreadsheet | Enter the project name in C, public Hackster URL in D and uppercase X in multiple available slots within G–AJ. The organizer assigns one PICK and announces the arrangement on Discord |
-| Execution and reviews | docs/execution-state.json, docs/review/ | Captured software evidence, not judge decisions |
+| Execution and reviews | [Release status](../release-goal-state.json), [17-criterion assessment](../review/release-assessment.ko.md) | Captured software evidence, not judge decisions |
 
 For Hackster, paste the [English article](hackster-article.md) with its full public URLs, add the current work-order demo and the two separately labelled earlier films in their specified positions and verify playback and all three images in the rendered article. The [asset notes](hackster-publish-notes.md) give the exact files. Once the article is public, add its actual URL to the repository README, check logged-out access, and submit its URL in the team Discord channel through the authorized submission process.
 

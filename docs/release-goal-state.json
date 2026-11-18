@@ -3,8 +3,8 @@
   "prepared_on": "2026-11-19",
   "timezone": "Asia/Seoul",
   "baseline_revision": "7a52a8ef47799d8cfea7605b39e85d679bbc82bb",
-  "stage": "R4–R5",
-  "status": "in_progress",
+  "stage": "R5",
+  "status": "completed",
   "plan": "docs/release-goal.ko.md",
   "review_charter": "docs/review/review-charter.json",
   "planning_review": "docs/review/release-goal-review.ko.md",
@@ -49,7 +49,7 @@
       ]
     },
     "R4": {
-      "status": "final_package_rehearsal_in_progress",
+      "status": "verified",
       "evidence": [
         "evidence/video/work-order/film.json",
         "evidence/video/work-order/capture.json",
@@ -57,17 +57,21 @@
         "deliverables/presentation/openSoom-evaluation.pdf",
         "evidence/presentation/acceptance.json",
         "evidence/presentation/rehearsal.json",
-        "evidence/video/work-order/landing-check.json"
+        "evidence/video/work-order/landing-check.json",
+        "evidence/release/dashboard-replay.json"
       ]
     },
     "R5": {
-      "status": "in_progress",
+      "status": "verified",
       "evidence": [
         "docs/review/release-assessment.ko.md",
-        "evidence/release/clean-work-order.json",
-        "evidence/release/work-order-publication.json"
+        "docs/review/review-ledger.json",
+        "evidence/release/final-work-order-acceptance.json",
+        "evidence/release/final-work-order-publication.json",
+        "docs/submission/handoff.md"
       ],
-      "remaining": "Freeze and independently review candidate, verify fresh reproduction, publish and verify remote commit."
+      "product_revision": "f8fd12f38030b9984c0cc76d7f502fd0904086f4",
+      "public_main_verified_on_product_release": true
     }
   },
   "cloud": {
@@ -127,19 +131,27 @@
         "R5"
       ],
       "decision": "The final design adds actual 046 subscription setup plus readback, validates that non-flow warnings keep a general inspection and reuses the same leased workers in a manager-defined conservation workshop. The film labels the illustrated opening and the presentation now describes platform-managed placement on both logical hosts."
+    },
+    {
+      "date": "2026-11-19",
+      "gates": [
+        "R4",
+        "R5"
+      ],
+      "decision": "Freeze the product revision, repeat first installation with two new virtual environments, exercise the actual dashboard Run scenario, and compare all 17 public assets with their Git objects. Each of the six rubric teams and the independent Idea reviewer checked the same product revision. Closing paperwork records results separately from the executed software."
     }
   ],
   "external_blockers": [],
   "rubric_expert_followup": {
     "13": "Expert independently substantiated for two selected eligible logical hosts on one VM.",
     "16": "Expert independently substantiated by native 033 registration, 046 subscription commissioning and separate measurement lookup in one work-order execution.",
-    "review": "docs/review/release-goal-review.ko.md"
+    "review": "docs/review/release-assessment.ko.md"
   },
   "idea_model_review": {
     "reviewer": "idea_model_review",
     "architecture_contract": "docs/mec-application-contract.ko.md",
-    "reviewed_input": "449850c and the source-identified follow-up receipts",
-    "status": "virtual_product_accepted_field_adoption_open",
+    "reviewed_input": "f8fd12f38030b9984c0cc76d7f502fd0904086f4",
+    "status": "final_review_accepted_for_simulated_facilities",
     "review_again_at": [
       "R0 architecture freeze",
       "R2/R3 integrated comparison",
@@ -152,5 +164,19 @@
     8095,
     8443,
     8883
-  ]
+  ],
+  "verified_product_revision": "f8fd12f38030b9984c0cc76d7f502fd0904086f4",
+  "external_handoff": {
+    "source": "docs/submission/handoff.md",
+    "pending": [
+      "Publish the English Hackster article and verify the public article, embedded media and repository backlink.",
+      "Submit the public article URL in the team Discord channel.",
+      "Upload presentation to the designated Google Drive by November 22.",
+      "Enter name and article URL in sheet columns C/D and uppercase X for available slots G–AJ. Check PICK and attend the scheduled interview."
+    ],
+    "technical_scope_open": [
+      "14 federated learning",
+      "15 network geolocation"
+    ]
+  }
 }

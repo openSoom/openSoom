@@ -1,7 +1,7 @@
 {
   "version": 4,
   "date": "2026-11-19",
-  "review_round": "Option C integrated release and evidence rechecks, 19 November 2026",
+  "review_round": "R5 final package on the common product revision f8fd12f38030b9984c0cc76d7f502fd0904086f4",
   "scope": "Preserved first-release findings, six current independent rubric owners and one independent non-scoring Idea reviewer. The score table identifies measured boundaries and outstanding external steps.",
   "findings": [
     {
@@ -1533,7 +1533,8 @@
       "review_state": "resolved",
       "evidence_status": "captured",
       "decision_reason": "Readers can reproduce the standard behavior on the correct transport.",
-      "review_revision": "449850c43ea0d45e735284eb95bd29ee13d83065"
+      "review_revision": "449850c43ea0d45e735284eb95bd29ee13d83065",
+      "final_rechecked_on": "f8fd12f38030b9984c0cc76d7f502fd0904086f4"
     },
     {
       "id": "RC-B01",
@@ -1554,7 +1555,8 @@
       "review_state": "resolved",
       "evidence_status": "captured",
       "decision_reason": "Technicians must be able to see precisely what changed their decision.",
-      "review_revision": "449850c43ea0d45e735284eb95bd29ee13d83065"
+      "review_revision": "449850c43ea0d45e735284eb95bd29ee13d83065",
+      "final_rechecked_on": "f8fd12f38030b9984c0cc76d7f502fd0904086f4"
     },
     {
       "id": "RC-C01",
@@ -1575,7 +1577,8 @@
       "review_state": "open_external",
       "evidence_status": "captured",
       "decision_reason": "External participants can reproduce the demo and locate a public submission.",
-      "review_revision": "449850c43ea0d45e735284eb95bd29ee13d83065"
+      "review_revision": "449850c43ea0d45e735284eb95bd29ee13d83065",
+      "final_rechecked_on": "f8fd12f38030b9984c0cc76d7f502fd0904086f4"
     },
     {
       "id": "RC-D01",
@@ -1595,7 +1598,8 @@
       "evidence_status": "captured",
       "decision_reason": "Operator history stays available without retaining the retired app’s access.",
       "review_revision": "449850c43ea0d45e735284eb95bd29ee13d83065",
-      "recheck": "Release D independently checked 6 distinct RQIs for the same original observation and ACK, and three matching source hashes on the retirement fix."
+      "recheck": "Release D independently checked 6 distinct RQIs for the same original observation and ACK, and three matching source hashes on the retirement fix.",
+      "final_rechecked_on": "f8fd12f38030b9984c0cc76d7f502fd0904086f4"
     },
     {
       "id": "RC-D02",
@@ -1615,7 +1619,8 @@
       "review_state": "resolved",
       "evidence_status": "captured",
       "decision_reason": "A manager must distinguish successful refusal of a stale request from physical recovery.",
-      "review_revision": "449850c43ea0d45e735284eb95bd29ee13d83065"
+      "review_revision": "449850c43ea0d45e735284eb95bd29ee13d83065",
+      "final_rechecked_on": "f8fd12f38030b9984c0cc76d7f502fd0904086f4"
     },
     {
       "id": "RC-E01",
@@ -1637,7 +1642,8 @@
       "evidence_status": "captured",
       "decision_reason": "A site can bind a provider notification route for maintenance follow-up.",
       "review_revision": "449850c43ea0d45e735284eb95bd29ee13d83065",
-      "recheck": "Release E verified native 033 owner registration and 046 subscription POST 201/GET 200, TestNotification 204 and a separate actual measurement lookup that revised the same work order. The managed image and later local classification test retain their distinct provenance."
+      "recheck": "Release E verified native 033 owner registration and 046 subscription POST 201/GET 200, TestNotification 204 and a separate actual measurement lookup that revised the same work order. The managed image and later local classification test retain their distinct provenance.",
+      "final_rechecked_on": "f8fd12f38030b9984c0cc76d7f502fd0904086f4"
     },
     {
       "id": "RC-F01",
@@ -1657,7 +1663,8 @@
       "review_state": "open",
       "evidence_status": "unimplemented",
       "decision_reason": "An unsupported mechanism increases commissioning cost without changing the current inspection.",
-      "review_revision": "449850c43ea0d45e735284eb95bd29ee13d83065"
+      "review_revision": "449850c43ea0d45e735284eb95bd29ee13d83065",
+      "final_rechecked_on": "f8fd12f38030b9984c0cc76d7f502fd0904086f4"
     },
     {
       "id": "RC-IDEA01",
@@ -1675,7 +1682,8 @@
       "evidence_status": "captured",
       "decision_reason": "Correct diagnosis follows the current asset/setpoint, and an operator can reuse the system without changing source.",
       "review_revision": "449850c43ea0d45e735284eb95bd29ee13d83065",
-      "recheck": "Independent product review accepted the simulated maintenance decision and site configuration. Its PM-only finding was reproduced and fixed. Source-scoped receipts distinguish native tooling, a scripted installation and real human field use."
+      "recheck": "Independent product review accepted the simulated maintenance decision and site configuration. Its PM-only finding was reproduced and fixed. Source-scoped receipts distinguish native tooling, a scripted installation and real human field use.",
+      "final_rechecked_on": "f8fd12f38030b9984c0cc76d7f502fd0904086f4"
     },
     {
       "id": "RC-IDEA02",
@@ -1690,8 +1698,78 @@
       "main_decision": "accept",
       "decision_reason": "This is the professional boundary between air quality and a diagnosed flow problem.",
       "implementation_state": "verified",
-      "review_state": "candidate_recheck_pending"
+      "review_state": "resolved",
+      "final_rechecked_on": "f8fd12f38030b9984c0cc76d7f502fd0904086f4",
+      "recheck": "Independent reviewer repeated the third-facility ACME run, rechecked 16 scoped tests and the original film frame. Valid low airflow triggers one request. Adequate airflow, particle-only, CO₂-only, fan-only, missing and stale input leave the general inspection in place."
     }
   ],
-  "release_assessment": "docs/review/release-assessment.ko.md"
+  "release_assessment": "docs/review/release-assessment.ko.md",
+  "release_candidate_review": {
+    "product_revision": "f8fd12f38030b9984c0cc76d7f502fd0904086f4",
+    "reviewer_model": "gpt-6.2-sol",
+    "reasoning_effort": "max",
+    "independent_reviewers": [
+      {
+        "team": "A",
+        "criteria": [
+          1,
+          2,
+          3
+        ],
+        "verdict": "Expert for each. Native groups, two bindings for one CIN, and two independent consuming apps were rechecked."
+      },
+      {
+        "team": "B",
+        "criteria": [
+          4,
+          5,
+          7
+        ],
+        "verdict": "4 Expert-quality English draft with actual Hackster rendering pending. 5 and 7 Expert. Eleven film scenes, 18 screen matches, ten rendered slides and source-linked promotion material inspected."
+      },
+      {
+        "team": "C",
+        "criteria": [
+          6,
+          8,
+          9
+        ],
+        "verdict": "6 Proficient until actual Hackster backlink. 8 needs genuine public technical exchange. 9 needs the actual judge interview. Seventeen public artifacts and the fresh installation checked."
+      },
+      {
+        "team": "D",
+        "criteria": [
+          10,
+          11,
+          17
+        ],
+        "verdict": "Expert for each within tested TLS/ACP, PM2.5 SDT and real model workflows respectively. Retirement revokes access to both historical observation and ACK while preserving the operator access."
+      },
+      {
+        "team": "E",
+        "criteria": [
+          12,
+          13,
+          16
+        ],
+        "verdict": "Expert for each within two CSE processes, two logical edge placements on one cloud VM, and native 033 plus 046 with separate measurement readback. Cloud and later local operation builds retain separate provenance."
+      },
+      {
+        "team": "F",
+        "criteria": [
+          14,
+          15
+        ],
+        "verdict": "Open and unscored. Fixed equipment does not presently need a mobile location trigger. Federated learning on the ESTIMED VM and real network geolocation remain undemonstrated."
+      },
+      {
+        "team": "Idea Model",
+        "criteria": [],
+        "verdict": "Accept simulated product. Replayed a new conservation workshop using unchanged workers and separate roles. Field diagnostic performance, unassisted human first use and real provider switching cost remain open."
+      }
+    ],
+    "fresh_install": "evidence/release/final-work-order-acceptance.json",
+    "public_bytes": "evidence/release/final-work-order-publication.json",
+    "browser_replay": "evidence/release/dashboard-replay.json"
+  }
 }
