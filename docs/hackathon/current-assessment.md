@@ -1,5 +1,7 @@
 # Evidence-based rubric position
 
+The [six-team review of the next Goal](../review/release-goal-review.ko.md) records the 19 November check against the organizer PDF and the new release gates. The historical execution findings follow.
+
 Date: 18 November 2026 (KST). This is an internal evidence map, not official scoring. The original handout defines 17 criteria and performance bands, but does not establish an official total, weights, track applicability or an N/A rule. No winning probability is inferred.
 
 Four independent GPT-6.1 Sol Max teams reviewed implementation `2b2a239`, the combined release `0d733da`, and correction snapshot `ca10412`. Required implementation findings are closed within the stated evidence boundaries; repository publication is recorded separately. Exact original names/descriptors and source identity are in `rubric-baseline.json`.

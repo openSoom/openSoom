@@ -1,6 +1,6 @@
 # Implementation goals and acceptance evidence
 
-Status: active implementation; execution evidence is being collected and independently reviewed. Preparing a document does not complete its stage. The execution ledger is [execution-state.json](execution-state.json). The accepted product boundaries remain in [product-contract.json](product-contract.json).
+**Historical first-release plan.** Its execution closed before the six-team release cycle. Use the [next release plan](release-goal.ko.md), [new checkpoint](release-goal-state.json) and [current reviewer charter](review/review-charter.json) for new work. Preparing a document does not complete its stage. The execution ledger is [execution-state.json](execution-state.json). The accepted product boundaries remain in [product-contract.json](product-contract.json).
 
 ## Outcome and scope
 

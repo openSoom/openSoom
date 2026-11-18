@@ -84,7 +84,7 @@ uv run --no-sync python -m opensoom.llm_runner \
 
 ## Actual LLM API execution
 
-Supply the provider key through the process environment or a secret manager, outside source files and prompts. For the default OpenAI endpoint, the runner uses `OPENAI_API_KEY`. The default model is `gpt-5-mini`; its availability was checked through the public model API before the first inference test. It is separate from the internal GPT-6.1 Sol rubric reviewers.
+Supply the provider key through the process environment or a secret manager, outside source files and prompts. For the default OpenAI endpoint, the runner uses `OPENAI_API_KEY`. The default model is `gpt-5-mini`; its availability was checked through the public model API before the first inference test. It is separate from the internal rubric review model selected in the [current charter](review/review-charter.json).
 
 ```sh
 uv run --no-sync python -m opensoom.llm_runner \

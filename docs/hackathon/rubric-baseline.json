@@ -44,9 +44,9 @@
   "review_charter": "docs/review/review-charter.json",
   "review_ledger": "docs/review/review-ledger.json",
   "review_policy": {
-    "model": "gpt-6.1-sol",
+    "model": "gpt-6.2-sol",
     "reasoning_effort": "max",
-    "teams": 4,
+    "teams": 6,
     "coverage": "All 17 criteria assigned to a primary team",
     "mode": "Affected-criterion review after meaningful changes; full review at milestones during active work"
   },
@@ -63,7 +63,7 @@
       "status": "implemented_and_captured",
       "score": null,
       "number": 1,
-      "review_team": "team_1",
+      "review_team": "release_a",
       "current_plan": "Agent tools use native oneM2M discovery, group/fopt and appropriate selective announcement; capture real requests and per-member results.",
       "priority": "core",
       "evidence_paths": [
@@ -82,7 +82,7 @@
       "status": "implemented_and_captured",
       "score": null,
       "number": 2,
-      "review_team": "team_1",
+      "review_team": "release_a",
       "current_plan": "Implement native oneM2M MQTT/TLS for device traffic and HTTPS for applications where appropriate; generic MQTT-to-HTTP conversion is not native CSE MQTT evidence.",
       "priority": "core",
       "evidence_paths": [
@@ -103,12 +103,13 @@
       "status": "implemented_and_captured",
       "score": null,
       "number": 3,
-      "review_team": "team_1",
+      "review_team": "release_a",
       "current_plan": "Independent diagnostic, facility-operations and maintenance AEs share actual CSE resources. Codex and the real LLM runner use the same tool/service path.",
       "priority": "core",
       "evidence_paths": [
         "evidence/application/release-acceptance.json",
-        "evidence/runtime/product-multisite-continuity.json"
+        "evidence/runtime/product-multisite-continuity.json",
+        "evidence/runtime/multiapp-revalidation/index.json"
       ]
     },
     {
@@ -124,7 +125,7 @@
       "status": "artifact_prepared_external_participation_pending",
       "score": null,
       "number": 4,
-      "review_team": "team_2",
+      "review_team": "release_b",
       "current_plan": "Explain the generalized product, sourced reference case, profile/adapter boundaries, verified execution and oneM2M benefits in an English public article.",
       "priority": "submission",
       "evidence_paths": [
@@ -145,7 +146,7 @@
       "status": "artifact_prepared_external_participation_pending",
       "score": null,
       "number": 5,
-      "review_team": "team_2",
+      "review_team": "release_b",
       "current_plan": "Show supported Codex onboarding and actual model/tool/CSE execution alongside explicitly simulated physical equipment.",
       "priority": "submission",
       "evidence_paths": [
@@ -167,7 +168,7 @@
       "status": "implemented_and_captured",
       "score": null,
       "number": 6,
-      "review_team": "team_2",
+      "review_team": "release_c",
       "current_plan": "Verify clean-environment setup, declared dependencies, account-free demo, real LLM mode, diagnostics, lifecycle commands and extension examples.",
       "priority": "submission",
       "evidence_paths": [
@@ -187,7 +188,7 @@
       "status": "implemented_and_captured",
       "score": null,
       "number": 7,
-      "review_team": "team_2",
+      "review_team": "release_b",
       "current_plan": "Demonstrate adapter-only vendor replacement, unchanged application logic and standard discovery/group/subscription/ACP benefits.",
       "priority": "submission",
       "evidence_paths": [
@@ -206,7 +207,7 @@
       "status": "not_evidenced",
       "score": null,
       "number": 8,
-      "review_team": "team_3",
+      "review_team": "release_c",
       "current_plan": "Retain evidence of authentic technical exchanges and resulting improvements. Administrative questions and generated dialogues are insufficient.",
       "priority": "submission",
       "evidence_paths": []
@@ -224,7 +225,7 @@
       "status": "artifact_prepared_external_participation_pending",
       "score": null,
       "number": 9,
-      "review_team": "team_3",
+      "review_team": "release_c",
       "current_plan": "Explain the resource tree, standards integration, reusable installation path, AI/tool authorization and actual versus simulated execution.",
       "priority": "submission",
       "evidence_paths": [
@@ -246,7 +247,7 @@
       "status": "implemented_and_captured",
       "score": null,
       "number": 10,
-      "review_team": "team_3",
+      "review_team": "release_d",
       "current_plan": "Secure transports, role-scoped ACP and server-enforced agent actions; protect credentials and verify cross-facility, stale-data and unauthorized-control denials.",
       "priority": "core",
       "evidence_paths": [
@@ -267,7 +268,7 @@
       "status": "implemented_and_captured",
       "score": null,
       "number": 11,
-      "review_team": "team_1",
+      "review_team": "release_d",
       "current_plan": "Explicit adapter mappings plus FCNT/discovery support Proficient. Verify actual SDT or semantic-model scope for an Expert claim; use two vendor adapters and two facility profiles.",
       "priority": "core",
       "evidence_paths": [
@@ -287,7 +288,7 @@
       "status": "deferred_not_implemented",
       "score": null,
       "number": 12,
-      "review_team": "team_4",
+      "review_team": "release_e",
       "current_plan": "Conditional on gateway maintenance or availability needs. Serving-CSE transition, state/subscription/ACP restoration and measured interruption/loss require separate implementation.",
       "priority": "conditional_extension",
       "evidence_paths": [
@@ -308,7 +309,7 @@
       "status": "deferred_not_implemented",
       "score": null,
       "number": 13,
-      "review_team": "team_4",
+      "review_team": "release_e",
       "current_plan": "Feasibility investigation accepted. Actual managed deployment, registration, logs and procedure are required; local Docker and app IDs alone are insufficient.",
       "priority": "conditional_extension",
       "evidence_paths": [
@@ -328,7 +329,7 @@
       "status": "deferred_not_implemented",
       "score": null,
       "number": 14,
-      "review_team": "team_4",
+      "review_team": "release_f",
       "current_plan": "Deferred pending a genuine data-locality/learning need, dataset and ESTIMED VM implementation path. Not automatically N/A.",
       "priority": "deferred_extension",
       "evidence_paths": [
@@ -346,7 +347,7 @@
       "status": "deferred_not_implemented",
       "score": null,
       "number": 15,
-      "review_team": "team_4",
+      "review_team": "release_f",
       "current_plan": "Deferred pending operational behavior that depends on actual network/MEC location events. Static facility addresses are insufficient.",
       "priority": "deferred_extension",
       "evidence_paths": [
@@ -367,7 +368,7 @@
       "status": "deferred_not_implemented",
       "score": null,
       "number": 16,
-      "review_team": "team_4",
+      "review_team": "release_e",
       "current_plan": "Conditional MEC033 platform discovery/provisioning candidate. Confirm real service availability and oneM2M-to-IPE-to-MEC-to-application execution.",
       "priority": "conditional_extension",
       "evidence_paths": [
@@ -388,7 +389,7 @@
       "status": "implemented_and_captured",
       "score": null,
       "number": 17,
-      "review_team": "team_3",
+      "review_team": "release_d",
       "current_plan": "Required core: Codex plugin/MCP and real LLM API runner with persistent state, validation, bounded errors and checked CSE outcomes. Fixtures remain separate from live-model evidence.",
       "priority": "core",
       "evidence_paths": [
@@ -438,5 +439,5 @@
     "No clinical benefit, certified ventilation performance or production readiness is claimed.",
     "MCP/LLM integration is distinct from MEC; LLM calls are not federated learning."
   ],
-  "assessment_note": "Original criteria/descriptors retained. Current implementation evidence map: docs/hackathon/current-assessment.md. Final independent release review is pending; no official score assigned."
+  "assessment_note": "Original criteria and descriptors retained. For dated findings consult docs/hackathon/current-assessment.md and docs/review/release-goal-review.ko.md. The six-team 2026-11-19 plan review awards no new execution credit."
 }

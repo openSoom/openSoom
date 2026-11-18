@@ -1,5 +1,7 @@
 # Conditional extension decisions
 
+The table below records first-release decisions. Deployment and service integration are active requirements in the [next Goal](release-goal.ko.md).
+
 Decision date: 18 November 2026, Asia/Seoul. These are product-scope decisions submitted to independent review, not official rubric N/A decisions or scores. All 17 criteria remain visible. A deferred capability is absent from release claims.
 
 | Extension | Decision and product reason | Simpler alternative / available environment | Reopen and verify when |

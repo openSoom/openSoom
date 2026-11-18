@@ -1451,5 +1451,10 @@
     "maintenance_run": "handover-b6e82ef69f",
     "maintenance_review": "docs/review/handover-independent.md",
     "public_downloads": "evidence/release/cinematic-publication.json"
+  },
+  "next_release": {
+    "plan": "docs/release-goal.ko.md",
+    "checkpoint": "docs/release-goal-state.json",
+    "scope": "Separate release cycle. Existing stages and their four-team execution records remain historical."
   }
 }

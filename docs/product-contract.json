@@ -1,20 +1,20 @@
 {
-  "version": 2,
-  "date": "2026-11-18",
-  "status": "Implemented prototype with runtime evidence; independent release review in progress",
+  "version": 3,
+  "date": "2026-11-19",
+  "status": "First release captured. Next Goal prepared for activation.",
   "definition": "Reusable open-source operations layer for connecting ventilation and air-management equipment and tracing observations, diagnosis, authorized actions, result verification and maintenance across facilities and vendors.",
   "user_confirmed": {
     "reference_example_not_product_boundary": "School kitchen",
-    "target_scope": "Food production and other ventilation-required facilities",
+    "target_scope": "Facilities that need ventilation and air management; people select applications and author bounded scenarios through their agents.",
     "primary_user": "Nontechnical facility managers must be able to use agent-guided installation and configuration",
     "first_host": "Codex",
     "plugin_required": true,
     "actual_llm_api_runner_required": true,
-    "review_teams": 4,
+    "review_teams": 6,
     "implementation_delegation": "Main agent may use subagents as needed to improve accepted findings",
     "physical_devices": "Simulated physical devices authorized by organizer according to user",
     "pitching_artifact": "Single-page HTML with large Three.js facility/workflow views and detailed factual oneM2M architecture explorer, Korean project explanation and reusable landing-page quality",
-    "final_review": "After implementation, four rubric teams conduct a stricter review of the visual upgrade and final release"
+    "final_review": "Six independent GPT-6.2 Sol Max teams review the release, including the video, landing page and English deck."
   },
   "consistent_management": "Shared contracts, permissions, workflows and evidence; facility-specific targets and controls.",
   "boundaries": {
@@ -51,7 +51,7 @@
     "deployment_profiles": [
       "single-facility local start",
       "two facility MN-CSEs and a central IN-CSE demonstration",
-      "conditional managed MEC deployment"
+      "Self-hosted ETSI MEC Sandbox Option C for the new release. Verify the registered app and an actual non-location service round trip through oneM2M."
     ]
   },
   "defaults_not_explicit_user_actuation_choice": {
@@ -132,8 +132,8 @@
   ],
   "advanced_features": {
     "handover": "Conditional on a real availability/maintenance need and explicit transition evidence",
-    "mec_deployment": "Feasibility check accepted; platform access and actual deployment evidence required",
-    "mec_services": "MEC033 onboarding/discovery is a candidate if an endpoint is actually available",
+    "mec_deployment": "Required in the next release Goal. Verify registered openSoom Option C deployment; test orchestration across eligible hosts for Expert.",
+    "mec_services": "Required functional path through oneM2M to a real non-location MEC service. Test discovery, configuration and use of multiple services and bidirectional interaction for Expert.",
     "federated_learning": "Deferred until data-locality and multi-facility learning need plus ESTIMED VM path exist",
     "geolocation": "Deferred until location changes operational behavior; static addresses do not establish service integration",
     "sdt_semantics": "High-value conditional advanced mapping gate; required FCNT/discovery and adapter meaning/unit validation remain mandatory. An adopted mapping needs actual validation; deferral cannot earn Expert credit."
@@ -148,8 +148,8 @@
     "https://onem2m-hackathon.io/introduce.asp",
     "https://developers.openai.com/plugins/build/plugins"
   ],
-  "execution_plan": "docs/implementation-plan.md",
-  "execution_state": "docs/execution-state.json",
+  "execution_plan": "docs/release-goal.ko.md",
+  "execution_state": "docs/release-goal-state.json",
   "goal_prompt": "docs/goal-mode-prompt.ko.md",
   "autonomous_execution": {
     "user_available_during_run": false,
@@ -158,11 +158,12 @@
     "required_outcomes_may_be_silently_waived": false,
     "repository_publication_authorized": "openSoom/openSoom via github-personal",
     "blocked_dependency_policy": "Record affected gate and permitted alternatives; continue independent authorized work; retain unverified required gates.",
-    "review_policy": "Four GPT-6.1 Sol Max teams at major milestones; affected owners after meaningful changes; independent verification for closure.",
-    "activation": "Active user-started Goal; resume from execution-state.json",
+    "review_policy": "Six GPT-6.2 Sol Max teams at milestones; affected owners after changes; independent verification for closure.",
+    "activation": "Next release Goal is prepared. Start on explicit activation and resume from docs/release-goal-state.json.",
     "host_policy": "Existing sandbox, approval, account access and resource limits still apply; no permission bypass.",
     "external_publication": "GitHub project changes authorized; Hackster/video-host/Discord publication and messages require separate explicit scope.",
     "project_test_security": "Least-privilege ACPs, test-role credentials and project-scoped TLS are authorized; host/account/organization/approval-policy and global-trust changes are not included.",
-    "live_test_usage": "Set finite per-run and persistent shared test-batch bounds before model tests; aggregate all workers/retries/restarts, with no automatic resets or increases. Separate from Goal token_budget."
+    "live_test_usage": "Set finite per-run and persistent shared test-batch bounds before model tests; aggregate all workers/retries/restarts, with no automatic resets or increases. Separate from Goal token_budget.",
+    "cloud_authorization": "During the next Goal: one test VM in the maintainer-selected GCP project, around USD 30/month. Read project from private local scope or maintainer activation message. Estimate disk, networking and VM monthly cost."
   }
 }

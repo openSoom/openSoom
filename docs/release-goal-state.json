@@ -1,0 +1,57 @@
+{
+  "cycle": "facility-apps-option-c",
+  "prepared_on": "2026-11-19",
+  "timezone": "Asia/Seoul",
+  "baseline_revision": "7a52a8ef47799d8cfea7605b39e85d679bbc82bb",
+  "stage": "R0",
+  "status": "prepared_for_activation",
+  "plan": "docs/release-goal.ko.md",
+  "review_charter": "docs/review/review-charter.json",
+  "planning_review": "docs/review/release-goal-review.ko.md",
+  "previous_release": "docs/execution-state.json",
+  "required_gates": {
+    "R0": {
+      "status": "not_started",
+      "evidence": []
+    },
+    "R1": {
+      "status": "not_started",
+      "evidence": []
+    },
+    "R2": {
+      "status": "not_started",
+      "evidence": []
+    },
+    "R3": {
+      "status": "not_started",
+      "evidence": []
+    },
+    "R4": {
+      "status": "not_started",
+      "evidence": []
+    },
+    "R5": {
+      "status": "not_started",
+      "evidence": []
+    }
+  },
+  "cloud": {
+    "max_new_vms": 1,
+    "monthly_target_usd": 30,
+    "project_source": "private workspace scope or private activation message",
+    "default_after_tests": "stop VM; record residual disk/address cost and restart procedure"
+  },
+  "delivery": {
+    "competition_deliverables": "2026-11-20",
+    "slides_due": "2026-11-22",
+    "interview": "2026-11-23/2026-11-25",
+    "authorized_destination": "openSoom/openSoom via github-personal"
+  },
+  "change_log": [],
+  "external_blockers": [],
+  "rubric_expert_followup": {
+    "13": "open: project topology and orchestration across eligible hosts",
+    "16": "open: multiple functional services and bidirectional interaction through oneM2M",
+    "review": "docs/review/release-goal-review.ko.md"
+  }
+}

@@ -1,8 +1,8 @@
 {
-  "version": 3,
-  "date": "2026-11-18",
-  "review_round": "Implementation checkpoint 2b2a239, corrective fd5e648, release closeout underway",
-  "scope": "Actual implementation and artifact evidence with independent four-team findings; final release review pending.",
+  "version": 4,
+  "date": "2026-11-19",
+  "review_round": "Next-release planning review at 7a52a8e by six GPT-6.2 Sol Max teams",
+  "scope": "Historical findings retain their original owners. Release-prefixed owners review the next cycle. Plan acceptance creates no implementation credit.",
   "findings": [
     {
       "id": "R-001",
@@ -1362,6 +1362,137 @@
         "docs/handover.md",
         "tests/test_handover.py"
       ]
+    },
+    {
+      "id": "NEXT-A1",
+      "team": "release_a",
+      "criteria": [
+        1,
+        2,
+        3
+      ],
+      "evidence_status": "prior_release_evidence_and_design_review",
+      "observed_evidence": [
+        "evidence/runtime/multiapp-revalidation/index.json",
+        "docs/review/release-goal-review.ko.md"
+      ],
+      "gap_and_impact": "The native multi-app and TLS runs are separate from the live dashboard.",
+      "minimum_change": "Join the dashboard to a single correlated incident and recover events missed before worker startup.",
+      "product_reason": "Operators need a durable maintenance handoff after a missed notification.",
+      "verification": "R1: one group request, two authoritative readers, distinct outcomes, exactly one work order after restart and duplicate; label actual bindings in each lane.",
+      "main_decision": "accept",
+      "decision_reason": "Operators need a durable maintenance handoff after a missed notification.",
+      "implementation_state": "planned",
+      "review_state": "open"
+    },
+    {
+      "id": "NEXT-B1",
+      "team": "release_b",
+      "criteria": [
+        4,
+        5,
+        7
+      ],
+      "evidence_status": "prior_release_evidence_and_design_review",
+      "observed_evidence": [
+        "docs/review/cinematic-team2.md",
+        "docs/review/release-goal-review.ko.md"
+      ],
+      "gap_and_impact": "Current English article and 1080p films cover the prior architecture.",
+      "minimum_change": "Recapture the observed release and recut English video at 720p, with corresponding deck and landing-page evidence.",
+      "product_reason": "Managers and judges can see what changes their next decision and trace it to the running system.",
+      "verification": "R4: timed 10–15 min talk, technical segment about one minute, playable/captioned footage, same incident IDs and legible media.",
+      "main_decision": "accept",
+      "decision_reason": "Managers and judges can see what changes their next decision and trace it to the running system.",
+      "implementation_state": "planned",
+      "review_state": "open"
+    },
+    {
+      "id": "NEXT-C1",
+      "team": "release_c",
+      "criteria": [
+        6,
+        8,
+        9
+      ],
+      "evidence_status": "prior_release_evidence_and_design_review",
+      "observed_evidence": [
+        "docs/submission/handoff.md",
+        "docs/review/release-goal-review.ko.md"
+      ],
+      "gap_and_impact": "Public article backlink, genuine public technical exchange and live interview are outstanding.",
+      "minimum_change": "Repeat clean install on final SHA, prepare PPTX/PDF and timed Q&A; add real external records when they exist.",
+      "product_reason": "A new contributor can start independently and judges receive working artifacts.",
+      "verification": "R4/R5: rendered deck, clean install, verified remote SHA and public files; separate owner and actual state for Hackster, discussion and interview.",
+      "main_decision": "accept",
+      "decision_reason": "A new contributor can start independently and judges receive working artifacts.",
+      "implementation_state": "planned",
+      "review_state": "open"
+    },
+    {
+      "id": "NEXT-D1",
+      "team": "release_d",
+      "criteria": [
+        10,
+        11,
+        17
+      ],
+      "evidence_status": "prior_release_evidence_and_design_review",
+      "observed_evidence": [
+        "evidence/agent/index.json",
+        "docs/review/release-goal-review.ko.md"
+      ],
+      "gap_and_impact": "The existing maintenance identity can create in the command container. Scenario authoring is absent and the simulator binds faults to the first zone.",
+      "minimum_change": "Give new workers site-scoped authenticated identities; bind independent sensors, units, timestamps and scenario definitions; expose a shared author/run/readback tool chain.",
+      "product_reason": "Facilities and nontechnical operators can safely reproduce their own scenario.",
+      "verification": "R1/R2: native positive/denied reads/writes, both adapters with canonical and PM2.5 mapping, non-first-zone scenario authored in actual Codex and actual API tools and replayed from persisted state.",
+      "main_decision": "accept",
+      "decision_reason": "Facilities and nontechnical operators can safely reproduce their own scenario.",
+      "implementation_state": "planned",
+      "review_state": "open"
+    },
+    {
+      "id": "NEXT-E1",
+      "team": "release_e",
+      "criteria": [
+        12,
+        13,
+        16
+      ],
+      "evidence_status": "prior_release_evidence_and_design_review",
+      "observed_evidence": [
+        "evidence/runtime/handover/acceptance.json",
+        "docs/review/release-goal-review.ko.md"
+      ],
+      "gap_and_impact": "Local CSE handover has receipts. A direct Mp1 call plus logging does not establish MEC service access through oneM2M.",
+      "minimum_change": "Use a CSE-originated service request, mapped MEC response and independent work-order readback in an actual Option C platform; exercise additional Expert conditions.",
+      "product_reason": "MEC feedback should change a concrete inspection priority for the same asset.",
+      "verification": "R3: deployment/registration/host receipts; correlated bidirectional path, stale and mismatch handling. For Expert verify cross-eligible-host orchestration and two functional services.",
+      "main_decision": "accept",
+      "decision_reason": "MEC feedback should change a concrete inspection priority for the same asset.",
+      "implementation_state": "planned",
+      "review_state": "open"
+    },
+    {
+      "id": "NEXT-F1",
+      "team": "release_f",
+      "criteria": [
+        14,
+        15
+      ],
+      "evidence_status": "prior_release_evidence_and_design_review",
+      "observed_evidence": [
+        "docs/extension-decisions.md",
+        "docs/review/release-goal-review.ko.md"
+      ],
+      "gap_and_impact": "No eligible ESTIMED VM training run, multi-round client selection, or operational location event.",
+      "minimum_change": "Keep both open. Revisit upon a facility need for local learning data or mobile work routing and a verifiable environment.",
+      "product_reason": "Neither addition improves the fixed-installation fault diagnosis by itself.",
+      "verification": "14: actual eligible VM, custom oneM2M FL coordination, dynamic clients with resilient rounds. 15: real combined network/MEC/oneM2M location event changing work routing once.",
+      "main_decision": "defer",
+      "decision_reason": "Neither addition improves the fixed-installation fault diagnosis by itself.",
+      "implementation_state": "conditional_reopen",
+      "review_state": "open"
     }
   ]
 }
