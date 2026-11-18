@@ -1,6 +1,6 @@
 # openSoom: Which ventilation inspection comes first?
 
-Suppose you are the technician called to the same low-airflow warning in two workshop trials. In each trial a damper acknowledged **95% open** and airflow stayed at **515 m³/h**, short of the workshop’s **560 m³/h** target. Where should they start?
+Suppose you are the technician called to the same low-airflow warning in two workshop trials. In each trial the controller acknowledged a command to open the damper to **95%**. Airflow stayed at **515 m³/h**, short of the workshop’s **560 m³/h** target. Where would you start?
 
 In the first trial an independent shaft sensor measured **35%**. The work order prioritized actuator travel and position feedback. In the second it measured **93%**. Now the airflow path came first. The operator kept both incidents open. The technician could record the inspection they scheduled and the precise evidence they had reviewed. A field examination would establish the physical cause.
 
@@ -15,6 +15,8 @@ A commissioning report supplies the facility’s airflow benchmark. Low airflow 
 ## What changed when the system had more evidence?
 
 We defined nine conditions and repeated each at two virtual sites. We recorded what three decision rules would conclude from the same oneM2M inputs. Of 16 cases needing further investigation, a rule that accepted the device ACK as recovery closed 14 incorrectly. A rule that required two fresh in-target airflow measurements closed two incorrectly, when particles remained elevated. The openSoom operations app kept all 16 open. All three rules recognized the two normal recoveries. The distinct maintenance app matched the prescribed first inspection in all four informative trials. These are results for the specified examples. Real-world diagnostic accuracy and maintenance-time savings need field measurements. [Case matrix, methods and receipts](https://github.com/openSoom/openSoom/blob/main/docs/inspection-benchmark.md)
+
+We also examined archived supply-air measurements from three rooms in one Oak Ridge National Laboratory research building. On six of 18 days when a damper was deliberately held fixed, the room’s median airflow during occupied hours equaled or exceeded its own fault-free reference-day median. This helps explain why a plausible airflow value can leave a maintenance question open. The archived building records and the virtual equipment used for the inspection trials are separate. Our read-only tool lets you repeat the comparison or inspect your own zone export. [Original measured data](https://doi.org/10.6084/m9.figshare.27948192.v2) · [Reproduce the analysis](https://github.com/openSoom/openSoom/tree/main/examples/ornl-vav)
 
 ## The people and the software they rely on
 

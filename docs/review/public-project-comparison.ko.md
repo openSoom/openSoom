@@ -1,6 +1,6 @@
 # openSoom이 어느 부분에서 경쟁할 수 있는가
 
-2026년 11월 19일 02:50 KST 기준 주최 측 평가 일정표에서 예시 행을 제외하고 이름이 있는 프로젝트는 7개였다. 그중 3개가 Hackster URL을 기재했다. 공개 글과 작성팀의 공개 저장소를 대조했다. 아래 수치는 각 팀이 보고한 결과다. 다른 팀의 실험을 재현하거나 심사 점수를 산정하지 않았다. [심사 일정표](https://docs.google.com/spreadsheets/d/1x1husd3She4ixkpxVvUy4LZJ75F2QFRDIpocEdst7p8/edit?gid=0) · [주최 측의 대회 목적](https://estimed.etsi.org/news/estimed_hackathon2/)
+2026년 11월 19일 03:42 KST에 주최 측 평가 일정표를 다시 열었다. 예시 행을 제외하고 이름이 있는 프로젝트는 7개였고, 그중 3개가 Hackster URL을 기재했다. 공개 글과 작성팀의 공개 저장소를 대조했다. 아래 수치는 각 팀이 보고한 결과다. 다른 팀의 실험을 재현하거나 심사 점수를 산정하지 않았다. [심사 일정표](https://docs.google.com/spreadsheets/d/1x1husd3She4ixkpxVvUy4LZJ75F2QFRDIpocEdst7p8/edit?gid=0) · [주최 측의 대회 목적](https://estimed.etsi.org/news/estimed_hackathon2/)
 
 | 경쟁작 | 공개 자료에서 확인한 강점 | openSoom에 주는 시사점 |
 | --- | --- | --- |
@@ -19,3 +19,7 @@ HSE는 후드별 시운전 성능을 이후 검사의 기준으로 삼도록 안
 - 운영 콘솔, 정비사용 웹 앱, MEC 정비 워커와 서비스 연동기는 각자 다른 권한으로 같은 사건을 읽는다. 자체 Sandbox에서 MEC 033을 통해 외부 가상 센서 제공자를 연결하고 MEC 046의 측정으로 작업을 갱신했다. 정비사의 기록은 새로운 장비 명령을 만들지 않는다. [MEC 실행 기록](../../evidence/runtime/option-c/index.json) · [두 실제 앱의 11초 시연](../assets/technician-handoff.gif)
 
 공개된 세 팀과 경쟁할 기술적 이유가 있다. EdgeGuard가 보여준 비교 실험 규모와 무설치 데모의 접근성에서 우위를 주장할 근거는 없다. openSoom에는 실설비 검증과 공개 Hackster 글, 심사 상호작용, 연합학습 및 네트워크 위치 검증이 남아 있다. 남은 발표 시간에는 한 작업의 잘못된 종료를 피하고 현장 담당자의 다음 행동까지 바뀌는 장면을 우선한다. [17개 항목별 자체 심사](release-assessment.ko.md)
+
+EdgeGuard도 산업용 MCP와 Option C를 설명한다. 해당 팀은 위치 이벤트가 구역 간 전환을 유발하는 과정과 연합학습 실험을 공개했다. Hackster 글은 연합학습 실험 환경을 ACME로 명시한다. ESTIMED VM에서의 실행 여부까지 이 글로 확인할 수는 없다. openSoom의 차이는 MEC를 썼다는 사실 자체보다, 권한이 분리된 두 사람이 동일 사건에서 서로 다른 결정을 내리는 과정에 있다. [EdgeGuard의 기술 설명](https://www.hackster.io/ahind012/edgeguard-stop-forklift-accidents-before-they-happen-e07309) · [openSoom 클라우드 정비 인계](../../evidence/runtime/option-c/technician-handoff.json)
+
+첫 60초에는 실제 건물의 문제와 가상 시연의 결정을 연결할 수 있다. ORNL의 연구용 건물에서 댐퍼를 고정한 18개 실험일 중 6일은 해당 방의 정상 기준일만큼 또는 그보다 많은 급기를 기록했다(재실 시간대 중앙값 기준). 이어 가상 작업실의 동일 풍량에서 **축 35% / 93%**를 번갈아 보여주고, 심사위원에게 어디를 먼저 점검할지 묻는다. 마지막으로 정비사 화면에 운영 회복을 판정한 ACK와 후속 측정 두 건을 띄운다. 두 실험은 공통 질문을 다루며 서로 다른 장비와 데이터로 수행됐다. [ORNL 연구](https://www.ornl.gov/publications/datasets-of-faults-in-variable-air-volume-terminal-units-in-a-multi-zone-commercial-building/) · [측정 자료와 재현 절차](../../examples/ornl-vav/README.md) · [정비사 화면 실행 기록](../../evidence/application/field-recovery-browser.json)

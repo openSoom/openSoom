@@ -1,6 +1,6 @@
 # openSoom 통합 릴리스 자체 심사
 
-주최 측 한 장짜리 Rubric의 17개 항목을 GPT-6.2-Sol Max 여섯 팀이 독립 검토했다. 별도 Idea Model 리뷰어는 실제 시설 운영 판단과 도입 편의성을 검토한다. 최종 검토의 공통 제품 리비전은 `f8fd12f38030b9984c0cc76d7f502fd0904086f4`다. 클라우드 실증과 최종 소스의 로컬 재실행은 각각 해당 실행의 소스 해시로 확인할 수 있다. **Expert는 해당 범위의 자체 판정**이다. 공인 점수와 합산 방식은 주최 측 소관이다. [원문 식별 정보와 17개 항목](../hackathon/rubric-baseline.json) · [검토 배정](review-charter.json) · [사전 심사](release-goal-review.ko.md)
+주최 측 한 장짜리 Rubric의 17개 항목을 GPT-6.2-Sol Max 여섯 팀이 독립 검토했다. 별도 Idea Model 리뷰어는 실제 시설 운영 판단과 도입 편의성을 검토한다. 첫 통합 심사의 공통 제품 리비전은 `f8fd12f38030b9984c0cc76d7f502fd0904086f4`다. 클라우드 실증과 최종 소스의 로컬 재실행은 각각 해당 실행의 소스 해시로 확인할 수 있다. **Expert는 해당 범위의 자체 판정**이다. 공인 점수와 합산 방식은 주최 측 소관이다. [원문 식별 정보와 17개 항목](../hackathon/rubric-baseline.json) · [검토 배정](review-charter.json) · [사전 심사](release-goal-review.ko.md)
 
 
 ## 경쟁작 비교 후 재검토
@@ -16,7 +16,7 @@
 | # | 항목 | 판정과 근거 |
 |---|---|---|
 | 1 | oneM2M 기능 | **Expert.** 네이티브 그룹 fan-out 하나에 실제 멤버별 2000을 받았다. 보안 프로필에서는 세 구역의 최근 CIN을 한 번에 조회했다. [실행 기록](../../evidence/application/release-acceptance.json) |
-| 2 | 통신 프로토콜 | **Expert.** 장치 업데이트와 ACK에는 MQTT/TLS, 앱의 특정 자원 조회와 명령에는 HTTPS를 썼다. 동일 CIN을 두 바인딩으로 확인했다. [바인딩 영수증](../../evidence/runtime/cse-mqtt-tls-smoke.json) |
+| 2 | 통신 프로토콜 | **Expert.** 장치 업데이트와 ACK에는 MQTT/TLS, 앱의 특정 자원 조회와 명령에는 HTTPS를 썼다. 동일 CIN을 두 바인딩으로 확인했다. [제품 흐름과 바인딩 기록](../../evidence/application/release-acceptance.json) · [동일 CIN 확인](../../evidence/runtime/cse-mqtt-tls-smoke.json) |
 | 3 | 활용 시나리오 | **Expert.** 가상 다구역 장치의 동일 원본을 실제 CSE가 여러 앱에 전달한다. 운영 앱은 회복을 판정하고, 정비 앱은 독립 권한으로 점검 순서를 기록한다. [복수 앱](../multi-application-scenario.md) · [작업지시서](../../evidence/runtime/maintenance-release-local.json) |
 | 4 | 기사 품질 | **Expert 수준 영문 원고.** 사진·구성도·프로토콜·자원 설계에 장치 ACK와 실제 풍량이 엇갈린 사례 및 oneM2M의 이점을 담았다. 공개 Hackster 렌더링은 게시 후 확인한다. [영문 기사](../submission/hackster-article.md) |
 | 5 | 영상 품질 | **Expert.** 720p 신작은 실제 브라우저 화면, 영문 음성·자막 11개, 마지막 작업지시서까지 한 사건의 결정을 보여준다. 교정본의 ACK·풍량·축 위치·원본 근거가 각 대사와 일치하는지 프레임으로 재검토했다. 기존 45초·5분 작품은 별도 사례다. [영상](../../deliverables/video/openSoom-work-order-720p.mp4) · [제작·검증](../../deliverables/video/README.md) |
@@ -26,7 +26,7 @@
 | 9 | 인터뷰 | **열림.** 자원 구조, 통합 방법, oneM2M을 계속 채택할 이유를 답하는 자료와 시간 측정이 있다. 실제 질의응답은 배정된 인터뷰에서 이루어진다. [영문 Q&A](../submission/technical-qa.md) · [리허설](../../evidence/presentation/acceptance.json) |
 | 10 | 보안·프라이버시 | **Expert, 시험 환경 범위.** TLS와 역할별 ACP의 허용·거부를 실증했다. 시설 제거 후 원래 정비 AE는 보존된 관측과 ACK 읽기에 각각 4103을 받고 운영 AE는 같은 원본에 각각 2000을 받았다. [TLS](../../evidence/runtime/cse-mqtt-tls-smoke.json) · [권한 회수](../../evidence/runtime/facility-retirement.json) |
 | 11 | 데이터 상호운용성 | **Expert, PM2.5 범위.** 두 어댑터에서 TS-0023 airQualitySensor 표준 자원의 µg/m³ 정수형 측정값을 실제로 발견·조회했다. CO₂와 풍량은 별도 단위로 보존된다. [표준 매핑과 증거](../standard-model.md) |
-| 12 | CSE 전환·연속성 | **Expert, 단일 호스트의 두 CSE 범위.** 가용성 감지 후 대체 CSE로 자동 전환, 미해결 상태·구독·권한 복원, 한 번의 명령 효과와 측정된 서비스 중단을 확인했다. 독립 정상 실행 중단 0.173초. [전환 증거](../../evidence/runtime/handover/acceptance.json) |
+| 12 | CSE 전환·연속성 | **Expert, 단일 호스트의 두 CSE 범위.** 가용성 감지 후 대체 CSE로 자동 전환, 미해결 상태·구독·권한 복원, 한 번의 명령 효과와 측정된 서비스 중단을 확인했다. 독립 정상 실행에서 관측한 읽기 중단은 0.173초였다. [독립 재실행 기록](../../evidence/runtime/handover/independent/index.json) |
 | 13 | oneM2M–MEC 앱 배포 | **Expert, 두 논리 MEC 호스트 범위.** 운영자가 목적지를 지정하면 실제 Sandbox 컨트롤러가 각 호스트에 MN-CSE와 정비 앱을 Helm으로 설치했다. 두 곳 모두 Mcc 등록과 새 사건 처리에 성공했다. 물리 VM은 한 대다. [배포·복구 영수증](../../evidence/runtime/option-c/index.json) |
 | 14 | 연합학습 | **열림.** 실제 ESTIMED VM, 분산 클라이언트의 학습·집계 및 동적 선택·장애 회복형 복수 라운드 증거가 없다. 사이트 간 학습의 필요와 데이터가 확인되면 평가한다. [적용 근거](../extension-decisions.md) |
 | 15 | 위치 서비스 | **열림.** 고정 설비는 시설·구역·자산 ID로 식별한다. 네트워크·MEC 위치 이벤트로 정비 배정이나 이동 정책이 바뀌는 실증이 필요하다. 35%는 기계축 개도다. [센서 응답](../../evidence/runtime/option-c/native-services.json) |
@@ -41,4 +41,4 @@
 
 새 체크아웃에서 실제 ACME를 설치하고 운영·정비 흐름, 세 번째 시설 재사용, 시설 제거 후 권한 회수를 재현했다. 테스트 90개 및 하위 테스트 29개가 통과했다. 최종 대시보드의 ‘Run scenario’로 만든 새 사건에서는 100% 명령과 ACK 뒤에 360 m³/h가 측정됐고, 독립 개도 35%가 도착하자 같은 열린 작업의 점검 순서가 바뀌었다. GitHub에 게시된 파일 17개를 로그인 없이 끝까지 읽어 원본 바이트와 비교했다. [클린 설치](../../evidence/release/final-work-order-acceptance.json) · [브라우저 재시연](../../evidence/release/dashboard-replay.json) · [공개 파일 검증](../../evidence/release/final-work-order-publication.json)
 
-클라우드 배포에서 확인한 정비·연동 소스는 동결본과 같다. 저풍량에서만 축 개도 확인을 요청하는 마지막 운영 규칙은 이후 로컬 ACME에서 검증했다. 가상 장비로 입증한 범위에는 실제 설비 고장률과 비기술 관리자의 무도움 첫 설치 성공률이 포함되지 않는다. [클라우드 실행과 소스 해시](../../evidence/runtime/option-c/commissioned-sensor-roundtrip.json) · [로컬 판정 재검증](../../evidence/runtime/maintenance-command-followup.json)
+클라우드 기록은 각 실행 당시의 배포 판본을 검증한다. MEC 센서 연동기의 소스는 이번 측정 순서 보강 판본과 같다. 변경한 운영·정비 워커 및 정비사 화면은 로컬 ACME와 가상 장비로 검증했다. 가상 장비로 입증한 범위에는 실제 설비 고장률과 비기술 관리자의 무도움 첫 설치 성공률이 포함되지 않는다. [클라우드 실행과 소스 해시](../../evidence/runtime/option-c/commissioned-sensor-roundtrip.json) · [로컬 측정 순서 재검증](../../evidence/runtime/observation-sequence.json) · [정비사 회복 근거 확인](../../evidence/runtime/field-recovery.json)
