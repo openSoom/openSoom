@@ -23,7 +23,8 @@
       "evidence": [
         "evidence/runtime/maintenance-release-local.json",
         "evidence/video/work-order/capture.json",
-        "evidence/runtime/maintenance-command-followup.json"
+        "evidence/runtime/maintenance-command-followup.json",
+        "evidence/runtime/facility-retirement.json"
       ]
     },
     "R2": {
@@ -46,19 +47,23 @@
       "remaining": "Independent final check of native configuration, orchestration and work-order changes."
     },
     "R4": {
-      "status": "in_progress",
+      "status": "verified",
       "evidence": [
         "evidence/video/work-order/film.json",
         "evidence/video/work-order/capture.json",
         "deliverables/presentation/openSoom-evaluation.pptx",
         "deliverables/presentation/openSoom-evaluation.pdf",
-        "evidence/presentation/acceptance.json"
-      ],
-      "remaining": "Final rendered claim/link review and real-time rehearsal record."
+        "evidence/presentation/acceptance.json",
+        "evidence/presentation/rehearsal.json",
+        "evidence/video/work-order/landing-check.json"
+      ]
     },
     "R5": {
       "status": "in_progress",
-      "evidence": [],
+      "evidence": [
+        "docs/review/release-assessment.ko.md",
+        "evidence/release/clean-work-order.json"
+      ],
       "remaining": "Freeze and independently review candidate, verify fresh reproduction, publish and verify remote commit."
     }
   },
@@ -112,8 +117,8 @@
   ],
   "external_blockers": [],
   "rubric_expert_followup": {
-    "13": "Managed north and south placement is recorded on two operator-selected logical hosts on a single VM. Final independent review pending.",
-    "16": "Two native service functions used from oneM2M on an existing work order. Independent scoring review pending.",
+    "13": "Expert independently substantiated for two selected eligible logical hosts on one VM.",
+    "16": "Independent reviewer requires actual 046 subscription configuration and readback from the site request. In progress on the same VM.",
     "review": "docs/review/release-goal-review.ko.md"
   },
   "idea_model_review": {

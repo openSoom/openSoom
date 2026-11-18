@@ -1,0 +1,25 @@
+{
+  "result": "passed",
+  "views": [
+    {
+      "width": 390,
+      "document_width": 390,
+      "case": "demo-271a6c3a23",
+      "three_decisions": true,
+      "three_sensor_routes": true,
+      "keyboard": true,
+      "placement_link": true,
+      "page_errors": []
+    },
+    {
+      "width": 1440,
+      "document_width": 1440,
+      "case": "demo-271a6c3a23",
+      "three_decisions": true,
+      "three_sensor_routes": true,
+      "keyboard": true,
+      "placement_link": true,
+      "page_errors": []
+    }
+  ]
+}

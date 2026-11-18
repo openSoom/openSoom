@@ -1,0 +1,89 @@
+{
+  "method": "Local English synthesized presenter read-through, actual film audio inserted after slide 5. No live human performance was measured.",
+  "synthesis": "macOS Samantha, say rate argument 135",
+  "spoken_words": 1501,
+  "narration_seconds": 566.31,
+  "film_seconds": 104.94,
+  "combined_seconds": 671.25,
+  "architecture_slide": 8,
+  "architecture_seconds": 48.5,
+  "source_hashes": {
+    "spoken_script_sections_sha256": "22fb7388b80ff8ce083b87673deaba52441167993a56cf5478eb0a37fc6033ea",
+    "film_sha256": "9ca85b4c3b7eff22f50333c3f2119aa532146c3c2c6783ff9313568a644d1628"
+  },
+  "timeline": [
+    {
+      "slide": 1,
+      "section": "spoken script",
+      "start_seconds": 0,
+      "duration_seconds": 41.27
+    },
+    {
+      "slide": 2,
+      "section": "spoken script",
+      "start_seconds": 41.27,
+      "duration_seconds": 65.74
+    },
+    {
+      "slide": 3,
+      "section": "spoken script",
+      "start_seconds": 107.01,
+      "duration_seconds": 68.33
+    },
+    {
+      "slide": 4,
+      "section": "spoken script",
+      "start_seconds": 175.34,
+      "duration_seconds": 61.02
+    },
+    {
+      "slide": 5,
+      "section": "spoken script",
+      "start_seconds": 236.36,
+      "duration_seconds": 16.31
+    },
+    {
+      "slide": 5,
+      "section": "complete English film",
+      "start_seconds": 252.67,
+      "duration_seconds": 104.94
+    },
+    {
+      "slide": 6,
+      "section": "spoken script",
+      "start_seconds": 357.6,
+      "duration_seconds": 73.34
+    },
+    {
+      "slide": 7,
+      "section": "spoken script",
+      "start_seconds": 430.95,
+      "duration_seconds": 56.87
+    },
+    {
+      "slide": 8,
+      "section": "spoken script",
+      "start_seconds": 487.82,
+      "duration_seconds": 48.5
+    },
+    {
+      "slide": 9,
+      "section": "spoken script",
+      "start_seconds": 536.32,
+      "duration_seconds": 74.13
+    },
+    {
+      "slide": 10,
+      "section": "spoken script",
+      "start_seconds": 610.45,
+      "duration_seconds": 60.8
+    }
+  ],
+  "real_time_playback": {
+    "started_utc": "2026-11-18T16:27:48.940066+00:00",
+    "finished_utc": "2026-11-18T16:39:01.827628+00:00",
+    "elapsed_wall_seconds": 670.81,
+    "decoder": "ffmpeg -re PCM audio to null output",
+    "exit_code": 0
+  }
+}

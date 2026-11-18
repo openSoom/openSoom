@@ -15,3 +15,5 @@ The [second native Codex execution](codex-verified-retry.json) generated the cor
 After the final retry the shared persistent budget retained 17 inference requests and 2,314 tokens. The test reserved the remaining allowance in advance, measured input with the provider's token-counting API, and charged the counted input conservatively in addition to actual inference usage.
 
 For deterministic reproduction, start an isolated CSE and API with the virtual learning-b facility. Run `scripts/scenario_authoring_acceptance.py prepare` with the service URL, CSE URL, runtime directory and output file. Restart only that API process and run the script with `replay` and the same arguments. To look up a known execution from the native plugin, use `scripts/codex_scenario_rehearsal.py --read-execution EXECUTION_ID --service URL --runtime DIRECTORY --output FILE`.
+
+The older standalone capture retains the generic runner default `expected: recovered` in its header. Its saved scenario and server-verified outcome both say `command_refused`. The runner now takes the reported expectation from the saved authoring receipt.

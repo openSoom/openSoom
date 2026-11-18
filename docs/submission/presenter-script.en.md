@@ -6,6 +6,8 @@ Use the [English slides](../../deliverables/presentation/openSoom-evaluation.ppt
 
 S1 0:00 · S2 0:41 · S3 1:47 · S4 2:55 · S5 3:56 · S6 5:58 · S7 7:11 · S8 8:08 · S9 8:56 · S10 10:10
 
+**If asked about deployment:** On one VM we selected two logical edges in turn. The actual Sandbox deployed the MN-CSE and maintenance app to each, where a fresh work order consumed the external shaft reading. [Controller and product receipts](../../evidence/runtime/option-c/index.json)
+
 ## 1 · Did the air actually move?
 
 *Start on the cover.*

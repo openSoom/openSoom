@@ -1,5 +1,8 @@
 # Evidence-based rubric position
 
+The current 17-criterion release review covers facility onboarding, native MEC and the work-order film. The sections below retain the earlier release assessment. [Current release review](../review/release-assessment.ko.md)
+
+
 The [six-team review of the next Goal](../review/release-goal-review.ko.md) records the 19 November check against the organizer PDF and the new release gates. The historical execution findings follow.
 
 Date: 18 November 2026 (KST). This is an internal evidence map, not official scoring. The original handout defines 17 criteria and performance bands, but does not establish an official total, weights, track applicability or an N/A rule. No winning probability is inferred.

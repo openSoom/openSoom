@@ -32,6 +32,12 @@ loadRecord().catch(() => {
 });
 
 const routes = {
+  missing: {
+    title: 'Keep the general inspection open.',
+    detail: 'The site has an ACK and low airflow. Without a fresh independent position, the technician cannot yet choose between the actuator and the airflow path.',
+    evidence: 'Open work order before the independent reading · demo-271a6c3a23',
+    file: 'maintenance-release-local.json'
+  },
   local: {
     title: 'The position sensor publishes locally.',
     detail: 'The bridge reads a separate sensor AE’s content instance. The maintenance app receives a measurement with its sensor ID, unit and observation time.',

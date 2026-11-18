@@ -1,8 +1,8 @@
 {
   "version": 4,
   "date": "2026-11-19",
-  "review_round": "Next-release planning review at 7a52a8e by six GPT-6.2 Sol Max teams",
-  "scope": "Historical findings retain their original owners. Release-prefixed owners review the next cycle. Plan acceptance creates no implementation credit.",
+  "review_round": "Option C integrated release and evidence rechecks, 19 November 2026",
+  "scope": "Preserved first-release findings, six current independent rubric owners and one independent non-scoring Idea reviewer. The score table identifies measured boundaries and outstanding external steps.",
   "findings": [
     {
       "id": "R-001",
@@ -1513,6 +1513,167 @@
       "decision_reason": "Adopted as a falsifiable product and architecture contract. Actual platform, independent virtual sensor and user workflow evidence remain due.",
       "implementation_state": "design_recorded_runtime_pending",
       "review_state": "open"
+    },
+    {
+      "id": "RC-A01",
+      "team": "release_a",
+      "criteria": [
+        1,
+        2,
+        3
+      ],
+      "observed_evidence": "evidence/runtime/multiapp-revalidation/index.json",
+      "gap_and_impact": "Readers need to distinguish the secure protocol run, multi-app run and actual inspection.",
+      "minimum_change": "Explain why devices publish and apps query, and link each native receipt.",
+      "product_reason": "Readers can reproduce the standard behavior on the correct transport.",
+      "verification": "Compare MQTT and HTTPS readings for the same CIN, native fanout and two independent app subscribers.",
+      "main_decision": "adopt",
+      "decision_path": "docs/submission/hackster-article.md",
+      "implementation_state": "verified",
+      "review_state": "resolved",
+      "evidence_status": "captured",
+      "decision_reason": "Readers can reproduce the standard behavior on the correct transport.",
+      "review_revision": "449850c43ea0d45e735284eb95bd29ee13d83065"
+    },
+    {
+      "id": "RC-B01",
+      "team": "release_b",
+      "criteria": [
+        4,
+        5,
+        7
+      ],
+      "observed_evidence": "evidence/video/work-order/film.json",
+      "gap_and_impact": "The encoded film had a scene offset between the ACK, airflow and shaft explanation.",
+      "minimum_change": "Use actual recording frames and verify the encoded master. Publish current/earlier films with distinct roles.",
+      "product_reason": "Technicians must be able to see precisely what changed their decision.",
+      "verification": "Full decode, 11 cues, original AAC packet digest, note at seconds 29, 37, 46, 56 and 66.",
+      "main_decision": "adopt",
+      "decision_path": "deliverables/video/openSoom-work-order-720p.mp4",
+      "implementation_state": "verified",
+      "review_state": "resolved",
+      "evidence_status": "captured",
+      "decision_reason": "Technicians must be able to see precisely what changed their decision.",
+      "review_revision": "449850c43ea0d45e735284eb95bd29ee13d83065"
+    },
+    {
+      "id": "RC-C01",
+      "team": "release_c",
+      "criteria": [
+        6,
+        8,
+        9
+      ],
+      "observed_evidence": "evidence/release/clean-work-order.json",
+      "gap_and_impact": "The article and README need a real backlink, and forum participation and interview performance require genuine events.",
+      "minimum_change": "Test a fresh installation, prepare three article images, verify public files and record outstanding submission actions.",
+      "product_reason": "External participants can reproduce the demo and locate a public submission.",
+      "verification": "Check public URLs in a signed-out client, retain actual Hackster URL, public exchange and interview evidence when available.",
+      "main_decision": "adopt",
+      "decision_path": "docs/submission/handoff.md",
+      "implementation_state": "handoff_prepared",
+      "review_state": "open_external",
+      "evidence_status": "captured",
+      "decision_reason": "External participants can reproduce the demo and locate a public submission.",
+      "review_revision": "449850c43ea0d45e735284eb95bd29ee13d83065"
+    },
+    {
+      "id": "RC-D01",
+      "team": "release_d",
+      "criteria": [
+        10
+      ],
+      "observed_evidence": "evidence/runtime/facility-retirement.json",
+      "gap_and_impact": "Removing a site could leave a former maintenance origin able to read historical device acknowledgements.",
+      "minimum_change": "Remove this origin from the ACK policy as well as observations while preserving other authorized readers.",
+      "product_reason": "Operator history stays available without retaining the retired app’s access.",
+      "verification": "Retrieve the same two historical CINs as the retired role before/after and as an existing operator afterward.",
+      "main_decision": "adopt",
+      "decision_path": "scripts/facility_retirement_check.py",
+      "implementation_state": "verified",
+      "review_state": "awaiting_independent_recheck",
+      "evidence_status": "captured",
+      "decision_reason": "Operator history stays available without retaining the retired app’s access.",
+      "review_revision": "449850c43ea0d45e735284eb95bd29ee13d83065"
+    },
+    {
+      "id": "RC-D02",
+      "team": "release_d",
+      "criteria": [
+        11,
+        17
+      ],
+      "observed_evidence": "evidence/agent/scenario-authoring/standalone-verified.json",
+      "gap_and_impact": "The standalone capture header used a default expectation for a different workflow.",
+      "minimum_change": "Preserve the original capture and use the saved scenario expectation in subsequent reports.",
+      "product_reason": "A manager must distinguish successful refusal of a stale request from physical recovery.",
+      "verification": "Compare stored expected and actual results, native readback and absence of new CSE commands.",
+      "main_decision": "adopt",
+      "decision_path": "src/opensoom/llm_runner.py",
+      "implementation_state": "implemented",
+      "review_state": "awaiting_independent_recheck",
+      "evidence_status": "captured",
+      "decision_reason": "A manager must distinguish successful refusal of a stale request from physical recovery.",
+      "review_revision": "449850c43ea0d45e735284eb95bd29ee13d83065"
+    },
+    {
+      "id": "RC-E01",
+      "team": "release_e",
+      "criteria": [
+        12,
+        13,
+        16
+      ],
+      "observed_evidence": "evidence/runtime/option-c/index.json",
+      "gap_and_impact": "Native 033 commissioning and 046 reading are proven. The initial 046 run did not configure a native subscription from oneM2M.",
+      "minimum_change": "Register and read back an actual 046 subscription through the commissioned bridge.",
+      "product_reason": "A site can bind a provider notification route for maintenance follow-up.",
+      "verification": "Capture two real services, configured callback, 046 subscription ID and same-work-order result under fixed roles.",
+      "main_decision": "adopt",
+      "decision_path": "deploy/mec-sandbox/README.md",
+      "implementation_state": "in_progress",
+      "review_state": "open",
+      "evidence_status": "captured",
+      "decision_reason": "A site can bind a provider notification route for maintenance follow-up.",
+      "review_revision": "449850c43ea0d45e735284eb95bd29ee13d83065"
+    },
+    {
+      "id": "RC-F01",
+      "team": "release_f",
+      "criteria": [
+        14,
+        15
+      ],
+      "observed_evidence": "docs/extension-decisions.md",
+      "gap_and_impact": "No local training clients or location-triggered assignment have been demonstrated for this fixed-asset use case.",
+      "minimum_change": "Reopen only for measured cross-site learning with ESTIMED VM or mobile equipment with network location events.",
+      "product_reason": "An unsupported mechanism increases commissioning cost without changing the current inspection.",
+      "verification": "Capture dynamic clients, dropout and improvement, or a source-tagged location transition that changes a work order.",
+      "main_decision": "defer",
+      "decision_path": "docs/extension-decisions.md",
+      "implementation_state": "deferred_with_conditions",
+      "review_state": "open",
+      "evidence_status": "unimplemented",
+      "decision_reason": "An unsupported mechanism increases commissioning cost without changing the current inspection.",
+      "review_revision": "449850c43ea0d45e735284eb95bd29ee13d83065"
+    },
+    {
+      "id": "RC-IDEA01",
+      "team": "idea_model",
+      "criteria": [],
+      "observed_evidence": "evidence/agent/facility-onboarding.json",
+      "gap_and_impact": "New sites and later setpoints need actual installation and supersession evidence.",
+      "minimum_change": "Add versioned facility preview and admin activation, and keep historical shaft readings from affecting a newer command.",
+      "product_reason": "Correct diagnosis follows the current asset/setpoint, and an operator can reuse the system without changing source.",
+      "verification": "Persist a newly named two-zone site across restart; verify a late sensor response cannot replace the active command’s interpretation.",
+      "main_decision": "adopt",
+      "decision_path": "evidence/runtime/maintenance-command-followup.json",
+      "implementation_state": "verified",
+      "review_state": "awaiting_independent_recheck",
+      "evidence_status": "captured",
+      "decision_reason": "Correct diagnosis follows the current asset/setpoint, and an operator can reuse the system without changing source.",
+      "review_revision": "449850c43ea0d45e735284eb95bd29ee13d83065"
     }
-  ]
+  ],
+  "release_assessment": "docs/review/release-assessment.ko.md"
 }

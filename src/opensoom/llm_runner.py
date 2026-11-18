@@ -237,6 +237,8 @@ async def author_trial(args, listed, execute, provider, result, proxy):
         receipts.append({"tool": call["name"], **receipt})
         if not reply["is_error"]:
             remaining.discard(call["name"])
+            if call["name"] == "save_scenario":
+                result.update(scenario=data["scenario_id"], expected=data["expected_result"])
         if call["name"] == "read_scenario_run" and not reply["is_error"]:
             ordered = [r["tool"] for r in receipts]
             if ("save_scenario" not in ordered or "run_scenario" not in ordered or
@@ -262,7 +264,7 @@ async def run(args: argparse.Namespace) -> dict:
     run_id = "agent-" + uuid.uuid4().hex[:12]
     proxy = ServiceProxy(run_id=run_id)
     result: dict = {"id": run_id, "mode": args.mode, "facility_id": args.facility,
-                   "scenario": args.scenario, "expected": args.expect, "started_at": timestamp(),
+                   "scenario": None if author else args.scenario, "expected": None if author else args.expect, "started_at": timestamp(),
                    "outcome": "NOT_RUN", "physical_devices": "simulated", "tool_calls": [], "model_responses": []}
     provider = None
     budget = None
@@ -424,7 +426,7 @@ async def run(args: argparse.Namespace) -> dict:
                                      {"outcome": result["outcome"], "summary": result.get("summary", result.get("error", "")),
                                       "model": result["model"], "steps": len(result["model_responses"]),
                                       "tool_calls": result["tool_calls"], "live_model": result["live_model"],
-                                      "expected": args.expect, "scenario_execution_id": result.get("scenario_execution_id"), "reported_outcome": result.get("report", {}).get("operational_outcome"),
+                                      "expected": result["expected"], "scenario_execution_id": result.get("scenario_execution_id"), "reported_outcome": result.get("report", {}).get("operational_outcome"),
                                       "usage": result.get("budget", {}), "model_responses": result["model_responses"]})
             result["service_verification"] = verified
             observed_outcome = verified.get("outcome", verified.get("status"))

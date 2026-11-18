@@ -16,7 +16,7 @@ openSoom connects those observations to an operating decision and checks what ha
 
 At our virtual cooking line, the site operator requests a fully open damper. The controller acknowledges 100%. Follow-up airflow measures **360 m³/h** against this zone’s **900 m³/h** target. The site operations app keeps the incident open. Maintenance starts a general inspection. A separately simulated shaft encoder then measures **35%**. The existing work order now puts actuator travel and position feedback first. A technician would still need to examine the equipment to establish the cause.
 
-![Actual dashboard for the retained work order](https://raw.githubusercontent.com/openSoom/openSoom/main/evidence/video/work-order/dashboard-order.png)
+![Actual dashboard for the retained work order](https://raw.githubusercontent.com/openSoom/openSoom/449850c43ea0d45e735284eb95bd29ee13d83065/evidence/video/work-order/dashboard-order.png)
 
 In local run `demo-271a6c3a23`, the technician’s app was offline when the incident opened. On restart it read the retained observation from the MN-CSE. The local sensor supplied its independent measurement through a second application identity. Replaying notifications and restarting again left one logical work order with the same revision records. The CSE refused command writes from both maintenance and the bridge. [Local run and permission receipts](https://github.com/openSoom/openSoom/blob/main/evidence/runtime/maintenance-release-local.json).
 

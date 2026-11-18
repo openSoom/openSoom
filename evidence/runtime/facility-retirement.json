@@ -1,0 +1,44 @@
+{
+  "status": "passed",
+  "scope": "Actual ACME CSE on loopback, same historical CIN before and after a site is removed from configuration",
+  "active_sites_after": [
+    "learning-b"
+  ],
+  "records": {
+    "observations": {
+      "ri": "cinLAibMDxbyX",
+      "before": {
+        "rsc": 2000,
+        "rqi": "opensoom-b246ee14c3414cb9970006fa2f06fcdd"
+      },
+      "retired_after": {
+        "rsc": 4103,
+        "rqi": "opensoom-0424181761914c94997db15b3c07e030"
+      },
+      "operator_after": {
+        "rsc": 2000,
+        "rqi": "opensoom-22551c983c6e4437bf37c8a6f47c0d25"
+      }
+    },
+    "acks": {
+      "ri": "cinI4iaR4enat",
+      "before": {
+        "rsc": 2000,
+        "rqi": "opensoom-e59aa2abe41d476c8cff23f92828299e"
+      },
+      "retired_after": {
+        "rsc": 4103,
+        "rqi": "opensoom-7be52cda34214427a8d071b69a7b15a0"
+      },
+      "operator_after": {
+        "rsc": 2000,
+        "rqi": "opensoom-3d255280c60d4b1298b2d46538a2832b"
+      }
+    }
+  },
+  "source_sha256": {
+    "src/opensoom/core.py": "28d0a2de0bd8217b84ae97d8b80e33f17cb8b9ff4e27ffa475616fd635a20ea6",
+    "src/opensoom/maintenance.py": "5032abae3e8c694da180290e97acba624f82e383ffa6c92c4ff04777271feffc",
+    "scripts/facility_retirement_check.py": "7106843c5886495b67715fc7a3958516a9ec0aac10e695a0e83b51e522a4f535"
+  }
+}

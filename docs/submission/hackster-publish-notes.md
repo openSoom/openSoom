@@ -15,6 +15,7 @@ Software field: openSoom source, ACME CSE 2026.5.3, Python 3.12, uv, OpenSSL, MC
 | Main demo / evaluation film | `deliverables/video/openSoom-work-order-720p.mp4` | English, 1280 × 720, 104.938 seconds. Console ACK, airflow, shaft position, work order and expanded receipt accompany the corresponding narration. |
 | Near the opening | `deliverables/video/openSoom-pr-45s.mp4` | Actual 45-second master reviewed and published; anonymous full download matches the master hash |
 | Extended historical walkthrough | `deliverables/video/openSoom-demo-5min.mp4` | Actual 300-second English demo reviewed and published; anonymous full download matches the master hash |
+| Current work-order image | `evidence/video/work-order/dashboard-order.png` | Actual screenshot of the same work order as the 720p demo. Upload beside the current main case or retain the pinned image URL. |
 | Opening image | learning-space dashboard image already linked in the body | Original application screenshot; virtual measurements, actual software |
 | Architecture | source-mapped distributed-lab image already linked in the body | Explanatory geometry; separate processes versus logical/resource cards are captioned |
 

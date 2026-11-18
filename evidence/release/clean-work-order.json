@@ -1,0 +1,226 @@
+{
+  "revision": "449850c43ea0d45e735284eb95bd29ee13d83065",
+  "method": "Fresh local clone with no copied virtual environments or operating database. Installed both environments from the documented quickstart; dependency caches may be shared. The HTTP loopback MN and IN and the credential-bound TLS worker gateway used dynamically allocated ports.",
+  "commands": [
+    "uv sync --locked --python 3.12",
+    "uv run --no-sync python scripts/cse_runtime.py install",
+    "uv run --no-sync python scripts/maintenance_demo.py --output .runtime/clean-acceptance.json"
+  ],
+  "receipt": {
+    "status": "passed",
+    "sensor_path": "local",
+    "virtual_equipment": true,
+    "facility_id": "food-a",
+    "run_id": "demo-2c8e3285dc",
+    "site_cse_id": "/opensoom-food",
+    "site_node_type": 2,
+    "central_remote_cses": [
+      "/opensoom-central/opensoom-food"
+    ],
+    "configured_apps": {
+      "food-a": true,
+      "learning-b": false
+    },
+    "command": {
+      "facility_id": "food-a",
+      "zone_id": "cook",
+      "action": "set_damper",
+      "value": 100.0,
+      "reason": "Preauthorized deterministic demonstration",
+      "request_id": "demo-2c8e3285dc:damper",
+      "id": "cmd-65a71bf9cd08",
+      "status": "unresolved",
+      "ack": true,
+      "created_at": "2026-11-18T16:32:29.172453+00:00",
+      "expires_at": "2026-11-18T16:32:59.172453+00:00",
+      "profile_version": 1,
+      "run_id": "demo-2c8e3285dc",
+      "incident_id": "incident-9f37c0d817",
+      "observed_result": "unresolved",
+      "cse_rqi": "opensoom-34133365af674b2abb393e4712559eb2",
+      "cse_resource_id": "cinOs9kenNAVz",
+      "ack_at": "2026-11-18T16:32:29.194+00:00",
+      "ack_rqi": "opensoom-4ccaff801f21408695005d2de06ae720",
+      "ack_sequence": 1,
+      "unresolved_samples": 2,
+      "verification_rqi": "opensoom-ea7ff07b0c9a4d63a3e08a8a648e0449"
+    },
+    "incident": {
+      "id": "incident-9f37c0d817",
+      "facility_id": "food-a",
+      "zone_id": "cook",
+      "title": "Verify cooking line ventilation",
+      "status": "open",
+      "created_at": "2026-11-18T16:32:29.146+00:00",
+      "recovery_count": 0,
+      "maintenance_opened": true,
+      "reason": "Airflow is below this zone's configured simulation target; Particles exceed the configured simulation target; CO\u2082 exceeds the configured simulation target",
+      "severity": "critical",
+      "updated_at": "2026-11-18T16:32:39.551+00:00",
+      "latest_rqi": "opensoom-8425973ffdd344778a9a2b1377ebbaf9"
+    },
+    "before_independent_sample": {
+      "facility_id": "food-a",
+      "zone_id": "cook",
+      "asset_id": "extract-damper-01",
+      "incident_id": "incident-9f37c0d817",
+      "run_id": "demo-2c8e3285dc",
+      "source_cin_ri": "cinIYAc2Aptwi",
+      "kind": "work_order",
+      "work_order_id": "work-incident-9f37c0d817",
+      "command_id": "cmd-65a71bf9cd08",
+      "observed_at": "2026-11-18T16:32:31.244+00:00",
+      "status": "open",
+      "priority": "inspection",
+      "evidence_status": "unknown",
+      "revision": 3,
+      "reason": "no_mapped_sensor_sample",
+      "request_id": "sensor-70a8359bdf0bc836f2e4c7b197b2e99e",
+      "request_ri": "cin0zkKrHHgM0",
+      "response_ri": "cin7xqtUxmeeA",
+      "outcome_ri": "cinTWoTyeUom8",
+      "mode": "local",
+      "airflow": 360.0,
+      "profile_version": 1,
+      "resource_id": "cinuawdm7Zmqo",
+      "read_rqi": "opensoom-09735e1708cd41a4be1433a3d2c2a50e"
+    },
+    "after": {
+      "facility_id": "food-a",
+      "zone_id": "cook",
+      "asset_id": "extract-damper-01",
+      "incident_id": "incident-9f37c0d817",
+      "run_id": "demo-2c8e3285dc",
+      "source_cin_ri": "cinIYAc2Aptwi",
+      "kind": "work_order",
+      "work_order_id": "work-incident-9f37c0d817",
+      "command_id": "cmd-65a71bf9cd08",
+      "observed_at": "2026-11-18T16:32:31.244+00:00",
+      "status": "open",
+      "priority": "inspect_actuator_feedback",
+      "evidence_status": "verified_independent_sample",
+      "revision": 4,
+      "requested_pct": 100.0,
+      "sample": {
+        "sensor_id": "shaft-position-01",
+        "value": 35,
+        "unit": "%",
+        "source": "independent_position_sensor",
+        "observed_at": "2026-11-18T16:32:38.601992+00:00"
+      },
+      "provider_receipt": {
+        "sample_cin_ri": "cinm3RF2sNUWP"
+      },
+      "request_id": "sensor-70a8359bdf0bc836f2e4c7b197b2e99e",
+      "request_ri": "cin0zkKrHHgM0",
+      "response_ri": "cinXERaXzcrdc",
+      "outcome_ri": "cinTWoTyeUom8",
+      "mode": "local",
+      "airflow": 360.0,
+      "profile_version": 1,
+      "resource_id": "cin6VINvTLByQ",
+      "read_rqi": "opensoom-82dd8e86f4d448c59af6c37b47ff1e6f"
+    },
+    "logical_order_count": 1,
+    "worker_health": {
+      "maintenance": {
+        "role": "maintenance",
+        "facility_id": "food-a",
+        "scans": 3,
+        "notifications": 2,
+        "rejections": 0,
+        "last_error": null
+      },
+      "bridge": {
+        "role": "bridge",
+        "facility_id": "food-a",
+        "scans": 15,
+        "notifications": 2,
+        "rejections": 0,
+        "last_error": null
+      }
+    },
+    "denials": {
+      "maintenance_command": {
+        "rsc": 4103,
+        "rqi": "opensoom-9b50e6d220c845a5a90c217561ef69c0"
+      },
+      "bridge_command": {
+        "rsc": 4103,
+        "rqi": "opensoom-0bbb172893be41af9c46e27f9dcb7438"
+      },
+      "maintenance_response": {
+        "rsc": 4103,
+        "rqi": "opensoom-1b529ffe8fcf4e49aaff179a3b0d50d0"
+      },
+      "bridge_work_order": {
+        "rsc": 4103,
+        "rqi": "opensoom-85faa887126b4a4e8641dde5405c0f22"
+      },
+      "bridge_request": {
+        "rsc": 4103,
+        "rqi": "opensoom-d919bce62a7649b89587528ce93992e8"
+      },
+      "other_facility": {
+        "rsc": 4103,
+        "rqi": "opensoom-9560b9d9890a49b5b32bd5c185e4416d"
+      },
+      "credential_origin_mismatch": {
+        "rsc": 4103,
+        "rqi": "opensoom-856934cf5b3e4014818bcf36e322b762"
+      }
+    },
+    "airflow": {
+      "observed": 360.0,
+      "target": 900,
+      "unit": "m\u00b3/h",
+      "observation_ri": "cinIYAc2Aptwi"
+    },
+    "invalid_local_samples": [
+      {
+        "sample_ri": "cinwfsJzgyX1C",
+        "reason": "unrelated_asset_ignored",
+        "scans": 2
+      },
+      {
+        "sample_ri": "cinVwMV2IRndG",
+        "reason": "unexpected_measurement_unit",
+        "response_ri": "cinoI5gxUynQz"
+      },
+      {
+        "sample_ri": "cinY9OT9wcXCq",
+        "reason": "invalid_measurement_time",
+        "response_ri": "cinkUD6TRhmnZ"
+      },
+      {
+        "sample_ri": "cin7zEJ4T8Pkj",
+        "reason": "before_actuator_settled",
+        "response_ri": "cinW8iMeG1ObK"
+      }
+    ],
+    "replay": {
+      "duplicate_callback_hints": 2,
+      "restarted_after_write": true,
+      "revision_cins_before": [
+        "cin6VINvTLByQ",
+        "cinEtBFoGFZXk",
+        "cinHfYBOStt62",
+        "cinKOoab7J9jq",
+        "cinTSC8iK9Azg",
+        "cinYqORixoC4v",
+        "cinuawdm7Zmqo"
+      ],
+      "revision_cins_after": [
+        "cin6VINvTLByQ",
+        "cinEtBFoGFZXk",
+        "cinHfYBOStt62",
+        "cinKOoab7J9jq",
+        "cinTSC8iK9Azg",
+        "cinYqORixoC4v",
+        "cinuawdm7Zmqo"
+      ]
+    },
+    "local_sample_cin": "cinm3RF2sNUWP",
+    "dashboard": "live service projection from oneM2M work_order CINs"
+  }
+}

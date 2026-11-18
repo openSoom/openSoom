@@ -126,18 +126,20 @@ def disable_streams(core, fid):
             except CSEError as exc:
                 if exc.rsc != 4004:
                     raise
-    # An entire site can also be removed from the configuration. Its raw sensor
-    # observations may still exist in the CSE and use the original facility ACP.
-    path = core.root + "/acp-" + fid + "-observations"
-    try:
-        acp = core.cse.retrieve(path)["body"]["m2m:acp"]
-    except CSEError as exc:
-        if exc.rsc != 4004:
-            raise
-    else:
-        origin = core.identities.get("maintenance:" + fid)
+    # Raw device data survives removal. Strip the retired AE from each shared
+    # device policy while retaining the normal readers and writers.
+    origin = core.identities.get("maintenance:" + fid)
+    for stream in ("observations", "acks"):
+        path = f"{core.root}/acp-{fid}-{stream}"
+        try:
+            acp = core.cse.retrieve(path)["body"]["m2m:acp"]
+        except CSEError as exc:
+            if exc.rsc != 4004:
+                raise
+            continue
         if any(origin in rule["acor"] for rule in acp["pv"]["acr"]):
-            rules = [{**rule, "acor": [value for value in rule["acor"] if value != origin]} for rule in acp["pv"]["acr"]]
+            rules = [{**rule, "acor": [value for value in rule["acor"] if value != origin]}
+                     for rule in acp["pv"]["acr"]]
             core.cse.update(path, {"m2m:acp": {"pv": {"acr": [rule for rule in rules if rule["acor"]]}}})
     core.store.delete("work_order_cursor", fid)
     core.store.delete("work_order_projection", fid)
