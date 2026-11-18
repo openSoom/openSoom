@@ -2,10 +2,32 @@
 
 | Film | Use | Editorial and technical sources |
 | --- | --- | --- |
+| [Work-order decision film](openSoom-work-order-720p.mp4) | Current evaluation talk and main Hackster walkthrough. 104.938 seconds, 1280 × 720, English voice and burned-in plus selectable captions | [Caption file](openSoom-work-order.en.srt), [browser source](cinematic/demo/maintenance-work-order.webm), [film manifest](../../evidence/video/work-order/film.json) |
 | [45-second introduction](openSoom-pr-45s.mp4) | Public project introduction, with Firefly cinematography, original generated score, English voice and selectable English captions | [PR sources](cinematic/pr/), [production budget](../../evidence/video/cinematic/adobe-production.json) |
-| [Five-minute demonstration](openSoom-demo-5min.mp4) | English evaluation presentation. Includes filmed dashboard operation in two facilities and a reconstruction from the independent application receipts | [Scene list, captions, recordings and reproduction](cinematic/demo/README.md) |
+| [Five-minute demonstration](openSoom-demo-5min.mp4) | Extended walkthrough of two facilities and the independent application receipts | [Scene list, captions, recordings and reproduction](cinematic/demo/README.md) |
 
-The [CinematicDemo editing brief](cinematic/CinematicDemo.ko.md) identifies the sources behind each scene. The [presenter guide](../../docs/submission/technical-qa.md) reserves five minutes of the twelve-minute talk for the full demo.
+Play the 720p work-order film after slide 5. Its local dashboard scene follows `demo-271a6c3a23` from a 100% command ACK to a 360 m³/h follow-up and an independent shaft reading of 35%. The later cloud comparison shows its own run ID. [English presenter notes](../../docs/submission/presenter-script.en.md) · [Local work order](../../evidence/runtime/maintenance-release-local.json) · [Cloud comparison](../../evidence/runtime/mec-maintenance-roundtrip.json)
+
+## Reproduce and verify the work-order film
+
+From the repository root, use Python with Pillow, FFmpeg and FFprobe. Rendering uses the macOS Arial fonts. To retain the approved narration and subtitle timing, run the following commands. The renderer writes a replacement MP4 after its duration check succeeds. To synthesize the English audio from the script on macOS, omit `--preserve-audio` and use the Samantha system voice.
+
+```bash
+python3 scripts/cinematic/render_work_order.py --preserve-audio deliverables/video/openSoom-work-order-720p.mp4
+python3 scripts/cinematic/render_work_order.py --verify-screen
+ffmpeg -v error -i deliverables/video/openSoom-work-order-720p.mp4 -map 0:v:0 -map 0:a:0 -f null -
+```
+
+The verification compares the beginning, middle and end of six narrated screens against the source recording. Check the facility at 20.96 s, ACK at 29.19 s, airflow at 37.75 s, shaft at 47.15 s, work order at 56.79 s and expanded receipt at 66.44 s. The original WebM frames for these views are at 15.0, 6.05, 8.15, 10.6, 18.7 and 22.0 seconds, respectively. These offsets apply to that file's SHA-256 `4b7f13f5de5b0d2e8abe28f85bba51f8e08e5463b78c99bae18efffaf17fa0ec`. [Film manifest and release SHA-256](../../evidence/video/work-order/film.json)
+
+For a new recording, start the dashboard and matching landing page for the retained run. With Playwright and Chrome installed, point the capture script at those URLs and the corresponding JSON evidence. It saves the six validated screen poses, their hashes, and the WebM hash in `capture.json`. The renderer checks this manifest before using the screenshots. The capture leaves its files in the supplied directory.
+
+```bash
+node scripts/cinematic/capture_work_order.cjs "$DASHBOARD_URL" "$LANDING_URL" "$RUN_JSON" "$CAPTURE_DIR"
+python3 scripts/cinematic/render_work_order.py --capture-dir "$CAPTURE_DIR" --recording "$CAPTURE_DIR/work-order.webm" --evidence "$RUN_JSON" --preserve-audio deliverables/video/openSoom-work-order-720p.mp4
+```
+
+The [CinematicDemo editing brief](cinematic/CinematicDemo.ko.md) describes the source footage in the earlier films.
 
 ## Earlier 108-second film
 

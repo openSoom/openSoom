@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/openSoom/openSoom/raw/refs/heads/main/deliverables/video/openSoom-pr-45s.mp4">45-second introduction</a> ·
+  <a href="https://github.com/openSoom/openSoom/raw/refs/heads/main/deliverables/video/openSoom-work-order-720p.mp4">Watch the 720p work-order demo</a> ·
   <a href="https://github.com/openSoom/openSoom/raw/refs/heads/main/deliverables/video/openSoom-demo-5min.mp4">5-minute demo</a> ·
   <a href="#follow-a-ventilation-incident">Workflow</a> ·
   <a href="#why-onem2m-is-part-of-the-product">Architecture</a> ·
@@ -19,6 +19,33 @@
 </p>
 
 A running fan can still leave a room below its airflow target. openSoom helps operators find the affected zone, authorize an adjustment and check the outcome against the facility's own targets. The dashboard, Codex plugin and standalone LLM runner share the same operations service.
+
+## Which inspection comes first?
+
+The cooking-line damper acknowledged a 100% opening command. The next simulated airflow reading was **360 m³/h against a 900 m³/h target**. The operator kept the incident open. When an independent shaft sensor measured **35% open**, the technician’s first check changed to actuator travel and position feedback. The work order retained its original ID.
+
+<picture>
+  <source media="(prefers-reduced-motion: reduce)" srcset="docs/assets/opensoom-work-order-poster.jpg">
+  <img src="docs/assets/opensoom-work-order.gif" width="840" alt="One recorded run moves from the device acknowledgement to the airflow check, then shows the independent shaft position and inspection priority in the actual dashboard.">
+</picture>
+
+Two executions exercised the same decision. In the local run, the independent sensor used the facility’s oneM2M service. In the cloud run, a separate bridge discovered an ETSI MEC 046 service and retrieved the other provider’s mapped sensor. Both returned the reading through the MN-CSE to the maintenance app. The site operations app alone controlled the virtual actuator. [Local incident and restart receipts](evidence/runtime/maintenance-release-local.json) · [Cloud service and inspection receipts](evidence/runtime/mec-maintenance-roundtrip.json) · [MEC 033 provider commissioning and subsequent MEC 046 measurement](evidence/runtime/mec-provider-commissioning.json) · [Application responsibilities](docs/mec-application-contract.ko.md)
+
+To replay the work order after cloning the repo, run the following from its root. The first two commands install the software. The third launches an isolated lab and keeps its dashboard open. Select **No recovery after action** to replay, then press Ctrl+C in the terminal to close this lab.
+
+```sh
+uv sync --locked --python 3.12
+uv run --no-sync python scripts/cse_runtime.py install
+uv run --no-sync python scripts/maintenance_demo.py --dashboard-port 19490 --hold
+```
+
+[Open the running work-order dashboard](http://127.0.0.1:19490/) · [Agent-authored trials and original CSE observations](evidence/agent/scenario-authoring/README.md)
+
+## Bring another facility
+
+With the Codex plugin, ask for a preview using your own zones, airflow targets, sensor units and installed adapter. A site administrator activates the reviewed version. One tested example uses a conservation workshop with receiving and bench zones. After restarting the service, the operator replayed its bench trial and read the original measurement; the stale sample produced zero commands. [Configure a site](docs/extending.md) · [Plugin exercise](evidence/agent/facility-onboarding.json)
+
+For an independent sensor provider, the Sandbox can deploy the MN-CSE and maintenance application together. North and south were independently selected logical hosts on one VM. The platform installed both workloads on each host. [Deploy the Option C package](deploy/mec-sandbox/README.md) · [Controller and work-order receipts](evidence/runtime/option-c/index.json)
 
 ## Follow a ventilation incident
 

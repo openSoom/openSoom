@@ -12,6 +12,7 @@ import jsonschema
 
 from . import scenario_authoring
 from . import maintenance
+from . import facility_pack
 from .adapters import encode_virtual, normalize
 from .models import ActionRequest, Observation, utcnow
 from .onem2m import CSEClient, CSEError, MQTTCSEClient
@@ -39,7 +40,14 @@ class Core:
         self.root = self.base + "/opensoom"
         self.notify_url = os.environ.get("OPENSOOM_NOTIFY_URL", "http://127.0.0.1:8090/api/notify")
         self.profiles = self.load_profiles()
-        self.registry = self.load_registry(self.profiles)
+        installed = self.store.list("installed_facility_packs")
+        for pack in installed:
+            facility_pack.validate(pack, ROOT)
+            profile = pack["profile"]
+            if profile["id"] in self.profiles:
+                raise ValueError("An installed facility pack conflicts with an existing profile")
+            self.profiles[profile["id"]] = profile
+        self.registry = self.load_registry(self.profiles, installed)
         self.connected = False
         self.last_error: str | None = None
         self.identities = self.store.get("config", "identities", {})
@@ -59,8 +67,9 @@ class Core:
         return profiles
 
     @staticmethod
-    def load_registry(profiles):
+    def load_registry(profiles, installed=()):
         configuration = json.loads((ROOT / "config/facilities.json").read_text())
+        configuration["facilities"].extend(pack["facility"] for pack in installed)
         jsonschema.validate(configuration, json.loads((ROOT / "schemas/facilities.schema.json").read_text()))
         entries = configuration["facilities"]
         if len({item["id"] for item in entries}) != len(entries):
@@ -135,7 +144,7 @@ class Core:
         policies = {}
         for kind, writers, permissions in (("structure", [], 0), ("observations", [self.identities["adapter"]], 5), ("commands", [self.identities["operator"]], 1), ("acks", [self.identities["adapter"]], 1)):
             readers = list(all_readers)
-            if workers and kind == "observations":
+            if workers and kind in ("observations", "acks"):
                 readers.append(workers["maintenance"])
             rules = [{"acor": readers, "acop": 34}]
             if writers:
@@ -252,29 +261,33 @@ class Core:
                 self.log("incident_opened", diagnosis["reason"], facility["id"], zone["id"], run_id, rqi=rqi)
             if diagnosis["status"] == "critical" and not incident.get("maintenance_opened"):
                 incident["maintenance_opened"] = maintenance.queue_outcome(self, "incident.opened", incident, observation, facility, zone, rqi)
-            incident.update(reason=diagnosis["reason"], severity=diagnosis["status"], recovery_count=0, updated_at=utcnow(), latest_rqi=rqi)
+            incident.update(status="open", reason=diagnosis["reason"], severity=diagnosis["status"], recovery_count=0,
+                            updated_at=utcnow(), latest_rqi=rqi)
             self.store.put("incidents", key, incident)
-            if diagnosis["status"] == "critical":
-                for command in self.store.list("commands"):
-                    if command.get("incident_id") == incident["id"] and command.get("ack_at") and command["action"] == "set_damper" and datetime.fromisoformat(observation.observed_at) > datetime.fromisoformat(command["ack_at"]):
-                        command["unresolved_samples"] = command.get("unresolved_samples", 0) + 1
-                        if command["unresolved_samples"] >= profile["recovery_samples"]:
-                            if command.get("observed_result") != "unresolved":
-                                maintenance.queue_outcome(self, "command.unresolved_after_ack", incident, observation, facility, zone, rqi, command)
-                            command.update(status="unresolved", observed_result="unresolved", verification_rqi=rqi)
-                        self.store.put("commands", command["id"], command)
-        elif incident and incident["status"] != "resolved":
-            acknowledged = [c for c in self.store.list("commands") if c["facility_id"] == facility["id"] and c["zone_id"] == zone["id"] and c.get("ack") and c["action"] == "set_damper" and c.get("incident_id") == incident["id"] and datetime.fromisoformat(observation.observed_at) > datetime.fromisoformat(c["ack_at"])]
-            if acknowledged:
-                incident["recovery_count"] += 1
-                incident["status"] = "recovering"
-                if incident["recovery_count"] >= profile["recovery_samples"]:
-                    incident.update(status="resolved", resolved_at=utcnow(), reason="Two fresh post-ACK samples meet this profile's simulated operating targets")
-                    for command in acknowledged:
-                        command.update(status="verified", observed_result="recovered", verified_at=utcnow(), verification_rqi=rqi)
-                        self.store.put("commands", command["id"], command)
-                    self.log("recovery_verified", "Fresh observations verify recovery after device acknowledgement", facility["id"], zone["id"], run_id, rqi=rqi)
-                self.store.put("incidents", key, incident)
+        if not incident or incident["status"] == "resolved":
+            return
+        command = maintenance.latest_damper_commands(self.store.list("commands")).get(
+            (facility["id"], zone["id"], incident["id"]))
+        if not command or datetime.fromisoformat(observation.observed_at) <= datetime.fromisoformat(command["ack_at"]):
+            return
+        if diagnosis["status"] == "critical":
+            command["unresolved_samples"] = command.get("unresolved_samples", 0) + 1
+            if command["unresolved_samples"] >= profile["recovery_samples"]:
+                if command.get("observed_result") != "unresolved":
+                    maintenance.queue_outcome(self, "command.unresolved_after_ack", incident, observation, facility, zone, rqi, command)
+                command.update(status="unresolved", observed_result="unresolved", verification_rqi=rqi)
+            self.store.put("commands", command["id"], command)
+        elif diagnosis["status"] == "nominal":
+            if incident.get("recovery_command_id") != command["id"]:
+                incident.update(recovery_count=0, recovery_command_id=command["id"])
+            incident["recovery_count"] += 1
+            incident["status"] = "recovering"
+            if incident["recovery_count"] >= profile["recovery_samples"]:
+                incident.update(status="resolved", resolved_at=utcnow(), reason="Consecutive fresh observations meet this profile's simulated targets after the current command ACK")
+                command.update(status="verified", observed_result="recovered", verified_at=utcnow(), verification_rqi=rqi)
+                self.store.put("commands", command["id"], command)
+                self.log("recovery_verified", "Fresh observations verify recovery after device acknowledgement", facility["id"], zone["id"], run_id, rqi=rqi)
+            self.store.put("incidents", key, incident)
 
     def tool(self, name, arguments, principal, run_id=None):
         args = dict(arguments)
@@ -288,6 +301,8 @@ class Core:
                 raise OperationError("run_owner_required", "Only the owning identity can append operations to this run", 403)
         if name in ("save_scenario", "run_scenario", "read_scenario_run"):
             result = scenario_authoring.dispatch(self, name, args, principal, run_id, OperationError)
+        elif name in ("draft_facility", "activate_facility"):
+            result = facility_pack.operation(self, name, args, principal, OperationError, ROOT)
         elif name in ("commission_provider", "read_provider_result"):
             if principal["role"] != "admin":
                 raise OperationError("admin_required", "Sensor provider commissioning requires the site administrator", 403)
@@ -441,6 +456,10 @@ class Core:
         return {**command, "command_id": command["id"], "complete": command["status"] == "verified", "outcome": "recovered" if command["status"] == "verified" else ("unresolved" if command["observed_result"] == "unresolved" or command["status"] in ("timed_out", "maintenance_recorded") else "pending"), "observations": observation["observations"], "message": "Result verified from later CSE observations" if command["status"] == "verified" else "CSE acceptance/ACK alone does not establish recovery"}
 
     def acknowledge_pending(self, facility, only_command_id=None):
+        with self.lock:
+            self._acknowledge_pending(facility, only_command_id)
+
+    def _acknowledge_pending(self, facility, only_command_id):
         for command in self.store.list("commands"):
             if only_command_id and command["id"] != only_command_id:
                 continue
@@ -461,7 +480,7 @@ class Core:
                 continue
             ack = {"command_id": command["id"], "facility_id": facility["id"], "zone_id": command["zone_id"], "ack_at": utcnow(), "simulated": True, "device_state": "maintenance_recorded" if command["action"] == "request_maintenance" else "damper_changed", "value": command["value"]}
             ack_result = self.create_content(zone["path"] + "/acks", ack, self.identities["adapter"])
-            command.update(ack=True, ack_at=ack["ack_at"], ack_rqi=ack_result["rqi"], status="acknowledged", observed_result="awaiting_observations")
+            command.update(ack=True, ack_at=ack["ack_at"], ack_rqi=ack_result["rqi"], ack_sequence=ack_result["body"]["m2m:cin"].get("st", 0), status="acknowledged", observed_result="awaiting_observations")
             if command["action"] == "request_maintenance":
                 command.update(status="maintenance_recorded", observed_result="unresolved")
             self.store.put("commands", command["id"], command)
@@ -475,7 +494,7 @@ class Core:
             faulty = index == 0 and scenario != "normal"
             started_at = self.store.get("runs", facility.get("active_run"), {}).get("started_at", "9999")
             applied = [c for c in commands if c["facility_id"] == facility["id"] and c["zone_id"] == zone["id"] and c["action"] == "set_damper" and c.get("ack") and c["created_at"] >= started_at]
-            damper = float(applied[-1]["value"]) if applied else (35.0 if faulty else 70.0)
+            damper = float(max(applied, key=maintenance.damper_ack_order)["value"]) if applied else (35.0 if faulty else 70.0)
             # Deterministic device model, not a physical airflow equation:
             # an acknowledged setpoint must become the reported device state.
             # Partial/closed requests cannot borrow a full-open recovery.
@@ -572,8 +591,10 @@ class Core:
                       if f["id"] in self.registry and (principal["role"] == "admin" or f["id"] in principal["facilities"])]
         allowed = {f["id"] for f in facilities}
         incidents = [i for i in self.store.list("incidents") if i["facility_id"] in allowed]
-        commands = [c for c in self.store.list("commands") if c["facility_id"] in allowed][-40:]
-        orders = [order for fid in sorted(allowed) if "maintenance" in self.registry[fid] for order in self.store.get("work_order_projection", fid, [])]
+        commands = [c for c in self.store.list("commands") if c["facility_id"] in allowed]
+        acknowledged = maintenance.latest_damper_commands(commands)
+        commands = commands[-40:]
+        orders = [maintenance.current_order_view(order, acknowledged) for fid in sorted(allowed) if "maintenance" in self.registry[fid] for order in self.store.get("work_order_projection", fid, [])]
         return {"facilities": facilities, "work_orders": orders, "selected_facility": facilities[0]["id"] if facilities else None, "incidents": incidents, "commands": commands, "events": [e for e in self.store.events() if not e.get("facility_id") or e["facility_id"] in allowed], "runs": [r for r in self.store.list("runs") if r["facility_id"] in allowed][-15:], "runtime": {"cse_connected": self.connected, "cse_name": "ACME oneM2M", "simulation": True, "last_error": self.last_error, "last_notification": self.store.get("config", "last_notification")}, "summary": {"active_incidents": sum(i["status"] != "resolved" for i in incidents), "pending_commands": sum(c["status"] == "requested" for c in commands), "recovered_incidents": sum(i["status"] == "resolved" and i.get("resolved_at") is not None for i in incidents), "fresh_zones": sum(z["status"] not in ("stale", "missing") for f in facilities for z in f["zones"]), "total_zones": sum(len(f["zones"]) for f in facilities)}}
 
     def doctor(self):

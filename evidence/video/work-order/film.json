@@ -1,0 +1,63 @@
+{
+  "run_id": "demo-271a6c3a23",
+  "work_order_id": "work-incident-f15b899ca3",
+  "sensor_route": "local",
+  "seconds": 104.938,
+  "dimensions": [
+    1280,
+    720
+  ],
+  "software": "real CSE + dashboard capture",
+  "cloud_comparison_run": "demo-c24628832a",
+  "equipment": "virtual",
+  "opening": "AI-generated facility illustration",
+  "narration": "English synthesized voice",
+  "captions": "burned in and selectable",
+  "scenes": [
+    {
+      "scene": "kitchen",
+      "seconds": 7.041666666666667
+    },
+    {
+      "scene": "problem",
+      "seconds": 9.708333333333334
+    },
+    {
+      "scene": "facility",
+      "seconds": 8.416666666666666
+    },
+    {
+      "scene": "ack",
+      "seconds": 8.041666666666666
+    },
+    {
+      "scene": "flow",
+      "seconds": 9.083333333333334
+    },
+    {
+      "scene": "shaft",
+      "seconds": 9.708333333333334
+    },
+    {
+      "scene": "order",
+      "seconds": 9.583333333333334
+    },
+    {
+      "scene": "receipt",
+      "seconds": 9.708333333333334
+    },
+    {
+      "scene": "cloud",
+      "seconds": 11.916666666666666
+    },
+    {
+      "scene": "agent",
+      "seconds": 10.708333333333334
+    },
+    {
+      "scene": "close",
+      "seconds": 11.0
+    }
+  ],
+  "film_sha256": "9ca85b4c3b7eff22f50333c3f2119aa532146c3c2c6783ff9313568a644d1628"
+}

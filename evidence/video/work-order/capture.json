@@ -1,0 +1,31 @@
+{
+  "run_id": "demo-271a6c3a23",
+  "work_order_id": "work-incident-f15b899ca3",
+  "dimensions": [
+    1280,
+    720
+  ],
+  "media": "browser screen recording",
+  "sensor_path": "local",
+  "cues": {
+    "landing": 5.525,
+    "ack": 7.944,
+    "flow": 9.668,
+    "shaft": 12.102,
+    "facility": 16.45,
+    "order": 20.142,
+    "receipt": 24.165
+  },
+  "mobile": [
+    {
+      "surface": ".incident-card",
+      "width": 390,
+      "contentWidth": 390
+    },
+    {
+      "surface": "#maintenance-panel",
+      "width": 390,
+      "contentWidth": 390
+    }
+  ]
+}

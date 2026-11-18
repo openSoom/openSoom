@@ -1,0 +1,75 @@
+{
+  "status": "executed",
+  "upstream_revision": "8c66f08e443be174f109fe2ac645247c9afcd449",
+  "platform": "Headless ETSI MEC Sandbox services, platform and scenario controllers, virtualization engine, Helm 3.10.1, K3s v1.34.3+k3s1",
+  "physical_vm_count": 1,
+  "full_stock_dep_opt_c_console_tested": false,
+  "packaging": "Project ACME 2026.5.3 package installed as a Sandbox-managed EDGE-APP in the same logical location as the maintenance application.",
+  "cloud": {
+    "instance_type": "e2-medium",
+    "ram_advertised_gib": 4,
+    "region": "us-central1",
+    "disk_type": "pd-standard",
+    "disk_gb": 30,
+    "external_ipv4": "ephemeral",
+    "running_730h_estimate_usd": 29.31,
+    "estimated_stopped_disk_usd_per_month": 1.2,
+    "fee_exclusions": [
+      "tax",
+      "network transfer"
+    ],
+    "final_compute_state": "TERMINATED",
+    "stopped_utc": "2026-11-18T16:20:39.677Z"
+  },
+  "cases": [
+    {
+      "host": "north-edge",
+      "product_run": "demo-c6d2d16a9f",
+      "mcc_registration_rsc": "2000",
+      "registered_apps": [
+        "site-mn-cse",
+        "inspection-worker"
+      ],
+      "helm_releases": [
+        "sh.helm.release.v1.meep-inspection-north-inspection-worker.v1",
+        "sh.helm.release.v1.meep-inspection-north-site-mn-cse.v1"
+      ],
+      "work_order_id": "work-incident-6eca1d92f1",
+      "revision": 4,
+      "priority": "inspect_actuator_feedback"
+    },
+    {
+      "host": "south-edge",
+      "product_run": "demo-1cfe2d4a1c",
+      "mcc_registration_rsc": "2000",
+      "registered_apps": [
+        "site-mn-cse",
+        "inspection-worker"
+      ],
+      "helm_releases": [
+        "sh.helm.release.v1.meep-inspection-south-inspection-worker.v1",
+        "sh.helm.release.v1.meep-inspection-south-site-mn-cse.v1"
+      ],
+      "work_order_id": "work-incident-dd76879755",
+      "revision": 4,
+      "priority": "inspect_actuator_feedback"
+    }
+  ],
+  "managed_worker_recovery_seconds": 14.768,
+  "constraints": [
+    "The two logical locations share one physical VM, CSE storage and campus-wide service catalog.",
+    "Operator-specified placement. The native controller schedules installation and removal from the submitted topology.",
+    "CSE measurements, shaft movement, command and ventilation response use virtual devices.",
+    "Worker TLS gateway and ACP were exercised; 011, 033, 046 and Mcc communication use isolated cluster HTTP.",
+    "An optional upstream cluster-role-binding cleanup step was unavailable to the scoped engine. The Helm releases used no cluster-role bindings.",
+    "The turnkey rebuild commands were reviewed and rendered. A second clean VM installation was outside the run."
+  ],
+  "artifacts": {
+    "managed-north-product.json": "766f6c62edba9ce4dac9b2f7167c9e74797a1e585e5f47cc9f5960228b30276a",
+    "managed-north.json": "348c59bc525e4d0c47db4def50174e106682cfdab53a4527253a4b464c1420eb",
+    "managed-south-product.json": "eaaa572d364768695b59eb1bc7833b1e4b80a4b0eeb7358003a80b4bf5df5aaa",
+    "managed-south.json": "00e2635675cd1cc51b26230567a1212b99d849839fdc174d5bb6c269f9958557",
+    "managed-worker-restart.json": "d1aa2ef41c3000d771b0041361891fd642cd1908882f576e55a2352116e737b0",
+    "native-services.json": "f390b090d375ed7edfb211395c8ca9ff3580a33521d2bac3ab6ec45f731cb9d5"
+  }
+}

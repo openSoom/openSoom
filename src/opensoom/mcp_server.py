@@ -212,6 +212,18 @@ def create_server(proxy: ServiceProxy | None = None) -> MCPServer:
         return call("read_scenario_run", {"facility_id": facility_id, "execution_id": execution_id})
 
     @server.tool(structured_output=True)
+    def draft_facility(site_id: str, name: str, template: str, adapter: str, zones: list[dict],
+                       maintenance: dict | None = None) -> dict[str, Any]:
+        """Preview a new virtual site. Each zone needs id, name, minimum_airflow (m³/h), pm25_warning (µg/m³), co2_warning (ppm). Optional maintenance binds zone assets and sensors. Use manager-supplied commissioning targets."""
+        return call("draft_facility", {"site_id": site_id, "name": name, "template": template,
+                    "adapter": adapter, "zones": zones, "maintenance": maintenance})
+
+    @server.tool(structured_output=True)
+    def activate_facility(version: str) -> dict[str, Any]:
+        """Activate the exact reviewed virtual site pack with the current site administrator identity. An operator can only draft it."""
+        return call("activate_facility", {"version": version})
+
+    @server.tool(structured_output=True)
     def test_virtual_scenario(facility_id: str, scenario_id: str, zone_id: str, observation_age_seconds: int,
                               airflow_m3_h: float, damper_percent: float,
                               expected_result: Literal["command_refused", "device_acknowledged"], request_id: str) -> dict[str, Any]:

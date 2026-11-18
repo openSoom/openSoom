@@ -181,14 +181,49 @@ def flush_outbox(core):
         core.store.delete("maintenance_outbox", item["name"])
 
 
+def damper_ack_order(command):
+    # Early virtual-device snapshots stored only the applied flag and issue time.
+    # Maintenance evidence separately requires an actual ACK timestamp.
+    recorded_at = command.get("ack_at") or command["created_at"]
+    return datetime.fromisoformat(recorded_at), int(command.get("ack_sequence", 0))
+
+
+def latest_damper_commands(commands):
+    latest = {}
+    for command in commands:
+        if command.get("action") != "set_damper" or not command.get("ack_at") or not command.get("incident_id"):
+            continue
+        key = (command["facility_id"], command["zone_id"], command["incident_id"])
+        if key not in latest or damper_ack_order(command) >= damper_ack_order(latest[key]):
+            latest[key] = command
+    return latest
+
+
+def current_order_view(order, acknowledged):
+    current = acknowledged.get((order["facility_id"], order["zone_id"], order["incident_id"]))
+    if not current or not order.get("command_id") or order["command_id"] == current["id"]:
+        return order
+    # The historical CIN stays intact. While the new setpoint settles, expose an
+    # explicitly projected pending state without its predecessor's sensor reading.
+    view = {k: order.get(k) for k in ("facility_id", "zone_id", "asset_id", "incident_id", "run_id",
+                                       "work_order_id", "status", "profile_version")}
+    return {**view, "kind": "work_order", "command_id": current["id"], "ack_at": current["ack_at"],
+            "requested_pct": current["value"], "observed_at": current["ack_at"], "revision": 0,
+            "priority": "inspection", "evidence_status": "awaiting_current_command_followup",
+            "view_source": "current_device_ack", "ack_rqi": current.get("ack_rqi"),
+            "historical_work_order_ri": order.get("resource_id")}
+
+
 def refresh_work_orders(core):
+    acknowledged = latest_damper_commands(core.store.list("commands"))
     for fid, config in core.registry.items():
         if "maintenance" not in config:
             continue
         path = core.facility(fid)["path"] + "/work_orders"
         origin = core.identities["operator"]
         container = core.cse.retrieve(path, origin=origin)["body"]["m2m:cnt"]
-        version = [container["ri"], container["st"]]
+        active_ids = sorted(cmd["id"] for key, cmd in acknowledged.items() if key[0] == fid)
+        version = [container["ri"], container["st"], active_ids]
         if core.store.get("work_order_cursor", fid) == version:
             continue
         discovery = core.cse.retrieve(path, origin=origin, params={"fu": 1, "ty": 4, "drt": 1})
@@ -202,7 +237,9 @@ def refresh_work_orders(core):
             key = item["work_order_id"]
             # A later command can open a new investigation on the same order.
             # Compare its source observation before evidence quality within it.
-            rank = (datetime.fromisoformat(item["observed_at"]), int(item["revision"]), cin["ct"], cin["ri"])
+            current = acknowledged.get((fid, item["zone_id"], item["incident_id"]))
+            is_current = bool(current and item.get("command_id") == current["id"])
+            rank = (is_current, datetime.fromisoformat(item["observed_at"]), int(item["revision"]), cin["ct"], cin["ri"])
             if key not in latest or rank > latest[key][0]:
                 latest[key] = (rank, {**item, "resource_id": cin["ri"], "read_rqi": reply["rqi"]})
         with core.store.transaction():

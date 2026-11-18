@@ -10,7 +10,7 @@ from opensoom.maintenance_worker import read_content, safe_rn
 from opensoom.onem2m import CSEClient
 
 
-def capture(config, client, run_id, commission_id=None):
+def capture(config, client, run_id, commission_id=None, command_id=None):
     base = config['facility_path'].strip('/')
     facility = config['facility_id']
 
@@ -34,10 +34,16 @@ def capture(config, client, run_id, commission_id=None):
         return rows[0]
 
     orders = [r for r in records('work_orders') if r['data'].get('run_id') == run_id]
-    final = one((r for r in orders if r['data']['revision'] == 4), 'accepted independent-sample revision')
+    accepted = [r for r in orders if r['data']['revision'] == 4 and
+                (command_id is None or r['data'].get('command_id') == command_id)]
+    if command_id is None and len(accepted) > 1:
+        raise ValueError('This run has several accepted readings. Supply --command-id to select its snapshot.')
+    final = one(accepted, 'accepted independent-sample revision')
     value = final['data']
-    opening = one((r for r in orders if r['data']['revision'] == 1), 'original work order')
-    pending = one((r for r in orders if r['data']['revision'] == 2), 'unresolved follow-up')
+    opening = one((r for r in orders if r['data']['revision'] == 1 and
+                   r['data']['work_order_id'] == value['work_order_id']), 'original work order')
+    pending = one((r for r in orders if r['data']['revision'] == 2 and
+                   r['data']['command_id'] == value['command_id']), 'unresolved follow-up')
     if any(r['data']['work_order_id'] != value['work_order_id'] for r in (opening, pending)):
         raise ValueError('Revisions belong to different work orders')
     outcome = one((r for r in records('outcomes') if r['ri'] == value['outcome_ri']), 'source outcome')
@@ -80,6 +86,7 @@ def capture(config, client, run_id, commission_id=None):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--run-id', required=True)
+    parser.add_argument('--command-id', help='Select one immutable snapshot in a run with multiple setpoints')
     parser.add_argument('--commission-id', help='Also require the specified admission and two distinct MEC services')
     parser.add_argument('--config', type=Path, help='Maintenance configuration, or use the running worker environment')
     args = parser.parse_args()
@@ -94,7 +101,7 @@ def main():
         parser.error('Use a facility-scoped maintenance AE and its authenticated HTTPS gateway')
     token = os.environ['OPENSOOM_WORKER_CSE_TOKEN']
     with CSEClient(config['cse_url'], config['origin'], config.get('cse_ca'), bearer_token=token) as client:
-        report = capture(config, client, args.run_id, args.commission_id)
+        report = capture(config, client, args.run_id, args.commission_id, args.command_id)
     print(json.dumps(report, indent=2, ensure_ascii=False))
 
 

@@ -1,6 +1,6 @@
 # Conditional extension decisions
 
-The table below records first-release decisions. Deployment and service integration are active requirements in the [next Goal](release-goal.ko.md).
+The table below records first-release decisions. The subsequent release ran a project-specific topology on the ETSI Sandbox. The platform installed the MN and maintenance app on two selected logical edges, and a scoped oneM2M request commissioned a provider through MEC 033 before a MEC 046 lookup updated an open work order. [Deployment receipts](../evidence/runtime/option-c/index.json) · [Two-service receipt](../evidence/runtime/mec-provider-commissioning.json)
 
 Decision date: 18 November 2026, Asia/Seoul. These are product-scope decisions submitted to independent review, not official rubric N/A decisions or scores. All 17 criteria remain visible. A deferred capability is absent from release claims.
 

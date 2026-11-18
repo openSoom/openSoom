@@ -229,6 +229,26 @@ class MaintenanceWorker:
         self.put("provider_responses", name, {**reply, "status": status, "provider_receipt": receipt})
         return True
 
+    def current_setpoint(self, req):
+        stream = safe_rn(req["zone_id"]) + "/acks"
+        latest = self.cin(self.base + "/" + stream + "/la")
+        ack = read_content(latest)
+        if ack.get("device_state") != "damper_changed":
+            # Administrative work can be acknowledged on the same zone stream.
+            # Compare retained actuator acknowledgements by the CSE state tag.
+            candidates = []
+            for path in self.children(stream):
+                cin = self.cin(path)
+                item = read_content(cin)
+                if item.get("device_state") == "damper_changed":
+                    candidates.append(((int(cin.get("st", 0)), cin["ct"]), item))
+            if not candidates:
+                return False
+            _, ack = max(candidates, key=lambda candidate: candidate[0])
+        return (ack.get("facility_id") == self.facility and ack.get("zone_id") == req["zone_id"]
+                and ack.get("command_id") == req["command_id"] and
+                timestamp(ack["ack_at"]) == timestamp(req["ack_at"]))
+
     def response(self, response, resource):
         request_id = safe_rn(response["request_id"])
         req_resource = self.cin(self.base + "/sensor_requests/" + request_id)
@@ -237,6 +257,9 @@ class MaintenanceWorker:
         if (response.get("kind") != "sensor_result" or response["request_ri"] != req_resource["ri"]
                 or response.get("facility_id") != self.facility or req["sensor_id"] != binding["sensor_id"]):
             raise EvidenceError("sensor_response_mismatch")
+        if not self.current_setpoint(req):
+            self.health["superseded_responses"] = self.health.get("superseded_responses", 0) + 1
+            return
         detail = {"request_id": request_id, "request_ri": req_resource["ri"], "response_ri": resource["ri"],
                   "outcome_ri": req["outcome_ri"], "mode": response.get("mode"),
                   "airflow": req.get("airflow"), "profile_version": req.get("profile_version")}

@@ -13,10 +13,16 @@ openSoom separates facility configuration, vendor integration, standard shared s
 | Observer AE | Read only configured facilities | Validate restricted sharing independently of administrator access |
 | CSE | Store resources, discover, notify, fan out and enforce ACP | Shared behavior must be provided by the standard layer |
 | Service | Persist runs/incidents and enforce tool policies | State must survive a chat or service restart |
-| MCP server | Eight structured tools shared by Codex and API runner | Agent convenience must use the same operational boundary |
+| MCP server | Structured facility setup, discovery, diagnosis and virtual-trial tools. Each client can limit which tools it exposes | Agent convenience must use the same operational boundary |
 | Central operator | Read selectively shared resources and issue expiring intents | Multiple sites need oversight without making local control depend on the WAN |
 
 These are distinct application identities and responsibilities. The local prototype cohosts them in a small number of processes. It does not claim independent production services merely because several AEs are registered. The distributed test runs two actual facility APIs against separate MN-CSE processes.
+
+## A second application at the edge
+
+The operations AE alone can command a device. The maintenance AE opens an inspection and requests independent shaft position for that asset. The separate service bridge is allowed to contact a configured provider and return its response to the facility MN-CSE. Maintenance reads that response through its own scoped identity. The bridge and maintenance cannot write device commands. An administrator commissions a missing provider via MEC 033. MEC 046 then supplies a fresh reading. A facility that already receives the same independent observation locally can use that route. [Services and work-order revisions](../evidence/runtime/mec-provider-commissioning.json)
+
+In Option C, the Sandbox controller and its Helm engine install the ACME MN and the maintenance workload on the same logical edge. The scenario author selected north and then south in a two-edge topology on one physical VM. In each deployment the MN registered to its IN-CSE over Mcc and a new case reached revision four. The persisted earlier case could be read after the move. [Deployment and repeatable commands](../deploy/mec-sandbox/README.md) · [North and south receipts](../evidence/runtime/option-c/index.json)
 
 ## Resource tree
 
@@ -63,6 +69,6 @@ The demonstrated reconciliation rule is conservative: a central intent names a c
 
 A single-vendor system can connect directly to its API. The prototype adds oneM2M when observations and controls must be shared across vendors, applications and facility CSEs. Profiles keep site targets out of integration code. MCP provides a guided interface without replacing the standard.
 
-The demo does not optimize a shared fan's physical flow allocation, infer capture efficiency, learn thresholds, migrate processes or implement serving-CSE handover. Each zone follows its configured target and bounded damper scenario. Adding those mechanisms requires a measured need and separate acceptance evidence.
+The two-CSE handover lab restores an incident, its pending command, subscriptions and scoped access after the serving CSE is taken down. The local operating demonstration covers site-specific airflow targets. Physical fan balancing, capture efficiency and learned threshold selection are outside the measured cases. [Handover measurements](../evidence/runtime/handover/acceptance.json) Each zone follows its configured target and bounded damper scenario. Adding those mechanisms requires a measured need and separate acceptance evidence.
 
 HTTPS/MQTT TLS encrypt and authenticate the project servers. Loopback origin headers and anonymous lab MQTT clients are trusted local actors, not authenticated physical devices. The API and callbacks use local HTTP, and the distributed profile uses HTTP between CSEs. See [deployment boundaries](../deploy/README.md).

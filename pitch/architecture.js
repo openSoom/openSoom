@@ -15,7 +15,7 @@ const SOURCE = {
   policy: { path: 'src/opensoom/policy.py', label: 'Diagnosis & policy code', locator: 'freshness; profile-specific diagnosis' },
   store: { path: 'src/opensoom/store.py', label: 'Persistent service state', locator: 'SQLite Store' },
   api: { path: 'src/opensoom/app.py', label: 'Shared local API', locator: '/api/tools; /api/state; notifications' },
-  mcp: { path: 'src/opensoom/mcp_server.py', label: 'Eight MCP tools', locator: 'stdio server; ServiceClient; scoped service calls' },
+  mcp: { path: 'src/opensoom/mcp_server.py', label: 'Shared MCP tools', locator: 'stdio server; ServiceClient; scoped service calls' },
   plugin: { path: 'docs/agent-integration.md', label: 'Codex plugin instructions', locator: 'Start and connect; Tool and permission contract' },
   runner: { path: 'src/opensoom/llm_runner.py', label: 'Actual model API runner', locator: 'tool loop; MCP transport; shared budget' },
   agentEvidence: { path: 'evidence/agent/index.json', label: 'Codex & live-model evidence', locator: 'accepted captures and historical limits' },
@@ -234,10 +234,10 @@ node('single-state', 'Persistent evidence', '지속되는 실행 · 증거', 'LO
   { short: 'SQLITE / EVIDENCE', modes: ['single'], boundary: 'Embedded service state, separate from the CSE resource store and conversation history.' });
 
 node('shared-mcp', 'Shared MCP tools', '공통 MCP 도구', 'ACTUAL STDIO SERVER PROCESS', 'interfaces', 'gateway', [0, 3.4, 3.4],
-  'Eight structured tools expose prerequisite checks, setup preparation, discovery, evidence, bounded requests and verification. Codex and the standalone runner share this boundary; tools cannot grant their own role or activate a profile as an operator.',
-  '여덟 개의 구조화된 도구로 점검·설정 준비·발견·증거 조회·제한된 요청·결과 확인을 제공합니다. Codex와 독립 실행기가 같은 경계를 사용하고 모델은 스스로 권한을 높이거나 운영자 권한으로 프로필을 활성화할 수 없습니다.',
+  'The shared MCP tools expose prerequisite checks, setup preparation, discovery, evidence, bounded requests and verification. Codex and the standalone runner share this boundary; tools cannot grant their own role or activate a profile as an operator.',
+  '공통 MCP 도구로 점검·설정 준비·발견·증거 조회·제한된 요청·결과 확인을 제공합니다. Codex와 독립 실행기가 같은 경계를 사용하고 모델은 스스로 권한을 높이거나 운영자 권한으로 프로필을 활성화할 수 없습니다.',
   'doctor · prepare_setup · apply_setup · discover · read_group · read_evidence · request_action · verify_result', ['mcp', 'api', 'agentEvidence'],
-  { short: 'MCP / 8 TOOLS', major: true, boundary: 'Actual stdio transport verified in the single installation. Distributed connections are shown as a shared contract, not a separately tested agent deployment.' });
+  { short: 'MCP / STDIO', major: true, boundary: 'Actual stdio transport verified in the single installation. Distributed connections are shown as a shared contract, not a separately tested agent deployment.' });
 node('codex-host', 'Codex plugin', 'Codex 플러그인', 'ACTUAL HOST + PACKAGED SKILLS', 'interfaces', 'terminal', [-2.45, 0.75, 6.25],
   'Packaged skills guide installation, diagnosis and operation through the shared MCP tools. Actual Codex CLI-host evidence and clean lifecycle checks are recorded separately from model-runner evidence.',
   '패키지에 포함된 스킬이 공통 MCP 도구를 통해 설치·진단·운영을 안내합니다. 실제 Codex CLI 호스트와 설치·재시작·정리 검증을 모델 실행기 증거와 구분해 기록했습니다.',
@@ -292,7 +292,7 @@ export const ARCHITECTURE_SOURCE_MAP = {
     'AE identities and logical modules are not necessarily independent processes.',
     'Agent execution evidence is from the single-installation profile; dashed distributed edges are the shared interface contract.',
     'Central intent replay is explicitly invoked; no always-running federation consumer is claimed.',
-    'No implemented MEC, serving-CSE handover, process migration, FL, CFD or certified ventilation-performance claim.',
+    'This diagram covers the original lab profiles. The deployment choices section links the separate MEC commissioning and maintenance runs.',
   ],
   sources: SOURCE, layers: LAYERS, topologies: MODES, nodes, edges,
 };

@@ -1,0 +1,60 @@
+1
+00:00:00,000 --> 00:00:07,042
+A fan is running. A damper has acknowledged its command. Can the shift
+supervisor close the ventilation incident?
+
+2
+00:00:07,042 --> 00:00:16,750
+A Korean labor ministry inspection called for better exhaust performance in a
+school kitchen. Each facility needs a way to check its own equipment between
+inspections.
+
+3
+00:00:16,750 --> 00:00:25,167
+In this virtual cooking line, the site target is nine hundred cubic metres per
+hour. The operations app requests a fully open damper.
+
+4
+00:00:25,167 --> 00:00:33,208
+The controller acknowledges one hundred percent. That tells the operator the
+command arrived. It still leaves a question about the air.
+
+5
+00:00:33,208 --> 00:00:42,292
+The next airflow measurement is three hundred sixty cubic metres per hour. The
+operator keeps the incident open and maintenance starts a general inspection.
+
+6
+00:00:42,292 --> 00:00:52,000
+A separate sensor on the mechanical shaft reports thirty-five percent open. The
+technician now has a reason to check actuator travel and position feedback
+first.
+
+7
+00:00:52,000 --> 00:01:01,583
+Here is the live dashboard for that run. The work order keeps its original
+identity. Its inspection priority changes while the airflow incident stays open.
+
+8
+00:01:01,583 --> 00:01:11,292
+The source measurement, command and inspection are linked through actual oneM2M
+resources. Restarting the maintenance app recovered the same order without
+duplicating it.
+
+9
+00:01:11,292 --> 00:01:23,208
+In a second run, the bridge discovered an actual MEC sensor-sharing service,
+retrieved a separate provider’s shaft measurement, and returned it to the
+facility. The same inspection took priority.
+
+10
+00:01:23,208 --> 00:01:33,917
+At a learning facility, a manager can describe another trial. A hosted model
+saved a new lounge scenario and read the result. Stale evidence created zero
+device commands.
+
+11
+00:01:33,917 --> 00:01:44,917
+Run openSoom on your own machine. Choose the zone, set the facility target, and
+replay the decision with virtual equipment. The code, traces and tools are open
+source.

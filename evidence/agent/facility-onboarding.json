@@ -1,0 +1,229 @@
+{
+  "scope": "Synthetic commissioning values; real plugin stdio and real oneM2M MN-CSE. Scripted operator and administrator, no hosted inference for this test.",
+  "draft": {
+    "status": "preview",
+    "version": "4d9199cb4e08e4b3bafb456c62136186c023e7fe96e657ba26acf1ffa01e3078",
+    "facility": {
+      "id": "archive-workshop",
+      "name": "Archive conservation workshop",
+      "profile": "archive-workshop",
+      "adapter": "vendor-b",
+      "read_only_roles": [],
+      "maintenance": {
+        "assets": {
+          "conservation": {
+            "asset_id": "bench-extract",
+            "sensor_id": "bench-shaft"
+          }
+        },
+        "settle_seconds": 4,
+        "freshness_seconds": 45,
+        "tolerance_pct": 9
+      }
+    },
+    "profile": {
+      "schema_version": 1,
+      "id": "archive-workshop",
+      "name": "Archive conservation workshop",
+      "simulation_only": true,
+      "description": "Virtual installation based on learning-space",
+      "freshness_seconds": 45,
+      "command_ttl_seconds": 30,
+      "recovery_samples": 2,
+      "allowed_actions": [
+        "set_damper",
+        "request_maintenance"
+      ],
+      "zones": [
+        {
+          "id": "intake",
+          "name": "Receiving",
+          "minimum_airflow": 410,
+          "pm25_warning": 22,
+          "co2_warning": 920
+        },
+        {
+          "id": "conservation",
+          "name": "Conservation bench",
+          "minimum_airflow": 560,
+          "pm25_warning": 18,
+          "co2_warning": 870
+        }
+      ]
+    }
+  },
+  "mapping_outside_zone_refused": "invalid_facility",
+  "operator_activation": "admin_required",
+  "admin_activation": {
+    "status": "active",
+    "facility_id": "archive-workshop",
+    "version": "4d9199cb4e08e4b3bafb456c62136186c023e7fe96e657ba26acf1ffa01e3078",
+    "cse_path": "cse-food/opensoom/facilities/archive-workshop",
+    "zone_ids": [
+      "intake",
+      "conservation"
+    ]
+  },
+  "repeat_activation": {
+    "status": "active",
+    "facility_id": "archive-workshop",
+    "version": "4d9199cb4e08e4b3bafb456c62136186c023e7fe96e657ba26acf1ffa01e3078",
+    "cse_path": "cse-food/opensoom/facilities/archive-workshop",
+    "zone_ids": [
+      "intake",
+      "conservation"
+    ]
+  },
+  "original": {
+    "execution_id": "trial-2ae1fe21881c7ef77b5de5d7",
+    "facility_id": "archive-workshop",
+    "zone_id": "conservation",
+    "asset_id": "bench-extract",
+    "scenario_id": "bench-check",
+    "version": "4fecc98225f2928294e31fd8e8016d69340f8f56790997c52851b56697471664",
+    "expected_result": "command_refused",
+    "agent_run_id": "mcp-f588ea6c3491",
+    "status": "completed",
+    "started_at": "2026-11-18T16:23:11.814+00:00",
+    "cin": "cinzZWBMgxFU0",
+    "publish_rqi": "opensoom-a05415ae6dfa46c5a0fa42025749b9e2",
+    "commands_before": {
+      "count": 0,
+      "state_tag": 0,
+      "rqi": "opensoom-e954328da41a4e75bcf11412ef3d20c0"
+    },
+    "refusal": "evidence_not_current",
+    "completed_at": "2026-11-18T16:23:11.841+00:00",
+    "actual_result": "command_refused",
+    "assertion_passed": true,
+    "commands_after": {
+      "count": 0,
+      "state_tag": 0,
+      "rqi": "opensoom-d2784604ae7742edb5a08f8156308bae"
+    },
+    "command_state_tag_delta": 0,
+    "readback": {
+      "rqi": "opensoom-5e80635d965a4827b12009e558c5ef3d",
+      "cin": "cinzZWBMgxFU0",
+      "observed_at": "2026-11-18T16:21:39.816+00:00",
+      "airflow_m3_h": 515.0,
+      "zone_id": "conservation"
+    },
+    "run_id": "mcp-f588ea6c3491"
+  },
+  "result": "passed",
+  "after_service_restart": {
+    "facility": {
+      "id": "archive-workshop",
+      "name": "Archive conservation workshop",
+      "profile": "archive-workshop",
+      "zones": [
+        {
+          "id": "intake",
+          "name": "Receiving"
+        },
+        {
+          "id": "conservation",
+          "name": "Conservation bench"
+        }
+      ]
+    },
+    "discovery": [
+      {
+        "rsc": 2000,
+        "rqi": "opensoom-f4a9bb2c449d4e79a22cab9e91965783",
+        "body": {
+          "m2m:uril": [
+            "/opensoom-food/cntFq2IcrXs8J",
+            "/opensoom-food/cntiRnaLxnuvd",
+            "/opensoom-food/cnttSttNDnenD",
+            "/opensoom-food/cntYBksUv0IuJ",
+            "/opensoom-food/cntDPqfjIfrmu",
+            "/opensoom-food/cnt7D2iG0Nr34",
+            "/opensoom-food/cntjAtHzIPwLK",
+            "/opensoom-food/cntEluwzb5U4D",
+            "/opensoom-food/cnt3QAXfTKjpE",
+            "/opensoom-food/cntMImPDpZayC",
+            "/opensoom-food/cntdTE7hUf3pg",
+            "/opensoom-food/cntq18LESal0C"
+          ]
+        },
+        "http_status": 200
+      }
+    ],
+    "original": {
+      "execution_id": "trial-2ae1fe21881c7ef77b5de5d7",
+      "facility_id": "archive-workshop",
+      "zone_id": "conservation",
+      "asset_id": "bench-extract",
+      "scenario_id": "bench-check",
+      "version": "4fecc98225f2928294e31fd8e8016d69340f8f56790997c52851b56697471664",
+      "expected_result": "command_refused",
+      "agent_run_id": "mcp-f588ea6c3491",
+      "status": "completed",
+      "started_at": "2026-11-18T16:23:11.814+00:00",
+      "cin": "cinzZWBMgxFU0",
+      "publish_rqi": "opensoom-a05415ae6dfa46c5a0fa42025749b9e2",
+      "commands_before": {
+        "count": 0,
+        "state_tag": 0,
+        "rqi": "opensoom-e954328da41a4e75bcf11412ef3d20c0"
+      },
+      "refusal": "evidence_not_current",
+      "completed_at": "2026-11-18T16:23:11.841+00:00",
+      "actual_result": "command_refused",
+      "assertion_passed": true,
+      "commands_after": {
+        "count": 0,
+        "state_tag": 0,
+        "rqi": "opensoom-d2784604ae7742edb5a08f8156308bae"
+      },
+      "command_state_tag_delta": 0,
+      "readback": {
+        "rqi": "opensoom-f095241156174f75a32caaca36b38cb4",
+        "cin": "cinzZWBMgxFU0",
+        "observed_at": "2026-11-18T16:21:39.816+00:00",
+        "airflow_m3_h": 515.0,
+        "zone_id": "conservation"
+      },
+      "run_id": "mcp-3d44d1b6d2ba"
+    },
+    "replayed": {
+      "execution_id": "trial-36ca247450ea07b10930a47b",
+      "facility_id": "archive-workshop",
+      "zone_id": "conservation",
+      "asset_id": "bench-extract",
+      "scenario_id": "bench-check",
+      "version": "4fecc98225f2928294e31fd8e8016d69340f8f56790997c52851b56697471664",
+      "expected_result": "command_refused",
+      "agent_run_id": "mcp-3d44d1b6d2ba",
+      "status": "completed",
+      "started_at": "2026-11-18T16:24:15.401+00:00",
+      "cin": "cin3l2KI6lWfi",
+      "publish_rqi": "opensoom-8a43851149984e0aa136ba1a5e229375",
+      "commands_before": {
+        "count": 0,
+        "state_tag": 0,
+        "rqi": "opensoom-cf4c04bcf8c848a3a884ffdaa7a33a2e"
+      },
+      "refusal": "evidence_not_current",
+      "completed_at": "2026-11-18T16:24:15.426+00:00",
+      "actual_result": "command_refused",
+      "assertion_passed": true,
+      "commands_after": {
+        "count": 0,
+        "state_tag": 0,
+        "rqi": "opensoom-39d385f1c4b840aa8b000dfdbfa70d9d"
+      },
+      "command_state_tag_delta": 0,
+      "readback": {
+        "rqi": "opensoom-23a74227d53a433694e9910bd19ed2af",
+        "cin": "cin3l2KI6lWfi",
+        "observed_at": "2026-11-18T16:22:43.404+00:00",
+        "airflow_m3_h": 515.0,
+        "zone_id": "conservation"
+      },
+      "run_id": "mcp-3d44d1b6d2ba"
+    }
+  }
+}

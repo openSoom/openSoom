@@ -21,7 +21,7 @@ def test_mcp_tools_use_fixed_identity_and_preserve_denials():
     async def check():
         async with Client(server) as client:
             tools = await client.list_tools()
-            assert {t.name for t in tools.tools} == {"doctor", "prepare_setup", "apply_setup", "discover", "read_group", "read_evidence", "request_action", "verify_result", "save_scenario", "run_scenario", "read_scenario_run", "test_virtual_scenario"}
+            assert {t.name for t in tools.tools} == {"doctor", "prepare_setup", "apply_setup", "discover", "read_group", "read_evidence", "request_action", "verify_result", "save_scenario", "run_scenario", "read_scenario_run", "test_virtual_scenario", "draft_facility", "activate_facility"}
             result = await client.call_tool("discover", {"facility_id": "food-a"})
             assert not result.is_error
             assert result.structured_content["facilities"][0]["id"] == "food-a"

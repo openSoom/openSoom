@@ -4,3 +4,28 @@
 @media(max-width:800px){.journey-detail{gap:20px}.journey-detail h3{font-size:18px}.journey-node-label b{font-size:10px}.journey-node-label small{font-size:8px}#journey-scene{height:300px}}
 @media(max-width:520px){.journey-heading{padding:17px 15px 10px;font-size:8px;letter-spacing:.5px}.journey-cases{padding:6px 15px;gap:5px}.journey-cases button{font-size:9px;padding:8px}#journey-scene{height:245px}.journey-node-label{padding:4px}.journey-node-label b{font-size:8px}.journey-node-label small{font-size:7px}.journey-stages{grid-template-columns:repeat(3,1fr);margin:0 15px}.journey-detail{grid-template-columns:1fr;gap:14px;padding:20px 15px 10px}.journey-detail>p{border-left:0;border-top:1px solid #c5d1bd;padding:13px 0 0}.journey-detail p{font-size:12px}.journey-footer{padding:12px 15px 17px;gap:14px;flex-wrap:wrap}.journey-footer span{width:100%;margin-left:0;font-size:8px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}@media print{header,button,#guide,.scene-controls,.scenario-tabs{display:none!important}body{font-size:12pt}.hero,.problem,.start{display:block}h1{font-size:45pt}.section-pad{padding:25pt 0}.scene-shell{break-inside:avoid}.system{background:white;color:black}.system p,.system .fine,.system .subheading{color:#333}.architecture-layout{gap:30pt}.layer{color:black}.proof-grid{break-inside:avoid}a{text-decoration:underline}footer{display:block}.quickstart pre{white-space:pre-wrap}#scene{height:250px}}
+
+.incident-story{display:grid;grid-template-columns:minmax(0,0.85fr) minmax(0,1.15fr);align-items:center;gap:6vw;background:#e7ebdf}
+.incident-story .subheading{max-width:32em}
+.incident-card{min-width:0;background:#17362d;color:#f5f4ec;border-radius:12px;padding:clamp(20px,3vw,45px)}
+.incident-site,.decision-foot{font-size:12px;color:#c2d2c1}
+.decision-switch{display:flex;flex-wrap:wrap;gap:7px;margin:22px 0}
+.decision-switch button{padding:8px 12px;border:1px solid #8da894;color:#eff3e6;border-radius:6px;font:inherit;font-size:13px}
+.decision-switch button[aria-pressed=true]{color:#163c30;background:#dcf2c4}
+.decision-reading{min-height:225px}
+.decision-reading p{font-size:15px;line-height:1.55;max-width:39em;color:#d9e4d0}
+.decision-reading strong{font-size:clamp(40px,5vw,76px);font-variant-numeric:tabular-nums;letter-spacing:-.045em;line-height:1.08}
+.decision-reading h3{font-size:clamp(20px,2.3vw,32px);line-height:1.13;margin:18px 0 0}
+.decision-foot{border-top:1px solid #577063;padding-top:15px;display:flex;gap:12px;align-items:center;justify-content:space-between;overflow-wrap:anywhere}
+.decision-foot a{color:#e1f1c6}
+@media(max-width:760px){.incident-story{grid-template-columns:1fr}.decision-reading{min-height:235px}.decision-foot{flex-wrap:wrap}}
+
+.route-layout{display:grid;grid-template-columns:1fr 1fr 1.55fr;gap:clamp(16px,3vw,45px);align-items:start}
+.route-origin,.route-decision{padding-top:18px;border-top:2px solid #436c53}
+.route-layout h3{font-size:23px;font-weight:550;margin:12px 0}
+.route-layout p{font-size:15px;line-height:1.55}
+.route-decision .decision-switch{margin:0 0 20px}
+.route-decision .decision-switch button{color:#2a4535}
+.route-decision .decision-switch button[aria-pressed=true]{background:#1d3e34;color:#fff}
+.route-decision a{font-size:13px;text-decoration:underline}
+@media(max-width:760px){.route-layout{grid-template-columns:1fr}.route-layout h3{font-size:20px}}

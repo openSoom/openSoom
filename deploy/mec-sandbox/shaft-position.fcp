@@ -1,0 +1,10 @@
+[
+  {
+    "type": "os:shaft",
+    "lname": "shaftPositionObservation",
+    "cnd": "org.opensoom.provider.shaftPosition.v1",
+    "attributes": [
+      {"sname":"sample","lname":"providerSample","type":"string","car":"1","oc":"M","ou":"O","od":"O","annc":"OA"}
+    ]
+  }
+]

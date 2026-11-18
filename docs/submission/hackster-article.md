@@ -1,6 +1,6 @@
 # openSoom: Verify Ventilation Across Facilities and Vendors
 
-A fan reports **running**. Its damper reports **100% open**. The room still has an unresolved airflow problem.
+A fan reports **running**. Its controller acknowledges a request for **100% damper opening**. The room still has an unresolved airflow problem.
 
 openSoom connects those observations to an operating decision and checks what happened afterwards. It combines oneM2M equipment resources, facility-specific rules, a visual dashboard and AI-agent tools so a manager can follow a problem from fresh evidence to an authorized action, a separate device acknowledgement and a verified result.
 
@@ -10,7 +10,25 @@ openSoom connects those observations to an operating decision and checks what ha
 
 *A recorded application screen, not a rendered physical experiment: the learning studio reports 200 m³/h against its configured simulation target of 500 m³/h. Command, device ACK and observed result remain separate.*
 
-[Source and quickstart](https://github.com/openSoom/openSoom) · [45-second introduction — MP4](https://github.com/openSoom/openSoom/raw/refs/heads/main/deliverables/video/openSoom-pr-45s.mp4) · [Full narrated demonstration — MP4](https://github.com/openSoom/openSoom/raw/refs/heads/main/deliverables/video/openSoom-demo-5min.mp4)
+[Source and quickstart](https://github.com/openSoom/openSoom) · [English work-order demo in 720p](https://github.com/openSoom/openSoom/raw/refs/heads/main/deliverables/video/openSoom-work-order-720p.mp4) · [45-second introduction — MP4](https://github.com/openSoom/openSoom/raw/refs/heads/main/deliverables/video/openSoom-pr-45s.mp4) · [Full narrated demonstration — MP4](https://github.com/openSoom/openSoom/raw/refs/heads/main/deliverables/video/openSoom-demo-5min.mp4)
+
+## What should the technician check first?
+
+At our virtual cooking line, the site operator requests a fully open damper. The controller acknowledges 100%. Follow-up airflow measures **360 m³/h** against this zone’s **900 m³/h** target. The site operations app keeps the incident open. Maintenance starts a general inspection. A separately simulated shaft encoder then measures **35%**. The existing work order now puts actuator travel and position feedback first. A technician would still need to examine the equipment to establish the cause.
+
+![Actual dashboard for the retained work order](https://raw.githubusercontent.com/openSoom/openSoom/main/evidence/video/work-order/dashboard-order.png)
+
+In local run `demo-271a6c3a23`, the technician’s app was offline when the incident opened. On restart it read the retained observation from the MN-CSE. The local sensor supplied its independent measurement through a second application identity. Replaying notifications and restarting again left one logical work order with the same revision records. The CSE refused command writes from both maintenance and the bridge. [Local run and permission receipts](https://github.com/openSoom/openSoom/blob/main/evidence/runtime/maintenance-release-local.json).
+
+In cloud run `demo-c24628832a`, the shaft encoder belonged to a separate virtual sensor provider. The bridge received a oneM2M request, discovered the service through the native MEC registry, located the mapped sensor, queried ETSI MEC 046 and wrote the result back to the facility MN-CSE. On reading that response, the maintenance app updated `work-incident-97b8877461`. The source command, provider response and updated order can be followed in the linked record. The local and cloud runs demonstrate where a separate provider can join the same maintenance procedure. [Cloud work-order trace](https://github.com/openSoom/openSoom/blob/main/evidence/runtime/mec-maintenance-roundtrip.json) · [ETSI service receipts](https://github.com/openSoom/openSoom/blob/main/evidence/runtime/option-c/native-services.json).
+
+A second cloud trial began with a missing engineering provider. A facility administrator requested its approved profile through oneM2M. The bridge confirmed the provider was absent, registered it through native MEC 033 and checked its enabled state. The pending MEC 046 sensor request then updated the original work order. An ordinary operator and an unconfigured provider alias were refused. [Commissioning and measurement receipts](https://github.com/openSoom/openSoom/blob/main/evidence/runtime/mec-provider-commissioning.json).
+
+A second facility uses a different profile. A hosted model saved a new virtual trial for its lounge, requested an action using a stale observation and read back the original oneM2M content instance. The command container recorded no new command. In a separate clean Codex host the model selected the plugin trial tool, authored another lounge case, and the service saved, executed and read the result. The same definition replayed after a service restart. [Independent model, native Codex host and stored-scenario results](https://github.com/openSoom/openSoom/tree/main/evidence/agent/scenario-authoring).
+
+Replay the local incident from the [work-order quickstart](https://github.com/openSoom/openSoom#which-inspection-comes-first). Follow the facility MN-CSE resources from `outcomes` through `sensor_requests` and `sensor_responses` to `work_orders`. The operations and maintenance apps each read the same original observation with their own permissions. Adapters can publish repeating device updates through MQTT/TLS, while applications read particular observations and issue bounded commands through HTTPS. [Transport evidence](https://github.com/openSoom/openSoom/blob/main/evidence/runtime/cse-mqtt-tls-smoke.json).
+
+For a separate facility, a manager can draft two conservation-workshop zones, enter local targets in m³/h and bind a bench damper to its own sensor. Once a configured administrator activates the version, the operator can test the second zone and replay the stored trial after restarting the service. [Manager setup and actual plugin exercise](https://github.com/openSoom/openSoom/blob/main/docs/extending.md). For the cloud installation the project-specific topology places the maintenance app and MN on an operator-selected logical edge. The Sandbox performed both north and south deployments on one VM. [Orchestration and fresh work-order receipts](https://github.com/openSoom/openSoom/blob/main/evidence/runtime/option-c/index.json).
 
 ## The problem continues after installation
 
@@ -132,7 +150,7 @@ For a standard projection, the CSE exposes and discovers actual `cod:aiQSr` flex
 
 ## Let an agent operate through the same boundary
 
-The Codex plugin packages setup and operations skills with an MCP connection. Its eight tools are `doctor`, `prepare_setup`, `apply_setup`, `discover`, `read_group`, `read_evidence`, `request_action` and `verify_result`. The standalone model API runner uses the same MCP/service path as the plugin.
+The Codex plugin packages setup and operations skills with an MCP connection. Managers use shared tools to check readiness, preview a site, discover its resources, read evidence, request an allowed action and verify the result. Additional virtual-trial tools save, execute and reread a versioned scenario. A separate administrator identity activates a reviewed new facility. The standalone model API runner uses the same MCP/service path as the plugin.
 
 The service owns durable runs and incidents. It validates role, facility, profile, freshness, action bounds, expiry and idempotency. The operational model cannot grant itself administrator access or activate an unapproved profile. A service restart or a new conversation does not turn an old successful command into evidence for a new incident.
 
@@ -196,7 +214,7 @@ The repository preserves failed captures beside the accepted evidence. Request I
 
 The next adoption step is a real read-only device adapter and a facility-specific commissioning process. Physical controls should remain disabled until equipment identity, relevant measurements, authority and permitted behavior have been validated. PM2.5 and CO₂ alone do not establish capture adequacy or exposure protection.
 
-The local lab verifies server-authenticated HTTPS/MQTT TLS and scoped ACP behavior. It trusts local clients: origin headers are not cryptographic device identities and the lab broker is anonymous on loopback. Production network authentication, real equipment, other hosts and conditional MEC/mobility/learning extensions need their own evidence. [Current boundaries and extension decisions](https://github.com/openSoom/openSoom/blob/main/docs/extension-decisions.md).
+The local lab verifies server-authenticated HTTPS/MQTT TLS and scoped ACP behavior. It trusts local clients: origin headers are not cryptographic device identities and the lab broker is anonymous on loopback. The managed MEC deployment used one physical VM and two logical edges. Physical commissioning, additional physical hosts, federated learning and network geolocation require separate validation. [Current boundaries and extension decisions](https://github.com/openSoom/openSoom/blob/main/docs/extension-decisions.md).
 
 Project source is **Apache-2.0**. Original documentation, diagrams and media are **CC BY 4.0**. Third-party dependencies keep their own licenses; organizer documents, system fonts and voice models are not redistributed. [Source license](https://github.com/openSoom/openSoom/blob/main/LICENSE), [documentation license](https://github.com/openSoom/openSoom/blob/main/LICENSE-DOCS.md), [third-party notices](https://github.com/openSoom/openSoom/blob/main/THIRD_PARTY_NOTICES.md).
 

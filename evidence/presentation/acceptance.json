@@ -1,0 +1,156 @@
+{
+  "scope": "Final repository PowerPoint, PDF, English rehearsal and offline companion film. Local software validation and rendered-slide review.",
+  "artifacts_sha256": {
+    "deliverables/presentation/openSoom-evaluation.pptx": "829d84f2bbec54a5725f4a4d83985cf4ac7904cb361cddf83e07d9b13b10df35",
+    "deliverables/presentation/openSoom-evaluation.pdf": "88b1474c24fb08466237ad90db986ed0745f15419c24aaee41cf09a67bde8dc9",
+    "docs/submission/presenter-script.en.md": "faab549ee4b4173bc50a316ee69a4cd51a2a0440b343a511d5319cedce62d115",
+    "docs/submission/presenter-script.ko.md": "b463c610debb94a8bce4894a3321958095d0a3d256b5e78254451b903e7f6f13",
+    "deliverables/video/openSoom-work-order-720p.mp4": "9ca85b4c3b7eff22f50333c3f2119aa532146c3c2c6783ff9313568a644d1628",
+    "docs/submission/technical-qa.md": "5c5316d0b7f7a5e4ad1e7a08c242dc3230f7331f65442e96152f425732bdc8c3"
+  },
+  "checks": {
+    "slides": 10,
+    "notes_parts_with_spoken_script_and_source_links": 10,
+    "native_chart_with_embedded_workbook": true,
+    "native_table_slide": 7,
+    "archive_integrity": "pass",
+    "package_validator_findings": 0,
+    "layout_validator_findings": 0,
+    "render_engine": "LibreOffice headless to PDF, Poppler PNG",
+    "pdf_pages": 10,
+    "visually_reviewed_slides": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "pdf_links": {
+      "3": [
+        "https://github.com/openSoom/openSoom/blob/main/evidence/runtime/maintenance-release-local.json"
+      ],
+      "4": [
+        "https://github.com/openSoom/openSoom/blob/main/evidence/runtime/maintenance-release-local.json"
+      ],
+      "5": [
+        "https://github.com/openSoom/openSoom/raw/refs/heads/main/deliverables/video/openSoom-work-order-720p.mp4"
+      ],
+      "6": [
+        "https://github.com/openSoom/openSoom/blob/main/evidence/runtime/maintenance-release-local.json"
+      ],
+      "7": [
+        "https://github.com/openSoom/openSoom/blob/main/evidence/runtime/mec-maintenance-roundtrip.json"
+      ],
+      "8": [
+        "https://github.com/openSoom/openSoom/blob/main/evidence/runtime/mec-provider-commissioning.json"
+      ],
+      "9": [
+        "https://github.com/openSoom/openSoom/blob/main/evidence/agent/scenario-authoring/codex-authored-accepted.json"
+      ],
+      "10": [
+        "https://github.com/openSoom/openSoom"
+      ]
+    },
+    "rehearsal_full_audio_decode": "pass",
+    "film_playback": "Separate offline MP4. Slide 5 also links the same file on GitHub."
+  },
+  "rehearsal": {
+    "method": "Local English synthesized presenter read-through, actual film audio inserted after slide 5. No live human performance was measured.",
+    "synthesis": "macOS Samantha, say rate argument 135",
+    "spoken_words": 1501,
+    "narration_seconds": 566.31,
+    "film_seconds": 104.94,
+    "combined_seconds": 671.25,
+    "architecture_slide": 8,
+    "architecture_seconds": 48.5,
+    "source_hashes": {
+      "spoken_script_sections_sha256": "22fb7388b80ff8ce083b87673deaba52441167993a56cf5478eb0a37fc6033ea",
+      "film_sha256": "9ca85b4c3b7eff22f50333c3f2119aa532146c3c2c6783ff9313568a644d1628"
+    },
+    "timeline": [
+      {
+        "slide": 1,
+        "section": "spoken script",
+        "start_seconds": 0,
+        "duration_seconds": 41.27
+      },
+      {
+        "slide": 2,
+        "section": "spoken script",
+        "start_seconds": 41.27,
+        "duration_seconds": 65.74
+      },
+      {
+        "slide": 3,
+        "section": "spoken script",
+        "start_seconds": 107.01,
+        "duration_seconds": 68.33
+      },
+      {
+        "slide": 4,
+        "section": "spoken script",
+        "start_seconds": 175.34,
+        "duration_seconds": 61.02
+      },
+      {
+        "slide": 5,
+        "section": "spoken script",
+        "start_seconds": 236.36,
+        "duration_seconds": 16.31
+      },
+      {
+        "slide": 5,
+        "section": "complete English film",
+        "start_seconds": 252.67,
+        "duration_seconds": 104.94
+      },
+      {
+        "slide": 6,
+        "section": "spoken script",
+        "start_seconds": 357.6,
+        "duration_seconds": 73.34
+      },
+      {
+        "slide": 7,
+        "section": "spoken script",
+        "start_seconds": 430.95,
+        "duration_seconds": 56.87
+      },
+      {
+        "slide": 8,
+        "section": "spoken script",
+        "start_seconds": 487.82,
+        "duration_seconds": 48.5
+      },
+      {
+        "slide": 9,
+        "section": "spoken script",
+        "start_seconds": 536.32,
+        "duration_seconds": 74.13
+      },
+      {
+        "slide": 10,
+        "section": "spoken script",
+        "start_seconds": 610.45,
+        "duration_seconds": 60.8
+      }
+    ]
+  },
+  "witnesses": {
+    "local_filmed_run": "evidence/runtime/maintenance-release-local.json",
+    "separate_cloud_sensor_run": "evidence/runtime/mec-maintenance-roundtrip.json",
+    "separate_cloud_commissioning_run": "evidence/runtime/mec-provider-commissioning.json",
+    "standalone_model": "evidence/agent/scenario-authoring/standalone-verified.json",
+    "codex_model": "evidence/agent/scenario-authoring/codex-authored-accepted.json"
+  },
+  "claim_limits": [
+    "Device and environmental readings are simulated.",
+    "The timed read-through used synthesized English presenter speech.",
+    "Third-party upload and judge interaction require their own evidence."
+  ]
+}

@@ -1,39 +1,67 @@
-# Technical interview and presenter notes
+# Technical interview notes
 
-Prepare an English slide deck for the evaluation and upload it to the organizer's Drive folder by Sunday, 22 November 2026. The local Three.js pitch and its Korean speaker guide supply visuals and rehearsal material. Play the English demo during the talk. The organizer allocated 20 minutes per team and requested a 10–15 minute presentation including the video, followed by questions.
+Use the [English slides](../../deliverables/presentation/openSoom-evaluation.pptx), [English script](presenter-script.en.md) and [Korean rehearsal script](presenter-script.ko.md) for the 10–15 minute presentation and video. The organizer allocates 20 minutes including questions.
 
-| Judge question | Evidence-based answer |
-| --- | --- |
-| What precise problem do you solve? | The manager must distinguish equipment status from the intended observed condition and track authorized action through ACK to later evidence. The example is a running fan with insufficient configured airflow in a food-production zone. |
-| Why oneM2M instead of a custom API? | Multiple application roles and vendors share resources. Native discovery, subscriptions, fan-out, ACP and Mcc reduce duplicated common-service code. A single-vendor isolated use case may need less machinery. |
-| Is this only a kitchen product? | No. Food-production and learning-space profiles plus two adapters use the same core and tools. Configured targets remain facility-specific. |
-| Are the readings or health benefits real? | Physical readings and actuators are simulated. CSE, native protocols, MCP and hosted-model execution are real. No health outcome or certified ventilation performance is claimed. |
-| Does an ACK mean success? | It only establishes that the virtual device acknowledged the current command. Two unique fresh healthy observations after ACK are required. A separate non-recovery run stays unresolved. |
-| What does the LLM decide? | It chooses structured operational tools and a bounded action using observed results. Server roles, facility/profile scope, freshness, idempotency and result checks enforce the boundary. It cannot grant itself administrator access. |
-| What persists across chats? | Service-owned runs, commands, incidents and event records. MCP host sessions receive their own run context. CSE resources and SQLite state persist separately. |
-| Is your MQTT integration native? | Yes. Captures show oneM2M request/response primitives on the CSE MQTT binding and the same resource read over HTTPS. It is not an HTTP bridge. |
-| How is SDT used? | Actual discovered cod:aiQSr flexContainers expose integer PM2.5 in µg/m³. Canonical CINs preserve precision and timestamps. CO₂ ppm and volume airflow are not forced into incompatible standard fields. |
-| What happens when one group member is denied? | This ACME version returns a top-level4103 in that case. We retain that native error and label separate member diagnostic reads. We do not fabricate a mixed native aggregate or call it actuator success. |
-| Is the system secure? | Project-local HTTPS/MQTT TLS validates servers, and scoped AE ACP tests show allowed and denied operations. Local clients are trusted: origins are not cryptographic device identities and MQTT is anonymous loopback. No production security claim. |
-| Does a central outage stop local operation? | The actual test stops the IN-CSE. Each facility's local CSE/API continues the defined observation/action/ACK/recovery path. Expired and mutated central replays are rejected. |
-| How is the filmed outage different from the maintenance transfer? | The film shows the facility continuing on its existing CSE when the central CSE stops. In a separate test, the serving CSE A stops and two failed probes move the logical endpoint to CSE B, which restores the incident, subscriptions and access rules. The two local CSEs share one host. Managed MEC deployment remains open. [Transfer receipts](../../evidence/runtime/handover/acceptance.json) |
-| How would a manager adopt it? | A maintainer installs the supported local runtime. The Codex plugin guides readiness, profile inspection, discovery, diagnosis and verification. New facility records use configuration. A real device protocol and a nontechnical first-use study remain further work. |
-| What did testing change? | We fixed cross-run reuse of historical command success, preserved requested virtual actuator percentages, restricted run writes to the owning role, and preserved secure settings and pending incidents across stop/start. Failed captures remain traceable. |
-| What evidence should we inspect first? | The agent evidence index, actual CSE runtime traces, application acceptance, clean lifecycle rehearsal, distributed continuity capture and four-team review ledger. |
+### Which problem did you observe, and which part is a product hypothesis?
 
-## Twelve-minute evaluation presentation
+A November 2025 inspection in Seoul documented inadequate ventilation performance at a school kitchen and recommended improvements. HSE commissioning guidance calls for checking hood performance against measurements and operating conditions. openSoom tests a product hypothesis arising from that problem. Site staff may be able to make better handover and inspection decisions when command, acknowledgement, follow-up airflow and independent feedback can be read together. A field study would need to measure the usefulness and accuracy of those decisions. [Ministry inspection](https://www.moel.go.kr/news/enews/report/enewsView.do?news_seq=18528) · [HSE guidance](https://www.hse.gov.uk/lev/commissioning.htm)
 
-| Elapsed time | What to show | What the presenter should explain |
-| --- | --- | --- |
-| 0:00–0:45 | Food-production zone, fan running, simulated airflow 360 m³/h against its configured 900 m³/h target | Why checking a zone after installation matters. Attribute the school-kitchen performance assessment to its published source. |
-| 0:45–2:05 | Two facility profiles, two vendor adapters, one operations service | Which settings change by facility and which parts of the software another operator can reuse. |
-| 2:05–3:10 | Resource tree, three group members and one observation written over MQTT/TLS and read over HTTPS | Show the shared resource ID. Explain why the device publishes while the management application queries. |
-| 3:10–8:10 | Play the full [five-minute English demonstration](../../deliverables/video/openSoom-demo-5min.mp4) with shared audio | Introduce the food and learning facilities. Let viewers follow the dashboard recordings and the separate operations and maintenance workers. |
-| 8:10–9:25 | One fault observation, two applications, one inspection that stays open | Show the common source CIN and separate read request IDs. Explain why an operator can issue a damper command while the maintenance role cannot. |
-| 9:25–10:30 | The hosted model's recorded tool calls and a fresh observation | Identify the decisions made by the agent and the rules enforced by the service. Contrast the recorded recovered and unresolved outcomes. |
-| 10:30–11:25 | The second adapter, standard PM2.5 read and account-free installation | Show what an adopter can reuse before connecting physical devices. |
-| 11:25–12:00 | Next installation and the public repository | Explain the first read-only pilot measurement and why the next integration would keep oneM2M. |
+### What did the operator and technician each decide?
 
-This plan leaves about eight minutes for questions and transitions. Join the meeting before the assigned slot. The organizer confirms the slot with `PICK` in the evaluation sheet and a Discord update.
+In the cooking-line simulation, airflow after a 100% damper command remained at 360 m³/h against a 900 m³/h zone target. The operator kept the incident open. An independent 35% shaft-position reading made actuator travel and position feedback the first inspection. The same work order changed priority. Confirming a fault requires inspection. The virtual measurement gives no clinical or certified ventilation outcome. [Filmed local run](../../evidence/runtime/maintenance-release-local.json)
 
-Authentic public technical exchanges and the actual judge interview have not occurred within this automated work. This preparation is not evidence for participation points.
+### Why use oneM2M?
+
+Multiple producers and consumers need independent permission to use the same observations. oneM2M supplies discovery, native subscriptions, group retrieval, access control and sharing between CSEs. Maintenance can retrieve the exact observation on which operations based its decision. A new app can use those resources without putting its own state or device control into the operations application. [Resource design](../architecture.md) · [Independent applications](../../evidence/runtime/maintenance-release-local.json)
+
+### What is the difference between MN-CSE, MEC, and the applications?
+
+The MN-CSE is the facility’s oneM2M common service entity. Its resource tree holds observations, commands, ACKs and work-order exchanges. The IN-CSE is the infrastructure-tier common service entity. Mcc connects CSEs. The operations and maintenance applications consume CSE services over Mca. At the edge, a separately deployed bridge discovers and calls the MEC provider’s service and publishes the response to the MN-CSE. Only site operations can command the device. The maintenance application writes the work order. [Application and deployment contract](../mec-application-contract.ko.md)
+
+### What ran on the cloud host?
+
+The physical plant was virtual. The private Kubernetes deployment on one VM ran site operations, a real ACME MN-CSE, separately credentialed maintenance and bridge workers, an independent provider CSE and pinned ETSI service components. In cloud run `demo-c24628832a`, the bridge used MEC 011 to discover the MEC 046 sensor-sharing endpoint. It retrieved a shaft reading, returned it through oneM2M, and maintenance changed work order `work-incident-97b8877461` to a specific first inspection. The actual request and response IDs identify that journey. Direct application deployment on a private cluster and platform-orchestrated placement among eligible hosts require different evidence. [Cloud work-order receipt](../../evidence/runtime/mec-maintenance-roundtrip.json) · [Platform components](../../evidence/runtime/option-c/native-services.json)
+
+### Who chose the target host, and who deployed the apps?
+
+The scenario author selected the north or south logical edge. The actual Sandbox controller and virtualization engine installed the site MN-CSE and inspection worker as two Helm releases on the chosen edge. Each placement ran a fresh work order and each MN registered to the IN-CSE. The original work-order snapshot survived redeployment. Both logical edges shared one VM. Separately, a terminated maintenance pod resumed reconciliation in 14.768 seconds. [Deployment receipts](../../evidence/runtime/option-c/index.json) · [Pod recovery](../../evidence/runtime/option-c/managed-worker-restart.json)
+
+### Did a second functional MEC service change the outcome?
+
+Yes. A separate cloud run began with the provider unavailable. A site-authorized oneM2M request selected an installed provider profile. The bridge used MEC 033 to register that provider again. The MEC 046 service then supplied an independent reading, after which maintenance updated the inspection priority. The original command and the still-open airflow incident remained linked to the work order. This was run `demo-4f65728fd2`, separate from the filmed local case and the first cloud 046 case. [MEC 033 and 046 commissioning record](../../evidence/runtime/mec-provider-commissioning.json)
+
+### When is MEC useful for a facility?
+
+An independent reading already supplied by the local oneM2M system can support the same technical decision. MEC is useful when another provider manages the independent sensor and exposes it through a discoverable edge service. The local and cloud demonstrations agreed on the inspection while retaining separate incident, execution and work-order IDs. With neither source available, the technician retains a general inspection. [Local comparison](../../evidence/runtime/maintenance-release-local.json) · [Provider service comparison](../../evidence/runtime/mec-maintenance-roundtrip.json)
+
+### Could a bad sample change the inspection or create another order?
+
+The bridge checks the facility, asset, sensor, unit, observation time and elapsed time after the command. Recorded local tests sent an unrelated asset, a wrong unit, a missing measurement time and a reading made before the actuator settled. Each left the existing decision in place. A restart plus duplicate callbacks retained exactly the same revision set. The site configuration defines tolerance, settling time and freshness. [Acceptance record](../../evidence/runtime/maintenance-release-local.json)
+
+### What can a facility manager do through the agent?
+
+A hosted model used the common MCP tools to save a named trial for the learning facility’s lounge, execute it and read the exact CSE result. An 88-second-old observation produced zero new device commands. The scenario definition and its version persist in the service and can be replayed after a restart. A separate fresh-observation test produced a virtual command and ACK. A separate native Codex run selected the test tool with a 93-second-old reading and an 83% damper request. A single scoped approval authorized the virtual trial. The service saved, ran and reread it. Its CSE command count stayed unchanged, and the original observation and version survived an API restart. The earlier rejected attempt and the later granted scope remain separately recorded. [Scenario results](../../evidence/agent/scenario-authoring/README.md) · [Codex authoring receipt](../../evidence/agent/scenario-authoring/codex-authored-accepted.json)
+
+### What changes at a new facility?
+
+A facility administrator chooses its zones, profile, equipment bindings, installed apps, authorized operations and site-specific targets. The release includes food-production and learning-space profiles and two virtual vendor formats. A new protocol or physical device needs a tested adapter. First-use validation with nontechnical staff and field calibration remain future pilot work. [Configuration](../../config/facilities.json) · [Adoption guide](../../README.md)
+
+### Which protocol and semantic claims can be reproduced?
+
+The protocol tests include native oneM2M MQTT/TLS primitives and HTTPS. The shared standard field is the TS-0023 air-quality sensor PM2.5 value, exposed in integer µg/m³ and discoverable as a flexContainer. The canonical measurement also preserves timestamp, units and original precision. CO₂ ppm and volumetric airflow use their own typed fields. In a separate native group test, a denied member produced a top-level 4103 on the pinned ACME version. Separate diagnostic member reads retain their own outcome. [Native MQTT evidence](../../evidence/runtime/cse-mqtt-tls-smoke.json) · [Standard model](../standard-model.md)
+
+### Which identities can act?
+
+Worker gateway credentials bind each allowed role to its facility-specific AE identity. The recorded tests denied maintenance and bridge device commands, bridge work-order writes, another facility’s data, and mismatched credentials and originator. The standalone local broker profile is server-authenticated TLS with trusted loopback clients. Production identity provisioning and field-device security need separate validation. [Recorded denials](../../evidence/runtime/maintenance-release-local.json)
+
+### How do you distinguish a central outage, a maintenance app restart and a serving-CSE transfer?
+
+During the central outage test the facility kept its current local CSE and completed an operation while the IN-CSE was down. In the filmed maintenance test the MN-CSE stayed available and the restarted app caught up on durable events. In a separate planned-maintenance experiment two failed probes moved a stable endpoint to the second same-host CSE and restored incident state and access configuration. Each test has its own failure boundary. [Central outage](../../evidence/runtime/product-multisite-continuity.json) · [Application restart](../../evidence/runtime/maintenance-release-local.json) · [Serving-CSE transfer](../../evidence/runtime/handover/acceptance.json)
+
+### What would convince you the product works in the field?
+
+Start with one zone under observation. Establish the facility’s own targets with its commissioning records and a competent technician. Compare openSoom’s priorities with measured performance and actual inspections. Record whether a shift can recover the incident history, which first inspections prove useful, where independent evidence is absent and whether new facilities can configure the same workflow. Public traces let another team reproduce the software tests while the physical pilot proceeds.
+
+### Before the interview
+
+Download the [PPTX](../../deliverables/presentation/openSoom-evaluation.pptx), [PDF](../../deliverables/presentation/openSoom-evaluation.pdf) and [720p MP4](../../deliverables/video/openSoom-work-order-720p.mp4). Use the PDF capture on slide 6 if the live lab is unavailable. Upload the slides to the designated Drive folder by Sunday, 22 November 2026, confirm the organizer’s assigned `PICK` slot and join before it begins. [Submission handoff](handoff.md)

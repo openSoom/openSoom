@@ -2,7 +2,13 @@
 
 The prototype ships two virtual profiles and two vendor formats. Facility managers use the Codex setup skill to understand and validate configuration. A maintainer still installs system prerequisites and integrates a new physical protocol. Physical adapters are not yet shipped.
 
-## Add a virtual facility without changing application code
+## Configure a new site from the plugin
+
+A manager can ask Codex, “Draft a virtual archive-workshop with receiving and conservation benches. Use the learning-space operating policy and vendor-b. My simulated airflow targets are 410 and 560 m³/h, particle warnings 22 and 18 µg/m³, CO₂ warnings 920 and 870 ppm. Bind the conservation damper bench-extract to its independent sensor bench-shaft.” Supply that site's settling time, freshness and position tolerance if enabling maintenance. Request a preview with `draft_facility`; check the displayed policy, zone values, bindings and version. The site's already configured administrator calls `activate_facility` for that exact version. The operating plugin can then discover the new site and test its second zone immediately. Repeating the activation preserves its operating history. Profiles and bindings survive an operations-service restart.
+
+The shipped plugin was exercised over stdio against the real CSE with these two virtual zones. An out-of-zone mapping and an operator's activation attempt were refused. After restart the same version and original CIN were read back, and a new stale-observation trial wrote zero commands. This was a scripted manager/administrator exercise. [Actual receipts](../evidence/agent/facility-onboarding.json) · [Reproduction driver](../scripts/facility_pack_acceptance.py)
+
+## Provision from configuration files
 
 1. Choose an existing profile or copy one JSON file in `profiles/`. Give a new profile a unique ID and define its zones, targets, freshness window, allowed actions and recovery sample count. Values are simulation inputs until separately validated for a real facility.
 2. Add an entry in `config/facilities.json` with a unique facility ID, display name, profile ID, `vendor-a` or `vendor-b`, and any `read_only_roles`. The observer has access only where explicitly listed.

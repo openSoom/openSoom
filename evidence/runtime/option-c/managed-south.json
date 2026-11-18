@@ -1,0 +1,278 @@
+{
+  "captured_utc": "2026-11-18T16:13:57.292530+00:00",
+  "side": "south",
+  "scenario": "inspection-south",
+  "physical_hosts": 1,
+  "logical_mec_hosts": [
+    "north-edge",
+    "south-edge"
+  ],
+  "selection": "Scenario author selected the logical installation target. Sandbox controller and Virt Engine created the workloads.",
+  "logical_app_instances": [
+    {
+      "id": "41e080d7-b438-566f-bc31-1e94c860f52c",
+      "name": "site-mn-cse",
+      "nodeName": "south-edge",
+      "type": "SYSTEM"
+    },
+    {
+      "id": "2fd7ece0-be18-5b5f-8aab-e7a68248720d",
+      "name": "inspection-worker",
+      "nodeName": "south-edge",
+      "type": "SYSTEM"
+    }
+  ],
+  "helm_configmap_receipts": [
+    {
+      "name": "sh.helm.release.v1.meep-inspection-south-inspection-worker.v1",
+      "uid": "6ee30fda-515e-4637-93ca-c19f49c5bc6f",
+      "status": "deployed"
+    },
+    {
+      "name": "sh.helm.release.v1.meep-inspection-south-site-mn-cse.v1",
+      "uid": "d9fca71e-be15-4303-8f64-0c7f27d7dd25",
+      "status": "deployed"
+    }
+  ],
+  "orchestrator_install_log": [
+    "2026-11-18T16:12:50.133Z [meep-virt-engine] DEBUG (install.go:73) - Installing chart: meep-inspection-south-site-mn-cse",
+    "2026-11-18T16:12:50.134Z [meep-virt-engine] DEBUG (install.go:73) - Installing chart: meep-inspection-south-inspection-worker"
+  ],
+  "registered_topology": {
+    "method": "GET",
+    "path": "/platform-ctrl/v1/scenarios/inspection-south",
+    "requested_utc": "2026-11-18T16:13:55.974920+00:00",
+    "http": 200,
+    "oneM2M_request_id": null,
+    "oneM2M_status": null,
+    "body": {
+      "version": "1.10.0",
+      "name": "inspection-south",
+      "description": "Simulated facility topology with two alternative locations for the same read-and-ticket app.",
+      "deployment": {
+        "netChar": {
+          "latency": 1,
+          "throughputDl": 100,
+          "throughputUl": 100
+        },
+        "connectivity": {
+          "model": "OPEN"
+        },
+        "d2d": {
+          "d2dMaxDistance": 100
+        },
+        "domains": [
+          {
+            "id": "272d730d-d8d8-5500-8d3a-6a9793846027",
+            "name": "facility-provider",
+            "type": "OPERATOR",
+            "netChar": {
+              "latency": 1,
+              "throughputDl": 100,
+              "throughputUl": 100
+            },
+            "zones": [
+              {
+                "id": "735031c6-ee68-554f-9a88-b15b2f3a1e8e",
+                "name": "north",
+                "type": "ZONE",
+                "netChar": {
+                  "latency": 1,
+                  "throughputDl": 100,
+                  "throughputUl": 100
+                },
+                "networkLocations": [
+                  {
+                    "id": "2ebc1bf5-be93-565e-a9a9-ab3ca8dfe417",
+                    "name": "north-DEFAULT",
+                    "type": "DEFAULT",
+                    "netChar": {
+                      "latency": 1,
+                      "throughputDl": 100,
+                      "throughputUl": 100
+                    },
+                    "physicalLocations": [
+                      {
+                        "id": "c85961a6-4786-5d53-a278-18979e9509ce",
+                        "name": "north-edge",
+                        "type": "EDGE",
+                        "connected": true,
+                        "netChar": {
+                          "latency": 1,
+                          "latencyDistribution": "Normal",
+                          "throughputDl": 100,
+                          "throughputUl": 100
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "3558fa3c-ae4d-53b8-be35-fe89c0f4b360",
+                "name": "south",
+                "type": "ZONE",
+                "netChar": {
+                  "latency": 1,
+                  "throughputDl": 100,
+                  "throughputUl": 100
+                },
+                "networkLocations": [
+                  {
+                    "id": "cb027435-67fc-5ef6-8f77-b95f0578540a",
+                    "name": "south-DEFAULT",
+                    "type": "DEFAULT",
+                    "netChar": {
+                      "latency": 1,
+                      "throughputDl": 100,
+                      "throughputUl": 100
+                    },
+                    "physicalLocations": [
+                      {
+                        "id": "6ef5965d-cf0f-5d1a-b558-39fc4620c5a3",
+                        "name": "south-edge",
+                        "type": "EDGE",
+                        "connected": true,
+                        "processes": [
+                          {
+                            "id": "2fd7ece0-be18-5b5f-8aab-e7a68248720d",
+                            "name": "inspection-worker",
+                            "type": "EDGE-APP",
+                            "userChartLocation": "maintenance",
+                            "userChartAlternateValues": "maintenance/south.yaml",
+                            "netChar": {
+                              "latency": 1,
+                              "latencyDistribution": "Normal",
+                              "throughputDl": 100,
+                              "throughputUl": 100
+                            }
+                          },
+                          {
+                            "id": "41e080d7-b438-566f-bc31-1e94c860f52c",
+                            "name": "site-mn-cse",
+                            "type": "EDGE-APP",
+                            "userChartLocation": "site-mn",
+                            "userChartAlternateValues": "site-mn/south.yaml",
+                            "netChar": {
+                              "latency": 1,
+                              "latencyDistribution": "Normal",
+                              "throughputDl": 100,
+                              "throughputUl": 100
+                            }
+                          }
+                        ],
+                        "netChar": {
+                          "latency": 1,
+                          "latencyDistribution": "Normal",
+                          "throughputDl": 100,
+                          "throughputUl": 100
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "cse_csr": {
+    "method": "GET",
+    "path": "/cse-in/opensoom-mn",
+    "requested_utc": "2026-11-18T16:13:56.894985+00:00",
+    "http": 200,
+    "oneM2M_request_id": "os-capture-b2edc53bbefb",
+    "oneM2M_status": "2000",
+    "body": {
+      "m2m:csr": {
+        "rn": "opensoom-mn",
+        "rr": true,
+        "cst": 2,
+        "csz": [
+          "application/json",
+          "application/vnd.onem2m-res+json",
+          "application/cbor",
+          "application/vnd.onem2m-res+cbor"
+        ],
+        "srv": [
+          "2a",
+          "3",
+          "4",
+          "5"
+        ],
+        "spi": "//opensoom.example",
+        "ici": "/opensoom-in",
+        "csi": "/opensoom-mn",
+        "cb": "/opensoom-mn/cse-mn",
+        "dcse": [],
+        "poa": [
+          "http://opensoom-mn.default.svc.cluster.local:8080"
+        ],
+        "ri": "opensoom-mn",
+        "pi": "opensoom-in",
+        "ty": 16,
+        "ct": "20261118T161302,982925",
+        "lt": "20261118T161302,982925",
+        "et": "20311117T161302,984343"
+      }
+    }
+  },
+  "maintenance_health": {
+    "method": "GET",
+    "path": "/health",
+    "requested_utc": "2026-11-18T16:13:57.287964+00:00",
+    "http": 200,
+    "oneM2M_request_id": null,
+    "oneM2M_status": null,
+    "body": {
+      "role": "maintenance",
+      "facility_id": "food-a",
+      "scans": 17,
+      "notifications": 0,
+      "rejections": 0,
+      "last_error": null
+    }
+  },
+  "before_work_order": {
+    "ri": "cinxq3nScCCUT",
+    "created": "20261118T161100,313716",
+    "content_sha256": "789a628e4d6d3121a3697a43cd4dc12cb1bf5ed46827c7b1519db1b1adac7dee"
+  },
+  "after_work_order": {
+    "ri": "cinxq3nScCCUT",
+    "created": "20261118T161100,313716",
+    "content_sha256": "789a628e4d6d3121a3697a43cd4dc12cb1bf5ed46827c7b1519db1b1adac7dee"
+  },
+  "pods": [
+    {
+      "name": "os-managed-maintenance-64b54668cf-sc5dw",
+      "uid": "d581a678-41b7-4ed5-a251-6367962584b8",
+      "logical_host": "south-edge",
+      "kubernetes_node": "opensoom-mec-test",
+      "created": "2026-11-18T16:12:50Z",
+      "images": [
+        {
+          "image": "localhost/opensoom/maintenance:6ee58ac5204a2611",
+          "image_id": "sha256:3dcca6656bd2f0b6c0ee8c1f09d062e54df8b4f6db686e2156c571c97c8273fc",
+          "ready": true
+        }
+      ]
+    },
+    {
+      "name": "os-managed-mn-598d64496c-fh67q",
+      "uid": "f484c156-409c-4179-a0f6-a0bf2271724d",
+      "logical_host": "south-edge",
+      "kubernetes_node": "opensoom-mec-test",
+      "created": "2026-11-18T16:12:50Z",
+      "images": [
+        {
+          "image": "docker.io/opensoom/acme:2026.5.3",
+          "image_id": "sha256:59369acecf0e1ad9849271aca5572406dc24c497b266414f508a99ef37079a86",
+          "ready": true
+        }
+      ]
+    }
+  ]
+}

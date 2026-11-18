@@ -3,36 +3,63 @@
   "prepared_on": "2026-11-19",
   "timezone": "Asia/Seoul",
   "baseline_revision": "7a52a8ef47799d8cfea7605b39e85d679bbc82bb",
-  "stage": "R0",
-  "status": "prepared_for_activation",
+  "stage": "R3–R5",
+  "status": "in_progress",
   "plan": "docs/release-goal.ko.md",
   "review_charter": "docs/review/review-charter.json",
   "planning_review": "docs/review/release-goal-review.ko.md",
   "previous_release": "docs/execution-state.json",
   "required_gates": {
     "R0": {
-      "status": "not_started",
-      "evidence": []
+      "status": "verified",
+      "evidence": [
+        "docs/mec-application-contract.ko.md",
+        "evidence/runtime/option-c/index.json",
+        "deploy/mec-sandbox/README.md"
+      ]
     },
     "R1": {
-      "status": "not_started",
-      "evidence": []
+      "status": "implemented_pending_independent_review",
+      "evidence": [
+        "evidence/runtime/maintenance-release-local.json",
+        "evidence/video/work-order/capture.json",
+        "evidence/runtime/maintenance-command-followup.json"
+      ]
     },
     "R2": {
-      "status": "not_started",
-      "evidence": []
+      "status": "implemented_pending_independent_review",
+      "evidence": [
+        "evidence/agent/scenario-authoring/restart-acceptance.json",
+        "evidence/agent/scenario-authoring/standalone-verified.json",
+        "evidence/agent/scenario-authoring/codex-authored-accepted.json",
+        "evidence/agent/facility-onboarding.json"
+      ]
     },
     "R3": {
-      "status": "not_started",
-      "evidence": []
+      "status": "in_progress",
+      "evidence": [
+        "evidence/runtime/mec-maintenance-roundtrip.json",
+        "evidence/runtime/mec-provider-commissioning.json",
+        "evidence/runtime/option-c/native-services.json",
+        "evidence/runtime/option-c/index.json"
+      ],
+      "remaining": "Independent final check of native configuration, orchestration and work-order changes."
     },
     "R4": {
-      "status": "not_started",
-      "evidence": []
+      "status": "in_progress",
+      "evidence": [
+        "evidence/video/work-order/film.json",
+        "evidence/video/work-order/capture.json",
+        "deliverables/presentation/openSoom-evaluation.pptx",
+        "deliverables/presentation/openSoom-evaluation.pdf",
+        "evidence/presentation/acceptance.json"
+      ],
+      "remaining": "Final rendered claim/link review and real-time rehearsal record."
     },
     "R5": {
-      "status": "not_started",
-      "evidence": []
+      "status": "in_progress",
+      "evidence": [],
+      "remaining": "Freeze and independently review candidate, verify fresh reproduction, publish and verify remote commit."
     }
   },
   "cloud": {
@@ -59,12 +86,34 @@
         "R5"
       ],
       "decision": "Define the separately deployable MEC maintenance project and service bridge, keep operational control at the facility, and assign a seventh non-scoring Idea Model reviewer. Recheck the same fault with independently sourced and locally available evidence."
+    },
+    {
+      "date": "2026-11-19",
+      "gates": [
+        "R1",
+        "R2",
+        "R3",
+        "R4"
+      ],
+      "decision": "Run local and native cloud routes against separate simulated incidents, use an independent provider-owned shaft observation, and retain exact original work orders. The original Codex test used a read-only harness that prevented the virtual write. A second clean native host used the ordinary scoped confirmation path and the existing two-attempt product limit. Actual tool and CSE receipts prove the model-authored trial. The final film cites the separate local and cloud runs."
+    },
+    {
+      "date": "2026-11-19",
+      "gates": [
+        "R0",
+        "R1",
+        "R2",
+        "R3",
+        "R4",
+        "R5"
+      ],
+      "decision": "The platform installed the MN and maintenance workloads on two logical edges and the sole paid VM was stopped. The operating service now preserves the current command across an out-of-order sensor response, and the manager can draft a new site, bind its sensors and set commissioned targets before administrator activation. An independent media review located a recording time offset. The corrected picture track was checked against the six spoken decisions and original audio."
     }
   ],
   "external_blockers": [],
   "rubric_expert_followup": {
-    "13": "open: project topology and orchestration across eligible hosts",
-    "16": "open: multiple functional services and bidirectional interaction through oneM2M",
+    "13": "Managed north and south placement is recorded on two operator-selected logical hosts on a single VM. Final independent review pending.",
+    "16": "Two native service functions used from oneM2M on an existing work order. Independent scoring review pending.",
     "review": "docs/review/release-goal-review.ko.md"
   },
   "idea_model_review": {
@@ -77,5 +126,12 @@
       "R2/R3 integrated comparison",
       "R4/R5 public claims and final package"
     ]
-  }
+  },
+  "implementation_base": "9067572b6be79cd2461b2cc4d7c17d576c319870",
+  "protected_demo_ports": [
+    8090,
+    8095,
+    8443,
+    8883
+  ]
 }

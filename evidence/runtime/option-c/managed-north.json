@@ -1,0 +1,278 @@
+{
+  "captured_utc": "2026-11-18T16:09:45.290713+00:00",
+  "side": "north",
+  "scenario": "inspection-north",
+  "physical_hosts": 1,
+  "logical_mec_hosts": [
+    "north-edge",
+    "south-edge"
+  ],
+  "selection": "Scenario author selected the logical installation target. Sandbox controller and Virt Engine created the workloads.",
+  "logical_app_instances": [
+    {
+      "id": "41e080d7-b438-566f-bc31-1e94c860f52c",
+      "name": "site-mn-cse",
+      "nodeName": "north-edge",
+      "type": "SYSTEM"
+    },
+    {
+      "id": "2fd7ece0-be18-5b5f-8aab-e7a68248720d",
+      "name": "inspection-worker",
+      "nodeName": "north-edge",
+      "type": "SYSTEM"
+    }
+  ],
+  "helm_configmap_receipts": [
+    {
+      "name": "sh.helm.release.v1.meep-inspection-north-inspection-worker.v1",
+      "uid": "734ad781-01d3-43cd-a11a-3ce7af6cfc4d",
+      "status": "deployed"
+    },
+    {
+      "name": "sh.helm.release.v1.meep-inspection-north-site-mn-cse.v1",
+      "uid": "30b5dfcb-02c1-4dbd-9206-b552b1f0d819",
+      "status": "deployed"
+    }
+  ],
+  "orchestrator_install_log": [
+    "2026-11-18T16:07:57.813Z [meep-virt-engine] DEBUG (install.go:73) - Installing chart: meep-inspection-north-site-mn-cse",
+    "2026-11-18T16:07:57.814Z [meep-virt-engine] DEBUG (install.go:73) - Installing chart: meep-inspection-north-inspection-worker"
+  ],
+  "registered_topology": {
+    "method": "GET",
+    "path": "/platform-ctrl/v1/scenarios/inspection-north",
+    "requested_utc": "2026-11-18T16:09:44.168162+00:00",
+    "http": 200,
+    "oneM2M_request_id": null,
+    "oneM2M_status": null,
+    "body": {
+      "version": "1.10.0",
+      "name": "inspection-north",
+      "description": "Simulated facility topology with two alternative locations for the same read-and-ticket app.",
+      "deployment": {
+        "netChar": {
+          "latency": 1,
+          "throughputDl": 100,
+          "throughputUl": 100
+        },
+        "connectivity": {
+          "model": "OPEN"
+        },
+        "d2d": {
+          "d2dMaxDistance": 100
+        },
+        "domains": [
+          {
+            "id": "272d730d-d8d8-5500-8d3a-6a9793846027",
+            "name": "facility-provider",
+            "type": "OPERATOR",
+            "netChar": {
+              "latency": 1,
+              "throughputDl": 100,
+              "throughputUl": 100
+            },
+            "zones": [
+              {
+                "id": "735031c6-ee68-554f-9a88-b15b2f3a1e8e",
+                "name": "north",
+                "type": "ZONE",
+                "netChar": {
+                  "latency": 1,
+                  "throughputDl": 100,
+                  "throughputUl": 100
+                },
+                "networkLocations": [
+                  {
+                    "id": "2ebc1bf5-be93-565e-a9a9-ab3ca8dfe417",
+                    "name": "north-DEFAULT",
+                    "type": "DEFAULT",
+                    "netChar": {
+                      "latency": 1,
+                      "throughputDl": 100,
+                      "throughputUl": 100
+                    },
+                    "physicalLocations": [
+                      {
+                        "id": "c85961a6-4786-5d53-a278-18979e9509ce",
+                        "name": "north-edge",
+                        "type": "EDGE",
+                        "connected": true,
+                        "processes": [
+                          {
+                            "id": "2fd7ece0-be18-5b5f-8aab-e7a68248720d",
+                            "name": "inspection-worker",
+                            "type": "EDGE-APP",
+                            "userChartLocation": "maintenance",
+                            "userChartAlternateValues": "maintenance/north.yaml",
+                            "netChar": {
+                              "latency": 1,
+                              "latencyDistribution": "Normal",
+                              "throughputDl": 100,
+                              "throughputUl": 100
+                            }
+                          },
+                          {
+                            "id": "41e080d7-b438-566f-bc31-1e94c860f52c",
+                            "name": "site-mn-cse",
+                            "type": "EDGE-APP",
+                            "userChartLocation": "site-mn",
+                            "userChartAlternateValues": "site-mn/north.yaml",
+                            "netChar": {
+                              "latency": 1,
+                              "latencyDistribution": "Normal",
+                              "throughputDl": 100,
+                              "throughputUl": 100
+                            }
+                          }
+                        ],
+                        "netChar": {
+                          "latency": 1,
+                          "latencyDistribution": "Normal",
+                          "throughputDl": 100,
+                          "throughputUl": 100
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "3558fa3c-ae4d-53b8-be35-fe89c0f4b360",
+                "name": "south",
+                "type": "ZONE",
+                "netChar": {
+                  "latency": 1,
+                  "throughputDl": 100,
+                  "throughputUl": 100
+                },
+                "networkLocations": [
+                  {
+                    "id": "cb027435-67fc-5ef6-8f77-b95f0578540a",
+                    "name": "south-DEFAULT",
+                    "type": "DEFAULT",
+                    "netChar": {
+                      "latency": 1,
+                      "throughputDl": 100,
+                      "throughputUl": 100
+                    },
+                    "physicalLocations": [
+                      {
+                        "id": "6ef5965d-cf0f-5d1a-b558-39fc4620c5a3",
+                        "name": "south-edge",
+                        "type": "EDGE",
+                        "connected": true,
+                        "netChar": {
+                          "latency": 1,
+                          "latencyDistribution": "Normal",
+                          "throughputDl": 100,
+                          "throughputUl": 100
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "cse_csr": {
+    "method": "GET",
+    "path": "/cse-in/opensoom-mn",
+    "requested_utc": "2026-11-18T16:09:44.915403+00:00",
+    "http": 200,
+    "oneM2M_request_id": "os-capture-abf6c7b49ec9",
+    "oneM2M_status": "2000",
+    "body": {
+      "m2m:csr": {
+        "rn": "opensoom-mn",
+        "rr": true,
+        "cst": 2,
+        "csz": [
+          "application/json",
+          "application/vnd.onem2m-res+json",
+          "application/cbor",
+          "application/vnd.onem2m-res+cbor"
+        ],
+        "srv": [
+          "2a",
+          "3",
+          "4",
+          "5"
+        ],
+        "spi": "//opensoom.example",
+        "ici": "/opensoom-in",
+        "csi": "/opensoom-mn",
+        "cb": "/opensoom-mn/cse-mn",
+        "dcse": [],
+        "poa": [
+          "http://opensoom-mn.default.svc.cluster.local:8080"
+        ],
+        "ri": "opensoom-mn",
+        "pi": "opensoom-in",
+        "ty": 16,
+        "ct": "20261118T160806,905030",
+        "lt": "20261118T160806,905030",
+        "et": "20311117T160806,907117"
+      }
+    }
+  },
+  "maintenance_health": {
+    "method": "GET",
+    "path": "/health",
+    "requested_utc": "2026-11-18T16:09:45.285739+00:00",
+    "http": 200,
+    "oneM2M_request_id": null,
+    "oneM2M_status": null,
+    "body": {
+      "role": "maintenance",
+      "facility_id": "food-a",
+      "scans": 32,
+      "notifications": 0,
+      "rejections": 0,
+      "last_error": null
+    }
+  },
+  "before_work_order": {
+    "ri": "cinFNnyCeEpWC",
+    "created": "20261118T160311,246365",
+    "content_sha256": "1a918540ddc29bd87d0b1e895394aefc04671350261b3a4e03b2fa1510ff5f2e"
+  },
+  "after_work_order": {
+    "ri": "cinFNnyCeEpWC",
+    "created": "20261118T160311,246365",
+    "content_sha256": "1a918540ddc29bd87d0b1e895394aefc04671350261b3a4e03b2fa1510ff5f2e"
+  },
+  "pods": [
+    {
+      "name": "os-managed-maintenance-dd897957c-xd6pd",
+      "uid": "691665b1-e84f-4bb3-8408-f060542d72ac",
+      "logical_host": "north-edge",
+      "kubernetes_node": "opensoom-mec-test",
+      "created": "2026-11-18T16:07:58Z",
+      "images": [
+        {
+          "image": "localhost/opensoom/maintenance:6ee58ac5204a2611",
+          "image_id": "sha256:3dcca6656bd2f0b6c0ee8c1f09d062e54df8b4f6db686e2156c571c97c8273fc",
+          "ready": true
+        }
+      ]
+    },
+    {
+      "name": "os-managed-mn-5b74578c97-86lq7",
+      "uid": "e78ab46a-a50b-437a-a364-7796f4899a77",
+      "logical_host": "north-edge",
+      "kubernetes_node": "opensoom-mec-test",
+      "created": "2026-11-18T16:07:58Z",
+      "images": [
+        {
+          "image": "docker.io/opensoom/acme:2026.5.3",
+          "image_id": "sha256:59369acecf0e1ad9849271aca5572406dc24c497b266414f508a99ef37079a86",
+          "ready": true
+        }
+      ]
+    }
+  ]
+}

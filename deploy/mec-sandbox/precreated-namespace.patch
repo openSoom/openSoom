@@ -1,0 +1,20 @@
+--- a/go-apps/meep-virt-engine/helm/install.go
++++ b/go-apps/meep-virt-engine/helm/install.go
+@@ -78,7 +78,7 @@
+ 		/*onboardedappEnabled := strings.TrimSpace(os.Getenv("MEEP_ONBOARDEDAPP"))
+ 		onboardedappLocation := strings.TrimSpace(os.Getenv("MEEP_ONBOARDEDAPP_LOCATION")) + chart.ReleaseName*/
+ 		cmd = exec.Command("helm", "install", chart.ReleaseName,
+-			"--namespace", chart.Namespace, "--create-namespace",
++			"--namespace", chart.Namespace,
+ 			"--set", "nameOverride="+chart.Name,
+ 			"--set", "fullnameOverride="+chart.Name,
+ 			chart.Location, "--replace", "--disable-openapi-validation",
+@@ -89,7 +89,7 @@
+ 		"--set", "onboardedapp.location="+onboardedappLocation)*/
+ 	} else {
+ 		cmd = exec.Command("helm", "install", chart.ReleaseName,
+-			"--namespace", chart.Namespace, "--create-namespace",
++			"--namespace", chart.Namespace,
+ 			"--set", "nameOverride="+chart.Name,
+ 			"--set", "fullnameOverride="+chart.Name,
+ 			"-f", chart.ValuesFile,

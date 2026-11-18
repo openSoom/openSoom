@@ -128,3 +128,19 @@ def test_commissioning_creates_only_installed_provider_and_rereads_before_sensor
         with pytest.raises(EvidenceError,match='provider_transport_mismatch'):
             svc.registration(commission=True)
         assert not any('/queries/' in url for _,url in calls)
+
+
+def test_projection_hides_superseded_reading_before_new_worker_output():
+    from opensoom.maintenance import current_order_view, latest_damper_commands
+    at = datetime.now(timezone.utc).isoformat()
+    scope = {'facility_id':'food-a', 'zone_id':'cook', 'incident_id':'one', 'action':'set_damper', 'ack_at':at}
+    # Device acknowledgements may share the same millisecond and arrive out of creation order.
+    current = {**scope, 'id':'new', 'ack_sequence':3, 'value':100}
+    historical = {**scope, 'id':'old', 'ack_sequence':2, 'value':80}
+    acknowledged = latest_damper_commands([current, historical, {**current, 'id':'other', 'incident_id':'other'}])
+    old = {**scope, 'work_order_id':'work-one', 'status':'open', 'command_id':'old', 'resource_id':'cin-old',
+           'priority':'inspect_actuator_feedback', 'sample':{'value':35}}
+    waiting = current_order_view(old, acknowledged)
+    assert waiting['command_id'] == 'new' and waiting['evidence_status'] == 'awaiting_current_command_followup'
+    assert waiting['historical_work_order_ri'] == 'cin-old' and 'sample' not in waiting
+    assert old['sample']['value'] == 35

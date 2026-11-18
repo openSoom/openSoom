@@ -176,6 +176,10 @@ fact and the restored measurement objects without fabricating chat history.
 
 Early failed attempts are retained: the first fixture ended before recovery samples arrived; the first portable plugin used an unsupported absolute executable command. Both were corrected and retested. The first no-recovery live run observed a pre-ACK state and is weak negative evidence. A later run exposed reuse of a previous incident's idempotency key; current-run checks now reject it. The first release recapture also failed because the model skipped the required read_evidence step despite eventual device recovery. That failure is retained; a later run satisfied the full workflow. Acceptance uses the explicitly indexed current-source traces above. Independent rubric review remains separate from these implementation checks.
 
+## New sites and trials
+
+The setup plugin offers `draft_facility` and administrator-only `activate_facility`. The [third facility](../evidence/agent/facility-onboarding.json) was configured, restarted and tested over actual MCP stdio with scripted calls. Separately, [native Codex](../evidence/agent/scenario-authoring/codex-authored-accepted.json) and the [standalone hosted runner](../evidence/agent/scenario-authoring/standalone-verified.json) each authored a new virtual trial in the learning facility. Both reached original CSE data. The operator can use the [setup walkthrough](extending.md) with their own virtual zone names and targets.
+
 ## Primary references
 
 - [OpenAI plugin packaging](https://developers.openai.com/plugins/build/plugins): portable manifests, fixed component paths and onboarding skills.

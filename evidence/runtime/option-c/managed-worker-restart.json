@@ -1,0 +1,30 @@
+{
+  "initiated_utc": "2026-11-18T16:16:52.537143+00:00",
+  "replacement_observed_seconds": 14.768,
+  "interruption": "Deliberate maintenance Pod deletion on the selected south Sandbox logical edge.",
+  "recovery": "Its existing Kubernetes Deployment recreated the Pod. The host and MN-CSE remained online.",
+  "old_pod_uid": "d581a678-41b7-4ed5-a251-6367962584b8",
+  "new_pod_uid": "eaa48f6d-9ef0-4374-ad3b-a9b1d7015335",
+  "health": {
+    "role": "maintenance",
+    "facility_id": "food-a",
+    "scans": 3,
+    "notifications": 0,
+    "rejections": 0,
+    "last_error": null
+  },
+  "before_order": {
+    "ri": "cin3CcKgaUJuw",
+    "work_order": "work-incident-dd76879755",
+    "revision": 4,
+    "request_id": "os-capture-bc6e15778e14",
+    "status": "2000"
+  },
+  "after_order": {
+    "ri": "cin3CcKgaUJuw",
+    "work_order": "work-incident-dd76879755",
+    "revision": 4,
+    "request_id": "os-capture-40f289cae753",
+    "status": "2000"
+  }
+}

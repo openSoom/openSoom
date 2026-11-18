@@ -1,0 +1,236 @@
+{
+  "facility_id": "food-a",
+  "run_id": "demo-c6d2d16a9f",
+  "reader_ae": "Cosmaintenance39095aa155887ebe",
+  "original_observation": {
+    "ri": "cinnconOTWOgA",
+    "read_rqi": "opensoom-b5496f7808ce447587112fbae7730164",
+    "data": {
+      "facility_id": "food-a",
+      "zone_id": "cook",
+      "observed_at": "2026-11-18T16:10:42.789+00:00",
+      "received_at": "2026-11-18T16:10:42.789+00:00",
+      "source": "simulated",
+      "adapter": "vendor-a",
+      "pm25": 62.0,
+      "co2": 1450.0,
+      "airflow": 360.0,
+      "fan_running": true,
+      "damper_pct": 100.0
+    }
+  },
+  "opened": {
+    "ri": "cinmifTYEuuoW",
+    "read_rqi": "opensoom-9ca3076152b64ecca9a2ff6923f3e0e7",
+    "data": {
+      "facility_id": "food-a",
+      "zone_id": "cook",
+      "asset_id": "extract-damper-01",
+      "incident_id": "incident-6eca1d92f1",
+      "run_id": "demo-c6d2d16a9f",
+      "source_cin_ri": "cinEkWp2ORdmy",
+      "kind": "work_order",
+      "work_order_id": "work-incident-6eca1d92f1",
+      "command_id": null,
+      "observed_at": "2026-11-18T16:10:37.798+00:00",
+      "status": "open",
+      "priority": "inspection",
+      "evidence_status": "awaiting_outcome",
+      "revision": 1,
+      "outcome_ri": "cinZhrTOgqk1I",
+      "observation_rqi": "opensoom-0daa4bc22b2542cfa4b3de9207ad6722",
+      "airflow": 360.0,
+      "profile_version": 1
+    }
+  },
+  "unresolved": {
+    "ri": "cinVPwigHKdWl",
+    "read_rqi": "opensoom-e2ea27495c644c13b3b93ce3d31533e7",
+    "data": {
+      "facility_id": "food-a",
+      "zone_id": "cook",
+      "asset_id": "extract-damper-01",
+      "incident_id": "incident-6eca1d92f1",
+      "run_id": "demo-c6d2d16a9f",
+      "source_cin_ri": "cinnconOTWOgA",
+      "kind": "work_order",
+      "work_order_id": "work-incident-6eca1d92f1",
+      "command_id": "cmd-e926398fc083",
+      "observed_at": "2026-11-18T16:10:42.789+00:00",
+      "status": "open",
+      "priority": "inspection",
+      "evidence_status": "awaiting_independent_sample",
+      "revision": 2,
+      "request_id": "sensor-eaeefb5ad900ec559b72a5154804641f",
+      "outcome_ri": "cingmGrYSnBio",
+      "observation_rqi": "opensoom-43532aa7c7884b8f959dda544cafea57",
+      "airflow": 360.0,
+      "profile_version": 1
+    }
+  },
+  "outcome": {
+    "ri": "cingmGrYSnBio",
+    "read_rqi": "opensoom-27b4cb664e5b402daf4541ed1de8cb18",
+    "data": {
+      "kind": "command.unresolved_after_ack",
+      "facility_id": "food-a",
+      "zone_id": "cook",
+      "asset_id": "extract-damper-01",
+      "incident_id": "incident-6eca1d92f1",
+      "run_id": "demo-c6d2d16a9f",
+      "source_cin_ri": "cinnconOTWOgA",
+      "source_cin_path": "cse-mn/opensoom/facilities/food-a/cook/observations/cin_wUWtVVUxj4",
+      "rqi": "opensoom-82eaa6695c2940798d629a3cfa00e0fb",
+      "profile_version": 1,
+      "observed_at": "2026-11-18T16:10:42.789+00:00",
+      "command_id": "cmd-e926398fc083",
+      "ack_at": "2026-11-18T16:10:40.463+00:00",
+      "requested_pct": 100.0
+    }
+  },
+  "request": {
+    "ri": "cinzO7LTGGtTl",
+    "read_rqi": "opensoom-30e435f2982642dea67bd672da184fb9",
+    "data": {
+      "facility_id": "food-a",
+      "zone_id": "cook",
+      "asset_id": "extract-damper-01",
+      "incident_id": "incident-6eca1d92f1",
+      "run_id": "demo-c6d2d16a9f",
+      "source_cin_ri": "cinnconOTWOgA",
+      "kind": "shaft_position_lookup",
+      "request_id": "sensor-eaeefb5ad900ec559b72a5154804641f",
+      "work_order_id": "work-incident-6eca1d92f1",
+      "sensor_id": "shaft-position-01",
+      "outcome_ri": "cingmGrYSnBio",
+      "observed_at": "2026-11-18T16:10:42.789+00:00",
+      "ack_at": "2026-11-18T16:10:40.463+00:00",
+      "airflow": 360.0,
+      "profile_version": 1,
+      "command_id": "cmd-e926398fc083",
+      "requested_pct": 100.0
+    }
+  },
+  "response": {
+    "ri": "cinAHnGlzj0sf",
+    "read_rqi": "opensoom-7ad6579150d64005b4d259f38636d7b4",
+    "data": {
+      "kind": "sensor_result",
+      "facility_id": "food-a",
+      "request_id": "sensor-eaeefb5ad900ec559b72a5154804641f",
+      "request_ri": "cinzO7LTGGtTl",
+      "mode": "mec046",
+      "status": "measured",
+      "sample": {
+        "sensor_id": "shaft-position-01",
+        "value": 35.0,
+        "unit": "%",
+        "observed_at": "2026-11-18T16:10:58.717923+00:00",
+        "source": "independent_position_sensor"
+      },
+      "provider_receipt": {
+        "service_id": "33a76061-6729-4c5d-91ae-05c4df9d1ed0",
+        "service_name": "mep1-meep-sss",
+        "registry_status": 200,
+        "discovery_status": 200,
+        "lookup_status": 200,
+        "lookup_path": "/queries/sensor_data",
+        "provider_sensor_id": "shaftYjotHJ3NyZ",
+        "lookup_sha256": "3bad967fa92c9fb6fc8672c5193c6e623f83d2db641991abfa4018b11fafa97a",
+        "provider_registration": {
+          "service_id": "8ccaebbd-c792-4ad0-917a-a4a3fc6464d4",
+          "service_name": "mep1-meep-iot",
+          "registry_status": 200,
+          "platform_id": "opensoom-position-provider",
+          "before_status": 200,
+          "before_enabled": true,
+          "readback_status": 200,
+          "enabled": true,
+          "readback_sha256": "36edd775b9bd9654c184660fb20882e6923d8e53db697b5b9c56c5367ccc2a71"
+        }
+      }
+    }
+  },
+  "work_order": {
+    "ri": "cinxq3nScCCUT",
+    "read_rqi": "opensoom-570f7f40d15e47aeb011afbfa3b51913",
+    "data": {
+      "facility_id": "food-a",
+      "zone_id": "cook",
+      "asset_id": "extract-damper-01",
+      "incident_id": "incident-6eca1d92f1",
+      "run_id": "demo-c6d2d16a9f",
+      "source_cin_ri": "cinnconOTWOgA",
+      "kind": "work_order",
+      "work_order_id": "work-incident-6eca1d92f1",
+      "command_id": "cmd-e926398fc083",
+      "observed_at": "2026-11-18T16:10:42.789+00:00",
+      "status": "open",
+      "priority": "inspect_actuator_feedback",
+      "evidence_status": "verified_independent_sample",
+      "revision": 4,
+      "requested_pct": 100.0,
+      "sample": {
+        "sensor_id": "shaft-position-01",
+        "value": 35.0,
+        "unit": "%",
+        "observed_at": "2026-11-18T16:10:58.717923+00:00",
+        "source": "independent_position_sensor"
+      },
+      "provider_receipt": {
+        "service_id": "33a76061-6729-4c5d-91ae-05c4df9d1ed0",
+        "service_name": "mep1-meep-sss",
+        "registry_status": 200,
+        "discovery_status": 200,
+        "lookup_status": 200,
+        "lookup_path": "/queries/sensor_data",
+        "provider_sensor_id": "shaftYjotHJ3NyZ",
+        "lookup_sha256": "3bad967fa92c9fb6fc8672c5193c6e623f83d2db641991abfa4018b11fafa97a",
+        "provider_registration": {
+          "service_id": "8ccaebbd-c792-4ad0-917a-a4a3fc6464d4",
+          "service_name": "mep1-meep-iot",
+          "registry_status": 200,
+          "platform_id": "opensoom-position-provider",
+          "before_status": 200,
+          "before_enabled": true,
+          "readback_status": 200,
+          "enabled": true,
+          "readback_sha256": "36edd775b9bd9654c184660fb20882e6923d8e53db697b5b9c56c5367ccc2a71"
+        }
+      },
+      "request_id": "sensor-eaeefb5ad900ec559b72a5154804641f",
+      "request_ri": "cinzO7LTGGtTl",
+      "response_ri": "cinAHnGlzj0sf",
+      "outcome_ri": "cingmGrYSnBio",
+      "mode": "mec046",
+      "airflow": 360.0,
+      "profile_version": 1
+    }
+  },
+  "commissioning": {
+    "ri": "cin8DyWgluVhq",
+    "read_rqi": "opensoom-baec7f39cd984b9a895e7c01faff4c63",
+    "data": {
+      "kind": "provider.result",
+      "facility_id": "food-a",
+      "request_id": "enable-release-provider",
+      "request_ri": "cinB1UoFlErWF",
+      "provider_profile": "independent-shaft-provider",
+      "observed_at": "2026-11-18T16:03:09.511512+00:00",
+      "status": "enabled",
+      "provider_receipt": {
+        "service_id": "8ccaebbd-c792-4ad0-917a-a4a3fc6464d4",
+        "service_name": "mep1-meep-iot",
+        "registry_status": 200,
+        "platform_id": "opensoom-position-provider",
+        "before_status": 404,
+        "before_enabled": null,
+        "operation": "POST",
+        "write_status": 201,
+        "readback_status": 200,
+        "enabled": true,
+        "readback_sha256": "36edd775b9bd9654c184660fb20882e6923d8e53db697b5b9c56c5367ccc2a71"
+      }
+    }
+  }
+}
