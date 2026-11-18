@@ -23,6 +23,8 @@
 
 Option C는 두 플랫폼을 같은 엣지 노드에 배치하는 선택이다. 여기서 **openSoom이 제공하는 소프트웨어는 정비 패키지**이고 **플랫폼에서 소비하는 기능은 ETSI 표준 서비스**다. Sandbox 컨트롤러가 설치한 ACME MN-CSE와 정비 앱은 별개 인스턴스다. 연동기는 재배치 중에도 시설별 고정 엔드포인트를 유지한다. TR-0086의 내부 통신·콜백 경로를 사용한다. 자기 시설에 연결하려는 장치·운영 앱에 유효한 인증 및 접근 경로가 있어야 한다. [oneM2M TR-0080 배포 옵션](https://specifications.onem2m.org/tr/tr-0080/latest/5.1/) · [ESTIMED 개발 자료](https://estimed.etsi.org/dev_material/)
 
+자체 클라우드에서도 사람용 웹 서비스와 MEC 워커를 독립적으로 운영했다. 남쪽 논리 호스트의 작업지시서 판본을 정비사 웹 API로 열어 일정을 저장하자 운영자가 같은 접수 번호를 조회했다. 같은 요청을 재전송해도 접수는 한 건이고, 처리 전후 장비 명령은 여섯 건으로 같았다. 기술자 웹 서비스는 일반 Kubernetes Deployment로 배치한 별도 비공개 Pod에서 실행했다. [클라우드 실행의 원본 요청과 응답](../evidence/runtime/option-c/technician-handoff.json)
+
 ## 어떤 MEC 서비스가 제품에서 무슨 일을 하는가
 
 | 사용 서비스 | 구체적 동작과 검증 |

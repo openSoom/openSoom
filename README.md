@@ -53,6 +53,8 @@ uv run --no-sync python scripts/maintenance_demo.py --dashboard-port 19490 --tec
 
 ![Actual local handoff from the operator console to the technician workbench and its recorded inspection](docs/assets/technician-handoff.gif)
 
+The same handoff ran on a private cloud lab. The native MEC service returned a virtual shaft reading of 35%, the maintenance worker updated one work-order revision, and the technician app recorded a scheduled inspection. The operator read the same disposition. All six existing command records were preserved and the airflow incident remained open. [Cloud request, work order and technician readback](evidence/runtime/option-c/technician-handoff.json)
+
 In 18 designed virtual trials across two facility profiles, ACK-only, airflow-only and openSoom rules declared false recovery in **14, 2 and 0** of the 16 cases that required further investigation. All three recognized both recoveries. openSoom matched the four prespecified first inspections, two sensor conditions repeated at two sites. These figures describe the designed cases. [Inputs, decision rules and all denominators](docs/inspection-benchmark.md)
 
 ## Bring another facility

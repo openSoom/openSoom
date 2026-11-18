@@ -1771,5 +1771,116 @@
     "fresh_install": "evidence/release/final-work-order-acceptance.json",
     "public_bytes": "evidence/release/final-work-order-publication.json",
     "browser_replay": "evidence/release/dashboard-replay.json"
+  },
+  "inspection_workbench_review": {
+    "product_revision": "462d4d9b4fbff824e343aafdc9b837af7bed88ee",
+    "reviewer_model": "gpt-6.2-sol",
+    "reasoning_effort": "max",
+    "teams": [
+      {
+        "team": "A",
+        "criteria": [
+          1,
+          2,
+          3
+        ],
+        "verdict": "Scoped Expert. Native group fan-out, the prior secure MQTT/HTTPS profile and two current human apps. Browser evidence is local. Cloud handoff has its own HTTP receipt."
+      },
+      {
+        "team": "B",
+        "criteria": [
+          4,
+          5,
+          7
+        ],
+        "verdict": "4 Expert-level draft, public rendering open. 5 and 7 Expert. Checked full film decode, actual GIF, PPTX and PDF. Distinguish the three films and the background worker restarted in the filmed case."
+      },
+      {
+        "team": "C",
+        "criteria": [
+          6,
+          8,
+          9
+        ],
+        "verdict": "6 Proficient pending real Hackster backlink. 8 needs a genuine substantive public exchange. 9 needs the live interview. Reviewed a clean install and the timed evaluation material."
+      },
+      {
+        "team": "D",
+        "criteria": [
+          10,
+          11,
+          17
+        ],
+        "verdict": "Scoped Expert for app-to-CSE TLS and native ACP, PM2.5 SDT projection and previously captured live Codex/hosted model workflows. Local browser trust is loopback, and AI or SDT receipts retain their own source revisions."
+      },
+      {
+        "team": "E",
+        "criteria": [
+          12,
+          13,
+          16
+        ],
+        "verdict": "Scoped Expert for CSE process availability handover, two Sandbox logical hosts on one compute node, and working MEC 033/046 bridging. Exact cloud order and technician acknowledgement verified across separate workloads."
+      },
+      {
+        "team": "F",
+        "criteria": [
+          14,
+          15
+        ],
+        "verdict": "Open. Federated training on an ESTIMED VM and a decision triggered by real network location remain undemonstrated."
+      },
+      {
+        "team": "Idea Model",
+        "criteria": [],
+        "verdict": "Accept the controlled first-inspection case across two facility profiles. Independent shaft travel refines the first check. The failed-recovery metric separately measures operations policy. External-provider commissioning motivates optional MEC. Real-world diagnosis, unassisted setup and field service time remain open."
+      }
+    ],
+    "evidence": [
+      "docs/review/public-project-comparison.ko.md",
+      "docs/inspection-benchmark.md",
+      "evidence/runtime/inspection-benchmark.json",
+      "evidence/application/technician-browser.json",
+      "evidence/runtime/technician-workbench.json",
+      "evidence/runtime/option-c/technician-handoff.json",
+      "evidence/release/inspection-clean-install.json",
+      "evidence/presentation/acceptance.json"
+    ],
+    "decisions": [
+      {
+        "finding": "B · article provenance",
+        "decision": "accept",
+        "action": "Name the separate 1:45 film, historical five-minute film, paused background worker and later local technician GIF; remove implied human study.",
+        "verification": "Team B checked revised wording and decoded the produced media."
+      },
+      {
+        "finding": "C · maintainers and judge explanation",
+        "decision": "accept",
+        "action": "Correct CONTRIBUTING review team count; map work_orders, inspections and inspection_notes in the resource tree and add a next-facility answer to judge Q&A.",
+        "verification": "Compare resource names with provision_streams and review charter. Anonymous downloads are retained separately."
+      },
+      {
+        "finding": "D · role projection",
+        "decision": "accept",
+        "action": "Align the operations API with the role-specific CSE streams. Same-site observers receive no orders, maintenance receives orders without technician disposition, and the operator can read that disposition.",
+        "verification": "Authenticated local application requests in the current acceptance run. See technician.observer_order_count, maintenance_saw_order and maintenance_saw_technician_activity in evidence/runtime/technician-workbench.json. Team D independently checked the revised code, four roles, 14 native permission denials, restart, and the live receipt demo-bc420abeda."
+      },
+      {
+        "finding": "A/D · rerun latest secure binding, live model and SDT",
+        "decision": "defer",
+        "reason": "Retain the exact provenance of the earlier dedicated profiles. Their workflow contracts did not change in this release, whose acceptance is for the new two-app workflow."
+      },
+      {
+        "finding": "F and Idea · location, learning and external use",
+        "decision": "defer",
+        "reason": "The fixed-asset demonstration has no real location/FL dependency. Field diagnosis, competitive rankings and first-time human usability require other evidence."
+      },
+      {
+        "finding": "Idea Model · equal-input comparison and professional rationale",
+        "decision": "accept",
+        "action": "Lead the landing and article with two separate 95% trials at identical airflow. Keep the historical one-order progression separate on slide 7. Add direct commissioning and exhaust troubleshooting citations to Hackster copy.",
+        "verification": "Landing browser receipt verifies both decisions, source and live app destinations at 1440 and 390 pixels."
+      }
+    ]
   }
 }

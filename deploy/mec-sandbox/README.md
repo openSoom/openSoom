@@ -106,3 +106,28 @@ python3 "$lab/placement-capture.py" north > managed-north.json
 Run a fresh virtual case with the same `lab-action.py start` command. Read its results with `capture_maintenance_order.py` inside `deploy/os-managed-maintenance`. Repeat on south using `cutover.sh south` and `placement-capture.py south`. The cutover waits for the previous MN Pod to release its database. Both deployments must be Ready, and the same original work-order RI, creation time and contents must be retrievable. `restart-check.py` additionally terminates the managed maintenance Pod and waits for a successful reconciliation. `cutover.sh restore` returns the facility to the original direct deployments. The namespace-scoped Helm service account manages only namespaced release records and Deployments. Its optional upstream cluster-role-binding housekeeping is unavailable in this scoped build. Both tested charts contain only Deployments.
 
 For a stopped existing cloud lab, start the same VM and refresh its SSH endpoint. Check the provider stream, 033 enrollment, 011 catalog, worker health, Mcc registration and the current logical placement. Re-commission in dependency order if transient platform or operations stores were recreated. Preserve the mounted CSE data and the project-local gateway credentials. Stop the VM after the session. The measured setup used Google Compute Engine us-central1, e2-medium, one ephemeral external IPv4 and a 30GB pd-standard disk. At 730 running hours the estimate was US$29.31 before taxes and transfer. The retained disk costs about US$1.20/month while the VM is stopped. [VM pricing](https://cloud.google.com/compute/vm-instance-pricing) · [Disk pricing](https://cloud.google.com/compute/disks-image-pricing) · [IPv4 pricing](https://cloud.google.com/vpc/network-pricing#ipaddress)
+
+## Hand the verified order to a human technician
+
+The managed maintenance app produces a recommendation. The human workbench runs in a separate facility Deployment. It reads the actual work-order CIN through a distinct technician AE at the site gateway. Its HTTP listener binds to Pod loopback. Cluster administrators can use an authenticated Kubernetes port-forward to view it on their workstation. The lab creates no public endpoint for this role.
+
+Start the existing simulation stream, ensure the three sandbox applications have been admitted with `commission.py apps`, and wait for the 033 and 046 records to become ACTIVE. Use the current operations image for the site service and the workbench, and the matching current maintenance image for the managed worker and bridge. On a preserved site keep its operations volume, CSE data, CA and existing role credentials. Restart the operations app first so its bootstrap registers the technician AE, inspection containers and their separate ACPs.
+
+```sh
+python3 "$lab/technician-lab.py" --image "$OPERATIONS_IMAGE"
+sudo k3s kubectl -n opensoom-workers port-forward --address 127.0.0.1 deploy/os-technician 8181:8181
+```
+
+The authorized technician opens `http://127.0.0.1:8181/` in the port-forward session. For a fresh case, start the virtual scenario and send the approved provider request through the operations API. After the 046 reading updates the work order, run the HTTP sequence inside the isolated technician Pod.
+
+```sh
+sudo k3s kubectl -n opensoom-workers exec -i deploy/os-operations -- python - --operator --run-id "$RUN_ID" \
+  < "$lab/technician-capture.py" > operator-before.json
+sudo k3s kubectl -n opensoom-workers exec -i deploy/os-technician -- python - --run-id "$RUN_ID" \
+  < "$lab/technician-capture.py" > technician.json
+entry=$(python3 -c 'import json; print(json.load(open("technician.json"))["entry"]["resource_id"])')
+sudo k3s kubectl -n opensoom-workers exec -i deploy/os-operations -- python - --operator --run-id "$RUN_ID" \
+  --expected-entry "$entry" < "$lab/technician-capture.py" > operator-after.json
+```
+
+The capture checks the cookie-protected queue, exact reviewed CIN, retries, same-origin writes and the private note. The operator's readback verifies that the disposition arrived, the original incident remains open, and the command container's state tag and membership are unchanged. [Native technician handoff](../../evidence/runtime/option-c/technician-handoff.json)

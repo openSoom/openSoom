@@ -178,5 +178,17 @@
       "14 federated learning",
       "15 network geolocation"
     ]
+  },
+  "inspection_workbench_release": {
+    "reviewed_workbench_revision": "462d4d9b4fbff824e343aafdc9b837af7bed88ee",
+    "objective": "Compete on a measurable decision and clearly separate people-facing applications from the edge workloads.",
+    "comparison": "docs/review/public-project-comparison.ko.md",
+    "decision_benchmark": "evidence/runtime/inspection-benchmark.json",
+    "cloud": "evidence/runtime/option-c/technician-handoff.json",
+    "local_role_scope": "evidence/runtime/technician-workbench.json",
+    "runtime_evidence_scope": "Cloud Option C and Chromium captures are on 462d4d9; subsequent observer and maintenance API response scoping was independently checked in a fresh local lab.",
+    "rubric_teams": 6,
+    "separate_idea_reviewers": 1,
+    "external_handoff": "docs/submission/handoff.md"
   }
 }

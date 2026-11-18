@@ -2,6 +2,15 @@
 
 주최 측 한 장짜리 Rubric의 17개 항목을 GPT-6.2-Sol Max 여섯 팀이 독립 검토했다. 별도 Idea Model 리뷰어는 실제 시설 운영 판단과 도입 편의성을 검토한다. 최종 검토의 공통 제품 리비전은 `f8fd12f38030b9984c0cc76d7f502fd0904086f4`다. 클라우드 실증과 최종 소스의 로컬 재실행은 각각 해당 실행의 소스 해시로 확인할 수 있다. **Expert는 해당 범위의 자체 판정**이다. 공인 점수와 합산 방식은 주최 측 소관이다. [원문 식별 정보와 17개 항목](../hackathon/rubric-baseline.json) · [검토 배정](review-charter.json) · [사전 심사](release-goal-review.ko.md)
 
+
+## 경쟁작 비교 후 재검토
+
+6개 Rubric 팀과 독립 Idea Model 팀이 같은 제품 버전 `462d4d9`을 검토했다. 1·2·3·5·7·10·11·12·13·16·17번은 아래에 명시한 실증 범위에서 Expert로 판단했다. 4번은 영문 원고가 준비됐고 실제 Hackster 게시 화면 확인이 남았다. 6번은 공개 Hackster 역링크가 필요하다. 8·9번은 실제 공개 기술 교류와 인터뷰, 14·15번은 연합학습과 네트워크 위치 실증이 남아 있다. [항목별 검토 기록](review-ledger.json) · [공개 경쟁작 비교](public-project-comparison.ko.md)
+
+이번 제품의 새 근거는 같은 사건을 다루는 두 사람용 앱, 임무가 분리된 엣지 워커, 동일 입력을 사용한 18개 가상 시험이다. 현재 브라우저 기록과 클라우드 HTTP 기록은 다른 실행이다. 이전 혼합 프로토콜·SDT·실제 LLM 실행은 각 기록에 쓰인 소스 버전을 유지한다. 검토 후 동일 시설의 관찰자에게 운영 API가 작업지시서를 반환하던 동작을 수정했다. 관찰자는 시설 상태를 읽고, 정비 역할은 작업지시서를 읽고, 운영자는 현재 판본의 점검 상태까지 확인하도록 실제 역할별 요청으로 재검증했다. [브라우저 인계](../../evidence/application/technician-browser.json) · [클라우드 인계](../../evidence/runtime/option-c/technician-handoff.json) · [최종 역할별 확인](../../evidence/runtime/technician-workbench.json) · [판단 비교](../inspection-benchmark.md)
+
+## 항목별 판정과 적용 범위
+
 | # | 항목 | 판정과 근거 |
 |---|---|---|
 | 1 | oneM2M 기능 | **Expert.** 네이티브 그룹 fan-out 하나에 실제 멤버별 2000을 받았다. 보안 프로필에서는 세 구역의 최근 CIN을 한 번에 조회했다. [실행 기록](../../evidence/application/release-acceptance.json) |

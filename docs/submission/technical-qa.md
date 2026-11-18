@@ -26,6 +26,8 @@ Nine predeclared cases ran in each of two virtual facilities. Sixteen of the eig
 
 Multiple producers and consumers need independent permission to use the same observations. oneM2M supplies discovery, native subscriptions, group retrieval, access control and sharing between CSEs. Maintenance can retrieve the exact observation on which operations based its decision. A new app can use those resources without putting its own state or device control into the operations application. [Resource design](../architecture.md) · [Independent applications](../../evidence/runtime/maintenance-release-local.json)
 
+At the next multi-vendor facility we would use oneM2M again. A new sensor adapter or technician application can join the same site resource model, and the CSE enforces its own access rights. In the workbench, reading an order revision and writing an inspection CIN linked by `work_order_ri` makes the decision traceable across applications. [Resource tree and application roles](../architecture.md#resource-tree)
+
 ### What is the difference between MN-CSE, MEC, and the applications?
 
 The MN-CSE is the facility’s oneM2M common service entity. Its resource tree holds observations, commands, ACKs and work-order exchanges. The IN-CSE is the infrastructure-tier common service entity. Mcc connects CSEs. The operations and maintenance applications consume CSE services over Mca. At the edge, a separately deployed bridge discovers and calls the MEC provider’s service and publishes the response to the MN-CSE. Only site operations can command the device. The maintenance application writes the work order. [Application and deployment contract](../mec-application-contract.ko.md)

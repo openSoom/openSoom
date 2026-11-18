@@ -40,6 +40,11 @@ cse-secure
     ├── acp-learning-b-{structure,observations,commands,acks} (ACP)
     ├── facilities (CNT)
     │   ├── food-a (CNT)
+    │   │   ├── outcomes (CNT) / CIN created by facility operations
+    │   │   ├── sensor_requests and sensor_responses (CNTs) / request and result CINs
+    │   │   ├── work_orders (CNT) / revision CIN created by the maintenance AE
+    │   │   ├── inspections (CNT) / technician disposition linked by work_order_ri
+    │   │   ├── inspection_notes (CNT) / private technician note
     │   │   ├── cook (CNT)
     │   │   │   ├── observations (CNT) / CIN / diagnosis (SUB)
     │   │   │   ├── commands (CNT) / CIN

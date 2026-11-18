@@ -616,7 +616,16 @@ class Core:
         commands = [c for c in self.store.list("commands") if c["facility_id"] in allowed]
         acknowledged = maintenance.latest_damper_commands(commands)
         commands = commands[-40:]
-        orders = [maintenance.current_order_view(order, acknowledged) for fid in sorted(allowed) if "maintenance" in self.registry[fid] for order in self.store.get("work_order_projection", fid, [])]
+        role = principal["role"]
+        orders = []
+        if role in ("admin", "operator", "maintenance"):
+            for fid in sorted(allowed):
+                if "maintenance" in self.registry[fid]:
+                    for order in self.store.get("work_order_projection", fid, []):
+                        view = maintenance.current_order_view(order, acknowledged)
+                        if role == "maintenance" and "latest_technician_activity" in view:
+                            view = {key: value for key, value in view.items() if key != "latest_technician_activity"}
+                        orders.append(view)
         return {"facilities": facilities, "work_orders": orders, "selected_facility": facilities[0]["id"] if facilities else None, "incidents": incidents, "commands": commands, "events": [e for e in self.store.events() if not e.get("facility_id") or e["facility_id"] in allowed], "runs": [r for r in self.store.list("runs") if r["facility_id"] in allowed][-15:], "runtime": {"cse_connected": self.connected, "cse_name": "ACME oneM2M", "simulation": True, "last_error": self.last_error, "last_notification": self.store.get("config", "last_notification")}, "summary": {"active_incidents": sum(i["status"] != "resolved" for i in incidents), "pending_commands": sum(c["status"] == "requested" for c in commands), "recovered_incidents": sum(i["status"] == "resolved" and i.get("resolved_at") is not None for i in incidents), "fresh_zones": sum(z["status"] not in ("stale", "missing") for f in facilities for z in f["zones"]), "total_zones": sum(len(f["zones"]) for f in facilities)}}
 
     def doctor(self):

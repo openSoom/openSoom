@@ -8,4 +8,4 @@ Source contributions use Apache-2.0. Original documentation/media use CC BY 4.0.
 
 Reviewers distinguish implementation evidence, captured runtime behavior and independent verification. A picture, plan, command write or fixture cannot stand in for a live model outcome. Keep failed attempts where they explain a fix, and state which capture supersedes them.
 
-See `AGENTS.md`, the implementation plan and review ledger for the project's four-team review procedure. Reporting a concern in this repository does not authorize contacting external people or publishing a submission elsewhere.
+Six teams review the official rubric and a seventh reviewer assesses the product and its use in facilities. [Review assignments and evidence requirements](docs/review/review-charter.json) · [Review ledger](docs/review/review-ledger.json). Reporting a concern in this repository does not authorize contacting external people or publishing a submission elsewhere.

@@ -1,31 +1,32 @@
 {
   "facility_id": "archive-workshop",
   "zone_id": "conservation",
-  "run_id": "demo-b8bc1004bb",
   "target_m3_h": 560,
-  "source": "https://github.com/openSoom/openSoom/blob/f8fd12f38030b9984c0cc76d7f502fd0904086f4/evidence/agent/facility-worker-generalization.json",
+  "source": "https://github.com/openSoom/openSoom/blob/462d4d9b4fbff824e343aafdc9b837af7bed88ee/evidence/runtime/inspection-benchmark.json",
   "decisions": [
     {
-      "priority": "inspect_actuator_feedback",
-      "work_order_id": "work-incident-bcd88d20e6",
-      "airflow": 515.0,
-      "requested_pct": 80.0,
-      "command_id": "cmd-60c78fa5e7ba",
-      "resource_id": "cinWZAuUawfDZ",
-      "response_ri": "cinb7CLlfgKT0",
-      "status": "open",
-      "shaft_pct": 35
-    },
-    {
-      "priority": "inspect_airflow_path",
-      "work_order_id": "work-incident-bcd88d20e6",
+      "run_id": "demo-b69bdb9085",
+      "work_order_id": "work-incident-d9e4677252",
       "airflow": 515.0,
       "requested_pct": 95.0,
-      "command_id": "cmd-416348cf6592",
-      "resource_id": "cinzw6SHrezLh",
-      "response_ri": "cin8KPdqhoT0Z",
+      "command_id": "cmd-7dfa6fd81af5",
+      "resource_id": "cincInZB0XchC",
+      "response_ri": "cinHjMK8rjfe2",
       "status": "open",
-      "shaft_pct": 93
+      "shaft_pct": 35,
+      "priority": "inspect_actuator_feedback"
+    },
+    {
+      "run_id": "demo-da42b785f7",
+      "work_order_id": "work-incident-56a70cc116",
+      "airflow": 515.0,
+      "requested_pct": 95.0,
+      "command_id": "cmd-6f6007d036f7",
+      "resource_id": "cinIMnieQyizW",
+      "response_ri": "cinkDeHZ8tAMH",
+      "status": "open",
+      "shaft_pct": 93,
+      "priority": "inspect_airflow_path"
     }
   ]
 }

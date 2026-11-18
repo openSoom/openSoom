@@ -19,19 +19,19 @@
   <p class="disclosure">Recorded oneM2M decisions · simulated equipment and measurements.</p>
  </div>
  <article class="inspection-comparison" aria-labelledby="comparison-title">
-  <div class="comparison-top"><span>Conservation workshop</span><span>Recorded case</span></div>
+  <div class="comparison-top"><span>Conservation workshop</span><span>Two recorded trials</span></div>
   <h2 id="comparison-title">The bench stayed below target.</h2>
   <p class="comparison-flow"><b id="comparison-air">515</b> <span>m³/h measured<br>560 m³/h target</span></p>
-  <div role="group" aria-label="Compare acknowledged damper commands" class="inspection-switch">
-    <button data-inspection="0" aria-pressed="true">First command</button>
-    <button data-inspection="1" aria-pressed="false">Next command</button>
+  <div role="group" aria-label="Compare trials with identical damper commands" class="inspection-switch">
+    <button data-inspection="0" aria-pressed="true">Trial A</button>
+    <button data-inspection="1" aria-pressed="false">Trial B</button>
   </div>
   <div id="comparison-result" aria-live="polite">
-    <div class="comparison-pair"><div><span>Opening requested</span><strong id="comparison-request">80%</strong></div><div><span>Independent shaft</span><strong id="comparison-shaft">35%</strong></div></div>
+    <div class="comparison-pair"><div><span>Opening requested</span><strong id="comparison-request">95%</strong></div><div><span>Independent shaft</span><strong id="comparison-shaft">35%</strong></div></div>
     <p class="inspection-label">First inspection</p><h3 id="comparison-action">Actuator travel and position feedback</h3>
     <p id="comparison-reason">The independent position fell well short of the accepted setting.</p>
   </div>
-  <a class="comparison-source" id="comparison-source" href="https://github.com/openSoom/openSoom/blob/f8fd12f38030b9984c0cc76d7f502fd0904086f4/evidence/agent/facility-worker-generalization.json">Inspect the same open work order ↗</a>
+  <a class="comparison-source" id="comparison-source" href="https://github.com/openSoom/openSoom/blob/462d4d9b4fbff824e343aafdc9b837af7bed88ee/evidence/runtime/inspection-benchmark.json">Inspect both recorded trials ↗</a>
  </article>
 </section>
 
@@ -147,6 +147,6 @@ uv run --no-sync python scripts/cse_runtime.py install
 uv run --no-sync python scripts/maintenance_demo.py --dashboard-port 19490 --technician-port 19492 --hold</code></pre><p>Verified on macOS with Python 3.12, uv and OpenSSL. Initial downloads need network access. Once the order appears, open the operator console on port 19490 and the technician workbench on 19492. Replay “No recovery after action” to see a new work order. Ctrl+C closes the lab.</p><p class="fine">Source: Apache-2.0. Original content: CC BY 4.0. Three.js: MIT. Keep runtime listeners on loopback.</p></div></section>
 </main>
 <footer><a class="brand" href="#top"><span class="mark" aria-hidden="true">◌</span>openSoom</a><p>“Soom” means breath in Korean.</p><div><a href="https://github.com/openSoom/openSoom/blob/main/docs/architecture.md">Architecture</a><a href="https://github.com/openSoom/openSoom/blob/main/THIRD_PARTY_NOTICES.md">Licenses &amp; sources</a><a href="https://github.com/openSoom/openSoom/blob/main/deliverables/video/openSoom-work-order-720p.mp4">Watch the demo ↗</a></div><p class="fine">oneM2M Hackathon 2026 prototype. No organizer endorsement implied.</p></footer>
-<aside id="guide" lang="ko" hidden aria-label="한국어 발표 가이드"><div class="guide-heading"><span>발표 가이드 · 약 5분</span><button id="guide-close" aria-label="발표 가이드 닫기">×</button></div><h2 id="guide-title">같은 저풍량에서도 첫 점검은 달라집니다.</h2><p id="guide-body">보존 작업실에서는 두 명령 뒤 모두 목표 560 m³/h에 못 미치는 515 m³/h가 측정됐습니다. 두 번의 축 위치는 달랐습니다.</p><div class="guide-cue"><b>지금 보여줄 것</b><p id="guide-action">First command와 Next command를 차례로 눌러 독립 개도와 첫 점검이 어떻게 바뀌는지 보여주세요.</p></div><nav aria-label="발표 순서"><button data-guide="0" class="selected">1 문제</button><button data-guide="1">2 앱과 역할</button><button data-guide="2">3 AI</button><button data-guide="3">4 분산</button><button data-guide="4">5 증거</button><button data-guide="5">6 재사용</button></nav><p class="fine">화면을 읽기보다, 왜 이 구조가 필요한지 설명하세요.</p><a class="guide-full" href="https://github.com/openSoom/openSoom/blob/main/docs/project-guide.ko.md">한국어 전체 해설 · 발표 대본 ↗</a></aside>
+<aside id="guide" lang="ko" hidden aria-label="한국어 발표 가이드"><div class="guide-heading"><span>발표 가이드 · 약 5분</span><button id="guide-close" aria-label="발표 가이드 닫기">×</button></div><h2 id="guide-title">같은 저풍량에서도 첫 점검은 달라집니다.</h2><p id="guide-body">보존 작업실에서는 독립 시험 두 건 모두 95% 개방 명령 뒤 목표 560 m³/h에 못 미치는 515 m³/h가 측정됐습니다. 두 번의 축 위치는 달랐습니다.</p><div class="guide-cue"><b>지금 보여줄 것</b><p id="guide-action">Trial A와 Trial B를 차례로 눌러 독립 개도와 첫 점검이 어떻게 바뀌는지 보여주세요.</p></div><nav aria-label="발표 순서"><button data-guide="0" class="selected">1 문제</button><button data-guide="1">2 앱과 역할</button><button data-guide="2">3 AI</button><button data-guide="3">4 분산</button><button data-guide="4">5 증거</button><button data-guide="5">6 재사용</button></nav><p class="fine">화면을 읽기보다, 왜 이 구조가 필요한지 설명하세요.</p><a class="guide-full" href="https://github.com/openSoom/openSoom/blob/main/docs/project-guide.ko.md">한국어 전체 해설 · 발표 대본 ↗</a></aside>
 <script type="module" src="main.js"></script><script type="module" src="workflow.js"></script><script type="module" src="work-order.js"></script><script type="module" src="inspection-comparison.js"></script><script type="module" src="architecture.js"></script><noscript><p class="noscript">The article remains readable without JavaScript. Enable it for the Three.js model and presenter controls.</p></noscript>
 </body></html>

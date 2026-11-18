@@ -13,7 +13,7 @@ $$('[data-layer]').forEach(button => button.addEventListener('click', () => {
  $('#layer-body').textContent=data.body;$('#layer-proof').textContent=data.proof;$('#layer-proof').style.whiteSpace='pre-line';$('#layer-limit').textContent=data.limit;
 }));
 const guide = [
- {title:'같은 저풍량에서도 첫 점검은 달라집니다.',body:'보존 작업실의 목표는 560 m³/h인데 같은 작업에서 두 번 모두 515 m³/h가 측정됐습니다. 첫 명령 뒤에는 구동축이 덜 움직였고, 다음 명령 뒤에는 목표 개도에 가까워졌습니다.',action:'First command와 Next command를 차례로 눌러 실제 작업기록의 독립 개도와 첫 점검이 어떻게 바뀌는지 보여주세요.',target:'#top'},
+ {title:'같은 저풍량에서도 첫 점검은 달라집니다.',body:'보존 작업실의 목표는 560 m³/h인데 두 독립 시험 모두 95% 개방 요청 뒤 515 m³/h가 측정됐습니다. 첫 시험에서는 구동축이 덜 움직였고, 둘째 시험에서는 목표 개도에 가까워졌습니다.',action:'Trial A와 Trial B를 차례로 눌러 실제 작업기록의 독립 개도와 첫 점검이 어떻게 바뀌는지 보여주세요.',target:'#top'},
  {title:'운영자와 정비사가 같은 사건에서 다른 판단을 합니다.',body:'운영자는 풍량이 회복됐는지 판정합니다. 정비사는 같은 작업지시서에서 점검할 곳을 정하고 활동을 기록합니다. MEC 정비 앱과 서비스 연동기는 화면 뒤에서 독립 센서의 출처와 시각을 확인합니다.',action:'두 앱의 링크를 보여주고 정비사 화면에서 점검 일정을 저장하세요. 운영자 콘솔에 그 상태가 돌아와도 풍량이 부족한 동안 사건은 열려 있습니다.',target:'#human-apps'},
  {title:'AI는 도구를 고르고, 서비스가 권한과 결과를 검증합니다.',body:'LLM은 시설의 최신 증거를 읽고 허용된 조치를 요청합니다. 역할·시설·프로필·데이터 신선도는 서버가 검사합니다. 모델이 “성공”이라고 말해도 그것만으로 회복이 되지 않습니다.',action:'Observe, Authorize, Acknowledge, Verify 순서로 설명합니다. ACK 뒤의 서로 다른 정상 관측 2개가 필요합니다. 미회복 테스트도 함께 말하세요.',target:'#workflow'},
  {title:'중앙 연결이 끊겨도 현장에 필요한 판단은 남아 있습니다.',body:'두 시설의 MN-CSE와 중앙 IN-CSE를 실제로 실행했습니다. 중앙을 중단한 동안 현장 관측·명령·ACK·회복이 이어졌습니다. 재연결 후 만료된 중앙 명령은 거절됩니다.',action:'Across facilities와 Central offline을 선택하세요. 이는 중앙 장애 중 현장 연속성 시험이며 CSE handover나 MEC 배포는 아니라고 구분합니다.',target:'#explore',view:'network',condition:'offline'},

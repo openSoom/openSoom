@@ -4,11 +4,11 @@
 
 | 경쟁작 | 공개 자료에서 확인한 강점 | openSoom에 주는 시사점 |
 | --- | --- | --- |
-| **EdgeGuard** | 작업자와 지게차의 충돌을 예측한다. 저장소의 같은 가상 1,000회 실험에서 넓은 근접경보와 자체 정책 모두 충돌 0건이었다. 작업 처리량은 각각 48.3%와 97.2%였다. 브라우저 데모, 공개 기사, 영상, 다중 CSE 구현까지 연결된다. | 비교한 세 팀 중 가장 강하다. 어떤 사람이 어떤 판단을 바꾸는지와 기존 방식과의 비교를 누구나 첫 화면에서 이해할 수 있다. [Hackster](https://www.hackster.io/ahind012/edgeguard-stop-forklift-accidents-before-they-happen-e07309) · [검토한 실험과 재현 자료](https://github.com/ljw22112/Edgeguard/blob/cc49460cc02d90a0e02f7087f455efd5fd7c056d/README.md#key-results) |
+| **EdgeGuard** | 작업자와 지게차의 충돌을 예측한다. Hackster 글에서는 750개 가상 충돌 위험 상황에서 이전 자체 버전 대비 충돌 100건→4건을 보고했다. 별도 저장소의 같은 가상 1,000회 실험에서 넓은 근접경보와 자체 정책 모두 충돌 0건이었다. 작업 처리량은 각각 48.3%와 97.2%였다. 브라우저 데모, 공개 기사, 영상, 다중 CSE 구현까지 연결된다. | 비교한 세 팀 중 가장 강하다. 어떤 사람이 어떤 판단을 바꾸는지와 기존 방식과의 비교를 누구나 첫 화면에서 이해할 수 있다. [Hackster](https://www.hackster.io/ahind012/edgeguard-stop-forklift-accidents-before-they-happen-e07309) · [검토한 실험과 재현 자료](https://github.com/ljw22112/Edgeguard/blob/cc49460cc02d90a0e02f7087f455efd5fd7c056d/README.md#key-results) |
 | **HexaGuard** | 항공과 상수도에 같은 로컬 판단 엔진을 적용한다. 실제 ACME와 연동하고 수격작용 모델을 별도 해석기와 대조했다. 작성팀은 테스트 215개와 라이브 ETSI MEC Sandbox 검증이 남았음을 명시한다. | 범용성은 서로 다른 입력·기준을 가진 사례로 증명해야 한다. openSoom의 기회는 두 시설에서 같은 정비 로직이 실행되고 실제 MEC 서비스의 응답이 작업을 바꾼 기록이다. [Hackster](https://www.hackster.io/eslamabdelmogood/hexaguard-intelligent-edge-protection-84a745) · [검토한 원본 저장소](https://github.com/nahedabdelrahmanahmed-ux/HEXA-TPU-RT-/blob/9f49e8bdf89fdbff042257d91edfc129dfff21c7/README.md) |
 | **UNIMORE Industrial IoT Anomaly Detection** | 모터 온도·진동·전류로 이상을 검출한다. 합성 검증 데이터에서 탐지율 100%, 오탐률 약 2.38%를 보고했다. Sandbox 앱 준비 확인과 서비스 발견을 수행했고, 추론 프로세스의 실제 MEC 호스팅은 별도라고 명시했다. | 모델 평가의 명료성이 강점이다. openSoom은 이상 판정 이후 어느 작업을 남기고 누가 무엇을 먼저 점검하는지까지 보여줄 수 있다. [Hackster](https://www.hackster.io/unimore-inginf-mantova/industrial-iot-anomaly-detection-with-onem2m-and-etsi-mec-00d531) · [검토한 검증 범위](https://github.com/STEFANIAGT/INDUSTRIAL-IOT-ANOMALY-DETECTION/blob/e8221d3836325fcce7317453858346a503f816e6/README.md) |
 
-SafeZone, 다중 로봇 바닥 이상 탐지, 도로 결빙 감지, FireRoute는 당시 일정표의 Hackster 칸이 비어 있었다. 프로젝트 제목만으로 진척이나 순위를 추정할 수 없다. Hackster 직접 열람이 제한된 HexaGuard와 UNIMORE의 기술 수치는 위에 고정한 작성팀 원본을 근거로 삼았다.
+SafeZone, 다중 로봇 바닥 이상 탐지, 도로 결빙 감지, FireRoute는 당시 일정표의 Hackster 칸이 비어 있었다. 프로젝트명으로도 Hackster를 검색했지만 이번 대회 항목을 추가로 특정하지 못했다. 제목만으로 진척이나 순위를 추정할 수 없다. Hackster 직접 열람이 제한된 HexaGuard와 UNIMORE의 기술 수치는 위에 고정한 작성팀 원본을 근거로 삼았다.
 
 ## 심사위원이 재현할 수 있는 차이
 

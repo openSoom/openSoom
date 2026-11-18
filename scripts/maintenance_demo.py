@@ -93,7 +93,8 @@ def run_lab(args):
         uvicorn = [sys.executable, "-m", "uvicorn", "--host", "127.0.0.1", "--no-access-log"]
         spawn("operations", [*uvicorn, "--port", str(ports["api"]), "opensoom.app:app"], env)
         until("Facility CSE bootstrap", lambda: api.get("/api/health").json()["cse_connected"])
-        api.headers["Authorization"] = "Bearer " + json.loads((folder / "operations/service-credentials.json").read_text())["operator_token"]
+        service_credentials = json.loads((folder / "operations/service-credentials.json").read_text())
+        api.headers["Authorization"] = "Bearer " + service_credentials["operator_token"]
         state = lambda: api.get("/api/state").raise_for_status().json()
         db = Store(folder / "operations/operations.sqlite")
         ids = db.get("config", "identities")
@@ -294,6 +295,17 @@ def run_lab(args):
                          and o.get("latest_technician_activity", {}).get("resource_id") == entry["resource_id"]), None)
         disposition = until("Operator reads the current revision's inspection disposition", operator_activity)
         assert set(disposition) == {"action", "recorded_at", "resource_id", "work_order_ri"}
+        def read_role_state(role):
+            auth = {"Authorization": "Bearer " + service_credentials[role + "_token"]}
+            return api.get("/api/state", headers=auth).raise_for_status().json()
+
+        observer_view = read_role_state("observer")
+        assert fid in {facility["id"] for facility in observer_view["facilities"]}
+        assert observer_view["work_orders"] == []
+        maintenance_view = read_role_state("maintenance")
+        maintenance_order = next(order for order in maintenance_view["work_orders"] if order["run_id"] == run_id)
+        assert maintenance_order["resource_id"] == final["resource_id"]
+        assert "latest_technician_activity" not in maintenance_order
         after_note = state()
         assert {c["id"] for c in after_note["commands"]} == {c["id"] for c in result_state["commands"]}
         assert next(i for i in after_note["incidents"] if i["id"]==incident["id"])["status"] == "open"
@@ -318,6 +330,8 @@ def run_lab(args):
                                 "target_source":field_order["target_source"],"operator_disposition":disposition,
                                 "unauthenticated_http":unauthorized,"foreign_origin_http":wrong_origin,
                                 "stale_work_order_http":stale_revision,"conflicting_retry_http":conflicting,"retry_same_cin":True,
+                                "observer_order_count":len(observer_view["work_orders"]),
+                                "maintenance_saw_order":True,"maintenance_saw_technician_activity":False,
                                 "restarted_entries":1,"new_device_commands":0,"incident_after_entry":"open"},
                   "dashboard":"live service projection from oneM2M work_order CINs"}
         if args.output:

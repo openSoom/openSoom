@@ -8,7 +8,7 @@
         19490,
         19492
       ],
-      "capture_shows_single_order": true,
+      "two_distinct_work_orders": true,
       "three_provider_paths": true,
       "network_view": true,
       "overflow_px": 0,
@@ -21,7 +21,7 @@
         19490,
         19492
       ],
-      "capture_shows_single_order": true,
+      "two_distinct_work_orders": true,
       "three_provider_paths": true,
       "network_view": true,
       "overflow_px": 0,
