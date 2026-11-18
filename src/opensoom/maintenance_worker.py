@@ -220,6 +220,8 @@ class MaintenanceWorker:
             if not 0 <= (now - timestamp(request["requested_at"])).total_seconds() <= 300:
                 raise EvidenceError("provider_request_expired")
             status, receipt = self.provider.registration(commission=True)
+            if self.provider.callback:
+                receipt["sensor_subscription"] = self.provider.data_subscription(commission=True)
         except EvidenceError as exc:
             self.put("provider_responses", name, {**reply, "status": "denied", "reason": str(exc)})
             return True
@@ -351,6 +353,12 @@ def callback_handler(worker):
         def do_POST(self):
             try:
                 length = int(self.headers.get("Content-Length", "0"))
+                if self.path == "/mec046/test" and worker.provider and 0 < length <= 8192:
+                    if not worker.provider.observe_test(json.loads(self.rfile.read(length))):
+                        return self.send_error(400)
+                    self.send_response(204)
+                    self.end_headers()
+                    return
                 if self.path != "/notify" or not 0 < length <= 65536:
                     raise ValueError
                 if not isinstance(json.loads(self.rfile.read(length))["m2m:sgn"], dict):

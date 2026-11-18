@@ -3,7 +3,7 @@
   "prepared_on": "2026-11-19",
   "timezone": "Asia/Seoul",
   "baseline_revision": "7a52a8ef47799d8cfea7605b39e85d679bbc82bb",
-  "stage": "R3–R5",
+  "stage": "R4–R5",
   "status": "in_progress",
   "plan": "docs/release-goal.ko.md",
   "review_charter": "docs/review/review-charter.json",
@@ -19,35 +19,37 @@
       ]
     },
     "R1": {
-      "status": "implemented_pending_independent_review",
+      "status": "verified",
       "evidence": [
         "evidence/runtime/maintenance-release-local.json",
         "evidence/video/work-order/capture.json",
         "evidence/runtime/maintenance-command-followup.json",
-        "evidence/runtime/facility-retirement.json"
+        "evidence/runtime/facility-retirement.json",
+        "evidence/agent/facility-worker-generalization.json"
       ]
     },
     "R2": {
-      "status": "implemented_pending_independent_review",
+      "status": "verified",
       "evidence": [
         "evidence/agent/scenario-authoring/restart-acceptance.json",
         "evidence/agent/scenario-authoring/standalone-verified.json",
         "evidence/agent/scenario-authoring/codex-authored-accepted.json",
-        "evidence/agent/facility-onboarding.json"
+        "evidence/agent/facility-onboarding.json",
+        "evidence/agent/facility-worker-generalization.json"
       ]
     },
     "R3": {
-      "status": "in_progress",
+      "status": "verified",
       "evidence": [
         "evidence/runtime/mec-maintenance-roundtrip.json",
         "evidence/runtime/mec-provider-commissioning.json",
         "evidence/runtime/option-c/native-services.json",
-        "evidence/runtime/option-c/index.json"
-      ],
-      "remaining": "Independent final check of native configuration, orchestration and work-order changes."
+        "evidence/runtime/option-c/index.json",
+        "evidence/runtime/option-c/commissioned-sensor-roundtrip.json"
+      ]
     },
     "R4": {
-      "status": "verified",
+      "status": "final_package_rehearsal_in_progress",
       "evidence": [
         "evidence/video/work-order/film.json",
         "evidence/video/work-order/capture.json",
@@ -62,7 +64,8 @@
       "status": "in_progress",
       "evidence": [
         "docs/review/release-assessment.ko.md",
-        "evidence/release/clean-work-order.json"
+        "evidence/release/clean-work-order.json",
+        "evidence/release/work-order-publication.json"
       ],
       "remaining": "Freeze and independently review candidate, verify fresh reproduction, publish and verify remote commit."
     }
@@ -113,19 +116,30 @@
         "R5"
       ],
       "decision": "The platform installed the MN and maintenance workloads on two logical edges and the sole paid VM was stopped. The operating service now preserves the current command across an out-of-order sensor response, and the manager can draft a new site, bind its sensors and set commissioned targets before administrator activation. An independent media review located a recording time offset. The corrected picture track was checked against the six spoken decisions and original audio."
+    },
+    {
+      "date": "2026-11-19",
+      "gates": [
+        "R1",
+        "R2",
+        "R3",
+        "R4",
+        "R5"
+      ],
+      "decision": "The final design adds actual 046 subscription setup plus readback, validates that non-flow warnings keep a general inspection and reuses the same leased workers in a manager-defined conservation workshop. The film labels the illustrated opening and the presentation now describes platform-managed placement on both logical hosts."
     }
   ],
   "external_blockers": [],
   "rubric_expert_followup": {
     "13": "Expert independently substantiated for two selected eligible logical hosts on one VM.",
-    "16": "Independent reviewer requires actual 046 subscription configuration and readback from the site request. In progress on the same VM.",
+    "16": "Expert independently substantiated by native 033 registration, 046 subscription commissioning and separate measurement lookup in one work-order execution.",
     "review": "docs/review/release-goal-review.ko.md"
   },
   "idea_model_review": {
     "reviewer": "idea_model_review",
     "architecture_contract": "docs/mec-application-contract.ko.md",
-    "reviewed_input": "dd9162a",
-    "status": "design_conditional_on_execution",
+    "reviewed_input": "449850c and the source-identified follow-up receipts",
+    "status": "virtual_product_accepted_field_adoption_open",
     "review_again_at": [
       "R0 architecture freeze",
       "R2/R3 integrated comparison",

@@ -1,19 +1,150 @@
 {
   "status": "passed",
   "acme_version": "2026.5.3",
-  "run_id": "demo-a1fec7892b",
+  "run_id": "demo-6daab8c9ee",
   "scope": "Actual isolated ACME HTTP / facility ACPs, two virtual encoder IDs on an HTTP MEC service fixture. This regression exercises rebinding and delayed delivery. Real MEC service evidence is in the separate cloud capture.",
+  "cause_selection": {
+    "target_airflow_m3_h": 900,
+    "particulate_only_incident_trigger": {
+      "observation_ri": "cinIiNUx3PeGv",
+      "write_rqi": "opensoom-eee34d9d4c994898bd9d671089867fe3",
+      "observed_at": "2026-11-18T16:44:00.093+00:00",
+      "airflow": 1035.0,
+      "pm25": 72.0,
+      "co2": 610.0,
+      "fan_running": true
+    },
+    "general_only": [
+      {
+        "condition": "particulate_only",
+        "observations": [
+          {
+            "observation_ri": "cingiOiE7HgJ3",
+            "write_rqi": "opensoom-2d080641902f45d09936797b9e4a3af7",
+            "observed_at": "2026-11-18T16:44:00.125+00:00",
+            "airflow": 1035.0,
+            "pm25": 72.0,
+            "co2": 610.0,
+            "fan_running": true
+          },
+          {
+            "observation_ri": "cinIqoWlGPSzp",
+            "write_rqi": "opensoom-16b917c062e6433fa5fb492ccca10a39",
+            "observed_at": "2026-11-18T16:44:00.136+00:00",
+            "airflow": 1035.0,
+            "pm25": 72.0,
+            "co2": 610.0,
+            "fan_running": true
+          }
+        ],
+        "work_order_ri": "cinnyoqjBELK2",
+        "command_result": "unresolved",
+        "sensor_requests": 0
+      },
+      {
+        "condition": "co2_only",
+        "observations": [
+          {
+            "observation_ri": "cinQSIFDTtu6u",
+            "write_rqi": "opensoom-d107cebc5227407691636cb951b0ac39",
+            "observed_at": "2026-11-18T16:44:00.172+00:00",
+            "airflow": 1035.0,
+            "pm25": 12.0,
+            "co2": 1800.0,
+            "fan_running": true
+          },
+          {
+            "observation_ri": "cinhidEE8cmrB",
+            "write_rqi": "opensoom-296186c9aeb3476b94ed52ac2e5ffc00",
+            "observed_at": "2026-11-18T16:44:00.182+00:00",
+            "airflow": 1035.0,
+            "pm25": 12.0,
+            "co2": 1800.0,
+            "fan_running": true
+          }
+        ],
+        "work_order_ri": "cinnyoqjBELK2",
+        "command_result": "unresolved",
+        "sensor_requests": 0
+      },
+      {
+        "condition": "fan_only_at_airflow_target",
+        "observations": [
+          {
+            "observation_ri": "cinFiwdMWWMD4",
+            "write_rqi": "opensoom-5a577ffdb6a44e6e914442244860e655",
+            "observed_at": "2026-11-18T16:44:00.206+00:00",
+            "airflow": 900.0,
+            "pm25": 12.0,
+            "co2": 610.0,
+            "fan_running": false
+          },
+          {
+            "observation_ri": "cinrhvjEPZF6K",
+            "write_rqi": "opensoom-811c4913606241e1a0afae8ff6f6774f",
+            "observed_at": "2026-11-18T16:44:00.219+00:00",
+            "airflow": 900.0,
+            "pm25": 12.0,
+            "co2": 610.0,
+            "fan_running": false
+          }
+        ],
+        "work_order_ri": "cinnyoqjBELK2",
+        "command_result": "unresolved",
+        "sensor_requests": 0
+      }
+    ],
+    "unusable_observations": [
+      {
+        "observation_ri": "cinvE3U2JnMeP",
+        "write_rqi": "opensoom-5298a8e88e1b47b1a14bb4f14a4c83e5",
+        "observed_at": "2026-11-18T16:44:00.244+00:00",
+        "airflow": null,
+        "pm25": 12.0,
+        "co2": 610.0,
+        "fan_running": true
+      },
+      {
+        "observation_ri": "cinoELE6uqq2E",
+        "write_rqi": "opensoom-0c7959161e5d4edfbde94f28165d647f",
+        "observed_at": "2026-11-18T16:39:00.244+00:00",
+        "airflow": 360.0,
+        "pm25": 12.0,
+        "co2": 610.0,
+        "fan_running": true
+      }
+    ],
+    "sensor_requests_before_low_flow": 0,
+    "first_valid_low_flow": {
+      "observation_ri": "cinpbfS6H9x8W",
+      "write_rqi": "opensoom-136382e09384489c90ee877efdc6090c",
+      "observed_at": "2026-11-18T16:44:00.586+00:00",
+      "airflow": 360.0,
+      "pm25": 12.0,
+      "co2": 610.0,
+      "fan_running": true
+    },
+    "requests_for_original_command_after_repeated_low_flow": 1,
+    "sensor_request_ri": "cinCUQlC4SRvJ",
+    "unresolved_outcome_ri": "cinGZEXhn0Xj3",
+    "restarted_site_with_existing_database": true,
+    "legacy_command_replays": [
+      "no_previous_event",
+      "pending_outbox",
+      "published_event"
+    ]
+  },
   "mismatch": {
     "facility_id": "food-a",
     "zone_id": "cook",
     "asset_id": "extract-damper-01",
-    "incident_id": "incident-1c5a1f3261",
-    "run_id": "demo-a1fec7892b",
-    "source_cin_ri": "cinjrdU0ciRVz",
+    "incident_id": "incident-433276f722",
+    "run_id": "demo-6daab8c9ee",
+    "source_cin_ri": "cinpbfS6H9x8W",
     "kind": "work_order",
-    "work_order_id": "work-incident-1c5a1f3261",
-    "command_id": "cmd-47f2631d61d3",
-    "observed_at": "2026-11-18T16:21:31.474+00:00",
+    "work_order_id": "work-incident-433276f722",
+    "command_id": "cmd-19669d9297e6",
+    "observed_at": "2026-11-18T16:44:00.586+00:00",
     "status": "open",
     "priority": "inspect_actuator_feedback",
     "evidence_status": "verified_independent_sample",
@@ -23,7 +154,7 @@
       "sensor_id": "shaft-position-01",
       "value": 35.0,
       "unit": "%",
-      "observed_at": "2026-11-18T16:21:34.472000+00:00",
+      "observed_at": "2026-11-18T16:44:03.140000+00:00",
       "source": "independent_position_sensor"
     },
     "provider_receipt": {
@@ -34,53 +165,53 @@
       "lookup_status": 200,
       "lookup_path": "/queries/sensor_data",
       "provider_sensor_id": "provider-encoder-a",
-      "lookup_sha256": "f61ab074db14c03ac33d9a5500d62256bdad2ead72959a9e790f4b2fb100b0b7"
+      "lookup_sha256": "5ef5b473c0bc65c2518ebe631a1753aa58c2aa2619ff4499b4d18194bb7b2fa3"
     },
-    "request_id": "sensor-966804ae5c4d147ac1de23c04a24ac30",
-    "request_ri": "cinJRTTXBueNi",
-    "response_ri": "cinZ2F5iRSNbU",
-    "outcome_ri": "cinLoyYfjChSD",
+    "request_id": "sensor-e78d8989dd0a18242d44a5262d3c250d",
+    "request_ri": "cinCUQlC4SRvJ",
+    "response_ri": "cinol9A7S9Ozc",
+    "outcome_ri": "cinGZEXhn0Xj3",
     "mode": "mec046",
     "airflow": 360.0,
     "profile_version": 1,
-    "resource_id": "cinf0SIIjYx1c",
-    "read_rqi": "opensoom-9133272312ed48d987380506c0edd030"
+    "resource_id": "cinSZESC8Rh5t",
+    "read_rqi": "opensoom-97e064f59f60419f8b92b87f87ce3413"
   },
   "after_next_ack": {
     "facility_id": "food-a",
     "zone_id": "cook",
     "asset_id": "extract-damper-01",
-    "incident_id": "incident-1c5a1f3261",
-    "run_id": "demo-a1fec7892b",
-    "work_order_id": "work-incident-1c5a1f3261",
+    "incident_id": "incident-433276f722",
+    "run_id": "demo-6daab8c9ee",
+    "work_order_id": "work-incident-433276f722",
     "status": "open",
     "profile_version": 1,
     "kind": "work_order",
-    "command_id": "cmd-9afe93140d80",
-    "ack_at": "2026-11-18T16:21:34.526+00:00",
+    "command_id": "cmd-c9fe3efdba44",
+    "ack_at": "2026-11-18T16:44:03.204+00:00",
     "requested_pct": 90.0,
-    "observed_at": "2026-11-18T16:21:34.526+00:00",
+    "observed_at": "2026-11-18T16:44:03.204+00:00",
     "revision": 0,
     "priority": "inspection",
     "evidence_status": "awaiting_current_command_followup",
     "view_source": "current_device_ack",
-    "ack_rqi": "opensoom-118545c4f85049178b26c3da5e135839",
-    "historical_work_order_ri": "cinf0SIIjYx1c"
+    "ack_rqi": "opensoom-44b262964067488ea30aa4bea61fecd5",
+    "historical_work_order_ri": "cinSZESC8Rh5t"
   },
-  "delayed_response_ri": "cinuobmvkl3j9",
-  "delayed_command_id": "cmd-9afe93140d80",
+  "delayed_response_ri": "cinQSf8ymqU0r",
+  "delayed_command_id": "cmd-c9fe3efdba44",
   "delayed_accepted_order_revisions": 0,
   "matched": {
     "facility_id": "food-a",
     "zone_id": "cook",
     "asset_id": "extract-damper-01",
-    "incident_id": "incident-1c5a1f3261",
-    "run_id": "demo-a1fec7892b",
-    "source_cin_ri": "cinRPJzcu6aQU",
+    "incident_id": "incident-433276f722",
+    "run_id": "demo-6daab8c9ee",
+    "source_cin_ri": "cin0KTBs70d4K",
     "kind": "work_order",
-    "work_order_id": "work-incident-1c5a1f3261",
-    "command_id": "cmd-32ad28844cba",
-    "observed_at": "2026-11-18T16:21:37.768+00:00",
+    "work_order_id": "work-incident-433276f722",
+    "command_id": "cmd-3cbe947f99b7",
+    "observed_at": "2026-11-18T16:44:06.391+00:00",
     "status": "open",
     "priority": "inspect_airflow_path",
     "evidence_status": "verified_independent_sample",
@@ -90,7 +221,7 @@
       "sensor_id": "shaft-position-01",
       "value": 100.0,
       "unit": "%",
-      "observed_at": "2026-11-18T16:21:40.613000+00:00",
+      "observed_at": "2026-11-18T16:44:09.308000+00:00",
       "source": "independent_position_sensor"
     },
     "provider_receipt": {
@@ -101,26 +232,26 @@
       "lookup_status": 200,
       "lookup_path": "/queries/sensor_data",
       "provider_sensor_id": "replacement-encoder-b",
-      "lookup_sha256": "9c6ccf474ca6fe8c98ec345c608d70122c133772e21df3001a88734569e03dee"
+      "lookup_sha256": "73725d4d87c8cc7aa73d2c764f2005119772fdb3f9936bb57cfe881cf6d4055e"
     },
-    "request_id": "sensor-7a1b1a8f9977ced29f801aa85dc6d10d",
-    "request_ri": "cinCyc5UvXwMk",
-    "response_ri": "cineAc3ultiY9",
-    "outcome_ri": "cinQVSHbNqG9S",
+    "request_id": "sensor-6972a0a6ed7cf692cc6fe5e74ef739a5",
+    "request_ri": "cin5YocIaEqR1",
+    "response_ri": "cin1H1WEehB5x",
+    "outcome_ri": "cin458A2c2gVa",
     "mode": "mec046",
     "airflow": 360.0,
     "profile_version": 1,
-    "resource_id": "cinHMMbH0c0Qm",
-    "read_rqi": "opensoom-37ec8db98b134f8cb68e442086df3d8a"
+    "resource_id": "cinmLpxog3gar",
+    "read_rqi": "opensoom-7c66520e48904f5183b3f7054d70f61f"
   },
   "same_work_order": true,
   "scoped_snapshot_rereads": [
-    "opensoom-de3028a9ab3d4d91bca1e4b82c12140e",
-    "opensoom-b72e24604906446591b6b9bc39841ade"
+    "opensoom-5bbda4badb694052989dcfc2e7f1bc94",
+    "opensoom-684846e358c64f9cbf5c8a6294f4eac1"
   ],
   "historical_commands_unchanged": [
-    "cmd-47f2631d61d3",
-    "cmd-9afe93140d80"
+    "cmd-19669d9297e6",
+    "cmd-c9fe3efdba44"
   ],
   "current_command_after_airflow_recovery": {
     "facility_id": "food-a",
@@ -128,24 +259,25 @@
     "action": "set_damper",
     "value": 100.0,
     "reason": "Virtual equipment follow-up",
-    "request_id": "demo-a1fec7892b-100",
-    "id": "cmd-32ad28844cba",
+    "request_id": "demo-6daab8c9ee-100",
+    "id": "cmd-3cbe947f99b7",
     "status": "verified",
     "ack": true,
-    "created_at": "2026-11-18T16:21:37.586969+00:00",
-    "expires_at": "2026-11-18T16:22:07.586969+00:00",
+    "created_at": "2026-11-18T16:44:06.286043+00:00",
+    "expires_at": "2026-11-18T16:44:36.286043+00:00",
     "profile_version": 1,
-    "run_id": "demo-a1fec7892b",
-    "incident_id": "incident-1c5a1f3261",
+    "run_id": "demo-6daab8c9ee",
+    "incident_id": "incident-433276f722",
     "observed_result": "recovered",
-    "cse_rqi": "opensoom-ffd891126a27454ab290b93d99f848e3",
-    "cse_resource_id": "cinNQZMC84tgc",
-    "ack_at": "2026-11-18T16:21:37.594+00:00",
-    "ack_rqi": "opensoom-61e583441eb24fa3ab85803275b8edb7",
+    "cse_rqi": "opensoom-d953d799713743db94bcf798e276528f",
+    "cse_resource_id": "cingFBfoA6XI0",
+    "ack_at": "2026-11-18T16:44:06.292+00:00",
+    "ack_rqi": "opensoom-92ff722248ce4b57bee06e74396df2da",
     "ack_sequence": 3,
+    "airflow_followup_queued": true,
     "unresolved_samples": 2,
-    "verification_rqi": "opensoom-9f8ff43133b84af083f46f812b151069",
-    "verified_at": "2026-11-18T16:21:40.726+00:00"
+    "verification_rqi": "opensoom-a2cf1bdaaf6c4ac497d27eec9dc80544",
+    "verified_at": "2026-11-18T16:44:09.406+00:00"
   },
   "provider_lookup_ids": [
     "provider-encoder-a",
@@ -159,9 +291,10 @@
     ]
   },
   "source_sha256": {
-    "src/opensoom/core.py": "28d0a2de0bd8217b84ae97d8b80e33f17cb8b9ff4e27ffa475616fd635a20ea6",
-    "src/opensoom/maintenance.py": "089a01ac8cb61ae83e93d9c21449901d103f7eb2eb5f36e3ca83a029059bcf71",
-    "src/opensoom/maintenance_worker.py": "de50edc11e08d868a8974550e81399d81cfb6c551f918e19b0eca71e93d4b3cb",
-    "src/opensoom/mec_sensor.py": "a33347c825da3ecc7870130871f301a912d17309448bd816cd254b6b087eaf21"
+    "src/opensoom/core.py": "84a492b83e8dec65317cbb1abb2ab7ce261734b3032daafa59f470d9c96135ea",
+    "src/opensoom/maintenance.py": "5032abae3e8c694da180290e97acba624f82e383ffa6c92c4ff04777271feffc",
+    "src/opensoom/maintenance_worker.py": "9fab1a6955425fbbeb41dc4d67c2ba0f6431c15527b1bc6f254af0b96b64c150",
+    "src/opensoom/mec_sensor.py": "9bd57e88070be6e7ea24c0a459a641708da74d5b9e0a4494f684f3d438058aca",
+    "scripts/maintenance_followup.py": "2e81f4afe92fd3d171146e18368627bdf3a0a34cf4573c8cdff49b6a49cecb15"
   }
 }

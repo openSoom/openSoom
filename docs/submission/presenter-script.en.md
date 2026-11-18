@@ -2,11 +2,9 @@
 
 Use the [English slides](../../deliverables/presentation/openSoom-evaluation.pptx), [slide PDF](../../deliverables/presentation/openSoom-evaluation.pdf) and [English 720p film](../../deliverables/video/openSoom-work-order-720p.mp4). The italic lines are screen cues. Have the film available offline with audio and captions, and open the local [dashboard](http://127.0.0.1:19490/) before the session. A fresh run has its own incident and work-order IDs. The slides and film use the same retained run. [Korean rehearsal script](presenter-script.ko.md) · [Q&A](technical-qa.md)
 
-**Timed English read-through** · 11 minutes 11 seconds including 1 minute 45 seconds of video. The implementation explanation on slide 8 takes 49 seconds. Times below come from synthesized English narration and the actual film. Allow for your own speaking pace.
+**Timed English read-through** · 11 minutes 8 seconds including 1 minute 45 seconds of video. The implementation explanation on slide 8 takes 45 seconds. Times below come from synthesized English narration and the actual film. Allow for your own speaking pace.
 
-S1 0:00 · S2 0:41 · S3 1:47 · S4 2:55 · S5 3:56 · S6 5:58 · S7 7:11 · S8 8:08 · S9 8:56 · S10 10:10
-
-**If asked about deployment:** On one VM we selected two logical edges in turn. The actual Sandbox deployed the MN-CSE and maintenance app to each, where a fresh work order consumed the external shaft reading. [Controller and product receipts](../../evidence/runtime/option-c/index.json)
+S1 0:00 · S2 0:41 · S3 1:47 · S4 2:55 · S5 3:56 · S6 5:58 · S7 7:11 · S8 8:08 · S9 8:53 · S10 10:07
 
 ## 1 · Did the air actually move?
 
@@ -76,9 +74,9 @@ That is where the added integration earns its place. A site can use whichever so
 
 *Use this slide for the implementation explanation. Trace the lower and upper paths once.*
 
-The site’s oneM2M Middle Node stores readings, acknowledgements and incidents. Only the operations app issues device commands. The central node can read the resources shared by the site. Maintenance owns the work order. A separate bridge retrieves independent sensor evidence. Those applications have different permissions.
+The site’s oneM2M node stores readings and acknowledgements. Only operations can issue device commands. The central node reads shared records. Maintenance writes the work order. A separate bridge retrieves independent sensor readings. This lets a provider help with an inspection while the site keeps control of its equipment.
 
-In the cloud test the bridge discovered the running sensor-sharing service through the ETSI MEC registry. It retrieved the independent reading and wrote a response to the site’s oneM2M node. Maintenance read that result and updated the work order. Our Option C design places oneM2M and the MEC platform on the same edge node. The two workers ran on one private Kubernetes host. Platform-managed placement across eligible hosts requires separate evidence.
+For Option C, we put the site’s oneM2M node and the maintenance app together at the edge. The operator chose the north logical host first, then the south. The ETSI Sandbox controller used Helm to deploy both components at each selected host. Each site node registered with the central node, and each deployment produced its own work order. Both logical hosts ran on one cloud VM.
 
 ## 9 · A manager can rehearse another zone
 

@@ -26,6 +26,23 @@ def validate(pack, root: Path):
         raise ValueError("Each maintenance binding must have a unique sensor and asset in a configured zone")
 
 
+def worker_templates(core, facility_id):
+    """Return non-secret role settings from the activated facility configuration.
+
+    The deployment owner still chooses an endpoint, trust material and bridge
+    mode. Do not copy credentials or provider deployment settings into tool
+    results, or let a draft choose an application identity.
+    """
+    settings = core.registry[facility_id].get("maintenance")
+    if not settings:
+        return {}
+    common = {"facility_id": facility_id, "facility_path": core.facility(facility_id)["path"],
+              **{name: settings[name] for name in
+                 ("assets", "settle_seconds", "freshness_seconds", "tolerance_pct")}}
+    return {role: {**json.loads(json.dumps(common)), "origin": core.identities[role + ":" + facility_id]}
+            for role in ("maintenance", "bridge")}
+
+
 def operation(core, name, args, principal, error, root):
     if name == "draft_facility":
         if principal["role"] not in ("operator", "admin"):
@@ -79,4 +96,5 @@ def operation(core, name, args, principal, error, root):
         core.setup_facility(fid, facility["name"], profile["id"], facility["adapter"])
         core.store.put("config", "identities", core.identities)
         return {"status": "active", "facility_id": fid, "version": args["version"],
-                "cse_path": core.facility(fid)["path"], "zone_ids": [zone["id"] for zone in profile["zones"]]}
+                "cse_path": core.facility(fid)["path"], "zone_ids": [zone["id"] for zone in profile["zones"]],
+                "worker_templates": worker_templates(core, fid)}

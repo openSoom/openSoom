@@ -4,6 +4,7 @@ from __future__ import annotations
 import hashlib
 import json
 import math
+import threading
 from datetime import datetime, timezone
 from urllib.parse import quote, urlsplit
 
@@ -109,6 +110,14 @@ class SensorService:
         self.allowed = {authority(url) for url in [self.registry, *config.get("allowed_service_origins", [])]}
         if token and any(scheme != "https" for scheme, _, _ in self.allowed):
             raise ValueError("MEC bearer tokens require HTTPS service endpoints")
+        self.callback = config.get("sensor_test_callback")
+        if self.callback:
+            authority(self.callback)
+            if urlsplit(self.callback).path != "/mec046/test":
+                raise ValueError("The installed bridge must receive test callbacks at /mec046/test")
+        self.callback_lock = threading.Condition()
+        self.pending_collection = None
+        self.test_callbacks = {}
         self.client = httpx.Client(follow_redirects=False, trust_env=False, timeout=5,
                                    headers={"Authorization": "Bearer " + token} if token else None,
                                    verify=config.get("mec_ca") or True)
@@ -183,8 +192,112 @@ class SensorService:
                 if len(matches) != 1 or matches[0]["endpoint"].get("addresses") != wanted["endpoint"]["addresses"]:
                     raise EvidenceError("provider_transport_mismatch")
 
+    @staticmethod
+    def subscription_id(href, collection):
+        prefix = collection + "/"
+        suffix = href.removeprefix(prefix) if isinstance(href, str) else ""
+        if not isinstance(href, str) or not href.startswith(prefix) or not suffix.isascii() or not suffix.isdecimal() or len(suffix) > 12:
+            raise EvidenceError("invalid_sensor_subscription_link")
+        return suffix
+
+    def observe_test(self, message):
+        """Accept a correlated delivery acknowledgement. Sensor readings come from the 046 query."""
+        if not isinstance(message, dict) or message.get("notificationType") != "TestNotification":
+            return False
+        try:
+            href = message["_links"]["subscription"]["href"]
+            with self.callback_lock:
+                if not self.pending_collection:
+                    return False
+                self.subscription_id(href, self.pending_collection)
+                if len(self.test_callbacks) >= 8:
+                    return False
+                self.test_callbacks[href] = datetime.now(timezone.utc).isoformat()
+                self.callback_lock.notify_all()
+        except (KeyError, TypeError, EvidenceError):
+            return False
+        return True
+
+    def installed_subscription(self, base):
+        collection = base + "/subscriptions/sensor_data"
+        response = self.client.get(collection)
+        response.raise_for_status()
+        links = response.json()["_links"].get("subscriptions") or []
+        if not isinstance(links, list) or len(links) > 64:
+            raise EvidenceError("unexpected_sensor_subscription_list")
+        owned = []
+        for item in links:
+            sid = self.subscription_id(item["href"], collection)
+            # The pinned Sandbox advertises /subscriptions in Location and
+            # routes the individual GET/DELETE under /queries.
+            res = self.client.get(base + "/queries/sensor_data/" + sid)
+            if res.status_code == 404:
+                continue
+            res.raise_for_status()
+            row = res.json()
+            if row.get("callbackReference") == self.callback:
+                if row.get("subscriptionType") != "SensorDataSubscription" or row["_links"]["self"]["href"] != item["href"]:
+                    raise EvidenceError("sensor_subscription_mismatch")
+                owned.append((sid, res))
+        if len(owned) > 1:
+            raise EvidenceError("duplicate_sensor_subscriptions")
+        return owned[0] if owned else (None, None)
+
+    def data_subscription(self, *, commission=False, remove=False):
+        if not self.callback:
+            raise EvidenceError("sensor_subscription_not_configured")
+        base, receipt = self.service("sssId", self.config.get("service_name"))
+        collection = base + "/subscriptions/sensor_data"
+        sid, confirmed = self.installed_subscription(base)
+        receipt["before_present"] = sid is not None
+        if remove:
+            if sid:
+                deleted = self.client.delete(base + "/queries/sensor_data/" + sid)
+                deleted.raise_for_status()
+                if self.installed_subscription(base)[0] is not None:
+                    raise EvidenceError("sensor_subscription_removal_unconfirmed")
+                receipt.update(operation="DELETE", write_status=deleted.status_code, subscription_id=sid)
+            return receipt
+        if not sid:
+            if not commission:
+                raise EvidenceError("sensor_subscription_missing")
+            spec = {"subscriptionType":"SensorDataSubscription", "callbackReference":self.callback,
+                    "requestTestNotification":True}
+            # STF_685 uses the required request wrapper for POST validation
+            # and reads the same fields at the root when persisting the object.
+            with self.callback_lock:
+                self.pending_collection = collection
+                self.test_callbacks.clear()
+            try:
+                created = self.client.post(collection, json={"SensorDataSubscription":spec, **spec})
+                created.raise_for_status()
+                href = created.headers.get("Location")
+                sid = self.subscription_id(href, collection)
+                if created.status_code != 201:
+                    raise EvidenceError("sensor_subscription_creation_unconfirmed")
+                with self.callback_lock:
+                    self.callback_lock.wait_for(lambda: href in self.test_callbacks, timeout=2)
+                    observed_at = self.test_callbacks.get(href)
+            finally:
+                with self.callback_lock:
+                    self.pending_collection = None
+                    self.test_callbacks.clear()
+            confirmed_id, confirmed = self.installed_subscription(base)
+            if confirmed_id != sid:
+                raise EvidenceError("sensor_subscription_readback_mismatch")
+            if not observed_at:
+                # Remove only the new and independently read-back owned slot.
+                self.client.delete(base + "/queries/sensor_data/" + sid).raise_for_status()
+                raise EvidenceError("sensor_test_callback_unconfirmed")
+            receipt.update(operation="POST", write_status=created.status_code,
+                           test_callback={"type":"TestNotification","observed_at":observed_at,"status":204})
+        receipt.update(subscription_id=sid, subscription_type="SensorDataSubscription",
+                       readback_status=confirmed.status_code, readback_sha256=hashlib.sha256(confirmed.content).hexdigest())
+        return receipt
+
     def read(self, req):
         registration = self.registration()[1] if self.config.get("provider_registration") else None
+        subscription = self.data_subscription() if self.callback else None
         base, receipt = self.service("sssId", self.config.get("service_name"))
         provider_id = self.config.get("provider_sensor_ids", {}).get(req["sensor_id"], req["sensor_id"])
         discovery = self.client.get(base + "/queries/sensor_discovery", params={
@@ -200,4 +313,6 @@ class SensorService:
                    "lookup_sha256": hashlib.sha256(result.content).hexdigest()}
         if registration:
             receipt["provider_registration"] = registration
+        if subscription:
+            receipt["sensor_subscription"] = subscription
         return sample, receipt

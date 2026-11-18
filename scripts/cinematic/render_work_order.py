@@ -185,6 +185,8 @@ def render(args):
                 length = lengths[index]
             cap = Image.new("RGB", (1280,110), GREEN)
             draw = ImageDraw.Draw(cap)
+            if scene == "kitchen":
+                draw.text((22, 5), "AI-generated kitchen illustration", font=font(17, True), fill="#c4d9af")
             wrapped = textwrap.fill(line, width=92)
             draw.multiline_text((640,55),wrapped,font=font(23),fill=WHITE,anchor="mm",align="center",spacing=5)
             sub = prefix.with_suffix(".png")

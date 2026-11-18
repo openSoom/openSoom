@@ -8,7 +8,7 @@ import tempfile
 import threading
 import time
 from contextlib import ExitStack
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from urllib.parse import parse_qs, urlsplit
@@ -78,7 +78,7 @@ def run():
         core.bootstrap()
         fid, zid = 'food-a', 'cook'
         actor = {'role': 'operator', 'facilities': [fid]}
-        run_id = core.start_demo(fid, 'no_recovery', False, actor)['run_id']
+        run_id = core.start_demo(fid, 'normal', False, actor)['run_id']
         facility = core.facility(fid)
         cfg = core.registry[fid]['maintenance']
         asset = cfg['assets'][zid]
@@ -95,10 +95,16 @@ def run():
             item = core.request_action(req, actor, run_id)
             core.acknowledge_pending(facility, only_command_id=item['id'])
             return core.store.get('commands', item['id'])
-        def airflow(recovered=False):
-            core.publish(Observation(facility_id=fid, zone_id=zid, observed_at=utcnow(), adapter=facility['adapter'],
-                         pm25=12, co2=610, airflow=1035 if recovered else 360, fan_running=True, damper_pct=100))
-            maintenance.flush_outbox(core)
+        def airflow(recovered=False, flush=True, **changes):
+            data = {'facility_id': fid, 'zone_id': zid, 'observed_at': utcnow(), 'adapter': facility['adapter'],
+                    'pm25': 12, 'co2': 610, 'airflow': 1035 if recovered else 360, 'fan_running': True, 'damper_pct': 100}
+            sample = Observation.model_validate({**data, **changes})
+            receipt = core.publish(sample)
+            if flush:
+                maintenance.flush_outbox(core)
+            return {'observation_ri': receipt['body']['m2m:cin']['ri'], 'write_rqi': receipt['rqi'],
+                    'observed_at': sample.observed_at, 'airflow': sample.airflow, 'pm25': sample.pm25,
+                    'co2': sample.co2, 'fan_running': sample.fan_running}
         def sample(opaque_id, value, command):
             elapsed = (datetime.now(timezone.utc) - datetime.fromisoformat(command['ack_at'])).total_seconds()
             time.sleep(max(0, cfg['settle_seconds'] - elapsed + .015))
@@ -115,10 +121,50 @@ def run():
 
         maint = worker('maintenance')
         bridge = worker('bridge', 'provider-encoder-a')
+        trigger = airflow(recovered=True, pm25=72)
         first = command(80)
-        airflow()
-        airflow()
+        general_only = []
+        for cause, changes in [('particulate_only', {'pm25': 72}), ('co2_only', {'co2': 1800}),
+                               ('fan_only_at_airflow_target', {'fan_running': False, 'airflow': 900})]:
+            readings = [airflow(recovered=True, **changes) for _ in range(2)]
+            maint.scan()
+            bridge.scan()
+            order = view()
+            assert order['priority'] == 'inspection' and order['revision'] == 1
+            assert core.store.get('commands', first['id'])['observed_result'] == 'unresolved'
+            assert not records('sensor_requests') and not lookups
+            general_only.append({'condition': cause, 'observations': readings, 'work_order_ri': order['resource_id'],
+                                 'command_result': 'unresolved', 'sensor_requests': 0})
+        stale = (datetime.now(timezone.utc) - timedelta(minutes=5)).isoformat()
+        invalid = [airflow(airflow=None), airflow(observed_at=stale)]
         maint.scan()
+        assert not records('sensor_requests')
+
+        def restore_legacy_command():
+            # Operate on the representation written by releases before this field existed.
+            stored = core.store.get('commands', first['id'])
+            del stored['airflow_followup_queued']
+            core.store.put('commands', first['id'], stored)
+
+        restore_legacy_command()
+        core = Core(runtime=root / 'operations', cse=stack.enter_context(CSEClient(url)))
+        core.bootstrap()
+        first_low = airflow(flush=False)
+        outbox_name = 'unresolved-' + first['id']
+        pending = core.store.get('maintenance_outbox', outbox_name)
+        assert pending['content']['source_cin_ri'] == first_low['observation_ri']
+        restore_legacy_command()
+        airflow(flush=False)
+        assert core.store.get('maintenance_outbox', outbox_name) == pending
+        maintenance.flush_outbox(core)
+        restore_legacy_command()
+        airflow()
+        assert core.store.get('maintenance_outbox', outbox_name) is None
+        maint.scan()
+        requested = [(ri, body) for ri, body in records('sensor_requests') if body['command_id'] == first['id']]
+        assert len(requested) == 1 and requested[0][1]['source_cin_ri'] == first_low['observation_ri']
+        decisive_outcomes = [(ri, body) for ri, body in records('outcomes') if body.get('command_id') == first['id']]
+        assert len(decisive_outcomes) == 1 and decisive_outcomes[0][1]['source_cin_ri'] == first_low['observation_ri']
         sample('provider-encoder-a', 35, first)
         bridge.scan()
         maint.scan()
@@ -176,6 +222,13 @@ def run():
         return {'status': 'passed', 'acme_version': version, 'run_id': run_id, 'scope':
                 'Actual isolated ACME HTTP / facility ACPs, two virtual encoder IDs on an HTTP MEC service fixture. '
                 'This regression exercises rebinding and delayed delivery. Real MEC service evidence is in the separate cloud capture.',
+                'cause_selection': {'target_airflow_m3_h': core.zone(facility, zid)['minimum_airflow'],
+                    'particulate_only_incident_trigger': trigger, 'general_only': general_only,
+                    'unusable_observations': invalid, 'sensor_requests_before_low_flow': 0,
+                    'first_valid_low_flow': first_low, 'requests_for_original_command_after_repeated_low_flow': len(requested),
+                    'sensor_request_ri': requested[0][0], 'unresolved_outcome_ri': decisive_outcomes[0][0],
+                    'restarted_site_with_existing_database': True,
+                    'legacy_command_replays': ['no_previous_event', 'pending_outbox', 'published_event']},
                 'mismatch': mismatch, 'after_next_ack': waiting, 'delayed_response_ri': delayed_ri,
                 'delayed_command_id': second['id'], 'delayed_accepted_order_revisions': 0,
                 'matched': match, 'same_work_order': True,
@@ -183,7 +236,8 @@ def run():
                 'current_command_after_airflow_recovery': latest, 'provider_lookup_ids': lookups,
                 'changed_binding': {asset['sensor_id']: ['provider-encoder-a', 'replacement-encoder-b']},
                 'source_sha256': {p: hashlib.sha256((ROOT / p).read_bytes()).hexdigest() for p in
-                    ('src/opensoom/core.py', 'src/opensoom/maintenance.py', 'src/opensoom/maintenance_worker.py', 'src/opensoom/mec_sensor.py')}}
+                    ('src/opensoom/core.py', 'src/opensoom/maintenance.py', 'src/opensoom/maintenance_worker.py',
+                     'src/opensoom/mec_sensor.py', 'scripts/maintenance_followup.py')}}
 
 
 if __name__ == '__main__':

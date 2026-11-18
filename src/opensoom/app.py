@@ -219,7 +219,7 @@ def update_agent_run(run_id: str, body: dict, request: Request):
                         and {"save_scenario", "run_scenario", "read_scenario_run"} <= matched.keys()
                         and matched["read_scenario_run"].get("readback_rqi"))
         if authored:
-            run["scenario_execution_id"] = trial_id
+            run.update(scenario_execution_id=trial_id, scenario=trial["scenario_id"], expected=trial["expected_result"])
         if not valid_flow and not handled_failure and not authored:
             outcome = "FAIL"
         if "LLM" in requested and (not body.get("live_model") or run["mode"] == "fixture"):

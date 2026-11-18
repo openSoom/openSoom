@@ -19,9 +19,8 @@ def api(method, url, data=None):
     except HTTPError as err:
         raise RuntimeError(f"{method} {url.split('/',3)[-1]}: {err.code} {err.read().decode()[:180]}") from err
 
-def register_provider():
-    base = svc("mep1-meep-iot") + "/iots/v1/registered_iot_platforms"
-    data = {"iotPlatformId":"opensoom-position-provider","enabled":True,
+def provider_profile():
+    return {"iotPlatformId":"opensoom-position-provider","enabled":True,
         "userTransportInfo":[{"id":"position-events","name":"Provider MQTT","type":"MB_TOPIC_BASED",
                               "protocol":"MQTT","version":"3.1.1",
                               "endpoint":{"addresses":[{"host":"opensoom-provider-events.default.svc.cluster.local","port":1883}]},
@@ -29,6 +28,11 @@ def register_provider():
         "customServicesTransportInfo":[{"id":"positions","name":"cse-provider","type":"REST_HTTP",
                                   "protocol":"REST_HTTP","version":"4",
                                   "endpoint":{"addresses":[{"host":"opensoom-provider.default.svc.cluster.local","port":8080}]}}]}
+
+
+def register_provider():
+    base = svc("mep1-meep-iot") + "/iots/v1/registered_iot_platforms"
+    data = provider_profile()
     try:
         _, existing = api("GET", base)
     except RuntimeError as err:
@@ -51,5 +55,5 @@ def admit_services():
 
 if __name__ == "__main__":
     import sys
-    name=sys.argv[1]
-    print(json.dumps(register_provider() if name=="provider" else admit_services(),indent=2))
+    actions = {"provider-profile": provider_profile, "provider": register_provider, "apps": admit_services}
+    print(json.dumps(actions[sys.argv[1]](), indent=2))

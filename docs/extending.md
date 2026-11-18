@@ -8,6 +8,23 @@ A manager can ask Codex, “Draft a virtual archive-workshop with receiving and 
 
 The shipped plugin was exercised over stdio against the real CSE with these two virtual zones. An out-of-zone mapping and an operator's activation attempt were refused. After restart the same version and original CIN were read back, and a new stale-observation trial wrote zero commands. This was a scripted manager/administrator exercise. [Actual receipts](../evidence/agent/facility-onboarding.json) · [Reproduction driver](../scripts/facility_pack_acceptance.py)
 
+Administrator activation also returns `worker_templates` for the maintenance and bridge roles when the approved facility enables maintenance. Each template contains the registered non-administrator `origin`, `facility_id`, `facility_path`, zone-to-asset/sensor bindings and the commissioned settling, freshness and tolerance settings. These are resource identities and configuration, not credentials. An administrator still supplies the deployment endpoint, transport authentication and `bridge_mode` (`local` or the separately configured `mec046` service). Tokens, provider configuration and permission grants are not copied into the activation response. Repeating activation recovers the same settings after restart.
+
+### Reproduce worker reuse on the new site
+
+With the project's pinned Python environment and ACME runtime already installed, run:
+
+```sh
+uv run --no-sync python scripts/facility_worker_acceptance.py \
+  --output evidence/agent/facility-worker-generalization.json
+```
+
+This account-free driver creates a temporary CSE on an ephemeral loopback port and stops it afterward. It activates the workshop pack through the original operational code, restarts that core against its existing database, and launches the shipped `opensoom.maintenance_worker` CLI as separate maintenance and bridge processes with the exported settings. It does not contact the existing demo, a hosted model API or a MEC platform.
+
+The [captured run](../evidence/agent/facility-worker-generalization.json) compares `food-a/cook` at 900 m³/h with the new workshop's **second zone**, `conservation`, at 560 m³/h. The latter binds `bench-extract` to `bench-shaft`. Two post-ACK observations of 600 m³/h with excessive simulated particles leave the incident unresolved without requesting a shaft measurement. A later 515 m³/h observation triggers the additional investigation. An independently injected 35% sensor CIN against an 80% command changes the existing order to actuator/feedback inspection. After a new 95% command, an independent 93% sample changes the **same logical work order** to airflow-path inspection; the old 35% record remains immutable. The incident still needs physical investigation and remains unresolved in the virtual test.
+
+Both facilities use the same worker code. Eight native ACP denials cover cross-facility reads and wrong-role writes; the neighboring zone and the first facility's resource state tags remain unchanged while the new facility operates. This is scripted virtual commissioning with an actual oneM2M CSE and local independent-sample bridge. The sensor values are separately supplied test inputs, not physical measurements or proof of MEC service use. The original MCP onboarding and hosted-model evidence remain separate.
+
 ## Provision from configuration files
 
 1. Choose an existing profile or copy one JSON file in `profiles/`. Give a new profile a unique ID and define its zones, targets, freshness window, allowed actions and recovery sample count. Values are simulation inputs until separately validated for a real facility.

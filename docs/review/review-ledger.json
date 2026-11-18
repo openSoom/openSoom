@@ -1591,10 +1591,11 @@
       "main_decision": "adopt",
       "decision_path": "scripts/facility_retirement_check.py",
       "implementation_state": "verified",
-      "review_state": "awaiting_independent_recheck",
+      "review_state": "resolved",
       "evidence_status": "captured",
       "decision_reason": "Operator history stays available without retaining the retired app’s access.",
-      "review_revision": "449850c43ea0d45e735284eb95bd29ee13d83065"
+      "review_revision": "449850c43ea0d45e735284eb95bd29ee13d83065",
+      "recheck": "Release D independently checked 6 distinct RQIs for the same original observation and ACK, and three matching source hashes on the retirement fix."
     },
     {
       "id": "RC-D02",
@@ -1610,8 +1611,8 @@
       "verification": "Compare stored expected and actual results, native readback and absence of new CSE commands.",
       "main_decision": "adopt",
       "decision_path": "src/opensoom/llm_runner.py",
-      "implementation_state": "implemented",
-      "review_state": "awaiting_independent_recheck",
+      "implementation_state": "verified",
+      "review_state": "resolved",
       "evidence_status": "captured",
       "decision_reason": "A manager must distinguish successful refusal of a stale request from physical recovery.",
       "review_revision": "449850c43ea0d45e735284eb95bd29ee13d83065"
@@ -1631,11 +1632,12 @@
       "verification": "Capture two real services, configured callback, 046 subscription ID and same-work-order result under fixed roles.",
       "main_decision": "adopt",
       "decision_path": "deploy/mec-sandbox/README.md",
-      "implementation_state": "in_progress",
-      "review_state": "open",
+      "implementation_state": "verified",
+      "review_state": "resolved",
       "evidence_status": "captured",
       "decision_reason": "A site can bind a provider notification route for maintenance follow-up.",
-      "review_revision": "449850c43ea0d45e735284eb95bd29ee13d83065"
+      "review_revision": "449850c43ea0d45e735284eb95bd29ee13d83065",
+      "recheck": "Release E verified native 033 owner registration and 046 subscription POST 201/GET 200, TestNotification 204 and a separate actual measurement lookup that revised the same work order. The managed image and later local classification test retain their distinct provenance."
     },
     {
       "id": "RC-F01",
@@ -1669,10 +1671,26 @@
       "main_decision": "adopt",
       "decision_path": "evidence/runtime/maintenance-command-followup.json",
       "implementation_state": "verified",
-      "review_state": "awaiting_independent_recheck",
+      "review_state": "resolved",
       "evidence_status": "captured",
       "decision_reason": "Correct diagnosis follows the current asset/setpoint, and an operator can reuse the system without changing source.",
-      "review_revision": "449850c43ea0d45e735284eb95bd29ee13d83065"
+      "review_revision": "449850c43ea0d45e735284eb95bd29ee13d83065",
+      "recheck": "Independent product review accepted the simulated maintenance decision and site configuration. Its PM-only finding was reproduced and fixed. Source-scoped receipts distinguish native tooling, a scripted installation and real human field use."
+    },
+    {
+      "id": "RC-IDEA02",
+      "team": "idea_model",
+      "criteria": [],
+      "evidence_status": "captured",
+      "observed_evidence": "evidence/runtime/maintenance-command-followup.json",
+      "gap_and_impact": "An air-quality warning with adequate airflow could lead to an unnecessary shaft-position check.",
+      "minimum_change": "Keep the general inspection until an actual low-flow follow-up of the current command arrives. Label the opening kitchen illustration on-screen.",
+      "product_reason": "A technician should only prioritize a damper when the commissioned airflow evidence warrants the check.",
+      "verification": "Real CSE on a PM-only initial event: six particle/CO₂/stopped-fan observations and two missing/stale cases produced no lookup. Subsequent low flow produced one. Check AI label and six narrated UI screens.",
+      "main_decision": "accept",
+      "decision_reason": "This is the professional boundary between air quality and a diagnosed flow problem.",
+      "implementation_state": "verified",
+      "review_state": "candidate_recheck_pending"
     }
   ],
   "release_assessment": "docs/review/release-assessment.ko.md"

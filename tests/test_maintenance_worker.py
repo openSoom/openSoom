@@ -144,3 +144,54 @@ def test_projection_hides_superseded_reading_before_new_worker_output():
     assert waiting['command_id'] == 'new' and waiting['evidence_status'] == 'awaiting_current_command_followup'
     assert waiting['historical_work_order_ri'] == 'cin-old' and 'sample' not in waiting
     assert old['sample']['value'] == 35
+
+
+def test_046_subscription_verifies_native_callback_and_reuses_owned_registration_after_restart():
+    base = "https://mec.example/facility/sens/v1"
+    registry = "https://mec.example/services"
+    callback = "https://bridge.example/mec046/test"
+    config = {"registry_url": registry, "sensor_test_callback": callback}
+    collection = base + "/subscriptions/sensor_data"
+    href = collection + "/12"
+    lookup = base + "/queries/sensor_data/12"
+    rows = {}
+    writes = []
+    svc = SensorService(config)
+    svc.client.close()
+
+    def native(req):
+        url = str(req.url)
+        if url == registry:
+            return httpx.Response(200, json=[{"state":"ACTIVE","serInstanceId":"native-046",
+                "serCategory":{"id":"sssId"},"transportInfo":{"endpoint":{"uris":[base]}}}])
+        if url == collection and req.method == "GET":
+            return httpx.Response(200,json={"_links":{"subscriptions":[{"href":h} for h in rows]}})
+        if url == collection and req.method == "POST":
+            body = json.loads(req.content)
+            assert body["SensorDataSubscription"]["callbackReference"] == callback
+            assert not svc.observe_test({"notificationType":"DataNotification","_links":{"subscription":{"href":href}}})
+            assert not svc.observe_test({"notificationType":"TestNotification","_links":{"subscription":{"href":"https://other.invalid/12"}}})
+            assert svc.observe_test({"notificationType":"TestNotification","_links":{"subscription":{"href":href}}})
+            row = {**body["SensorDataSubscription"],"_links":{"self":{"href":href}}}
+            rows[href] = row
+            writes.append("POST")
+            return httpx.Response(201, headers={"Location":href}, json=row)
+        if url == lookup and req.method == "GET":
+            return httpx.Response(200,json=rows[href])
+        if url == lookup and req.method == "DELETE":
+            del rows[href]
+            writes.append("DELETE")
+            return httpx.Response(204)
+        raise AssertionError((req.method, url))
+
+    with httpx.Client(transport=httpx.MockTransport(native)) as client:
+        svc.client=client
+        receipt=svc.data_subscription(commission=True)
+        assert receipt["test_callback"]["status"] == 204 and receipt["readback_status"] == 200
+        assert not svc.observe_test({"notificationType":"TestNotification","_links":{"subscription":{"href":href}}})
+        restarted=SensorService(config)
+        restarted.client.close()
+        restarted.client=client
+        reused=restarted.data_subscription(commission=True)
+        assert reused["before_present"] and "test_callback" not in reused and writes == ["POST"]
+        assert restarted.data_subscription(remove=True)["write_status"] == 204 and writes == ["POST","DELETE"]

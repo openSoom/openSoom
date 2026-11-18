@@ -1,0 +1,129 @@
+{
+  "status": "passed",
+  "revision": "490d1bc2a908e531150feb4668954ac8c4516490",
+  "time_utc": "2026-11-18T16:41:37.829948+00:00",
+  "method": "Anonymous HTTPS GET, all bytes compared to the referenced Git object. Main movie paths are the article hyperlinks; image URLs are taken directly from the article.",
+  "hackster_public_url": "awaiting organizer submission handoff",
+  "assets": [
+    {
+      "file": "evidence/dashboard/visual-upgrade-desktop-unresolved.jpg",
+      "url": "https://raw.githubusercontent.com/openSoom/openSoom/1e525fe2dfe1afe8ed6fc4391c1a060513c5e879/evidence/dashboard/visual-upgrade-desktop-unresolved.jpg",
+      "http": 200,
+      "bytes": 101037,
+      "sha256": "170669d715b6f004d5ef69ae0d4294c7201e5c6a1d7eac3836b1a30df13433b2",
+      "reference": "1e525fe2dfe1afe8ed6fc4391c1a060513c5e879"
+    },
+    {
+      "file": "evidence/video/work-order/dashboard-order.png",
+      "url": "https://raw.githubusercontent.com/openSoom/openSoom/449850c43ea0d45e735284eb95bd29ee13d83065/evidence/video/work-order/dashboard-order.png",
+      "http": 200,
+      "bytes": 132507,
+      "sha256": "f668306b7136896e55e6b039cfdb152464412539191b65731ffa665af25e9fbc",
+      "reference": "449850c43ea0d45e735284eb95bd29ee13d83065"
+    },
+    {
+      "file": "evidence/pitch/architecture-release-desktop.jpg",
+      "url": "https://raw.githubusercontent.com/openSoom/openSoom/1e525fe2dfe1afe8ed6fc4391c1a060513c5e879/evidence/pitch/architecture-release-desktop.jpg",
+      "http": 200,
+      "bytes": 140427,
+      "sha256": "ec9f207ae4c55555fdf4d93c2a2a720bec466ca3069c6d812f14364f874b22d8",
+      "reference": "1e525fe2dfe1afe8ed6fc4391c1a060513c5e879"
+    },
+    {
+      "file": "deliverables/video/openSoom-work-order-720p.mp4",
+      "url": "https://github.com/openSoom/openSoom/raw/refs/heads/main/deliverables/video/openSoom-work-order-720p.mp4",
+      "http": 200,
+      "bytes": 3284287,
+      "sha256": "9ca85b4c3b7eff22f50333c3f2119aa532146c3c2c6783ff9313568a644d1628",
+      "reference": "490d1bc2a908e531150feb4668954ac8c4516490"
+    },
+    {
+      "file": "deliverables/video/openSoom-pr-45s.mp4",
+      "url": "https://github.com/openSoom/openSoom/raw/refs/heads/main/deliverables/video/openSoom-pr-45s.mp4",
+      "http": 200,
+      "bytes": 13897316,
+      "sha256": "7cd91a052221c4c54baccf7560bda93cb595b905c8aeab0c7d3e441051220960",
+      "reference": "490d1bc2a908e531150feb4668954ac8c4516490"
+    },
+    {
+      "file": "deliverables/video/openSoom-demo-5min.mp4",
+      "url": "https://github.com/openSoom/openSoom/raw/refs/heads/main/deliverables/video/openSoom-demo-5min.mp4",
+      "http": 200,
+      "bytes": 23331960,
+      "sha256": "c47b134ce2202c57a6089cad7a262eb0e16927e69e58af9593c95dcc7b2158ab",
+      "reference": "490d1bc2a908e531150feb4668954ac8c4516490"
+    },
+    {
+      "file": "README.md",
+      "url": "https://raw.githubusercontent.com/openSoom/openSoom/490d1bc2a908e531150feb4668954ac8c4516490/README.md",
+      "http": 200,
+      "bytes": 15113,
+      "sha256": "1b8d30cb815603001838a3bf059346318a04659b159b1d68399134b569da909b",
+      "reference": "490d1bc2a908e531150feb4668954ac8c4516490"
+    },
+    {
+      "file": "docs/submission/hackster-article.md",
+      "url": "https://raw.githubusercontent.com/openSoom/openSoom/490d1bc2a908e531150feb4668954ac8c4516490/docs/submission/hackster-article.md",
+      "http": 200,
+      "bytes": 27295,
+      "sha256": "5292f319a59ff1921c6d52e451bc86e0ce3ea24e0abbb85f16806eb8b24ea838",
+      "reference": "490d1bc2a908e531150feb4668954ac8c4516490"
+    },
+    {
+      "file": "docs/submission/hackster-publish-notes.md",
+      "url": "https://raw.githubusercontent.com/openSoom/openSoom/490d1bc2a908e531150feb4668954ac8c4516490/docs/submission/hackster-publish-notes.md",
+      "http": 200,
+      "bytes": 6442,
+      "sha256": "fdd795574efe8d18dbd390bbe536bb482208455ef5b56022887b8dec0a9628ee",
+      "reference": "490d1bc2a908e531150feb4668954ac8c4516490"
+    },
+    {
+      "file": "deliverables/presentation/openSoom-evaluation.pptx",
+      "url": "https://raw.githubusercontent.com/openSoom/openSoom/490d1bc2a908e531150feb4668954ac8c4516490/deliverables/presentation/openSoom-evaluation.pptx",
+      "http": 200,
+      "bytes": 673193,
+      "sha256": "829d84f2bbec54a5725f4a4d83985cf4ac7904cb361cddf83e07d9b13b10df35",
+      "reference": "490d1bc2a908e531150feb4668954ac8c4516490"
+    },
+    {
+      "file": "deliverables/presentation/openSoom-evaluation.pdf",
+      "url": "https://raw.githubusercontent.com/openSoom/openSoom/490d1bc2a908e531150feb4668954ac8c4516490/deliverables/presentation/openSoom-evaluation.pdf",
+      "http": 200,
+      "bytes": 747443,
+      "sha256": "88b1474c24fb08466237ad90db986ed0745f15419c24aaee41cf09a67bde8dc9",
+      "reference": "490d1bc2a908e531150feb4668954ac8c4516490"
+    },
+    {
+      "file": "deliverables/video/openSoom-work-order.en.srt",
+      "url": "https://raw.githubusercontent.com/openSoom/openSoom/490d1bc2a908e531150feb4668954ac8c4516490/deliverables/video/openSoom-work-order.en.srt",
+      "http": 200,
+      "bytes": 2099,
+      "sha256": "15d6306c6ab1b29f7e1087287b68c2ba5e493757a4150444995c18afe0c1d19a",
+      "reference": "490d1bc2a908e531150feb4668954ac8c4516490"
+    },
+    {
+      "file": "docs/assets/opensoom-work-order.gif",
+      "url": "https://raw.githubusercontent.com/openSoom/openSoom/490d1bc2a908e531150feb4668954ac8c4516490/docs/assets/opensoom-work-order.gif",
+      "http": 200,
+      "bytes": 1089154,
+      "sha256": "ae8f2cf55e67cbf4afa78ffb3224d033f8b42df5cb0893e225930798fcafe2b2",
+      "reference": "490d1bc2a908e531150feb4668954ac8c4516490"
+    },
+    {
+      "file": "evidence/runtime/option-c/index.json",
+      "url": "https://raw.githubusercontent.com/openSoom/openSoom/490d1bc2a908e531150feb4668954ac8c4516490/evidence/runtime/option-c/index.json",
+      "http": 200,
+      "bytes": 3286,
+      "sha256": "aaa819d3cb5c909c5fec52065671270bd15954799640e240c2ff1563cfcc6bca",
+      "reference": "490d1bc2a908e531150feb4668954ac8c4516490"
+    },
+    {
+      "file": "docs/review/release-assessment.ko.md",
+      "url": "https://raw.githubusercontent.com/openSoom/openSoom/490d1bc2a908e531150feb4668954ac8c4516490/docs/review/release-assessment.ko.md",
+      "http": 200,
+      "bytes": 7013,
+      "sha256": "7ea4eb1d019cc1c2b4a9f985b174cc7c387a61285039153ed8e849f899b13dde",
+      "reference": "490d1bc2a908e531150feb4668954ac8c4516490"
+    }
+  ]
+}

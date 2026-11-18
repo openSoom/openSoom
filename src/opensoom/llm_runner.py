@@ -290,7 +290,7 @@ async def run(args: argparse.Namespace) -> dict:
         if args.prepare_scenario:
             prepared = proxy.request("POST", "/api/demo/start", {"facility_id": args.facility, "scenario": args.scenario, "autorun": False})
             result["scenario_run_id"] = prepared.get("run_id", prepared.get("id"))
-        created_run = proxy.request("POST", "/api/agent-runs", {"id": run_id, "mode": args.mode, "model": result["model"], "facility_id": args.facility, "scenario": args.scenario})
+        created_run = proxy.request("POST", "/api/agent-runs", {"id": run_id, "mode": args.mode, "model": result["model"], "facility_id": args.facility, "scenario": "virtual_authoring" if author else args.scenario})
         if created_run.get("run_id", created_run.get("id", run_id)) != run_id:
             raise ValueError("Service did not preserve the requested agent run ID")
         created = True

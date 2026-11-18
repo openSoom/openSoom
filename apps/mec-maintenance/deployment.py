@@ -15,7 +15,7 @@ def settings(config, role):
                'settle_seconds', 'tolerance_pct', 'poll_seconds', 'listen_port', 'listen_host'}
     if role == 'bridge':
         allowed |= {'registry_url', 'mec_ca', 'allowed_service_origins', 'provider_sensor_ids', 'sensor_type',
-                    'service_name', 'bridge_mode', 'provider_registration'}
+                    'service_name', 'bridge_mode', 'provider_registration', 'sensor_test_callback'}
     extra = config.keys() - allowed
     if extra:
         raise ValueError('Unexpected configuration keys: ' + ', '.join(sorted(extra)))

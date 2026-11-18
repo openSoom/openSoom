@@ -7,6 +7,7 @@ The Sandbox created two applications on each of two logical edges. One runs the 
 | Operation | Record |
 | --- | --- |
 | Admission and discovery | Native controller application IDs, ACTIVE 011 records, a 033 provider registration, the 046 sensor query and invalid-sensor response. [Native services](../../evidence/runtime/option-c/native-services.json) |
+| Configure both services from oneM2M | An open work order waited for an unregistered provider. A facility owner commissioned 033 and created a native 046 sensor subscription. The service tested the bridge callback. A bridge restart reused the same slot. A fresh sensor query revised the existing order. Cleanup removed exactly one slot. [Single-run receipt](../../evidence/runtime/option-c/commissioned-sensor-roundtrip.json) |
 | North facility edge | Controller validated the custom topology and its Virt Engine installed two Helm releases. The fresh maintenance case went from revision 2 to revision 4. [Managed north](../../evidence/runtime/option-c/managed-north.json) · [Product case](../../evidence/runtime/option-c/managed-north-product.json) |
 | South facility edge | Planned servicing moved the selected logical location. New Pod UIDs, actual Mcc registration and the same CSE work-order resource survived. A second fresh case completed on this placement. [Managed south](../../evidence/runtime/option-c/managed-south.json) · [Product case](../../evidence/runtime/option-c/managed-south-product.json) |
 | Terminated maintenance Pod | Kubernetes recreated the deployed worker and its first successful reconciliation was observed in 14.768 seconds. The MN stayed online and returned the same revision-4 contentInstance. [Restart receipt](../../evidence/runtime/option-c/managed-worker-restart.json) |
@@ -69,19 +70,24 @@ python3 "$lab/provider.py" "http://$provider_ip:8080/cse-provider" > first-sampl
 python3 "$lab/provider.py" "http://$provider_ip:8080/cse-provider" --cycles 300 > provider-stream.jsonl &
 sensor_ri=$(python3 -c 'import json; print(json.load(open("first-sample.json"))["sensor_ri"])')
 python3 "$lab/commission.py" apps > admissions.json
-python3 "$lab/commission.py" provider > provider-registration.json
+python3 "$lab/commission.py" provider-profile > provider-registration.json
 python3 "$lab/product-lab.py" --state "$RUN_DIR/auth" --record provider-registration.json \
   --sensor-ri "$sensor_ri" --operations opensoom/operations:lab --worker opensoom/maintenance:lab
 sudo k3s kubectl -n opensoom-workers rollout status deploy/os-operations
 sudo k3s kubectl -n opensoom-workers exec -i deploy/os-operations -- python - subscribe < "$lab/lab-action.py"
-sudo k3s kubectl -n opensoom-workers exec -i deploy/os-operations -- python - commission < "$lab/lab-action.py"
 sudo k3s kubectl -n opensoom-workers exec -i deploy/os-operations -- python - start < "$lab/lab-action.py"
 ```
 
-Record the returned run ID. The CSE must first hold a revision-4 work order. Allow up to two native 60-second discovery cycles after initial registration. A pending work order is visible through the operations API during that interval. A fresh runtime generates its own source RI, app IDs, CSE request IDs and timestamps.
+Record the returned run ID. On a fresh deployment, wait for the operator dashboard to report a pending work order with reason `provider_unregistered`. Send the approved provider profile through oneM2M, then save the returned commissioning request ID. Give the upstream platform up to two 60-second discovery cycles while the provider stream stays active.
 
 ```bash
-sudo k3s kubectl -n opensoom-workers exec -i deploy/os-maintenance -- python - --run-id "$RUN_ID" \
+sudo k3s kubectl -n opensoom-workers exec -i deploy/os-operations -- python - commission < "$lab/lab-action.py"
+```
+
+The bridge verifies the 033 enrollment and configures one 046 subscription. The provider sends a `TestNotification` to the installed bridge address. A later 046 data query reads the independent virtual encoder position and updates the original work order. Each fresh deployment generates its own resource and request IDs. After the final product capture, the bridge operator can run `subscription-check.py read` or `subscription-check.py remove` inside the bridge Pod to inspect or remove its owned slot. The next authorized commissioning request can recreate it.
+
+```bash
+sudo k3s kubectl -n opensoom-workers exec -i deploy/os-maintenance -- python - --run-id "$RUN_ID" --commission-id "$COMMISSION_ID" \
   < "$repo/scripts/capture_maintenance_order.py"
 python3 "$lab/capture.py" > native-capture.json
 python3 "$lab/stage-chart.py" | sudo k3s kubectl apply -f -

@@ -6,38 +6,38 @@
   ],
   "records": {
     "observations": {
-      "ri": "cinLAibMDxbyX",
+      "ri": "cinpJSMvBFCwi",
       "before": {
         "rsc": 2000,
-        "rqi": "opensoom-b246ee14c3414cb9970006fa2f06fcdd"
+        "rqi": "opensoom-513e6b75c53745e295cabb573bb4d164"
       },
       "retired_after": {
         "rsc": 4103,
-        "rqi": "opensoom-0424181761914c94997db15b3c07e030"
+        "rqi": "opensoom-4d85b601ae3148df950aa955b726e18b"
       },
       "operator_after": {
         "rsc": 2000,
-        "rqi": "opensoom-22551c983c6e4437bf37c8a6f47c0d25"
+        "rqi": "opensoom-0b7377d1363e4cedb2cae7d9e3b942a7"
       }
     },
     "acks": {
-      "ri": "cinI4iaR4enat",
+      "ri": "cinJCHGYCVc8D",
       "before": {
         "rsc": 2000,
-        "rqi": "opensoom-e59aa2abe41d476c8cff23f92828299e"
+        "rqi": "opensoom-70b914efe9d54e50a1caf78ca7f7e287"
       },
       "retired_after": {
         "rsc": 4103,
-        "rqi": "opensoom-7be52cda34214427a8d071b69a7b15a0"
+        "rqi": "opensoom-ab250a9fb502404e8cf1199dc70b1edc"
       },
       "operator_after": {
         "rsc": 2000,
-        "rqi": "opensoom-3d255280c60d4b1298b2d46538a2832b"
+        "rqi": "opensoom-9995aa809f5b4e5180836d519ca7001f"
       }
     }
   },
   "source_sha256": {
-    "src/opensoom/core.py": "28d0a2de0bd8217b84ae97d8b80e33f17cb8b9ff4e27ffa475616fd635a20ea6",
+    "src/opensoom/core.py": "84a492b83e8dec65317cbb1abb2ab7ce261734b3032daafa59f470d9c96135ea",
     "src/opensoom/maintenance.py": "5032abae3e8c694da180290e97acba624f82e383ffa6c92c4ff04777271feffc",
     "scripts/facility_retirement_check.py": "7106843c5886495b67715fc7a3958516a9ec0aac10e695a0e83b51e522a4f535"
   }

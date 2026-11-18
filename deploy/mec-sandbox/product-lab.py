@@ -86,7 +86,7 @@ def render(args):
                      "cse_url":GATEWAY,"cse_ca":"/etc/opensoom/trust/ca.crt","poll_seconds":3})
         if role=="bridge":
             conf.update({"bridge_mode":"mec046","registry_url":REGISTRY+"/mec_service_mgmt/v1/services",
-                "allowed_service_origins":[REGISTRY],"sensor_type":"FLX","provider_sensor_ids":{"shaft-position-01":args.sensor_ri},
+                "allowed_service_origins":[REGISTRY],"sensor_type":"FLX","sensor_test_callback":"http://os-bridge.opensoom-workers.svc.cluster.local:8080/mec046/test","provider_sensor_ids":{"shaft-position-01":args.sensor_ri},
                 "provider_registration":{"profile":"independent-shaft-provider","record":record}})
         role_configs[role]=worker_deploy.settings(conf,role)
         egress=[{"to":[{"namespaceSelector":{"matchLabels":{"kubernetes.io/metadata.name":"kube-system"}},
@@ -104,7 +104,7 @@ def render(args):
 if __name__=="__main__":
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--state",type=Path,required=True,help="Private local directory for this test's credentials")
-    parser.add_argument("--record",type=Path,required=True,help="Native 033 registration response")
+    parser.add_argument("--record",type=Path,required=True,help="Approved provider profile or native 033 registration response")
     parser.add_argument("--sensor-ri",required=True)
     parser.add_argument("--worker",required=True)
     parser.add_argument("--operations",required=True)

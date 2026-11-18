@@ -19,7 +19,9 @@
       "network transfer"
     ],
     "final_compute_state": "TERMINATED",
-    "stopped_utc": "2026-11-18T16:20:39.677Z"
+    "stopped_utc": "2026-11-18T16:50:45.687Z",
+    "first_capture_stopped_utc": "2026-11-18T16:20:39.677Z",
+    "last_test_start_utc": "2026-11-18T16:31:58.345Z"
   },
   "cases": [
     {
@@ -70,6 +72,17 @@
     "managed-south-product.json": "eaaa572d364768695b59eb1bc7833b1e4b80a4b0eeb7358003a80b4bf5df5aaa",
     "managed-south.json": "00e2635675cd1cc51b26230567a1212b99d849839fdc174d5bb6c269f9958557",
     "managed-worker-restart.json": "d1aa2ef41c3000d771b0041361891fd642cd1908882f576e55a2352116e737b0",
-    "native-services.json": "f390b090d375ed7edfb211395c8ca9ff3580a33521d2bac3ab6ec45f731cb9d5"
+    "native-services.json": "f390b090d375ed7edfb211395c8ca9ff3580a33521d2bac3ab6ec45f731cb9d5",
+    "commissioned-sensor-roundtrip.json": "d711abe22f028b2e9a8f8bd0f9ff35b0a8c05a3633f50bfb854e60296381c4e6"
+  },
+  "dual_service_configuration": {
+    "run_id": "demo-a8c5ef7ada",
+    "capture": "commissioned-sensor-roundtrip.json",
+    "provider_registration_http": 201,
+    "sensor_subscription_http": 201,
+    "sensor_callback_http": 204,
+    "independent_position_pct": 35.0,
+    "work_order_final_revision": 4,
+    "sensor_subscription_cleanup_http": 204
   }
 }

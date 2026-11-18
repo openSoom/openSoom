@@ -271,10 +271,28 @@ class Core:
         if not command or datetime.fromisoformat(observation.observed_at) <= datetime.fromisoformat(command["ack_at"]):
             return
         if diagnosis["status"] == "critical":
+            if "airflow_followup_queued" not in command:
+                # Older command records shared one flag for every unresolved
+                # condition. Recover any published or pending immutable event
+                # before deciding whether a new low-flow observation needs one.
+                queued = False
+                asset = self.registry[facility["id"]].get("maintenance", {}).get("assets", {}).get(zone["id"])
+                if command.get("observed_result") == "unresolved" and asset:
+                    name = "unresolved-" + command["id"]
+                    queued = self.store.get("maintenance_outbox", name) is not None
+                    if not queued:
+                        try:
+                            self.cse.retrieve(facility["path"] + "/outcomes/" + name, origin=self.identities["operator"])
+                            queued = True
+                        except CSEError as exc:
+                            if exc.rsc != 4004:
+                                raise
+                command["airflow_followup_queued"] = queued
             command["unresolved_samples"] = command.get("unresolved_samples", 0) + 1
             if command["unresolved_samples"] >= profile["recovery_samples"]:
-                if command.get("observed_result") != "unresolved":
-                    maintenance.queue_outcome(self, "command.unresolved_after_ack", incident, observation, facility, zone, rqi, command)
+                if observation.airflow < zone["minimum_airflow"] and not command["airflow_followup_queued"]:
+                    command["airflow_followup_queued"] = maintenance.queue_outcome(
+                        self, "command.unresolved_after_ack", incident, observation, facility, zone, rqi, command)
                 command.update(status="unresolved", observed_result="unresolved", verification_rqi=rqi)
             self.store.put("commands", command["id"], command)
         elif diagnosis["status"] == "nominal":

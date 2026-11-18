@@ -20,12 +20,22 @@
 .decision-foot a{color:#e1f1c6}
 @media(max-width:760px){.incident-story{grid-template-columns:1fr}.decision-reading{min-height:235px}.decision-foot{flex-wrap:wrap}}
 
-.route-layout{display:grid;grid-template-columns:1fr 1fr 1.55fr;gap:clamp(16px,3vw,45px);align-items:start}
+.route-layout{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(16px,3vw,45px);align-items:start}
 .route-origin,.route-decision{padding-top:18px;border-top:2px solid #436c53}
 .route-layout h3{font-size:23px;font-weight:550;margin:12px 0}
 .route-layout p{font-size:15px;line-height:1.55}
+.route-decision{grid-column:1/-1}
 .route-decision .decision-switch{margin:0 0 20px}
 .route-decision .decision-switch button{color:#2a4535}
 .route-decision .decision-switch button[aria-pressed=true]{background:#1d3e34;color:#fff}
 .route-decision a{font-size:13px;text-decoration:underline}
 @media(max-width:760px){.route-layout{grid-template-columns:1fr}.route-layout h3{font-size:20px}}
+
+.sensor-route { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin: 1.5rem 0; padding: 0; list-style: none; }
+.sensor-route li { border-left: 2px solid #b4c9b9; padding: .3rem 1rem .35rem .85rem; }
+.sensor-route strong, .sensor-route span { display: block; }
+.sensor-route strong { color: var(--ink); font-size: .94rem; }
+.sensor-route span { margin-top: .35rem; color: var(--muted); line-height: 1.5; font-size: .86rem; }
+@media (max-width: 620px) {
+  .sensor-route { grid-template-columns: 1fr; gap: .65rem; }
+}

@@ -28,6 +28,11 @@
 <div class="route-origin"><h3>Maintenance</h3><p>Reads the outcome, opens one work order and asks for the shaft position. Only this app changes the inspection priority. For Option C, the Sandbox deployed this worker alongside the MN-CSE on two successive logical edges of one VM. <a href="https://github.com/openSoom/openSoom/blob/main/evidence/runtime/option-c/index.json">Inspect north and south placements ↗</a></p></div>
 <div class="route-decision"><div class="decision-switch" role="group" aria-label="Independent sensor source"><button data-route="local" aria-pressed="true">Facility-owned sensor</button><button data-route="cloud" aria-pressed="false">External MEC provider</button><button data-route="missing" aria-pressed="false">No position reading</button></div>
 <h3 id="route-title">The position sensor publishes locally.</h3><p id="route-description">The bridge reads a separate sensor AE’s content instance. The maintenance app receives a measurement with its sensor ID, unit and observation time.</p>
+<ol class="sensor-route" id="route-steps" aria-label="Data path">
+  <li><strong>Independent sensor AE</strong><span>Publishes a shaft reading to the local MN-CSE.</span></li>
+  <li><strong>Facility bridge</strong><span>Checks the asset, unit and observation time.</span></li>
+  <li><strong>Maintenance AE</strong><span>Reads the response and revises its work order.</span></li>
+</ol>
 <p id="route-proof">Verified local CSE execution</p><a id="route-source" href="https://github.com/openSoom/openSoom/blob/main/evidence/runtime/maintenance-release-local.json">Inspect this execution ↗</a></div></div></section>
 <section id="system" class="system section-pad"><div class="section-intro"><p class="eyebrow">Application responsibilities</p><h2>Who can control the equipment?</h2><p class="subheading">Only the site operations app writes device commands. The maintenance app owns the work order. A separate bridge can bring an independent sensor reading back to the facility MN-CSE.</p></div><!-- Insert this fragment inside #system. Load architecture.css and architecture.js once. -->
 <div id="architecture-explorer" class="arch-explorer" aria-labelledby="arch-title" data-renderer="loading">

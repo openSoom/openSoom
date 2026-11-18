@@ -1,12 +1,12 @@
 {
   "scope": "Final repository PowerPoint, PDF, English rehearsal and offline companion film. Local software validation and rendered-slide review.",
   "artifacts_sha256": {
-    "deliverables/presentation/openSoom-evaluation.pptx": "829d84f2bbec54a5725f4a4d83985cf4ac7904cb361cddf83e07d9b13b10df35",
-    "deliverables/presentation/openSoom-evaluation.pdf": "88b1474c24fb08466237ad90db986ed0745f15419c24aaee41cf09a67bde8dc9",
-    "docs/submission/presenter-script.en.md": "248d592541344119c22e3e5df1d3afb8be599d4fb8fe729b38c7c0167f7d3491",
-    "docs/submission/presenter-script.ko.md": "2077f7524acde0172b964c66f94eea319bccd7c49bf2b7ab5ff66eff91337c6a",
-    "deliverables/video/openSoom-work-order-720p.mp4": "9ca85b4c3b7eff22f50333c3f2119aa532146c3c2c6783ff9313568a644d1628",
-    "docs/submission/technical-qa.md": "5c5316d0b7f7a5e4ad1e7a08c242dc3230f7331f65442e96152f425732bdc8c3"
+    "deliverables/presentation/openSoom-evaluation.pptx": "881c29cb5b46cf0126a70b79f546a707476674ab857af59e50e19a9e5f6afef0",
+    "deliverables/presentation/openSoom-evaluation.pdf": "58595132f165dce5c91b177ac204e5b0600d1821730f1dc91c9d864c0a1fa014",
+    "docs/submission/presenter-script.en.md": "08c8c7cdab2b6827d290a9d7c6aef498e238f499b035dfd2f437bcbee95b8630",
+    "docs/submission/presenter-script.ko.md": "3acda82b0c0f23e9a44efbcc440c4fbb5da0eb2eef7d6c6e5e2a3f3741bc0def",
+    "deliverables/video/openSoom-work-order-720p.mp4": "313c78416e3dec940d6b32486c57bf028b0525b3f140aaa316bb0235952ba7b8",
+    "docs/submission/technical-qa.md": "ceddad4f5a6d22deec19723064681bb21d31e795f9ab63af661fd0e58b52babc"
   },
   "checks": {
     "slides": 10,
@@ -47,7 +47,7 @@
         "https://github.com/openSoom/openSoom/blob/main/evidence/runtime/mec-maintenance-roundtrip.json"
       ],
       "8": [
-        "https://github.com/openSoom/openSoom/blob/main/evidence/runtime/mec-provider-commissioning.json"
+        "https://github.com/openSoom/openSoom/blob/main/evidence/runtime/option-c/index.json"
       ],
       "9": [
         "https://github.com/openSoom/openSoom/blob/main/evidence/agent/scenario-authoring/codex-authored-accepted.json"
@@ -62,15 +62,15 @@
   "rehearsal": {
     "method": "Local English synthesized presenter read-through, actual film audio inserted after slide 5. No live human performance was measured.",
     "synthesis": "macOS Samantha, say rate argument 135",
-    "spoken_words": 1501,
-    "narration_seconds": 566.31,
+    "spoken_words": 1499,
+    "narration_seconds": 562.82,
     "film_seconds": 104.94,
-    "combined_seconds": 671.25,
+    "combined_seconds": 667.76,
     "architecture_slide": 8,
-    "architecture_seconds": 48.5,
+    "architecture_seconds": 45.02,
     "source_hashes": {
-      "spoken_script_sections_sha256": "22fb7388b80ff8ce083b87673deaba52441167993a56cf5478eb0a37fc6033ea",
-      "film_sha256": "9ca85b4c3b7eff22f50333c3f2119aa532146c3c2c6783ff9313568a644d1628"
+      "spoken_script_sections_sha256": "b6cab8f4095f8134b1c9b9a512ec5d141f5415607e874c6a0bda90e79596e9db",
+      "film_sha256": "313c78416e3dec940d6b32486c57bf028b0525b3f140aaa316bb0235952ba7b8"
     },
     "timeline": [
       {
@@ -125,18 +125,18 @@
         "slide": 8,
         "section": "spoken script",
         "start_seconds": 487.82,
-        "duration_seconds": 48.5
+        "duration_seconds": 45.02
       },
       {
         "slide": 9,
         "section": "spoken script",
-        "start_seconds": 536.32,
+        "start_seconds": 532.84,
         "duration_seconds": 74.13
       },
       {
         "slide": 10,
         "section": "spoken script",
-        "start_seconds": 610.45,
+        "start_seconds": 606.97,
         "duration_seconds": 60.8
       }
     ]
@@ -146,7 +146,9 @@
     "separate_cloud_sensor_run": "evidence/runtime/mec-maintenance-roundtrip.json",
     "separate_cloud_commissioning_run": "evidence/runtime/mec-provider-commissioning.json",
     "standalone_model": "evidence/agent/scenario-authoring/standalone-verified.json",
-    "codex_model": "evidence/agent/scenario-authoring/codex-authored-accepted.json"
+    "codex_model": "evidence/agent/scenario-authoring/codex-authored-accepted.json",
+    "managed_north_and_south_placements": "evidence/runtime/option-c/index.json",
+    "separate_south_commissioned_sensor_run": "evidence/runtime/option-c/commissioned-sensor-roundtrip.json"
   },
   "claim_limits": [
     "Device and environmental readings are simulated.",

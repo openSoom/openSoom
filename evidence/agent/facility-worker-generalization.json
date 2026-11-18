@@ -1,0 +1,3634 @@
+{
+  "status": "passed",
+  "captured_at": "2026-11-18T16:48:31.848+00:00",
+  "scope": "Scripted synthetic commissioning, actual isolated ACME CSE and separate shipped worker CLI processes. Local independent-sample bridge only; no new hosted model inference, MEC platform/API or physical experiment.",
+  "isolation": {
+    "temporary_runtime": true,
+    "ephemeral_loopback_port": true,
+    "cse_pid": 11921,
+    "existing_services_or_vm_modified": false,
+    "owned_workers_exited": true,
+    "cse_stopped_on_exit": true
+  },
+  "acme_version": "2026.5.3",
+  "administrator_activation": {
+    "status": "active",
+    "facility_id": "archive-workshop",
+    "version": "4d9199cb4e08e4b3bafb456c62136186c023e7fe96e657ba26acf1ffa01e3078",
+    "cse_path": "cse-multiapp/opensoom/facilities/archive-workshop",
+    "zone_ids": [
+      "intake",
+      "conservation"
+    ],
+    "worker_templates": {
+      "maintenance": {
+        "facility_id": "archive-workshop",
+        "facility_path": "cse-multiapp/opensoom/facilities/archive-workshop",
+        "assets": {
+          "conservation": {
+            "asset_id": "bench-extract",
+            "sensor_id": "bench-shaft"
+          }
+        },
+        "settle_seconds": 4,
+        "freshness_seconds": 45,
+        "tolerance_pct": 9,
+        "origin": "Cosmaintenance1897faf469cba17c"
+      },
+      "bridge": {
+        "facility_id": "archive-workshop",
+        "facility_path": "cse-multiapp/opensoom/facilities/archive-workshop",
+        "assets": {
+          "conservation": {
+            "asset_id": "bench-extract",
+            "sensor_id": "bench-shaft"
+          }
+        },
+        "settle_seconds": 4,
+        "freshness_seconds": 45,
+        "tolerance_pct": 9,
+        "origin": "Cosbridge1897faf469cba17c"
+      }
+    }
+  },
+  "operator_activation_denied": "admin_required",
+  "persisted_templates_after_core_restart": {
+    "maintenance": {
+      "facility_id": "archive-workshop",
+      "facility_path": "cse-multiapp/opensoom/facilities/archive-workshop",
+      "assets": {
+        "conservation": {
+          "asset_id": "bench-extract",
+          "sensor_id": "bench-shaft"
+        }
+      },
+      "settle_seconds": 4,
+      "freshness_seconds": 45,
+      "tolerance_pct": 9,
+      "origin": "Cosmaintenance1897faf469cba17c"
+    },
+    "bridge": {
+      "facility_id": "archive-workshop",
+      "facility_path": "cse-multiapp/opensoom/facilities/archive-workshop",
+      "assets": {
+        "conservation": {
+          "asset_id": "bench-extract",
+          "sensor_id": "bench-shaft"
+        }
+      },
+      "settle_seconds": 4,
+      "freshness_seconds": 45,
+      "tolerance_pct": 9,
+      "origin": "Cosbridge1897faf469cba17c"
+    }
+  },
+  "role_templates": {
+    "food-a": {
+      "maintenance": {
+        "facility_id": "food-a",
+        "facility_path": "cse-multiapp/opensoom/facilities/food-a",
+        "assets": {
+          "cook": {
+            "asset_id": "extract-damper-01",
+            "sensor_id": "shaft-position-01"
+          }
+        },
+        "settle_seconds": 3,
+        "freshness_seconds": 45,
+        "tolerance_pct": 10,
+        "origin": "Cosmaintenance39095aa155887ebe"
+      },
+      "bridge": {
+        "facility_id": "food-a",
+        "facility_path": "cse-multiapp/opensoom/facilities/food-a",
+        "assets": {
+          "cook": {
+            "asset_id": "extract-damper-01",
+            "sensor_id": "shaft-position-01"
+          }
+        },
+        "settle_seconds": 3,
+        "freshness_seconds": 45,
+        "tolerance_pct": 10,
+        "origin": "Cosbridge39095aa155887ebe"
+      }
+    },
+    "archive-workshop": {
+      "maintenance": {
+        "facility_id": "archive-workshop",
+        "facility_path": "cse-multiapp/opensoom/facilities/archive-workshop",
+        "assets": {
+          "conservation": {
+            "asset_id": "bench-extract",
+            "sensor_id": "bench-shaft"
+          }
+        },
+        "settle_seconds": 4,
+        "freshness_seconds": 45,
+        "tolerance_pct": 9,
+        "origin": "Cosmaintenance1897faf469cba17c"
+      },
+      "bridge": {
+        "facility_id": "archive-workshop",
+        "facility_path": "cse-multiapp/opensoom/facilities/archive-workshop",
+        "assets": {
+          "conservation": {
+            "asset_id": "bench-extract",
+            "sensor_id": "bench-shaft"
+          }
+        },
+        "settle_seconds": 4,
+        "freshness_seconds": 45,
+        "tolerance_pct": 9,
+        "origin": "Cosbridge1897faf469cba17c"
+      }
+    }
+  },
+  "applications": {
+    "operations": "Original Core, in-process commissioning driver",
+    "maintenance_and_bridge": [
+      {
+        "facility_id": "food-a",
+        "role": "maintenance",
+        "pid": 11970,
+        "exit_code": 0,
+        "entrypoint": "python -m opensoom.maintenance_worker ROLE --config FILE --once"
+      },
+      {
+        "facility_id": "food-a",
+        "role": "maintenance",
+        "pid": 11974,
+        "exit_code": 0,
+        "entrypoint": "python -m opensoom.maintenance_worker ROLE --config FILE --once"
+      },
+      {
+        "facility_id": "food-a",
+        "role": "bridge",
+        "pid": 11975,
+        "exit_code": 0,
+        "entrypoint": "python -m opensoom.maintenance_worker ROLE --config FILE --once"
+      },
+      {
+        "facility_id": "food-a",
+        "role": "maintenance",
+        "pid": 11976,
+        "exit_code": 0,
+        "entrypoint": "python -m opensoom.maintenance_worker ROLE --config FILE --once"
+      },
+      {
+        "facility_id": "food-a",
+        "role": "bridge",
+        "pid": 12012,
+        "exit_code": 0,
+        "entrypoint": "python -m opensoom.maintenance_worker ROLE --config FILE --once"
+      },
+      {
+        "facility_id": "food-a",
+        "role": "maintenance",
+        "pid": 12013,
+        "exit_code": 0,
+        "entrypoint": "python -m opensoom.maintenance_worker ROLE --config FILE --once"
+      },
+      {
+        "facility_id": "food-a",
+        "role": "maintenance",
+        "pid": 12015,
+        "exit_code": 0,
+        "entrypoint": "python -m opensoom.maintenance_worker ROLE --config FILE --once"
+      },
+      {
+        "facility_id": "food-a",
+        "role": "bridge",
+        "pid": 12024,
+        "exit_code": 0,
+        "entrypoint": "python -m opensoom.maintenance_worker ROLE --config FILE --once"
+      },
+      {
+        "facility_id": "food-a",
+        "role": "maintenance",
+        "pid": 12025,
+        "exit_code": 0,
+        "entrypoint": "python -m opensoom.maintenance_worker ROLE --config FILE --once"
+      },
+      {
+        "facility_id": "archive-workshop",
+        "role": "maintenance",
+        "pid": 12026,
+        "exit_code": 0,
+        "entrypoint": "python -m opensoom.maintenance_worker ROLE --config FILE --once"
+      },
+      {
+        "facility_id": "archive-workshop",
+        "role": "maintenance",
+        "pid": 12027,
+        "exit_code": 0,
+        "entrypoint": "python -m opensoom.maintenance_worker ROLE --config FILE --once"
+      },
+      {
+        "facility_id": "archive-workshop",
+        "role": "bridge",
+        "pid": 12028,
+        "exit_code": 0,
+        "entrypoint": "python -m opensoom.maintenance_worker ROLE --config FILE --once"
+      },
+      {
+        "facility_id": "archive-workshop",
+        "role": "maintenance",
+        "pid": 12029,
+        "exit_code": 0,
+        "entrypoint": "python -m opensoom.maintenance_worker ROLE --config FILE --once"
+      },
+      {
+        "facility_id": "archive-workshop",
+        "role": "bridge",
+        "pid": 12051,
+        "exit_code": 0,
+        "entrypoint": "python -m opensoom.maintenance_worker ROLE --config FILE --once"
+      },
+      {
+        "facility_id": "archive-workshop",
+        "role": "maintenance",
+        "pid": 12053,
+        "exit_code": 0,
+        "entrypoint": "python -m opensoom.maintenance_worker ROLE --config FILE --once"
+      },
+      {
+        "facility_id": "archive-workshop",
+        "role": "maintenance",
+        "pid": 12054,
+        "exit_code": 0,
+        "entrypoint": "python -m opensoom.maintenance_worker ROLE --config FILE --once"
+      },
+      {
+        "facility_id": "archive-workshop",
+        "role": "bridge",
+        "pid": 12079,
+        "exit_code": 0,
+        "entrypoint": "python -m opensoom.maintenance_worker ROLE --config FILE --once"
+      },
+      {
+        "facility_id": "archive-workshop",
+        "role": "maintenance",
+        "pid": 12080,
+        "exit_code": 0,
+        "entrypoint": "python -m opensoom.maintenance_worker ROLE --config FILE --once"
+      }
+    ],
+    "sensor": "Separate facility-scoped AE clients inject independent virtual observations"
+  },
+  "facility_a": {
+    "facility_id": "food-a",
+    "zone_id": "cook",
+    "zone_index": 0,
+    "profile_id": "food-production",
+    "target_airflow_m3_h": 900,
+    "binding": {
+      "asset_id": "extract-damper-01",
+      "sensor_id": "shaft-position-01"
+    },
+    "run_id": "demo-faf312fa38",
+    "opening_observation": {
+      "cin_ri": "cinK5n3VTlvTx",
+      "write_rqi": "opensoom-f8a4b17ff8f44b9492e8f473a2ce855f",
+      "observation": {
+        "facility_id": "food-a",
+        "zone_id": "cook",
+        "observed_at": "2026-11-18T16:48:15.324+00:00",
+        "received_at": "2026-11-18T16:48:15.324+00:00",
+        "source": "simulated",
+        "adapter": "vendor-a",
+        "pm25": 95.0,
+        "co2": 610.0,
+        "airflow": 940.0,
+        "fan_running": true,
+        "damper_pct": 80.0
+      }
+    },
+    "original_order": {
+      "facility_id": "food-a",
+      "zone_id": "cook",
+      "asset_id": "extract-damper-01",
+      "incident_id": "incident-dc334165e8",
+      "run_id": "demo-faf312fa38",
+      "source_cin_ri": "cinK5n3VTlvTx",
+      "kind": "work_order",
+      "work_order_id": "work-incident-dc334165e8",
+      "command_id": null,
+      "observed_at": "2026-11-18T16:48:15.324+00:00",
+      "status": "open",
+      "priority": "inspection",
+      "evidence_status": "awaiting_outcome",
+      "revision": 1,
+      "outcome_ri": "cinM1OhaVk6Bt",
+      "observation_rqi": "opensoom-504a587cd9604744aba1245010ed8896",
+      "airflow": 940.0,
+      "profile_version": 1,
+      "resource_id": "cinaoFaiOWKvO",
+      "read_rqi": "opensoom-9893c4c2821644caab5655e16b0d461f"
+    },
+    "first_command": {
+      "facility_id": "food-a",
+      "zone_id": "cook",
+      "action": "set_damper",
+      "value": 80.0,
+      "reason": "Scripted virtual commissioning",
+      "request_id": "demo-faf312fa38-first",
+      "id": "cmd-654a6810e947",
+      "status": "acknowledged",
+      "ack": true,
+      "created_at": "2026-11-18T16:48:15.548093+00:00",
+      "expires_at": "2026-11-18T16:48:45.548093+00:00",
+      "profile_version": 1,
+      "run_id": "demo-faf312fa38",
+      "incident_id": "incident-dc334165e8",
+      "observed_result": "awaiting_observations",
+      "cse_rqi": "opensoom-0741f0083b384bf2889b71c018cc9b6b",
+      "cse_resource_id": "cin4LuCIRP0AU",
+      "ack_at": "2026-11-18T16:48:15.555+00:00",
+      "ack_rqi": "opensoom-b4f42674d20b4094beb146a4a394745a",
+      "ack_sequence": 1
+    },
+    "adequate_flow_but_other_fault": [
+      {
+        "cin_ri": "ciniY3nMyNpAC",
+        "write_rqi": "opensoom-f13258dbf3ab40148c3d1f7d70541272",
+        "observation": {
+          "facility_id": "food-a",
+          "zone_id": "cook",
+          "observed_at": "2026-11-18T16:48:15.560+00:00",
+          "received_at": "2026-11-18T16:48:15.560+00:00",
+          "source": "simulated",
+          "adapter": "vendor-a",
+          "pm25": 95.0,
+          "co2": 610.0,
+          "airflow": 940.0,
+          "fan_running": true,
+          "damper_pct": 80.0
+        }
+      },
+      {
+        "cin_ri": "cin4BJiNqu8dQ",
+        "write_rqi": "opensoom-ee3ac2d3dfc34000b3ea3633c68c647d",
+        "observation": {
+          "facility_id": "food-a",
+          "zone_id": "cook",
+          "observed_at": "2026-11-18T16:48:15.570+00:00",
+          "received_at": "2026-11-18T16:48:15.570+00:00",
+          "source": "simulated",
+          "adapter": "vendor-a",
+          "pm25": 95.0,
+          "co2": 610.0,
+          "airflow": 940.0,
+          "fan_running": true,
+          "damper_pct": 80.0
+        }
+      }
+    ],
+    "sensor_requests_before_late_low_flow": 0,
+    "late_low_flow": {
+      "cin_ri": "cin5H21cIkSP9",
+      "write_rqi": "opensoom-9a83da73894048ba9451561da312e9f5",
+      "observation": {
+        "facility_id": "food-a",
+        "zone_id": "cook",
+        "observed_at": "2026-11-18T16:48:15.987+00:00",
+        "received_at": "2026-11-18T16:48:15.987+00:00",
+        "source": "simulated",
+        "adapter": "vendor-a",
+        "pm25": 12.0,
+        "co2": 610.0,
+        "airflow": 855.0,
+        "fan_running": true,
+        "damper_pct": 80.0
+      }
+    },
+    "first_sensor_request": {
+      "ri": "cindmOoL7Z4cZ",
+      "rqi": "opensoom-601f814f3c6a45f4847d641356e83537",
+      "content": {
+        "facility_id": "food-a",
+        "zone_id": "cook",
+        "asset_id": "extract-damper-01",
+        "incident_id": "incident-dc334165e8",
+        "run_id": "demo-faf312fa38",
+        "source_cin_ri": "cin5H21cIkSP9",
+        "kind": "shaft_position_lookup",
+        "request_id": "sensor-ac6197e90daea3ad422fa3d0a4abc6de",
+        "work_order_id": "work-incident-dc334165e8",
+        "sensor_id": "shaft-position-01",
+        "outcome_ri": "cinVyXTynSWE3",
+        "observed_at": "2026-11-18T16:48:15.987+00:00",
+        "ack_at": "2026-11-18T16:48:15.555+00:00",
+        "airflow": 855.0,
+        "profile_version": 1,
+        "command_id": "cmd-654a6810e947",
+        "requested_pct": 80.0
+      }
+    },
+    "first_independent_sample": {
+      "cin_ri": "cinC10R8fk5Iy",
+      "write_rqi": "opensoom-7edcd4ae4b76493a80e12a1ab560afe1",
+      "sample": {
+        "facility_id": "food-a",
+        "zone_id": "cook",
+        "asset_id": "extract-damper-01",
+        "sensor_id": "shaft-position-01",
+        "observed_at": "2026-11-18T16:48:18.578+00:00",
+        "value": 35,
+        "unit": "%",
+        "source": "independent_position_sensor",
+        "simulated": true
+      }
+    },
+    "mismatch_order": {
+      "facility_id": "food-a",
+      "zone_id": "cook",
+      "asset_id": "extract-damper-01",
+      "incident_id": "incident-dc334165e8",
+      "run_id": "demo-faf312fa38",
+      "source_cin_ri": "cin5H21cIkSP9",
+      "kind": "work_order",
+      "work_order_id": "work-incident-dc334165e8",
+      "command_id": "cmd-654a6810e947",
+      "observed_at": "2026-11-18T16:48:15.987+00:00",
+      "status": "open",
+      "priority": "inspect_actuator_feedback",
+      "evidence_status": "verified_independent_sample",
+      "revision": 4,
+      "requested_pct": 80.0,
+      "sample": {
+        "sensor_id": "shaft-position-01",
+        "value": 35,
+        "unit": "%",
+        "source": "independent_position_sensor",
+        "observed_at": "2026-11-18T16:48:18.578+00:00"
+      },
+      "provider_receipt": {
+        "sample_cin_ri": "cinC10R8fk5Iy"
+      },
+      "request_id": "sensor-ac6197e90daea3ad422fa3d0a4abc6de",
+      "request_ri": "cindmOoL7Z4cZ",
+      "response_ri": "cin6N6yRROOmj",
+      "outcome_ri": "cinVyXTynSWE3",
+      "mode": "local",
+      "airflow": 855.0,
+      "profile_version": 1,
+      "resource_id": "cin3BExCFyWQO",
+      "read_rqi": "opensoom-ed9e80c59d934de29436d0ad5bd3704d"
+    },
+    "next_command": {
+      "facility_id": "food-a",
+      "zone_id": "cook",
+      "action": "set_damper",
+      "value": 95.0,
+      "reason": "Scripted virtual commissioning",
+      "request_id": "demo-faf312fa38-second",
+      "id": "cmd-fca04d78d640",
+      "status": "acknowledged",
+      "ack": true,
+      "created_at": "2026-11-18T16:48:19.030300+00:00",
+      "expires_at": "2026-11-18T16:48:49.030300+00:00",
+      "profile_version": 1,
+      "run_id": "demo-faf312fa38",
+      "incident_id": "incident-dc334165e8",
+      "observed_result": "awaiting_observations",
+      "cse_rqi": "opensoom-3657c619416a4bc08d34cbd61a0040a6",
+      "cse_resource_id": "cin8UB4lMwAx4",
+      "ack_at": "2026-11-18T16:48:19.038+00:00",
+      "ack_rqi": "opensoom-9b37e650b27f4dd98fd8b8463ab7034e",
+      "ack_sequence": 2
+    },
+    "next_low_flow": [
+      {
+        "cin_ri": "cinXR5Cy0AmvB",
+        "write_rqi": "opensoom-cfa040cfd0b84d83a1853e254e01a14d",
+        "observation": {
+          "facility_id": "food-a",
+          "zone_id": "cook",
+          "observed_at": "2026-11-18T16:48:19.044+00:00",
+          "received_at": "2026-11-18T16:48:19.044+00:00",
+          "source": "simulated",
+          "adapter": "vendor-a",
+          "pm25": 12.0,
+          "co2": 610.0,
+          "airflow": 855.0,
+          "fan_running": true,
+          "damper_pct": 80.0
+        }
+      },
+      {
+        "cin_ri": "cincTSxUR6wSm",
+        "write_rqi": "opensoom-3d1a54126b214b51a95fd3a245568f67",
+        "observation": {
+          "facility_id": "food-a",
+          "zone_id": "cook",
+          "observed_at": "2026-11-18T16:48:19.056+00:00",
+          "received_at": "2026-11-18T16:48:19.056+00:00",
+          "source": "simulated",
+          "adapter": "vendor-a",
+          "pm25": 12.0,
+          "co2": 610.0,
+          "airflow": 855.0,
+          "fan_running": true,
+          "damper_pct": 80.0
+        }
+      }
+    ],
+    "next_independent_sample": {
+      "cin_ri": "cinfGb3u8ao0C",
+      "write_rqi": "opensoom-44f4f072e25447a587f2f95617f4fe72",
+      "sample": {
+        "facility_id": "food-a",
+        "zone_id": "cook",
+        "asset_id": "extract-damper-01",
+        "sensor_id": "shaft-position-01",
+        "observed_at": "2026-11-18T16:48:22.061+00:00",
+        "value": 93,
+        "unit": "%",
+        "source": "independent_position_sensor",
+        "simulated": true
+      }
+    },
+    "matched_order": {
+      "facility_id": "food-a",
+      "zone_id": "cook",
+      "asset_id": "extract-damper-01",
+      "incident_id": "incident-dc334165e8",
+      "run_id": "demo-faf312fa38",
+      "source_cin_ri": "cincTSxUR6wSm",
+      "kind": "work_order",
+      "work_order_id": "work-incident-dc334165e8",
+      "command_id": "cmd-fca04d78d640",
+      "observed_at": "2026-11-18T16:48:19.056+00:00",
+      "status": "open",
+      "priority": "inspect_airflow_path",
+      "evidence_status": "verified_independent_sample",
+      "revision": 4,
+      "requested_pct": 95.0,
+      "sample": {
+        "sensor_id": "shaft-position-01",
+        "value": 93,
+        "unit": "%",
+        "source": "independent_position_sensor",
+        "observed_at": "2026-11-18T16:48:22.061+00:00"
+      },
+      "provider_receipt": {
+        "sample_cin_ri": "cinfGb3u8ao0C"
+      },
+      "request_id": "sensor-735e65260e2841418708940945700c83",
+      "request_ri": "cinfzBlurJ1fr",
+      "response_ri": "cinFaUTPC1wWT",
+      "outcome_ri": "cinXMsgvtlVgP",
+      "mode": "local",
+      "airflow": 855.0,
+      "profile_version": 1,
+      "resource_id": "cinJN3ybVgf5Y",
+      "read_rqi": "opensoom-a74960da7faa45ee8d69f4c8e3f67930"
+    },
+    "current_command": {
+      "facility_id": "food-a",
+      "zone_id": "cook",
+      "action": "set_damper",
+      "value": 95.0,
+      "reason": "Scripted virtual commissioning",
+      "request_id": "demo-faf312fa38-second",
+      "id": "cmd-fca04d78d640",
+      "status": "unresolved",
+      "ack": true,
+      "created_at": "2026-11-18T16:48:19.030300+00:00",
+      "expires_at": "2026-11-18T16:48:49.030300+00:00",
+      "profile_version": 1,
+      "run_id": "demo-faf312fa38",
+      "incident_id": "incident-dc334165e8",
+      "observed_result": "unresolved",
+      "cse_rqi": "opensoom-3657c619416a4bc08d34cbd61a0040a6",
+      "cse_resource_id": "cin8UB4lMwAx4",
+      "ack_at": "2026-11-18T16:48:19.038+00:00",
+      "ack_rqi": "opensoom-9b37e650b27f4dd98fd8b8463ab7034e",
+      "ack_sequence": 2,
+      "airflow_followup_queued": true,
+      "unresolved_samples": 2,
+      "verification_rqi": "opensoom-b7d91320dfe645908accfb7ef1cb13c2"
+    },
+    "sensor_requests": [
+      {
+        "ri": "cindmOoL7Z4cZ",
+        "rqi": "opensoom-7f01fcec39004b9babe6740de027040c",
+        "content": {
+          "facility_id": "food-a",
+          "zone_id": "cook",
+          "asset_id": "extract-damper-01",
+          "incident_id": "incident-dc334165e8",
+          "run_id": "demo-faf312fa38",
+          "source_cin_ri": "cin5H21cIkSP9",
+          "kind": "shaft_position_lookup",
+          "request_id": "sensor-ac6197e90daea3ad422fa3d0a4abc6de",
+          "work_order_id": "work-incident-dc334165e8",
+          "sensor_id": "shaft-position-01",
+          "outcome_ri": "cinVyXTynSWE3",
+          "observed_at": "2026-11-18T16:48:15.987+00:00",
+          "ack_at": "2026-11-18T16:48:15.555+00:00",
+          "airflow": 855.0,
+          "profile_version": 1,
+          "command_id": "cmd-654a6810e947",
+          "requested_pct": 80.0
+        }
+      },
+      {
+        "ri": "cinfzBlurJ1fr",
+        "rqi": "opensoom-0c5c0bd3e97d4bc2984e47aa231daaa7",
+        "content": {
+          "facility_id": "food-a",
+          "zone_id": "cook",
+          "asset_id": "extract-damper-01",
+          "incident_id": "incident-dc334165e8",
+          "run_id": "demo-faf312fa38",
+          "source_cin_ri": "cincTSxUR6wSm",
+          "kind": "shaft_position_lookup",
+          "request_id": "sensor-735e65260e2841418708940945700c83",
+          "work_order_id": "work-incident-dc334165e8",
+          "sensor_id": "shaft-position-01",
+          "outcome_ri": "cinXMsgvtlVgP",
+          "observed_at": "2026-11-18T16:48:19.056+00:00",
+          "ack_at": "2026-11-18T16:48:19.038+00:00",
+          "airflow": 855.0,
+          "profile_version": 1,
+          "command_id": "cmd-fca04d78d640",
+          "requested_pct": 95.0
+        }
+      }
+    ],
+    "sensor_responses": [
+      {
+        "ri": "cin6N6yRROOmj",
+        "rqi": "opensoom-4224e930a1784b42b8fed88322553c93",
+        "content": {
+          "kind": "sensor_result",
+          "facility_id": "food-a",
+          "request_id": "sensor-ac6197e90daea3ad422fa3d0a4abc6de",
+          "request_ri": "cindmOoL7Z4cZ",
+          "mode": "local",
+          "status": "measured",
+          "sample": {
+            "sensor_id": "shaft-position-01",
+            "value": 35,
+            "unit": "%",
+            "source": "independent_position_sensor",
+            "observed_at": "2026-11-18T16:48:18.578+00:00"
+          },
+          "provider_receipt": {
+            "sample_cin_ri": "cinC10R8fk5Iy"
+          }
+        }
+      },
+      {
+        "ri": "cinFaUTPC1wWT",
+        "rqi": "opensoom-176e637c9bf24d3bb7db3be0c7cea3b2",
+        "content": {
+          "kind": "sensor_result",
+          "facility_id": "food-a",
+          "request_id": "sensor-735e65260e2841418708940945700c83",
+          "request_ri": "cinfzBlurJ1fr",
+          "mode": "local",
+          "status": "measured",
+          "sample": {
+            "sensor_id": "shaft-position-01",
+            "value": 93,
+            "unit": "%",
+            "source": "independent_position_sensor",
+            "observed_at": "2026-11-18T16:48:22.061+00:00"
+          },
+          "provider_receipt": {
+            "sample_cin_ri": "cinfGb3u8ao0C"
+          }
+        }
+      }
+    ],
+    "work_order_history": [
+      {
+        "ri": "cinaoFaiOWKvO",
+        "rqi": "opensoom-bff5907854eb46edb3d3a8da3806b5d3",
+        "content": {
+          "facility_id": "food-a",
+          "zone_id": "cook",
+          "asset_id": "extract-damper-01",
+          "incident_id": "incident-dc334165e8",
+          "run_id": "demo-faf312fa38",
+          "source_cin_ri": "cinK5n3VTlvTx",
+          "kind": "work_order",
+          "work_order_id": "work-incident-dc334165e8",
+          "command_id": null,
+          "observed_at": "2026-11-18T16:48:15.324+00:00",
+          "status": "open",
+          "priority": "inspection",
+          "evidence_status": "awaiting_outcome",
+          "revision": 1,
+          "outcome_ri": "cinM1OhaVk6Bt",
+          "observation_rqi": "opensoom-504a587cd9604744aba1245010ed8896",
+          "airflow": 940.0,
+          "profile_version": 1
+        }
+      },
+      {
+        "ri": "cinzeNEARMuoC",
+        "rqi": "opensoom-eb6897d9cba84d9d8738eb1aaeb0f8f7",
+        "content": {
+          "facility_id": "food-a",
+          "zone_id": "cook",
+          "asset_id": "extract-damper-01",
+          "incident_id": "incident-dc334165e8",
+          "run_id": "demo-faf312fa38",
+          "source_cin_ri": "cin5H21cIkSP9",
+          "kind": "work_order",
+          "work_order_id": "work-incident-dc334165e8",
+          "command_id": "cmd-654a6810e947",
+          "observed_at": "2026-11-18T16:48:15.987+00:00",
+          "status": "open",
+          "priority": "inspection",
+          "evidence_status": "awaiting_independent_sample",
+          "revision": 2,
+          "request_id": "sensor-ac6197e90daea3ad422fa3d0a4abc6de",
+          "outcome_ri": "cinVyXTynSWE3",
+          "observation_rqi": "opensoom-dfa8691ac4d84d2296c7d8383e22f5b9",
+          "airflow": 855.0,
+          "profile_version": 1
+        }
+      },
+      {
+        "ri": "cin3BExCFyWQO",
+        "rqi": "opensoom-d1c187ea4aef4f3996facd8724cb415c",
+        "content": {
+          "facility_id": "food-a",
+          "zone_id": "cook",
+          "asset_id": "extract-damper-01",
+          "incident_id": "incident-dc334165e8",
+          "run_id": "demo-faf312fa38",
+          "source_cin_ri": "cin5H21cIkSP9",
+          "kind": "work_order",
+          "work_order_id": "work-incident-dc334165e8",
+          "command_id": "cmd-654a6810e947",
+          "observed_at": "2026-11-18T16:48:15.987+00:00",
+          "status": "open",
+          "priority": "inspect_actuator_feedback",
+          "evidence_status": "verified_independent_sample",
+          "revision": 4,
+          "requested_pct": 80.0,
+          "sample": {
+            "sensor_id": "shaft-position-01",
+            "value": 35,
+            "unit": "%",
+            "source": "independent_position_sensor",
+            "observed_at": "2026-11-18T16:48:18.578+00:00"
+          },
+          "provider_receipt": {
+            "sample_cin_ri": "cinC10R8fk5Iy"
+          },
+          "request_id": "sensor-ac6197e90daea3ad422fa3d0a4abc6de",
+          "request_ri": "cindmOoL7Z4cZ",
+          "response_ri": "cin6N6yRROOmj",
+          "outcome_ri": "cinVyXTynSWE3",
+          "mode": "local",
+          "airflow": 855.0,
+          "profile_version": 1
+        }
+      },
+      {
+        "ri": "cinAT3nPBdACo",
+        "rqi": "opensoom-277c62a395d9497aa70acb5cbdf2559e",
+        "content": {
+          "facility_id": "food-a",
+          "zone_id": "cook",
+          "asset_id": "extract-damper-01",
+          "incident_id": "incident-dc334165e8",
+          "run_id": "demo-faf312fa38",
+          "source_cin_ri": "cincTSxUR6wSm",
+          "kind": "work_order",
+          "work_order_id": "work-incident-dc334165e8",
+          "command_id": "cmd-fca04d78d640",
+          "observed_at": "2026-11-18T16:48:19.056+00:00",
+          "status": "open",
+          "priority": "inspection",
+          "evidence_status": "awaiting_independent_sample",
+          "revision": 2,
+          "request_id": "sensor-735e65260e2841418708940945700c83",
+          "outcome_ri": "cinXMsgvtlVgP",
+          "observation_rqi": "opensoom-209633c2009b46c88f237af007f3fecb",
+          "airflow": 855.0,
+          "profile_version": 1
+        }
+      },
+      {
+        "ri": "cinJN3ybVgf5Y",
+        "rqi": "opensoom-9a3c51cf0247464da054a999cf399732",
+        "content": {
+          "facility_id": "food-a",
+          "zone_id": "cook",
+          "asset_id": "extract-damper-01",
+          "incident_id": "incident-dc334165e8",
+          "run_id": "demo-faf312fa38",
+          "source_cin_ri": "cincTSxUR6wSm",
+          "kind": "work_order",
+          "work_order_id": "work-incident-dc334165e8",
+          "command_id": "cmd-fca04d78d640",
+          "observed_at": "2026-11-18T16:48:19.056+00:00",
+          "status": "open",
+          "priority": "inspect_airflow_path",
+          "evidence_status": "verified_independent_sample",
+          "revision": 4,
+          "requested_pct": 95.0,
+          "sample": {
+            "sensor_id": "shaft-position-01",
+            "value": 93,
+            "unit": "%",
+            "source": "independent_position_sensor",
+            "observed_at": "2026-11-18T16:48:22.061+00:00"
+          },
+          "provider_receipt": {
+            "sample_cin_ri": "cinfGb3u8ao0C"
+          },
+          "request_id": "sensor-735e65260e2841418708940945700c83",
+          "request_ri": "cinfzBlurJ1fr",
+          "response_ri": "cinFaUTPC1wWT",
+          "outcome_ri": "cinXMsgvtlVgP",
+          "mode": "local",
+          "airflow": 855.0,
+          "profile_version": 1
+        }
+      }
+    ],
+    "same_logical_work_order": true,
+    "facility_condition": "unresolved",
+    "neighbor_zone": "wash",
+    "neighbor_tags_before_and_after": {
+      "observations": 1,
+      "commands": 0,
+      "acks": 0
+    }
+  },
+  "new_facility_b": {
+    "facility_id": "archive-workshop",
+    "zone_id": "conservation",
+    "zone_index": 1,
+    "profile_id": "archive-workshop",
+    "target_airflow_m3_h": 560,
+    "binding": {
+      "asset_id": "bench-extract",
+      "sensor_id": "bench-shaft"
+    },
+    "run_id": "demo-b8bc1004bb",
+    "opening_observation": {
+      "cin_ri": "cinzybG3XkOq0",
+      "write_rqi": "opensoom-33248ff0b51747918b2c37b16c780d49",
+      "observation": {
+        "facility_id": "archive-workshop",
+        "zone_id": "conservation",
+        "observed_at": "2026-11-18T16:48:22.588+00:00",
+        "received_at": "2026-11-18T16:48:22.588+00:00",
+        "source": "simulated",
+        "adapter": "vendor-b",
+        "pm25": 68.0,
+        "co2": 610.0,
+        "airflow": 600.0,
+        "fan_running": true,
+        "damper_pct": 80.0
+      }
+    },
+    "original_order": {
+      "facility_id": "archive-workshop",
+      "zone_id": "conservation",
+      "asset_id": "bench-extract",
+      "incident_id": "incident-bcd88d20e6",
+      "run_id": "demo-b8bc1004bb",
+      "source_cin_ri": "cinzybG3XkOq0",
+      "kind": "work_order",
+      "work_order_id": "work-incident-bcd88d20e6",
+      "command_id": null,
+      "observed_at": "2026-11-18T16:48:22.588+00:00",
+      "status": "open",
+      "priority": "inspection",
+      "evidence_status": "awaiting_outcome",
+      "revision": 1,
+      "outcome_ri": "cinqw5tpxAssi",
+      "observation_rqi": "opensoom-a8c3fafeb9ef479c84216ea5b174abba",
+      "airflow": 600.0,
+      "profile_version": 1,
+      "resource_id": "cinNuaDiajPAq",
+      "read_rqi": "opensoom-78c193ddac594a548e373434ebb5263a"
+    },
+    "first_command": {
+      "facility_id": "archive-workshop",
+      "zone_id": "conservation",
+      "action": "set_damper",
+      "value": 80.0,
+      "reason": "Scripted virtual commissioning",
+      "request_id": "demo-b8bc1004bb-first",
+      "id": "cmd-60c78fa5e7ba",
+      "status": "acknowledged",
+      "ack": true,
+      "created_at": "2026-11-18T16:48:22.807449+00:00",
+      "expires_at": "2026-11-18T16:48:52.807449+00:00",
+      "profile_version": 1,
+      "run_id": "demo-b8bc1004bb",
+      "incident_id": "incident-bcd88d20e6",
+      "observed_result": "awaiting_observations",
+      "cse_rqi": "opensoom-ac1314bb319940299880555206c00851",
+      "cse_resource_id": "cinbhffbqsgsC",
+      "ack_at": "2026-11-18T16:48:22.815+00:00",
+      "ack_rqi": "opensoom-9417e4fd7046488088c97edb82f00441",
+      "ack_sequence": 1
+    },
+    "adequate_flow_but_other_fault": [
+      {
+        "cin_ri": "cinN1MwDMmLzc",
+        "write_rqi": "opensoom-317e922aef154138ba5d2f96986e3b1c",
+        "observation": {
+          "facility_id": "archive-workshop",
+          "zone_id": "conservation",
+          "observed_at": "2026-11-18T16:48:22.819+00:00",
+          "received_at": "2026-11-18T16:48:22.819+00:00",
+          "source": "simulated",
+          "adapter": "vendor-b",
+          "pm25": 68.0,
+          "co2": 610.0,
+          "airflow": 600.0,
+          "fan_running": true,
+          "damper_pct": 80.0
+        }
+      },
+      {
+        "cin_ri": "cinXbzqsPQfUh",
+        "write_rqi": "opensoom-e608ae0ca3f14c499ca3ac3dc3ef0aa1",
+        "observation": {
+          "facility_id": "archive-workshop",
+          "zone_id": "conservation",
+          "observed_at": "2026-11-18T16:48:22.831+00:00",
+          "received_at": "2026-11-18T16:48:22.831+00:00",
+          "source": "simulated",
+          "adapter": "vendor-b",
+          "pm25": 68.0,
+          "co2": 610.0,
+          "airflow": 600.0,
+          "fan_running": true,
+          "damper_pct": 80.0
+        }
+      }
+    ],
+    "sensor_requests_before_late_low_flow": 0,
+    "late_low_flow": {
+      "cin_ri": "cin79BcKbfJ6g",
+      "write_rqi": "opensoom-b08f85f187e14563ba107f13e7fd66f2",
+      "observation": {
+        "facility_id": "archive-workshop",
+        "zone_id": "conservation",
+        "observed_at": "2026-11-18T16:48:23.226+00:00",
+        "received_at": "2026-11-18T16:48:23.226+00:00",
+        "source": "simulated",
+        "adapter": "vendor-b",
+        "pm25": 12.0,
+        "co2": 610.0,
+        "airflow": 515.0,
+        "fan_running": true,
+        "damper_pct": 80.0
+      }
+    },
+    "first_sensor_request": {
+      "ri": "cinIaTp2wdPvt",
+      "rqi": "opensoom-286d09b524ed48788eb08c226d2389e4",
+      "content": {
+        "facility_id": "archive-workshop",
+        "zone_id": "conservation",
+        "asset_id": "bench-extract",
+        "incident_id": "incident-bcd88d20e6",
+        "run_id": "demo-b8bc1004bb",
+        "source_cin_ri": "cin79BcKbfJ6g",
+        "kind": "shaft_position_lookup",
+        "request_id": "sensor-badc21bd584ae77b1623ea001cf81c8c",
+        "work_order_id": "work-incident-bcd88d20e6",
+        "sensor_id": "bench-shaft",
+        "outcome_ri": "cin4Xafmb4W6i",
+        "observed_at": "2026-11-18T16:48:23.226+00:00",
+        "ack_at": "2026-11-18T16:48:22.815+00:00",
+        "airflow": 515.0,
+        "profile_version": 1,
+        "command_id": "cmd-60c78fa5e7ba",
+        "requested_pct": 80.0
+      }
+    },
+    "first_independent_sample": {
+      "cin_ri": "cinY0hOG6kUmk",
+      "write_rqi": "opensoom-e0747bb187b14ae299be071165b2ce67",
+      "sample": {
+        "facility_id": "archive-workshop",
+        "zone_id": "conservation",
+        "asset_id": "bench-extract",
+        "sensor_id": "bench-shaft",
+        "observed_at": "2026-11-18T16:48:26.838+00:00",
+        "value": 35,
+        "unit": "%",
+        "source": "independent_position_sensor",
+        "simulated": true
+      }
+    },
+    "mismatch_order": {
+      "facility_id": "archive-workshop",
+      "zone_id": "conservation",
+      "asset_id": "bench-extract",
+      "incident_id": "incident-bcd88d20e6",
+      "run_id": "demo-b8bc1004bb",
+      "source_cin_ri": "cin79BcKbfJ6g",
+      "kind": "work_order",
+      "work_order_id": "work-incident-bcd88d20e6",
+      "command_id": "cmd-60c78fa5e7ba",
+      "observed_at": "2026-11-18T16:48:23.226+00:00",
+      "status": "open",
+      "priority": "inspect_actuator_feedback",
+      "evidence_status": "verified_independent_sample",
+      "revision": 4,
+      "requested_pct": 80.0,
+      "sample": {
+        "sensor_id": "bench-shaft",
+        "value": 35,
+        "unit": "%",
+        "source": "independent_position_sensor",
+        "observed_at": "2026-11-18T16:48:26.838+00:00"
+      },
+      "provider_receipt": {
+        "sample_cin_ri": "cinY0hOG6kUmk"
+      },
+      "request_id": "sensor-badc21bd584ae77b1623ea001cf81c8c",
+      "request_ri": "cinIaTp2wdPvt",
+      "response_ri": "cinb7CLlfgKT0",
+      "outcome_ri": "cin4Xafmb4W6i",
+      "mode": "local",
+      "airflow": 515.0,
+      "profile_version": 1,
+      "resource_id": "cinWZAuUawfDZ",
+      "read_rqi": "opensoom-2cd51708d3144cd58a3c6e079472091c"
+    },
+    "next_command": {
+      "facility_id": "archive-workshop",
+      "zone_id": "conservation",
+      "action": "set_damper",
+      "value": 95.0,
+      "reason": "Scripted virtual commissioning",
+      "request_id": "demo-b8bc1004bb-second",
+      "id": "cmd-416348cf6592",
+      "status": "acknowledged",
+      "ack": true,
+      "created_at": "2026-11-18T16:48:27.229690+00:00",
+      "expires_at": "2026-11-18T16:48:57.229690+00:00",
+      "profile_version": 1,
+      "run_id": "demo-b8bc1004bb",
+      "incident_id": "incident-bcd88d20e6",
+      "observed_result": "awaiting_observations",
+      "cse_rqi": "opensoom-1dd5c78ff07b4c6782c5f2d71cf109af",
+      "cse_resource_id": "cin31mjBBrRpt",
+      "ack_at": "2026-11-18T16:48:27.236+00:00",
+      "ack_rqi": "opensoom-226446527c5641ef9851b957f993f3ff",
+      "ack_sequence": 2
+    },
+    "next_low_flow": [
+      {
+        "cin_ri": "cinP3n0rsEqRL",
+        "write_rqi": "opensoom-2c9b211494f94764b80763948be4d0bb",
+        "observation": {
+          "facility_id": "archive-workshop",
+          "zone_id": "conservation",
+          "observed_at": "2026-11-18T16:48:27.241+00:00",
+          "received_at": "2026-11-18T16:48:27.241+00:00",
+          "source": "simulated",
+          "adapter": "vendor-b",
+          "pm25": 12.0,
+          "co2": 610.0,
+          "airflow": 515.0,
+          "fan_running": true,
+          "damper_pct": 80.0
+        }
+      },
+      {
+        "cin_ri": "cin9jNKbfZoEh",
+        "write_rqi": "opensoom-36cd0fc9fbef4413aba63a970f79c8ff",
+        "observation": {
+          "facility_id": "archive-workshop",
+          "zone_id": "conservation",
+          "observed_at": "2026-11-18T16:48:27.252+00:00",
+          "received_at": "2026-11-18T16:48:27.252+00:00",
+          "source": "simulated",
+          "adapter": "vendor-b",
+          "pm25": 12.0,
+          "co2": 610.0,
+          "airflow": 515.0,
+          "fan_running": true,
+          "damper_pct": 80.0
+        }
+      }
+    ],
+    "next_independent_sample": {
+      "cin_ri": "cinNAF4sGL6hV",
+      "write_rqi": "opensoom-d4cd0f5c118d45c8bb1023ffd9901e30",
+      "sample": {
+        "facility_id": "archive-workshop",
+        "zone_id": "conservation",
+        "asset_id": "bench-extract",
+        "sensor_id": "bench-shaft",
+        "observed_at": "2026-11-18T16:48:31.257+00:00",
+        "value": 93,
+        "unit": "%",
+        "source": "independent_position_sensor",
+        "simulated": true
+      }
+    },
+    "matched_order": {
+      "facility_id": "archive-workshop",
+      "zone_id": "conservation",
+      "asset_id": "bench-extract",
+      "incident_id": "incident-bcd88d20e6",
+      "run_id": "demo-b8bc1004bb",
+      "source_cin_ri": "cin9jNKbfZoEh",
+      "kind": "work_order",
+      "work_order_id": "work-incident-bcd88d20e6",
+      "command_id": "cmd-416348cf6592",
+      "observed_at": "2026-11-18T16:48:27.252+00:00",
+      "status": "open",
+      "priority": "inspect_airflow_path",
+      "evidence_status": "verified_independent_sample",
+      "revision": 4,
+      "requested_pct": 95.0,
+      "sample": {
+        "sensor_id": "bench-shaft",
+        "value": 93,
+        "unit": "%",
+        "source": "independent_position_sensor",
+        "observed_at": "2026-11-18T16:48:31.257+00:00"
+      },
+      "provider_receipt": {
+        "sample_cin_ri": "cinNAF4sGL6hV"
+      },
+      "request_id": "sensor-7dedaaaaabf78ddd943d69a0b40882bb",
+      "request_ri": "cin2QykV97mcF",
+      "response_ri": "cin8KPdqhoT0Z",
+      "outcome_ri": "cinBOM9LgYmio",
+      "mode": "local",
+      "airflow": 515.0,
+      "profile_version": 1,
+      "resource_id": "cinzw6SHrezLh",
+      "read_rqi": "opensoom-e27bdb6b3f0649499b60b74018f91157"
+    },
+    "current_command": {
+      "facility_id": "archive-workshop",
+      "zone_id": "conservation",
+      "action": "set_damper",
+      "value": 95.0,
+      "reason": "Scripted virtual commissioning",
+      "request_id": "demo-b8bc1004bb-second",
+      "id": "cmd-416348cf6592",
+      "status": "unresolved",
+      "ack": true,
+      "created_at": "2026-11-18T16:48:27.229690+00:00",
+      "expires_at": "2026-11-18T16:48:57.229690+00:00",
+      "profile_version": 1,
+      "run_id": "demo-b8bc1004bb",
+      "incident_id": "incident-bcd88d20e6",
+      "observed_result": "unresolved",
+      "cse_rqi": "opensoom-1dd5c78ff07b4c6782c5f2d71cf109af",
+      "cse_resource_id": "cin31mjBBrRpt",
+      "ack_at": "2026-11-18T16:48:27.236+00:00",
+      "ack_rqi": "opensoom-226446527c5641ef9851b957f993f3ff",
+      "ack_sequence": 2,
+      "airflow_followup_queued": true,
+      "unresolved_samples": 2,
+      "verification_rqi": "opensoom-02fb35d9f16948e4b47d516c387636b1"
+    },
+    "sensor_requests": [
+      {
+        "ri": "cinIaTp2wdPvt",
+        "rqi": "opensoom-2c624dadfe20434c89d6c17c6be34514",
+        "content": {
+          "facility_id": "archive-workshop",
+          "zone_id": "conservation",
+          "asset_id": "bench-extract",
+          "incident_id": "incident-bcd88d20e6",
+          "run_id": "demo-b8bc1004bb",
+          "source_cin_ri": "cin79BcKbfJ6g",
+          "kind": "shaft_position_lookup",
+          "request_id": "sensor-badc21bd584ae77b1623ea001cf81c8c",
+          "work_order_id": "work-incident-bcd88d20e6",
+          "sensor_id": "bench-shaft",
+          "outcome_ri": "cin4Xafmb4W6i",
+          "observed_at": "2026-11-18T16:48:23.226+00:00",
+          "ack_at": "2026-11-18T16:48:22.815+00:00",
+          "airflow": 515.0,
+          "profile_version": 1,
+          "command_id": "cmd-60c78fa5e7ba",
+          "requested_pct": 80.0
+        }
+      },
+      {
+        "ri": "cin2QykV97mcF",
+        "rqi": "opensoom-cfd285f294944590935234e55d127598",
+        "content": {
+          "facility_id": "archive-workshop",
+          "zone_id": "conservation",
+          "asset_id": "bench-extract",
+          "incident_id": "incident-bcd88d20e6",
+          "run_id": "demo-b8bc1004bb",
+          "source_cin_ri": "cin9jNKbfZoEh",
+          "kind": "shaft_position_lookup",
+          "request_id": "sensor-7dedaaaaabf78ddd943d69a0b40882bb",
+          "work_order_id": "work-incident-bcd88d20e6",
+          "sensor_id": "bench-shaft",
+          "outcome_ri": "cinBOM9LgYmio",
+          "observed_at": "2026-11-18T16:48:27.252+00:00",
+          "ack_at": "2026-11-18T16:48:27.236+00:00",
+          "airflow": 515.0,
+          "profile_version": 1,
+          "command_id": "cmd-416348cf6592",
+          "requested_pct": 95.0
+        }
+      }
+    ],
+    "sensor_responses": [
+      {
+        "ri": "cinb7CLlfgKT0",
+        "rqi": "opensoom-e0090eb7f1ab4a2ca430dc9634122eb3",
+        "content": {
+          "kind": "sensor_result",
+          "facility_id": "archive-workshop",
+          "request_id": "sensor-badc21bd584ae77b1623ea001cf81c8c",
+          "request_ri": "cinIaTp2wdPvt",
+          "mode": "local",
+          "status": "measured",
+          "sample": {
+            "sensor_id": "bench-shaft",
+            "value": 35,
+            "unit": "%",
+            "source": "independent_position_sensor",
+            "observed_at": "2026-11-18T16:48:26.838+00:00"
+          },
+          "provider_receipt": {
+            "sample_cin_ri": "cinY0hOG6kUmk"
+          }
+        }
+      },
+      {
+        "ri": "cin8KPdqhoT0Z",
+        "rqi": "opensoom-dc5e1d72e4974e56a4342c6a55af3d86",
+        "content": {
+          "kind": "sensor_result",
+          "facility_id": "archive-workshop",
+          "request_id": "sensor-7dedaaaaabf78ddd943d69a0b40882bb",
+          "request_ri": "cin2QykV97mcF",
+          "mode": "local",
+          "status": "measured",
+          "sample": {
+            "sensor_id": "bench-shaft",
+            "value": 93,
+            "unit": "%",
+            "source": "independent_position_sensor",
+            "observed_at": "2026-11-18T16:48:31.257+00:00"
+          },
+          "provider_receipt": {
+            "sample_cin_ri": "cinNAF4sGL6hV"
+          }
+        }
+      }
+    ],
+    "work_order_history": [
+      {
+        "ri": "cinNuaDiajPAq",
+        "rqi": "opensoom-cb1e455c71cd46b5ad6e317e1c4f379e",
+        "content": {
+          "facility_id": "archive-workshop",
+          "zone_id": "conservation",
+          "asset_id": "bench-extract",
+          "incident_id": "incident-bcd88d20e6",
+          "run_id": "demo-b8bc1004bb",
+          "source_cin_ri": "cinzybG3XkOq0",
+          "kind": "work_order",
+          "work_order_id": "work-incident-bcd88d20e6",
+          "command_id": null,
+          "observed_at": "2026-11-18T16:48:22.588+00:00",
+          "status": "open",
+          "priority": "inspection",
+          "evidence_status": "awaiting_outcome",
+          "revision": 1,
+          "outcome_ri": "cinqw5tpxAssi",
+          "observation_rqi": "opensoom-a8c3fafeb9ef479c84216ea5b174abba",
+          "airflow": 600.0,
+          "profile_version": 1
+        }
+      },
+      {
+        "ri": "cinABHuPEhAPH",
+        "rqi": "opensoom-0cf1c19c96074f3a9e8ddecadc8d05ef",
+        "content": {
+          "facility_id": "archive-workshop",
+          "zone_id": "conservation",
+          "asset_id": "bench-extract",
+          "incident_id": "incident-bcd88d20e6",
+          "run_id": "demo-b8bc1004bb",
+          "source_cin_ri": "cin79BcKbfJ6g",
+          "kind": "work_order",
+          "work_order_id": "work-incident-bcd88d20e6",
+          "command_id": "cmd-60c78fa5e7ba",
+          "observed_at": "2026-11-18T16:48:23.226+00:00",
+          "status": "open",
+          "priority": "inspection",
+          "evidence_status": "awaiting_independent_sample",
+          "revision": 2,
+          "request_id": "sensor-badc21bd584ae77b1623ea001cf81c8c",
+          "outcome_ri": "cin4Xafmb4W6i",
+          "observation_rqi": "opensoom-bb19bc3c861141a0bcbbe6130debe1a5",
+          "airflow": 515.0,
+          "profile_version": 1
+        }
+      },
+      {
+        "ri": "cinWZAuUawfDZ",
+        "rqi": "opensoom-8f281936961f43dbb3040f5c5e240fb5",
+        "content": {
+          "facility_id": "archive-workshop",
+          "zone_id": "conservation",
+          "asset_id": "bench-extract",
+          "incident_id": "incident-bcd88d20e6",
+          "run_id": "demo-b8bc1004bb",
+          "source_cin_ri": "cin79BcKbfJ6g",
+          "kind": "work_order",
+          "work_order_id": "work-incident-bcd88d20e6",
+          "command_id": "cmd-60c78fa5e7ba",
+          "observed_at": "2026-11-18T16:48:23.226+00:00",
+          "status": "open",
+          "priority": "inspect_actuator_feedback",
+          "evidence_status": "verified_independent_sample",
+          "revision": 4,
+          "requested_pct": 80.0,
+          "sample": {
+            "sensor_id": "bench-shaft",
+            "value": 35,
+            "unit": "%",
+            "source": "independent_position_sensor",
+            "observed_at": "2026-11-18T16:48:26.838+00:00"
+          },
+          "provider_receipt": {
+            "sample_cin_ri": "cinY0hOG6kUmk"
+          },
+          "request_id": "sensor-badc21bd584ae77b1623ea001cf81c8c",
+          "request_ri": "cinIaTp2wdPvt",
+          "response_ri": "cinb7CLlfgKT0",
+          "outcome_ri": "cin4Xafmb4W6i",
+          "mode": "local",
+          "airflow": 515.0,
+          "profile_version": 1
+        }
+      },
+      {
+        "ri": "cinS0J6Owepb7",
+        "rqi": "opensoom-e24678d4efd14598810cf64bd6956fd8",
+        "content": {
+          "facility_id": "archive-workshop",
+          "zone_id": "conservation",
+          "asset_id": "bench-extract",
+          "incident_id": "incident-bcd88d20e6",
+          "run_id": "demo-b8bc1004bb",
+          "source_cin_ri": "cin9jNKbfZoEh",
+          "kind": "work_order",
+          "work_order_id": "work-incident-bcd88d20e6",
+          "command_id": "cmd-416348cf6592",
+          "observed_at": "2026-11-18T16:48:27.252+00:00",
+          "status": "open",
+          "priority": "inspection",
+          "evidence_status": "awaiting_independent_sample",
+          "revision": 2,
+          "request_id": "sensor-7dedaaaaabf78ddd943d69a0b40882bb",
+          "outcome_ri": "cinBOM9LgYmio",
+          "observation_rqi": "opensoom-976ccb3b8408413682d3a7eca98bae99",
+          "airflow": 515.0,
+          "profile_version": 1
+        }
+      },
+      {
+        "ri": "cinzw6SHrezLh",
+        "rqi": "opensoom-b48256199c3c4cbb8f78c66798375cc6",
+        "content": {
+          "facility_id": "archive-workshop",
+          "zone_id": "conservation",
+          "asset_id": "bench-extract",
+          "incident_id": "incident-bcd88d20e6",
+          "run_id": "demo-b8bc1004bb",
+          "source_cin_ri": "cin9jNKbfZoEh",
+          "kind": "work_order",
+          "work_order_id": "work-incident-bcd88d20e6",
+          "command_id": "cmd-416348cf6592",
+          "observed_at": "2026-11-18T16:48:27.252+00:00",
+          "status": "open",
+          "priority": "inspect_airflow_path",
+          "evidence_status": "verified_independent_sample",
+          "revision": 4,
+          "requested_pct": 95.0,
+          "sample": {
+            "sensor_id": "bench-shaft",
+            "value": 93,
+            "unit": "%",
+            "source": "independent_position_sensor",
+            "observed_at": "2026-11-18T16:48:31.257+00:00"
+          },
+          "provider_receipt": {
+            "sample_cin_ri": "cinNAF4sGL6hV"
+          },
+          "request_id": "sensor-7dedaaaaabf78ddd943d69a0b40882bb",
+          "request_ri": "cin2QykV97mcF",
+          "response_ri": "cin8KPdqhoT0Z",
+          "outcome_ri": "cinBOM9LgYmio",
+          "mode": "local",
+          "airflow": 515.0,
+          "profile_version": 1
+        }
+      }
+    ],
+    "same_logical_work_order": true,
+    "facility_condition": "unresolved",
+    "neighbor_zone": "intake",
+    "neighbor_tags_before_and_after": {
+      "observations": 1,
+      "commands": 0,
+      "acks": 0
+    }
+  },
+  "permission_denials": [
+    {
+      "facility_id": "food-a",
+      "role": "maintenance",
+      "origin": "Cosmaintenance39095aa155887ebe",
+      "method": "GET",
+      "path": "cse-multiapp/opensoom/facilities/archive-workshop/outcomes",
+      "receipt": {
+        "rsc": 4103,
+        "rqi": "opensoom-34b7e9ab99f040e4a93daf705ab72a6b",
+        "body": {
+          "m2m:dbg": "originator: Cosmaintenance39095aa155887ebe has no RETRIEVE privileges for resource: cntWGXieChbpf"
+        },
+        "http_status": 403
+      }
+    },
+    {
+      "facility_id": "food-a",
+      "role": "bridge",
+      "origin": "Cosbridge39095aa155887ebe",
+      "method": "GET",
+      "path": "cse-multiapp/opensoom/facilities/archive-workshop/independent_samples",
+      "receipt": {
+        "rsc": 4103,
+        "rqi": "opensoom-b3cb0cc764b54e4890addf0d69eb3b0d",
+        "body": {
+          "m2m:dbg": "originator: Cosbridge39095aa155887ebe has no RETRIEVE privileges for resource: cntbzMfD7ZZms"
+        },
+        "http_status": 403
+      }
+    },
+    {
+      "facility_id": "food-a",
+      "role": "maintenance",
+      "origin": "Cosmaintenance39095aa155887ebe",
+      "method": "POST",
+      "path": "cse-multiapp/opensoom/facilities/food-a/cook/commands",
+      "receipt": {
+        "rsc": 4103,
+        "rqi": "opensoom-e7d34b2446cc47598e3197343a7c75a3",
+        "body": {
+          "m2m:dbg": "originator: Cosmaintenance39095aa155887ebe has no CREATE privileges for resource: cntMV6ZF5uY5P"
+        },
+        "http_status": 403
+      }
+    },
+    {
+      "facility_id": "food-a",
+      "role": "bridge",
+      "origin": "Cosbridge39095aa155887ebe",
+      "method": "POST",
+      "path": "cse-multiapp/opensoom/facilities/food-a/work_orders",
+      "receipt": {
+        "rsc": 4103,
+        "rqi": "opensoom-245172a8c3ff42178ca1ac5a0c073892",
+        "body": {
+          "m2m:dbg": "originator: Cosbridge39095aa155887ebe has no CREATE privileges for resource: cntZi5dHonhaS"
+        },
+        "http_status": 403
+      }
+    },
+    {
+      "facility_id": "archive-workshop",
+      "role": "maintenance",
+      "origin": "Cosmaintenance1897faf469cba17c",
+      "method": "GET",
+      "path": "cse-multiapp/opensoom/facilities/food-a/outcomes",
+      "receipt": {
+        "rsc": 4103,
+        "rqi": "opensoom-f4909589301e45aa9d114835c4bc6305",
+        "body": {
+          "m2m:dbg": "originator: Cosmaintenance1897faf469cba17c has no RETRIEVE privileges for resource: cntARxKBBfCsd"
+        },
+        "http_status": 403
+      }
+    },
+    {
+      "facility_id": "archive-workshop",
+      "role": "bridge",
+      "origin": "Cosbridge1897faf469cba17c",
+      "method": "GET",
+      "path": "cse-multiapp/opensoom/facilities/food-a/independent_samples",
+      "receipt": {
+        "rsc": 4103,
+        "rqi": "opensoom-f9e57196ff0f4c7fb61d59ac7b0a973b",
+        "body": {
+          "m2m:dbg": "originator: Cosbridge1897faf469cba17c has no RETRIEVE privileges for resource: cntPhXgc78pFf"
+        },
+        "http_status": 403
+      }
+    },
+    {
+      "facility_id": "archive-workshop",
+      "role": "maintenance",
+      "origin": "Cosmaintenance1897faf469cba17c",
+      "method": "POST",
+      "path": "cse-multiapp/opensoom/facilities/archive-workshop/conservation/commands",
+      "receipt": {
+        "rsc": 4103,
+        "rqi": "opensoom-d9de9f9d4fc443518753c1bad8a83e90",
+        "body": {
+          "m2m:dbg": "originator: Cosmaintenance1897faf469cba17c has no CREATE privileges for resource: cntdpiQQ3zrw0"
+        },
+        "http_status": 403
+      }
+    },
+    {
+      "facility_id": "archive-workshop",
+      "role": "bridge",
+      "origin": "Cosbridge1897faf469cba17c",
+      "method": "POST",
+      "path": "cse-multiapp/opensoom/facilities/archive-workshop/work_orders",
+      "receipt": {
+        "rsc": 4103,
+        "rqi": "opensoom-f9927230e98c4100a51e47121e95524f",
+        "body": {
+          "m2m:dbg": "originator: Cosbridge1897faf469cba17c has no CREATE privileges for resource: cntZqzI9mfJXv"
+        },
+        "http_status": 403
+      }
+    }
+  ],
+  "facility_a_unchanged_while_b_operated": {
+    "before": {
+      "outcomes": {
+        "ri": "cntARxKBBfCsd",
+        "st": 3,
+        "cni": 3
+      },
+      "work_orders": {
+        "ri": "cntZi5dHonhaS",
+        "st": 5,
+        "cni": 5
+      },
+      "sensor_requests": {
+        "ri": "cntNE8S3VqkQz",
+        "st": 2,
+        "cni": 2
+      },
+      "sensor_responses": {
+        "ri": "cntSsZE1GejqL",
+        "st": 2,
+        "cni": 2
+      },
+      "independent_samples": {
+        "ri": "cntPhXgc78pFf",
+        "st": 2,
+        "cni": 2
+      },
+      "cook/observations": {
+        "ri": "cntRe0eIfJaRn",
+        "st": 7,
+        "cni": 7
+      },
+      "cook/commands": {
+        "ri": "cntMV6ZF5uY5P",
+        "st": 2,
+        "cni": 2
+      },
+      "cook/acks": {
+        "ri": "cntnyIyFO85Of",
+        "st": 2,
+        "cni": 2
+      }
+    },
+    "after": {
+      "outcomes": {
+        "ri": "cntARxKBBfCsd",
+        "st": 3,
+        "cni": 3
+      },
+      "work_orders": {
+        "ri": "cntZi5dHonhaS",
+        "st": 5,
+        "cni": 5
+      },
+      "sensor_requests": {
+        "ri": "cntNE8S3VqkQz",
+        "st": 2,
+        "cni": 2
+      },
+      "sensor_responses": {
+        "ri": "cntSsZE1GejqL",
+        "st": 2,
+        "cni": 2
+      },
+      "independent_samples": {
+        "ri": "cntPhXgc78pFf",
+        "st": 2,
+        "cni": 2
+      },
+      "cook/observations": {
+        "ri": "cntRe0eIfJaRn",
+        "st": 7,
+        "cni": 7
+      },
+      "cook/commands": {
+        "ri": "cntMV6ZF5uY5P",
+        "st": 2,
+        "cni": 2
+      },
+      "cook/acks": {
+        "ri": "cntnyIyFO85Of",
+        "st": 2,
+        "cni": 2
+      }
+    }
+  },
+  "worker_write_receipts": [
+    {
+      "timestamp": "2026-11-18T16:48:14.532528+00:00",
+      "method": "POST",
+      "path": "cse-multiapp",
+      "origin": "Cosmaintenance39095aa155887ebe",
+      "rqi": "opensoom-d44c61cd67564cf1b9ff9de4ee6750c1",
+      "request": {
+        "m2m:ae": {
+          "rn": "os-maintenance-39095aa155887ebe",
+          "api": "N.org.opensoom.maintenance",
+          "rr": false,
+          "srv": [
+            "4"
+          ],
+          "lbl": [
+            "opensoom",
+            "facility:food-a",
+            "maintenance"
+          ]
+        }
+      },
+      "query": {},
+      "response": {
+        "rsc": 2001,
+        "rqi": "opensoom-d44c61cd67564cf1b9ff9de4ee6750c1",
+        "body": {
+          "m2m:ae": {
+            "rn": "os-maintenance-39095aa155887ebe",
+            "api": "N.org.opensoom.maintenance",
+            "rr": false,
+            "srv": [
+              "4"
+            ],
+            "lbl": [
+              "opensoom",
+              "facility:food-a",
+              "maintenance"
+            ],
+            "pi": "opensoom-multiapp",
+            "ri": "Cosmaintenance39095aa155887ebe",
+            "ty": 2,
+            "aei": "Cosmaintenance39095aa155887ebe",
+            "ct": "20261118T164814,533572",
+            "lt": "20261118T164814,533572",
+            "et": "20311117T164814,533941"
+          }
+        },
+        "http_status": 201
+      }
+    },
+    {
+      "timestamp": "2026-11-18T16:48:14.534535+00:00",
+      "method": "POST",
+      "path": "cse-multiapp",
+      "origin": "Cosbridge39095aa155887ebe",
+      "rqi": "opensoom-5e4963fac7054d65b0dc24a235833724",
+      "request": {
+        "m2m:ae": {
+          "rn": "os-bridge-39095aa155887ebe",
+          "api": "N.org.opensoom.bridge",
+          "rr": false,
+          "srv": [
+            "4"
+          ],
+          "lbl": [
+            "opensoom",
+            "facility:food-a",
+            "bridge"
+          ]
+        }
+      },
+      "query": {},
+      "response": {
+        "rsc": 2001,
+        "rqi": "opensoom-5e4963fac7054d65b0dc24a235833724",
+        "body": {
+          "m2m:ae": {
+            "rn": "os-bridge-39095aa155887ebe",
+            "api": "N.org.opensoom.bridge",
+            "rr": false,
+            "srv": [
+              "4"
+            ],
+            "lbl": [
+              "opensoom",
+              "facility:food-a",
+              "bridge"
+            ],
+            "pi": "opensoom-multiapp",
+            "ri": "Cosbridge39095aa155887ebe",
+            "ty": 2,
+            "aei": "Cosbridge39095aa155887ebe",
+            "ct": "20261118T164814,535457",
+            "lt": "20261118T164814,535457",
+            "et": "20311117T164814,535842"
+          }
+        },
+        "http_status": 201
+      }
+    },
+    {
+      "timestamp": "2026-11-18T16:48:14.536653+00:00",
+      "method": "POST",
+      "path": "cse-multiapp",
+      "origin": "Cossensor39095aa155887ebe",
+      "rqi": "opensoom-b7f6cd3627004f8a92bbd7efcba48c90",
+      "request": {
+        "m2m:ae": {
+          "rn": "os-sensor-39095aa155887ebe",
+          "api": "N.org.opensoom.sensor",
+          "rr": false,
+          "srv": [
+            "4"
+          ],
+          "lbl": [
+            "opensoom",
+            "facility:food-a",
+            "sensor"
+          ]
+        }
+      },
+      "query": {},
+      "response": {
+        "rsc": 2001,
+        "rqi": "opensoom-b7f6cd3627004f8a92bbd7efcba48c90",
+        "body": {
+          "m2m:ae": {
+            "rn": "os-sensor-39095aa155887ebe",
+            "api": "N.org.opensoom.sensor",
+            "rr": false,
+            "srv": [
+              "4"
+            ],
+            "lbl": [
+              "opensoom",
+              "facility:food-a",
+              "sensor"
+            ],
+            "pi": "opensoom-multiapp",
+            "ri": "Cossensor39095aa155887ebe",
+            "ty": 2,
+            "aei": "Cossensor39095aa155887ebe",
+            "ct": "20261118T164814,537404",
+            "lt": "20261118T164814,537404",
+            "et": "20311117T164814,537773"
+          }
+        },
+        "http_status": 201
+      }
+    },
+    {
+      "timestamp": "2026-11-18T16:48:14.712710+00:00",
+      "method": "POST",
+      "path": "cse-multiapp",
+      "origin": "Cosmaintenance1897faf469cba17c",
+      "rqi": "opensoom-17cc91bca6fe4e7e84d73d44239a7ecf",
+      "request": {
+        "m2m:ae": {
+          "rn": "os-maintenance-1897faf469cba17c",
+          "api": "N.org.opensoom.maintenance",
+          "rr": false,
+          "srv": [
+            "4"
+          ],
+          "lbl": [
+            "opensoom",
+            "facility:archive-workshop",
+            "maintenance"
+          ]
+        }
+      },
+      "query": {},
+      "response": {
+        "rsc": 2001,
+        "rqi": "opensoom-17cc91bca6fe4e7e84d73d44239a7ecf",
+        "body": {
+          "m2m:ae": {
+            "rn": "os-maintenance-1897faf469cba17c",
+            "api": "N.org.opensoom.maintenance",
+            "rr": false,
+            "srv": [
+              "4"
+            ],
+            "lbl": [
+              "opensoom",
+              "facility:archive-workshop",
+              "maintenance"
+            ],
+            "pi": "opensoom-multiapp",
+            "ri": "Cosmaintenance1897faf469cba17c",
+            "ty": 2,
+            "aei": "Cosmaintenance1897faf469cba17c",
+            "ct": "20261118T164814,713608",
+            "lt": "20261118T164814,713608",
+            "et": "20311117T164814,713991"
+          }
+        },
+        "http_status": 201
+      }
+    },
+    {
+      "timestamp": "2026-11-18T16:48:14.714630+00:00",
+      "method": "POST",
+      "path": "cse-multiapp",
+      "origin": "Cosbridge1897faf469cba17c",
+      "rqi": "opensoom-87c0b22c9dfc483391e662e780e1d1a7",
+      "request": {
+        "m2m:ae": {
+          "rn": "os-bridge-1897faf469cba17c",
+          "api": "N.org.opensoom.bridge",
+          "rr": false,
+          "srv": [
+            "4"
+          ],
+          "lbl": [
+            "opensoom",
+            "facility:archive-workshop",
+            "bridge"
+          ]
+        }
+      },
+      "query": {},
+      "response": {
+        "rsc": 2001,
+        "rqi": "opensoom-87c0b22c9dfc483391e662e780e1d1a7",
+        "body": {
+          "m2m:ae": {
+            "rn": "os-bridge-1897faf469cba17c",
+            "api": "N.org.opensoom.bridge",
+            "rr": false,
+            "srv": [
+              "4"
+            ],
+            "lbl": [
+              "opensoom",
+              "facility:archive-workshop",
+              "bridge"
+            ],
+            "pi": "opensoom-multiapp",
+            "ri": "Cosbridge1897faf469cba17c",
+            "ty": 2,
+            "aei": "Cosbridge1897faf469cba17c",
+            "ct": "20261118T164814,716026",
+            "lt": "20261118T164814,716026",
+            "et": "20311117T164814,716403"
+          }
+        },
+        "http_status": 201
+      }
+    },
+    {
+      "timestamp": "2026-11-18T16:48:14.716976+00:00",
+      "method": "POST",
+      "path": "cse-multiapp",
+      "origin": "Cossensor1897faf469cba17c",
+      "rqi": "opensoom-35facac948b54a3190a37bb72003117a",
+      "request": {
+        "m2m:ae": {
+          "rn": "os-sensor-1897faf469cba17c",
+          "api": "N.org.opensoom.sensor",
+          "rr": false,
+          "srv": [
+            "4"
+          ],
+          "lbl": [
+            "opensoom",
+            "facility:archive-workshop",
+            "sensor"
+          ]
+        }
+      },
+      "query": {},
+      "response": {
+        "rsc": 2001,
+        "rqi": "opensoom-35facac948b54a3190a37bb72003117a",
+        "body": {
+          "m2m:ae": {
+            "rn": "os-sensor-1897faf469cba17c",
+            "api": "N.org.opensoom.sensor",
+            "rr": false,
+            "srv": [
+              "4"
+            ],
+            "lbl": [
+              "opensoom",
+              "facility:archive-workshop",
+              "sensor"
+            ],
+            "pi": "opensoom-multiapp",
+            "ri": "Cossensor1897faf469cba17c",
+            "ty": 2,
+            "aei": "Cossensor1897faf469cba17c",
+            "ct": "20261118T164814,717766",
+            "lt": "20261118T164814,717766",
+            "et": "20311117T164814,718146"
+          }
+        },
+        "http_status": 201
+      }
+    },
+    {
+      "timestamp": "2026-11-18T16:48:14.913375+00:00",
+      "method": "POST",
+      "path": "cse-multiapp",
+      "origin": "Cosmaintenance39095aa155887ebe",
+      "rqi": "opensoom-b8a8d00a14474cfcae200007e1a3c1be",
+      "request": {
+        "m2m:ae": {
+          "rn": "os-maintenance-39095aa155887ebe",
+          "api": "N.org.opensoom.maintenance",
+          "rr": false,
+          "srv": [
+            "4"
+          ],
+          "lbl": [
+            "opensoom",
+            "facility:food-a",
+            "maintenance"
+          ]
+        }
+      },
+      "query": {},
+      "response": {
+        "rsc": 4117,
+        "rqi": "opensoom-b8a8d00a14474cfcae200007e1a3c1be",
+        "body": {
+          "m2m:dbg": "Originator has already registered: Cosmaintenance39095aa155887ebe"
+        },
+        "http_status": 403
+      }
+    },
+    {
+      "timestamp": "2026-11-18T16:48:14.916102+00:00",
+      "method": "POST",
+      "path": "cse-multiapp",
+      "origin": "Cosbridge39095aa155887ebe",
+      "rqi": "opensoom-e4cb52d02df8489b8c208cbf5355f98a",
+      "request": {
+        "m2m:ae": {
+          "rn": "os-bridge-39095aa155887ebe",
+          "api": "N.org.opensoom.bridge",
+          "rr": false,
+          "srv": [
+            "4"
+          ],
+          "lbl": [
+            "opensoom",
+            "facility:food-a",
+            "bridge"
+          ]
+        }
+      },
+      "query": {},
+      "response": {
+        "rsc": 4117,
+        "rqi": "opensoom-e4cb52d02df8489b8c208cbf5355f98a",
+        "body": {
+          "m2m:dbg": "Originator has already registered: Cosbridge39095aa155887ebe"
+        },
+        "http_status": 403
+      }
+    },
+    {
+      "timestamp": "2026-11-18T16:48:14.918681+00:00",
+      "method": "POST",
+      "path": "cse-multiapp",
+      "origin": "Cossensor39095aa155887ebe",
+      "rqi": "opensoom-e6b9ab2dd46f4973b874291283915518",
+      "request": {
+        "m2m:ae": {
+          "rn": "os-sensor-39095aa155887ebe",
+          "api": "N.org.opensoom.sensor",
+          "rr": false,
+          "srv": [
+            "4"
+          ],
+          "lbl": [
+            "opensoom",
+            "facility:food-a",
+            "sensor"
+          ]
+        }
+      },
+      "query": {},
+      "response": {
+        "rsc": 4117,
+        "rqi": "opensoom-e6b9ab2dd46f4973b874291283915518",
+        "body": {
+          "m2m:dbg": "Originator has already registered: Cossensor39095aa155887ebe"
+        },
+        "http_status": 403
+      }
+    },
+    {
+      "timestamp": "2026-11-18T16:48:15.102404+00:00",
+      "method": "POST",
+      "path": "cse-multiapp",
+      "origin": "Cosmaintenance1897faf469cba17c",
+      "rqi": "opensoom-ff02742ac72e4c4784988d9ae73ffaa2",
+      "request": {
+        "m2m:ae": {
+          "rn": "os-maintenance-1897faf469cba17c",
+          "api": "N.org.opensoom.maintenance",
+          "rr": false,
+          "srv": [
+            "4"
+          ],
+          "lbl": [
+            "opensoom",
+            "facility:archive-workshop",
+            "maintenance"
+          ]
+        }
+      },
+      "query": {},
+      "response": {
+        "rsc": 4117,
+        "rqi": "opensoom-ff02742ac72e4c4784988d9ae73ffaa2",
+        "body": {
+          "m2m:dbg": "Originator has already registered: Cosmaintenance1897faf469cba17c"
+        },
+        "http_status": 403
+      }
+    },
+    {
+      "timestamp": "2026-11-18T16:48:15.105219+00:00",
+      "method": "POST",
+      "path": "cse-multiapp",
+      "origin": "Cosbridge1897faf469cba17c",
+      "rqi": "opensoom-393ea3d17fcf476bab9ad87a01a4c55c",
+      "request": {
+        "m2m:ae": {
+          "rn": "os-bridge-1897faf469cba17c",
+          "api": "N.org.opensoom.bridge",
+          "rr": false,
+          "srv": [
+            "4"
+          ],
+          "lbl": [
+            "opensoom",
+            "facility:archive-workshop",
+            "bridge"
+          ]
+        }
+      },
+      "query": {},
+      "response": {
+        "rsc": 4117,
+        "rqi": "opensoom-393ea3d17fcf476bab9ad87a01a4c55c",
+        "body": {
+          "m2m:dbg": "Originator has already registered: Cosbridge1897faf469cba17c"
+        },
+        "http_status": 403
+      }
+    },
+    {
+      "timestamp": "2026-11-18T16:48:15.107826+00:00",
+      "method": "POST",
+      "path": "cse-multiapp",
+      "origin": "Cossensor1897faf469cba17c",
+      "rqi": "opensoom-f5e30de639ad4231b3f7d182cf75915e",
+      "request": {
+        "m2m:ae": {
+          "rn": "os-sensor-1897faf469cba17c",
+          "api": "N.org.opensoom.sensor",
+          "rr": false,
+          "srv": [
+            "4"
+          ],
+          "lbl": [
+            "opensoom",
+            "facility:archive-workshop",
+            "sensor"
+          ]
+        }
+      },
+      "query": {},
+      "response": {
+        "rsc": 4117,
+        "rqi": "opensoom-f5e30de639ad4231b3f7d182cf75915e",
+        "body": {
+          "m2m:dbg": "Originator has already registered: Cossensor1897faf469cba17c"
+        },
+        "http_status": 403
+      }
+    },
+    {
+      "timestamp": "2026-11-18T16:48:15.263061+00:00",
+      "method": "POST",
+      "path": "cse-multiapp/opensoom/facilities/food-a/cook/commands",
+      "origin": "Cosmaintenance39095aa155887ebe",
+      "rqi": "opensoom-e7d34b2446cc47598e3197343a7c75a3",
+      "request": {
+        "m2m:cin": {
+          "rn": "forbidden-probe",
+          "con": "{}"
+        }
+      },
+      "query": {},
+      "response": {
+        "rsc": 4103,
+        "rqi": "opensoom-e7d34b2446cc47598e3197343a7c75a3",
+        "body": {
+          "m2m:dbg": "originator: Cosmaintenance39095aa155887ebe has no CREATE privileges for resource: cntMV6ZF5uY5P"
+        },
+        "http_status": 403
+      }
+    },
+    {
+      "timestamp": "2026-11-18T16:48:15.264338+00:00",
+      "method": "POST",
+      "path": "cse-multiapp/opensoom/facilities/food-a/work_orders",
+      "origin": "Cosbridge39095aa155887ebe",
+      "rqi": "opensoom-245172a8c3ff42178ca1ac5a0c073892",
+      "request": {
+        "m2m:cin": {
+          "rn": "forbidden-probe",
+          "con": "{}"
+        }
+      },
+      "query": {},
+      "response": {
+        "rsc": 4103,
+        "rqi": "opensoom-245172a8c3ff42178ca1ac5a0c073892",
+        "body": {
+          "m2m:dbg": "originator: Cosbridge39095aa155887ebe has no CREATE privileges for resource: cntZi5dHonhaS"
+        },
+        "http_status": 403
+      }
+    },
+    {
+      "timestamp": "2026-11-18T16:48:15.271372+00:00",
+      "method": "POST",
+      "path": "cse-multiapp/opensoom/facilities/archive-workshop/conservation/commands",
+      "origin": "Cosmaintenance1897faf469cba17c",
+      "rqi": "opensoom-d9de9f9d4fc443518753c1bad8a83e90",
+      "request": {
+        "m2m:cin": {
+          "rn": "forbidden-probe",
+          "con": "{}"
+        }
+      },
+      "query": {},
+      "response": {
+        "rsc": 4103,
+        "rqi": "opensoom-d9de9f9d4fc443518753c1bad8a83e90",
+        "body": {
+          "m2m:dbg": "originator: Cosmaintenance1897faf469cba17c has no CREATE privileges for resource: cntdpiQQ3zrw0"
+        },
+        "http_status": 403
+      }
+    },
+    {
+      "timestamp": "2026-11-18T16:48:15.272516+00:00",
+      "method": "POST",
+      "path": "cse-multiapp/opensoom/facilities/archive-workshop/work_orders",
+      "origin": "Cosbridge1897faf469cba17c",
+      "rqi": "opensoom-f9927230e98c4100a51e47121e95524f",
+      "request": {
+        "m2m:cin": {
+          "rn": "forbidden-probe",
+          "con": "{}"
+        }
+      },
+      "query": {},
+      "response": {
+        "rsc": 4103,
+        "rqi": "opensoom-f9927230e98c4100a51e47121e95524f",
+        "body": {
+          "m2m:dbg": "originator: Cosbridge1897faf469cba17c has no CREATE privileges for resource: cntZqzI9mfJXv"
+        },
+        "http_status": 403
+      }
+    },
+    {
+      "timestamp": "2026-11-18T16:48:15.502392+00:00",
+      "method": "POST",
+      "path": "cse-multiapp/opensoom/facilities/food-a/work_orders",
+      "origin": "Cosmaintenance39095aa155887ebe",
+      "rqi": "opensoom-88e22852c3c64143b5d370d37314e86e",
+      "request": {
+        "m2m:cin": {
+          "rn": "order-4f0713207caf31c481cdad936bf6ade0",
+          "cnf": "application/json:0",
+          "con": "{\"facility_id\":\"food-a\",\"zone_id\":\"cook\",\"asset_id\":\"extract-damper-01\",\"incident_id\":\"incident-dc334165e8\",\"run_id\":\"demo-faf312fa38\",\"source_cin_ri\":\"cinK5n3VTlvTx\",\"kind\":\"work_order\",\"work_order_id\":\"work-incident-dc334165e8\",\"command_id\":null,\"observed_at\":\"2026-11-18T16:48:15.324+00:00\",\"status\":\"open\",\"priority\":\"inspection\",\"evidence_status\":\"awaiting_outcome\",\"revision\":1,\"outcome_ri\":\"cinM1OhaVk6Bt\",\"observation_rqi\":\"opensoom-504a587cd9604744aba1245010ed8896\",\"airflow\":940.0,\"profile_version\":1}"
+        }
+      },
+      "query": {},
+      "response": {
+        "rsc": 2001,
+        "rqi": "opensoom-88e22852c3c64143b5d370d37314e86e",
+        "body": {
+          "m2m:cin": {
+            "rn": "order-4f0713207caf31c481cdad936bf6ade0",
+            "cnf": "application/json:0",
+            "con": "{\"facility_id\":\"food-a\",\"zone_id\":\"cook\",\"asset_id\":\"extract-damper-01\",\"incident_id\":\"incident-dc334165e8\",\"run_id\":\"demo-faf312fa38\",\"source_cin_ri\":\"cinK5n3VTlvTx\",\"kind\":\"work_order\",\"work_order_id\":\"work-incident-dc334165e8\",\"command_id\":null,\"observed_at\":\"2026-11-18T16:48:15.324+00:00\",\"status\":\"open\",\"priority\":\"inspection\",\"evidence_status\":\"awaiting_outcome\",\"revision\":1,\"outcome_ri\":\"cinM1OhaVk6Bt\",\"observation_rqi\":\"opensoom-504a587cd9604744aba1245010ed8896\",\"airflow\":940.0,\"profile_version\":1}",
+            "cs": 511,
+            "pi": "cntZi5dHonhaS",
+            "ri": "cinaoFaiOWKvO",
+            "ty": 4,
+            "ct": "20261118T164815,503449",
+            "lt": "20261118T164815,503449",
+            "et": "20311117T164814,518984",
+            "st": 1
+          }
+        },
+        "http_status": 201
+      }
+    },
+    {
+      "timestamp": "2026-11-18T16:48:15.700232+00:00",
+      "method": "POST",
+      "path": "cse-multiapp/opensoom/facilities/food-a/work_orders",
+      "origin": "Cosmaintenance39095aa155887ebe",
+      "rqi": "opensoom-4a1460cae0884b31b37a7ef1abd38e65",
+      "request": {
+        "m2m:cin": {
+          "rn": "order-4f0713207caf31c481cdad936bf6ade0",
+          "cnf": "application/json:0",
+          "con": "{\"facility_id\":\"food-a\",\"zone_id\":\"cook\",\"asset_id\":\"extract-damper-01\",\"incident_id\":\"incident-dc334165e8\",\"run_id\":\"demo-faf312fa38\",\"source_cin_ri\":\"cinK5n3VTlvTx\",\"kind\":\"work_order\",\"work_order_id\":\"work-incident-dc334165e8\",\"command_id\":null,\"observed_at\":\"2026-11-18T16:48:15.324+00:00\",\"status\":\"open\",\"priority\":\"inspection\",\"evidence_status\":\"awaiting_outcome\",\"revision\":1,\"outcome_ri\":\"cinM1OhaVk6Bt\",\"observation_rqi\":\"opensoom-26e359c6f75645659f19564d5d4f098d\",\"airflow\":940.0,\"profile_version\":1}"
+        }
+      },
+      "query": {},
+      "response": {
+        "rsc": 4105,
+        "rqi": "opensoom-4a1460cae0884b31b37a7ef1abd38e65",
+        "body": {
+          "m2m:dbg": "Resource with structured id: cse-multiapp/opensoom/facilities/food-a/work_orders/order-4f0713207caf31c481cdad936bf6ade0 already exists"
+        },
+        "http_status": 409
+      }
+    },
+    {
+      "timestamp": "2026-11-18T16:48:16.128812+00:00",
+      "method": "POST",
+      "path": "cse-multiapp/opensoom/facilities/food-a/work_orders",
+      "origin": "Cosmaintenance39095aa155887ebe",
+      "rqi": "opensoom-3434ac8e84ec471f80a989739d3aac70",
+      "request": {
+        "m2m:cin": {
+          "rn": "order-4f0713207caf31c481cdad936bf6ade0",
+          "cnf": "application/json:0",
+          "con": "{\"facility_id\":\"food-a\",\"zone_id\":\"cook\",\"asset_id\":\"extract-damper-01\",\"incident_id\":\"incident-dc334165e8\",\"run_id\":\"demo-faf312fa38\",\"source_cin_ri\":\"cinK5n3VTlvTx\",\"kind\":\"work_order\",\"work_order_id\":\"work-incident-dc334165e8\",\"command_id\":null,\"observed_at\":\"2026-11-18T16:48:15.324+00:00\",\"status\":\"open\",\"priority\":\"inspection\",\"evidence_status\":\"awaiting_outcome\",\"revision\":1,\"outcome_ri\":\"cinM1OhaVk6Bt\",\"observation_rqi\":\"opensoom-805f7f982acf4548a9002e6cd944aecd\",\"airflow\":940.0,\"profile_version\":1}"
+        }
+      },
+      "query": {},
+      "response": {
+        "rsc": 4105,
+        "rqi": "opensoom-3434ac8e84ec471f80a989739d3aac70",
+        "body": {
+          "m2m:dbg": "Resource with structured id: cse-multiapp/opensoom/facilities/food-a/work_orders/order-4f0713207caf31c481cdad936bf6ade0 already exists"
+        },
+        "http_status": 409
+      }
+    },
+    {
+      "timestamp": "2026-11-18T16:48:16.135986+00:00",
+      "method": "POST",
+      "path": "cse-multiapp/opensoom/facilities/food-a/work_orders",
+      "origin": "Cosmaintenance39095aa155887ebe",
+      "rqi": "opensoom-1b23eb1ea52948b4ae7d7608eed018fd",
+      "request": {
+        "m2m:cin": {
+          "rn": "order-b056e57e240f3204395c69d552819177",
+          "cnf": "application/json:0",
+          "con": "{\"facility_id\":\"food-a\",\"zone_id\":\"cook\",\"asset_id\":\"extract-damper-01\",\"incident_id\":\"incident-dc334165e8\",\"run_id\":\"demo-faf312fa38\",\"source_cin_ri\":\"cin5H21cIkSP9\",\"kind\":\"work_order\",\"work_order_id\":\"work-incident-dc334165e8\",\"command_id\":\"cmd-654a6810e947\",\"observed_at\":\"2026-11-18T16:48:15.987+00:00\",\"status\":\"open\",\"priority\":\"inspection\",\"evidence_status\":\"awaiting_independent_sample\",\"revision\":2,\"request_id\":\"sensor-ac6197e90daea3ad422fa3d0a4abc6de\",\"outcome_ri\":\"cinVyXTynSWE3\",\"observation_rqi\":\"opensoom-dfa8691ac4d84d2296c7d8383e22f5b9\",\"airflow\":855.0,\"profile_version\":1}"
+        }
+      },
+      "query": {},
+      "response": {
+        "rsc": 2001,
+        "rqi": "opensoom-1b23eb1ea52948b4ae7d7608eed018fd",
+        "body": {
+          "m2m:cin": {
+            "rn": "order-b056e57e240f3204395c69d552819177",
+            "cnf": "application/json:0",
+            "con": "{\"facility_id\":\"food-a\",\"zone_id\":\"cook\",\"asset_id\":\"extract-damper-01\",\"incident_id\":\"incident-dc334165e8\",\"run_id\":\"demo-faf312fa38\",\"source_cin_ri\":\"cin5H21cIkSP9\",\"kind\":\"work_order\",\"work_order_id\":\"work-incident-dc334165e8\",\"command_id\":\"cmd-654a6810e947\",\"observed_at\":\"2026-11-18T16:48:15.987+00:00\",\"status\":\"open\",\"priority\":\"inspection\",\"evidence_status\":\"awaiting_independent_sample\",\"revision\":2,\"request_id\":\"sensor-ac6197e90daea3ad422fa3d0a4abc6de\",\"outcome_ri\":\"cinVyXTynSWE3\",\"observation_rqi\":\"opensoom-dfa8691ac4d84d2296c7d8383e22f5b9\",\"airflow\":855.0,\"profile_version\":1}",
+            "cs": 591,
+            "pi": "cntZi5dHonhaS",
+            "ri": "cinzeNEARMuoC",
+            "ty": 4,
+            "ct": "20261118T164816,137039",
+            "lt": "20261118T164816,137039",
+            "et": "20311117T164814,518984",
+            "st": 2
+          }
+        },
+        "http_status": 201
+      }
+    },
+    {
+      "timestamp": "2026-11-18T16:48:16.139153+00:00",
+      "method": "POST",
+      "path": "cse-multiapp/opensoom/facilities/food-a/sensor_requests",
+      "origin": "Cosmaintenance39095aa155887ebe",
+      "rqi": "opensoom-e3d75294634b47aea4388ee7eb07d304",
+      "request": {
+        "m2m:cin": {
+          "rn": "sensor-ac6197e90daea3ad422fa3d0a4abc6de",
+          "cnf": "application/json:0",
+          "con": "{\"facility_id\":\"food-a\",\"zone_id\":\"cook\",\"asset_id\":\"extract-damper-01\",\"incident_id\":\"incident-dc334165e8\",\"run_id\":\"demo-faf312fa38\",\"source_cin_ri\":\"cin5H21cIkSP9\",\"kind\":\"shaft_position_lookup\",\"request_id\":\"sensor-ac6197e90daea3ad422fa3d0a4abc6de\",\"work_order_id\":\"work-incident-dc334165e8\",\"sensor_id\":\"shaft-position-01\",\"outcome_ri\":\"cinVyXTynSWE3\",\"observed_at\":\"2026-11-18T16:48:15.987+00:00\",\"ack_at\":\"2026-11-18T16:48:15.555+00:00\",\"airflow\":855.0,\"profile_version\":1,\"command_id\":\"cmd-654a6810e947\",\"requested_pct\":80.0}"
+        }
+      },
+      "query": {},
+      "response": {
+        "rsc": 2001,
+        "rqi": "opensoom-e3d75294634b47aea4388ee7eb07d304",
+        "body": {
+          "m2m:cin": {
+            "rn": "sensor-ac6197e90daea3ad422fa3d0a4abc6de",
+            "cnf": "application/json:0",
+            "con": "{\"facility_id\":\"food-a\",\"zone_id\":\"cook\",\"asset_id\":\"extract-damper-01\",\"incident_id\":\"incident-dc334165e8\",\"run_id\":\"demo-faf312fa38\",\"source_cin_ri\":\"cin5H21cIkSP9\",\"kind\":\"shaft_position_lookup\",\"request_id\":\"sensor-ac6197e90daea3ad422fa3d0a4abc6de\",\"work_order_id\":\"work-incident-dc334165e8\",\"sensor_id\":\"shaft-position-01\",\"outcome_ri\":\"cinVyXTynSWE3\",\"observed_at\":\"2026-11-18T16:48:15.987+00:00\",\"ack_at\":\"2026-11-18T16:48:15.555+00:00\",\"airflow\":855.0,\"profile_version\":1,\"command_id\":\"cmd-654a6810e947\",\"requested_pct\":80.0}",
+            "cs": 533,
+            "pi": "cntNE8S3VqkQz",
+            "ri": "cindmOoL7Z4cZ",
+            "ty": 4,
+            "ct": "20261118T164816,140524",
+            "lt": "20261118T164816,140524",
+            "et": "20311117T164814,518984",
+            "st": 1
+          }
+        },
+        "http_status": 201
+      }
+    },
+    {
+      "timestamp": "2026-11-18T16:48:18.579908+00:00",
+      "method": "POST",
+      "path": "cse-multiapp/opensoom/facilities/food-a/independent_samples",
+      "origin": "Cossensor39095aa155887ebe",
+      "rqi": "opensoom-7edcd4ae4b76493a80e12a1ab560afe1",
+      "request": {
+        "m2m:cin": {
+          "con": "{\"facility_id\": \"food-a\", \"zone_id\": \"cook\", \"asset_id\": \"extract-damper-01\", \"sensor_id\": \"shaft-position-01\", \"observed_at\": \"2026-11-18T16:48:18.578+00:00\", \"value\": 35, \"unit\": \"%\", \"source\": \"independent_position_sensor\", \"simulated\": true}",
+          "cnf": "application/json:0"
+        }
+      },
+      "query": {},
+      "response": {
+        "rsc": 2001,
+        "rqi": "opensoom-7edcd4ae4b76493a80e12a1ab560afe1",
+        "body": {
+          "m2m:cin": {
+            "con": "{\"facility_id\": \"food-a\", \"zone_id\": \"cook\", \"asset_id\": \"extract-damper-01\", \"sensor_id\": \"shaft-position-01\", \"observed_at\": \"2026-11-18T16:48:18.578+00:00\", \"value\": 35, \"unit\": \"%\", \"source\": \"independent_position_sensor\", \"simulated\": true}",
+            "cnf": "application/json:0",
+            "cs": 245,
+            "pi": "cntPhXgc78pFf",
+            "ri": "cinC10R8fk5Iy",
+            "rn": "cin_PZgk3FYKEa",
+            "ty": 4,
+            "ct": "20261118T164818,581910",
+            "lt": "20261118T164818,581910",
+            "et": "20311117T164814,518984",
+            "st": 1
+          }
+        },
+        "http_status": 201
+      }
+    },
+    {
+      "timestamp": "2026-11-18T16:48:18.737962+00:00",
+      "method": "POST",
+      "path": "cse-multiapp/opensoom/facilities/food-a/sensor_responses",
+      "origin": "Cosbridge39095aa155887ebe",
+      "rqi": "opensoom-8e04051c18b34a74851c820bbd127475",
+      "request": {
+        "m2m:cin": {
+          "rn": "measurement-74e43766ef30d07f7c7e5aae50eb7b49",
+          "cnf": "application/json:0",
+          "con": "{\"kind\":\"sensor_result\",\"facility_id\":\"food-a\",\"request_id\":\"sensor-ac6197e90daea3ad422fa3d0a4abc6de\",\"request_ri\":\"cindmOoL7Z4cZ\",\"mode\":\"local\",\"status\":\"measured\",\"sample\":{\"sensor_id\":\"shaft-position-01\",\"value\":35,\"unit\":\"%\",\"source\":\"independent_position_sensor\",\"observed_at\":\"2026-11-18T16:48:18.578+00:00\"},\"provider_receipt\":{\"sample_cin_ri\":\"cinC10R8fk5Iy\"}}"
+        }
+      },
+      "query": {},
+      "response": {
+        "rsc": 2001,
+        "rqi": "opensoom-8e04051c18b34a74851c820bbd127475",
+        "body": {
+          "m2m:cin": {
+            "rn": "measurement-74e43766ef30d07f7c7e5aae50eb7b49",
+            "cnf": "application/json:0",
+            "con": "{\"kind\":\"sensor_result\",\"facility_id\":\"food-a\",\"request_id\":\"sensor-ac6197e90daea3ad422fa3d0a4abc6de\",\"request_ri\":\"cindmOoL7Z4cZ\",\"mode\":\"local\",\"status\":\"measured\",\"sample\":{\"sensor_id\":\"shaft-position-01\",\"value\":35,\"unit\":\"%\",\"source\":\"independent_position_sensor\",\"observed_at\":\"2026-11-18T16:48:18.578+00:00\"},\"provider_receipt\":{\"sample_cin_ri\":\"cinC10R8fk5Iy\"}}",
+            "cs": 369,
+            "pi": "cntSsZE1GejqL",
+            "ri": "cin6N6yRROOmj",
+            "ty": 4,
+            "ct": "20261118T164818,739258",
+            "lt": "20261118T164818,739258",
+            "et": "20311117T164814,518984",
+            "st": 1
+          }
+        },
+        "http_status": 201
+      }
+    },
+    {
+      "timestamp": "2026-11-18T16:48:18.916070+00:00",
+      "method": "POST",
+      "path": "cse-multiapp/opensoom/facilities/food-a/work_orders",
+      "origin": "Cosmaintenance39095aa155887ebe",
+      "rqi": "opensoom-47f0c029bf694cf1a2b0084cc3a14ce6",
+      "request": {
+        "m2m:cin": {
+          "rn": "order-4f0713207caf31c481cdad936bf6ade0",
+          "cnf": "application/json:0",
+          "con": "{\"facility_id\":\"food-a\",\"zone_id\":\"cook\",\"asset_id\":\"extract-damper-01\",\"incident_id\":\"incident-dc334165e8\",\"run_id\":\"demo-faf312fa38\",\"source_cin_ri\":\"cinK5n3VTlvTx\",\"kind\":\"work_order\",\"work_order_id\":\"work-incident-dc334165e8\",\"command_id\":null,\"observed_at\":\"2026-11-18T16:48:15.324+00:00\",\"status\":\"open\",\"priority\":\"inspection\",\"evidence_status\":\"awaiting_outcome\",\"revision\":1,\"outcome_ri\":\"cinM1OhaVk6Bt\",\"observation_rqi\":\"opensoom-decdf7b347b144e0b273f39f5c60b296\",\"airflow\":940.0,\"profile_version\":1}"
+        }
+      },
+      "query": {},
+      "response": {
+        "rsc": 4105,
+        "rqi": "opensoom-47f0c029bf694cf1a2b0084cc3a14ce6",
+        "body": {
+          "m2m:dbg": "Resource with structured id: cse-multiapp/opensoom/facilities/food-a/work_orders/order-4f0713207caf31c481cdad936bf6ade0 already exists"
+        },
+        "http_status": 409
+      }
+    },
+    {
+      "timestamp": "2026-11-18T16:48:18.923077+00:00",
+      "method": "POST",
+      "path": "cse-multiapp/opensoom/facilities/food-a/work_orders",
+      "origin": "Cosmaintenance39095aa155887ebe",
+      "rqi": "opensoom-3120297d1ca14d85890bb667583c98db",
+      "request": {
+        "m2m:cin": {
+          "rn": "order-b056e57e240f3204395c69d552819177",
+          "cnf": "application/json:0",
+          "con": "{\"facility_id\":\"food-a\",\"zone_id\":\"cook\",\"asset_id\":\"extract-damper-01\",\"incident_id\":\"incident-dc334165e8\",\"run_id\":\"demo-faf312fa38\",\"source_cin_ri\":\"cin5H21cIkSP9\",\"kind\":\"work_order\",\"work_order_id\":\"work-incident-dc334165e8\",\"command_id\":\"cmd-654a6810e947\",\"observed_at\":\"2026-11-18T16:48:15.987+00:00\",\"status\":\"open\",\"priority\":\"inspection\",\"evidence_status\":\"awaiting_independent_sample\",\"revision\":2,\"request_id\":\"sensor-ac6197e90daea3ad422fa3d0a4abc6de\",\"outcome_ri\":\"cinVyXTynSWE3\",\"observation_rqi\":\"opensoom-a774180ba0d94878a696a72f0ec0e972\",\"airflow\":855.0,\"profile_version\":1}"
+        }
+      },
+      "query": {},
+      "response": {
+        "rsc": 4105,
+        "rqi": "opensoom-3120297d1ca14d85890bb667583c98db",
+        "body": {
+          "m2m:dbg": "Resource with structured id: cse-multiapp/opensoom/facilities/food-a/work_orders/order-b056e57e240f3204395c69d552819177 already exists"
+        },
+        "http_status": 409
+      }
+    },
+    {
+      "timestamp": "2026-11-18T16:48:18.927241+00:00",
+      "method": "POST",
+      "path": "cse-multiapp/opensoom/facilities/food-a/sensor_requests",
+      "origin": "Cosmaintenance39095aa155887ebe",
+      "rqi": "opensoom-9e5dce68b022452d88d3974c4f6dafb8",
+      "request": {
+        "m2m:cin": {
+          "rn": "sensor-ac6197e90daea3ad422fa3d0a4abc6de",
+          "cnf": "application/json:0",
+          "con": "{\"facility_id\":\"food-a\",\"zone_id\":\"cook\",\"asset_id\":\"extract-damper-01\",\"incident_id\":\"incident-dc334165e8\",\"run_id\":\"demo-faf312fa38\",\"source_cin_ri\":\"cin5H21cIkSP9\",\"kind\":\"shaft_position_lookup\",\"request_id\":\"sensor-ac6197e90daea3ad422fa3d0a4abc6de\",\"work_order_id\":\"work-incident-dc334165e8\",\"sensor_id\":\"shaft-position-01\",\"outcome_ri\":\"cinVyXTynSWE3\",\"observed_at\":\"2026-11-18T16:48:15.987+00:00\",\"ack_at\":\"2026-11-18T16:48:15.555+00:00\",\"airflow\":855.0,\"profile_version\":1,\"command_id\":\"cmd-654a6810e947\",\"requested_pct\":80.0}"
+        }
+      },
+      "query": {},
+      "response": {
+        "rsc": 4105,
+        "rqi": "opensoom-9e5dce68b022452d88d3974c4f6dafb8",
+        "body": {
+          "m2m:dbg": "Resource with structured id: cse-multiapp/opensoom/facilities/food-a/sensor_requests/sensor-ac6197e90daea3ad422fa3d0a4abc6de already exists"
+        },
+        "http_status": 409
+      }
+    },
+    {
+      "timestamp": "2026-11-18T16:48:18.939039+00:00",
+      "method": "POST",
+      "path": "cse-multiapp/opensoom/facilities/food-a/work_orders",
+      "origin": "Cosmaintenance39095aa155887ebe",
+      "rqi": "opensoom-355824d7326a45969fe83e0621112657",
+      "request": {
+        "m2m:cin": {
+          "rn": "order-a29a8cecae29f3dbae62e6279c803bfc",
+          "cnf": "application/json:0",
+          "con": "{\"facility_id\":\"food-a\",\"zone_id\":\"cook\",\"asset_id\":\"extract-damper-01\",\"incident_id\":\"incident-dc334165e8\",\"run_id\":\"demo-faf312fa38\",\"source_cin_ri\":\"cin5H21cIkSP9\",\"kind\":\"work_order\",\"work_order_id\":\"work-incident-dc334165e8\",\"command_id\":\"cmd-654a6810e947\",\"observed_at\":\"2026-11-18T16:48:15.987+00:00\",\"status\":\"open\",\"priority\":\"inspect_actuator_feedback\",\"evidence_status\":\"verified_independent_sample\",\"revision\":4,\"requested_pct\":80.0,\"sample\":{\"sensor_id\":\"shaft-position-01\",\"value\":35,\"unit\":\"%\",\"source\":\"independent_position_sensor\",\"observed_at\":\"2026-11-18T16:48:18.578+00:00\"},\"provider_receipt\":{\"sample_cin_ri\":\"cinC10R8fk5Iy\"},\"request_id\":\"sensor-ac6197e90daea3ad422fa3d0a4abc6de\",\"request_ri\":\"cindmOoL7Z4cZ\",\"response_ri\":\"cin6N6yRROOmj\",\"outcome_ri\":\"cinVyXTynSWE3\",\"mode\":\"local\",\"airflow\":855.0,\"profile_version\":1}"
+        }
+      },
+      "query": {},
+      "response": {
+        "rsc": 2001,
+        "rqi": "opensoom-355824d7326a45969fe83e0621112657",
+        "body": {
+          "m2m:cin": {
+            "rn": "order-a29a8cecae29f3dbae62e6279c803bfc",
+            "cnf": "application/json:0",
+            "con": "{\"facility_id\":\"food-a\",\"zone_id\":\"cook\",\"asset_id\":\"extract-damper-01\",\"incident_id\":\"incident-dc334165e8\",\"run_id\":\"demo-faf312fa38\",\"source_cin_ri\":\"cin5H21cIkSP9\",\"kind\":\"work_order\",\"work_order_id\":\"work-incident-dc334165e8\",\"command_id\":\"cmd-654a6810e947\",\"observed_at\":\"2026-11-18T16:48:15.987+00:00\",\"status\":\"open\",\"priority\":\"inspect_actuator_feedback\",\"evidence_status\":\"verified_independent_sample\",\"revision\":4,\"requested_pct\":80.0,\"sample\":{\"sensor_id\":\"shaft-position-01\",\"value\":35,\"unit\":\"%\",\"source\":\"independent_position_sensor\",\"observed_at\":\"2026-11-18T16:48:18.578+00:00\"},\"provider_receipt\":{\"sample_cin_ri\":\"cinC10R8fk5Iy\"},\"request_id\":\"sensor-ac6197e90daea3ad422fa3d0a4abc6de\",\"request_ri\":\"cindmOoL7Z4cZ\",\"response_ri\":\"cin6N6yRROOmj\",\"outcome_ri\":\"cinVyXTynSWE3\",\"mode\":\"local\",\"airflow\":855.0,\"profile_version\":1}",
+            "cs": 842,
+            "pi": "cntZi5dHonhaS",
+            "ri": "cin3BExCFyWQO",
+            "ty": 4,
+            "ct": "20261118T164818,939874",
+            "lt": "20261118T164818,939874",
+            "et": "20311117T164814,518984",
+            "st": 3
+          }
+        },
+        "http_status": 201
+      }
+    },
+    {
+      "timestamp": "2026-11-18T16:48:19.234700+00:00",
+      "method": "POST",
+      "path": "cse-multiapp/opensoom/facilities/food-a/work_orders",
+      "origin": "Cosmaintenance39095aa155887ebe",
+      "rqi": "opensoom-d45f2be84a9546bf92c398d89d54ec99",
+      "request": {
+        "m2m:cin": {
+          "rn": "order-4f0713207caf31c481cdad936bf6ade0",
+          "cnf": "application/json:0",
+          "con": "{\"facility_id\":\"food-a\",\"zone_id\":\"cook\",\"asset_id\":\"extract-damper-01\",\"incident_id\":\"incident-dc334165e8\",\"run_id\":\"demo-faf312fa38\",\"source_cin_ri\":\"cinK5n3VTlvTx\",\"kind\":\"work_order\",\"work_order_id\":\"work-incident-dc334165e8\",\"command_id\":null,\"observed_at\":\"2026-11-18T16:48:15.324+00:00\",\"status\":\"open\",\"priority\":\"inspection\",\"evidence_status\":\"awaiting_outcome\",\"revision\":1,\"outcome_ri\":\"cinM1OhaVk6Bt\",\"observation_rqi\":\"opensoom-fcbc5e45b21441919cc8030be72b02cd\",\"airflow\":940.0,\"profile_version\":1}"
+        }
+      },
+      "query": {},
+      "response": {
+        "rsc": 4105,
+        "rqi": "opensoom-d45f2be84a9546bf92c398d89d54ec99",
+        "body": {
+          "m2m:dbg": "Resource with structured id: cse-multiapp/opensoom/facilities/food-a/work_orders/order-4f0713207caf31c481cdad936bf6ade0 already exists"
+        },
+        "http_status": 409
+      }
+    },
+    {
+      "timestamp": "2026-11-18T16:48:19.241986+00:00",
+      "method": "POST",
+      "path": "cse-multiapp/opensoom/facilities/food-a/work_orders",
+      "origin": "Cosmaintenance39095aa155887ebe",
+      "rqi": "opensoom-036b4b21b7334772bbf80a8c37051424",
+      "request": {
+        "m2m:cin": {
+          "rn": "order-b056e57e240f3204395c69d552819177",
+          "cnf": "application/json:0",
+          "con": "{\"facility_id\":\"food-a\",\"zone_id\":\"cook\",\"asset_id\":\"extract-damper-01\",\"incident_id\":\"incident-dc334165e8\",\"run_id\":\"demo-faf312fa38\",\"source_cin_ri\":\"cin5H21cIkSP9\",\"kind\":\"work_order\",\"work_order_id\":\"work-incident-dc334165e8\",\"command_id\":\"cmd-654a6810e947\",\"observed_at\":\"2026-11-18T16:48:15.987+00:00\",\"status\":\"open\",\"priority\":\"inspection\",\"evidence_status\":\"awaiting_independent_sample\",\"revision\":2,\"request_id\":\"sensor-ac6197e90daea3ad422fa3d0a4abc6de\",\"outcome_ri\":\"cinVyXTynSWE3\",\"observation_rqi\":\"opensoom-6160dc58b164403d9eed2f42c0c0a7b5\",\"airflow\":855.0,\"profile_version\":1}"
+        }
+      },
+      "query": {},
+      "response": {
+        "rsc": 4105,
+        "rqi": "opensoom-036b4b21b7334772bbf80a8c37051424",
+        "body": {
+          "m2m:dbg": "Resource with structured id: cse-multiapp/opensoom/facilities/food-a/work_orders/order-b056e57e240f3204395c69d552819177 already exists"
+        },
+        "http_status": 409
+      }
+    },
+    {
+      "timestamp": "2026-11-18T16:48:19.246705+00:00",
+      "method": "POST",
+      "path": "cse-multiapp/opensoom/facilities/food-a/sensor_requests",
+      "origin": "Cosmaintenance39095aa155887ebe",
+      "rqi": "opensoom-cc6f0b4c8c8f4fa0bca4282fadbc3520",
+      "request": {
+        "m2m:cin": {
+          "rn": "sensor-ac6197e90daea3ad422fa3d0a4abc6de",
+          "cnf": "application/json:0",
+          "con": "{\"facility_id\":\"food-a\",\"zone_id\":\"cook\",\"asset_id\":\"extract-damper-01\",\"incident_id\":\"incident-dc334165e8\",\"run_id\":\"demo-faf312fa38\",\"source_cin_ri\":\"cin5H21cIkSP9\",\"kind\":\"shaft_position_lookup\",\"request_id\":\"sensor-ac6197e90daea3ad422fa3d0a4abc6de\",\"work_order_id\":\"work-incident-dc334165e8\",\"sensor_id\":\"shaft-position-01\",\"outcome_ri\":\"cinVyXTynSWE3\",\"observed_at\":\"2026-11-18T16:48:15.987+00:00\",\"ack_at\":\"2026-11-18T16:48:15.555+00:00\",\"airflow\":855.0,\"profile_version\":1,\"command_id\":\"cmd-654a6810e947\",\"requested_pct\":80.0}"
+        }
+      },
+      "query": {},
+      "response": {
+        "rsc": 4105,
+        "rqi": "opensoom-cc6f0b4c8c8f4fa0bca4282fadbc3520",
+        "body": {
+          "m2m:dbg": "Resource with structured id: cse-multiapp/opensoom/facilities/food-a/sensor_requests/sensor-ac6197e90daea3ad422fa3d0a4abc6de already exists"
+        },
+        "http_status": 409
+      }
+    },
+    {
+      "timestamp": "2026-11-18T16:48:19.253770+00:00",
+      "method": "POST",
+      "path": "cse-multiapp/opensoom/facilities/food-a/work_orders",
+      "origin": "Cosmaintenance39095aa155887ebe",
+      "rqi": "opensoom-7c84316d9f27454e90add9134dcf06f4",
+      "request": {
+        "m2m:cin": {
+          "rn": "order-843d4012d43dfad5ffdd1dc7c7b2b131",
+          "cnf": "application/json:0",
+          "con": "{\"facility_id\":\"food-a\",\"zone_id\":\"cook\",\"asset_id\":\"extract-damper-01\",\"incident_id\":\"incident-dc334165e8\",\"run_id\":\"demo-faf312fa38\",\"source_cin_ri\":\"cincTSxUR6wSm\",\"kind\":\"work_order\",\"work_order_id\":\"work-incident-dc334165e8\",\"command_id\":\"cmd-fca04d78d640\",\"observed_at\":\"2026-11-18T16:48:19.056+00:00\",\"status\":\"open\",\"priority\":\"inspection\",\"evidence_status\":\"awaiting_independent_sample\",\"revision\":2,\"request_id\":\"sensor-735e65260e2841418708940945700c83\",\"outcome_ri\":\"cinXMsgvtlVgP\",\"observation_rqi\":\"opensoom-209633c2009b46c88f237af007f3fecb\",\"airflow\":855.0,\"profile_version\":1}"
+        }
+      },
+      "query": {},
+      "response": {
+        "rsc": 2001,
+        "rqi": "opensoom-7c84316d9f27454e90add9134dcf06f4",
+        "body": {
+          "m2m:cin": {
+            "rn": "order-843d4012d43dfad5ffdd1dc7c7b2b131",
+            "cnf": "application/json:0",
+            "con": "{\"facility_id\":\"food-a\",\"zone_id\":\"cook\",\"asset_id\":\"extract-damper-01\",\"incident_id\":\"incident-dc334165e8\",\"run_id\":\"demo-faf312fa38\",\"source_cin_ri\":\"cincTSxUR6wSm\",\"kind\":\"work_order\",\"work_order_id\":\"work-incident-dc334165e8\",\"command_id\":\"cmd-fca04d78d640\",\"observed_at\":\"2026-11-18T16:48:19.056+00:00\",\"status\":\"open\",\"priority\":\"inspection\",\"evidence_status\":\"awaiting_independent_sample\",\"revision\":2,\"request_id\":\"sensor-735e65260e2841418708940945700c83\",\"outcome_ri\":\"cinXMsgvtlVgP\",\"observation_rqi\":\"opensoom-209633c2009b46c88f237af007f3fecb\",\"airflow\":855.0,\"profile_version\":1}",
+            "cs": 591,
+            "pi": "cntZi5dHonhaS",
+            "ri": "cinAT3nPBdACo",
+            "ty": 4,
+            "ct": "20261118T164819,254668",
+            "lt": "20261118T164819,254668",
+            "et": "20311117T164814,518984",
+            "st": 4
+          }
+        },
+        "http_status": 201
+      }
+    },
+    {
+      "timestamp": "2026-11-18T16:48:19.256642+00:00",
+      "method": "POST",
+      "path": "cse-multiapp/opensoom/facilities/food-a/sensor_requests",
+      "origin": "Cosmaintenance39095aa155887ebe",
+      "rqi": "opensoom-2df65ce3b5da4522a378de8ba13289ea",
+      "request": {
+        "m2m:cin": {
+          "rn": "sensor-735e65260e2841418708940945700c83",
+          "cnf": "application/json:0",
+          "con": "{\"facility_id\":\"food-a\",\"zone_id\":\"cook\",\"asset_id\":\"extract-damper-01\",\"incident_id\":\"incident-dc334165e8\",\"run_id\":\"demo-faf312fa38\",\"source_cin_ri\":\"cincTSxUR6wSm\",\"kind\":\"shaft_position_lookup\",\"request_id\":\"sensor-735e65260e2841418708940945700c83\",\"work_order_id\":\"work-incident-dc334165e8\",\"sensor_id\":\"shaft-position-01\",\"outcome_ri\":\"cinXMsgvtlVgP\",\"observed_at\":\"2026-11-18T16:48:19.056+00:00\",\"ack_at\":\"2026-11-18T16:48:19.038+00:00\",\"airflow\":855.0,\"profile_version\":1,\"command_id\":\"cmd-fca04d78d640\",\"requested_pct\":95.0}"
+        }
+      },
+      "query": {},
+      "response": {
+        "rsc": 2001,
+        "rqi": "opensoom-2df65ce3b5da4522a378de8ba13289ea",
+        "body": {
+          "m2m:cin": {
+            "rn": "sensor-735e65260e2841418708940945700c83",
+            "cnf": "application/json:0",
+            "con": "{\"facility_id\":\"food-a\",\"zone_id\":\"cook\",\"asset_id\":\"extract-damper-01\",\"incident_id\":\"incident-dc334165e8\",\"run_id\":\"demo-faf312fa38\",\"source_cin_ri\":\"cincTSxUR6wSm\",\"kind\":\"shaft_position_lookup\",\"request_id\":\"sensor-735e65260e2841418708940945700c83\",\"work_order_id\":\"work-incident-dc334165e8\",\"sensor_id\":\"shaft-position-01\",\"outcome_ri\":\"cinXMsgvtlVgP\",\"observed_at\":\"2026-11-18T16:48:19.056+00:00\",\"ack_at\":\"2026-11-18T16:48:19.038+00:00\",\"airflow\":855.0,\"profile_version\":1,\"command_id\":\"cmd-fca04d78d640\",\"requested_pct\":95.0}",
+            "cs": 533,
+            "pi": "cntNE8S3VqkQz",
+            "ri": "cinfzBlurJ1fr",
+            "ty": 4,
+            "ct": "20261118T164819,258141",
+            "lt": "20261118T164819,258141",
+            "et": "20311117T164814,518984",
+            "st": 2
+          }
+        },
+        "http_status": 201
+      }
+    },
+    {
+      "timestamp": "2026-11-18T16:48:22.064765+00:00",
+      "method": "POST",
+      "path": "cse-multiapp/opensoom/facilities/food-a/independent_samples",
+      "origin": "Cossensor39095aa155887ebe",
+      "rqi": "opensoom-44f4f072e25447a587f2f95617f4fe72",
+      "request": {
+        "m2m:cin": {
+          "con": "{\"facility_id\": \"food-a\", \"zone_id\": \"cook\", \"asset_id\": \"extract-damper-01\", \"sensor_id\": \"shaft-position-01\", \"observed_at\": \"2026-11-18T16:48:22.061+00:00\", \"value\": 93, \"unit\": \"%\", \"source\": \"independent_position_sensor\", \"simulated\": true}",
+          "cnf": "application/json:0"
+        }
+      },
+      "query": {},
+      "response": {
+        "rsc": 2001,
+        "rqi": "opensoom-44f4f072e25447a587f2f95617f4fe72",
+        "body": {
+          "m2m:cin": {
+            "con": "{\"facility_id\": \"food-a\", \"zone_id\": \"cook\", \"asset_id\": \"extract-damper-01\", \"sensor_id\": \"shaft-position-01\", \"observed_at\": \"2026-11-18T16:48:22.061+00:00\", \"value\": 93, \"unit\": \"%\", \"source\": \"independent_position_sensor\", \"simulated\": true}",
+            "cnf": "application/json:0",
+            "cs": 245,
+            "pi": "cntPhXgc78pFf",
+            "ri": "cinfGb3u8ao0C",
+            "rn": "cin_QLNNtyGIrG",
+            "ty": 4,
+            "ct": "20261118T164822,068236",
+            "lt": "20261118T164822,068236",
+            "et": "20311117T164814,518984",
+            "st": 2
+          }
+        },
+        "http_status": 201
+      }
+    },
+    {
+      "timestamp": "2026-11-18T16:48:22.228386+00:00",
+      "method": "POST",
+      "path": "cse-multiapp/opensoom/facilities/food-a/sensor_responses",
+      "origin": "Cosbridge39095aa155887ebe",
+      "rqi": "opensoom-e6715d55218a4a3b8355f0d92edf16d0",
+      "request": {
+        "m2m:cin": {
+          "rn": "measurement-af9ffc3e9068a11e61b2b3731e1f871b",
+          "cnf": "application/json:0",
+          "con": "{\"kind\":\"sensor_result\",\"facility_id\":\"food-a\",\"request_id\":\"sensor-735e65260e2841418708940945700c83\",\"request_ri\":\"cinfzBlurJ1fr\",\"mode\":\"local\",\"status\":\"measured\",\"sample\":{\"sensor_id\":\"shaft-position-01\",\"value\":93,\"unit\":\"%\",\"source\":\"independent_position_sensor\",\"observed_at\":\"2026-11-18T16:48:22.061+00:00\"},\"provider_receipt\":{\"sample_cin_ri\":\"cinfGb3u8ao0C\"}}"
+        }
+      },
+      "query": {},
+      "response": {
+        "rsc": 2001,
+        "rqi": "opensoom-e6715d55218a4a3b8355f0d92edf16d0",
+        "body": {
+          "m2m:cin": {
+            "rn": "measurement-af9ffc3e9068a11e61b2b3731e1f871b",
+            "cnf": "application/json:0",
+            "con": "{\"kind\":\"sensor_result\",\"facility_id\":\"food-a\",\"request_id\":\"sensor-735e65260e2841418708940945700c83\",\"request_ri\":\"cinfzBlurJ1fr\",\"mode\":\"local\",\"status\":\"measured\",\"sample\":{\"sensor_id\":\"shaft-position-01\",\"value\":93,\"unit\":\"%\",\"source\":\"independent_position_sensor\",\"observed_at\":\"2026-11-18T16:48:22.061+00:00\"},\"provider_receipt\":{\"sample_cin_ri\":\"cinfGb3u8ao0C\"}}",
+            "cs": 369,
+            "pi": "cntSsZE1GejqL",
+            "ri": "cinFaUTPC1wWT",
+            "ty": 4,
+            "ct": "20261118T164822,229297",
+            "lt": "20261118T164822,229297",
+            "et": "20311117T164814,518984",
+            "st": 2
+          }
+        },
+        "http_status": 201
+      }
+    },
+    {
+      "timestamp": "2026-11-18T16:48:22.385544+00:00",
+      "method": "POST",
+      "path": "cse-multiapp/opensoom/facilities/food-a/work_orders",
+      "origin": "Cosmaintenance39095aa155887ebe",
+      "rqi": "opensoom-1c16fa67232f418ea10dc050184bfa98",
+      "request": {
+        "m2m:cin": {
+          "rn": "order-4f0713207caf31c481cdad936bf6ade0",
+          "cnf": "application/json:0",
+          "con": "{\"facility_id\":\"food-a\",\"zone_id\":\"cook\",\"asset_id\":\"extract-damper-01\",\"incident_id\":\"incident-dc334165e8\",\"run_id\":\"demo-faf312fa38\",\"source_cin_ri\":\"cinK5n3VTlvTx\",\"kind\":\"work_order\",\"work_order_id\":\"work-incident-dc334165e8\",\"command_id\":null,\"observed_at\":\"2026-11-18T16:48:15.324+00:00\",\"status\":\"open\",\"priority\":\"inspection\",\"evidence_status\":\"awaiting_outcome\",\"revision\":1,\"outcome_ri\":\"cinM1OhaVk6Bt\",\"observation_rqi\":\"opensoom-ecca68d0ed6c469a9f438b74204e6812\",\"airflow\":940.0,\"profile_version\":1}"
+        }
+      },
+      "query": {},
+      "response": {
+        "rsc": 4105,
+        "rqi": "opensoom-1c16fa67232f418ea10dc050184bfa98",
+        "body": {
+          "m2m:dbg": "Resource with structured id: cse-multiapp/opensoom/facilities/food-a/work_orders/order-4f0713207caf31c481cdad936bf6ade0 already exists"
+        },
+        "http_status": 409
+      }
+    },
+    {
+      "timestamp": "2026-11-18T16:48:22.392496+00:00",
+      "method": "POST",
+      "path": "cse-multiapp/opensoom/facilities/food-a/work_orders",
+      "origin": "Cosmaintenance39095aa155887ebe",
+      "rqi": "opensoom-2629097c844142a785d0801c6d83234f",
+      "request": {
+        "m2m:cin": {
+          "rn": "order-b056e57e240f3204395c69d552819177",
+          "cnf": "application/json:0",
+          "con": "{\"facility_id\":\"food-a\",\"zone_id\":\"cook\",\"asset_id\":\"extract-damper-01\",\"incident_id\":\"incident-dc334165e8\",\"run_id\":\"demo-faf312fa38\",\"source_cin_ri\":\"cin5H21cIkSP9\",\"kind\":\"work_order\",\"work_order_id\":\"work-incident-dc334165e8\",\"command_id\":\"cmd-654a6810e947\",\"observed_at\":\"2026-11-18T16:48:15.987+00:00\",\"status\":\"open\",\"priority\":\"inspection\",\"evidence_status\":\"awaiting_independent_sample\",\"revision\":2,\"request_id\":\"sensor-ac6197e90daea3ad422fa3d0a4abc6de\",\"outcome_ri\":\"cinVyXTynSWE3\",\"observation_rqi\":\"opensoom-071728eea9e04eb7a3b5dbdcb04ae501\",\"airflow\":855.0,\"profile_version\":1}"
+        }
+      },
+      "query": {},
+      "response": {
+        "rsc": 4105,
+        "rqi": "opensoom-2629097c844142a785d0801c6d83234f",
+        "body": {
+          "m2m:dbg": "Resource with structured id: cse-multiapp/opensoom/facilities/food-a/work_orders/order-b056e57e240f3204395c69d552819177 already exists"
+        },
+        "http_status": 409
+      }
+    },
+    {
+      "timestamp": "2026-11-18T16:48:22.395982+00:00",
+      "method": "POST",
+      "path": "cse-multiapp/opensoom/facilities/food-a/sensor_requests",
+      "origin": "Cosmaintenance39095aa155887ebe",
+      "rqi": "opensoom-b9e13d9f62f34df38e8f54b433641d78",
+      "request": {
+        "m2m:cin": {
+          "rn": "sensor-ac6197e90daea3ad422fa3d0a4abc6de",
+          "cnf": "application/json:0",
+          "con": "{\"facility_id\":\"food-a\",\"zone_id\":\"cook\",\"asset_id\":\"extract-damper-01\",\"incident_id\":\"incident-dc334165e8\",\"run_id\":\"demo-faf312fa38\",\"source_cin_ri\":\"cin5H21cIkSP9\",\"kind\":\"shaft_position_lookup\",\"request_id\":\"sensor-ac6197e90daea3ad422fa3d0a4abc6de\",\"work_order_id\":\"work-incident-dc334165e8\",\"sensor_id\":\"shaft-position-01\",\"outcome_ri\":\"cinVyXTynSWE3\",\"observed_at\":\"2026-11-18T16:48:15.987+00:00\",\"ack_at\":\"2026-11-18T16:48:15.555+00:00\",\"airflow\":855.0,\"profile_version\":1,\"command_id\":\"cmd-654a6810e947\",\"requested_pct\":80.0}"
+        }
+      },
+      "query": {},
+      "response": {
+        "rsc": 4105,
+        "rqi": "opensoom-b9e13d9f62f34df38e8f54b433641d78",
+        "body": {
+          "m2m:dbg": "Resource with structured id: cse-multiapp/opensoom/facilities/food-a/sensor_requests/sensor-ac6197e90daea3ad422fa3d0a4abc6de already exists"
+        },
+        "http_status": 409
+      }
+    },
+    {
+      "timestamp": "2026-11-18T16:48:22.401974+00:00",
+      "method": "POST",
+      "path": "cse-multiapp/opensoom/facilities/food-a/work_orders",
+      "origin": "Cosmaintenance39095aa155887ebe",
+      "rqi": "opensoom-8203453478c4420e96014f2747591c55",
+      "request": {
+        "m2m:cin": {
+          "rn": "order-843d4012d43dfad5ffdd1dc7c7b2b131",
+          "cnf": "application/json:0",
+          "con": "{\"facility_id\":\"food-a\",\"zone_id\":\"cook\",\"asset_id\":\"extract-damper-01\",\"incident_id\":\"incident-dc334165e8\",\"run_id\":\"demo-faf312fa38\",\"source_cin_ri\":\"cincTSxUR6wSm\",\"kind\":\"work_order\",\"work_order_id\":\"work-incident-dc334165e8\",\"command_id\":\"cmd-fca04d78d640\",\"observed_at\":\"2026-11-18T16:48:19.056+00:00\",\"status\":\"open\",\"priority\":\"inspection\",\"evidence_status\":\"awaiting_independent_sample\",\"revision\":2,\"request_id\":\"sensor-735e65260e2841418708940945700c83\",\"outcome_ri\":\"cinXMsgvtlVgP\",\"observation_rqi\":\"opensoom-d43d4999559f4396aab5e1d3aafa46ab\",\"airflow\":855.0,\"profile_version\":1}"
+        }
+      },
+      "query": {},
+      "response": {
+        "rsc": 4105,
+        "rqi": "opensoom-8203453478c4420e96014f2747591c55",
+        "body": {
+          "m2m:dbg": "Resource with structured id: cse-multiapp/opensoom/facilities/food-a/work_orders/order-843d4012d43dfad5ffdd1dc7c7b2b131 already exists"
+        },
+        "http_status": 409
+      }
+    },
+    {
+      "timestamp": "2026-11-18T16:48:22.405484+00:00",
+      "method": "POST",
+      "path": "cse-multiapp/opensoom/facilities/food-a/sensor_requests",
+      "origin": "Cosmaintenance39095aa155887ebe",
+      "rqi": "opensoom-5379bb57858c48d889f3caf2412515c0",
+      "request": {
+        "m2m:cin": {
+          "rn": "sensor-735e65260e2841418708940945700c83",
+          "cnf": "application/json:0",
+          "con": "{\"facility_id\":\"food-a\",\"zone_id\":\"cook\",\"asset_id\":\"extract-damper-01\",\"incident_id\":\"incident-dc334165e8\",\"run_id\":\"demo-faf312fa38\",\"source_cin_ri\":\"cincTSxUR6wSm\",\"kind\":\"shaft_position_lookup\",\"request_id\":\"sensor-735e65260e2841418708940945700c83\",\"work_order_id\":\"work-incident-dc334165e8\",\"sensor_id\":\"shaft-position-01\",\"outcome_ri\":\"cinXMsgvtlVgP\",\"observed_at\":\"2026-11-18T16:48:19.056+00:00\",\"ack_at\":\"2026-11-18T16:48:19.038+00:00\",\"airflow\":855.0,\"profile_version\":1,\"command_id\":\"cmd-fca04d78d640\",\"requested_pct\":95.0}"
+        }
+      },
+      "query": {},
+      "response": {
+        "rsc": 4105,
+        "rqi": "opensoom-5379bb57858c48d889f3caf2412515c0",
+        "body": {
+          "m2m:dbg": "Resource with structured id: cse-multiapp/opensoom/facilities/food-a/sensor_requests/sensor-735e65260e2841418708940945700c83 already exists"
+        },
+        "http_status": 409
+      }
+    },
+    {
+      "timestamp": "2026-11-18T16:48:22.420410+00:00",
+      "method": "POST",
+      "path": "cse-multiapp/opensoom/facilities/food-a/work_orders",
+      "origin": "Cosmaintenance39095aa155887ebe",
+      "rqi": "opensoom-d3e096b25f81463baaaf8de22ac7e3e0",
+      "request": {
+        "m2m:cin": {
+          "rn": "order-95949b0154508c5f1dbd1221dcace94f",
+          "cnf": "application/json:0",
+          "con": "{\"facility_id\":\"food-a\",\"zone_id\":\"cook\",\"asset_id\":\"extract-damper-01\",\"incident_id\":\"incident-dc334165e8\",\"run_id\":\"demo-faf312fa38\",\"source_cin_ri\":\"cincTSxUR6wSm\",\"kind\":\"work_order\",\"work_order_id\":\"work-incident-dc334165e8\",\"command_id\":\"cmd-fca04d78d640\",\"observed_at\":\"2026-11-18T16:48:19.056+00:00\",\"status\":\"open\",\"priority\":\"inspect_airflow_path\",\"evidence_status\":\"verified_independent_sample\",\"revision\":4,\"requested_pct\":95.0,\"sample\":{\"sensor_id\":\"shaft-position-01\",\"value\":93,\"unit\":\"%\",\"source\":\"independent_position_sensor\",\"observed_at\":\"2026-11-18T16:48:22.061+00:00\"},\"provider_receipt\":{\"sample_cin_ri\":\"cinfGb3u8ao0C\"},\"request_id\":\"sensor-735e65260e2841418708940945700c83\",\"request_ri\":\"cinfzBlurJ1fr\",\"response_ri\":\"cinFaUTPC1wWT\",\"outcome_ri\":\"cinXMsgvtlVgP\",\"mode\":\"local\",\"airflow\":855.0,\"profile_version\":1}"
+        }
+      },
+      "query": {},
+      "response": {
+        "rsc": 2001,
+        "rqi": "opensoom-d3e096b25f81463baaaf8de22ac7e3e0",
+        "body": {
+          "m2m:cin": {
+            "rn": "order-95949b0154508c5f1dbd1221dcace94f",
+            "cnf": "application/json:0",
+            "con": "{\"facility_id\":\"food-a\",\"zone_id\":\"cook\",\"asset_id\":\"extract-damper-01\",\"incident_id\":\"incident-dc334165e8\",\"run_id\":\"demo-faf312fa38\",\"source_cin_ri\":\"cincTSxUR6wSm\",\"kind\":\"work_order\",\"work_order_id\":\"work-incident-dc334165e8\",\"command_id\":\"cmd-fca04d78d640\",\"observed_at\":\"2026-11-18T16:48:19.056+00:00\",\"status\":\"open\",\"priority\":\"inspect_airflow_path\",\"evidence_status\":\"verified_independent_sample\",\"revision\":4,\"requested_pct\":95.0,\"sample\":{\"sensor_id\":\"shaft-position-01\",\"value\":93,\"unit\":\"%\",\"source\":\"independent_position_sensor\",\"observed_at\":\"2026-11-18T16:48:22.061+00:00\"},\"provider_receipt\":{\"sample_cin_ri\":\"cinfGb3u8ao0C\"},\"request_id\":\"sensor-735e65260e2841418708940945700c83\",\"request_ri\":\"cinfzBlurJ1fr\",\"response_ri\":\"cinFaUTPC1wWT\",\"outcome_ri\":\"cinXMsgvtlVgP\",\"mode\":\"local\",\"airflow\":855.0,\"profile_version\":1}",
+            "cs": 837,
+            "pi": "cntZi5dHonhaS",
+            "ri": "cinJN3ybVgf5Y",
+            "ty": 4,
+            "ct": "20261118T164822,421178",
+            "lt": "20261118T164822,421178",
+            "et": "20311117T164814,518984",
+            "st": 5
+          }
+        },
+        "http_status": 201
+      }
+    },
+    {
+      "timestamp": "2026-11-18T16:48:22.724652+00:00",
+      "method": "POST",
+      "path": "cse-multiapp/opensoom/facilities/archive-workshop/work_orders",
+      "origin": "Cosmaintenance1897faf469cba17c",
+      "rqi": "opensoom-5abe703dbeb44f5b9a24a07527ffd7eb",
+      "request": {
+        "m2m:cin": {
+          "rn": "order-da7ac7a4afcc4cb82b935cb3460a28fb",
+          "cnf": "application/json:0",
+          "con": "{\"facility_id\":\"archive-workshop\",\"zone_id\":\"conservation\",\"asset_id\":\"bench-extract\",\"incident_id\":\"incident-bcd88d20e6\",\"run_id\":\"demo-b8bc1004bb\",\"source_cin_ri\":\"cinzybG3XkOq0\",\"kind\":\"work_order\",\"work_order_id\":\"work-incident-bcd88d20e6\",\"command_id\":null,\"observed_at\":\"2026-11-18T16:48:22.588+00:00\",\"status\":\"open\",\"priority\":\"inspection\",\"evidence_status\":\"awaiting_outcome\",\"revision\":1,\"outcome_ri\":\"cinqw5tpxAssi\",\"observation_rqi\":\"opensoom-a8c3fafeb9ef479c84216ea5b174abba\",\"airflow\":600.0,\"profile_version\":1}"
+        }
+      },
+      "query": {},
+      "response": {
+        "rsc": 2001,
+        "rqi": "opensoom-5abe703dbeb44f5b9a24a07527ffd7eb",
+        "body": {
+          "m2m:cin": {
+            "rn": "order-da7ac7a4afcc4cb82b935cb3460a28fb",
+            "cnf": "application/json:0",
+            "con": "{\"facility_id\":\"archive-workshop\",\"zone_id\":\"conservation\",\"asset_id\":\"bench-extract\",\"incident_id\":\"incident-bcd88d20e6\",\"run_id\":\"demo-b8bc1004bb\",\"source_cin_ri\":\"cinzybG3XkOq0\",\"kind\":\"work_order\",\"work_order_id\":\"work-incident-bcd88d20e6\",\"command_id\":null,\"observed_at\":\"2026-11-18T16:48:22.588+00:00\",\"status\":\"open\",\"priority\":\"inspection\",\"evidence_status\":\"awaiting_outcome\",\"revision\":1,\"outcome_ri\":\"cinqw5tpxAssi\",\"observation_rqi\":\"opensoom-a8c3fafeb9ef479c84216ea5b174abba\",\"airflow\":600.0,\"profile_version\":1}",
+            "cs": 525,
+            "pi": "cntZqzI9mfJXv",
+            "ri": "cinNuaDiajPAq",
+            "ty": 4,
+            "ct": "20261118T164822,725770",
+            "lt": "20261118T164822,725770",
+            "et": "20311117T164814,518984",
+            "st": 1
+          }
+        },
+        "http_status": 201
+      }
+    },
+    {
+      "timestamp": "2026-11-18T16:48:22.971148+00:00",
+      "method": "POST",
+      "path": "cse-multiapp/opensoom/facilities/archive-workshop/work_orders",
+      "origin": "Cosmaintenance1897faf469cba17c",
+      "rqi": "opensoom-f4ea742d52eb4d38bb69fbb754953850",
+      "request": {
+        "m2m:cin": {
+          "rn": "order-da7ac7a4afcc4cb82b935cb3460a28fb",
+          "cnf": "application/json:0",
+          "con": "{\"facility_id\":\"archive-workshop\",\"zone_id\":\"conservation\",\"asset_id\":\"bench-extract\",\"incident_id\":\"incident-bcd88d20e6\",\"run_id\":\"demo-b8bc1004bb\",\"source_cin_ri\":\"cinzybG3XkOq0\",\"kind\":\"work_order\",\"work_order_id\":\"work-incident-bcd88d20e6\",\"command_id\":null,\"observed_at\":\"2026-11-18T16:48:22.588+00:00\",\"status\":\"open\",\"priority\":\"inspection\",\"evidence_status\":\"awaiting_outcome\",\"revision\":1,\"outcome_ri\":\"cinqw5tpxAssi\",\"observation_rqi\":\"opensoom-b5307b6998ca464d853b99d3568b22b8\",\"airflow\":600.0,\"profile_version\":1}"
+        }
+      },
+      "query": {},
+      "response": {
+        "rsc": 4105,
+        "rqi": "opensoom-f4ea742d52eb4d38bb69fbb754953850",
+        "body": {
+          "m2m:dbg": "Resource with structured id: cse-multiapp/opensoom/facilities/archive-workshop/work_orders/order-da7ac7a4afcc4cb82b935cb3460a28fb already exists"
+        },
+        "http_status": 409
+      }
+    },
+    {
+      "timestamp": "2026-11-18T16:48:23.362266+00:00",
+      "method": "POST",
+      "path": "cse-multiapp/opensoom/facilities/archive-workshop/work_orders",
+      "origin": "Cosmaintenance1897faf469cba17c",
+      "rqi": "opensoom-5ea72847e1da41d3bc327c7454b7ea2b",
+      "request": {
+        "m2m:cin": {
+          "rn": "order-da7ac7a4afcc4cb82b935cb3460a28fb",
+          "cnf": "application/json:0",
+          "con": "{\"facility_id\":\"archive-workshop\",\"zone_id\":\"conservation\",\"asset_id\":\"bench-extract\",\"incident_id\":\"incident-bcd88d20e6\",\"run_id\":\"demo-b8bc1004bb\",\"source_cin_ri\":\"cinzybG3XkOq0\",\"kind\":\"work_order\",\"work_order_id\":\"work-incident-bcd88d20e6\",\"command_id\":null,\"observed_at\":\"2026-11-18T16:48:22.588+00:00\",\"status\":\"open\",\"priority\":\"inspection\",\"evidence_status\":\"awaiting_outcome\",\"revision\":1,\"outcome_ri\":\"cinqw5tpxAssi\",\"observation_rqi\":\"opensoom-cf07ea9f1d3746d3b1277668e64424a0\",\"airflow\":600.0,\"profile_version\":1}"
+        }
+      },
+      "query": {},
+      "response": {
+        "rsc": 4105,
+        "rqi": "opensoom-5ea72847e1da41d3bc327c7454b7ea2b",
+        "body": {
+          "m2m:dbg": "Resource with structured id: cse-multiapp/opensoom/facilities/archive-workshop/work_orders/order-da7ac7a4afcc4cb82b935cb3460a28fb already exists"
+        },
+        "http_status": 409
+      }
+    },
+    {
+      "timestamp": "2026-11-18T16:48:23.369189+00:00",
+      "method": "POST",
+      "path": "cse-multiapp/opensoom/facilities/archive-workshop/work_orders",
+      "origin": "Cosmaintenance1897faf469cba17c",
+      "rqi": "opensoom-0dbbba7a1bed4d8fa149f5efedea8d36",
+      "request": {
+        "m2m:cin": {
+          "rn": "order-13fbcdcc336efba739d3208b4005d48c",
+          "cnf": "application/json:0",
+          "con": "{\"facility_id\":\"archive-workshop\",\"zone_id\":\"conservation\",\"asset_id\":\"bench-extract\",\"incident_id\":\"incident-bcd88d20e6\",\"run_id\":\"demo-b8bc1004bb\",\"source_cin_ri\":\"cin79BcKbfJ6g\",\"kind\":\"work_order\",\"work_order_id\":\"work-incident-bcd88d20e6\",\"command_id\":\"cmd-60c78fa5e7ba\",\"observed_at\":\"2026-11-18T16:48:23.226+00:00\",\"status\":\"open\",\"priority\":\"inspection\",\"evidence_status\":\"awaiting_independent_sample\",\"revision\":2,\"request_id\":\"sensor-badc21bd584ae77b1623ea001cf81c8c\",\"outcome_ri\":\"cin4Xafmb4W6i\",\"observation_rqi\":\"opensoom-bb19bc3c861141a0bcbbe6130debe1a5\",\"airflow\":515.0,\"profile_version\":1}"
+        }
+      },
+      "query": {},
+      "response": {
+        "rsc": 2001,
+        "rqi": "opensoom-0dbbba7a1bed4d8fa149f5efedea8d36",
+        "body": {
+          "m2m:cin": {
+            "rn": "order-13fbcdcc336efba739d3208b4005d48c",
+            "cnf": "application/json:0",
+            "con": "{\"facility_id\":\"archive-workshop\",\"zone_id\":\"conservation\",\"asset_id\":\"bench-extract\",\"incident_id\":\"incident-bcd88d20e6\",\"run_id\":\"demo-b8bc1004bb\",\"source_cin_ri\":\"cin79BcKbfJ6g\",\"kind\":\"work_order\",\"work_order_id\":\"work-incident-bcd88d20e6\",\"command_id\":\"cmd-60c78fa5e7ba\",\"observed_at\":\"2026-11-18T16:48:23.226+00:00\",\"status\":\"open\",\"priority\":\"inspection\",\"evidence_status\":\"awaiting_independent_sample\",\"revision\":2,\"request_id\":\"sensor-badc21bd584ae77b1623ea001cf81c8c\",\"outcome_ri\":\"cin4Xafmb4W6i\",\"observation_rqi\":\"opensoom-bb19bc3c861141a0bcbbe6130debe1a5\",\"airflow\":515.0,\"profile_version\":1}",
+            "cs": 605,
+            "pi": "cntZqzI9mfJXv",
+            "ri": "cinABHuPEhAPH",
+            "ty": 4,
+            "ct": "20261118T164823,370042",
+            "lt": "20261118T164823,370042",
+            "et": "20311117T164814,518984",
+            "st": 2
+          }
+        },
+        "http_status": 201
+      }
+    },
+    {
+      "timestamp": "2026-11-18T16:48:23.372216+00:00",
+      "method": "POST",
+      "path": "cse-multiapp/opensoom/facilities/archive-workshop/sensor_requests",
+      "origin": "Cosmaintenance1897faf469cba17c",
+      "rqi": "opensoom-0b8cd10b94654109a0968e2868aeb4b9",
+      "request": {
+        "m2m:cin": {
+          "rn": "sensor-badc21bd584ae77b1623ea001cf81c8c",
+          "cnf": "application/json:0",
+          "con": "{\"facility_id\":\"archive-workshop\",\"zone_id\":\"conservation\",\"asset_id\":\"bench-extract\",\"incident_id\":\"incident-bcd88d20e6\",\"run_id\":\"demo-b8bc1004bb\",\"source_cin_ri\":\"cin79BcKbfJ6g\",\"kind\":\"shaft_position_lookup\",\"request_id\":\"sensor-badc21bd584ae77b1623ea001cf81c8c\",\"work_order_id\":\"work-incident-bcd88d20e6\",\"sensor_id\":\"bench-shaft\",\"outcome_ri\":\"cin4Xafmb4W6i\",\"observed_at\":\"2026-11-18T16:48:23.226+00:00\",\"ack_at\":\"2026-11-18T16:48:22.815+00:00\",\"airflow\":515.0,\"profile_version\":1,\"command_id\":\"cmd-60c78fa5e7ba\",\"requested_pct\":80.0}"
+        }
+      },
+      "query": {},
+      "response": {
+        "rsc": 2001,
+        "rqi": "opensoom-0b8cd10b94654109a0968e2868aeb4b9",
+        "body": {
+          "m2m:cin": {
+            "rn": "sensor-badc21bd584ae77b1623ea001cf81c8c",
+            "cnf": "application/json:0",
+            "con": "{\"facility_id\":\"archive-workshop\",\"zone_id\":\"conservation\",\"asset_id\":\"bench-extract\",\"incident_id\":\"incident-bcd88d20e6\",\"run_id\":\"demo-b8bc1004bb\",\"source_cin_ri\":\"cin79BcKbfJ6g\",\"kind\":\"shaft_position_lookup\",\"request_id\":\"sensor-badc21bd584ae77b1623ea001cf81c8c\",\"work_order_id\":\"work-incident-bcd88d20e6\",\"sensor_id\":\"bench-shaft\",\"outcome_ri\":\"cin4Xafmb4W6i\",\"observed_at\":\"2026-11-18T16:48:23.226+00:00\",\"ack_at\":\"2026-11-18T16:48:22.815+00:00\",\"airflow\":515.0,\"profile_version\":1,\"command_id\":\"cmd-60c78fa5e7ba\",\"requested_pct\":80.0}",
+            "cs": 541,
+            "pi": "cnthdyk2nT4yq",
+            "ri": "cinIaTp2wdPvt",
+            "ty": 4,
+            "ct": "20261118T164823,373383",
+            "lt": "20261118T164823,373383",
+            "et": "20311117T164814,518984",
+            "st": 1
+          }
+        },
+        "http_status": 201
+      }
+    },
+    {
+      "timestamp": "2026-11-18T16:48:26.839679+00:00",
+      "method": "POST",
+      "path": "cse-multiapp/opensoom/facilities/archive-workshop/independent_samples",
+      "origin": "Cossensor1897faf469cba17c",
+      "rqi": "opensoom-e0747bb187b14ae299be071165b2ce67",
+      "request": {
+        "m2m:cin": {
+          "con": "{\"facility_id\": \"archive-workshop\", \"zone_id\": \"conservation\", \"asset_id\": \"bench-extract\", \"sensor_id\": \"bench-shaft\", \"observed_at\": \"2026-11-18T16:48:26.838+00:00\", \"value\": 35, \"unit\": \"%\", \"source\": \"independent_position_sensor\", \"simulated\": true}",
+          "cnf": "application/json:0"
+        }
+      },
+      "query": {},
+      "response": {
+        "rsc": 2001,
+        "rqi": "opensoom-e0747bb187b14ae299be071165b2ce67",
+        "body": {
+          "m2m:cin": {
+            "con": "{\"facility_id\": \"archive-workshop\", \"zone_id\": \"conservation\", \"asset_id\": \"bench-extract\", \"sensor_id\": \"bench-shaft\", \"observed_at\": \"2026-11-18T16:48:26.838+00:00\", \"value\": 35, \"unit\": \"%\", \"source\": \"independent_position_sensor\", \"simulated\": true}",
+            "cnf": "application/json:0",
+            "cs": 253,
+            "pi": "cntbzMfD7ZZms",
+            "ri": "cinY0hOG6kUmk",
+            "rn": "cin_HNWvbmGUYE",
+            "ty": 4,
+            "ct": "20261118T164826,841711",
+            "lt": "20261118T164826,841711",
+            "et": "20311117T164814,518984",
+            "st": 1
+          }
+        },
+        "http_status": 201
+      }
+    },
+    {
+      "timestamp": "2026-11-18T16:48:26.969058+00:00",
+      "method": "POST",
+      "path": "cse-multiapp/opensoom/facilities/archive-workshop/sensor_responses",
+      "origin": "Cosbridge1897faf469cba17c",
+      "rqi": "opensoom-e2ee36639fed4eb28ecd7dffc90c5d57",
+      "request": {
+        "m2m:cin": {
+          "rn": "measurement-68a15f73958d3c8a04dc84d73ebd426e",
+          "cnf": "application/json:0",
+          "con": "{\"kind\":\"sensor_result\",\"facility_id\":\"archive-workshop\",\"request_id\":\"sensor-badc21bd584ae77b1623ea001cf81c8c\",\"request_ri\":\"cinIaTp2wdPvt\",\"mode\":\"local\",\"status\":\"measured\",\"sample\":{\"sensor_id\":\"bench-shaft\",\"value\":35,\"unit\":\"%\",\"source\":\"independent_position_sensor\",\"observed_at\":\"2026-11-18T16:48:26.838+00:00\"},\"provider_receipt\":{\"sample_cin_ri\":\"cinY0hOG6kUmk\"}}"
+        }
+      },
+      "query": {},
+      "response": {
+        "rsc": 2001,
+        "rqi": "opensoom-e2ee36639fed4eb28ecd7dffc90c5d57",
+        "body": {
+          "m2m:cin": {
+            "rn": "measurement-68a15f73958d3c8a04dc84d73ebd426e",
+            "cnf": "application/json:0",
+            "con": "{\"kind\":\"sensor_result\",\"facility_id\":\"archive-workshop\",\"request_id\":\"sensor-badc21bd584ae77b1623ea001cf81c8c\",\"request_ri\":\"cinIaTp2wdPvt\",\"mode\":\"local\",\"status\":\"measured\",\"sample\":{\"sensor_id\":\"bench-shaft\",\"value\":35,\"unit\":\"%\",\"source\":\"independent_position_sensor\",\"observed_at\":\"2026-11-18T16:48:26.838+00:00\"},\"provider_receipt\":{\"sample_cin_ri\":\"cinY0hOG6kUmk\"}}",
+            "cs": 373,
+            "pi": "cntwBVfD3LDpu",
+            "ri": "cinb7CLlfgKT0",
+            "ty": 4,
+            "ct": "20261118T164826,969904",
+            "lt": "20261118T164826,969904",
+            "et": "20311117T164814,518984",
+            "st": 1
+          }
+        },
+        "http_status": 201
+      }
+    },
+    {
+      "timestamp": "2026-11-18T16:48:27.155412+00:00",
+      "method": "POST",
+      "path": "cse-multiapp/opensoom/facilities/archive-workshop/work_orders",
+      "origin": "Cosmaintenance1897faf469cba17c",
+      "rqi": "opensoom-b2cc949359a341c9aa859b2532bf7efd",
+      "request": {
+        "m2m:cin": {
+          "rn": "order-da7ac7a4afcc4cb82b935cb3460a28fb",
+          "cnf": "application/json:0",
+          "con": "{\"facility_id\":\"archive-workshop\",\"zone_id\":\"conservation\",\"asset_id\":\"bench-extract\",\"incident_id\":\"incident-bcd88d20e6\",\"run_id\":\"demo-b8bc1004bb\",\"source_cin_ri\":\"cinzybG3XkOq0\",\"kind\":\"work_order\",\"work_order_id\":\"work-incident-bcd88d20e6\",\"command_id\":null,\"observed_at\":\"2026-11-18T16:48:22.588+00:00\",\"status\":\"open\",\"priority\":\"inspection\",\"evidence_status\":\"awaiting_outcome\",\"revision\":1,\"outcome_ri\":\"cinqw5tpxAssi\",\"observation_rqi\":\"opensoom-3f1f34363338425088f1a40dd814f24f\",\"airflow\":600.0,\"profile_version\":1}"
+        }
+      },
+      "query": {},
+      "response": {
+        "rsc": 4105,
+        "rqi": "opensoom-b2cc949359a341c9aa859b2532bf7efd",
+        "body": {
+          "m2m:dbg": "Resource with structured id: cse-multiapp/opensoom/facilities/archive-workshop/work_orders/order-da7ac7a4afcc4cb82b935cb3460a28fb already exists"
+        },
+        "http_status": 409
+      }
+    },
+    {
+      "timestamp": "2026-11-18T16:48:27.162652+00:00",
+      "method": "POST",
+      "path": "cse-multiapp/opensoom/facilities/archive-workshop/work_orders",
+      "origin": "Cosmaintenance1897faf469cba17c",
+      "rqi": "opensoom-e100bb22745b4aeead06b4dd229598db",
+      "request": {
+        "m2m:cin": {
+          "rn": "order-13fbcdcc336efba739d3208b4005d48c",
+          "cnf": "application/json:0",
+          "con": "{\"facility_id\":\"archive-workshop\",\"zone_id\":\"conservation\",\"asset_id\":\"bench-extract\",\"incident_id\":\"incident-bcd88d20e6\",\"run_id\":\"demo-b8bc1004bb\",\"source_cin_ri\":\"cin79BcKbfJ6g\",\"kind\":\"work_order\",\"work_order_id\":\"work-incident-bcd88d20e6\",\"command_id\":\"cmd-60c78fa5e7ba\",\"observed_at\":\"2026-11-18T16:48:23.226+00:00\",\"status\":\"open\",\"priority\":\"inspection\",\"evidence_status\":\"awaiting_independent_sample\",\"revision\":2,\"request_id\":\"sensor-badc21bd584ae77b1623ea001cf81c8c\",\"outcome_ri\":\"cin4Xafmb4W6i\",\"observation_rqi\":\"opensoom-5495ebfcb4c64ef5bab86aeebd478a3b\",\"airflow\":515.0,\"profile_version\":1}"
+        }
+      },
+      "query": {},
+      "response": {
+        "rsc": 4105,
+        "rqi": "opensoom-e100bb22745b4aeead06b4dd229598db",
+        "body": {
+          "m2m:dbg": "Resource with structured id: cse-multiapp/opensoom/facilities/archive-workshop/work_orders/order-13fbcdcc336efba739d3208b4005d48c already exists"
+        },
+        "http_status": 409
+      }
+    },
+    {
+      "timestamp": "2026-11-18T16:48:27.166210+00:00",
+      "method": "POST",
+      "path": "cse-multiapp/opensoom/facilities/archive-workshop/sensor_requests",
+      "origin": "Cosmaintenance1897faf469cba17c",
+      "rqi": "opensoom-af21d7b6144e455696e92673ee540869",
+      "request": {
+        "m2m:cin": {
+          "rn": "sensor-badc21bd584ae77b1623ea001cf81c8c",
+          "cnf": "application/json:0",
+          "con": "{\"facility_id\":\"archive-workshop\",\"zone_id\":\"conservation\",\"asset_id\":\"bench-extract\",\"incident_id\":\"incident-bcd88d20e6\",\"run_id\":\"demo-b8bc1004bb\",\"source_cin_ri\":\"cin79BcKbfJ6g\",\"kind\":\"shaft_position_lookup\",\"request_id\":\"sensor-badc21bd584ae77b1623ea001cf81c8c\",\"work_order_id\":\"work-incident-bcd88d20e6\",\"sensor_id\":\"bench-shaft\",\"outcome_ri\":\"cin4Xafmb4W6i\",\"observed_at\":\"2026-11-18T16:48:23.226+00:00\",\"ack_at\":\"2026-11-18T16:48:22.815+00:00\",\"airflow\":515.0,\"profile_version\":1,\"command_id\":\"cmd-60c78fa5e7ba\",\"requested_pct\":80.0}"
+        }
+      },
+      "query": {},
+      "response": {
+        "rsc": 4105,
+        "rqi": "opensoom-af21d7b6144e455696e92673ee540869",
+        "body": {
+          "m2m:dbg": "Resource with structured id: cse-multiapp/opensoom/facilities/archive-workshop/sensor_requests/sensor-badc21bd584ae77b1623ea001cf81c8c already exists"
+        },
+        "http_status": 409
+      }
+    },
+    {
+      "timestamp": "2026-11-18T16:48:27.177063+00:00",
+      "method": "POST",
+      "path": "cse-multiapp/opensoom/facilities/archive-workshop/work_orders",
+      "origin": "Cosmaintenance1897faf469cba17c",
+      "rqi": "opensoom-6d33486f5f4e4dcd8834fcb2bfe6fe69",
+      "request": {
+        "m2m:cin": {
+          "rn": "order-62dc3b3df609586e7594e9e7a23105bb",
+          "cnf": "application/json:0",
+          "con": "{\"facility_id\":\"archive-workshop\",\"zone_id\":\"conservation\",\"asset_id\":\"bench-extract\",\"incident_id\":\"incident-bcd88d20e6\",\"run_id\":\"demo-b8bc1004bb\",\"source_cin_ri\":\"cin79BcKbfJ6g\",\"kind\":\"work_order\",\"work_order_id\":\"work-incident-bcd88d20e6\",\"command_id\":\"cmd-60c78fa5e7ba\",\"observed_at\":\"2026-11-18T16:48:23.226+00:00\",\"status\":\"open\",\"priority\":\"inspect_actuator_feedback\",\"evidence_status\":\"verified_independent_sample\",\"revision\":4,\"requested_pct\":80.0,\"sample\":{\"sensor_id\":\"bench-shaft\",\"value\":35,\"unit\":\"%\",\"source\":\"independent_position_sensor\",\"observed_at\":\"2026-11-18T16:48:26.838+00:00\"},\"provider_receipt\":{\"sample_cin_ri\":\"cinY0hOG6kUmk\"},\"request_id\":\"sensor-badc21bd584ae77b1623ea001cf81c8c\",\"request_ri\":\"cinIaTp2wdPvt\",\"response_ri\":\"cinb7CLlfgKT0\",\"outcome_ri\":\"cin4Xafmb4W6i\",\"mode\":\"local\",\"airflow\":515.0,\"profile_version\":1}"
+        }
+      },
+      "query": {},
+      "response": {
+        "rsc": 2001,
+        "rqi": "opensoom-6d33486f5f4e4dcd8834fcb2bfe6fe69",
+        "body": {
+          "m2m:cin": {
+            "rn": "order-62dc3b3df609586e7594e9e7a23105bb",
+            "cnf": "application/json:0",
+            "con": "{\"facility_id\":\"archive-workshop\",\"zone_id\":\"conservation\",\"asset_id\":\"bench-extract\",\"incident_id\":\"incident-bcd88d20e6\",\"run_id\":\"demo-b8bc1004bb\",\"source_cin_ri\":\"cin79BcKbfJ6g\",\"kind\":\"work_order\",\"work_order_id\":\"work-incident-bcd88d20e6\",\"command_id\":\"cmd-60c78fa5e7ba\",\"observed_at\":\"2026-11-18T16:48:23.226+00:00\",\"status\":\"open\",\"priority\":\"inspect_actuator_feedback\",\"evidence_status\":\"verified_independent_sample\",\"revision\":4,\"requested_pct\":80.0,\"sample\":{\"sensor_id\":\"bench-shaft\",\"value\":35,\"unit\":\"%\",\"source\":\"independent_position_sensor\",\"observed_at\":\"2026-11-18T16:48:26.838+00:00\"},\"provider_receipt\":{\"sample_cin_ri\":\"cinY0hOG6kUmk\"},\"request_id\":\"sensor-badc21bd584ae77b1623ea001cf81c8c\",\"request_ri\":\"cinIaTp2wdPvt\",\"response_ri\":\"cinb7CLlfgKT0\",\"outcome_ri\":\"cin4Xafmb4W6i\",\"mode\":\"local\",\"airflow\":515.0,\"profile_version\":1}",
+            "cs": 850,
+            "pi": "cntZqzI9mfJXv",
+            "ri": "cinWZAuUawfDZ",
+            "ty": 4,
+            "ct": "20261118T164827,177900",
+            "lt": "20261118T164827,177900",
+            "et": "20311117T164814,518984",
+            "st": 3
+          }
+        },
+        "http_status": 201
+      }
+    },
+    {
+      "timestamp": "2026-11-18T16:48:27.408242+00:00",
+      "method": "POST",
+      "path": "cse-multiapp/opensoom/facilities/archive-workshop/work_orders",
+      "origin": "Cosmaintenance1897faf469cba17c",
+      "rqi": "opensoom-72556b48218142bd95da18e2e6096d32",
+      "request": {
+        "m2m:cin": {
+          "rn": "order-da7ac7a4afcc4cb82b935cb3460a28fb",
+          "cnf": "application/json:0",
+          "con": "{\"facility_id\":\"archive-workshop\",\"zone_id\":\"conservation\",\"asset_id\":\"bench-extract\",\"incident_id\":\"incident-bcd88d20e6\",\"run_id\":\"demo-b8bc1004bb\",\"source_cin_ri\":\"cinzybG3XkOq0\",\"kind\":\"work_order\",\"work_order_id\":\"work-incident-bcd88d20e6\",\"command_id\":null,\"observed_at\":\"2026-11-18T16:48:22.588+00:00\",\"status\":\"open\",\"priority\":\"inspection\",\"evidence_status\":\"awaiting_outcome\",\"revision\":1,\"outcome_ri\":\"cinqw5tpxAssi\",\"observation_rqi\":\"opensoom-e8f95e952d254c4abe6c9ab579714326\",\"airflow\":600.0,\"profile_version\":1}"
+        }
+      },
+      "query": {},
+      "response": {
+        "rsc": 4105,
+        "rqi": "opensoom-72556b48218142bd95da18e2e6096d32",
+        "body": {
+          "m2m:dbg": "Resource with structured id: cse-multiapp/opensoom/facilities/archive-workshop/work_orders/order-da7ac7a4afcc4cb82b935cb3460a28fb already exists"
+        },
+        "http_status": 409
+      }
+    },
+    {
+      "timestamp": "2026-11-18T16:48:27.415146+00:00",
+      "method": "POST",
+      "path": "cse-multiapp/opensoom/facilities/archive-workshop/work_orders",
+      "origin": "Cosmaintenance1897faf469cba17c",
+      "rqi": "opensoom-a92b7433f8b14b64a1372c399c64a31f",
+      "request": {
+        "m2m:cin": {
+          "rn": "order-13fbcdcc336efba739d3208b4005d48c",
+          "cnf": "application/json:0",
+          "con": "{\"facility_id\":\"archive-workshop\",\"zone_id\":\"conservation\",\"asset_id\":\"bench-extract\",\"incident_id\":\"incident-bcd88d20e6\",\"run_id\":\"demo-b8bc1004bb\",\"source_cin_ri\":\"cin79BcKbfJ6g\",\"kind\":\"work_order\",\"work_order_id\":\"work-incident-bcd88d20e6\",\"command_id\":\"cmd-60c78fa5e7ba\",\"observed_at\":\"2026-11-18T16:48:23.226+00:00\",\"status\":\"open\",\"priority\":\"inspection\",\"evidence_status\":\"awaiting_independent_sample\",\"revision\":2,\"request_id\":\"sensor-badc21bd584ae77b1623ea001cf81c8c\",\"outcome_ri\":\"cin4Xafmb4W6i\",\"observation_rqi\":\"opensoom-745a13f1296e498d862ec914a89cbc14\",\"airflow\":515.0,\"profile_version\":1}"
+        }
+      },
+      "query": {},
+      "response": {
+        "rsc": 4105,
+        "rqi": "opensoom-a92b7433f8b14b64a1372c399c64a31f",
+        "body": {
+          "m2m:dbg": "Resource with structured id: cse-multiapp/opensoom/facilities/archive-workshop/work_orders/order-13fbcdcc336efba739d3208b4005d48c already exists"
+        },
+        "http_status": 409
+      }
+    },
+    {
+      "timestamp": "2026-11-18T16:48:27.419790+00:00",
+      "method": "POST",
+      "path": "cse-multiapp/opensoom/facilities/archive-workshop/sensor_requests",
+      "origin": "Cosmaintenance1897faf469cba17c",
+      "rqi": "opensoom-5dced8f42cf648e3948734cbd7389724",
+      "request": {
+        "m2m:cin": {
+          "rn": "sensor-badc21bd584ae77b1623ea001cf81c8c",
+          "cnf": "application/json:0",
+          "con": "{\"facility_id\":\"archive-workshop\",\"zone_id\":\"conservation\",\"asset_id\":\"bench-extract\",\"incident_id\":\"incident-bcd88d20e6\",\"run_id\":\"demo-b8bc1004bb\",\"source_cin_ri\":\"cin79BcKbfJ6g\",\"kind\":\"shaft_position_lookup\",\"request_id\":\"sensor-badc21bd584ae77b1623ea001cf81c8c\",\"work_order_id\":\"work-incident-bcd88d20e6\",\"sensor_id\":\"bench-shaft\",\"outcome_ri\":\"cin4Xafmb4W6i\",\"observed_at\":\"2026-11-18T16:48:23.226+00:00\",\"ack_at\":\"2026-11-18T16:48:22.815+00:00\",\"airflow\":515.0,\"profile_version\":1,\"command_id\":\"cmd-60c78fa5e7ba\",\"requested_pct\":80.0}"
+        }
+      },
+      "query": {},
+      "response": {
+        "rsc": 4105,
+        "rqi": "opensoom-5dced8f42cf648e3948734cbd7389724",
+        "body": {
+          "m2m:dbg": "Resource with structured id: cse-multiapp/opensoom/facilities/archive-workshop/sensor_requests/sensor-badc21bd584ae77b1623ea001cf81c8c already exists"
+        },
+        "http_status": 409
+      }
+    },
+    {
+      "timestamp": "2026-11-18T16:48:27.429623+00:00",
+      "method": "POST",
+      "path": "cse-multiapp/opensoom/facilities/archive-workshop/work_orders",
+      "origin": "Cosmaintenance1897faf469cba17c",
+      "rqi": "opensoom-3b287b98f44c48c386bffc7460e12606",
+      "request": {
+        "m2m:cin": {
+          "rn": "order-391e266ceaf4919284528c95e9642169",
+          "cnf": "application/json:0",
+          "con": "{\"facility_id\":\"archive-workshop\",\"zone_id\":\"conservation\",\"asset_id\":\"bench-extract\",\"incident_id\":\"incident-bcd88d20e6\",\"run_id\":\"demo-b8bc1004bb\",\"source_cin_ri\":\"cin9jNKbfZoEh\",\"kind\":\"work_order\",\"work_order_id\":\"work-incident-bcd88d20e6\",\"command_id\":\"cmd-416348cf6592\",\"observed_at\":\"2026-11-18T16:48:27.252+00:00\",\"status\":\"open\",\"priority\":\"inspection\",\"evidence_status\":\"awaiting_independent_sample\",\"revision\":2,\"request_id\":\"sensor-7dedaaaaabf78ddd943d69a0b40882bb\",\"outcome_ri\":\"cinBOM9LgYmio\",\"observation_rqi\":\"opensoom-976ccb3b8408413682d3a7eca98bae99\",\"airflow\":515.0,\"profile_version\":1}"
+        }
+      },
+      "query": {},
+      "response": {
+        "rsc": 2001,
+        "rqi": "opensoom-3b287b98f44c48c386bffc7460e12606",
+        "body": {
+          "m2m:cin": {
+            "rn": "order-391e266ceaf4919284528c95e9642169",
+            "cnf": "application/json:0",
+            "con": "{\"facility_id\":\"archive-workshop\",\"zone_id\":\"conservation\",\"asset_id\":\"bench-extract\",\"incident_id\":\"incident-bcd88d20e6\",\"run_id\":\"demo-b8bc1004bb\",\"source_cin_ri\":\"cin9jNKbfZoEh\",\"kind\":\"work_order\",\"work_order_id\":\"work-incident-bcd88d20e6\",\"command_id\":\"cmd-416348cf6592\",\"observed_at\":\"2026-11-18T16:48:27.252+00:00\",\"status\":\"open\",\"priority\":\"inspection\",\"evidence_status\":\"awaiting_independent_sample\",\"revision\":2,\"request_id\":\"sensor-7dedaaaaabf78ddd943d69a0b40882bb\",\"outcome_ri\":\"cinBOM9LgYmio\",\"observation_rqi\":\"opensoom-976ccb3b8408413682d3a7eca98bae99\",\"airflow\":515.0,\"profile_version\":1}",
+            "cs": 605,
+            "pi": "cntZqzI9mfJXv",
+            "ri": "cinS0J6Owepb7",
+            "ty": 4,
+            "ct": "20261118T164827,430469",
+            "lt": "20261118T164827,430469",
+            "et": "20311117T164814,518984",
+            "st": 4
+          }
+        },
+        "http_status": 201
+      }
+    },
+    {
+      "timestamp": "2026-11-18T16:48:27.432773+00:00",
+      "method": "POST",
+      "path": "cse-multiapp/opensoom/facilities/archive-workshop/sensor_requests",
+      "origin": "Cosmaintenance1897faf469cba17c",
+      "rqi": "opensoom-2ad78ab2ebc1480e940a330b29946190",
+      "request": {
+        "m2m:cin": {
+          "rn": "sensor-7dedaaaaabf78ddd943d69a0b40882bb",
+          "cnf": "application/json:0",
+          "con": "{\"facility_id\":\"archive-workshop\",\"zone_id\":\"conservation\",\"asset_id\":\"bench-extract\",\"incident_id\":\"incident-bcd88d20e6\",\"run_id\":\"demo-b8bc1004bb\",\"source_cin_ri\":\"cin9jNKbfZoEh\",\"kind\":\"shaft_position_lookup\",\"request_id\":\"sensor-7dedaaaaabf78ddd943d69a0b40882bb\",\"work_order_id\":\"work-incident-bcd88d20e6\",\"sensor_id\":\"bench-shaft\",\"outcome_ri\":\"cinBOM9LgYmio\",\"observed_at\":\"2026-11-18T16:48:27.252+00:00\",\"ack_at\":\"2026-11-18T16:48:27.236+00:00\",\"airflow\":515.0,\"profile_version\":1,\"command_id\":\"cmd-416348cf6592\",\"requested_pct\":95.0}"
+        }
+      },
+      "query": {},
+      "response": {
+        "rsc": 2001,
+        "rqi": "opensoom-2ad78ab2ebc1480e940a330b29946190",
+        "body": {
+          "m2m:cin": {
+            "rn": "sensor-7dedaaaaabf78ddd943d69a0b40882bb",
+            "cnf": "application/json:0",
+            "con": "{\"facility_id\":\"archive-workshop\",\"zone_id\":\"conservation\",\"asset_id\":\"bench-extract\",\"incident_id\":\"incident-bcd88d20e6\",\"run_id\":\"demo-b8bc1004bb\",\"source_cin_ri\":\"cin9jNKbfZoEh\",\"kind\":\"shaft_position_lookup\",\"request_id\":\"sensor-7dedaaaaabf78ddd943d69a0b40882bb\",\"work_order_id\":\"work-incident-bcd88d20e6\",\"sensor_id\":\"bench-shaft\",\"outcome_ri\":\"cinBOM9LgYmio\",\"observed_at\":\"2026-11-18T16:48:27.252+00:00\",\"ack_at\":\"2026-11-18T16:48:27.236+00:00\",\"airflow\":515.0,\"profile_version\":1,\"command_id\":\"cmd-416348cf6592\",\"requested_pct\":95.0}",
+            "cs": 541,
+            "pi": "cnthdyk2nT4yq",
+            "ri": "cin2QykV97mcF",
+            "ty": 4,
+            "ct": "20261118T164827,434127",
+            "lt": "20261118T164827,434127",
+            "et": "20311117T164814,518984",
+            "st": 2
+          }
+        },
+        "http_status": 201
+      }
+    },
+    {
+      "timestamp": "2026-11-18T16:48:31.259030+00:00",
+      "method": "POST",
+      "path": "cse-multiapp/opensoom/facilities/archive-workshop/independent_samples",
+      "origin": "Cossensor1897faf469cba17c",
+      "rqi": "opensoom-d4cd0f5c118d45c8bb1023ffd9901e30",
+      "request": {
+        "m2m:cin": {
+          "con": "{\"facility_id\": \"archive-workshop\", \"zone_id\": \"conservation\", \"asset_id\": \"bench-extract\", \"sensor_id\": \"bench-shaft\", \"observed_at\": \"2026-11-18T16:48:31.257+00:00\", \"value\": 93, \"unit\": \"%\", \"source\": \"independent_position_sensor\", \"simulated\": true}",
+          "cnf": "application/json:0"
+        }
+      },
+      "query": {},
+      "response": {
+        "rsc": 2001,
+        "rqi": "opensoom-d4cd0f5c118d45c8bb1023ffd9901e30",
+        "body": {
+          "m2m:cin": {
+            "con": "{\"facility_id\": \"archive-workshop\", \"zone_id\": \"conservation\", \"asset_id\": \"bench-extract\", \"sensor_id\": \"bench-shaft\", \"observed_at\": \"2026-11-18T16:48:31.257+00:00\", \"value\": 93, \"unit\": \"%\", \"source\": \"independent_position_sensor\", \"simulated\": true}",
+            "cnf": "application/json:0",
+            "cs": 253,
+            "pi": "cntbzMfD7ZZms",
+            "ri": "cinNAF4sGL6hV",
+            "rn": "cin_blad4VwTy7",
+            "ty": 4,
+            "ct": "20261118T164831,261110",
+            "lt": "20261118T164831,261110",
+            "et": "20311117T164814,518984",
+            "st": 2
+          }
+        },
+        "http_status": 201
+      }
+    },
+    {
+      "timestamp": "2026-11-18T16:48:31.430909+00:00",
+      "method": "POST",
+      "path": "cse-multiapp/opensoom/facilities/archive-workshop/sensor_responses",
+      "origin": "Cosbridge1897faf469cba17c",
+      "rqi": "opensoom-54e266532fe240d18eb9d5ef83b723da",
+      "request": {
+        "m2m:cin": {
+          "rn": "measurement-96d3ff44a050d92cad97e8d00e4d9803",
+          "cnf": "application/json:0",
+          "con": "{\"kind\":\"sensor_result\",\"facility_id\":\"archive-workshop\",\"request_id\":\"sensor-7dedaaaaabf78ddd943d69a0b40882bb\",\"request_ri\":\"cin2QykV97mcF\",\"mode\":\"local\",\"status\":\"measured\",\"sample\":{\"sensor_id\":\"bench-shaft\",\"value\":93,\"unit\":\"%\",\"source\":\"independent_position_sensor\",\"observed_at\":\"2026-11-18T16:48:31.257+00:00\"},\"provider_receipt\":{\"sample_cin_ri\":\"cinNAF4sGL6hV\"}}"
+        }
+      },
+      "query": {},
+      "response": {
+        "rsc": 2001,
+        "rqi": "opensoom-54e266532fe240d18eb9d5ef83b723da",
+        "body": {
+          "m2m:cin": {
+            "rn": "measurement-96d3ff44a050d92cad97e8d00e4d9803",
+            "cnf": "application/json:0",
+            "con": "{\"kind\":\"sensor_result\",\"facility_id\":\"archive-workshop\",\"request_id\":\"sensor-7dedaaaaabf78ddd943d69a0b40882bb\",\"request_ri\":\"cin2QykV97mcF\",\"mode\":\"local\",\"status\":\"measured\",\"sample\":{\"sensor_id\":\"bench-shaft\",\"value\":93,\"unit\":\"%\",\"source\":\"independent_position_sensor\",\"observed_at\":\"2026-11-18T16:48:31.257+00:00\"},\"provider_receipt\":{\"sample_cin_ri\":\"cinNAF4sGL6hV\"}}",
+            "cs": 373,
+            "pi": "cntwBVfD3LDpu",
+            "ri": "cin8KPdqhoT0Z",
+            "ty": 4,
+            "ct": "20261118T164831,431898",
+            "lt": "20261118T164831,431898",
+            "et": "20311117T164814,518984",
+            "st": 2
+          }
+        },
+        "http_status": 201
+      }
+    },
+    {
+      "timestamp": "2026-11-18T16:48:31.653443+00:00",
+      "method": "POST",
+      "path": "cse-multiapp/opensoom/facilities/archive-workshop/work_orders",
+      "origin": "Cosmaintenance1897faf469cba17c",
+      "rqi": "opensoom-f86748f4ae444d3ab19b4c5fb71188e2",
+      "request": {
+        "m2m:cin": {
+          "rn": "order-da7ac7a4afcc4cb82b935cb3460a28fb",
+          "cnf": "application/json:0",
+          "con": "{\"facility_id\":\"archive-workshop\",\"zone_id\":\"conservation\",\"asset_id\":\"bench-extract\",\"incident_id\":\"incident-bcd88d20e6\",\"run_id\":\"demo-b8bc1004bb\",\"source_cin_ri\":\"cinzybG3XkOq0\",\"kind\":\"work_order\",\"work_order_id\":\"work-incident-bcd88d20e6\",\"command_id\":null,\"observed_at\":\"2026-11-18T16:48:22.588+00:00\",\"status\":\"open\",\"priority\":\"inspection\",\"evidence_status\":\"awaiting_outcome\",\"revision\":1,\"outcome_ri\":\"cinqw5tpxAssi\",\"observation_rqi\":\"opensoom-c23903895a5045e89be1207958181631\",\"airflow\":600.0,\"profile_version\":1}"
+        }
+      },
+      "query": {},
+      "response": {
+        "rsc": 4105,
+        "rqi": "opensoom-f86748f4ae444d3ab19b4c5fb71188e2",
+        "body": {
+          "m2m:dbg": "Resource with structured id: cse-multiapp/opensoom/facilities/archive-workshop/work_orders/order-da7ac7a4afcc4cb82b935cb3460a28fb already exists"
+        },
+        "http_status": 409
+      }
+    },
+    {
+      "timestamp": "2026-11-18T16:48:31.660896+00:00",
+      "method": "POST",
+      "path": "cse-multiapp/opensoom/facilities/archive-workshop/work_orders",
+      "origin": "Cosmaintenance1897faf469cba17c",
+      "rqi": "opensoom-f25ed144518e4f9a9d9d53e88caed811",
+      "request": {
+        "m2m:cin": {
+          "rn": "order-13fbcdcc336efba739d3208b4005d48c",
+          "cnf": "application/json:0",
+          "con": "{\"facility_id\":\"archive-workshop\",\"zone_id\":\"conservation\",\"asset_id\":\"bench-extract\",\"incident_id\":\"incident-bcd88d20e6\",\"run_id\":\"demo-b8bc1004bb\",\"source_cin_ri\":\"cin79BcKbfJ6g\",\"kind\":\"work_order\",\"work_order_id\":\"work-incident-bcd88d20e6\",\"command_id\":\"cmd-60c78fa5e7ba\",\"observed_at\":\"2026-11-18T16:48:23.226+00:00\",\"status\":\"open\",\"priority\":\"inspection\",\"evidence_status\":\"awaiting_independent_sample\",\"revision\":2,\"request_id\":\"sensor-badc21bd584ae77b1623ea001cf81c8c\",\"outcome_ri\":\"cin4Xafmb4W6i\",\"observation_rqi\":\"opensoom-5b7fd565f12a4fa5b99cdf258ea1b1ee\",\"airflow\":515.0,\"profile_version\":1}"
+        }
+      },
+      "query": {},
+      "response": {
+        "rsc": 4105,
+        "rqi": "opensoom-f25ed144518e4f9a9d9d53e88caed811",
+        "body": {
+          "m2m:dbg": "Resource with structured id: cse-multiapp/opensoom/facilities/archive-workshop/work_orders/order-13fbcdcc336efba739d3208b4005d48c already exists"
+        },
+        "http_status": 409
+      }
+    },
+    {
+      "timestamp": "2026-11-18T16:48:31.665356+00:00",
+      "method": "POST",
+      "path": "cse-multiapp/opensoom/facilities/archive-workshop/sensor_requests",
+      "origin": "Cosmaintenance1897faf469cba17c",
+      "rqi": "opensoom-eed5f0b52fde4d33bd97f09d94384c4b",
+      "request": {
+        "m2m:cin": {
+          "rn": "sensor-badc21bd584ae77b1623ea001cf81c8c",
+          "cnf": "application/json:0",
+          "con": "{\"facility_id\":\"archive-workshop\",\"zone_id\":\"conservation\",\"asset_id\":\"bench-extract\",\"incident_id\":\"incident-bcd88d20e6\",\"run_id\":\"demo-b8bc1004bb\",\"source_cin_ri\":\"cin79BcKbfJ6g\",\"kind\":\"shaft_position_lookup\",\"request_id\":\"sensor-badc21bd584ae77b1623ea001cf81c8c\",\"work_order_id\":\"work-incident-bcd88d20e6\",\"sensor_id\":\"bench-shaft\",\"outcome_ri\":\"cin4Xafmb4W6i\",\"observed_at\":\"2026-11-18T16:48:23.226+00:00\",\"ack_at\":\"2026-11-18T16:48:22.815+00:00\",\"airflow\":515.0,\"profile_version\":1,\"command_id\":\"cmd-60c78fa5e7ba\",\"requested_pct\":80.0}"
+        }
+      },
+      "query": {},
+      "response": {
+        "rsc": 4105,
+        "rqi": "opensoom-eed5f0b52fde4d33bd97f09d94384c4b",
+        "body": {
+          "m2m:dbg": "Resource with structured id: cse-multiapp/opensoom/facilities/archive-workshop/sensor_requests/sensor-badc21bd584ae77b1623ea001cf81c8c already exists"
+        },
+        "http_status": 409
+      }
+    },
+    {
+      "timestamp": "2026-11-18T16:48:31.672370+00:00",
+      "method": "POST",
+      "path": "cse-multiapp/opensoom/facilities/archive-workshop/work_orders",
+      "origin": "Cosmaintenance1897faf469cba17c",
+      "rqi": "opensoom-dbf2187aef714785a872dccbd4e9cdf3",
+      "request": {
+        "m2m:cin": {
+          "rn": "order-391e266ceaf4919284528c95e9642169",
+          "cnf": "application/json:0",
+          "con": "{\"facility_id\":\"archive-workshop\",\"zone_id\":\"conservation\",\"asset_id\":\"bench-extract\",\"incident_id\":\"incident-bcd88d20e6\",\"run_id\":\"demo-b8bc1004bb\",\"source_cin_ri\":\"cin9jNKbfZoEh\",\"kind\":\"work_order\",\"work_order_id\":\"work-incident-bcd88d20e6\",\"command_id\":\"cmd-416348cf6592\",\"observed_at\":\"2026-11-18T16:48:27.252+00:00\",\"status\":\"open\",\"priority\":\"inspection\",\"evidence_status\":\"awaiting_independent_sample\",\"revision\":2,\"request_id\":\"sensor-7dedaaaaabf78ddd943d69a0b40882bb\",\"outcome_ri\":\"cinBOM9LgYmio\",\"observation_rqi\":\"opensoom-51c901f9f07248e6b70612b31011678a\",\"airflow\":515.0,\"profile_version\":1}"
+        }
+      },
+      "query": {},
+      "response": {
+        "rsc": 4105,
+        "rqi": "opensoom-dbf2187aef714785a872dccbd4e9cdf3",
+        "body": {
+          "m2m:dbg": "Resource with structured id: cse-multiapp/opensoom/facilities/archive-workshop/work_orders/order-391e266ceaf4919284528c95e9642169 already exists"
+        },
+        "http_status": 409
+      }
+    },
+    {
+      "timestamp": "2026-11-18T16:48:31.676542+00:00",
+      "method": "POST",
+      "path": "cse-multiapp/opensoom/facilities/archive-workshop/sensor_requests",
+      "origin": "Cosmaintenance1897faf469cba17c",
+      "rqi": "opensoom-2d214e993c144876ad73fc28f4fb94a2",
+      "request": {
+        "m2m:cin": {
+          "rn": "sensor-7dedaaaaabf78ddd943d69a0b40882bb",
+          "cnf": "application/json:0",
+          "con": "{\"facility_id\":\"archive-workshop\",\"zone_id\":\"conservation\",\"asset_id\":\"bench-extract\",\"incident_id\":\"incident-bcd88d20e6\",\"run_id\":\"demo-b8bc1004bb\",\"source_cin_ri\":\"cin9jNKbfZoEh\",\"kind\":\"shaft_position_lookup\",\"request_id\":\"sensor-7dedaaaaabf78ddd943d69a0b40882bb\",\"work_order_id\":\"work-incident-bcd88d20e6\",\"sensor_id\":\"bench-shaft\",\"outcome_ri\":\"cinBOM9LgYmio\",\"observed_at\":\"2026-11-18T16:48:27.252+00:00\",\"ack_at\":\"2026-11-18T16:48:27.236+00:00\",\"airflow\":515.0,\"profile_version\":1,\"command_id\":\"cmd-416348cf6592\",\"requested_pct\":95.0}"
+        }
+      },
+      "query": {},
+      "response": {
+        "rsc": 4105,
+        "rqi": "opensoom-2d214e993c144876ad73fc28f4fb94a2",
+        "body": {
+          "m2m:dbg": "Resource with structured id: cse-multiapp/opensoom/facilities/archive-workshop/sensor_requests/sensor-7dedaaaaabf78ddd943d69a0b40882bb already exists"
+        },
+        "http_status": 409
+      }
+    },
+    {
+      "timestamp": "2026-11-18T16:48:31.694323+00:00",
+      "method": "POST",
+      "path": "cse-multiapp/opensoom/facilities/archive-workshop/work_orders",
+      "origin": "Cosmaintenance1897faf469cba17c",
+      "rqi": "opensoom-e6077d98a7364dff951553a02c33a277",
+      "request": {
+        "m2m:cin": {
+          "rn": "order-afe0a56f8e4a34233e690b21166fc1fe",
+          "cnf": "application/json:0",
+          "con": "{\"facility_id\":\"archive-workshop\",\"zone_id\":\"conservation\",\"asset_id\":\"bench-extract\",\"incident_id\":\"incident-bcd88d20e6\",\"run_id\":\"demo-b8bc1004bb\",\"source_cin_ri\":\"cin9jNKbfZoEh\",\"kind\":\"work_order\",\"work_order_id\":\"work-incident-bcd88d20e6\",\"command_id\":\"cmd-416348cf6592\",\"observed_at\":\"2026-11-18T16:48:27.252+00:00\",\"status\":\"open\",\"priority\":\"inspect_airflow_path\",\"evidence_status\":\"verified_independent_sample\",\"revision\":4,\"requested_pct\":95.0,\"sample\":{\"sensor_id\":\"bench-shaft\",\"value\":93,\"unit\":\"%\",\"source\":\"independent_position_sensor\",\"observed_at\":\"2026-11-18T16:48:31.257+00:00\"},\"provider_receipt\":{\"sample_cin_ri\":\"cinNAF4sGL6hV\"},\"request_id\":\"sensor-7dedaaaaabf78ddd943d69a0b40882bb\",\"request_ri\":\"cin2QykV97mcF\",\"response_ri\":\"cin8KPdqhoT0Z\",\"outcome_ri\":\"cinBOM9LgYmio\",\"mode\":\"local\",\"airflow\":515.0,\"profile_version\":1}"
+        }
+      },
+      "query": {},
+      "response": {
+        "rsc": 2001,
+        "rqi": "opensoom-e6077d98a7364dff951553a02c33a277",
+        "body": {
+          "m2m:cin": {
+            "rn": "order-afe0a56f8e4a34233e690b21166fc1fe",
+            "cnf": "application/json:0",
+            "con": "{\"facility_id\":\"archive-workshop\",\"zone_id\":\"conservation\",\"asset_id\":\"bench-extract\",\"incident_id\":\"incident-bcd88d20e6\",\"run_id\":\"demo-b8bc1004bb\",\"source_cin_ri\":\"cin9jNKbfZoEh\",\"kind\":\"work_order\",\"work_order_id\":\"work-incident-bcd88d20e6\",\"command_id\":\"cmd-416348cf6592\",\"observed_at\":\"2026-11-18T16:48:27.252+00:00\",\"status\":\"open\",\"priority\":\"inspect_airflow_path\",\"evidence_status\":\"verified_independent_sample\",\"revision\":4,\"requested_pct\":95.0,\"sample\":{\"sensor_id\":\"bench-shaft\",\"value\":93,\"unit\":\"%\",\"source\":\"independent_position_sensor\",\"observed_at\":\"2026-11-18T16:48:31.257+00:00\"},\"provider_receipt\":{\"sample_cin_ri\":\"cinNAF4sGL6hV\"},\"request_id\":\"sensor-7dedaaaaabf78ddd943d69a0b40882bb\",\"request_ri\":\"cin2QykV97mcF\",\"response_ri\":\"cin8KPdqhoT0Z\",\"outcome_ri\":\"cinBOM9LgYmio\",\"mode\":\"local\",\"airflow\":515.0,\"profile_version\":1}",
+            "cs": 845,
+            "pi": "cntZqzI9mfJXv",
+            "ri": "cinzw6SHrezLh",
+            "ty": 4,
+            "ct": "20261118T164831,695210",
+            "lt": "20261118T164831,695210",
+            "et": "20311117T164814,518984",
+            "st": 5
+          }
+        },
+        "http_status": 201
+      }
+    }
+  ],
+  "source_sha256": {
+    "src/opensoom/core.py": "84a492b83e8dec65317cbb1abb2ab7ce261734b3032daafa59f470d9c96135ea",
+    "src/opensoom/maintenance.py": "5032abae3e8c694da180290e97acba624f82e383ffa6c92c4ff04777271feffc",
+    "src/opensoom/maintenance_worker.py": "9fab1a6955425fbbeb41dc4d67c2ba0f6431c15527b1bc6f254af0b96b64c150",
+    "src/opensoom/mec_sensor.py": "9bd57e88070be6e7ea24c0a459a641708da74d5b9e0a4494f684f3d438058aca",
+    "src/opensoom/facility_pack.py": "55de4cc24c622b427867899df62591bc02fcbdf537374ffeee5fd6599a11ce17",
+    "src/opensoom/adapters.py": "b6b2425832cb70d38795c9758b90531eba313304a19a8bbe8ce085e12a6a8840",
+    "src/opensoom/policy.py": "801ba84bf1eea13404a19017359e4e01fcf11d33e812e3a571df68e34c110ad5",
+    "src/opensoom/onem2m.py": "c4edcf610b9c82266d222dc63b69869cbd62000478405cdcd98f44178b0b123e",
+    "scripts/facility_worker_acceptance.py": "01233377331d437976c5579bb98d040a8f753a0ea88060f2edb8407e4520111b",
+    "scripts/facility_pack_acceptance.py": "1553042cdcc76bc356eb31befc552fa812f91b0f21415a61eb71318a92487980",
+    "profiles/food-production.json": "402ae760ec4fe13c23e2a6c63e3ec80518d8ebdba30edde9e64cfdbb573e4c6e",
+    "profiles/learning-space.json": "2bc00d56a3fcf15cb388d7b81892a33123492b4452105522d368e5b8daee14e3"
+  },
+  "source_unchanged_during_run": true,
+  "source_before": {
+    "src/opensoom/core.py": "84a492b83e8dec65317cbb1abb2ab7ce261734b3032daafa59f470d9c96135ea",
+    "src/opensoom/maintenance.py": "5032abae3e8c694da180290e97acba624f82e383ffa6c92c4ff04777271feffc",
+    "src/opensoom/maintenance_worker.py": "9fab1a6955425fbbeb41dc4d67c2ba0f6431c15527b1bc6f254af0b96b64c150",
+    "src/opensoom/mec_sensor.py": "9bd57e88070be6e7ea24c0a459a641708da74d5b9e0a4494f684f3d438058aca",
+    "src/opensoom/facility_pack.py": "55de4cc24c622b427867899df62591bc02fcbdf537374ffeee5fd6599a11ce17",
+    "src/opensoom/adapters.py": "b6b2425832cb70d38795c9758b90531eba313304a19a8bbe8ce085e12a6a8840",
+    "src/opensoom/policy.py": "801ba84bf1eea13404a19017359e4e01fcf11d33e812e3a571df68e34c110ad5",
+    "src/opensoom/onem2m.py": "c4edcf610b9c82266d222dc63b69869cbd62000478405cdcd98f44178b0b123e",
+    "scripts/facility_worker_acceptance.py": "01233377331d437976c5579bb98d040a8f753a0ea88060f2edb8407e4520111b",
+    "scripts/facility_pack_acceptance.py": "1553042cdcc76bc356eb31befc552fa812f91b0f21415a61eb71318a92487980",
+    "profiles/food-production.json": "402ae760ec4fe13c23e2a6c63e3ec80518d8ebdba30edde9e64cfdbb573e4c6e",
+    "profiles/learning-space.json": "2bc00d56a3fcf15cb388d7b81892a33123492b4452105522d368e5b8daee14e3"
+  }
+}
