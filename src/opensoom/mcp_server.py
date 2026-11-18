@@ -65,7 +65,7 @@ class ServiceProxy:
         value = os.environ.get("OPENSOOM_SERVICE_TOKEN")
         if value:
             return value
-        path = project_dir() / ".runtime/service-credentials.json"
+        path = Path(os.environ.get("OPENSOOM_SERVICE_CREDENTIALS", project_dir() / ".runtime/service-credentials.json"))
         try:
             return str(json.loads(path.read_text()).get("operator_token", ""))
         except (FileNotFoundError, ValueError, OSError):
@@ -190,6 +190,35 @@ def create_server(proxy: ServiceProxy | None = None) -> MCPServer:
     def verify_result(facility_id: str, command_id: str) -> dict[str, Any]:
         """Independently check command state, device ACK and later observations; report pending/failed/unresolved outcomes as returned."""
         return call("verify_result", {"facility_id": facility_id, "command_id": command_id})
+
+    @server.tool(structured_output=True)
+    def save_scenario(facility_id: str, scenario_id: str, zone_id: str, observation_age_seconds: int,
+                      airflow_m3_h: float, damper_percent: float,
+                      expected_result: Literal["command_refused", "device_acknowledged"]) -> dict[str, Any]:
+        """Save an immutable virtual damper trial. Use an explicit facility, zone, observation age (seconds), airflow (m³/h), setpoint (%) and independent expectation."""
+        return call("save_scenario", {"facility_id": facility_id, "scenario_id": scenario_id, "zone_id": zone_id,
+                                      "observation_age_seconds": observation_age_seconds, "airflow_m3_h": airflow_m3_h,
+                                      "damper_percent": damper_percent, "expected_result": expected_result})
+
+    @server.tool(structured_output=True)
+    def run_scenario(facility_id: str, scenario_id: str, version: str, request_id: str) -> dict[str, Any]:
+        """Run a saved version in an idle virtual facility. Reuse the same request_id for a retry; use a new one for intentional replay."""
+        return call("run_scenario", {"facility_id": facility_id, "scenario_id": scenario_id, "version": version,
+                                      "request_id": request_id})
+
+    @server.tool(structured_output=True)
+    def read_scenario_run(facility_id: str, execution_id: str) -> dict[str, Any]:
+        """Read the persisted execution and reread its exact observation from the real CSE."""
+        return call("read_scenario_run", {"facility_id": facility_id, "execution_id": execution_id})
+
+    @server.tool(structured_output=True)
+    def test_virtual_scenario(facility_id: str, scenario_id: str, zone_id: str, observation_age_seconds: int,
+                              airflow_m3_h: float, damper_percent: float,
+                              expected_result: Literal["command_refused", "device_acknowledged"], request_id: str) -> dict[str, Any]:
+        """Save and immediately test a virtual damper trial requested by the operator. Supply a unique request ID and reuse it on retries."""
+        saved = save_scenario(facility_id, scenario_id, zone_id, observation_age_seconds, airflow_m3_h, damper_percent, expected_result)
+        trial = run_scenario(facility_id, scenario_id, saved["version"], request_id)
+        return read_scenario_run(facility_id, trial["execution_id"])
 
     return server
 

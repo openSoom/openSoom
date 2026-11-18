@@ -18,7 +18,7 @@ import urllib.request
 import uuid
 
 ROOT = Path(__file__).resolve().parents[1]
-RUNTIME = ROOT / ".runtime"
+RUNTIME = Path(os.environ.get("OPENSOOM_CSE_RUNTIME_DIR", ROOT / ".runtime")).resolve()
 VENV = ROOT / "tmp/runtime/cse-venv"
 
 

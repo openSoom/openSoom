@@ -1,0 +1,11 @@
+**
+!apps/
+!apps/mec-maintenance/
+!apps/mec-maintenance/Dockerfile
+!apps/mec-maintenance/requirements.lock
+!src/
+!src/opensoom/
+!src/opensoom/__init__.py
+!src/opensoom/onem2m.py
+!src/opensoom/mec_sensor.py
+!src/opensoom/maintenance_worker.py

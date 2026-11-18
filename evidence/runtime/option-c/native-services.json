@@ -1,0 +1,506 @@
+{
+  "captured_utc": "2026-11-18T15:55:15.051102+00:00",
+  "upstream_revision": "8c66f08e443be174f109fe2ac645247c9afcd449",
+  "physical_host_count": 1,
+  "workloads": [
+    {
+      "name": "meep-couchdb-svc-couchdb-74c86567c4-vqz9f",
+      "uid": "9d81392c-d12a-44ff-b212-407bd5920cf9",
+      "phase": "Running",
+      "node": "opensoom-mec-test",
+      "containers": [
+        {
+          "name": "meep-couchdb-svc-couchdb",
+          "digest": "docker.io/library/couchdb@sha256:ccea1e8035bf7afd68336e24056a1ca9c1c46d7abe42da686322c0ac7218e5c2",
+          "ready": true
+        }
+      ]
+    },
+    {
+      "name": "meep-influxdb-6cfc9db9b9-snhl7",
+      "uid": "5ac915f4-b9df-464f-a6f4-f6f278ebc93d",
+      "phase": "Running",
+      "node": "opensoom-mec-test",
+      "containers": [
+        {
+          "name": "meep-influxdb",
+          "digest": "docker.io/library/influxdb@sha256:2601e27d6b7eac276017d7ea48d2685d52639cea974744b5877924376283a4cd",
+          "ready": true
+        }
+      ]
+    },
+    {
+      "name": "meep-redis-master-565bc7d574-xdt5n",
+      "uid": "71b2008d-9d08-4993-92e8-7319e998e509",
+      "phase": "Running",
+      "node": "opensoom-mec-test",
+      "containers": [
+        {
+          "name": "meep-redis-master",
+          "digest": "docker.io/library/redis@sha256:02419de7eddf55aa5bcf49efb74e88fa8d931b4d77c07eff8a6b2144472b6952",
+          "ready": true
+        }
+      ]
+    },
+    {
+      "name": "meep-sandbox-ctrl-7988d9fcf6-hsgtx",
+      "uid": "f1ad6f20-40bf-415b-a2c0-705587567549",
+      "phase": "Running",
+      "node": "opensoom-mec-test",
+      "containers": [
+        {
+          "name": "meep-sandbox-ctrl",
+          "digest": "sha256:7135feb231a48b9ba2686027cafe35d850a9f3a71cc92b8eff3c8be9f944f68f",
+          "ready": true
+        }
+      ]
+    },
+    {
+      "name": "mep1-meep-app-enablement-68749dc87f-m29p8",
+      "uid": "fc5c5939-61ff-4090-948f-db44a1747feb",
+      "phase": "Running",
+      "node": "opensoom-mec-test",
+      "containers": [
+        {
+          "name": "mep1-meep-app-enablement",
+          "digest": "sha256:7f2010ecf830db5beccc11a1f90c8cda356d01bf4794c37a9bccc3e1be6854ec",
+          "ready": true
+        }
+      ]
+    },
+    {
+      "name": "mep1-meep-iot-54cf68df8d-vv7j7",
+      "uid": "432ceb9a-7e07-4f61-8bc5-3a31ce7b16da",
+      "phase": "Running",
+      "node": "opensoom-mec-test",
+      "containers": [
+        {
+          "name": "mep1-meep-iot",
+          "digest": "sha256:f322554420c528b9a93cf543849e8bde428f07adc90a42a3e3583b94a5405c61",
+          "ready": true
+        }
+      ]
+    },
+    {
+      "name": "mep1-meep-sss-5dccbb9cf5-ff4n2",
+      "uid": "e50122b6-480d-457b-9ed6-7bdde5646ccf",
+      "phase": "Running",
+      "node": "opensoom-mec-test",
+      "containers": [
+        {
+          "name": "mep1-meep-sss",
+          "digest": "sha256:884843fce497b2f392e90e7d278be714b2ab3b44b8a4cec884f18d770ca89628",
+          "ready": true
+        }
+      ]
+    },
+    {
+      "name": "opensoom-in-65c8b9d7fc-rv79k",
+      "uid": "654f6caa-54af-4927-b898-aacb9de608d5",
+      "phase": "Running",
+      "node": "opensoom-mec-test",
+      "containers": [
+        {
+          "name": "opensoom-in",
+          "digest": "sha256:59369acecf0e1ad9849271aca5572406dc24c497b266414f508a99ef37079a86",
+          "ready": true
+        }
+      ]
+    },
+    {
+      "name": "opensoom-mec-ingress-5668fcfbdd-zzlvm",
+      "uid": "8a55780e-f8f9-4b90-8f78-c9fcdef8adde",
+      "phase": "Running",
+      "node": "opensoom-mec-test",
+      "containers": [
+        {
+          "name": "opensoom-mec-ingress",
+          "digest": "docker.io/library/nginx@sha256:30f1c0d78e0ad60901648be663a710bdadf19e4c10ac6782c235200619158284",
+          "ready": true
+        }
+      ]
+    },
+    {
+      "name": "opensoom-mn-59c6b46b57-cpsnz",
+      "uid": "ca3bc020-76d2-4d4e-97a0-7686fc80d33b",
+      "phase": "Running",
+      "node": "opensoom-mec-test",
+      "containers": [
+        {
+          "name": "opensoom-mn",
+          "digest": "sha256:59369acecf0e1ad9849271aca5572406dc24c497b266414f508a99ef37079a86",
+          "ready": true
+        }
+      ]
+    },
+    {
+      "name": "opensoom-provider-79d4d87769-wqns4",
+      "uid": "1795edfd-c199-4804-b253-e8cb8414d10a",
+      "phase": "Running",
+      "node": "opensoom-mec-test",
+      "containers": [
+        {
+          "name": "opensoom-provider",
+          "digest": "sha256:59369acecf0e1ad9849271aca5572406dc24c497b266414f508a99ef37079a86",
+          "ready": true
+        }
+      ]
+    },
+    {
+      "name": "opensoom-provider-events-5f77767968-ztwsl",
+      "uid": "12130b47-dc3f-424b-8a37-4946c0404da9",
+      "phase": "Running",
+      "node": "opensoom-mec-test",
+      "containers": [
+        {
+          "name": "opensoom-provider-events",
+          "digest": "docker.io/library/eclipse-mosquitto@sha256:81a6193ae693942a3231cd3ac52875b02b7e3a19da671b2fb4b55cc874c5b279",
+          "ready": true
+        }
+      ]
+    }
+  ],
+  "controller_admissions": {
+    "method": "GET",
+    "path": "/sandbox-ctrl/v1/applications",
+    "requested_utc": "2026-11-18T15:55:14.768588+00:00",
+    "http": 200,
+    "oneM2M_request_id": null,
+    "oneM2M_status": null,
+    "body": [
+      {
+        "id": "48a303e4-4ecc-4c3d-ad00-000000000001",
+        "name": "mep1-meep-app-enablement",
+        "nodeName": "mep1",
+        "type": "USER"
+      },
+      {
+        "id": "48a303e4-4ecc-4c3d-ad00-000000000002",
+        "name": "mep1-meep-iot",
+        "nodeName": "mep1",
+        "type": "USER"
+      },
+      {
+        "id": "48a303e4-4ecc-4c3d-ad00-000000000003",
+        "name": "mep1-meep-sss",
+        "nodeName": "mep1",
+        "type": "USER"
+      }
+    ]
+  },
+  "native_registry": {
+    "method": "GET",
+    "path": "/mec_service_mgmt/v1/services",
+    "requested_utc": "2026-11-18T15:55:14.770829+00:00",
+    "http": 200,
+    "oneM2M_request_id": null,
+    "oneM2M_status": null,
+    "body": [
+      {
+        "serInstanceId": "8ccaebbd-c792-4ad0-917a-a4a3fc6464d4",
+        "serName": "mep1-meep-iot",
+        "serCategory": {
+          "href": "catalogueHref",
+          "id": "iotId",
+          "name": "IOT",
+          "version": "v1"
+        },
+        "version": "3.1.1",
+        "state": "ACTIVE",
+        "transportInfo": {
+          "id": "sandboxTransport",
+          "name": "REST",
+          "type": "REST_HTTP",
+          "protocol": "HTTP",
+          "version": "2.0",
+          "endpoint": {
+            "uris": [
+              "http://opensoom-mec-ingress.default.svc.cluster.local/opensoom/mep1/iots/v1/"
+            ],
+            "fqdn": null,
+            "addresses": null,
+            "alternative": null
+          },
+          "security": {}
+        },
+        "serializer": "JSON",
+        "scopeOfLocality": "MEC_SYSTEM",
+        "consumedLocalOnly": true,
+        "isLocal": true,
+        "_links": {
+          "self": {
+            "href": "http://opensoom-mec-ingress.default.svc.cluster.local/opensoom/mep1/mec_service_mgmt/v1/applications/48a303e4-4ecc-4c3d-ad00-000000000002/services/8ccaebbd-c792-4ad0-917a-a4a3fc6464d4"
+          }
+        }
+      },
+      {
+        "serInstanceId": "33a76061-6729-4c5d-91ae-05c4df9d1ed0",
+        "serName": "mep1-meep-sss",
+        "serCategory": {
+          "href": "catalogueHref",
+          "id": "sssId",
+          "name": "SSS",
+          "version": "v1"
+        },
+        "version": "3.1.1",
+        "state": "ACTIVE",
+        "transportInfo": {
+          "id": "sandboxTransport",
+          "name": "REST",
+          "type": "REST_HTTP",
+          "protocol": "HTTP",
+          "version": "2.0",
+          "endpoint": {
+            "uris": [
+              "http://opensoom-mec-ingress.default.svc.cluster.local/opensoom/mep1/sens/v1/"
+            ],
+            "fqdn": null,
+            "addresses": null,
+            "alternative": null
+          },
+          "security": {}
+        },
+        "serializer": "JSON",
+        "scopeOfLocality": "MEC_SYSTEM",
+        "consumedLocalOnly": true,
+        "isLocal": true,
+        "_links": {
+          "self": {
+            "href": "http://opensoom-mec-ingress.default.svc.cluster.local/opensoom/mep1/mec_service_mgmt/v1/applications/48a303e4-4ecc-4c3d-ad00-000000000003/services/33a76061-6729-4c5d-91ae-05c4df9d1ed0"
+          }
+        }
+      }
+    ]
+  },
+  "native_033_provider": {
+    "method": "GET",
+    "path": "/opensoom/mep1/iots/v1/registered_iot_platforms/opensoom-position-provider",
+    "requested_utc": "2026-11-18T15:55:14.776177+00:00",
+    "http": 200,
+    "oneM2M_request_id": null,
+    "oneM2M_status": null,
+    "body": {
+      "iotPlatformId": "opensoom-position-provider",
+      "userTransportInfo": [
+        {
+          "id": "position-events",
+          "name": "Provider MQTT",
+          "type": "MB_TOPIC_BASED",
+          "protocol": "MQTT",
+          "version": "3.1.1",
+          "endpoint": {
+            "addresses": [
+              {
+                "host": "opensoom-provider-events.default.svc.cluster.local",
+                "port": 1883
+              }
+            ]
+          },
+          "security": {},
+          "implSpecificInfo": {}
+        }
+      ],
+      "customServicesTransportInfo": [
+        {
+          "id": "positions",
+          "name": "cse-provider",
+          "type": "REST_HTTP",
+          "protocol": "REST_HTTP",
+          "version": "4",
+          "endpoint": {
+            "addresses": [
+              {
+                "host": "opensoom-provider.default.svc.cluster.local",
+                "port": 8080
+              }
+            ]
+          },
+          "security": null
+        }
+      ],
+      "enabled": true
+    }
+  },
+  "native_046_discovery": {
+    "method": "GET",
+    "path": "/opensoom/mep1/sens/v1/queries/sensor_discovery?type=FLX&sensorPropertyList=saref%3Aany",
+    "requested_utc": "2026-11-18T15:55:14.781279+00:00",
+    "http": 200,
+    "oneM2M_request_id": null,
+    "oneM2M_status": null,
+    "body": [
+      {
+        "sensorIdentifier": "shaftYjotHJ3NyZ",
+        "sensorType": "FLX",
+        "sensorPropertyList": [
+          "SAREF"
+        ],
+        "sensorCharacteristicList": [
+          {
+            "characteristicName": "et",
+            "characteristicValue": "20311117T154827,554551"
+          },
+          {
+            "characteristicName": "type",
+            "characteristicValue": "os:shaft"
+          },
+          {
+            "characteristicName": "cnd",
+            "characteristicValue": "org.opensoom.provider.shaftPosition.v1"
+          },
+          {
+            "characteristicName": "pi",
+            "characteristicValue": "COpenSoomTransducer"
+          },
+          {
+            "characteristicName": "ri",
+            "characteristicValue": "shaftYjotHJ3NyZ"
+          },
+          {
+            "characteristicName": "ty",
+            "characteristicValue": "28"
+          },
+          {
+            "characteristicName": "ct",
+            "characteristicValue": "20261118T154827,574510"
+          },
+          {
+            "characteristicName": "sample",
+            "characteristicValue": "{\"observed_at\":\"2026-11-18T15:54:59.728540+00:00\",\"facility_id\":\"food-a\",\"zone_id\":\"cook\",\"asset_id\":\"extract-damper-01\",\"sensor_id\":\"shaft-position-01\",\"unit\":\"%\",\"value\":35,\"source\":\"independent_position_sensor\",\"simulated\":true}"
+          },
+          {
+            "characteristicName": "cs",
+            "characteristicValue": "231"
+          },
+          {
+            "characteristicName": "lt",
+            "characteristicValue": "20261118T155459,737499"
+          },
+          {
+            "characteristicName": "acpi",
+            "characteristicValue": "[\"acp6UYlK3gWGy\"]"
+          },
+          {
+            "characteristicName": "rn",
+            "characteristicValue": "shaft"
+          },
+          {
+            "characteristicName": "st",
+            "characteristicValue": "62"
+          }
+        ],
+        "sensorPosition": {
+          "latitude": 0,
+          "longitude": 0
+        }
+      }
+    ]
+  },
+  "native_046_data": {
+    "method": "GET",
+    "path": "/opensoom/mep1/sens/v1/queries/sensor_data?sensorIdentifier=shaftYjotHJ3NyZ",
+    "requested_utc": "2026-11-18T15:55:14.785697+00:00",
+    "http": 200,
+    "oneM2M_request_id": null,
+    "oneM2M_status": null,
+    "body": {
+      "sensorIdentifier": "shaftYjotHJ3NyZ",
+      "data": "[{\"CharacteristicName\":\"cnd\",\"CharacteristicValue\":\"org.opensoom.provider.shaftPosition.v1\",\"CharacteristicUnitOfMeasure\":null},{\"CharacteristicName\":\"pi\",\"CharacteristicValue\":\"COpenSoomTransducer\",\"CharacteristicUnitOfMeasure\":null},{\"CharacteristicName\":\"ri\",\"CharacteristicValue\":\"shaftYjotHJ3NyZ\",\"CharacteristicUnitOfMeasure\":null},{\"CharacteristicName\":\"ty\",\"CharacteristicValue\":\"28\",\"CharacteristicUnitOfMeasure\":null},{\"CharacteristicName\":\"ct\",\"CharacteristicValue\":\"20261118T154827,574510\",\"CharacteristicUnitOfMeasure\":null},{\"CharacteristicName\":\"sample\",\"CharacteristicValue\":\"{\\\"observed_at\\\":\\\"2026-11-18T15:54:59.728540+00:00\\\",\\\"facility_id\\\":\\\"food-a\\\",\\\"zone_id\\\":\\\"cook\\\",\\\"asset_id\\\":\\\"extract-damper-01\\\",\\\"sensor_id\\\":\\\"shaft-position-01\\\",\\\"unit\\\":\\\"%\\\",\\\"value\\\":35,\\\"source\\\":\\\"independent_position_sensor\\\",\\\"simulated\\\":true}\",\"CharacteristicUnitOfMeasure\":null},{\"CharacteristicName\":\"cs\",\"CharacteristicValue\":\"231\",\"CharacteristicUnitOfMeasure\":null},{\"CharacteristicName\":\"lt\",\"CharacteristicValue\":\"20261118T155459,737499\",\"CharacteristicUnitOfMeasure\":null},{\"CharacteristicName\":\"acpi\",\"CharacteristicValue\":\"[\\\"acp6UYlK3gWGy\\\"]\",\"CharacteristicUnitOfMeasure\":null},{\"CharacteristicName\":\"rn\",\"CharacteristicValue\":\"shaft\",\"CharacteristicUnitOfMeasure\":null},{\"CharacteristicName\":\"st\",\"CharacteristicValue\":\"62\",\"CharacteristicUnitOfMeasure\":null},{\"CharacteristicName\":\"et\",\"CharacteristicValue\":\"20311117T154827,554551\",\"CharacteristicUnitOfMeasure\":null},{\"CharacteristicName\":\"type\",\"CharacteristicValue\":\"os:shaft\",\"CharacteristicUnitOfMeasure\":null}]",
+      "dataFormat": "",
+      "dataUnitOfMeasure": ""
+    }
+  },
+  "native_046_missing": {
+    "method": "GET",
+    "path": "/opensoom/mep1/sens/v1/queries/sensor_data?sensorIdentifier=unknown-opensoom-sensor",
+    "requested_utc": "2026-11-18T15:55:14.788577+00:00",
+    "http": 400,
+    "oneM2M_request_id": null,
+    "oneM2M_status": null,
+    "body": {
+      "status": 400,
+      "detail": "Wrong Device identifier"
+    }
+  },
+  "provider_mca_latest": {
+    "method": "GET",
+    "path": "/cse-provider/transducer/shaft",
+    "requested_utc": "2026-11-18T15:55:14.485246+00:00",
+    "http": 200,
+    "oneM2M_request_id": "os-capture-e14917a86f28",
+    "oneM2M_status": "2000",
+    "body": {
+      "os:shaft": {
+        "rn": "shaft",
+        "cnd": "org.opensoom.provider.shaftPosition.v1",
+        "sample": "{\"observed_at\":\"2026-11-18T15:55:09.774593+00:00\",\"facility_id\":\"food-a\",\"zone_id\":\"cook\",\"asset_id\":\"extract-damper-01\",\"sensor_id\":\"shaft-position-01\",\"unit\":\"%\",\"value\":35,\"source\":\"independent_position_sensor\",\"simulated\":true}",
+        "acpi": [
+          "acp6UYlK3gWGy"
+        ],
+        "cs": 231,
+        "st": 64,
+        "pi": "COpenSoomTransducer",
+        "ri": "shaftYjotHJ3NyZ",
+        "ty": 28,
+        "ct": "20261118T154827,574510",
+        "lt": "20261118T155509,783018",
+        "et": "20311117T154827,554551"
+      }
+    }
+  },
+  "mapped_sample": {
+    "observed_at": "2026-11-18T15:54:59.728540+00:00",
+    "facility_id": "food-a",
+    "zone_id": "cook",
+    "asset_id": "extract-damper-01",
+    "sensor_id": "shaft-position-01",
+    "unit": "%",
+    "value": 35,
+    "source": "independent_position_sensor",
+    "simulated": true
+  },
+  "registration_receipt": [
+    201,
+    {
+      "iotPlatformId": "opensoom-position-provider",
+      "userTransportInfo": [
+        {
+          "id": "position-events",
+          "name": "Provider MQTT",
+          "type": "MB_TOPIC_BASED",
+          "protocol": "MQTT",
+          "version": "3.1.1",
+          "endpoint": {
+            "addresses": [
+              {
+                "host": "opensoom-provider-events.default.svc.cluster.local",
+                "port": 1883
+              }
+            ]
+          },
+          "security": {},
+          "implSpecificInfo": {}
+        }
+      ],
+      "customServicesTransportInfo": [
+        {
+          "id": "positions",
+          "name": "cse-provider",
+          "type": "REST_HTTP",
+          "protocol": "REST_HTTP",
+          "version": "4",
+          "endpoint": {
+            "addresses": [
+              {
+                "host": "opensoom-provider.default.svc.cluster.local",
+                "port": 8080
+              }
+            ]
+          },
+          "security": null
+        }
+      ],
+      "enabled": true
+    }
+  ]
+}

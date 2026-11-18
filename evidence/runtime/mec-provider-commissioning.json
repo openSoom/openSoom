@@ -1,0 +1,510 @@
+{
+  "status": "passed",
+  "run_id": "demo-4f65728fd2",
+  "virtual_equipment": true,
+  "facility_id": "food-a",
+  "mode": "mec046",
+  "cse": {
+    "csi": "/opensoom-mn",
+    "type": 2
+  },
+  "incident_status": "open",
+  "command": {
+    "facility_id": "food-a",
+    "zone_id": "cook",
+    "action": "set_damper",
+    "value": 100.0,
+    "reason": "Preauthorized deterministic demonstration",
+    "request_id": "demo-4f65728fd2:damper",
+    "id": "cmd-705596eb966f",
+    "status": "unresolved",
+    "ack": true,
+    "created_at": "2026-11-18T16:02:35.450764+00:00",
+    "expires_at": "2026-11-18T16:03:05.450764+00:00",
+    "profile_version": 1,
+    "run_id": "demo-4f65728fd2",
+    "incident_id": "incident-f2bce92571",
+    "observed_result": "unresolved",
+    "cse_rqi": "opensoom-564008c3f4c14e88aa1d76260f090d36",
+    "cse_resource_id": "cinbfN7TFGmOf",
+    "ack_at": "2026-11-18T16:02:35.999+00:00",
+    "ack_rqi": "opensoom-846c3d6f2c2543a78d82d5a9f6398fa0",
+    "unresolved_samples": 32,
+    "verification_rqi": "opensoom-c4d9594f93384a6a9cc65cd0a7584ed9"
+  },
+  "target_airflow_m3_h": 900,
+  "before": {
+    "ri": "cini4YeBWl6Pf",
+    "name": "order-56e06aeecef97ff7cae71fa1a4348fee",
+    "read_rqi": "opensoom-364191640c4f48ea95d8cc392f261d13",
+    "data": {
+      "facility_id": "food-a",
+      "zone_id": "cook",
+      "asset_id": "extract-damper-01",
+      "incident_id": "incident-f2bce92571",
+      "run_id": "demo-4f65728fd2",
+      "source_cin_ri": "cinqDXY5M2hMB",
+      "kind": "work_order",
+      "work_order_id": "work-incident-f2bce92571",
+      "command_id": "cmd-705596eb966f",
+      "observed_at": "2026-11-18T16:02:38.360+00:00",
+      "status": "open",
+      "priority": "inspection",
+      "evidence_status": "awaiting_independent_sample",
+      "revision": 2,
+      "request_id": "sensor-c3bc84b52bdd72d6b0cdc74f645837ae",
+      "outcome_ri": "cinjXiuQcRlL2",
+      "observation_rqi": "opensoom-7b5494c0c89742bbb7217f0b13b3ded3",
+      "airflow": 360.0,
+      "profile_version": 1
+    }
+  },
+  "after": {
+    "facility_id": "food-a",
+    "zone_id": "cook",
+    "asset_id": "extract-damper-01",
+    "incident_id": "incident-f2bce92571",
+    "run_id": "demo-4f65728fd2",
+    "source_cin_ri": "cinqDXY5M2hMB",
+    "kind": "work_order",
+    "work_order_id": "work-incident-f2bce92571",
+    "command_id": "cmd-705596eb966f",
+    "observed_at": "2026-11-18T16:02:38.360+00:00",
+    "status": "open",
+    "priority": "inspect_actuator_feedback",
+    "evidence_status": "verified_independent_sample",
+    "revision": 4,
+    "requested_pct": 100.0,
+    "sample": {
+      "sensor_id": "shaft-position-01",
+      "value": 35.0,
+      "unit": "%",
+      "observed_at": "2026-11-18T16:02:56.842710+00:00",
+      "source": "independent_position_sensor"
+    },
+    "provider_receipt": {
+      "service_id": "33a76061-6729-4c5d-91ae-05c4df9d1ed0",
+      "service_name": "mep1-meep-sss",
+      "registry_status": 200,
+      "discovery_status": 200,
+      "lookup_status": 200,
+      "lookup_path": "/queries/sensor_data",
+      "provider_sensor_id": "shaftYjotHJ3NyZ",
+      "lookup_sha256": "461e35049730ebe39d0478a7b9a82e055003407eaaafed7b3cd31487ca536c34",
+      "provider_registration": {
+        "service_id": "8ccaebbd-c792-4ad0-917a-a4a3fc6464d4",
+        "service_name": "mep1-meep-iot",
+        "registry_status": 200,
+        "platform_id": "opensoom-position-provider",
+        "before_status": 200,
+        "before_enabled": true,
+        "readback_status": 200,
+        "enabled": true,
+        "readback_sha256": "36edd775b9bd9654c184660fb20882e6923d8e53db697b5b9c56c5367ccc2a71"
+      }
+    },
+    "request_id": "sensor-c3bc84b52bdd72d6b0cdc74f645837ae",
+    "request_ri": "cinTyKrhLqIMm",
+    "response_ri": "cinPqOZVwcSMJ",
+    "outcome_ri": "cinjXiuQcRlL2",
+    "mode": "mec046",
+    "airflow": 360.0,
+    "profile_version": 1,
+    "resource_id": "cinFNnyCeEpWC",
+    "read_rqi": "opensoom-ffcd19e70eb44c8b8491274e536cad79"
+  },
+  "streams": {
+    "outcomes": [
+      {
+        "ri": "cinCtFFLX75Gj",
+        "name": "opened-incident-f2bce92571",
+        "read_rqi": "opensoom-6466675be1674a678643be1c4cc3bf4d",
+        "data": {
+          "kind": "incident.opened",
+          "facility_id": "food-a",
+          "zone_id": "cook",
+          "asset_id": "extract-damper-01",
+          "incident_id": "incident-f2bce92571",
+          "run_id": "demo-4f65728fd2",
+          "source_cin_ri": "cinSRtqNtHz64",
+          "source_cin_path": "cse-mn/opensoom/facilities/food-a/cook/observations/cin_k4zJRK0IK3",
+          "rqi": "opensoom-e5017dea0c0e4c2785989a2cd286e5c1",
+          "profile_version": 1,
+          "observed_at": "2026-11-18T16:02:35.115+00:00"
+        }
+      },
+      {
+        "ri": "cinjXiuQcRlL2",
+        "name": "unresolved-cmd-705596eb966f",
+        "read_rqi": "opensoom-ffcdeb8f7625473ea9ffb6cc051b7d95",
+        "data": {
+          "kind": "command.unresolved_after_ack",
+          "facility_id": "food-a",
+          "zone_id": "cook",
+          "asset_id": "extract-damper-01",
+          "incident_id": "incident-f2bce92571",
+          "run_id": "demo-4f65728fd2",
+          "source_cin_ri": "cinqDXY5M2hMB",
+          "source_cin_path": "cse-mn/opensoom/facilities/food-a/cook/observations/cin_OeFHtUTmu5",
+          "rqi": "opensoom-8f3fc340fe654ed89329d8fb6da28d96",
+          "profile_version": 1,
+          "observed_at": "2026-11-18T16:02:38.360+00:00",
+          "command_id": "cmd-705596eb966f",
+          "ack_at": "2026-11-18T16:02:35.999+00:00",
+          "requested_pct": 100.0
+        }
+      }
+    ],
+    "work_orders": [
+      {
+        "ri": "cinX4EGgokpVh",
+        "name": "order-b0fe21df359d11e66963d7ca64ba9945",
+        "read_rqi": "opensoom-8dacf5c9ae204ec1aab27368cb1af157",
+        "data": {
+          "facility_id": "food-a",
+          "zone_id": "cook",
+          "asset_id": "extract-damper-01",
+          "incident_id": "incident-f2bce92571",
+          "run_id": "demo-4f65728fd2",
+          "source_cin_ri": "cinSRtqNtHz64",
+          "kind": "work_order",
+          "work_order_id": "work-incident-f2bce92571",
+          "command_id": null,
+          "observed_at": "2026-11-18T16:02:35.115+00:00",
+          "status": "open",
+          "priority": "inspection",
+          "evidence_status": "awaiting_outcome",
+          "revision": 1,
+          "outcome_ri": "cinCtFFLX75Gj",
+          "observation_rqi": "opensoom-e3c932eb86d547e598e8875205a7a4ad",
+          "airflow": 360.0,
+          "profile_version": 1
+        }
+      },
+      {
+        "ri": "cini4YeBWl6Pf",
+        "name": "order-56e06aeecef97ff7cae71fa1a4348fee",
+        "read_rqi": "opensoom-364191640c4f48ea95d8cc392f261d13",
+        "data": {
+          "facility_id": "food-a",
+          "zone_id": "cook",
+          "asset_id": "extract-damper-01",
+          "incident_id": "incident-f2bce92571",
+          "run_id": "demo-4f65728fd2",
+          "source_cin_ri": "cinqDXY5M2hMB",
+          "kind": "work_order",
+          "work_order_id": "work-incident-f2bce92571",
+          "command_id": "cmd-705596eb966f",
+          "observed_at": "2026-11-18T16:02:38.360+00:00",
+          "status": "open",
+          "priority": "inspection",
+          "evidence_status": "awaiting_independent_sample",
+          "revision": 2,
+          "request_id": "sensor-c3bc84b52bdd72d6b0cdc74f645837ae",
+          "outcome_ri": "cinjXiuQcRlL2",
+          "observation_rqi": "opensoom-7b5494c0c89742bbb7217f0b13b3ded3",
+          "airflow": 360.0,
+          "profile_version": 1
+        }
+      },
+      {
+        "ri": "cinfxZCpOZOg8",
+        "name": "order-39ecd9eeb84381bf219abada801eebd1",
+        "read_rqi": "opensoom-d31d78c6086040eab4aade7515536e27",
+        "data": {
+          "facility_id": "food-a",
+          "zone_id": "cook",
+          "asset_id": "extract-damper-01",
+          "incident_id": "incident-f2bce92571",
+          "run_id": "demo-4f65728fd2",
+          "source_cin_ri": "cinqDXY5M2hMB",
+          "kind": "work_order",
+          "work_order_id": "work-incident-f2bce92571",
+          "command_id": "cmd-705596eb966f",
+          "observed_at": "2026-11-18T16:02:38.360+00:00",
+          "status": "open",
+          "priority": "inspection",
+          "evidence_status": "unknown",
+          "revision": 3,
+          "reason": "provider_unregistered",
+          "request_id": "sensor-c3bc84b52bdd72d6b0cdc74f645837ae",
+          "request_ri": "cinTyKrhLqIMm",
+          "response_ri": "cinfJS4tyMkPy",
+          "outcome_ri": "cinjXiuQcRlL2",
+          "mode": "mec046",
+          "airflow": 360.0,
+          "profile_version": 1
+        }
+      },
+      {
+        "ri": "cinFNnyCeEpWC",
+        "name": "order-6ee50ca5edf18255ad39df6783aa63de",
+        "read_rqi": "opensoom-0cf00f12867a4428b766d8c4015eefb8",
+        "data": {
+          "facility_id": "food-a",
+          "zone_id": "cook",
+          "asset_id": "extract-damper-01",
+          "incident_id": "incident-f2bce92571",
+          "run_id": "demo-4f65728fd2",
+          "source_cin_ri": "cinqDXY5M2hMB",
+          "kind": "work_order",
+          "work_order_id": "work-incident-f2bce92571",
+          "command_id": "cmd-705596eb966f",
+          "observed_at": "2026-11-18T16:02:38.360+00:00",
+          "status": "open",
+          "priority": "inspect_actuator_feedback",
+          "evidence_status": "verified_independent_sample",
+          "revision": 4,
+          "requested_pct": 100.0,
+          "sample": {
+            "sensor_id": "shaft-position-01",
+            "value": 35.0,
+            "unit": "%",
+            "observed_at": "2026-11-18T16:02:56.842710+00:00",
+            "source": "independent_position_sensor"
+          },
+          "provider_receipt": {
+            "service_id": "33a76061-6729-4c5d-91ae-05c4df9d1ed0",
+            "service_name": "mep1-meep-sss",
+            "registry_status": 200,
+            "discovery_status": 200,
+            "lookup_status": 200,
+            "lookup_path": "/queries/sensor_data",
+            "provider_sensor_id": "shaftYjotHJ3NyZ",
+            "lookup_sha256": "461e35049730ebe39d0478a7b9a82e055003407eaaafed7b3cd31487ca536c34",
+            "provider_registration": {
+              "service_id": "8ccaebbd-c792-4ad0-917a-a4a3fc6464d4",
+              "service_name": "mep1-meep-iot",
+              "registry_status": 200,
+              "platform_id": "opensoom-position-provider",
+              "before_status": 200,
+              "before_enabled": true,
+              "readback_status": 200,
+              "enabled": true,
+              "readback_sha256": "36edd775b9bd9654c184660fb20882e6923d8e53db697b5b9c56c5367ccc2a71"
+            }
+          },
+          "request_id": "sensor-c3bc84b52bdd72d6b0cdc74f645837ae",
+          "request_ri": "cinTyKrhLqIMm",
+          "response_ri": "cinPqOZVwcSMJ",
+          "outcome_ri": "cinjXiuQcRlL2",
+          "mode": "mec046",
+          "airflow": 360.0,
+          "profile_version": 1
+        }
+      }
+    ],
+    "sensor_requests": [
+      {
+        "ri": "cinTyKrhLqIMm",
+        "name": "sensor-c3bc84b52bdd72d6b0cdc74f645837ae",
+        "read_rqi": "opensoom-588f2f3e82ba4dab92237b60a89431db",
+        "data": {
+          "facility_id": "food-a",
+          "zone_id": "cook",
+          "asset_id": "extract-damper-01",
+          "incident_id": "incident-f2bce92571",
+          "run_id": "demo-4f65728fd2",
+          "source_cin_ri": "cinqDXY5M2hMB",
+          "kind": "shaft_position_lookup",
+          "request_id": "sensor-c3bc84b52bdd72d6b0cdc74f645837ae",
+          "work_order_id": "work-incident-f2bce92571",
+          "sensor_id": "shaft-position-01",
+          "outcome_ri": "cinjXiuQcRlL2",
+          "observed_at": "2026-11-18T16:02:38.360+00:00",
+          "ack_at": "2026-11-18T16:02:35.999+00:00",
+          "airflow": 360.0,
+          "profile_version": 1,
+          "command_id": "cmd-705596eb966f",
+          "requested_pct": 100.0
+        }
+      }
+    ],
+    "sensor_responses": [
+      {
+        "ri": "cinfJS4tyMkPy",
+        "name": "unknown-3f169f29dc35f98c2c3fed38b38872a8",
+        "read_rqi": "opensoom-9b830311a5744c9aaff8373c39e9d5bc",
+        "data": {
+          "kind": "sensor_result",
+          "facility_id": "food-a",
+          "request_id": "sensor-c3bc84b52bdd72d6b0cdc74f645837ae",
+          "request_ri": "cinTyKrhLqIMm",
+          "mode": "mec046",
+          "status": "unknown",
+          "reason": "provider_unregistered"
+        }
+      },
+      {
+        "ri": "cinPqOZVwcSMJ",
+        "name": "measurement-55cd60eab232dfd988b68407450c7788",
+        "read_rqi": "opensoom-4bdcdc9624544d9ba423115410510d42",
+        "data": {
+          "kind": "sensor_result",
+          "facility_id": "food-a",
+          "request_id": "sensor-c3bc84b52bdd72d6b0cdc74f645837ae",
+          "request_ri": "cinTyKrhLqIMm",
+          "mode": "mec046",
+          "status": "measured",
+          "sample": {
+            "sensor_id": "shaft-position-01",
+            "value": 35.0,
+            "unit": "%",
+            "observed_at": "2026-11-18T16:02:56.842710+00:00",
+            "source": "independent_position_sensor"
+          },
+          "provider_receipt": {
+            "service_id": "33a76061-6729-4c5d-91ae-05c4df9d1ed0",
+            "service_name": "mep1-meep-sss",
+            "registry_status": 200,
+            "discovery_status": 200,
+            "lookup_status": 200,
+            "lookup_path": "/queries/sensor_data",
+            "provider_sensor_id": "shaftYjotHJ3NyZ",
+            "lookup_sha256": "461e35049730ebe39d0478a7b9a82e055003407eaaafed7b3cd31487ca536c34",
+            "provider_registration": {
+              "service_id": "8ccaebbd-c792-4ad0-917a-a4a3fc6464d4",
+              "service_name": "mep1-meep-iot",
+              "registry_status": 200,
+              "platform_id": "opensoom-position-provider",
+              "before_status": 200,
+              "before_enabled": true,
+              "readback_status": 200,
+              "enabled": true,
+              "readback_sha256": "36edd775b9bd9654c184660fb20882e6923d8e53db697b5b9c56c5367ccc2a71"
+            }
+          }
+        }
+      }
+    ]
+  },
+  "provider_commissioning": {
+    "test_fixture": {
+      "fixture_before_enabled": true,
+      "fixture_before_sha256": "36edd775b9bd9654c184660fb20882e6923d8e53db697b5b9c56c5367ccc2a71",
+      "fixture_withdrawal_status": 204,
+      "confirmed_absent_status": 404
+    },
+    "access_denials": {
+      "operator_enrollment_rejected": 403,
+      "unknown_profile_rejected": 403,
+      "provider_after_denials": 404
+    },
+    "work_before_commissioning": {
+      "facility_id": "food-a",
+      "zone_id": "cook",
+      "asset_id": "extract-damper-01",
+      "incident_id": "incident-f2bce92571",
+      "run_id": "demo-4f65728fd2",
+      "source_cin_ri": "cinqDXY5M2hMB",
+      "kind": "work_order",
+      "work_order_id": "work-incident-f2bce92571",
+      "command_id": "cmd-705596eb966f",
+      "observed_at": "2026-11-18T16:02:38.360+00:00",
+      "status": "open",
+      "priority": "inspection",
+      "evidence_status": "unknown",
+      "revision": 3,
+      "reason": "provider_unregistered",
+      "request_id": "sensor-c3bc84b52bdd72d6b0cdc74f645837ae",
+      "request_ri": "cinTyKrhLqIMm",
+      "response_ri": "cinfJS4tyMkPy",
+      "outcome_ri": "cinjXiuQcRlL2",
+      "mode": "mec046",
+      "airflow": 360.0,
+      "profile_version": 1,
+      "resource_id": "cinfxZCpOZOg8",
+      "read_rqi": "opensoom-2db8c241d02e467bb004d23a497fd5a8"
+    },
+    "first_write": {
+      "request_id": "enable-release-provider",
+      "request_ri": "cinB1UoFlErWF",
+      "request_rqi": "opensoom-d6bdc97997444354a79d99ef97368194",
+      "status": "pending"
+    },
+    "confirmed_by_owner": {
+      "request_id": "enable-release-provider",
+      "request_ri": "cinB1UoFlErWF",
+      "request_rqi": "opensoom-b7a94c42110e4d07859c107603c2430f",
+      "status": "enabled",
+      "result": {
+        "kind": "provider.result",
+        "facility_id": "food-a",
+        "request_id": "enable-release-provider",
+        "request_ri": "cinB1UoFlErWF",
+        "provider_profile": "independent-shaft-provider",
+        "observed_at": "2026-11-18T16:03:09.511512+00:00",
+        "status": "enabled",
+        "provider_receipt": {
+          "service_id": "8ccaebbd-c792-4ad0-917a-a4a3fc6464d4",
+          "service_name": "mep1-meep-iot",
+          "registry_status": 200,
+          "platform_id": "opensoom-position-provider",
+          "before_status": 404,
+          "before_enabled": null,
+          "operation": "POST",
+          "write_status": 201,
+          "readback_status": 200,
+          "enabled": true,
+          "readback_sha256": "36edd775b9bd9654c184660fb20882e6923d8e53db697b5b9c56c5367ccc2a71"
+        }
+      },
+      "result_ri": "cin8DyWgluVhq",
+      "result_rqi": "opensoom-730a8a46bbc14fbca537f457a53a8e92"
+    },
+    "provider_read": 200,
+    "replay_request_ri": "cinB1UoFlErWF",
+    "replay_response_ri": "cin8DyWgluVhq"
+  },
+  "execution": {
+    "placement": "Separate private K3s workloads on a single test VM; this capture does not establish managed placement.",
+    "device": "Virtual command, airflow and independent shaft encoder; real ACME MN, service requests, provider FCNT, native ETSI 011, 033 and 046.",
+    "requests": "Product workers use scoped credentials and TLS. The standalone capture additionally enumerated incident CINs as a trusted diagnostic administrator. The operator projection and provider result include their separate application-scoped read receipts.",
+    "worker_image_manifest": "sha256:6ee58ac5204a2611230d3c2671706e08c6904bb628b9c596483a22c4d7ea1dce",
+    "worker_source_sha256": {
+      "src/opensoom/__init__.py": "5ffc4e500ba7ba3baf818e8884c687a777b09f6d05fbde93d987629c7bbb2925",
+      "src/opensoom/onem2m.py": "c4edcf610b9c82266d222dc63b69869cbd62000478405cdcd98f44178b0b123e",
+      "src/opensoom/maintenance_worker.py": "514c87ecfd62ed82ca605b230cd432a7e68e81ac87261737ef5f04bbcb2e1c28",
+      "src/opensoom/mec_sensor.py": "a33347c825da3ecc7870130871f301a912d17309448bd816cd254b6b087eaf21"
+    }
+  },
+  "scoped_reread": {
+    "script": "scripts/capture_maintenance_order.py",
+    "reader_ae": "Cosmaintenance39095aa155887ebe",
+    "tls_gateway": true,
+    "evidence": {
+      "original_observation": {
+        "ri": "cinqDXY5M2hMB",
+        "read_rqi": "opensoom-0b3992a3405646d7977e43d2540b846d"
+      },
+      "opened": {
+        "ri": "cinX4EGgokpVh",
+        "read_rqi": "opensoom-04c4843a07634458a38727e7b3631a00"
+      },
+      "unresolved": {
+        "ri": "cini4YeBWl6Pf",
+        "read_rqi": "opensoom-f5a8b0b7070f4d048b18aadbd7bcb70d"
+      },
+      "outcome": {
+        "ri": "cinjXiuQcRlL2",
+        "read_rqi": "opensoom-3af9485084794ce0b8a112d4dc709ff2"
+      },
+      "request": {
+        "ri": "cinTyKrhLqIMm",
+        "read_rqi": "opensoom-c737431c40fa4534ae566971e2972ade"
+      },
+      "response": {
+        "ri": "cinPqOZVwcSMJ",
+        "read_rqi": "opensoom-54504f013dc24a318b7ef2bf9b31eccf"
+      },
+      "work_order": {
+        "ri": "cinFNnyCeEpWC",
+        "read_rqi": "opensoom-321eccba41344f4ca0d8cb36a54528a8"
+      },
+      "commissioning": {
+        "ri": "cin8DyWgluVhq",
+        "read_rqi": "opensoom-555334f62ad74b9ab0fd2f0375fae582"
+      }
+    }
+  }
+}

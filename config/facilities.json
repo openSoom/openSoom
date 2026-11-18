@@ -1,6 +1,32 @@
 {
   "facilities": [
-    {"id": "food-a", "name": "Northworks food production", "profile": "food-production", "adapter": "vendor-a", "read_only_roles": ["observer"]},
-    {"id": "learning-b", "name": "Westside learning hub", "profile": "learning-space", "adapter": "vendor-b", "read_only_roles": []}
+    {
+      "id": "food-a",
+      "name": "Northworks food production",
+      "profile": "food-production",
+      "adapter": "vendor-a",
+      "read_only_roles": [
+        "observer"
+      ],
+      "maintenance": {
+        "provider_profiles": ["independent-shaft-provider"],
+        "assets": {
+          "cook": {
+            "asset_id": "extract-damper-01",
+            "sensor_id": "shaft-position-01"
+          }
+        },
+        "freshness_seconds": 45,
+        "settle_seconds": 3,
+        "tolerance_pct": 10
+      }
+    },
+    {
+      "id": "learning-b",
+      "name": "Westside learning hub",
+      "profile": "learning-space",
+      "adapter": "vendor-b",
+      "read_only_roles": []
+    }
   ]
 }

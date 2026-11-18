@@ -75,6 +75,7 @@ class BoundedProxy:
         self.scope_before = rehearsal_scope_snapshot()
         self.run_id = folder.name
         self.calls, self.charged = 0, 0
+        self.use_provider_token_count = False
         self.records = []
         self.lock = threading.Lock()
         self.deadline = time.monotonic() + 240
@@ -154,22 +155,43 @@ class BoundedProxy:
                     with owner.lock:
                         assert owner.key, "Provider key is unavailable"
                         assert owner.calls < owner.limits["max_provider_requests"] and time.monotonic() < owner.deadline, "Run request/time limit reached"
-                        assert owner.charged + bound <= owner.limits["max_run_charged_tokens"], "Run token allowance cannot cover the reservation"
                         reservation = owner.run_id + ":" + str(owner.calls) + ":" + uuid.uuid4().hex[:8]
                         with (ROOT / ".runtime/guided-budget.lock").open("a") as lockfile:
                             fcntl.flock(lockfile, fcntl.LOCK_EX)
                             scope = rehearsal_scope_snapshot()
+                            if owner.use_provider_token_count:
+                                # Reserve funds before even contacting the counting endpoint.
+                                # Input counting must prove that both its count and the entire
+                                # generation fit inside the reservation before inference starts.
+                                bound = min(bound, owner.limits["max_run_charged_tokens"] - owner.charged,
+                                            scope["tokens_remaining"], owner.budget.snapshot()["tokens_remaining"])
+                                assert bound > owner.limits["max_output_tokens"], "Insufficient funds for a measured request"
+                            assert owner.charged + bound <= owner.limits["max_run_charged_tokens"], "Run token allowance cannot cover the reservation"
                             assert scope["requests_remaining"] > 0 and bound <= scope["tokens_remaining"], "Fixed whole-rehearsal allowance cannot cover the reservation"
                             owner.budget.reserve(reservation, owner.run_id, bound)
                         owner.calls += 1
                         owner.charged += bound
-                        record.update(forwarded=True, reservation_id=reservation)
+                        record.update(reservation_id=reservation, reserved_tokens=bound)
                 except Exception as error:
                     owner.records.append({"forwarded": False, "rejection": type(error).__name__, "reason": str(error)[:200]})
                     return self.error(400, "request_or_budget_guard_rejected")
                 actual, stream_started = None, False
                 try:
                     with httpx.Client(timeout=45, trust_env=False, follow_redirects=False) as client:
+                        if owner.use_provider_token_count:
+                            keys = ("model", "input", "instructions", "tools", "tool_choice", "parallel_tool_calls", "reasoning", "text", "truncation")
+                            counted = client.post("https://api.openai.com/v1/responses/input_tokens",
+                                headers={"Authorization": "Bearer " + owner.key},
+                                json={k: payload[k] for k in keys if k in payload})
+                            counted.raise_for_status()
+                            measured = counted.json().get("input_tokens")
+                            if type(measured) is not int or measured < 0:
+                                return self.error(502, "invalid_provider_input_count")
+                            record["measured_input_tokens"] = measured
+                            if 2 * measured + owner.limits["max_output_tokens"] + 128 > bound:
+                                actual = measured
+                                return self.error(400, "measured_input_exceeds_reserved_budget")
+                        record["forwarded"] = True
                         with client.stream("POST", "https://api.openai.com/v1/responses", headers={"Authorization": "Bearer " + owner.key, "Content-Type": "application/json"}, json=payload) as response:
                             record["http_status"] = response.status_code
                             if response.status_code != 200:
@@ -197,6 +219,8 @@ class BoundedProxy:
                                             actual = usage.get("total_tokens")
                                             if actual is None and "input_tokens" in usage and "output_tokens" in usage:
                                                 actual = usage["input_tokens"] + usage["output_tokens"]
+                                            if isinstance(actual, int):
+                                                actual += record.get("measured_input_tokens", 0)
                                             record["provider_response_id"] = result.get("id")
                                             record["usage"] = usage
                                             record["output_items"] = [{key: item[key] for key in ("type", "name", "call_id", "arguments") if key in item} for item in result.get("output", []) if item.get("type") in ("function_call", "message")]

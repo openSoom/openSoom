@@ -1,0 +1,216 @@
+{
+  "status": "passed",
+  "sensor_path": "local",
+  "virtual_equipment": true,
+  "facility_id": "food-a",
+  "run_id": "demo-271a6c3a23",
+  "site_cse_id": "/opensoom-food",
+  "site_node_type": 2,
+  "central_remote_cses": [
+    "/opensoom-central/opensoom-food"
+  ],
+  "configured_apps": {
+    "food-a": true,
+    "learning-b": false
+  },
+  "command": {
+    "facility_id": "food-a",
+    "zone_id": "cook",
+    "action": "set_damper",
+    "value": 100.0,
+    "reason": "Preauthorized deterministic demonstration",
+    "request_id": "demo-271a6c3a23:damper",
+    "id": "cmd-aba204061d13",
+    "status": "unresolved",
+    "ack": true,
+    "created_at": "2026-11-18T15:46:00.613190+00:00",
+    "expires_at": "2026-11-18T15:46:30.613190+00:00",
+    "profile_version": 1,
+    "run_id": "demo-271a6c3a23",
+    "incident_id": "incident-f15b899ca3",
+    "observed_result": "unresolved",
+    "cse_rqi": "opensoom-299ae3b8b29c4be8bf9cabc36e440387",
+    "cse_resource_id": "cinG3kGCQNDPk",
+    "ack_at": "2026-11-18T15:46:02.537+00:00",
+    "ack_rqi": "opensoom-33706056ea454be3984b8475a19fb23a",
+    "unresolved_samples": 2,
+    "verification_rqi": "opensoom-cbffc4e63ac94621abd707f46de8da28"
+  },
+  "incident": {
+    "id": "incident-f15b899ca3",
+    "facility_id": "food-a",
+    "zone_id": "cook",
+    "title": "Verify cooking line ventilation",
+    "status": "open",
+    "created_at": "2026-11-18T15:46:00.587+00:00",
+    "recovery_count": 0,
+    "maintenance_opened": true,
+    "reason": "Airflow is below this zone's configured simulation target; Particles exceed the configured simulation target; CO₂ exceeds the configured simulation target",
+    "severity": "critical",
+    "updated_at": "2026-11-18T15:46:12.785+00:00",
+    "latest_rqi": "opensoom-7be5241b07684c108669ce69afb33e28"
+  },
+  "before_independent_sample": {
+    "facility_id": "food-a",
+    "zone_id": "cook",
+    "asset_id": "extract-damper-01",
+    "incident_id": "incident-f15b899ca3",
+    "run_id": "demo-271a6c3a23",
+    "source_cin_ri": "cinbxJmfkSi1e",
+    "kind": "work_order",
+    "work_order_id": "work-incident-f15b899ca3",
+    "command_id": "cmd-aba204061d13",
+    "observed_at": "2026-11-18T15:46:04.602+00:00",
+    "status": "open",
+    "priority": "inspection",
+    "evidence_status": "unknown",
+    "revision": 3,
+    "reason": "no_mapped_sensor_sample",
+    "request_id": "sensor-90b3801a9c673d823cf013a9d5bfecaf",
+    "request_ri": "cinhOHLAPCjAu",
+    "response_ri": "cinA1dgqUD2TR",
+    "outcome_ri": "cinuaT8tDxtFf",
+    "mode": "local",
+    "airflow": 360.0,
+    "profile_version": 1,
+    "resource_id": "cinhXQp0NKYpT",
+    "read_rqi": "opensoom-95ea56969a50496e97e6286f46890f5c"
+  },
+  "after": {
+    "facility_id": "food-a",
+    "zone_id": "cook",
+    "asset_id": "extract-damper-01",
+    "incident_id": "incident-f15b899ca3",
+    "run_id": "demo-271a6c3a23",
+    "source_cin_ri": "cinbxJmfkSi1e",
+    "kind": "work_order",
+    "work_order_id": "work-incident-f15b899ca3",
+    "command_id": "cmd-aba204061d13",
+    "observed_at": "2026-11-18T15:46:04.602+00:00",
+    "status": "open",
+    "priority": "inspect_actuator_feedback",
+    "evidence_status": "verified_independent_sample",
+    "revision": 4,
+    "requested_pct": 100.0,
+    "sample": {
+      "sensor_id": "shaft-position-01",
+      "value": 35,
+      "unit": "%",
+      "source": "independent_position_sensor",
+      "observed_at": "2026-11-18T15:46:11.751785+00:00"
+    },
+    "provider_receipt": {
+      "sample_cin_ri": "cinZZPZvlvukZ"
+    },
+    "request_id": "sensor-90b3801a9c673d823cf013a9d5bfecaf",
+    "request_ri": "cinhOHLAPCjAu",
+    "response_ri": "cinXfBAyMA6gk",
+    "outcome_ri": "cinuaT8tDxtFf",
+    "mode": "local",
+    "airflow": 360.0,
+    "profile_version": 1,
+    "resource_id": "cinp0xS17Pv6E",
+    "read_rqi": "opensoom-2669e39982214843b1bac4db825b0813"
+  },
+  "logical_order_count": 1,
+  "worker_health": {
+    "maintenance": {
+      "role": "maintenance",
+      "facility_id": "food-a",
+      "scans": 3,
+      "notifications": 2,
+      "rejections": 0,
+      "last_error": null
+    },
+    "bridge": {
+      "role": "bridge",
+      "facility_id": "food-a",
+      "scans": 16,
+      "notifications": 2,
+      "rejections": 0,
+      "last_error": null
+    }
+  },
+  "denials": {
+    "maintenance_command": {
+      "rsc": 4103,
+      "rqi": "opensoom-532cde0450f04aae8560440f13d7308a"
+    },
+    "bridge_command": {
+      "rsc": 4103,
+      "rqi": "opensoom-98edce1972954dbc93e58533ad279fc9"
+    },
+    "maintenance_response": {
+      "rsc": 4103,
+      "rqi": "opensoom-b54560a6eb8541fd83f36abcb6204454"
+    },
+    "bridge_work_order": {
+      "rsc": 4103,
+      "rqi": "opensoom-9e949a773b0d4f9d911a5e7e7b0d6faa"
+    },
+    "bridge_request": {
+      "rsc": 4103,
+      "rqi": "opensoom-9c76145b37a248108ad456c000bfee18"
+    },
+    "other_facility": {
+      "rsc": 4103,
+      "rqi": "opensoom-aa538207d2524698a27051646ace33e7"
+    },
+    "credential_origin_mismatch": {
+      "rsc": 4103,
+      "rqi": "opensoom-d8ea2c5bd8374131a47e170801978fdf"
+    }
+  },
+  "airflow": {
+    "observed": 360.0,
+    "target": 900,
+    "unit": "m³/h",
+    "observation_ri": "cinbxJmfkSi1e"
+  },
+  "invalid_local_samples": [
+    {
+      "sample_ri": "cint3gRao5QGe",
+      "reason": "unrelated_asset_ignored",
+      "scans": 2
+    },
+    {
+      "sample_ri": "cinCi4BXZNTkd",
+      "reason": "unexpected_measurement_unit",
+      "response_ri": "cinPLguA6S3SO"
+    },
+    {
+      "sample_ri": "cindPRg4CBd5Q",
+      "reason": "invalid_measurement_time",
+      "response_ri": "cin9V8MKnR9dH"
+    },
+    {
+      "sample_ri": "cinR0Sx2NXVVo",
+      "reason": "before_actuator_settled",
+      "response_ri": "cinW1nriJ0hAd"
+    }
+  ],
+  "replay": {
+    "duplicate_callback_hints": 2,
+    "restarted_after_write": true,
+    "revision_cins_before": [
+      "cinBZLljh3afI",
+      "cinHZscykxBYd",
+      "cinV5DXGolGfF",
+      "cinWizS39SKCr",
+      "cinYwZo2cnin1",
+      "cinhXQp0NKYpT",
+      "cinp0xS17Pv6E"
+    ],
+    "revision_cins_after": [
+      "cinBZLljh3afI",
+      "cinHZscykxBYd",
+      "cinV5DXGolGfF",
+      "cinWizS39SKCr",
+      "cinYwZo2cnin1",
+      "cinhXQp0NKYpT",
+      "cinp0xS17Pv6E"
+    ]
+  },
+  "local_sample_cin": "cinZZPZvlvukZ",
+  "dashboard": "live service projection from oneM2M work_order CINs"
+}

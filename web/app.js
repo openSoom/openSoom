@@ -231,6 +231,7 @@
     renderWorkflow();
     renderActivity();
     renderCommand();
+    renderMaintenance();
     $('start-demo-button').disabled = state.busy || !canAct() || !state.data.runtime?.cse_connected;
   }
 
@@ -421,6 +422,40 @@
     if (command.action === 'set_damper') return `Set damper to ${number(command.value)}%`;
     if (command.action === 'request_maintenance') return 'Request maintenance';
     return human(command.action || command.name || 'Equipment action');
+  }
+
+  function renderMaintenance() {
+    const f = facility();
+    const panel = $('maintenance-panel');
+    panel.hidden = !f?.maintenance_enabled;
+    if (panel.hidden) return;
+    const orders = (state.data?.work_orders || []).filter(order =>
+      order.facility_id === f.id && (!f.active_run || order.run_id === f.active_run));
+    if (!orders.length) {
+      setHTML('maintenance-detail', '<p class="maintenance-note">Waiting for a maintenance decision on this run.</p>');
+      return;
+    }
+    const actions = {
+      inspection: 'Inspect the ventilation system',
+      inspect_actuator_feedback: 'Check actuator travel and position feedback first',
+      inspect_airflow_path: 'Inspect the airflow path'
+    };
+    setHTML('maintenance-detail', orders.map(order => {
+      const cmd = commands().find(item => item.id === order.command_id);
+      const zone = f.zones.find(item => item.id === order.zone_id);
+      const requested = order.requested_pct ?? cmd?.value;
+      const sample = order.sample;
+      return `<article class="maintenance-order">
+      <div><span class="status-pill warning">${esc(human(order.status))}</span>
+      <strong>${esc(actions[order.priority] || human(order.priority))}</strong></div>
+      <dl class="maintenance-measures"><div><dt>Requested opening</dt><dd>${requested == null ? 'Pending' : esc(number(requested)) + '%'}</dd></div>
+      <div><dt>Independent shaft position</dt><dd>${sample ? esc(number(sample.value)) + '%' : 'Awaiting evidence'}</dd></div>
+      <div><dt>Follow-up airflow</dt><dd>${order.airflow == null ? 'See source observation' : esc(number(order.airflow)) + ' m³/h'}</dd></div></dl>
+      <p>${esc(zone?.name || order.zone_id)} · ${esc(order.asset_id)} · ${esc(order.work_order_id)}</p>
+      <p>${sample ? esc(order.mode === 'mec046' ? 'ETSI MEC 046 sensor sharing' : 'Local oneM2M sensor') + ' · ' + esc(sample.sensor_id) : esc(human(order.evidence_status))}</p>
+      <details><summary>Work order evidence</summary><pre>${esc(JSON.stringify(sanitize(order), null, 2))}</pre></details>
+    </article>`;
+    }).join(''));
   }
 
   function renderCommand() {

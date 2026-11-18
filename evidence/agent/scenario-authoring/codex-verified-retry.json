@@ -1,0 +1,250 @@
+{
+  "status": "incomplete",
+  "case_id": "codex-scenario-a67b5527e5",
+  "user_prompt": "Test virtual facility learning-b, zone lounge. Name the trial lounge-probe-d97c26. Airflow 345 m3/h, age 93 seconds, damper 83%. Expect command refused. Verify.",
+  "authorized_scope": {
+    "facility_id": "learning-b",
+    "scenario_id": "lounge-probe-d97c26",
+    "zone_id": "lounge",
+    "observation_age_seconds": 93,
+    "airflow_m3_h": 345,
+    "damper_percent": 83,
+    "expected_result": "command_refused"
+  },
+  "known_limits": "Isolated Codex host with a dedicated loopback service. Startup and facility activation already completed. The installed plugin exposes the full tool set. In this focused rehearsal the model can invoke the compound virtual-test tool. Its one actual model call supplies the test arguments. The service records the three underlying operations; the harness ends at actual readback. Local path prefixes are redacted.",
+  "provider": "https://api.openai.com/v1/responses",
+  "model": "gpt-5-mini",
+  "shared_before": {
+    "batch_id": "opensoom-hackathon-2026-01",
+    "max_requests": 100,
+    "max_tokens": 250000,
+    "requests_consumed": 82,
+    "tokens_charged": 244839,
+    "tokens_reserved": 0,
+    "pending_requests": 0,
+    "requests_remaining": 18,
+    "tokens_remaining": 5161,
+    "requires_investigation": false
+  },
+  "case_limits": {
+    "max_provider_requests": 1,
+    "max_run_charged_tokens": 5924,
+    "max_output_tokens": 150,
+    "provider_timeout_seconds": 45,
+    "turn_timeout_seconds": 150,
+    "request_max_retries": 0
+  },
+  "mode": "live",
+  "codex": "codex-cli 0.166.0",
+  "installed": "opensoom@opensoom-local",
+  "thread_id": "01a1ef64-769f-7083-8528-76c852ab0adf",
+  "tool_calls": [
+    {
+      "type": "mcpToolCall",
+      "id": "call_difZfVOotRKoaq7SuFXeWQBj",
+      "server": "opensoom",
+      "tool": "test_virtual_scenario",
+      "status": "completed",
+      "arguments": {
+        "airflow_m3_h": 345,
+        "damper_percent": 83,
+        "expected_result": "command_refused",
+        "facility_id": "learning-b",
+        "observation_age_seconds": 93,
+        "request_id": "lounge-probe-d97c26",
+        "scenario_id": "lounge-probe-d97c26",
+        "zone_id": "lounge"
+      },
+      "appContext": null,
+      "mcpAppUi": null,
+      "pluginId": "opensoom@opensoom-local",
+      "readOnlyHint": null,
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\n  \"execution_id\": \"trial-0b34952a0834e1159975fd52\",\n  \"facility_id\": \"learning-b\",\n  \"zone_id\": \"lounge\",\n  \"asset_id\": \"learning-b/lounge/damper\",\n  \"scenario_id\": \"lounge-probe-d97c26\",\n  \"version\": \"eb02ca052c852440a9a6828df573a69bf1171a66c86b4dd9af4387c00074b8d3\",\n  \"expected_result\": \"command_refused\",\n  \"agent_run_id\": \"mcp-8afdc41a120a\",\n  \"status\": \"completed\",\n  \"started_at\": \"2026-11-18T16:01:44.942+00:00\",\n  \"cin\": \"cinMteLGfy45r\",\n  \"publish_rqi\": \"opensoom-4912243aa6824d2d92c9bacfbf356967\",\n  \"commands_before\": {\n    \"count\": 0,\n    \"state_tag\": 0,\n    \"rqi\": \"opensoom-3edf4ec3f77643898e17b09799f4698e\"\n  },\n  \"refusal\": \"evidence_not_current\",\n  \"completed_at\": \"2026-11-18T16:01:44.969+00:00\",\n  \"actual_result\": \"command_refused\",\n  \"assertion_passed\": true,\n  \"commands_after\": {\n    \"count\": 0,\n    \"state_tag\": 0,\n    \"rqi\": \"opensoom-f6a2bb7e75674748b555dee15a2529a8\"\n  },\n  \"command_state_tag_delta\": 0,\n  \"readback\": {\n    \"rqi\": \"opensoom-b95e8db6010e486ba8313bab8cd73a0a\",\n    \"cin\": \"cinMteLGfy45r\",\n    \"observed_at\": \"2026-11-18T16:00:11.945+00:00\",\n    \"airflow_m3_h\": 345.0,\n    \"zone_id\": \"lounge\"\n  },\n  \"run_id\": \"mcp-8afdc41a120a\"\n}"
+          }
+        ],
+        "structuredContent": {
+          "execution_id": "trial-0b34952a0834e1159975fd52",
+          "facility_id": "learning-b",
+          "zone_id": "lounge",
+          "asset_id": "learning-b/lounge/damper",
+          "scenario_id": "lounge-probe-d97c26",
+          "version": "eb02ca052c852440a9a6828df573a69bf1171a66c86b4dd9af4387c00074b8d3",
+          "expected_result": "command_refused",
+          "agent_run_id": "mcp-8afdc41a120a",
+          "status": "completed",
+          "started_at": "2026-11-18T16:01:44.942+00:00",
+          "cin": "cinMteLGfy45r",
+          "publish_rqi": "opensoom-4912243aa6824d2d92c9bacfbf356967",
+          "commands_before": {
+            "count": 0,
+            "state_tag": 0,
+            "rqi": "opensoom-3edf4ec3f77643898e17b09799f4698e"
+          },
+          "refusal": "evidence_not_current",
+          "completed_at": "2026-11-18T16:01:44.969+00:00",
+          "actual_result": "command_refused",
+          "assertion_passed": true,
+          "commands_after": {
+            "count": 0,
+            "state_tag": 0,
+            "rqi": "opensoom-f6a2bb7e75674748b555dee15a2529a8"
+          },
+          "command_state_tag_delta": 0,
+          "readback": {
+            "rqi": "opensoom-b95e8db6010e486ba8313bab8cd73a0a",
+            "cin": "cinMteLGfy45r",
+            "observed_at": "2026-11-18T16:00:11.945+00:00",
+            "airflow_m3_h": 345.0,
+            "zone_id": "lounge"
+          },
+          "run_id": "mcp-8afdc41a120a"
+        },
+        "_meta": null
+      },
+      "error": null,
+      "durationMs": 99,
+      "startedAtMs": 1795017704884,
+      "completedAtMs": 1795017704988
+    }
+  ],
+  "service_run": {
+    "id": "mcp-8afdc41a120a",
+    "run_id": "mcp-8afdc41a120a",
+    "facility_id": "learning-b",
+    "scenario": "normal",
+    "mode": "mcp_host",
+    "model": null,
+    "principal_role": "operator",
+    "status": "running",
+    "started_at": "2026-11-18T16:01:44.918+00:00",
+    "tool_calls": [
+      {
+        "name": "save_scenario",
+        "at": "2026-11-18T16:01:44.932+00:00",
+        "arguments": {
+          "facility_id": "learning-b",
+          "scenario_id": "lounge-probe-d97c26",
+          "zone_id": "lounge",
+          "observation_age_seconds": 93,
+          "airflow_m3_h": 345.0,
+          "damper_percent": 83.0,
+          "expected_result": "command_refused"
+        },
+        "result_status": "ok"
+      },
+      {
+        "name": "run_scenario",
+        "at": "2026-11-18T16:01:44.971+00:00",
+        "arguments": {
+          "facility_id": "learning-b",
+          "scenario_id": "lounge-probe-d97c26",
+          "version": "eb02ca052c852440a9a6828df573a69bf1171a66c86b4dd9af4387c00074b8d3",
+          "request_id": "lounge-probe-d97c26"
+        },
+        "result_status": "completed"
+      },
+      {
+        "name": "read_scenario_run",
+        "at": "2026-11-18T16:01:44.984+00:00",
+        "arguments": {
+          "facility_id": "learning-b",
+          "execution_id": "trial-0b34952a0834e1159975fd52"
+        },
+        "result_status": "completed"
+      }
+    ],
+    "steps": []
+  },
+  "checks": {
+    "actual_plugin": true,
+    "model_arguments_match_manager_request": true,
+    "actual_cse_cin": true,
+    "zero_new_commands": true,
+    "expectation_met": true,
+    "service_recorded": false,
+    "same_definition": true,
+    "exact_origin": true
+  },
+  "approvals": [
+    {
+      "request_id": 0,
+      "method": "mcpServer/elicitation/request",
+      "decision": "accept_once",
+      "policy_changed": false
+    }
+  ],
+  "provider_requests": [
+    {
+      "model": "gpt-5-mini",
+      "payload_bytes": 7525,
+      "conservative_reserved_tokens": 8699,
+      "tool_names": [
+        "mcp__opensoom"
+      ],
+      "payload_sha256": "da8504d19a3d03eb2ad41c32dcd1c9c053416dd2ce94d066ca4021d62784f35e",
+      "omitted_codex_transport_metadata": true,
+      "forwarded": true,
+      "reservation_id": "codex-scenario-a67b5527e5:0:54d6fc53",
+      "reserved_tokens": 5161,
+      "measured_input_tokens": 1375,
+      "http_status": 200,
+      "provider_response_id": "resp_084496f6b433e556016afdcbe724c087d0a2576dec25858345",
+      "usage": {
+        "input_tokens": 1375,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cache_write_tokens_details": {
+            "ttl_12h_tokens": 0,
+            "ttl_30m_tokens": 0
+          },
+          "cached_tokens": 0
+        },
+        "output_tokens": 97,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 1472
+      },
+      "output_items": [
+        {
+          "type": "function_call",
+          "name": "test_virtual_scenario",
+          "call_id": "call_difZfVOotRKoaq7SuFXeWQBj",
+          "arguments": "{\"airflow_m3_h\":345,\"damper_percent\":83,\"expected_result\":\"command_refused\",\"facility_id\":\"learning-b\",\"observation_age_seconds\":93,\"request_id\":\"lounge-probe-d97c26\",\"scenario_id\":\"lounge-probe-d97c26\",\"zone_id\":\"lounge\"}"
+        }
+      ]
+    },
+    {
+      "model": "gpt-5-mini",
+      "payload_bytes": 11284,
+      "conservative_reserved_tokens": 12458,
+      "tool_names": [
+        "mcp__opensoom"
+      ],
+      "payload_sha256": "3c43d053f8b76cde34b5c73f0040d5773b5f1772dc9a9fea904a9aaa6bf6253b",
+      "omitted_codex_transport_metadata": true,
+      "forwarded": false
+    },
+    {
+      "forwarded": false,
+      "rejection": "AssertionError",
+      "reason": "Run request/time limit reached"
+    }
+  ],
+  "shared_after": {
+    "batch_id": "opensoom-hackathon-2026-01",
+    "max_requests": 100,
+    "max_tokens": 250000,
+    "requests_consumed": 83,
+    "tokens_charged": 247686,
+    "tokens_reserved": 0,
+    "pending_requests": 0,
+    "requests_remaining": 17,
+    "tokens_remaining": 2314,
+    "requires_investigation": false
+  }
+}

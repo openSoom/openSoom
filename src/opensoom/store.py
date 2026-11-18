@@ -2,6 +2,7 @@
 import json
 import sqlite3
 import threading
+from contextlib import closing, contextmanager
 from pathlib import Path
 
 
@@ -10,6 +11,7 @@ class Store:
         path.parent.mkdir(parents=True, exist_ok=True)
         self.path = path
         self.lock = threading.RLock()
+        self._transaction = threading.local()
         with self.connect() as db:
             db.executescript("""
             PRAGMA journal_mode=WAL;
@@ -17,8 +19,29 @@ class Store:
             CREATE TABLE IF NOT EXISTS events (seq INTEGER PRIMARY KEY AUTOINCREMENT, data TEXT NOT NULL);
             """)
 
+    @contextmanager
     def connect(self):
-        return sqlite3.connect(self.path, timeout=15)
+        active = getattr(self._transaction, "db", None)
+        if active is not None:
+            yield active
+        else:
+            with closing(sqlite3.connect(self.path, timeout=15)) as db, db:
+                yield db
+
+    @contextmanager
+    def transaction(self):
+        """Commit the triggering observation, decision and pending CSE event together."""
+        with self.lock, self.connect() as db:
+            if getattr(self._transaction, "db", None) is not None:
+                yield
+                return
+            db.execute("BEGIN IMMEDIATE")
+            self._transaction.db = db
+            try:
+                yield
+            finally:
+                del self._transaction.db
+
 
     def put(self, kind, key, data):
         with self.lock, self.connect() as db:

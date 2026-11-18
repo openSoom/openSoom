@@ -16,12 +16,13 @@ import subprocess
 import sys
 
 
-def prepare(root: Path) -> Path:
+def prepare(root: Path, *, service_url: str = "http://127.0.0.1:8090", credentials: Path | None = None,
+            catalog_dir: Path | None = None) -> Path:
     root = root.resolve()
     python = root / ".venv/bin/python"
     if not python.is_file():
         raise RuntimeError("Project Python environment missing. Run the README dependency setup first.")
-    catalog = root / ".runtime/plugin-marketplace"
+    catalog = catalog_dir or (root / ".runtime/plugin-marketplace")
     target = catalog / "plugin"
     target.mkdir(parents=True, exist_ok=True)
     shutil.copytree(root / "plugin", target, dirs_exist_ok=True)
@@ -31,8 +32,10 @@ def prepare(root: Path) -> Path:
         # script, not an absolute executable path. uv selects the project's
         # pinned environment without installing anything (--no-sync).
         "command": "uv", "args": ["--directory", str(root), "run", "--no-sync", "python", "-m", "opensoom.mcp_server"],
-        "env": {"OPENSOOM_PROJECT_DIR": str(root), "OPENSOOM_SERVICE_URL": "http://127.0.0.1:8090"},
+        "env": {"OPENSOOM_PROJECT_DIR": str(root), "OPENSOOM_SERVICE_URL": service_url},
     })
+    if credentials is not None:
+        mcp["mcpServers"]["opensoom"]["env"]["OPENSOOM_SERVICE_CREDENTIALS"] = str(credentials.resolve())
     (target / "mcp.json").write_text(json.dumps(mcp, indent=2) + "\n")
     directory = catalog / ".agents/plugins"
     directory.mkdir(parents=True, exist_ok=True)
@@ -48,10 +51,12 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--project", type=Path, default=Path(__file__).resolve().parents[1])
     parser.add_argument("--install", action="store_true")
+    parser.add_argument("--service-url", default="http://127.0.0.1:8090")
+    parser.add_argument("--credentials", type=Path, help="Path to the local operator connection file; its contents are never copied")
     parser.add_argument("--current-host", action="store_true", help="Install into the current Codex profile instead of isolated verification data")
     args = parser.parse_args()
     root = args.project.resolve()
-    catalog = prepare(root)
+    catalog = prepare(root, service_url=args.service_url, credentials=args.credentials)
     results = {"prepared": True, "marketplace": ".runtime/plugin-marketplace", "installed": False,
                "host_scope": "current" if args.current_host else "isolated", "commands": []}
     if args.install:

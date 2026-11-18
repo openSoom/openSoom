@@ -15,6 +15,7 @@ from fastapi.responses import HTMLResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import ValidationError
 
+from . import maintenance
 from .core import Core, OperationError, ROOT
 from .models import ToolEnvelope, utcnow
 from .onem2m import CSEError
@@ -52,13 +53,33 @@ def worker():
         core.stop_event.wait(2)
 
 
+def maintenance_sync():
+    previous_error = None
+    while not core.stop_event.wait(1):
+        if not core.connected:
+            continue
+        try:
+            maintenance.flush_outbox(core)
+            maintenance.refresh_work_orders(core)
+            previous_error = None
+        except (CSEError, ValueError, KeyError) as exc:
+            # Keep remote delivery and worker availability out of the control loop.
+            message = str(exc)
+            if message != previous_error:
+                core.log("maintenance_sync_error", "Maintenance synchronization will retry", error=message)
+                previous_error = message
+
+
 @asynccontextmanager
 async def lifespan(app):
     thread = threading.Thread(target=worker, name="opensoom-simulation", daemon=True)
+    sync = threading.Thread(target=maintenance_sync, name="opensoom-maintenance-sync", daemon=True)
     thread.start()
+    sync.start()
     yield
     core.stop_event.set()
     thread.join(timeout=15)
+    sync.join(timeout=15)
     if core.mqtt:
         core.mqtt.close()
     core.cse.close()
@@ -188,11 +209,22 @@ def update_agent_run(run_id: str, body: dict, request: Request):
     handled_failure = stale_refusal or denied or non_recovery
     if requested.startswith("PASS"):
         valid_flow = verified and {"read_evidence", "request_action", "verify_result"} <= names
-        if not valid_flow and not handled_failure:
+        trial_id = body.get("scenario_execution_id")
+        trial = core.store.get("scenario_runs", trial_id) if isinstance(trial_id, str) else None
+        matched = {call["name"]: call["scenario_receipt"] for call in run.get("tool_calls", [])
+                   if trial and call.get("scenario_receipt", {}).get("version") == trial["version"]
+                   and (call["name"] == "save_scenario" or call["scenario_receipt"].get("execution_id") == trial_id)}
+        authored = bool(trial and trial.get("agent_run_id") == run_id and trial.get("status") == "completed"
+                        and trial.get("assertion_passed") and trial["facility_id"] == run["facility_id"]
+                        and {"save_scenario", "run_scenario", "read_scenario_run"} <= matched.keys()
+                        and matched["read_scenario_run"].get("readback_rqi"))
+        if authored:
+            run["scenario_execution_id"] = trial_id
+        if not valid_flow and not handled_failure and not authored:
             outcome = "FAIL"
         if "LLM" in requested and (not body.get("live_model") or run["mode"] == "fixture"):
             outcome = "FAIL"
-        if "LLM" in requested and body.get("reported_outcome") != ("recovered" if verified else "unresolved"):
+        if "LLM" in requested and body.get("reported_outcome") != (trial["actual_result"] if authored else ("recovered" if verified else "unresolved")):
             outcome = "FAIL"
     run.update({k: body[k] for k in ("summary", "model", "steps", "usage", "live_model", "reported_outcome") if k in body})
     run.update(outcome=outcome, status="completed" if outcome.startswith("PASS") else ("running" if outcome == "RUNNING" else "failed"), completed_at=utcnow(), server_validation={"verified_recovery": verified, "handled_failure": handled_failure, "recorded_tool_calls": len(run.get("tool_calls", [])), "requested_outcome": requested})

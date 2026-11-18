@@ -21,7 +21,7 @@ def test_mcp_tools_use_fixed_identity_and_preserve_denials():
     async def check():
         async with Client(server) as client:
             tools = await client.list_tools()
-            assert {t.name for t in tools.tools} == {"doctor", "prepare_setup", "apply_setup", "discover", "read_group", "read_evidence", "request_action", "verify_result"}
+            assert {t.name for t in tools.tools} == {"doctor", "prepare_setup", "apply_setup", "discover", "read_group", "read_evidence", "request_action", "verify_result", "save_scenario", "run_scenario", "read_scenario_run", "test_virtual_scenario"}
             result = await client.call_tool("discover", {"facility_id": "food-a"})
             assert not result.is_error
             assert result.structured_content["facilities"][0]["id"] == "food-a"
@@ -71,3 +71,27 @@ def test_host_contexts_are_service_owned_facility_scoped_and_reused():
     assert all(r[3] == "Bearer scoped-observer" for r in observed)
     tool_calls = [r for r in observed if r[0].startswith("/api/tools/")]
     assert [r[1] for r in tool_calls] == [first["run_id"], first["run_id"], other["run_id"]]
+
+
+def test_manager_trial_shortcut_uses_same_stored_version_and_readback():
+    calls = []
+    def handle(request):
+        name = request.url.path.rsplit("/", 1)[-1]
+        args = json.loads(request.content)["arguments"]
+        calls.append((name, args))
+        results = {"save_scenario": {"version": "recorded-version"}, "run_scenario": {"execution_id": "recorded-trial"},
+                   "read_scenario_run": {"actual_result": "command_refused", "readback": {"rqi": "example"}}}
+        return httpx.Response(200, json=results[name])
+
+    async def check():
+        service = ServiceProxy(token="test-operator-credential", run_id="run-example", transport=httpx.MockTransport(handle))
+        async with Client(create_server(service)) as client:
+            result = await client.call_tool("test_virtual_scenario", {
+                "facility_id": "learning-b", "zone_id": "lounge", "scenario_id": "new-trial", "observation_age_seconds": 90,
+                "airflow_m3_h": 325, "damper_percent": 83, "expected_result": "command_refused", "request_id": "manager-1"})
+            assert not result.is_error, result.content
+            assert result.structured_content["readback"]["rqi"] == "example"
+    asyncio.run(check())
+    assert [name for name, _ in calls] == ["save_scenario", "run_scenario", "read_scenario_run"]
+    assert calls[1][1]["version"] == "recorded-version"
+    assert calls[2][1]["execution_id"] == "recorded-trial"

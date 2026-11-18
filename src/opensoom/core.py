@@ -10,6 +10,8 @@ from typing import Any
 
 import jsonschema
 
+from . import scenario_authoring
+from . import maintenance
 from .adapters import encode_virtual, normalize
 from .models import ActionRequest, Observation, utcnow
 from .onem2m import CSEClient, CSEError, MQTTCSEClient
@@ -65,6 +67,14 @@ class Core:
             raise ValueError("Duplicate facility identity")
         if any(item["profile"] not in profiles for item in entries):
             raise ValueError("Configured facility references an unknown profile")
+        for item in entries:
+            assets = item.get("maintenance", {}).get("assets", {})
+            zones = {zone["id"] for zone in profiles[item["profile"]]["zones"]}
+            if assets.keys() - zones:
+                raise ValueError("Maintenance asset refers to an unknown zone")
+            for field in ("asset_id", "sensor_id"):
+                if len({mapping[field] for mapping in assets.values()}) != len(assets):
+                    raise ValueError("Ambiguous maintenance sensor-to-asset assignment")
         selected = os.environ.get("OPENSOOM_FACILITY_IDS")
         if selected:
             identifiers = {value.strip() for value in selected.split(",")}
@@ -98,8 +108,13 @@ class Core:
                 self.identities[role] = ae["aei"]
             self.store.put("config", "identities", self.identities)
             self.ensure(self.root, 3, "m2m:cnt", {"rn": "facilities", "lbl": ["opensoom:facilities"]})
+            previous_sites = [key.split(":", 1)[1] for key in self.identities if key.startswith("maintenance:")]
+            for fid in previous_sites:
+                if fid not in self.registry:
+                    maintenance.disable_streams(self, fid)
             for fid, item in self.registry.items():
                 self.setup_facility(fid, item["name"], item["profile"], item["adapter"])
+            self.store.put("config", "identities", self.identities)
             if os.environ.get("OPENSOOM_MQTT_HOST") and self.mqtt is None:
                 self.mqtt = MQTTCSEClient(os.environ["OPENSOOM_MQTT_HOST"], os.environ.get("OPENSOOM_MQTT_CSE_ID", "opensoom-secure"), self.identities["adapter"], os.environ["OPENSOOM_CSE_CA"], port=int(os.environ.get("OPENSOOM_MQTT_PORT", "8883")), trace_path=self.runtime / "mqtt-requests.jsonl")
             self.connected = True
@@ -116,18 +131,22 @@ class Core:
             all_readers.append(central_origin)
         if "observer" in self.registry[fid]["read_only_roles"]:
             all_readers.append(self.identities["observer"])
+        workers = maintenance.register_workers(self, fid) if "maintenance" in self.registry[fid] else {}
         policies = {}
-        for kind, writers, permissions in (("structure", [], 0), ("observations", [self.identities["adapter"]], 5), ("commands", [self.identities["operator"], self.identities["maintenance"]], 1), ("acks", [self.identities["adapter"]], 1)):
-            rules = [{"acor": ["CAdmin"], "acop": 63}, {"acor": all_readers, "acop": 34}]
+        for kind, writers, permissions in (("structure", [], 0), ("observations", [self.identities["adapter"]], 5), ("commands", [self.identities["operator"]], 1), ("acks", [self.identities["adapter"]], 1)):
+            readers = list(all_readers)
+            if workers and kind == "observations":
+                readers.append(workers["maintenance"])
+            rules = [{"acor": readers, "acop": 34}]
             if writers:
                 rules.append({"acor": writers, "acop": permissions})
-            attrs = {"rn": "acp-" + fid + "-" + kind, "pv": {"acr": rules}, "pvs": {"acr": [{"acor": ["CAdmin"], "acop": 63}]}}
-            acp_path, policy, _ = self.ensure(self.root, 1, "m2m:acp", attrs)
-            if policy.get("pv") != attrs["pv"]:
-                self.cse.update(acp_path, {"m2m:acp": {"pv": attrs["pv"], "pvs": attrs["pvs"]}})
-            policies[kind] = policy["ri"]
+            policies[kind] = maintenance.create_policy(self, fid, kind, rules)
         acp = {"ri": policies["structure"]}
         fpath, _, _ = self.ensure(self.root + "/facilities", 3, "m2m:cnt", {"rn": fid, "acpi": [acp["ri"]], "lbl": ["opensoom:facility", "facility:" + fid, "profile:" + profile_id]})
+        if workers:
+            maintenance.provision_streams(self, fid, fpath, workers)
+        elif "maintenance:" + fid in self.identities:
+            maintenance.disable_streams(self, fid)
         zones = []
         members = []
         for zone in profile["zones"]:
@@ -147,7 +166,7 @@ class Core:
 
     def facility(self, fid):
         value = self.store.get("facilities", fid)
-        if not value:
+        if fid not in self.registry or not value:
             raise OperationError("unknown_facility", "Facility is not configured", 404)
         return value
 
@@ -184,6 +203,12 @@ class Core:
         return result
 
     def refresh_observation(self, fid, zid):
+        # Serialize the CSE read as well as the commit. A delayed callback must
+        # not replace a newer observation retrieved by a concurrent publisher.
+        with self.lock:
+            return self._refresh_observation(fid, zid)
+
+    def _refresh_observation(self, fid, zid):
         facility = self.facility(fid)
         zone = self.zone(facility, zid)
         result = self.cse.retrieve(zone["path"] + "/observations/la", origin=self.identities["diagnostic"])
@@ -192,11 +217,11 @@ class Core:
         observation = Observation.model_validate(content)
         if observation.facility_id != fid or observation.zone_id != zid:
             raise OperationError("observation_identity_mismatch", "CSE observation identity does not match its resource", 409)
-        with self.lock:
+        with self.store.transaction():
             previous = self.store.get("observations", fid + ":" + zid)
             if previous and previous.get("cin_id") == cin["ri"]:
                 return previous
-            record = {"observation": observation.model_dump(), "cin_id": cin["ri"], "rqi": result["rqi"], "cse_path": zone["path"] + "/observations/la"}
+            record = {"observation": observation.model_dump(), "cin_id": cin["ri"], "source_cin_path": zone["path"] + "/observations/" + cin["rn"], "rqi": result["rqi"], "cse_path": zone["path"] + "/observations/la"}
             self.store.put("observations", fid + ":" + zid, record)
             self.evaluate(observation, facility, zone, result["rqi"])
             return record
@@ -225,6 +250,8 @@ class Core:
             if not incident or incident["status"] == "resolved":
                 incident = {"id": "incident-" + uuid.uuid4().hex[:10], "facility_id": facility["id"], "zone_id": zone["id"], "title": "Verify " + zone["name"].lower() + " ventilation", "status": "open", "created_at": utcnow(), "recovery_count": 0}
                 self.log("incident_opened", diagnosis["reason"], facility["id"], zone["id"], run_id, rqi=rqi)
+            if diagnosis["status"] == "critical" and not incident.get("maintenance_opened"):
+                incident["maintenance_opened"] = maintenance.queue_outcome(self, "incident.opened", incident, observation, facility, zone, rqi)
             incident.update(reason=diagnosis["reason"], severity=diagnosis["status"], recovery_count=0, updated_at=utcnow(), latest_rqi=rqi)
             self.store.put("incidents", key, incident)
             if diagnosis["status"] == "critical":
@@ -232,6 +259,8 @@ class Core:
                     if command.get("incident_id") == incident["id"] and command.get("ack_at") and command["action"] == "set_damper" and datetime.fromisoformat(observation.observed_at) > datetime.fromisoformat(command["ack_at"]):
                         command["unresolved_samples"] = command.get("unresolved_samples", 0) + 1
                         if command["unresolved_samples"] >= profile["recovery_samples"]:
+                            if command.get("observed_result") != "unresolved":
+                                maintenance.queue_outcome(self, "command.unresolved_after_ack", incident, observation, facility, zone, rqi, command)
                             command.update(status="unresolved", observed_result="unresolved", verification_rqi=rqi)
                         self.store.put("commands", command["id"], command)
         elif incident and incident["status"] != "resolved":
@@ -257,7 +286,13 @@ class Core:
                 raise OperationError("run_scope", "Run does not match the requested facility", 403)
             if run.get("principal_role") != principal["role"]:
                 raise OperationError("run_owner_required", "Only the owning identity can append operations to this run", 403)
-        if name == "doctor":
+        if name in ("save_scenario", "run_scenario", "read_scenario_run"):
+            result = scenario_authoring.dispatch(self, name, args, principal, run_id, OperationError)
+        elif name in ("commission_provider", "read_provider_result"):
+            if principal["role"] != "admin":
+                raise OperationError("admin_required", "Sensor provider commissioning requires the site administrator", 403)
+            result = maintenance.commission(self, name, args, OperationError)
+        elif name == "doctor":
             result = self.doctor()
         elif name == "prepare_setup":
             profile_id = args.get("profile_id", "food-production")
@@ -277,7 +312,8 @@ class Core:
                 self.setup_facility(fid, item["name"], profile_id, item["adapter"])
             result = {"profile_id": profile_id, "activated_facilities": [fid for fid, _ in targets], "runtime": self.doctor()}
         elif name == "discover":
-            items = [f for f in self.store.list("facilities") if principal["role"] == "admin" or f["id"] in principal["facilities"]]
+            items = [f for f in self.store.list("facilities") if f["id"] in self.registry and
+                     (principal["role"] == "admin" or f["id"] in principal["facilities"])]
             if fid:
                 items = [self.facility(fid)]
             origin = self.identities.get(principal["role"], "CAdmin")
@@ -342,7 +378,12 @@ class Core:
         self.log("tool_completed", name.replace("_", " "), fid, args.get("zone_id"), run_id, tool=name)
         if run_id:
             run = self.store.get("runs", run_id)
-            run["tool_calls"] = run.get("tool_calls", []) + [{"name": name, "at": utcnow(), "arguments": args, "result_status": result.get("status", "ok")}]
+            entry = {"name": name, "at": utcnow(), "arguments": args, "result_status": result.get("status", "ok")}
+            if name in ("save_scenario", "run_scenario", "read_scenario_run"):
+                entry["scenario_receipt"] = {key: result[key] for key in ("version", "execution_id") if key in result}
+                if result.get("readback"):
+                    entry["scenario_receipt"]["readback_rqi"] = result["readback"]["rqi"]
+            run["tool_calls"] = run.get("tool_calls", []) + [entry]
             self.store.put("runs", run_id, run)
         return result
 
@@ -375,7 +416,7 @@ class Core:
             now = datetime.now(timezone.utc)
             incident = self.store.get("incidents", facility["id"] + ":" + zone["id"], {})
             command = {**request.model_dump(), "id": command_id, "status": "requested", "ack": False, "created_at": now.isoformat(), "expires_at": (now + timedelta(seconds=profile["command_ttl_seconds"])).isoformat(), "profile_version": profile["schema_version"], "run_id": run_id or facility.get("active_run"), "incident_id": incident.get("id"), "observed_result": "pending"}
-            result = self.create_content(zone["path"] + "/commands", command, self.identities["maintenance" if request.action == "request_maintenance" else "operator"])
+            result = self.create_content(zone["path"] + "/commands", command, self.identities["operator"])
             command.update(cse_rqi=result["rqi"], cse_resource_id=result["body"]["m2m:cin"]["ri"])
             self.store.put("commands", command_id, command)
             self.log("command_requested", "Maintenance requested" if request.action == "request_maintenance" else f"Damper adjustment requested: {request.value:g}%", facility["id"], zone["id"], command["run_id"], command_id=command_id, rqi=result["rqi"])
@@ -399,15 +440,17 @@ class Core:
         observation = next(z for z in self.facility_view(facility)["zones"] if z["id"] == command["zone_id"])
         return {**command, "command_id": command["id"], "complete": command["status"] == "verified", "outcome": "recovered" if command["status"] == "verified" else ("unresolved" if command["observed_result"] == "unresolved" or command["status"] in ("timed_out", "maintenance_recorded") else "pending"), "observations": observation["observations"], "message": "Result verified from later CSE observations" if command["status"] == "verified" else "CSE acceptance/ACK alone does not establish recovery"}
 
-    def acknowledge_pending(self, facility):
+    def acknowledge_pending(self, facility, only_command_id=None):
         for command in self.store.list("commands"):
+            if only_command_id and command["id"] != only_command_id:
+                continue
             if command["facility_id"] != facility["id"] or command["status"] != "requested":
                 continue
             if datetime.fromisoformat(command["expires_at"]) < datetime.now(timezone.utc):
                 command.update(status="timed_out", observed_result="unresolved")
                 self.store.put("commands", command["id"], command)
                 continue
-            if facility["scenario"] == "missing_ack":
+            if only_command_id is None and facility["scenario"] == "missing_ack":
                 continue
             zone = self.zone(facility, command["zone_id"])
             # Virtual adapter reads the actual CSE command before acting.
@@ -450,7 +493,7 @@ class Core:
 
     def tick(self):
         for facility in self.store.list("facilities"):
-            if not facility.get("active_run"):
+            if facility["id"] not in self.registry or not facility.get("active_run"):
                 continue
             try:
                 self.sample_facility(facility)
@@ -461,6 +504,10 @@ class Core:
                 self.log("runtime_error", "Observation update could not be verified against CSE", facility["id"], run_id=facility.get("active_run"), error=type(exc).__name__)
 
     def start_demo(self, fid, scenario, autorun, principal):
+        with self.lock:
+            return self._start_demo(fid, scenario, autorun, principal)
+
+    def _start_demo(self, fid, scenario, autorun, principal):
         self.authorize(principal, fid, "set_damper")
         if scenario not in {s["id"] for s in json.loads((ROOT / "scenarios/scenarios.json").read_text())["cases"]}:
             raise OperationError("unknown_scenario", "Choose a supported scenario")
@@ -518,14 +565,16 @@ class Core:
             zones.append(item)
         statuses = [z["status"] for z in zones]
         status = next((s for s in ("critical", "missing", "stale") if s in statuses), "nominal")
-        return {**{k: facility[k] for k in ("id", "name", "profile", "adapter", "scenario", "active_run")}, "zones": zones, "status": status, "simulation": True, "controls_enabled": facility["controls_enabled"]}
+        return {**{k: facility[k] for k in ("id", "name", "profile", "adapter", "scenario", "active_run")}, "maintenance_enabled": "maintenance" in self.registry[facility["id"]], "zones": zones, "status": status, "simulation": True, "controls_enabled": facility["controls_enabled"]}
 
     def state(self, principal):
-        facilities = [self.facility_view(f) for f in self.store.list("facilities") if principal["role"] == "admin" or f["id"] in principal["facilities"]]
+        facilities = [self.facility_view(f) for f in self.store.list("facilities")
+                      if f["id"] in self.registry and (principal["role"] == "admin" or f["id"] in principal["facilities"])]
         allowed = {f["id"] for f in facilities}
         incidents = [i for i in self.store.list("incidents") if i["facility_id"] in allowed]
         commands = [c for c in self.store.list("commands") if c["facility_id"] in allowed][-40:]
-        return {"facilities": facilities, "selected_facility": facilities[0]["id"] if facilities else None, "incidents": incidents, "commands": commands, "events": [e for e in self.store.events() if not e.get("facility_id") or e["facility_id"] in allowed], "runs": [r for r in self.store.list("runs") if r["facility_id"] in allowed][-15:], "runtime": {"cse_connected": self.connected, "cse_name": "ACME oneM2M", "simulation": True, "last_error": self.last_error, "last_notification": self.store.get("config", "last_notification")}, "summary": {"active_incidents": sum(i["status"] != "resolved" for i in incidents), "pending_commands": sum(c["status"] == "requested" for c in commands), "recovered_incidents": sum(i["status"] == "resolved" and i.get("resolved_at") is not None for i in incidents), "fresh_zones": sum(z["status"] not in ("stale", "missing") for f in facilities for z in f["zones"]), "total_zones": sum(len(f["zones"]) for f in facilities)}}
+        orders = [order for fid in sorted(allowed) if "maintenance" in self.registry[fid] for order in self.store.get("work_order_projection", fid, [])]
+        return {"facilities": facilities, "work_orders": orders, "selected_facility": facilities[0]["id"] if facilities else None, "incidents": incidents, "commands": commands, "events": [e for e in self.store.events() if not e.get("facility_id") or e["facility_id"] in allowed], "runs": [r for r in self.store.list("runs") if r["facility_id"] in allowed][-15:], "runtime": {"cse_connected": self.connected, "cse_name": "ACME oneM2M", "simulation": True, "last_error": self.last_error, "last_notification": self.store.get("config", "last_notification")}, "summary": {"active_incidents": sum(i["status"] != "resolved" for i in incidents), "pending_commands": sum(c["status"] == "requested" for c in commands), "recovered_incidents": sum(i["status"] == "resolved" and i.get("resolved_at") is not None for i in incidents), "fresh_zones": sum(z["status"] not in ("stale", "missing") for f in facilities for z in f["zones"]), "total_zones": sum(len(f["zones"]) for f in facilities)}}
 
     def doctor(self):
         try:

@@ -1,0 +1,406 @@
+{
+  "kind": "real CSE; simulated physical input/actuator",
+  "facility": "learning-b",
+  "zone": "lounge",
+  "definition": {
+    "facility_id": "learning-b",
+    "scenario_id": "trial-e228f1cde3",
+    "zone_id": "lounge",
+    "observation_age_seconds": 90,
+    "airflow_m3_h": 347.0,
+    "damper_percent": 89.0,
+    "expected_result": "command_refused",
+    "profile_id": "learning-space",
+    "profile_pin": "be90debe0cb8aae6b54c06bf86ad0cb3d84490b9712a387316f9627d2652fdd5",
+    "asset_id": "learning-b/lounge/damper",
+    "template": "virtual_damper_check_v1",
+    "version": "cc90337feb7bb942372ea1a3ddef4d7475a83e2090a77f2dd335217e2c8e765d",
+    "run_id": "mcp-12a967fc8ba8"
+  },
+  "invalid_inputs": [
+    {
+      "changes": {
+        "zone_id": "unknown"
+      },
+      "error": "unknown_zone"
+    },
+    {
+      "changes": {
+        "airflow_m3_h": "347 CFM"
+      },
+      "error": "invalid_arguments"
+    },
+    {
+      "changes": {
+        "damper_percent": 101
+      },
+      "error": "invalid_arguments"
+    },
+    {
+      "changes": {
+        "unit": "CFM"
+      },
+      "error": "invalid_arguments"
+    }
+  ],
+  "prepare": {
+    "execution": {
+      "execution_id": "trial-36b27865c3068772dd6c45ef",
+      "facility_id": "learning-b",
+      "zone_id": "lounge",
+      "asset_id": "learning-b/lounge/damper",
+      "scenario_id": "trial-e228f1cde3",
+      "version": "cc90337feb7bb942372ea1a3ddef4d7475a83e2090a77f2dd335217e2c8e765d",
+      "expected_result": "command_refused",
+      "agent_run_id": "mcp-12a967fc8ba8",
+      "status": "completed",
+      "started_at": "2026-11-18T15:36:03.646+00:00",
+      "cin": "cinypDYHFrEGv",
+      "publish_rqi": "opensoom-3301a9ae01de4d11abdebee4345858d5",
+      "commands_before": {
+        "count": 0,
+        "state_tag": 0,
+        "rqi": "opensoom-0322badf22584c5aae5324d0ad06b1c2"
+      },
+      "refusal": "evidence_not_current",
+      "completed_at": "2026-11-18T15:36:03.667+00:00",
+      "actual_result": "command_refused",
+      "assertion_passed": true,
+      "commands_after": {
+        "count": 0,
+        "state_tag": 0,
+        "rqi": "opensoom-dcf190642fe6417f85574dae81c2103f"
+      },
+      "command_state_tag_delta": 0,
+      "readback": {
+        "rqi": "opensoom-ea12e59affd54b0eb4d28d64986a1370",
+        "cin": "cinypDYHFrEGv",
+        "observed_at": "2026-11-18T15:34:33.650+00:00",
+        "airflow_m3_h": 347.0,
+        "zone_id": "lounge"
+      },
+      "run_id": "mcp-12a967fc8ba8"
+    },
+    "before": {
+      "classroom": {
+        "commands": {
+          "st": 0,
+          "cni": 0,
+          "rqi": "opensoom-7916682d5a6a4dafb28357c7913152af"
+        },
+        "observations": {
+          "st": 0,
+          "cni": 0,
+          "rqi": "opensoom-ec08431fb29a40cba7611a05083d6911"
+        },
+        "acks": {
+          "st": 0,
+          "cni": 0,
+          "rqi": "opensoom-d6dffb032ed84f63b842528298ecaf60"
+        }
+      },
+      "meeting": {
+        "commands": {
+          "st": 0,
+          "cni": 0,
+          "rqi": "opensoom-7a98684a11854d5dbd7a04bfb1bea968"
+        },
+        "observations": {
+          "st": 0,
+          "cni": 0,
+          "rqi": "opensoom-e9df0dbc527b457f9be2745256e14a7e"
+        },
+        "acks": {
+          "st": 0,
+          "cni": 0,
+          "rqi": "opensoom-06fa1195fcbd42acb75e32719e3cccb6"
+        }
+      },
+      "lounge": {
+        "commands": {
+          "st": 0,
+          "cni": 0,
+          "rqi": "opensoom-97ad02ac650249cba6bd7d488e588724"
+        },
+        "observations": {
+          "st": 0,
+          "cni": 0,
+          "rqi": "opensoom-bf59a194d914400594cffd74329656af"
+        },
+        "acks": {
+          "st": 0,
+          "cni": 0,
+          "rqi": "opensoom-a7a95e3b435642a6b53b6bc304e235e8"
+        }
+      }
+    },
+    "after": {
+      "classroom": {
+        "commands": {
+          "st": 0,
+          "cni": 0,
+          "rqi": "opensoom-84ac3d50420e4902b4598d41c3c1afd8"
+        },
+        "observations": {
+          "st": 0,
+          "cni": 0,
+          "rqi": "opensoom-091fabd847db450086544ae64e6abce5"
+        },
+        "acks": {
+          "st": 0,
+          "cni": 0,
+          "rqi": "opensoom-56be31b4f64e4db29bba8f4b164a10b1"
+        }
+      },
+      "meeting": {
+        "commands": {
+          "st": 0,
+          "cni": 0,
+          "rqi": "opensoom-0244d5c216f146f5a14a8d37dc67a882"
+        },
+        "observations": {
+          "st": 0,
+          "cni": 0,
+          "rqi": "opensoom-091402454ca340b890cf66c86117ac8f"
+        },
+        "acks": {
+          "st": 0,
+          "cni": 0,
+          "rqi": "opensoom-6a6d94efb3f04557922e75036f41795e"
+        }
+      },
+      "lounge": {
+        "commands": {
+          "st": 0,
+          "cni": 0,
+          "rqi": "opensoom-d25015ef0fbd4e82b8499216c475559e"
+        },
+        "observations": {
+          "st": 1,
+          "cni": 1,
+          "rqi": "opensoom-b2568c03828b40618563f776059024da"
+        },
+        "acks": {
+          "st": 0,
+          "cni": 0,
+          "rqi": "opensoom-7d8c30eac4f042ab84719ba5b280699d"
+        }
+      }
+    },
+    "retry_execution_id": "trial-36b27865c3068772dd6c45ef"
+  },
+  "replay": {
+    "execution": {
+      "execution_id": "trial-5f3ac13365f072601b159979",
+      "facility_id": "learning-b",
+      "zone_id": "lounge",
+      "asset_id": "learning-b/lounge/damper",
+      "scenario_id": "trial-e228f1cde3",
+      "version": "cc90337feb7bb942372ea1a3ddef4d7475a83e2090a77f2dd335217e2c8e765d",
+      "expected_result": "command_refused",
+      "agent_run_id": "mcp-78a496ec2b4a",
+      "status": "completed",
+      "started_at": "2026-11-18T15:36:47.443+00:00",
+      "cin": "cinAlaYO56HIa",
+      "publish_rqi": "opensoom-f188cd3a18b64d20920900b84822999b",
+      "commands_before": {
+        "count": 0,
+        "state_tag": 0,
+        "rqi": "opensoom-083864672a9a46d48bbe75b70a0e667f"
+      },
+      "refusal": "evidence_not_current",
+      "completed_at": "2026-11-18T15:36:47.462+00:00",
+      "actual_result": "command_refused",
+      "assertion_passed": true,
+      "commands_after": {
+        "count": 0,
+        "state_tag": 0,
+        "rqi": "opensoom-641ffa971726451a94f02c658312fb02"
+      },
+      "command_state_tag_delta": 0,
+      "readback": {
+        "rqi": "opensoom-40da06aa22f646c1a4ee38af5a899bf4",
+        "cin": "cinAlaYO56HIa",
+        "observed_at": "2026-11-18T15:35:17.446+00:00",
+        "airflow_m3_h": 347.0,
+        "zone_id": "lounge"
+      },
+      "run_id": "mcp-78a496ec2b4a"
+    },
+    "before": {
+      "classroom": {
+        "commands": {
+          "st": 0,
+          "cni": 0,
+          "rqi": "opensoom-013c0f03ce6b4f0b8eac2823c42fb207"
+        },
+        "observations": {
+          "st": 0,
+          "cni": 0,
+          "rqi": "opensoom-f80820cd180740ffa9a26d9e84c7e7f8"
+        },
+        "acks": {
+          "st": 0,
+          "cni": 0,
+          "rqi": "opensoom-472a4f1199f945cfbda24c87c082de70"
+        }
+      },
+      "meeting": {
+        "commands": {
+          "st": 0,
+          "cni": 0,
+          "rqi": "opensoom-9f321c0503594a248fd028e3e1dc36d5"
+        },
+        "observations": {
+          "st": 0,
+          "cni": 0,
+          "rqi": "opensoom-cdc36e169dda4fe8b56f4b2775cbe697"
+        },
+        "acks": {
+          "st": 0,
+          "cni": 0,
+          "rqi": "opensoom-a734cb2642d94b748b500b7224870191"
+        }
+      },
+      "lounge": {
+        "commands": {
+          "st": 0,
+          "cni": 0,
+          "rqi": "opensoom-21f824559c0947b8a740dd22c44da0e5"
+        },
+        "observations": {
+          "st": 1,
+          "cni": 1,
+          "rqi": "opensoom-c3734f1659e940bba70a4f5d87ad137d"
+        },
+        "acks": {
+          "st": 0,
+          "cni": 0,
+          "rqi": "opensoom-215a442aa1f8479282312cc99d8290f8"
+        }
+      }
+    },
+    "after": {
+      "classroom": {
+        "commands": {
+          "st": 0,
+          "cni": 0,
+          "rqi": "opensoom-fbc193dc8a554f55a4dc7ca31fbba980"
+        },
+        "observations": {
+          "st": 0,
+          "cni": 0,
+          "rqi": "opensoom-1b6bef0ea0d649cea05e700e75be2cea"
+        },
+        "acks": {
+          "st": 0,
+          "cni": 0,
+          "rqi": "opensoom-42f190f6e3d648e18da124728ec188cf"
+        }
+      },
+      "meeting": {
+        "commands": {
+          "st": 0,
+          "cni": 0,
+          "rqi": "opensoom-3dff8fb805c847959986178ec5301e56"
+        },
+        "observations": {
+          "st": 0,
+          "cni": 0,
+          "rqi": "opensoom-415a4076bcda468bb750f1313e8ff6da"
+        },
+        "acks": {
+          "st": 0,
+          "cni": 0,
+          "rqi": "opensoom-9c72f438e1f94a02bff6adb4cf2fc585"
+        }
+      },
+      "lounge": {
+        "commands": {
+          "st": 0,
+          "cni": 0,
+          "rqi": "opensoom-d1a03cf7d8a2427aa32a66e206e66ca3"
+        },
+        "observations": {
+          "st": 2,
+          "cni": 2,
+          "rqi": "opensoom-131fdd92e9394ec094757ade421f6c5e"
+        },
+        "acks": {
+          "st": 0,
+          "cni": 0,
+          "rqi": "opensoom-d56dc2559b0a42b09c0dbb121901a112"
+        }
+      }
+    },
+    "retry_execution_id": "trial-5f3ac13365f072601b159979"
+  },
+  "fresh_contrast": {
+    "execution_id": "trial-f9d04f945a6761e9e278359a",
+    "facility_id": "learning-b",
+    "zone_id": "lounge",
+    "asset_id": "learning-b/lounge/damper",
+    "scenario_id": "trial-e228f1cde3",
+    "version": "7637f3a89c59fac14c441d683f8cfd0ff4e9e0c58e4934cf998d662bc7988d23",
+    "expected_result": "device_acknowledged",
+    "agent_run_id": "mcp-78a496ec2b4a",
+    "status": "completed",
+    "started_at": "2026-11-18T15:36:47.520+00:00",
+    "cin": "cinA4ELNeVS5Z",
+    "publish_rqi": "opensoom-e88311362dc74fafa0b43e5539d9e69f",
+    "commands_before": {
+      "count": 0,
+      "state_tag": 0,
+      "rqi": "opensoom-03f90ab9b3ad494796c06c18e132b37e"
+    },
+    "command": {
+      "id": "cmd-22017282b1bf",
+      "cse_resource_id": "cinlaV5PPd4og",
+      "cse_rqi": "opensoom-9e70281c7c384fd19fd60b54acda90d1",
+      "ack_rqi": "opensoom-0f4a991df7ff4ab9b727f17466ad5437",
+      "ack_at": "2026-11-18T15:36:47.542+00:00",
+      "status": "unresolved",
+      "verification_rqi": "opensoom-4e1adbac5c3d4aee9932b3c5655f1ff2"
+    },
+    "completed_at": "2026-11-18T15:36:47.573+00:00",
+    "actual_result": "device_acknowledged",
+    "assertion_passed": true,
+    "commands_after": {
+      "count": 1,
+      "state_tag": 1,
+      "rqi": "opensoom-0be284af3e6143489f7a073207d676bb"
+    },
+    "command_state_tag_delta": 1,
+    "run_id": "mcp-78a496ec2b4a"
+  },
+  "incorrect_expectation": {
+    "execution_id": "trial-58ff480116c47b3762855a43",
+    "facility_id": "learning-b",
+    "zone_id": "lounge",
+    "asset_id": "learning-b/lounge/damper",
+    "scenario_id": "trial-e228f1cde3",
+    "version": "f106201e38f7d4df2fefe45ca7d204553638b039cbab33b53eaf3a07ed76d63c",
+    "expected_result": "device_acknowledged",
+    "agent_run_id": "mcp-78a496ec2b4a",
+    "status": "completed",
+    "started_at": "2026-11-18T15:36:47.600+00:00",
+    "cin": "cind3di1kvOfv",
+    "publish_rqi": "opensoom-8580621e0d234a669e3aa818634950c7",
+    "commands_before": {
+      "count": 1,
+      "state_tag": 1,
+      "rqi": "opensoom-5f16309f212a4700950adee833bc0c79"
+    },
+    "refusal": "evidence_not_current",
+    "completed_at": "2026-11-18T15:36:47.621+00:00",
+    "actual_result": "command_refused",
+    "assertion_passed": false,
+    "commands_after": {
+      "count": 1,
+      "state_tag": 1,
+      "rqi": "opensoom-483d4a3e50b1471494b0133bad709f85"
+    },
+    "command_state_tag_delta": 0,
+    "run_id": "mcp-78a496ec2b4a"
+  }
+}

@@ -1,0 +1,141 @@
+{
+  "status": "incomplete",
+  "case_id": "codex-scenario-d45387c66c",
+  "user_prompt": "Save a new virtual trial named lounge-probe-bad2ec in learning-b lounge. Model airflow 345 m3/h measured 93 seconds ago, request 83% damper, expect command refused. Run the saved version, then read and verify that execution.",
+  "authorized_scope": {
+    "facility_id": "learning-b",
+    "scenario_id": "lounge-probe-bad2ec",
+    "zone_id": "lounge",
+    "observation_age_seconds": 93,
+    "airflow_m3_h": 345,
+    "damper_percent": 83,
+    "expected_result": "command_refused"
+  },
+  "known_limits": "Isolated Codex host with a dedicated loopback service. Startup and facility activation already completed. The installed plugin exposes the full tool set. In this focused rehearsal the model can invoke the compound virtual-test tool. Its one actual model call supplies the test arguments. The service records the three underlying operations; the harness ends at actual readback. Local path prefixes are redacted.",
+  "provider": "https://api.openai.com/v1/responses",
+  "model": "gpt-5-mini",
+  "shared_before": {
+    "batch_id": "opensoom-hackathon-2026-01",
+    "max_requests": 100,
+    "max_tokens": 250000,
+    "requests_consumed": 81,
+    "tokens_charged": 244076,
+    "tokens_reserved": 0,
+    "pending_requests": 0,
+    "requests_remaining": 19,
+    "tokens_remaining": 5924,
+    "requires_investigation": false
+  },
+  "case_limits": {
+    "max_provider_requests": 1,
+    "max_run_charged_tokens": 5924,
+    "max_output_tokens": 200,
+    "provider_timeout_seconds": 45,
+    "turn_timeout_seconds": 150,
+    "request_max_retries": 0
+  },
+  "mode": "live",
+  "codex": "codex-cli 0.166.0",
+  "installed": "opensoom@opensoom-local",
+  "thread_id": "01a1ef57-94bd-7121-a67e-c777614c2470",
+  "tool_calls": [
+    {
+      "type": "mcpToolCall",
+      "id": "call_W4st8rQU2Z99dHEP450sr2Sp",
+      "server": "opensoom",
+      "tool": "test_virtual_scenario",
+      "status": "failed",
+      "arguments": {
+        "airflow_m3_h": 345,
+        "damper_percent": 83,
+        "expected_result": "command_refused",
+        "facility_id": "learning-b",
+        "observation_age_seconds": 93,
+        "request_id": "lounge-probe-bad2ec",
+        "scenario_id": "lounge-probe-bad2ec",
+        "zone_id": "lounge-probe-bad2ec"
+      },
+      "appContext": null,
+      "mcpAppUi": null,
+      "pluginId": "opensoom@opensoom-local",
+      "readOnlyHint": null,
+      "result": null,
+      "error": {
+        "message": "MCP tool call requires approval, but approval policy is never"
+      },
+      "durationMs": 0,
+      "startedAtMs": 1795016859542,
+      "completedAtMs": 1795016859544
+    }
+  ],
+  "host_status": "failed",
+  "provider_requests": [
+    {
+      "model": "gpt-5-mini",
+      "payload_bytes": 4121,
+      "conservative_reserved_tokens": 5345,
+      "tool_names": [
+        "mcp__opensoom"
+      ],
+      "payload_sha256": "a5a4e62b60785227c28d2dabb30efedde4963d1409f777480f5f69b9eb384e29",
+      "omitted_codex_transport_metadata": true,
+      "forwarded": true,
+      "reservation_id": "codex-scenario-d45387c66c:0:9619cc38",
+      "http_status": 200,
+      "provider_response_id": "resp_08799d3d1e80965e016afdc899efec87d08abae98be8133a5e",
+      "usage": {
+        "input_tokens": 660,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cache_write_tokens_details": {
+            "ttl_12h_tokens": 0,
+            "ttl_30m_tokens": 0
+          },
+          "cached_tokens": 0
+        },
+        "output_tokens": 103,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 763
+      },
+      "output_items": [
+        {
+          "type": "function_call",
+          "name": "test_virtual_scenario",
+          "call_id": "call_W4st8rQU2Z99dHEP450sr2Sp",
+          "arguments": "{\"airflow_m3_h\":345,\"damper_percent\":83,\"expected_result\":\"command_refused\",\"facility_id\":\"learning-b\",\"observation_age_seconds\":93,\"request_id\":\"lounge-probe-bad2ec\",\"scenario_id\":\"lounge-probe-bad2ec\",\"zone_id\":\"lounge-probe-bad2ec\"}"
+        }
+      ]
+    },
+    {
+      "model": "gpt-5-mini",
+      "payload_bytes": 6920,
+      "conservative_reserved_tokens": 8144,
+      "tool_names": [
+        "mcp__opensoom"
+      ],
+      "payload_sha256": "db926c4a7642b1abcb47bb3bcb1fe095d4796dac7f05296899dc0509f1e7c012",
+      "omitted_codex_transport_metadata": true,
+      "forwarded": false
+    },
+    {
+      "forwarded": false,
+      "rejection": "AssertionError",
+      "reason": "Run request/time limit reached"
+    }
+  ],
+  "approvals": [],
+  "shared_after": {
+    "batch_id": "opensoom-hackathon-2026-01",
+    "max_requests": 100,
+    "max_tokens": 250000,
+    "requests_consumed": 82,
+    "tokens_charged": 244839,
+    "tokens_reserved": 0,
+    "pending_requests": 0,
+    "requests_remaining": 18,
+    "tokens_remaining": 5161,
+    "requires_investigation": false
+  }
+}

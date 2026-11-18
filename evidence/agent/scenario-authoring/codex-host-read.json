@@ -1,0 +1,87 @@
+{
+  "status": "verified host read",
+  "case_id": "codex-scenario-95b79548e3",
+  "user_prompt": null,
+  "authorized_scope": {
+    "facility_id": "learning-b",
+    "execution_id": "trial-b14ee2daefcb90ce5999261b"
+  },
+  "known_limits": "The installed Codex host rereads the specified execution. This separate read does not author or run a new scenario.",
+  "provider": null,
+  "model": null,
+  "shared_before": {
+    "batch_id": "opensoom-hackathon-2026-01",
+    "max_requests": 100,
+    "max_tokens": 250000,
+    "requests_consumed": 82,
+    "tokens_charged": 244839,
+    "tokens_reserved": 0,
+    "pending_requests": 0,
+    "requests_remaining": 18,
+    "tokens_remaining": 5161,
+    "requires_investigation": false
+  },
+  "case_limits": {
+    "max_provider_requests": 1,
+    "max_run_charged_tokens": 5924,
+    "max_output_tokens": 200,
+    "provider_timeout_seconds": 45,
+    "turn_timeout_seconds": 150,
+    "request_max_retries": 0
+  },
+  "mode": "harness-selected read-only lookup",
+  "codex": "codex-cli 0.166.0",
+  "installed": "opensoom@opensoom-local",
+  "thread_id": "01a1ef59-5da0-7962-a35a-bda8020c9929",
+  "model_selected_this_read": false,
+  "host_readback": {
+    "execution_id": "trial-b14ee2daefcb90ce5999261b",
+    "facility_id": "learning-b",
+    "zone_id": "lounge",
+    "asset_id": "learning-b/lounge/damper",
+    "scenario_id": "lounge-window-decay",
+    "version": "bc6d7adaaf13a263b4d18c7521c1efc734689460e0c573866c24072abd54d66f",
+    "expected_result": "command_refused",
+    "agent_run_id": "agent-c1506d4ce995",
+    "status": "completed",
+    "started_at": "2026-11-18T15:39:06.890+00:00",
+    "cin": "cin3enrw7C9yZ",
+    "publish_rqi": "opensoom-46297f14612841f29a5a59274b97bc42",
+    "commands_before": {
+      "count": 1,
+      "state_tag": 1,
+      "rqi": "opensoom-7eac199c87454931a968f02c16a49ebf"
+    },
+    "refusal": "evidence_not_current",
+    "completed_at": "2026-11-18T15:39:06.909+00:00",
+    "actual_result": "command_refused",
+    "assertion_passed": true,
+    "commands_after": {
+      "count": 1,
+      "state_tag": 1,
+      "rqi": "opensoom-9f4cdd22a099489c9da75789e1b02655"
+    },
+    "command_state_tag_delta": 0,
+    "readback": {
+      "rqi": "opensoom-a467ff4a5f7c45998ae1fdd6072ca082",
+      "cin": "cin3enrw7C9yZ",
+      "observed_at": "2026-11-18T15:37:38.893+00:00",
+      "airflow_m3_h": 341.0,
+      "zone_id": "lounge"
+    },
+    "run_id": "mcp-6558dfc29dbc"
+  },
+  "provider_requests": [],
+  "shared_after": {
+    "batch_id": "opensoom-hackathon-2026-01",
+    "max_requests": 100,
+    "max_tokens": 250000,
+    "requests_consumed": 82,
+    "tokens_charged": 244839,
+    "tokens_reserved": 0,
+    "pending_requests": 0,
+    "requests_remaining": 18,
+    "tokens_remaining": 5161,
+    "requires_investigation": false
+  }
+}

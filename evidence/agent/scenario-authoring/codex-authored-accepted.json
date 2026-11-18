@@ -1,0 +1,175 @@
+{
+  "status": "verified",
+  "source_capture": "codex-verified-retry.json",
+  "run_id": "mcp-8afdc41a120a",
+  "execution_id": "trial-0b34952a0834e1159975fd52",
+  "model": "gpt-5-mini",
+  "model_selected_tool": "test_virtual_scenario",
+  "model_generated_arguments": {
+    "airflow_m3_h": 345,
+    "damper_percent": 83,
+    "expected_result": "command_refused",
+    "facility_id": "learning-b",
+    "observation_age_seconds": 93,
+    "request_id": "lounge-probe-d97c26",
+    "scenario_id": "lounge-probe-d97c26",
+    "zone_id": "lounge"
+  },
+  "host_approval": [
+    {
+      "request_id": 0,
+      "method": "mcpServer/elicitation/request",
+      "decision": "accept_once",
+      "policy_changed": false
+    }
+  ],
+  "original_inference_calls": 1,
+  "new_inference_calls_for_audit": 0,
+  "checks": {
+    "actual_plugin": true,
+    "model_arguments_match_manager_request": true,
+    "actual_cse_cin": true,
+    "zero_new_commands": true,
+    "expectation_met": true,
+    "service_recorded": true,
+    "same_definition": true,
+    "exact_origin": true,
+    "stored_version_hash": true,
+    "original_cin_after_service_restart": true,
+    "replay_new_cin_same_definition": true
+  },
+  "service_run": {
+    "id": "mcp-8afdc41a120a",
+    "run_id": "mcp-8afdc41a120a",
+    "facility_id": "learning-b",
+    "scenario": "normal",
+    "mode": "mcp_host",
+    "model": null,
+    "principal_role": "operator",
+    "status": "running",
+    "started_at": "2026-11-18T16:01:44.918+00:00",
+    "tool_calls": [
+      {
+        "name": "save_scenario",
+        "at": "2026-11-18T16:01:44.932+00:00",
+        "arguments": {
+          "facility_id": "learning-b",
+          "scenario_id": "lounge-probe-d97c26",
+          "zone_id": "lounge",
+          "observation_age_seconds": 93,
+          "airflow_m3_h": 345.0,
+          "damper_percent": 83.0,
+          "expected_result": "command_refused"
+        },
+        "result_status": "ok"
+      },
+      {
+        "name": "run_scenario",
+        "at": "2026-11-18T16:01:44.971+00:00",
+        "arguments": {
+          "facility_id": "learning-b",
+          "scenario_id": "lounge-probe-d97c26",
+          "version": "eb02ca052c852440a9a6828df573a69bf1171a66c86b4dd9af4387c00074b8d3",
+          "request_id": "lounge-probe-d97c26"
+        },
+        "result_status": "completed"
+      },
+      {
+        "name": "read_scenario_run",
+        "at": "2026-11-18T16:01:44.984+00:00",
+        "arguments": {
+          "facility_id": "learning-b",
+          "execution_id": "trial-0b34952a0834e1159975fd52"
+        },
+        "result_status": "completed"
+      }
+    ],
+    "steps": []
+  },
+  "stored_definition": {
+    "facility_id": "learning-b",
+    "scenario_id": "lounge-probe-d97c26",
+    "zone_id": "lounge",
+    "observation_age_seconds": 93,
+    "airflow_m3_h": 345.0,
+    "damper_percent": 83.0,
+    "expected_result": "command_refused",
+    "profile_id": "learning-space",
+    "profile_pin": "0c872722c1b0e87a38412207813586ff3a8df18844376839a20aca133eaf59de",
+    "asset_id": "learning-b/lounge/damper",
+    "template": "virtual_damper_check_v1",
+    "version": "eb02ca052c852440a9a6828df573a69bf1171a66c86b4dd9af4387c00074b8d3"
+  },
+  "original_after_restart": {
+    "execution_id": "trial-0b34952a0834e1159975fd52",
+    "facility_id": "learning-b",
+    "zone_id": "lounge",
+    "asset_id": "learning-b/lounge/damper",
+    "scenario_id": "lounge-probe-d97c26",
+    "version": "eb02ca052c852440a9a6828df573a69bf1171a66c86b4dd9af4387c00074b8d3",
+    "expected_result": "command_refused",
+    "agent_run_id": "mcp-8afdc41a120a",
+    "status": "completed",
+    "started_at": "2026-11-18T16:01:44.942+00:00",
+    "cin": "cinMteLGfy45r",
+    "publish_rqi": "opensoom-4912243aa6824d2d92c9bacfbf356967",
+    "commands_before": {
+      "count": 0,
+      "state_tag": 0,
+      "rqi": "opensoom-3edf4ec3f77643898e17b09799f4698e"
+    },
+    "refusal": "evidence_not_current",
+    "completed_at": "2026-11-18T16:01:44.969+00:00",
+    "actual_result": "command_refused",
+    "assertion_passed": true,
+    "commands_after": {
+      "count": 0,
+      "state_tag": 0,
+      "rqi": "opensoom-f6a2bb7e75674748b555dee15a2529a8"
+    },
+    "command_state_tag_delta": 0,
+    "readback": {
+      "rqi": "opensoom-ad5153b2c55c45389628f9721c9d9490",
+      "cin": "cinMteLGfy45r",
+      "observed_at": "2026-11-18T16:00:11.945+00:00",
+      "airflow_m3_h": 345.0,
+      "zone_id": "lounge"
+    }
+  },
+  "replay_after_restart": {
+    "execution_id": "trial-058babf5d999c864502213f8",
+    "facility_id": "learning-b",
+    "zone_id": "lounge",
+    "asset_id": "learning-b/lounge/damper",
+    "scenario_id": "lounge-probe-d97c26",
+    "version": "eb02ca052c852440a9a6828df573a69bf1171a66c86b4dd9af4387c00074b8d3",
+    "expected_result": "command_refused",
+    "agent_run_id": null,
+    "status": "completed",
+    "started_at": "2026-11-18T16:05:52.113+00:00",
+    "cin": "cinayLGd3q2bF",
+    "publish_rqi": "opensoom-03dc7023f6e44ff786e87c7f04bb2a1e",
+    "commands_before": {
+      "count": 0,
+      "state_tag": 0,
+      "rqi": "opensoom-5bb0d98477c04912bd22ca9b124cc589"
+    },
+    "refusal": "evidence_not_current",
+    "completed_at": "2026-11-18T16:05:52.135+00:00",
+    "actual_result": "command_refused",
+    "assertion_passed": true,
+    "commands_after": {
+      "count": 0,
+      "state_tag": 0,
+      "rqi": "opensoom-aed05b1a3ef04051a87a982e42c80cc0"
+    },
+    "command_state_tag_delta": 0,
+    "readback": {
+      "rqi": "opensoom-2de8b1c1611d441ab009c6b90a00787b",
+      "cin": "cinayLGd3q2bF",
+      "observed_at": "2026-11-18T16:04:19.116+00:00",
+      "airflow_m3_h": 345.0,
+      "zone_id": "lounge"
+    }
+  }
+}
