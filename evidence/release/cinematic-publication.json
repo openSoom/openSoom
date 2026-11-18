@@ -201,5 +201,93 @@
       }
     ],
     "observations": "Each selector loaded its own metadata, played and paused at the expected scene. The PR preview exposes a WebVTT track for browsers that omit embedded MP4 text tracks. On the local-file entry Chrome loaded all ten cues."
+  },
+  "maintenance_addendum": {
+    "release_revision": "aecd7e2c34fc5ea3ccbfc3ffc450ccfbaf92b950",
+    "verified_at": "2026-11-18T13:12:56.445820+00:00",
+    "checks": [
+      {
+        "url": "https://raw.githubusercontent.com/openSoom/openSoom/aecd7e2c34fc5ea3ccbfc3ffc450ccfbaf92b950/docs/submission/hackster-article.md",
+        "http_status": 200,
+        "path": "docs/submission/hackster-article.md",
+        "bytes": 22305,
+        "sha256": "88782f3a564b8c64c710acedb60f6341be1ff8c1ecacbb8b68523e40513a372b"
+      },
+      {
+        "url": "https://raw.githubusercontent.com/openSoom/openSoom/aecd7e2c34fc5ea3ccbfc3ffc450ccfbaf92b950/docs/submission/hackster-publish-notes.md",
+        "http_status": 200,
+        "path": "docs/submission/hackster-publish-notes.md",
+        "bytes": 5332,
+        "sha256": "72de8d0f07ec751dbe6260dda88c2ca73eeb94f415765b21248f4ade57778021"
+      },
+      {
+        "url": "https://raw.githubusercontent.com/openSoom/openSoom/aecd7e2c34fc5ea3ccbfc3ffc450ccfbaf92b950/docs/hackathon/current-assessment.md",
+        "http_status": 200,
+        "path": "docs/hackathon/current-assessment.md",
+        "bytes": 9285,
+        "sha256": "f9075edea487f109cc216147250bb025999699425ad42a13189f68d3120f5d63"
+      },
+      {
+        "url": "https://raw.githubusercontent.com/openSoom/openSoom/aecd7e2c34fc5ea3ccbfc3ffc450ccfbaf92b950/docs/handover.md",
+        "http_status": 200,
+        "path": "docs/handover.md",
+        "bytes": 8402,
+        "sha256": "b265fd31dfbe12ea6b1e249f21eec72d3f5281530b2ff72f5981d66d1c30f6ad"
+      },
+      {
+        "url": "https://raw.githubusercontent.com/openSoom/openSoom/aecd7e2c34fc5ea3ccbfc3ffc450ccfbaf92b950/docs/review/handover-independent.md",
+        "http_status": 200,
+        "path": "docs/review/handover-independent.md",
+        "bytes": 5651,
+        "sha256": "2e0d430a8aa9aa0fa271d73662a45fe156c250319107a33e6e429b8a44ec08e5"
+      },
+      {
+        "url": "https://raw.githubusercontent.com/openSoom/openSoom/aecd7e2c34fc5ea3ccbfc3ffc450ccfbaf92b950/evidence/runtime/handover/acceptance.json",
+        "http_status": 200,
+        "path": "evidence/runtime/handover/acceptance.json",
+        "bytes": 58514,
+        "sha256": "067c9498426ff171b0dcb12b954f92725cdc93b3d8a33221b40df22b2467da42"
+      },
+      {
+        "url": "https://raw.githubusercontent.com/openSoom/openSoom/aecd7e2c34fc5ea3ccbfc3ffc450ccfbaf92b950/evidence/runtime/handover/handover-b6e82ef69f.json",
+        "http_status": 200,
+        "path": "evidence/runtime/handover/handover-b6e82ef69f.json",
+        "bytes": 58514,
+        "sha256": "067c9498426ff171b0dcb12b954f92725cdc93b3d8a33221b40df22b2467da42"
+      },
+      {
+        "url": "https://raw.githubusercontent.com/openSoom/openSoom/aecd7e2c34fc5ea3ccbfc3ffc450ccfbaf92b950/src/opensoom/handover.py",
+        "http_status": 200,
+        "path": "src/opensoom/handover.py",
+        "bytes": 22918,
+        "sha256": "c5b0a07fb7ff3e2845992e26200de8bd84463f37e286f5ad121fe353302f745c"
+      },
+      {
+        "url": "https://raw.githubusercontent.com/openSoom/openSoom/aecd7e2c34fc5ea3ccbfc3ffc450ccfbaf92b950/scripts/cse_handover_demo.py",
+        "http_status": 200,
+        "path": "scripts/cse_handover_demo.py",
+        "bytes": 19989,
+        "sha256": "d6a771af8ed36f4e8884e2794206fb5c1dd15f4ed3fdd40562806654cbc3b18d"
+      },
+      {
+        "url": "https://raw.githubusercontent.com/openSoom/openSoom/aecd7e2c34fc5ea3ccbfc3ffc450ccfbaf92b950/tests/test_handover.py",
+        "http_status": 200,
+        "path": "tests/test_handover.py",
+        "bytes": 6606,
+        "sha256": "0da8427574d630d23a8f0b274fecdc852f2dac4ce7c46da33661d637f9688971"
+      },
+      {
+        "url": "https://github.com/openSoom/openSoom/blob/main/docs/handover.md",
+        "http_status": 200
+      },
+      {
+        "url": "https://github.com/openSoom/openSoom/blob/main/evidence/runtime/handover/handover-b6e82ef69f.json",
+        "http_status": 200
+      },
+      {
+        "url": "https://github.com/openSoom/openSoom/blob/main/docs/submission/hackster-article.md",
+        "http_status": 200
+      }
+    ]
   }
 }
