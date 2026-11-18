@@ -10,7 +10,7 @@
 - Distinguish simulated physical measurements and actuator behavior from actual oneM2M/MEC software execution. Never present rendered footage or a modeled improvement curve as a physical experiment.
 - Final submission target: 2026-11-20. Track-specific scoring applicability and exact cutoff conditions remain unverified. Keep competition eligibility separate from technical deployment choices.
 
-## Independent rubric review
+## Independent rubric and product review
 
 The maintainer requests six independent GPT-6.2 Sol teams at Max reasoning. Their current assignments are versioned in `docs/review/review-charter.json`. Earlier four-team reports retain their historical authors and scope.
 
@@ -22,6 +22,8 @@ The maintainer requests six independent GPT-6.2 Sol teams at Max reasoning. Thei
 | D | Security, data semantics and agents | 10, 11, 17 | `review_trust_ai` |
 | E | Continuity, MEC deployment and service use | 12, 13, 16 | `review_edge_deployment` |
 | F | Federated learning and location | 14, 15 | `review_learning_location` |
+
+Alongside teams A–F, run the independent `idea_model_review` agent (GPT-6.2 Sol Max, fork_turns=none). It owns the product hypothesis, professional inspection rationale, simpler local alternative, deployment responsibilities and reuse by a nontechnical operator. Follow the triggers and reporting fields in the charter and the acceptance cases in `docs/mec-application-contract.ko.md`. Its judgment is recorded separately from the 17 scores.
 
 - Use `model: gpt-6.2-sol`, `reasoning_effort: max` and `fork_turns: none`. Give each team the same frozen revision and evidence bundle. With four active slots, run two waves of three reviewers alongside the main agent.
 - After a meaningful change, re-review the affected criteria. At architecture freeze, the first real CSE end-to-end flow, Codex onboarding/live-LLM acceptance, the release candidate and final submission package, cover all 17 criteria. Reviews occur during active work; this is not an unattended scheduled monitor.

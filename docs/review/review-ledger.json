@@ -1493,6 +1493,26 @@
       "decision_reason": "Neither addition improves the fixed-installation fault diagnosis by itself.",
       "implementation_state": "conditional_reopen",
       "review_state": "open"
+    },
+    {
+      "id": "IDEA-001",
+      "team": "idea_model",
+      "criteria": [],
+      "evidence_status": "independent_preimplementation_review",
+      "observed_evidence": [
+        "docs/mec-application-contract.ko.md",
+        "evidence/runtime/multiapp-revalidation/index.json",
+        "src/opensoom/core.py",
+        "https://www.hse.gov.uk/lev/commissioning.htm"
+      ],
+      "gap_and_impact": "The need to verify airflow has a field basis. Incremental benefit of an independent MEC sensor provider, and cross-facility setup effort, are untested. Existing simulated actuator state is not an independent measurement.",
+      "minimum_change": "Separate the two app roles and identities, mandate one operational authority per site instance, and compare absent / real MEC / identical local measurements. Exercise a provider sensor change and a second configuration without changing operational code.",
+      "product_reason": "Prove which technician decision changes and when optional MEC access reduces integration work for the operator.",
+      "verification": "R0 architecture, R2/R3 paired runs and new authoring, R4/R5 final claims. Save source/asset/measurement metadata, persistent result, control-write count and operator setup steps. Team D also requires direct permission-denial checks for both identities.",
+      "main_decision": "accept",
+      "decision_reason": "Adopted as a falsifiable product and architecture contract. Actual platform, independent virtual sensor and user workflow evidence remain due.",
+      "implementation_state": "design_recorded_runtime_pending",
+      "review_state": "open"
     }
   ]
 }

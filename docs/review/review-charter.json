@@ -1,8 +1,8 @@
 {
-  "version": 3,
+  "version": 4,
   "date": "2026-11-19",
   "project": "openSoom",
-  "authority": "The maintainer requested six GPT-6.2 Sol review teams covering all 17 criteria and independent verification after fixes.",
+  "authority": "The maintainer requested six independent rubric teams plus one independent Idea Model reviewer of product need, expertise, generality and application responsibilities.",
   "source_of_truth": {
     "title": "Hackathon Rubric 2026",
     "sha256": "42b38857fffae7c92739f84440b9db020ec6b79897c0f70db64c465ffd2cdfad",
@@ -83,7 +83,7 @@
     }
   ],
   "active_slot_limit": 4,
-  "scheduling": "Main plus up to three active workers. Run six independent reviews in two waves, using fork_turns=none and a shared frozen source/evidence snapshot.",
+  "scheduling": "Main plus up to three active workers. Schedule the six scoring owners and the independent Idea Model reviewer in waves. Give all reviewers the same frozen revision and evidence bundle.",
   "triggers": [
     "Pre-activation release plan review",
     "Changed criteria after a material change or fix",
@@ -149,5 +149,37 @@
     "This process runs during active work and milestones; it is not a scheduled background monitor."
   ],
   "implementation_plan": "docs/release-goal.ko.md",
-  "execution_state": "docs/release-goal-state.json"
+  "execution_state": "docs/release-goal-state.json",
+  "idea_model_reviewer": {
+    "id": "idea_model",
+    "task_name": "idea_model_review",
+    "model": "gpt-6.2-sol",
+    "reasoning_effort": "max",
+    "fork_turns": "none",
+    "criteria": [],
+    "purpose": "Independently test whether the proposed product solves a documented facility decision, offers a professionally grounded response and can be configured by other facilities through an agent plugin.",
+    "inputs": [
+      "Problem source and explicit product assumptions",
+      "Actor, decision, permitted writes and deployment unit per app",
+      "Facility profile and example inputs",
+      "Same inputs with and without the proposed external capability",
+      "Same evidence supplied by a simpler local route when available",
+      "Observed operator decision, installation effort and independent reuse evidence"
+    ],
+    "triggers": [
+      "Before architecture freeze or a change to product need, application responsibilities or service selection",
+      "First integrated scenario including an agent-authored definition and MEC comparison",
+      "Release candidate and final claims or materially revised demo"
+    ],
+    "output": [
+      "Evidence for the real problem",
+      "User and decision",
+      "Value and simpler alternative",
+      "App boundaries and authority",
+      "Configured reuse and adoption friction",
+      "Falsifiable test, verdict, open assumptions and next review"
+    ],
+    "disposition": "Main records adopt, revise or defer with reason and links. Ask this reviewer to recheck with execution evidence after implementation. Rubric grades remain with teams A–F.",
+    "contract": "docs/mec-application-contract.ko.md"
+  }
 }

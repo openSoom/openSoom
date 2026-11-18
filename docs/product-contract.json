@@ -1,5 +1,5 @@
 {
-  "version": 3,
+  "version": 4,
   "date": "2026-11-19",
   "status": "First release captured. Next Goal prepared for activation.",
   "definition": "Reusable open-source operations layer for connecting ventilation and air-management equipment and tracing observations, diagnosis, authorized actions, result verification and maintenance across facilities and vendors.",
@@ -14,7 +14,8 @@
     "implementation_delegation": "Main agent may use subagents as needed to improve accepted findings",
     "physical_devices": "Simulated physical devices authorized by organizer according to user",
     "pitching_artifact": "Single-page HTML with large Three.js facility/workflow views and detailed factual oneM2M architecture explorer, Korean project explanation and reusable landing-page quality",
-    "final_review": "Six independent GPT-6.2 Sol Max teams review the release, including the video, landing page and English deck."
+    "final_review": "Six independent GPT-6.2 Sol Max teams review the release, including the video, landing page and English deck.",
+    "idea_model_reviewer": "One independent GPT-6.2 Sol Max reviewer in addition to the six rubric teams; accountable for real operational need, credible decisions, general reuse and application boundaries."
   },
   "consistent_management": "Shared contracts, permissions, workflows and evidence; facility-specific targets and controls.",
   "boundaries": {
@@ -52,7 +53,8 @@
       "single-facility local start",
       "two facility MN-CSEs and a central IN-CSE demonstration",
       "Self-hosted ETSI MEC Sandbox Option C for the new release. Verify the registered app and an actual non-location service round trip through oneM2M."
-    ]
+    ],
+    "application_contract": "docs/mec-application-contract.ko.md"
   },
   "defaults_not_explicit_user_actuation_choice": {
     "real_devices": "Observe and diagnose until configuration explicitly enables scoped controls",

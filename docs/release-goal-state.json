@@ -47,11 +47,35 @@
     "interview": "2026-11-23/2026-11-25",
     "authorized_destination": "openSoom/openSoom via github-personal"
   },
-  "change_log": [],
+  "change_log": [
+    {
+      "date": "2026-11-19",
+      "gates": [
+        "R0",
+        "R1",
+        "R2",
+        "R3",
+        "R4",
+        "R5"
+      ],
+      "decision": "Define the separately deployable MEC maintenance project and service bridge, keep operational control at the facility, and assign a seventh non-scoring Idea Model reviewer. Recheck the same fault with independently sourced and locally available evidence."
+    }
+  ],
   "external_blockers": [],
   "rubric_expert_followup": {
     "13": "open: project topology and orchestration across eligible hosts",
     "16": "open: multiple functional services and bidirectional interaction through oneM2M",
     "review": "docs/review/release-goal-review.ko.md"
+  },
+  "idea_model_review": {
+    "reviewer": "idea_model_review",
+    "architecture_contract": "docs/mec-application-contract.ko.md",
+    "reviewed_input": "dd9162a",
+    "status": "design_conditional_on_execution",
+    "review_again_at": [
+      "R0 architecture freeze",
+      "R2/R3 integrated comparison",
+      "R4/R5 public claims and final package"
+    ]
   }
 }
