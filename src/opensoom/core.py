@@ -204,13 +204,16 @@ class Core:
         facility = self.facility(observation.facility_id)
         zone = self.zone(facility, observation.zone_id)
         result = self.create_content(zone["path"] + "/observations", observation.model_dump(), self.identities["adapter"])
-        if observation.pm25 is not None:
-            # TS-0023 v5.6.0 airQualitySensor.pm25 is integer µg/m³.
-            # Its co2 is mg/m³: never insert our ppm into that attribute.
-            client = self.mqtt or self.cse
-            client.update(zone["standard_path"], {"cod:aiQSr": {"pm25": round(observation.pm25), "lbl": ["opensoom:sdt", "facility:" + facility["id"], "zone:" + zone["id"], "simulated"]}}, origin=self.identities["adapter"])
-        # Re-read authoritative CSE state. Notifications also trigger this path.
-        self.refresh_observation(facility["id"], zone["id"])
+        # Publish the materialized PM2.5 value from the accepted sample. The
+        # CSE retains delayed/retransmitted CINs even when they do not advance it.
+        with self.lock:
+            current = self.refresh_observation(facility["id"], zone["id"])
+            pm25 = current["observation"]["pm25"]
+            projected = self.store.get("sdt_projected_cin", zone["standard_path"])
+            if pm25 is not None and not current.get("sequence_issue") and projected != current["cin_id"]:
+                client = self.mqtt or self.cse
+                client.update(zone["standard_path"], {"cod:aiQSr": {"pm25": round(pm25), "lbl": ["opensoom:sdt", "facility:" + facility["id"], "zone:" + zone["id"], "simulated"]}}, origin=self.identities["adapter"])
+                self.store.put("sdt_projected_cin", zone["standard_path"], current["cin_id"])
         return result
 
     def refresh_observation(self, fid, zid):
@@ -229,12 +232,66 @@ class Core:
         if observation.facility_id != fid or observation.zone_id != zid:
             raise OperationError("observation_identity_mismatch", "CSE observation identity does not match its resource", 409)
         with self.store.transaction():
-            previous = self.store.get("observations", fid + ":" + zid)
-            if previous and previous.get("cin_id") == cin["ri"]:
+            stream = fid + ":" + zid
+            previous = self.store.get("observations", stream)
+            arrival = {"cin": cin["ri"], "container": cin.get("pi"), "st": cin.get("st")}
+            prior_arrival = previous.get("last_arrival", {}) if previous else {}
+            if previous and prior_arrival.get("cin", previous.get("cin_id")) == cin["ri"]:
                 return previous
-            record = {"observation": observation.model_dump(), "cin_id": cin["ri"], "source_cin_path": zone["path"] + "/observations/" + cin["rn"], "rqi": result["rqi"], "cse_path": zone["path"] + "/observations/la"}
+            run = facility.get("active_run")
+            gap = bool(prior_arrival and previous.get("run_id") == run and (
+                prior_arrival["container"] != arrival["container"] or
+                prior_arrival["st"] is None or arrival["st"] != prior_arrival["st"] + 1
+            ))
+            watermark = None
+            if previous and previous.get("run_id", run) == run:
+                if "measured_through" in previous:
+                    watermark = previous["measured_through"]
+                else:
+                    # Existing installations have no acquisition watermark. A
+                    # pre-upgrade sample can seed the current run if its clock
+                    # was credible and it was received after that run began.
+                    prior = Observation.model_validate(previous["observation"])
+                    received = datetime.fromisoformat(prior.received_at)
+                    started = self.store.get("runs", run, {}).get("started_at") if run else None
+                    same_run = not started or received >= datetime.fromisoformat(started)
+                    credible_time = datetime.fromisoformat(prior.observed_at) <= received + timedelta(seconds=5)
+                    if same_run and credible_time:
+                        watermark = prior.observed_at
+            measured = observation.observed_at
+            # CSE creation time is independent of a producer's clock and stable
+            # on replay. Future samples never set the accepted event-time watermark.
+            created = datetime.fromisoformat(cin["ct"])
+            if created.tzinfo is None:
+                created = created.replace(tzinfo=timezone.utc)
+            else:
+                created = created.astimezone(timezone.utc)
+            future = datetime.fromisoformat(measured) > created + timedelta(seconds=5)
+            issue = None
+            ignore = False
+            if future:
+                issue = "future_at_ingest"
+            elif watermark is not None and measured < watermark:
+                ignore = True
+            elif measured == watermark:
+                fields = observation.model_dump(exclude={"received_at"})
+                ignore = previous.get("sequence_issue") or all(previous["observation"].get(k) == v for k, v in fields.items())
+                if not ignore:
+                    issue = "conflicting_measurements"
+            if ignore and not gap:
+                previous["last_arrival"] = arrival
+                self.store.put("observations", stream, previous)
+                return previous
+            if ignore and gap:
+                issue = "unobserved_interval"
+            record = {"observation": observation.model_dump(), "cin_id": cin["ri"],
+                      "source_cin_path": zone["path"] + "/observations/" + cin["rn"],
+                      "rqi": result["rqi"], "cse_path": zone["path"] + "/observations/la",
+                      "run_id": run, "measured_through": watermark if (future or ignore) else measured,
+                      "last_arrival": arrival, "gap_before": gap, "cse_created_at": created.isoformat(),
+                      "sequence_issue": issue}
             self.store.put("observations", fid + ":" + zid, record)
-            self.evaluate(observation, facility, zone, result["rqi"])
+            self.evaluate(observation, facility, zone, result["rqi"], record)
             return record
 
     def notification(self, payload):
@@ -251,10 +308,12 @@ class Core:
         except (KeyError, ValueError, OperationError, CSEError):
             self.log("notification_rejected", "Notification could not be corroborated with CSE observation")
 
-    def evaluate(self, observation, facility, zone, rqi):
+    def evaluate(self, observation, facility, zone, rqi, record=None):
         profile = self.profiles[facility["profile"]]
-        diagnosis = diagnose(observation, zone, profile)
         key = facility["id"] + ":" + zone["id"]
+        record = record or self.store.get("observations", key, {})
+        checked_at = datetime.now(timezone.utc)
+        diagnosis = diagnose(observation, zone, profile, now=checked_at, sequence_issue=record.get("sequence_issue"))
         incident = self.store.get("incidents", key)
         run_id = facility.get("active_run")
         if diagnosis["status"] != "nominal":
@@ -270,7 +329,15 @@ class Core:
             return
         command = maintenance.latest_damper_commands(self.store.list("commands")).get(
             (facility["id"], zone["id"], incident["id"]))
-        if not command or datetime.fromisoformat(observation.observed_at) <= datetime.fromisoformat(command["ack_at"]):
+        if not command:
+            return
+        if diagnosis["status"] != "nominal" and command.get("recovery_observations"):
+            command["recovery_observations"] = []
+            self.store.put("commands", command["id"], command)
+        ack_at = datetime.fromisoformat(command["ack_at"])
+        if datetime.fromisoformat(observation.observed_at) <= ack_at:
+            return
+        if record.get("cse_created_at") and datetime.fromisoformat(record["cse_created_at"]) <= ack_at:
             return
         if diagnosis["status"] == "critical":
             if "airflow_followup_queued" not in command:
@@ -298,13 +365,24 @@ class Core:
                 command.update(status="unresolved", observed_result="unresolved", verification_rqi=rqi)
             self.store.put("commands", command["id"], command)
         elif diagnosis["status"] == "nominal":
-            if incident.get("recovery_command_id") != command["id"]:
-                incident.update(recovery_count=0, recovery_command_id=command["id"])
-            incident["recovery_count"] += 1
+            earliest = checked_at - timedelta(seconds=profile["freshness_seconds"])
+            # /la may jump past an unseen adverse CIN. The first new healthy
+            # sample after a discontinuity starts a fresh recovery streak.
+            streak = [] if record.get("gap_before") else command.get("recovery_observations", [])
+            samples = [sample for sample in streak if datetime.fromisoformat(sample["observed_at"]) >= earliest]
+            if samples and observation.observed_at <= samples[-1]["observed_at"]:
+                return
+            sample = {"cin_ri": record["cin_id"], "cin_path": record["source_cin_path"],
+                      "observed_at": observation.observed_at, "rqi": rqi}
+            command["recovery_observations"] = (samples + [sample])[-profile["recovery_samples"]:]
+            self.store.put("commands", command["id"], command)
+            incident.update(recovery_count=len(command["recovery_observations"]), recovery_command_id=command["id"])
             incident["status"] = "recovering"
             if incident["recovery_count"] >= profile["recovery_samples"]:
                 incident.update(status="resolved", resolved_at=utcnow(), reason="Consecutive fresh observations meet this profile's simulated targets after the current command ACK")
-                command.update(status="verified", observed_result="recovered", verified_at=utcnow(), verification_rqi=rqi)
+                command.update(status="verified", observed_result="recovered", verified_at=checked_at.isoformat(), verification_rqi=rqi)
+                if incident.get("maintenance_opened"):
+                    maintenance.queue_outcome(self, "incident.recovered", incident, observation, facility, zone, rqi, command)
                 self.store.put("commands", command["id"], command)
                 self.log("recovery_verified", "Fresh observations verify recovery after device acknowledgement", facility["id"], zone["id"], run_id, rqi=rqi)
             self.store.put("incidents", key, incident)
@@ -360,7 +438,7 @@ class Core:
             origin = self.identities.get(principal["role"], "CAdmin")
             try:
                 group = self.cse.retrieve(self.root + "/" + fid + "-zone-observations/fopt/la", origin=origin)
-                result = {"facility_id": fid, "group": group, "status": "ok", "note": "Native fan-out returns latest observations; CSE results do not prove device execution."}
+                result = {"facility_id": fid, "group": group, "status": "ok", "note": "Native fan-out returns the last CIN inserted into each observation container. Use read_evidence for acquisition-ordered facility state."}
             except CSEError as exc:
                 # ACME can abort a fan-out on one denied member. Retain native
                 # error and label separate diagnostic reads rather than inventing
@@ -388,6 +466,7 @@ class Core:
             result["commands"] = [c for c in self.store.list("commands") if c["facility_id"] == fid and c.get("run_id") == (run_id or facility.get("active_run"))][-10:]
             result["current_run_id"] = run_id or facility.get("active_run")
             result["evidence_scope"] = {
+                "observations": "The site admits measurements by acquisition time. A delayed CIN can be last in the native container while the operator retains a newer measurement. Conflicting and future-dated inputs block control.",
                 "incidents": "All stored incidents for this facility, across runs.",
                 "commands": {"run_id": result["current_run_id"], "limit": 10,
                              "complete_facility_history": False,
@@ -444,7 +523,7 @@ class Core:
                 if request.value is None:
                     raise OperationError("missing_value", "Damper percentage is required")
                 record = self.refresh_observation(facility["id"], zone["id"])
-                diagnosis = diagnose(Observation.model_validate(record["observation"]), zone, profile)
+                diagnosis = diagnose(Observation.model_validate(record["observation"]), zone, profile, sequence_issue=record.get("sequence_issue"))
                 if diagnosis["status"] in ("stale", "missing"):
                     raise OperationError("evidence_not_current", diagnosis["reason"], 409)
             command_id = "cmd-" + uuid.uuid4().hex[:12]
@@ -473,7 +552,7 @@ class Core:
             self.store.put("commands", command_id, command)
         facility = self.facility(command["facility_id"])
         observation = next(z for z in self.facility_view(facility)["zones"] if z["id"] == command["zone_id"])
-        return {**command, "command_id": command["id"], "complete": command["status"] == "verified", "outcome": "recovered" if command["status"] == "verified" else ("unresolved" if command["observed_result"] == "unresolved" or command["status"] in ("timed_out", "maintenance_recorded") else "pending"), "observations": observation["observations"], "message": "Result verified from later CSE observations" if command["status"] == "verified" else "CSE acceptance/ACK alone does not establish recovery"}
+        return {**command, "command_id": command["id"], "complete": command["status"] == "verified", "outcome": "recovered" if command["status"] == "verified" else ("unresolved" if command["observed_result"] == "unresolved" or command["status"] in ("timed_out", "maintenance_recorded") else "pending"), "observations": observation["observations"], "observation_cin": observation.get("observation_cin"), "sequence_issue": observation.get("sequence_issue"), "message": "Result verified from later CSE observations" if command["status"] == "verified" else "CSE acceptance/ACK alone does not establish recovery"}
 
     def acknowledge_pending(self, facility, only_command_id=None):
         with self.lock:
@@ -502,6 +581,8 @@ class Core:
                    "facility_id": facility["id"], "zone_id": command["zone_id"], "ack_at": utcnow(), "simulated": True,
                    "device_state": "maintenance_recorded" if command["action"] == "request_maintenance" else "damper_changed", "value": command["value"]}
             ack_result = self.create_content(zone["path"] + "/acks", ack, self.identities["adapter"])
+            ack_cin = ack_result["body"]["m2m:cin"]
+            command["ack_source"] = {"cin_ri": ack_cin["ri"], "cin_path": zone["path"] + "/acks/" + ack_cin["rn"]}
             command.update(ack=True, ack_at=ack["ack_at"], ack_rqi=ack_result["rqi"], ack_sequence=ack_result["body"]["m2m:cin"].get("st", 0), status="acknowledged", observed_result="awaiting_observations")
             if command["action"] == "request_maintenance":
                 command.update(status="maintenance_recorded", observed_result="unresolved")
@@ -598,11 +679,12 @@ class Core:
             item = {"id": zone["id"], "name": zone["name"], "target_airflow": zone["minimum_airflow"], "observations": {}, "status": "missing", "freshness": None}
             if row:
                 obs = Observation.model_validate(row["observation"])
-                result = diagnose(obs, zone, self.profiles[facility["profile"]])
-                item.update(status=result["status"], freshness=result["freshness"], reason=result["reason"], cse_rqi=row["rqi"])
+                result = diagnose(obs, zone, self.profiles[facility["profile"]], sequence_issue=row.get("sequence_issue"))
+                item.update(status=result["status"], freshness=result["freshness"], reason=result["reason"], cse_rqi=row["rqi"],
+                            observation_cin=row.get("cin_id"), sequence_issue=row.get("sequence_issue"))
                 for key, unit in UNITS.items():
                     val = getattr(obs, key)
-                    item["observations"][key] = {"value": val, "unit": unit, "observed_at": obs.observed_at, "received_at": obs.received_at, "source": "simulated", "quality": "missing" if val is None else ("stale" if result["status"] == "stale" else "good")}
+                    item["observations"][key] = {"value": val, "unit": unit, "observed_at": obs.observed_at, "received_at": obs.received_at, "source": "simulated", "quality": row.get("sequence_issue") or ("missing" if val is None else ("stale" if result["status"] == "stale" else "good"))}
             zones.append(item)
         statuses = [z["status"] for z in zones]
         status = next((s for s in ("critical", "missing", "stale") if s in statuses), "nominal")

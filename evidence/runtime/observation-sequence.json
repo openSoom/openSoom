@@ -1,0 +1,931 @@
+{
+  "status": "passed",
+  "method": "Same scripted acquisitions in separate fresh ACME instances with virtual equipment. The operations object is restarted on its original persistent store before resending the same acquisition.",
+  "clock_scope": "The adapter normalizes UTC acquisition times to milliseconds. More than five seconds ahead of native CSE creation time is invalid on arrival.",
+  "baseline": {
+    "acme": "2026.5.3",
+    "cases": {
+      "retransmission": {
+        "profile_freshness_seconds": 45,
+        "run_id": "demo-c8f9a9da52",
+        "command_id": "cmd-536e5a6e1b4e",
+        "ack_cin": "cin1y6jH6ifl6",
+        "ack_rqi": "opensoom-852fcea3a5864412886691249e699d85",
+        "checkpoints": [
+          {
+            "step": "healthy",
+            "observed_at": "2026-11-18T18:39:01.428+00:00",
+            "cin": "cinfLrlAzEepW",
+            "native_st": 2,
+            "read_rqi": "opensoom-276d50064a4b43a3b83e8b25c87df20d",
+            "projected_cin": "cinfLrlAzEepW",
+            "quality": null,
+            "recovery_count": 1,
+            "incident": "recovering",
+            "complete": false,
+            "sdt_pm25": 10,
+            "recovery_cins": []
+          },
+          {
+            "step": "recreated_same_sample_after_restart",
+            "observed_at": "2026-11-18T18:39:01.428+00:00",
+            "cin": "cintxb0CN284h",
+            "native_st": 3,
+            "read_rqi": "opensoom-68d5d4818c8a459b9fa0510fc9578c33",
+            "projected_cin": "cintxb0CN284h",
+            "quality": null,
+            "recovery_count": 2,
+            "incident": "resolved",
+            "complete": true,
+            "sdt_pm25": 10,
+            "recovery_cins": []
+          },
+          {
+            "step": "distinct_healthy",
+            "observed_at": "2026-11-18T18:39:01.432+00:00",
+            "cin": "ciniGgtelsWRe",
+            "native_st": 4,
+            "read_rqi": "opensoom-e50ea25c37234cfdb4eb849d8483713f",
+            "projected_cin": "ciniGgtelsWRe",
+            "quality": null,
+            "recovery_count": 2,
+            "incident": "resolved",
+            "complete": true,
+            "sdt_pm25": 10,
+            "recovery_cins": []
+          }
+        ]
+      },
+      "delayed": {
+        "profile_freshness_seconds": 45,
+        "run_id": "demo-a5814ac0b6",
+        "command_id": "cmd-20106a650791",
+        "ack_cin": "cinTnZIJJWmwI",
+        "ack_rqi": "opensoom-002f751c88714e7fb5caa24914983582",
+        "checkpoints": [
+          {
+            "step": "healthy",
+            "observed_at": "2026-11-18T18:39:01.589+00:00",
+            "cin": "cinlS7PRtfcpp",
+            "native_st": 6,
+            "read_rqi": "opensoom-9225d8a0e998459eac7e6a089efc1137",
+            "projected_cin": "cinlS7PRtfcpp",
+            "quality": null,
+            "recovery_count": 1,
+            "incident": "recovering",
+            "complete": false,
+            "sdt_pm25": 10,
+            "recovery_cins": []
+          },
+          {
+            "step": "older_healthy",
+            "observed_at": "2026-11-18T18:39:01.584+00:00",
+            "cin": "cinSnAvWr38TV",
+            "native_st": 7,
+            "read_rqi": "opensoom-70252284d8d24ce3a57ae19e3af303f2",
+            "projected_cin": "cinSnAvWr38TV",
+            "quality": null,
+            "recovery_count": 2,
+            "incident": "resolved",
+            "complete": true,
+            "sdt_pm25": 10,
+            "recovery_cins": []
+          },
+          {
+            "step": "current_critical",
+            "observed_at": "2026-11-18T18:39:01.593+00:00",
+            "cin": "cin7D7q9qosqV",
+            "native_st": 8,
+            "read_rqi": "opensoom-b33405948d154289afb31d3f8fd290d5",
+            "projected_cin": "cin7D7q9qosqV",
+            "quality": null,
+            "recovery_count": 0,
+            "incident": "open",
+            "complete": true,
+            "sdt_pm25": 63,
+            "recovery_cins": []
+          },
+          {
+            "step": "late_healthy_after_critical",
+            "observed_at": "2026-11-18T18:39:01.586+00:00",
+            "cin": "cin0Evr7oZDRu",
+            "native_st": 9,
+            "read_rqi": "opensoom-243e1c607a19456da5a5d0428ab2ad13",
+            "projected_cin": "cin0Evr7oZDRu",
+            "quality": null,
+            "recovery_count": 0,
+            "incident": "open",
+            "complete": true,
+            "sdt_pm25": 10,
+            "recovery_cins": [],
+            "group_raw_cin": "cin0Evr7oZDRu",
+            "group_native_rqi": "opensoom-0b463401097e462092959af47b2538ed",
+            "read_evidence_cin": null,
+            "read_evidence_status": "nominal",
+            "read_evidence_quality": "good",
+            "verify_result_cin": null
+          },
+          {
+            "step": "first_new_healthy",
+            "observed_at": "2026-11-18T18:39:01.597+00:00",
+            "cin": "cinlqEcmRHs3d",
+            "native_st": 10,
+            "read_rqi": "opensoom-ea5c48f9392241df808376fe28c864ce",
+            "projected_cin": "cinlqEcmRHs3d",
+            "quality": null,
+            "recovery_count": 0,
+            "incident": "open",
+            "complete": true,
+            "sdt_pm25": 10,
+            "recovery_cins": []
+          },
+          {
+            "step": "second_new_healthy",
+            "observed_at": "2026-11-18T18:39:01.601+00:00",
+            "cin": "cingoCkWJTSMq",
+            "native_st": 11,
+            "read_rqi": "opensoom-7466643e1ed34715933fd97d8b9c9bf7",
+            "projected_cin": "cingoCkWJTSMq",
+            "quality": null,
+            "recovery_count": 0,
+            "incident": "open",
+            "complete": true,
+            "sdt_pm25": 10,
+            "recovery_cins": []
+          }
+        ]
+      },
+      "contradictory": {
+        "profile_freshness_seconds": 45,
+        "run_id": "demo-3a09e84cfe",
+        "command_id": "cmd-05e9fad80387",
+        "ack_cin": "cineTAky16T0o",
+        "ack_rqi": "opensoom-f9132d9c741248fba92215e43da36b36",
+        "checkpoints": [
+          {
+            "step": "healthy",
+            "observed_at": "2026-11-18T18:39:01.820+00:00",
+            "cin": "cin8PIDucCnqL",
+            "native_st": 13,
+            "read_rqi": "opensoom-ce2a534dca434e6db1e7b3fa82114bab",
+            "projected_cin": "cin8PIDucCnqL",
+            "quality": null,
+            "recovery_count": 1,
+            "incident": "recovering",
+            "complete": false,
+            "sdt_pm25": 10,
+            "recovery_cins": []
+          },
+          {
+            "step": "conflicting_same_time",
+            "observed_at": "2026-11-18T18:39:01.820+00:00",
+            "cin": "cinfxlYikz6MQ",
+            "native_st": 14,
+            "read_rqi": "opensoom-a22c73a6e83d42a28e1193383e598514",
+            "projected_cin": "cinfxlYikz6MQ",
+            "quality": null,
+            "recovery_count": 0,
+            "incident": "open",
+            "complete": false,
+            "sdt_pm25": 63,
+            "recovery_cins": []
+          },
+          {
+            "step": "retransmitted_healthy_at_conflict_time",
+            "observed_at": "2026-11-18T18:39:01.820+00:00",
+            "cin": "cindTHKlC2e0v",
+            "native_st": 15,
+            "read_rqi": "opensoom-7757a95a76cf4fc7ad937063fb765a41",
+            "projected_cin": "cindTHKlC2e0v",
+            "quality": null,
+            "recovery_count": 1,
+            "incident": "recovering",
+            "complete": false,
+            "sdt_pm25": 10,
+            "recovery_cins": [],
+            "group_raw_cin": "cindTHKlC2e0v",
+            "group_native_rqi": "opensoom-1afd640464c14f7e990b9668519e69fc",
+            "read_evidence_cin": null,
+            "read_evidence_status": "nominal",
+            "read_evidence_quality": "good",
+            "verify_result_cin": null
+          },
+          {
+            "step": "first_new_healthy",
+            "observed_at": "2026-11-18T18:39:01.824+00:00",
+            "cin": "cinKMlC79exhn",
+            "native_st": 16,
+            "read_rqi": "opensoom-6c85596169ff465291a40ffcd6802d29",
+            "projected_cin": "cinKMlC79exhn",
+            "quality": null,
+            "recovery_count": 2,
+            "incident": "resolved",
+            "complete": true,
+            "sdt_pm25": 10,
+            "recovery_cins": []
+          },
+          {
+            "step": "second_new_healthy",
+            "observed_at": "2026-11-18T18:39:01.827+00:00",
+            "cin": "cinGtvSRqjaJI",
+            "native_st": 17,
+            "read_rqi": "opensoom-23c4b7b5f4de45779a3de14c3dca064a",
+            "projected_cin": "cinGtvSRqjaJI",
+            "quality": null,
+            "recovery_count": 2,
+            "incident": "resolved",
+            "complete": true,
+            "sdt_pm25": 10,
+            "recovery_cins": []
+          }
+        ],
+        "control_at_conflict": "accepted"
+      },
+      "future": {
+        "profile_freshness_seconds": 45,
+        "run_id": "demo-8625f79194",
+        "command_id": "cmd-aa182a28c3b2",
+        "ack_cin": "ciniRWsrLphck",
+        "ack_rqi": "opensoom-465a4ab150fa4a1aa4a3f080ab46f915",
+        "checkpoints": [
+          {
+            "step": "healthy",
+            "observed_at": "2026-11-18T18:39:02.041+00:00",
+            "cin": "cinVFVrADua0Z",
+            "native_st": 19,
+            "read_rqi": "opensoom-bc0c42c1c47d41a290b23dda8d3fbc69",
+            "projected_cin": "cinVFVrADua0Z",
+            "quality": null,
+            "recovery_count": 1,
+            "incident": "recovering",
+            "complete": false,
+            "sdt_pm25": 10,
+            "recovery_cins": []
+          },
+          {
+            "step": "future_sample",
+            "observed_at": "2026-11-18T18:40:02.045+00:00",
+            "cin": "cindBDYh6nHrT",
+            "native_st": 20,
+            "read_rqi": "opensoom-29a4b8d19a6840c0bdecccad15f1bcfc",
+            "projected_cin": "cindBDYh6nHrT",
+            "quality": null,
+            "recovery_count": 0,
+            "incident": "open",
+            "complete": false,
+            "sdt_pm25": 10,
+            "recovery_cins": [],
+            "group_raw_cin": "cindBDYh6nHrT",
+            "group_native_rqi": "opensoom-a6062cfceb454037931c4b1b18352b52",
+            "read_evidence_cin": null,
+            "read_evidence_status": "stale",
+            "read_evidence_quality": "stale",
+            "verify_result_cin": null
+          },
+          {
+            "step": "old_healthy_after_future",
+            "observed_at": "2026-11-18T18:39:02.037+00:00",
+            "cin": "cineRwp7R6tJA",
+            "native_st": 21,
+            "read_rqi": "opensoom-80e440acc9d04ed58174d0fd1afaf144",
+            "projected_cin": "cineRwp7R6tJA",
+            "quality": null,
+            "recovery_count": 1,
+            "incident": "recovering",
+            "complete": false,
+            "sdt_pm25": 10,
+            "recovery_cins": []
+          },
+          {
+            "step": "first_new_healthy",
+            "observed_at": "2026-11-18T18:39:02.045+00:00",
+            "cin": "cinwvaEA2Uvcn",
+            "native_st": 22,
+            "read_rqi": "opensoom-60c2120cd2d940628599d020581e6886",
+            "projected_cin": "cinwvaEA2Uvcn",
+            "quality": null,
+            "recovery_count": 2,
+            "incident": "resolved",
+            "complete": true,
+            "sdt_pm25": 10,
+            "recovery_cins": []
+          },
+          {
+            "step": "second_new_healthy",
+            "observed_at": "2026-11-18T18:39:02.048+00:00",
+            "cin": "cinHAswkC283t",
+            "native_st": 23,
+            "read_rqi": "opensoom-8d5d9f6436ff47859d50df8db7355ce3",
+            "projected_cin": "cinHAswkC283t",
+            "quality": null,
+            "recovery_count": 2,
+            "incident": "resolved",
+            "complete": true,
+            "sdt_pm25": 10,
+            "recovery_cins": []
+          }
+        ]
+      },
+      "sensor_gap": {
+        "profile_freshness_seconds": 1,
+        "run_id": "demo-565d23d298",
+        "command_id": "cmd-24a483f5b061",
+        "ack_cin": "cin6zXdZ63a9F",
+        "ack_rqi": "opensoom-dc653b04ebc341aabf2fe2591416b96c",
+        "checkpoints": [
+          {
+            "step": "healthy",
+            "observed_at": "2026-11-18T18:39:02.261+00:00",
+            "cin": "cinWO7Royk4Sf",
+            "native_st": 25,
+            "read_rqi": "opensoom-03ae118741c148938a1c8b3660749465",
+            "projected_cin": "cinWO7Royk4Sf",
+            "quality": null,
+            "recovery_count": 1,
+            "incident": "recovering",
+            "complete": false,
+            "sdt_pm25": 10,
+            "recovery_cins": []
+          },
+          {
+            "step": "first_healthy_after_sensor_gap",
+            "observed_at": "2026-11-18T18:39:03.431+00:00",
+            "cin": "cinsfSvjmDYss",
+            "native_st": 26,
+            "read_rqi": "opensoom-8c40bb9c1112485ca777491b3cfd3655",
+            "projected_cin": "cinsfSvjmDYss",
+            "quality": null,
+            "recovery_count": 2,
+            "incident": "resolved",
+            "complete": true,
+            "sdt_pm25": 10,
+            "recovery_cins": []
+          },
+          {
+            "step": "second_healthy_after_sensor_gap",
+            "observed_at": "2026-11-18T18:39:03.435+00:00",
+            "cin": "cinCsPFKeD9zN",
+            "native_st": 27,
+            "read_rqi": "opensoom-8a9c8a02f767402b8e45f06b675c3070",
+            "projected_cin": "cinCsPFKeD9zN",
+            "quality": null,
+            "recovery_count": 2,
+            "incident": "resolved",
+            "complete": true,
+            "sdt_pm25": 10,
+            "recovery_cins": []
+          }
+        ]
+      },
+      "unread_interval": {
+        "profile_freshness_seconds": 1,
+        "run_id": "demo-3484d0c56b",
+        "command_id": "cmd-ece03c5a9042",
+        "ack_cin": "cinxd12oxu8yU",
+        "ack_rqi": "opensoom-53fb0f1238a34346ba78fd36108edcf1",
+        "checkpoints": [
+          {
+            "step": "healthy",
+            "observed_at": "2026-11-18T18:39:03.565+00:00",
+            "cin": "cint9F2yOV3TJ",
+            "native_st": 29,
+            "read_rqi": "opensoom-e99217f1cc254fd48425c8c50d25ebd0",
+            "projected_cin": "cint9F2yOV3TJ",
+            "quality": null,
+            "recovery_count": 1,
+            "incident": "recovering",
+            "complete": false,
+            "sdt_pm25": 10,
+            "recovery_cins": []
+          },
+          {
+            "step": "first_read_after_unseen_critical_cin",
+            "observed_at": "2026-11-18T18:39:03.569+00:00",
+            "cin": "cinxlgzRTaJJc",
+            "native_st": 31,
+            "read_rqi": "opensoom-17fa3abe00ef4903a032de72df237b08",
+            "projected_cin": "cinxlgzRTaJJc",
+            "quality": null,
+            "recovery_count": 2,
+            "incident": "resolved",
+            "complete": true,
+            "sdt_pm25": 10,
+            "recovery_cins": []
+          },
+          {
+            "step": "second_contiguous_healthy",
+            "observed_at": "2026-11-18T18:39:03.576+00:00",
+            "cin": "cinsDMb8mQstn",
+            "native_st": 32,
+            "read_rqi": "opensoom-afb665f2c7334ad48af6916b5ad1306b",
+            "projected_cin": "cinsDMb8mQstn",
+            "quality": null,
+            "recovery_count": 2,
+            "incident": "resolved",
+            "complete": true,
+            "sdt_pm25": 10,
+            "recovery_cins": []
+          }
+        ],
+        "unseen_input": {
+          "cin": "cinPqrtwiKfwL",
+          "native_st": 30,
+          "airflow": 360.0
+        }
+      }
+    },
+    "new_stale_scenario": {
+      "run_id": "demo-c910726d51",
+      "status": "stale"
+    },
+    "source_sha256": {
+      "src/opensoom/core.py": "d8de7b6c748a1a3ade74727ba3050934f5cb793adfcd4c6df2eac507db9218cf",
+      "src/opensoom/policy.py": "801ba84bf1eea13404a19017359e4e01fcf11d33e812e3a571df68e34c110ad5"
+    }
+  },
+  "current": {
+    "acme": "2026.5.3",
+    "cases": {
+      "retransmission": {
+        "profile_freshness_seconds": 45,
+        "run_id": "demo-d5e0484318",
+        "command_id": "cmd-876e3f65d3a7",
+        "ack_cin": "ciniTugpxSG62",
+        "ack_rqi": "opensoom-e4e4f8f1e9164496859e14d134f8fa12",
+        "checkpoints": [
+          {
+            "step": "healthy",
+            "observed_at": "2026-11-18T18:39:39.865+00:00",
+            "cin": "cinEeuuUNJXLd",
+            "native_st": 2,
+            "read_rqi": "opensoom-ad661587b3e348a19702e7f28e2f241b",
+            "projected_cin": "cinEeuuUNJXLd",
+            "quality": null,
+            "recovery_count": 1,
+            "incident": "recovering",
+            "complete": false,
+            "sdt_pm25": 10,
+            "recovery_cins": [
+              "cinEeuuUNJXLd"
+            ]
+          },
+          {
+            "step": "recreated_same_sample_after_restart",
+            "observed_at": "2026-11-18T18:39:39.865+00:00",
+            "cin": "cingraCmgFVUE",
+            "native_st": 3,
+            "read_rqi": "opensoom-93de2e3dcb9949519bc6190caf18a9c1",
+            "projected_cin": "cinEeuuUNJXLd",
+            "quality": null,
+            "recovery_count": 1,
+            "incident": "recovering",
+            "complete": false,
+            "sdt_pm25": 10,
+            "recovery_cins": [
+              "cinEeuuUNJXLd"
+            ]
+          },
+          {
+            "step": "distinct_healthy",
+            "observed_at": "2026-11-18T18:39:39.869+00:00",
+            "cin": "cini4sIvF64fd",
+            "native_st": 4,
+            "read_rqi": "opensoom-03943484e9124630ba170c8c07e3bd34",
+            "projected_cin": "cini4sIvF64fd",
+            "quality": null,
+            "recovery_count": 2,
+            "incident": "resolved",
+            "complete": true,
+            "sdt_pm25": 10,
+            "recovery_cins": [
+              "cinEeuuUNJXLd",
+              "cini4sIvF64fd"
+            ]
+          }
+        ]
+      },
+      "delayed": {
+        "profile_freshness_seconds": 45,
+        "run_id": "demo-0efdf029a8",
+        "command_id": "cmd-066b27936ae4",
+        "ack_cin": "cin8X5FJjfpwY",
+        "ack_rqi": "opensoom-fe1c14008aef40ad89f4d2b444446f36",
+        "checkpoints": [
+          {
+            "step": "healthy",
+            "observed_at": "2026-11-18T18:39:40.024+00:00",
+            "cin": "cin80r2fYw5cJ",
+            "native_st": 6,
+            "read_rqi": "opensoom-976ca4b7429643e8a7e0211bbb01699e",
+            "projected_cin": "cin80r2fYw5cJ",
+            "quality": null,
+            "recovery_count": 1,
+            "incident": "recovering",
+            "complete": false,
+            "sdt_pm25": 10,
+            "recovery_cins": [
+              "cin80r2fYw5cJ"
+            ]
+          },
+          {
+            "step": "older_healthy",
+            "observed_at": "2026-11-18T18:39:40.019+00:00",
+            "cin": "cinnMOASkQcgG",
+            "native_st": 7,
+            "read_rqi": "opensoom-f7a9488339204ce6bc4fe74cd70e151f",
+            "projected_cin": "cin80r2fYw5cJ",
+            "quality": null,
+            "recovery_count": 1,
+            "incident": "recovering",
+            "complete": false,
+            "sdt_pm25": 10,
+            "recovery_cins": [
+              "cin80r2fYw5cJ"
+            ]
+          },
+          {
+            "step": "current_critical",
+            "observed_at": "2026-11-18T18:39:40.028+00:00",
+            "cin": "cinkdgnFi1PeR",
+            "native_st": 8,
+            "read_rqi": "opensoom-7ad462b8c74e4ddf9ef77fdc17204ccd",
+            "projected_cin": "cinkdgnFi1PeR",
+            "quality": null,
+            "recovery_count": 0,
+            "incident": "open",
+            "complete": false,
+            "sdt_pm25": 63,
+            "recovery_cins": []
+          },
+          {
+            "step": "late_healthy_after_critical",
+            "observed_at": "2026-11-18T18:39:40.021+00:00",
+            "cin": "cinbw9goLfhm3",
+            "native_st": 9,
+            "read_rqi": "opensoom-0ab13231148c448a8c014ff76f81dc14",
+            "projected_cin": "cinkdgnFi1PeR",
+            "quality": null,
+            "recovery_count": 0,
+            "incident": "open",
+            "complete": false,
+            "sdt_pm25": 63,
+            "recovery_cins": [],
+            "group_raw_cin": "cinbw9goLfhm3",
+            "group_native_rqi": "opensoom-91f0eaf3bb874786a077fa91d8557f00",
+            "read_evidence_cin": "cinkdgnFi1PeR",
+            "read_evidence_status": "critical",
+            "read_evidence_quality": "good",
+            "verify_result_cin": "cinkdgnFi1PeR"
+          },
+          {
+            "step": "first_new_healthy",
+            "observed_at": "2026-11-18T18:39:40.032+00:00",
+            "cin": "cinEBRuOGbxvp",
+            "native_st": 10,
+            "read_rqi": "opensoom-8817b9b288e94703a855f8c3daed6b77",
+            "projected_cin": "cinEBRuOGbxvp",
+            "quality": null,
+            "recovery_count": 1,
+            "incident": "recovering",
+            "complete": false,
+            "sdt_pm25": 10,
+            "recovery_cins": [
+              "cinEBRuOGbxvp"
+            ]
+          },
+          {
+            "step": "second_new_healthy",
+            "observed_at": "2026-11-18T18:39:40.036+00:00",
+            "cin": "cind6HiSFMYiQ",
+            "native_st": 11,
+            "read_rqi": "opensoom-e8bafd14353c4516abce22bcf015f418",
+            "projected_cin": "cind6HiSFMYiQ",
+            "quality": null,
+            "recovery_count": 2,
+            "incident": "resolved",
+            "complete": true,
+            "sdt_pm25": 10,
+            "recovery_cins": [
+              "cinEBRuOGbxvp",
+              "cind6HiSFMYiQ"
+            ]
+          }
+        ]
+      },
+      "contradictory": {
+        "profile_freshness_seconds": 45,
+        "run_id": "demo-3f9cf6cfc7",
+        "command_id": "cmd-35f18297a9e4",
+        "ack_cin": "cinpjEiIoiQ4X",
+        "ack_rqi": "opensoom-7ca3a5e8e1f04bc5b10864306c4fcbc1",
+        "checkpoints": [
+          {
+            "step": "healthy",
+            "observed_at": "2026-11-18T18:39:40.267+00:00",
+            "cin": "cingSfm7cEwwS",
+            "native_st": 13,
+            "read_rqi": "opensoom-35f0221a66e64a37bb6eb7f58163917c",
+            "projected_cin": "cingSfm7cEwwS",
+            "quality": null,
+            "recovery_count": 1,
+            "incident": "recovering",
+            "complete": false,
+            "sdt_pm25": 10,
+            "recovery_cins": [
+              "cingSfm7cEwwS"
+            ]
+          },
+          {
+            "step": "conflicting_same_time",
+            "observed_at": "2026-11-18T18:39:40.267+00:00",
+            "cin": "cinXxQ6Ew7N0J",
+            "native_st": 14,
+            "read_rqi": "opensoom-9cdc996e1d7a48d1bbb14497b325c55c",
+            "projected_cin": "cinXxQ6Ew7N0J",
+            "quality": "conflicting_measurements",
+            "recovery_count": 0,
+            "incident": "open",
+            "complete": false,
+            "sdt_pm25": 10,
+            "recovery_cins": []
+          },
+          {
+            "step": "retransmitted_healthy_at_conflict_time",
+            "observed_at": "2026-11-18T18:39:40.267+00:00",
+            "cin": "cinRzcAhrNfO3",
+            "native_st": 15,
+            "read_rqi": "opensoom-e90e634dc0d943ab871a56a5cde5c8be",
+            "projected_cin": "cinXxQ6Ew7N0J",
+            "quality": "conflicting_measurements",
+            "recovery_count": 0,
+            "incident": "open",
+            "complete": false,
+            "sdt_pm25": 10,
+            "recovery_cins": [],
+            "group_raw_cin": "cinRzcAhrNfO3",
+            "group_native_rqi": "opensoom-deb047b481a84a23b4c38bce1b1c2199",
+            "read_evidence_cin": "cinXxQ6Ew7N0J",
+            "read_evidence_status": "missing",
+            "read_evidence_quality": "conflicting_measurements",
+            "verify_result_cin": "cinXxQ6Ew7N0J"
+          },
+          {
+            "step": "first_new_healthy",
+            "observed_at": "2026-11-18T18:39:40.271+00:00",
+            "cin": "cinV8KbsV2dPC",
+            "native_st": 16,
+            "read_rqi": "opensoom-3dba2d416eca47e3800b2a0b43528666",
+            "projected_cin": "cinV8KbsV2dPC",
+            "quality": null,
+            "recovery_count": 1,
+            "incident": "recovering",
+            "complete": false,
+            "sdt_pm25": 10,
+            "recovery_cins": [
+              "cinV8KbsV2dPC"
+            ]
+          },
+          {
+            "step": "second_new_healthy",
+            "observed_at": "2026-11-18T18:39:40.274+00:00",
+            "cin": "cinzr6LpoijWG",
+            "native_st": 17,
+            "read_rqi": "opensoom-c730d198f6e24aae95b6bf63c9e14c93",
+            "projected_cin": "cinzr6LpoijWG",
+            "quality": null,
+            "recovery_count": 2,
+            "incident": "resolved",
+            "complete": true,
+            "sdt_pm25": 10,
+            "recovery_cins": [
+              "cinV8KbsV2dPC",
+              "cinzr6LpoijWG"
+            ]
+          }
+        ],
+        "control_at_conflict": "evidence_not_current"
+      },
+      "future": {
+        "profile_freshness_seconds": 45,
+        "run_id": "demo-190e39395e",
+        "command_id": "cmd-55c9fd3f5e6e",
+        "ack_cin": "cindLotG2wEGN",
+        "ack_rqi": "opensoom-96cdd19845314943873f9f8a2e0158da",
+        "checkpoints": [
+          {
+            "step": "healthy",
+            "observed_at": "2026-11-18T18:39:40.496+00:00",
+            "cin": "cinslu8fPQEwI",
+            "native_st": 19,
+            "read_rqi": "opensoom-4abf1095487e4d49909fb7e8b7b7ac69",
+            "projected_cin": "cinslu8fPQEwI",
+            "quality": null,
+            "recovery_count": 1,
+            "incident": "recovering",
+            "complete": false,
+            "sdt_pm25": 10,
+            "recovery_cins": [
+              "cinslu8fPQEwI"
+            ]
+          },
+          {
+            "step": "future_sample",
+            "observed_at": "2026-11-18T18:40:40.500+00:00",
+            "cin": "cinIoLx6mJo3Z",
+            "native_st": 20,
+            "read_rqi": "opensoom-c6088d4796994cda824d8a92a6852b56",
+            "projected_cin": "cinIoLx6mJo3Z",
+            "quality": "future_at_ingest",
+            "recovery_count": 0,
+            "incident": "open",
+            "complete": false,
+            "sdt_pm25": 10,
+            "recovery_cins": [],
+            "group_raw_cin": "cinIoLx6mJo3Z",
+            "group_native_rqi": "opensoom-e270738e384240d88f29df54cdbd79c2",
+            "read_evidence_cin": "cinIoLx6mJo3Z",
+            "read_evidence_status": "stale",
+            "read_evidence_quality": "future_at_ingest",
+            "verify_result_cin": "cinIoLx6mJo3Z"
+          },
+          {
+            "step": "old_healthy_after_future",
+            "observed_at": "2026-11-18T18:39:40.492+00:00",
+            "cin": "cin7XsjWdfQYc",
+            "native_st": 21,
+            "read_rqi": "opensoom-e4187986106349bbbd5fa07ac0e44d91",
+            "projected_cin": "cinIoLx6mJo3Z",
+            "quality": "future_at_ingest",
+            "recovery_count": 0,
+            "incident": "open",
+            "complete": false,
+            "sdt_pm25": 10,
+            "recovery_cins": []
+          },
+          {
+            "step": "first_new_healthy",
+            "observed_at": "2026-11-18T18:39:40.500+00:00",
+            "cin": "cinX4EGXYqjIr",
+            "native_st": 22,
+            "read_rqi": "opensoom-049314ced1794ea4b70aadd873052748",
+            "projected_cin": "cinX4EGXYqjIr",
+            "quality": null,
+            "recovery_count": 1,
+            "incident": "recovering",
+            "complete": false,
+            "sdt_pm25": 10,
+            "recovery_cins": [
+              "cinX4EGXYqjIr"
+            ]
+          },
+          {
+            "step": "second_new_healthy",
+            "observed_at": "2026-11-18T18:39:40.503+00:00",
+            "cin": "cinPZfjLnyhKx",
+            "native_st": 23,
+            "read_rqi": "opensoom-88eb2d52888e4ea085bb3c3050fba0dd",
+            "projected_cin": "cinPZfjLnyhKx",
+            "quality": null,
+            "recovery_count": 2,
+            "incident": "resolved",
+            "complete": true,
+            "sdt_pm25": 10,
+            "recovery_cins": [
+              "cinX4EGXYqjIr",
+              "cinPZfjLnyhKx"
+            ]
+          }
+        ]
+      },
+      "sensor_gap": {
+        "profile_freshness_seconds": 1,
+        "run_id": "demo-14f49dc5dd",
+        "command_id": "cmd-fcd37d80e45d",
+        "ack_cin": "cinuiXlQQmO7s",
+        "ack_rqi": "opensoom-61aa71ba621843a7a0c59fe5dd9b815a",
+        "checkpoints": [
+          {
+            "step": "healthy",
+            "observed_at": "2026-11-18T18:39:40.705+00:00",
+            "cin": "cinIoF24T50zK",
+            "native_st": 25,
+            "read_rqi": "opensoom-012cf4c5557441ed9c168d1d27c9702a",
+            "projected_cin": "cinIoF24T50zK",
+            "quality": null,
+            "recovery_count": 1,
+            "incident": "recovering",
+            "complete": false,
+            "sdt_pm25": 10,
+            "recovery_cins": [
+              "cinIoF24T50zK"
+            ]
+          },
+          {
+            "step": "first_healthy_after_sensor_gap",
+            "observed_at": "2026-11-18T18:39:41.887+00:00",
+            "cin": "cinTDFNtxSOEI",
+            "native_st": 26,
+            "read_rqi": "opensoom-51286ca416c3410199e357f74340ae29",
+            "projected_cin": "cinTDFNtxSOEI",
+            "quality": null,
+            "recovery_count": 1,
+            "incident": "recovering",
+            "complete": false,
+            "sdt_pm25": 10,
+            "recovery_cins": [
+              "cinTDFNtxSOEI"
+            ]
+          },
+          {
+            "step": "second_healthy_after_sensor_gap",
+            "observed_at": "2026-11-18T18:39:41.891+00:00",
+            "cin": "cinqIJmQ6OnEG",
+            "native_st": 27,
+            "read_rqi": "opensoom-4e7c8d9ab6b4424abbb72577df0452f4",
+            "projected_cin": "cinqIJmQ6OnEG",
+            "quality": null,
+            "recovery_count": 2,
+            "incident": "resolved",
+            "complete": true,
+            "sdt_pm25": 10,
+            "recovery_cins": [
+              "cinTDFNtxSOEI",
+              "cinqIJmQ6OnEG"
+            ]
+          }
+        ]
+      },
+      "unread_interval": {
+        "profile_freshness_seconds": 1,
+        "run_id": "demo-0c486b7daf",
+        "command_id": "cmd-c23fd88bffac",
+        "ack_cin": "cinYHqhomtzV6",
+        "ack_rqi": "opensoom-aceb21e0173843349b9131b65a02cdf6",
+        "checkpoints": [
+          {
+            "step": "healthy",
+            "observed_at": "2026-11-18T18:39:42.045+00:00",
+            "cin": "cin1jurebFENp",
+            "native_st": 29,
+            "read_rqi": "opensoom-436ac3c903644a038f45c815b158fcc3",
+            "projected_cin": "cin1jurebFENp",
+            "quality": null,
+            "recovery_count": 1,
+            "incident": "recovering",
+            "complete": false,
+            "sdt_pm25": 10,
+            "recovery_cins": [
+              "cin1jurebFENp"
+            ]
+          },
+          {
+            "step": "first_read_after_unseen_critical_cin",
+            "observed_at": "2026-11-18T18:39:42.049+00:00",
+            "cin": "cinSwSMwkgQBE",
+            "native_st": 31,
+            "read_rqi": "opensoom-2a38da69aa9e46018f2ab86a5ecd7183",
+            "projected_cin": "cinSwSMwkgQBE",
+            "quality": null,
+            "recovery_count": 1,
+            "incident": "recovering",
+            "complete": false,
+            "sdt_pm25": 10,
+            "recovery_cins": [
+              "cinSwSMwkgQBE"
+            ]
+          },
+          {
+            "step": "second_contiguous_healthy",
+            "observed_at": "2026-11-18T18:39:42.056+00:00",
+            "cin": "cingNFbOfcmyn",
+            "native_st": 32,
+            "read_rqi": "opensoom-17e16975bf8b4facbf23deff470c3f7e",
+            "projected_cin": "cingNFbOfcmyn",
+            "quality": null,
+            "recovery_count": 2,
+            "incident": "resolved",
+            "complete": true,
+            "sdt_pm25": 10,
+            "recovery_cins": [
+              "cinSwSMwkgQBE",
+              "cingNFbOfcmyn"
+            ]
+          }
+        ],
+        "unseen_input": {
+          "cin": "cinLOYEqmnYvS",
+          "native_st": 30,
+          "airflow": 360.0
+        }
+      }
+    },
+    "new_stale_scenario": {
+      "run_id": "demo-d2cc181c65",
+      "status": "stale"
+    },
+    "source_sha256": {
+      "src/opensoom/core.py": "422f8538eb4861e8696e4dc659ce53f995de24fb99d952f77a0d56ae0b31493b",
+      "src/opensoom/policy.py": "3ee09a4c064deec43f6e39deb0be5451fe512eaf17fdbd0955bf71781548e091"
+    }
+  }
+}

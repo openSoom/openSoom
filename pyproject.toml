@@ -21,6 +21,7 @@ dependencies = [
 
 [project.scripts]
 opensoom = "opensoom.cli:main"
+opensoom-airflow-history = "opensoom.airflow_history:main"
 
 [dependency-groups]
 dev = ["pytest==9.2.0"]

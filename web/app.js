@@ -454,6 +454,7 @@
       const zone = f.zones.find(item => item.id === order.zone_id);
       const requested = order.requested_pct ?? cmd?.value;
       const sample = order.sample;
+      const recovery = order.recovery;
       const activity = order.latest_technician_activity;
       const activityNames = {scheduled: 'Inspection scheduled', checked: 'Inspection performed', escalated: 'Specialist requested'};
       const fieldStatus = activity && activity.work_order_ri === order.resource_id && activityNames[activity.action]
@@ -467,12 +468,12 @@
       }
       return `<article class="maintenance-order">
       <div><span class="status-pill warning">${esc(human(order.status))}</span>
-      <strong>${esc(actions[order.priority] || human(order.priority))}</strong></div>
+      <strong>${esc(recovery ? 'Operating recovery verified · field review remains open' : actions[order.priority] || human(order.priority))}</strong></div>
       <dl class="maintenance-measures"><div><dt>Requested opening</dt><dd>${requested == null ? 'Pending' : esc(number(requested)) + '%'}</dd></div>
-      <div><dt>Independent shaft position</dt><dd>${sample ? esc(number(sample.value)) + '%' : 'Awaiting evidence'}</dd></div>
+      <div><dt>Independent shaft position</dt><dd>${sample ? esc(number(sample.value)) + '%' : recovery ? 'Not needed for recovery' : 'Awaiting evidence'}</dd></div>
       <div><dt>Follow-up airflow</dt><dd>${order.airflow == null ? 'See source observation' : esc(number(order.airflow)) + ' m³/h'}</dd></div></dl>
       <p>${esc(zone?.name || order.zone_id)} · ${esc(order.asset_id)} · ${esc(order.work_order_id)}</p>
-      <p>${sample ? esc(order.mode === 'mec046' ? 'ETSI MEC 046 sensor sharing' : 'Local oneM2M sensor') + ' · ' + esc(sample.sensor_id) : esc(human(order.evidence_status))}</p>
+      <p>${recovery ? esc(recovery.observations.length + ' qualifying post-ACK measurements · ' + recovery.observations.map(row => number(row.airflow) + ' m³/h').join(' and ')) : sample ? esc(order.mode === 'mec046' ? 'ETSI MEC 046 sensor sharing' : 'Local oneM2M sensor') + ' · ' + esc(sample.sensor_id) : esc(human(order.evidence_status))}</p>
       ${fieldStatus}${handoff}<details><summary>Work order evidence</summary><pre>${esc(JSON.stringify(sanitize(order), null, 2))}</pre></details>
     </article>`;
     }).join(''));

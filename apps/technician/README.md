@@ -26,3 +26,15 @@ The technician session in this local demonstration is granted to a browser on th
 `POST /api/work-orders/{order_id}/inspections` takes the reviewed work-order CIN ID, a stable UUID, one of `scheduled`, `checked` or `escalated`, and an optional note. The service validates the order against its current facility queue. The technician's private `inspection_notes` CIN retains the note. The public-to-operations `inspections` CIN contains the activity and its exact order reference. Retrying identical input returns the same entry. A conflicting request ID or superseded revision returns HTTP 409. If interrupted between the two writes, retrying the same request completes the disposition from the retained private record.
 
 The technician AE cannot write commands, sensor responses or the maintenance app's work order. The site operator can read the disposition through oneM2M. In the operations API, the same-site observer sees facility measurements but no work orders. The maintenance role sees its orders without the technician’s disposition. Neither the operator AE nor the MEC maintenance AE can read the private note. [Native runtime and restart checks](../../evidence/runtime/technician-workbench.json)
+
+## What happens after a field check?
+
+Saving **Inspection performed** records the technician’s activity against the order revision they actually reviewed. Operating recovery needs the facility’s configured number of consecutive qualifying measurements after the same device ACK. The site writes that outcome to its MN-CSE. The maintenance worker then reads the original ACK and observation CINs and puts their identifiers, readings, and timestamps on a new revision of the **same open work order**. Earlier field entries retain their original evidence. The operator and technician can both inspect the recovery revision.
+
+Replay this path on a temporary local CSE with virtual equipment. The trial also pauses the maintenance worker across operating recovery and delivers a late position-sensor reply before restarting the worker.
+
+```sh
+uv run --no-sync python scripts/field_recovery_acceptance.py --output .runtime/field-recovery.json
+```
+
+The normal loopback technician HTTP interface is exercised with an automated ASGI client in this trial. The independent readback requires the original records to remain in the site CSE until the worker verifies them. [Recorded trial](../../evidence/runtime/field-recovery.json)

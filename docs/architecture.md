@@ -66,7 +66,7 @@ Each protected container has its own explicit ACP reference. Content instances i
 3. Diagnosis checks the configured measurements, timestamps and targets. Missing or stale evidence cannot authorize control. A running fan with deficient airflow opens an incident.
 4. A structured tool request passes role, facility, zone, profile, allowed-action, bounds and freshness checks. The service creates a command CIN with an idempotency key, run association and expiry.
 5. The virtual adapter reads the actual command from the CSE and creates a distinct ACK. A command write or group success cannot stand in for this ACK.
-6. Two unique healthy observations after ACK establish recovery. Missing ACK times out. Two later deficient observations establish non-recovery. Maintenance records do not prove recovery.
+6. Recovery requires two consecutive healthy observations with increasing source times, acquired after the ACK and within the facility freshness window. A replay cannot count twice. Conflicting measurements at the same source time, an expired first reading or a gap in the native container history require new evidence. The technician sees the correlated ACK and both observation IDs on the open work order. A missing ACK times out. Two later deficient observations establish non-recovery. [Recovery sequence trials](../evidence/runtime/observation-sequence.json) · [Technician readback](../evidence/runtime/field-recovery.json)
 
 The service persists run ID, commands, incidents and events in SQLite. Public traces correlate those IDs with native CSE request IDs. Historical commands cannot satisfy a new run, and identical repeated reads cannot count as separate recovery samples.
 

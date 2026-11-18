@@ -9,6 +9,7 @@ openSoom source is Apache-2.0. Original documentation, screenshots, diagrams and
 | Three.js | 0.187.0, https://threejs.org/ | MIT; browser modules vendored with original LICENSE and SHA-512 package verification in pitch/vendor/ and web/vendor/ |
 | Application dependencies | Exact versions and distribution metadata in uv.lock | Retain each installed distribution's license |
 | Runtime dependencies | deploy/cse-requirements.txt and mqtt-requirements.txt | Retain each installed distribution's license |
+| ORNL VAV experimental measurements | Im, Jung and Yoon. Figshare v2, DOI 10.6084/m9.figshare.27948192.v2 | CC BY 4.0. Column subset and unit conversion are described in [data attribution](examples/ornl-vav/README.md). |
 | oneM2M specification | TS-0023 v5.6.0, linked in docs/standard-model.md | Referenced for model meaning; not relicensed or redistributed in full |
 | News and official inspection | Links in README and submission draft | Brief attributed summary only; article text/photos not copied |
 | Hackathon rubric and training archive | Organizer material provided privately | Not redistributed; source identity/hash retained in rubric baseline |

@@ -1,0 +1,77 @@
+{
+  "status": "passed",
+  "acme_version": "2026.5.3",
+  "run_id": "demo-fdc6b2d5d6",
+  "facility_id": "food-a",
+  "scope": "Virtual measurements, real loopback CSE and facility-scoped AEs. Field app normal HTTP routes were exercised by an in-process ASGI client. Independent sensor was local.",
+  "work_order_id": "work-incident-a7e4a084da",
+  "initial_order_ri": "cin4T2eKnqXgQ",
+  "reviewed_order_ri": "cin5cbMPDttgv",
+  "checked_field_entry_ri": "cinR4JBSCT7W9",
+  "after_checked": "open",
+  "after_one_nominal": "recovering",
+  "after_two_nominal": "resolved",
+  "field_work_order_status": "open",
+  "final_order_ri": "cin0HHA0pPGcC",
+  "final_order_rqi": "opensoom-da7265f993904467b32524aa999d0005",
+  "recovery_outcome_ri": "cinKHmGKmZE3k",
+  "recovery": {
+    "verified_at": "2026-11-18T18:40:15.397230+00:00",
+    "limits": {
+      "minimum_airflow": 900,
+      "co2_warning": 1200,
+      "pm25_warning": 45,
+      "freshness_seconds": 45
+    },
+    "ack": {
+      "cin_ri": "cinAtM3PoJ04k",
+      "cin_path": "cse-multiapp/opensoom/facilities/food-a/cook/acks/cin_CkVlWvjpql",
+      "ack_at": "2026-11-18T18:40:15.281+00:00",
+      "read_rqi": "opensoom-ec36b715ce89450eb2b4684bef99cc27"
+    },
+    "observations": [
+      {
+        "cin_ri": "cinsGpXfsLmoX",
+        "cin_path": "cse-multiapp/opensoom/facilities/food-a/cook/observations/cin_ghRGRNaP26",
+        "observed_at": "2026-11-18T18:40:15.367+00:00",
+        "rqi": "opensoom-c811f2a7ce5248b59211aabe7b303817",
+        "read_rqi": "opensoom-bb8d08aae31748588356620e29ef00b8",
+        "airflow": 940.0,
+        "pm25": 12.0,
+        "co2": 610.0,
+        "fan_running": true
+      },
+      {
+        "cin_ri": "cin0kXlIoi8Xk",
+        "cin_path": "cse-multiapp/opensoom/facilities/food-a/cook/observations/cin_KcyozOSruc",
+        "observed_at": "2026-11-18T18:40:15.390+00:00",
+        "rqi": "opensoom-5d41b92f23bf4fcb8e37ec9b5b9c4237",
+        "read_rqi": "opensoom-b5186eac2fee460386b222b09aea67d4",
+        "airflow": 945.0,
+        "pm25": 12.0,
+        "co2": 610.0,
+        "fan_running": true
+      }
+    ]
+  },
+  "late_shaft_reply_ri": "cinJ5uxJu63uG",
+  "work_order_revisions": [
+    1,
+    2,
+    5
+  ],
+  "same_order_after_restart": true,
+  "stale_field_revision_http": 409,
+  "device_command_count_before_and_after": [
+    1,
+    1
+  ],
+  "source_sha256": {
+    "scripts/field_recovery_acceptance.py": "2609feda2d0a2012c4df253ed6d6da8259485161d83abc799115de68d9b12e5e",
+    "src/opensoom/core.py": "422f8538eb4861e8696e4dc659ce53f995de24fb99d952f77a0d56ae0b31493b",
+    "src/opensoom/maintenance.py": "c32035389f123b083da1a81c72da60533c01be67971c1ea5d82eb36fba13eaf6",
+    "src/opensoom/maintenance_worker.py": "ad315bdb93d45a12d636cd192d53bd9fd576349cffdcca3de83066a25a4ebfdd",
+    "src/opensoom/technician.py": "4a73e3aea788e432860528717d48da296836b5deef101c6bda63d3db738e883b",
+    "src/opensoom/policy.py": "3ee09a4c064deec43f6e39deb0be5451fe512eaf17fdbd0955bf71781548e091"
+  }
+}

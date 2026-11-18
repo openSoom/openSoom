@@ -1,0 +1,17 @@
+{
+  "status": "passed",
+  "scope": "Actual Chromium, isolated two-role localhost lab, real ACME, virtual devices; operator launched Insufficient exhaust through the ordinary browser controls.",
+  "run_id": "demo-2588213a75",
+  "work_order_id": "work-incident-af343c07c6",
+  "work_order_ri": "cinOKAEQqWLAh",
+  "work_order_status": "open",
+  "operator_displayed_recovery": true,
+  "technician_displayed_recovery_after_reload": true,
+  "ack_ri": "cinfAtbmQLZWl",
+  "sample_ris": [
+    "cin7MFxeIUNr4",
+    "cinuNsV79fD8f"
+  ],
+  "mobile_width": 390,
+  "page_errors": []
+}

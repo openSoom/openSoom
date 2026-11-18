@@ -109,27 +109,98 @@ class MaintenanceWorker:
                    "revision": revision, **details}
         if event.get("target_airflow_m3_h") is not None:
             payload["target_airflow_m3_h"] = event["target_airflow_m3_h"]
-        self.put("work_orders", key("order", work_id, source_ri, revision), payload)
+        name = (key("recovery", work_id, event["command_id"]) if evidence_status == "operational_recovery_verified"
+                else key("order", work_id, source_ri, revision))
+        self.put("work_orders", name, payload)
+
+    def zone_record(self, event, stream, ref):
+        prefix = self.base + "/" + safe_rn(event["zone_id"]) + "/" + stream + "/"
+        path = ref["cin_path"].strip("/")
+        if not path.startswith(prefix):
+            raise EvidenceError("record_outside_zone")
+        name = safe_rn(path[len(prefix):])
+        if name in ("la", "ol"):
+            raise EvidenceError("expected_immutable_record")
+        receipt = self.cse.retrieve(path)
+        raw = receipt["body"]["m2m:cin"]
+        obs = read_content(raw)
+        if raw["ri"] != ref["cin_ri"] or obs.get("facility_id") != self.facility or obs.get("zone_id") != event["zone_id"]:
+            raise EvidenceError("record_identity_mismatch")
+        return obs, receipt["rqi"]
+
+    def recovery_ack(self, event):
+        ack_source = event.get("ack_source")
+        if not ack_source:
+            # Older command records keep ack_at and command ID, but omit their CIN path.
+            for path in self.children(safe_rn(event["zone_id"]) + "/acks"):
+                raw = self.cin(path)
+                ack = read_content(raw)
+                if ack.get("command_id") == event["command_id"] and ack.get("ack_at") == event["ack_at"]:
+                    ack_source = {"cin_ri": raw["ri"], "cin_path": path}
+                    break
+        if not ack_source:
+            raise EvidenceError("missing_recovery_ack")
+        ack, ack_rqi = self.zone_record(event, "acks", ack_source)
+        if (ack.get("command_id") != event["command_id"] or ack.get("incident_id", event["incident_id"]) != event["incident_id"]
+                or ack.get("device_state") != "damper_changed" or ack.get("value") != event["requested_pct"]
+                or timestamp(ack["ack_at"]) != timestamp(event["ack_at"])):
+            raise EvidenceError("recovery_ack_mismatch")
+        return {**ack_source, "ack_at": ack["ack_at"], "read_rqi": ack_rqi}
+
+    def recorded_recovery(self, work_id, command_id):
+        name = key("recovery", work_id, command_id)
+        try:
+            self.cin(self.base + "/work_orders/" + name)
+        except CSEError as exc:
+            if exc.rsc != 4004:
+                raise
+            return False
+        return True
+
+    def recovered(self, event, resource):
+        ack = self.recovery_ack(event)
+        refs = event["recovery_observations"]
+        required = event["required_samples"]
+        if (type(required) is not int or required < 1 or len(refs) != required
+                or len({ref["cin_ri"] for ref in refs}) != required
+                or refs[-1]["cin_ri"] != event["source_cin_ri"] or refs[-1]["cin_path"] != event["source_cin_path"]
+                or timestamp(refs[-1]["observed_at"]) != timestamp(event["observed_at"])):
+            raise EvidenceError("incomplete_recovery_record")
+        limits = event["limits"]
+        samples = []
+        previous = timestamp(ack["ack_at"])
+        decision_at = timestamp(event["verified_at"])
+        for ref in refs:
+            observation, rqi = self.zone_record(event, "observations", ref)
+            acquired = timestamp(observation["observed_at"])
+            if (acquired <= previous or acquired != timestamp(ref["observed_at"])
+                    or not -5 <= (decision_at - acquired).total_seconds() <= limits["freshness_seconds"]
+                    or observation["fan_running"] is not True or observation["airflow"] < limits["minimum_airflow"]
+                    or observation["pm25"] > limits["pm25_warning"] or observation["co2"] > limits["co2_warning"]):
+                raise EvidenceError("unqualified_recovery_record")
+            samples.append({**ref, "read_rqi": rqi, **{k: observation[k] for k in ("airflow", "pm25", "co2", "fan_running")}})
+            previous = acquired
+        self.work_order(event, resource["ri"], 5, "inspection", "operational_recovery_verified",
+                        outcome_ri=resource["ri"], profile_version=event["profile_version"],
+                        requested_pct=event["requested_pct"], airflow=samples[-1]["airflow"],
+                        recovery={"verified_at": event["verified_at"], "limits": limits,
+                                  "ack": ack,
+                                  "observations": samples})
 
     def outcome(self, event, resource):
         binding = self.binding(event)
         kind = event["kind"]
+        if kind == "incident.recovered":
+            if not self.recorded_recovery("work-" + event["incident_id"], event["command_id"]):
+                self.recovered(event, resource)
+            return
         if kind not in ("incident.opened", "command.unresolved_after_ack"):
             return
-        prefix = self.base + "/" + safe_rn(event["zone_id"]) + "/observations/"
-        path = event["source_cin_path"].strip("/")
-        if not path.startswith(prefix):
-            raise EvidenceError("observation_outside_zone")
-        name = safe_rn(path[len(prefix):])
-        if name in ("la", "ol"):
-            raise EvidenceError("expected_immutable_observation")
-        receipt = self.cse.retrieve(path)
-        raw = receipt["body"]["m2m:cin"]
-        obs = read_content(raw)
-        if (raw["ri"] != event["source_cin_ri"] or obs.get("facility_id") != self.facility
-                or obs.get("zone_id") != event["zone_id"] or timestamp(obs["observed_at"]) != timestamp(event["observed_at"])):
+        ref = {"cin_path": event["source_cin_path"], "cin_ri": event["source_cin_ri"]}
+        obs, rqi = self.zone_record(event, "observations", ref)
+        if timestamp(obs["observed_at"]) != timestamp(event["observed_at"]):
             raise EvidenceError("source_observation_mismatch")
-        details = {"outcome_ri": resource["ri"], "observation_rqi": receipt["rqi"],
+        details = {"outcome_ri": resource["ri"], "observation_rqi": rqi,
                    "airflow": obs.get("airflow"), "profile_version": event["profile_version"]}
         if kind == "incident.opened":
             self.work_order(event, resource["ri"], 1, "inspection", "awaiting_outcome", **details)
@@ -266,6 +337,8 @@ class MaintenanceWorker:
         if not self.current_setpoint(req):
             self.health["superseded_responses"] = self.health.get("superseded_responses", 0) + 1
             return
+        if self.recorded_recovery(req["work_order_id"], req["command_id"]):
+            return  # A late shaft lookup cannot supersede verified site recovery.
         detail = {"request_id": request_id, "request_ri": req_resource["ri"], "response_ri": resource["ri"],
                   "outcome_ri": req["outcome_ri"], "mode": response.get("mode"),
                   "airflow": req.get("airflow"), "profile_version": req.get("profile_version")}

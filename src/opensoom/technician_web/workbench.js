@@ -18,15 +18,19 @@
     byId('order').hidden = !order;
     if (!order) return;
     label('order-state', 'Work order ' + order.status);
-    label('priority', titles[order.priority] || 'Review maintenance evidence');
+    const recovery = order.recovery;
+    label('priority', recovery ? 'Review verified operating recovery' : titles[order.priority] || 'Review maintenance evidence');
     label('context', order.zone_name + ' · ' + order.asset_id);
     label('requested', displayNumber(order.requested_pct, '%'));
-    label('position', displayNumber(order.sample?.value, '%'));
+    label('position', recovery ? 'Not needed for recovery' : displayNumber(order.sample?.value, '%'));
     label('flow', displayNumber(order.airflow, ' m³/h'));
     const evid = order.sample && (order.mode === 'mec046' ? 'MEC 046 sensor sharing' : 'Local oneM2M sensor');
     const source = order.target_source === 'work_order_cin' ? 'Target recorded with this work order' : 'Current profile target (historical target unavailable)';
     const target = source + ' ' + displayNumber(order.configured_target_m3_h, ' m³/h') + '. ';
-    label('reason', target + (evid ? 'Independent position supplied by ' + evid + '.' : 'The maintenance app is awaiting current independent evidence.'));
+    const reason = recovery
+      ? recovery.observations.length + ' fresh observations met the operating profile after the device ACK. The work order remains open for field review.'
+      : evid ? 'Independent position supplied by ' + evid + '.' : 'The maintenance app is awaiting current independent evidence.';
+    label('reason', target + reason);
     const details = byId('provenance'); details.replaceChildren();
     for (const [title, value] of [
       ['Work order', order.work_order_id], ['Revision', order.revision || 'Awaiting new evidence'], ['Work-order CIN',order.resource_id], ['Profile version',order.profile_version],
@@ -34,6 +38,11 @@
       ['Position source',order.sample?.sensor_id], ['Position measurement time',order.sample?.observed_at], ['Service response CIN',order.response_ri],
       ['Position sample CIN',order.provider_receipt?.sample_cin_ri], ['Record read request',order.read_rqi]
     ]) row(details, title, value);
+    if (recovery) {
+      row(details, 'Device ACK CIN', recovery.ack.cin_ri);
+      recovery.observations.forEach((obs, i) => row(details, 'Recovery observation ' + (i + 1),
+        displayNumber(obs.airflow, ' m³/h') + ' · ' + obs.observed_at + ' · ' + obs.cin_ri));
+    }
     byId('save').disabled = pending || !order.resource_id || (reviewing !== null && reviewing !== order.resource_id);
     if (reviewing && reviewing !== order.resource_id) label('save-state', 'A new revision arrived. Change the activity selection to confirm you reviewed the latest recommendation.');
     const history = byId('history'); history.replaceChildren();
@@ -51,7 +60,15 @@
     fetching = true;
     try {
       const response = await fetch('/api/work-orders');
-      if (!response.ok) throw Error('Facility queue unavailable. Reload to reconnect.');
+      if (!response.ok) {
+        const error = await response.json().catch(() => ({}));
+        if (response.status === 401 || response.status === 403 || error.rsc === 4103) {
+          resetForm();
+          byId('provenance').replaceChildren();
+          byId('history').replaceChildren();
+        }
+        throw Error('Facility queue unavailable. Reload to reconnect.');
+      }
       const data = await response.json(), queue = byId('queue');
       label('facility', data.facility.name);
       label('scope', data.facility.simulation ? 'Local demonstration with simulated equipment.' : 'Commissioned facility profile.');
@@ -65,7 +82,12 @@
       if (queue.value !== (selected || '')) queue.value = selected || '';
       label('status', orders.length + (orders.length === 1 ? ' work order' : ' work orders') + ' in this facility');
       render(orders.find(o => o.work_order_id === selected));
-    } catch (err) {label('status', err.message); current = null; byId('save').disabled = true;}
+    } catch (err) {
+      render(null);
+      byId('queue').replaceChildren(new Option('Queue unavailable', ''));
+      byId('save').disabled = true;
+      label('status', err.message);
+    }
     finally { fetching = false; }
   }
   byId('queue').addEventListener('change', event => {

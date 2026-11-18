@@ -3,10 +3,15 @@ from datetime import datetime, timezone
 from .models import Observation
 
 
-def diagnose(observation: Observation, zone: dict, profile: dict, now: datetime | None = None) -> dict:
+def diagnose(observation: Observation, zone: dict, profile: dict, now: datetime | None = None, *, sequence_issue: str | None = None) -> dict:
     now = now or datetime.now(timezone.utc)
-    age = (now - datetime.fromisoformat(observation.observed_at)).total_seconds()
-    if age < -5:
+    acquired = datetime.fromisoformat(observation.observed_at)
+    age = (now - acquired).total_seconds()
+    if sequence_issue == "unobserved_interval":
+        return {"status": "missing", "reason": "An interval of sensor records was missed. A newer measurement is required", "freshness": age}
+    if sequence_issue == "conflicting_measurements":
+        return {"status": "missing", "reason": "Conflicting values share one acquisition time. A newer measurement is required", "freshness": age}
+    if sequence_issue == "future_at_ingest" or age < -5:
         return {"status": "stale", "reason": "Observation timestamp is in the future", "freshness": age}
     if age > profile["freshness_seconds"]:
         return {"status": "stale", "reason": "Observation is too old for control", "freshness": age}

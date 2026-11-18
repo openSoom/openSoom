@@ -155,7 +155,8 @@ def queue_outcome(core, kind, incident, observation, facility, zone, rqi, comman
     if not asset:
         return False
     record = core.store.get("observations", facility["id"] + ":" + zone["id"])
-    name = "opened-" + incident["id"] if command is None else "unresolved-" + command["id"]
+    prefix = {"incident.opened": "opened", "command.unresolved_after_ack": "unresolved", "incident.recovered": "recovered"}[kind]
+    name = prefix + "-" + (command["id"] if command else incident["id"])
     content = {
         "kind": kind, "facility_id": facility["id"], "zone_id": zone["id"], "asset_id": asset["asset_id"],
         "incident_id": incident["id"], "run_id": facility.get("active_run"), "source_cin_ri": record["cin_id"],
@@ -165,6 +166,12 @@ def queue_outcome(core, kind, incident, observation, facility, zone, rqi, comman
     }
     if command:
         content.update(command_id=command["id"], ack_at=command["ack_at"], requested_pct=command["value"])
+    if kind == "incident.recovered":
+        profile = core.profiles[facility["profile"]]
+        content.update(ack_source=command.get("ack_source"), recovery_observations=command["recovery_observations"],
+                       verified_at=command["verified_at"], required_samples=profile["recovery_samples"],
+                       limits={"minimum_airflow": zone["minimum_airflow"], "co2_warning": zone["co2_warning"],
+                               "pm25_warning": zone["pm25_warning"], "freshness_seconds": profile["freshness_seconds"]})
     core.store.put("maintenance_outbox", name, {"name": name, "parent": facility["path"] + "/outcomes", "content": content})
     return True
 

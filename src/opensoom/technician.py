@@ -16,7 +16,7 @@ from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, ConfigDict, Field
 from starlette.middleware.trustedhost import TrustedHostMiddleware
 
-from .maintenance import current_order_view, latest_damper_commands, read_facility_stream, select_work_orders
+from .maintenance import current_order_view, latest_damper_commands, select_work_orders
 from .maintenance_worker import key, read_content, safe_rn
 from .onem2m import CSEClient, CSEError
 
@@ -43,17 +43,69 @@ class FieldDesk:
         self.cache = {}
         self.lock = RLock()
 
+    PAGE_SIZE = 64
+
+    @staticmethod
+    def stream_version(container):
+        if container.get("disr"):
+            raise HTTPException(503, "Reading content is disabled for this facility stream.")
+        # ACME increments st on creation; deletion can change cni without changing st.
+        return container["ri"], container["st"], container["cni"]
+
+    def read_page(self, path, version, filters):
+        reply = self.cse.retrieve(path, params={"rcn": 4, "ty": 4, "lvl": 1, **filters})
+        container = reply["body"]["m2m:cnt"]
+        if self.stream_version(container) != version:
+            return None
+        records = []
+        for cin in container.get("m2m:cin", []):
+            data = read_content(cin)
+            if cin["pi"] != version[0] or data.get("facility_id") != self.facility:
+                raise ValueError("Record has inconsistent facility provenance")
+            records.append({**data, "resource_id": cin["ri"], "read_rqi": reply["rqi"],
+                            "recorded_at": cin["ct"], "state_tag": cin["st"]})
+        return records
+
+    def retained_records(self, path, version, saved):
+        parent, tag, count = version
+        if saved and saved[1]:
+            (old_parent, old_tag, old_count), previous = saved
+            added = count - old_count
+            if old_parent == parent and 0 < added == tag - old_tag and added <= self.PAGE_SIZE:
+                # An equal increase in tag and count means pure appends in this CSE.
+                delta = self.read_page(path, version, {"sts": old_tag})
+                if delta is None:
+                    return None
+                if len(delta) == added and all(old_tag < row["state_tag"] <= tag for row in delta):
+                    return previous + delta
+
+        records = []
+        # Offset is 1-based. In the pinned CSE virtual /la, /ol and a stream
+        # subscription can occupy offsets before the CIN type filter runs.
+        for offset in range(1, count + self.PAGE_SIZE + 1, self.PAGE_SIZE):
+            page = self.read_page(path, version, {"lim": self.PAGE_SIZE, "ofst": offset})
+            if page is None:
+                return None
+            records.extend(page)
+            if len(records) >= count:
+                break
+        return records
+
     def stream(self, stream):
-        """A state-tag check on every read also enforces current ACP after retirement."""
         path = self.path + "/" + stream
-        container = self.cse.retrieve(path)["body"]["m2m:cnt"]
-        version = (container["ri"], container["st"])
-        saved = self.cache.get(stream)
-        if saved and saved[0] == version:
-            return saved[1]
-        items = list(read_facility_stream(self.cse, path, container["ri"], self.facility))
-        self.cache[stream] = version, items
-        return items
+        for _ in range(2):
+            version = self.stream_version(self.cse.retrieve(path)["body"]["m2m:cnt"])
+            saved = self.cache.get(stream)
+            if saved and saved[0] == version:
+                return saved[1]
+            rows = self.retained_records(path, version, saved) if version[2] else []
+            if rows is None or len(rows) != version[2] or len({row["resource_id"] for row in rows}) != version[2]:
+                continue
+            if rows and self.stream_version(self.cse.retrieve(path)["body"]["m2m:cnt"]) != version:
+                continue
+            self.cache[stream] = version, rows
+            return rows
+        raise HTTPException(503, "Could not read the complete current facility stream. Refresh to retry.")
 
     def work_orders(self):
         orders = self.stream("work_orders")
@@ -70,12 +122,15 @@ class FieldDesk:
         active = latest_damper_commands(commands)
         inspections = self.stream("inspections")
         notes = {n["request_id"]: n.get("note", "") for n in self.stream("inspection_notes")}
+        actions_by_order = {}
+        for entry in inspections:
+            actions_by_order.setdefault(entry["work_order_id"], []).append(
+                {**entry, "note": notes.get(entry["request_id"], "")})
         results = []
         for order in select_work_orders(orders, active):
             item = current_order_view(order, active)
             zone = self.zones[item["zone_id"]]
-            actions = [{**r, "note": notes.get(r["request_id"], "")} for r in inspections
-                       if r.get("work_order_id") == item["work_order_id"]]
+            actions = actions_by_order.get(item["work_order_id"], [])
             actions.sort(key=lambda r: (r["recorded_at"], r["state_tag"]), reverse=True)
             target = item.get("target_airflow_m3_h")
             current = active.get((self.facility, item["zone_id"], item["incident_id"]), {})

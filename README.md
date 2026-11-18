@@ -57,6 +57,18 @@ The same handoff ran on a private cloud lab. The native MEC service returned a v
 
 In 18 designed virtual trials across two facility profiles, ACK-only, airflow-only and openSoom rules declared false recovery in **14, 2 and 0** of the 16 cases that required further investigation. All three recognized both recoveries. openSoom matched the four prespecified first inspections, two sensor conditions repeated at two sites. These figures describe the designed cases. [Inputs, decision rules and all denominators](docs/inspection-benchmark.md)
 
+A command acknowledgement confirms that the device received the request. To verify recovery, the operator needs two fresh, consecutive measurements acquired after that acknowledgement. Replays and out-of-order readings cannot supply the second measurement. A gap in the CSE history requires a fresh pair. On recovery, the technician sees the original ACK and both readings on the same open inspection order. The technician queue also drops deleted orders on its next successful refresh. [Measurement replay tests](evidence/runtime/observation-sequence.json) · [Operator and technician recovery](evidence/runtime/field-recovery.json) · [Queue refresh measurements](evidence/runtime/technician-queue-reads.json)
+
+## Check a building trend before connecting equipment
+
+In a public ORNL experiment, 6 of 18 fixed-damper test days had median occupied airflow at or above the same room’s fault-free reference day. A plausible flow reading leaves a real maintenance question. The included **read-only BMS history tool** lets you examine occupied airflow and reported damper movement in the original building measurements or your own zone export.
+
+```sh
+uv run opensoom-airflow-history examples/ornl-vav/damper-106.csv.gz --reference-day 2023-08-03
+```
+
+The archive contains 31 room-days from one controlled research building. The live command, independent shaft sensor and oneM2M incident workflow use separately identified virtual-equipment trials. [Measured records, license and reproduction](examples/ornl-vav/README.md)
+
 ## Bring another facility
 
 With the Codex plugin, ask for a preview using your own zones, airflow targets, sensor units and installed adapter. A site administrator activates the reviewed version. One tested example uses a conservation workshop with receiving and bench zones. After restarting the service, the operator replayed its bench trial and read the original measurement; the stale sample produced zero commands. [Configure a site](docs/extending.md) · [Plugin exercise](evidence/agent/facility-onboarding.json) · [Same workers on the new site](evidence/agent/facility-worker-generalization.json)

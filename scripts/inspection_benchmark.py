@@ -133,6 +133,13 @@ def replay_site(core, url, directory, matrix, case, fid, zid):
 
     profile = core.profiles[facility["profile"]]
     n = profile["recovery_samples"]
+    recovery = raw.get("recovery")
+    if verified["complete"]:
+        assert raw["evidence_status"] == "operational_recovery_verified" and raw["status"] == "open"
+        assert recovery["ack"]["cin_ri"] == ack["cin"]
+        assert [sample["cin_ri"] for sample in recovery["observations"]] == [row["cin"] for row in observations[-n:]]
+    else:
+        assert recovery is None
     at = datetime.now(timezone.utc)
     # A strong airflow-only baseline knows the current command, time, site target and confirmation count.
     tail = observations[-n:]
@@ -147,6 +154,7 @@ def replay_site(core, url, directory, matrix, case, fid, zid):
         "shaft": shaft, "work_order_id": raw["work_order_id"], "opening_order_cin": original["resource_id"],
         "final_order_cin": ri, "order_read_rqi": rqi, "final_order_revision": raw["revision"],
         "order_status": raw["status"], "evidence_status": raw["evidence_status"], "sensor_requests": request_count,
+        "operating_recovery_evidence": recovery,
         "request_cin": raw.get("request_ri"), "response_cin": raw.get("response_ri"),
         "incident_status": incident["status"], "current_command_observed_result": verified["observed_result"],
         "decisions": {"ack_only": {"recovered": bool(ack), "inspection": "unavailable"},

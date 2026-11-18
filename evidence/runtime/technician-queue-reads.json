@@ -1,0 +1,188 @@
+{
+  "status": "passed",
+  "acme_version": "2026.5.3",
+  "captured_at": "2026-11-18T18:34:15.639698+00:00",
+  "scope": "Isolated real local ACME and the commissioned technician AE. Synthetic order/inspection history created through facility-scoped oneM2M roles. Elapsed times are one local run per case. No physical equipment or cloud MEC in this study.",
+  "reference": "Baseline stream reader uses the 91a359e container read, discovery and individual CIN reads. Semantic comparisons exclude only native read-request IDs, which differ on each request. Native CSE resource IDs and all business fields remain in the digest.",
+  "page_size": 64,
+  "checks": {
+    "cold": {
+      "retained_orders": 80,
+      "semantic_sha256": "ea004c35d69307dd3d15facb81722c9bd3ff7089171785e8863c8fcfc31b207d",
+      "baseline": {
+        "calls": 112,
+        "elapsed_ms": 221.75,
+        "first_rqi": "opensoom-7fc80e87023e4132822912cdefe8c6d2",
+        "last_rqi": "opensoom-662df76630744b14ad0805bf294b3103",
+        "batch_rows": []
+      },
+      "current": {
+        "calls": 11,
+        "elapsed_ms": 88.78,
+        "first_rqi": "opensoom-9564bcbd0c8141f386ac065543462817",
+        "last_rqi": "opensoom-667e6071aeaf44c6adf90742fea5c327",
+        "batch_rows": [
+          62,
+          18,
+          12,
+          12
+        ]
+      }
+    },
+    "unchanged": {
+      "retained_orders": 80,
+      "semantic_sha256": "ea004c35d69307dd3d15facb81722c9bd3ff7089171785e8863c8fcfc31b207d",
+      "baseline": {
+        "calls": 4,
+        "elapsed_ms": 3.95,
+        "first_rqi": "opensoom-faad2fde7e0c4294ba051b01d70920ea",
+        "last_rqi": "opensoom-60dfe22ee7be4facab8d5449142184a6",
+        "batch_rows": []
+      },
+      "current": {
+        "calls": 4,
+        "elapsed_ms": 3.76,
+        "first_rqi": "opensoom-5bede3105e1e4fe08ede54d91eddbaab",
+        "last_rqi": "opensoom-9c06c2bb1d104c32b5e7283e1f7f849d",
+        "batch_rows": []
+      }
+    },
+    "one_order_appended": {
+      "retained_orders": 81,
+      "semantic_sha256": "f1c172b590259e58ece321b58635516660b9f400fe83da9b3180a3c65fae40a5",
+      "baseline": {
+        "calls": 86,
+        "elapsed_ms": 157.18,
+        "first_rqi": "opensoom-1de5aca05e6f4774ac28c5982fc63069",
+        "last_rqi": "opensoom-cad8331c3c61496380c57bcce6225ca1",
+        "batch_rows": []
+      },
+      "current": {
+        "calls": 6,
+        "elapsed_ms": 8.17,
+        "first_rqi": "opensoom-ecde39772e574f6c99f4c9ab52f28eb4",
+        "last_rqi": "opensoom-d3e84ce1462849a0a339e6ea4410cff5",
+        "batch_rows": [
+          1
+        ]
+      }
+    },
+    "empty_stream_receives_first_ack": {
+      "retained_orders": 81,
+      "semantic_sha256": "f1c172b590259e58ece321b58635516660b9f400fe83da9b3180a3c65fae40a5",
+      "baseline": {
+        "calls": 6,
+        "elapsed_ms": 7.67,
+        "first_rqi": "opensoom-2bf4cd0ba9644117b5dd12d24a56a59e",
+        "last_rqi": "opensoom-e9750f0652484b429340f8b31d00503b",
+        "batch_rows": []
+      },
+      "current": {
+        "calls": 6,
+        "elapsed_ms": 6.56,
+        "first_rqi": "opensoom-7a58f6f9863144f6842ac7d470b8a2da",
+        "last_rqi": "opensoom-fe93650b2b1e4942badd70c3830a76dd",
+        "batch_rows": [
+          1
+        ]
+      }
+    },
+    "private_notes_revoked_with_warm_cache": {
+      "rsc": 4103,
+      "rqi": "opensoom-6189675b408d452dad77fca6f37cd1b6",
+      "queue_returned": false
+    },
+    "permission_restored": {
+      "retained_orders": 81,
+      "semantic_sha256": "f1c172b590259e58ece321b58635516660b9f400fe83da9b3180a3c65fae40a5",
+      "baseline": {
+        "calls": 4,
+        "elapsed_ms": 3.85,
+        "first_rqi": "opensoom-2b9842bc36564985939d575a1a115215",
+        "last_rqi": "opensoom-9546234344ac44c0bff7fe175f27804c",
+        "batch_rows": []
+      },
+      "current": {
+        "calls": 4,
+        "elapsed_ms": 3.86,
+        "first_rqi": "opensoom-424e4d0a8969429d85dd0ff25cb13b55",
+        "last_rqi": "opensoom-59898f90885b42428f53fa4e452ab7de",
+        "batch_rows": []
+      }
+    },
+    "delete_without_state_tag_increment": {
+      "retained_orders": 80,
+      "semantic_sha256": "472f73cc4be58c9581162b254a9dc93c358ac021ed0d3bf30b535658fc6356b9",
+      "baseline": {
+        "calls": 113,
+        "elapsed_ms": 202.59,
+        "first_rqi": "opensoom-aa733f2e9793476497d930c1482729c2",
+        "last_rqi": "opensoom-2aa9dd91c8d4461dbda8bc39a29ee6d9",
+        "batch_rows": []
+      },
+      "current": {
+        "calls": 7,
+        "elapsed_ms": 72.04,
+        "first_rqi": "opensoom-35366d6b706241b390c4b0ea5b680b73",
+        "last_rqi": "opensoom-313090de195944bab9596186bf898ab2",
+        "batch_rows": [
+          62,
+          18
+        ]
+      },
+      "previous_release_warm_showed_deleted_order": true,
+      "parent_tag_before_and_after": 81,
+      "count_before": 81,
+      "count_after": 80
+    },
+    "retention_rollover": {
+      "retained_orders": 4,
+      "semantic_sha256": "2a0612a1cd356d67ea2b9e1f858adc41730d13a60872437d624fb983091ea2e6",
+      "baseline": {
+        "calls": 37,
+        "elapsed_ms": 63.03,
+        "first_rqi": "opensoom-919a12fd89df416f99030017ed4a6779",
+        "last_rqi": "opensoom-ef4d11ff0eb04f9a84579beed6e3b056",
+        "batch_rows": []
+      },
+      "current": {
+        "calls": 6,
+        "elapsed_ms": 9.8,
+        "first_rqi": "opensoom-60e7b02391994adcb799dd8aba651d88",
+        "last_rqi": "opensoom-117a9e3150004fc684d0d1731e7f1368",
+        "batch_rows": [
+          4
+        ]
+      }
+    },
+    "cold_after_rollover": {
+      "retained_orders": 4,
+      "semantic_sha256": "2a0612a1cd356d67ea2b9e1f858adc41730d13a60872437d624fb983091ea2e6",
+      "baseline": {
+        "calls": 37,
+        "elapsed_ms": 61.68,
+        "first_rqi": "opensoom-71fee13559d549489d5fe79dd1224b2d",
+        "last_rqi": "opensoom-1b70020761a6452b9dd620e47127805e",
+        "batch_rows": []
+      },
+      "current": {
+        "calls": 12,
+        "elapsed_ms": 33.99,
+        "first_rqi": "opensoom-5f555a7fe6fe4d2dbe9dacb433e8d93d",
+        "last_rqi": "opensoom-39e1ca49a9df4041b3b701600bb93c99",
+        "batch_rows": [
+          4,
+          1,
+          12,
+          12
+        ]
+      }
+    }
+  },
+  "sha256": {
+    "src/opensoom/technician.py": "4a73e3aea788e432860528717d48da296836b5deef101c6bda63d3db738e883b",
+    "src/opensoom/maintenance.py": "eb7cfd828538b03e438c110f1b0837ac6c188db324ef346f0223ab3eeb314e9c",
+    "src/opensoom/onem2m.py": "c4edcf610b9c82266d222dc63b69869cbd62000478405cdcd98f44178b0b123e",
+    "scripts/technician_queue_acceptance.py": "138d8c90af9f2cc7b3178bcf9d29b79d82d2c0b7b2ff48a3a1f414f297ca23f7"
+  }
+}
