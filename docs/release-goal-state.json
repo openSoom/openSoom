@@ -251,5 +251,32 @@
       "landing": 8095
     },
     "external_submission": "Public GitHub assets available. The Hackster article, Discord submission, scheduling, Drive upload and actual interview remain external handoff steps."
+  },
+  "two_incident_submission": {
+    "status": "Public repository kit verified; third-party posting remains with owner",
+    "common_review_candidate": "009de59b1157b6505cc97d9cdb00fce7250a1f9e",
+    "public_product": "e3a036e185cff099c2e7c2f239e10a7ac5740b9c",
+    "archive": "deliverables/openSoom-submission.zip",
+    "archive_sha256": "9de91966c8b55567ff081ccba2d8f691ab8a9f04c66b3a343d77a935c110c7dc",
+    "film_sha256": "338ef6f98eabd05ef6bcf7bd0dd2c2d34c13ed348c77f0cef60d1c27fc4ac8fe",
+    "operator_source": "evidence/video/role-handoff/operator-native-readings.json",
+    "separate_cloud_source": "evidence/runtime/option-c/technician-handoff.json",
+    "verification": "evidence/release/role-film-public.json",
+    "app_roles": "docs/mec-application-contract.ko.md",
+    "review": "docs/review/review-ledger.json#two_incident_submission_review",
+    "open_official_criteria": [
+      4,
+      6,
+      8,
+      9,
+      14,
+      15
+    ],
+    "external_owner_actions": [
+      "Upload video to a Hackster-supported hosting account for inline embedding",
+      "Publish public Hackster project and add its backlink",
+      "Send article URL to team Discord and enter schedule availability",
+      "Upload slides to organizer Drive and attend interview"
+    ]
   }
 }

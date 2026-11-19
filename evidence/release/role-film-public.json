@@ -1,0 +1,176 @@
+{
+  "status": "passed",
+  "captured_at": "2026-11-19T18:04:53.947353+00:00",
+  "public_candidate": "e3a036e185cff099c2e7c2f239e10a7ac5740b9c",
+  "method": "Verified the signed-out GitHub ref, compared immutable SHA URLs byte-for-byte to the local publication, and verified the live main download links for MP4 and ZIP. Extracted the submitted ZIP, checked every internal digest and tested embedded slide media against the standalone MP4. No third-party publication was performed.",
+  "public_files": [
+    {
+      "path": "README.md",
+      "bytes": 21711,
+      "sha256": "714b0115c3c3964c15d8229dd51c5a1741ce99dc4f0e040fc6976357dd5fc22a"
+    },
+    {
+      "path": "deliverables/openSoom-submission.zip",
+      "bytes": 3879649,
+      "sha256": "9de91966c8b55567ff081ccba2d8f691ab8a9f04c66b3a343d77a935c110c7dc"
+    },
+    {
+      "path": "deliverables/presentation/openSoom-evaluation.pptx",
+      "bytes": 1595003,
+      "sha256": "15b491a89e8cf04a5aa03bb9afac13740aac33a304fa5645ce1b17334992e2e0"
+    },
+    {
+      "path": "deliverables/presentation/openSoom-evaluation.pdf",
+      "bytes": 814231,
+      "sha256": "24db2351ae9d14b04c583661e87a2f8ea449544fb8dcaacf987a7233c8d715aa"
+    },
+    {
+      "path": "docs/submission/hackster-article.md",
+      "bytes": 11083,
+      "sha256": "f1f340718a460a26e230150515d363b6ac6c63773e8a1bf87d1e7211447e811d"
+    },
+    {
+      "path": "docs/submission/hackster-publish-notes.md",
+      "bytes": 3063,
+      "sha256": "3e1173a2e9d5acb72fe92b5e0b1af87f0ec392b66f068e5d2491ebef6f232223"
+    },
+    {
+      "path": "docs/submission/handoff.md",
+      "bytes": 4327,
+      "sha256": "a5dfcc06fb68376f7cd75ccd2afb8ade0640a2842345611663a66a6ad1f72f64"
+    },
+    {
+      "path": "docs/submission/presenter-script.en.md",
+      "bytes": 9920,
+      "sha256": "00d2831f6d3b64936c1fa573b8b6b13001cf7c0d1b98981414fa6ec2e8e412fc"
+    },
+    {
+      "path": "docs/submission/presenter-script.ko.md",
+      "bytes": 9008,
+      "sha256": "3a5f1d914b3f57c0d0af8e19415937c47f10d7a7cec35074258e1f66baacc222"
+    },
+    {
+      "path": "docs/submission/technical-qa.md",
+      "bytes": 16640,
+      "sha256": "df660973d072221cac8f26d43840bab7fe621a05329ccfce83cf444c4d0d2ddd"
+    },
+    {
+      "path": "deliverables/video/openSoom-air-quality-720p.mp4",
+      "bytes": 1282835,
+      "sha256": "338ef6f98eabd05ef6bcf7bd0dd2c2d34c13ed348c77f0cef60d1c27fc4ac8fe"
+    },
+    {
+      "path": "deliverables/video/openSoom-air-quality.en.srt",
+      "bytes": 942,
+      "sha256": "1f0cffde1df046f01cd0ae1594b05e5da054633de4dbcfb47ceb753c5b0bac00"
+    },
+    {
+      "path": "deliverables/video/assets/opensoom-submission-cover.jpg",
+      "bytes": 174362,
+      "sha256": "3aa5362571df6e9f4140decefa0bb2923f3a3f80972395492e5411c209ac0644"
+    },
+    {
+      "path": "evidence/application/air-quality-persistent.png",
+      "bytes": 54114,
+      "sha256": "f11eee2a967b9e5c8233e0d02109a63f72522ff0e3b22e78e822547f7e6dbccd"
+    },
+    {
+      "path": "evidence/pitch/architecture-release-desktop.jpg",
+      "bytes": 140427,
+      "sha256": "ec9f207ae4c55555fdf4d93c2a2a720bec466ca3069c6d812f14364f874b22d8"
+    },
+    {
+      "path": "evidence/video/air-quality-film.json",
+      "bytes": 3182,
+      "sha256": "e8b419dcde52ef986c6152618e5b2fddd6c7a480b749635f41c0fa072477ad5a"
+    },
+    {
+      "path": "evidence/video/role-handoff/operator-incident.json",
+      "bytes": 1616,
+      "sha256": "84074fd3acb213b4989d5984c9ab941e323e19e45f4677f97256235632719cff"
+    },
+    {
+      "path": "evidence/video/role-handoff/operator-native-readings.json",
+      "bytes": 1267,
+      "sha256": "fcf774cdc37aebae5f75f8b036141cabc5f7c654409627431358e4968ff927e5"
+    },
+    {
+      "path": "evidence/runtime/option-c/technician-handoff.json",
+      "bytes": 25906,
+      "sha256": "8abb401d1ef9471bf57f147d5ed62efe377f4f3cb41f1835ea14c6d71af3d7a4"
+    },
+    {
+      "path": "evidence/application/role-film-landing.json",
+      "bytes": 4319,
+      "sha256": "2b24e4a6105cd4da268fa32e504f75fbac3fee89900271e2d7e96b8398f40ee6"
+    },
+    {
+      "path": "evidence/presentation/air-quality-rehearsal.json",
+      "bytes": 1513,
+      "sha256": "a2b2f13a8e11fbcc69541a644166f71f024be3964175710aeee94ff2eb1932d9"
+    },
+    {
+      "path": "pitch/index.html",
+      "bytes": 34185,
+      "sha256": "c59b3e60952d7f5ce70b7aee9599fb00f06a3f925945d4ccd60e3b8698ecfe0d"
+    },
+    {
+      "path": "pitch/assets/role-film-poster.jpg",
+      "bytes": 106567,
+      "sha256": "6b6855846e48a4bcaa74683a0cfa1749df2b48d157af801f9854a634bf50ce2b"
+    },
+    {
+      "path": "pitch/air-outcomes.js",
+      "bytes": 3864,
+      "sha256": "561f81131d7f3da94bfc28f6933f2468310d50093f0a9005557e9422406c809e"
+    }
+  ],
+  "bundle_members": [
+    "Attribution/LICENSE",
+    "Attribution/LICENSE-DOCS.md",
+    "Attribution/THIRD_PARTY_NOTICES.md",
+    "Evaluation/openSoom-evaluation.pdf",
+    "Evaluation/openSoom-evaluation.pptx",
+    "Hackster/architecture.jpg",
+    "Hackster/cover.jpg",
+    "Hackster/openSoom-air-quality-720p.mp4",
+    "Hackster/openSoom-air-quality.en.srt",
+    "Hackster/operator-persistent.png",
+    "Hackster/story.html",
+    "Hackster/story.md",
+    "Presenter/english-script.html",
+    "Presenter/judges-qa.html",
+    "Presenter/korean-script.html",
+    "START-HERE.html",
+    "SHA256SUMS.txt"
+  ],
+  "verified_slide5_embedded_mp4_sha256": "338ef6f98eabd05ef6bcf7bd0dd2c2d34c13ed348c77f0cef60d1c27fc4ac8fe",
+  "external_publication_pending": [
+    "Upload video to a Hackster-supported hosting account for inline embedding",
+    "Publish public Hackster project and add its backlink",
+    "Send article URL to team Discord and enter schedule availability",
+    "Upload slides to organizer Drive and attend interview"
+  ],
+  "local_package_checks": {
+    "test_suite": {
+      "passed": 120,
+      "passed_subtests": 29
+    },
+    "chromium_offline_extracted_bundle": {
+      "html_link_references_examined": 90,
+      "local_inline_images": 2,
+      "rich_clipboard_with_public_image_urls": true,
+      "dynamic_discord_message": true,
+      "standalone_mp4_played_seconds_total_duration": 56
+    },
+    "landing_widths_tested_px": [
+      320,
+      390,
+      1440
+    ],
+    "native_powerpoint_app_playback": "AppleEvents timed out (-1712) before observing the presentation. Package relationships and embedded bytes verified, and the exact standalone MP4 played in Chrome.",
+    "presentation_seconds": 635.36,
+    "implementation_explanation_seconds": 51.57,
+    "presentation_measurement": "Synthesized English read-through plus the 56-second film and three planned 30-second exercises. No human timing claimed."
+  }
+}

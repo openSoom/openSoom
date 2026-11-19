@@ -1845,6 +1845,187 @@
       "decision_reason": "A new operator should recognize relapse and immediately see the relevant case.",
       "implementation_state": "completed",
       "review_state": "independently verified"
+    },
+    {
+      "id": "ROLE-A-01",
+      "team": "A",
+      "criteria": [
+        1,
+        2,
+        3
+      ],
+      "evidence_status": "captured",
+      "observed_evidence": "A secure trial exercised MQTT/TLS and HTTPS. A separate binding test retrieved the same native CIN through both bindings.",
+      "gap_and_impact": "Readers could attribute both checks to the filmed local HTTP trial.",
+      "minimum_change": "Cite both actual trials with their own scope.",
+      "product_reason": "A facility choosing a binding needs evidence of actual CSE behavior.",
+      "verification": "docs/submission/hackster-article.md links evidence/application/release-acceptance.json and evidence/runtime/cse-mqtt-tls-smoke.json separately.",
+      "main_decision": "accept",
+      "decision_reason": "A facility choosing a binding needs evidence of actual CSE behavior.",
+      "implementation_state": "completed",
+      "review_state": "independently verified"
+    },
+    {
+      "id": "ROLE-B-01",
+      "team": "B",
+      "criteria": [
+        5,
+        7
+      ],
+      "evidence_status": "captured",
+      "observed_evidence": "The two roles and handoff can be traced to source records.",
+      "gap_and_impact": "The first film cut omitted the role played by oneM2M in passing the status to operations.",
+      "minimum_change": "Add the standard to the spoken and visible handoff and document double captions where a player enables optional CC.",
+      "product_reason": "Judges should be able to identify what crosses the application boundary from the film alone.",
+      "verification": "Decode the end frame, SRT and audio from the final MP4. See scripts/cinematic/verify_role_handoff.py and docs/submission/hackster-publish-notes.md.",
+      "main_decision": "accept",
+      "decision_reason": "Judges should be able to identify what crosses the application boundary from the film alone.",
+      "implementation_state": "completed",
+      "review_state": "independently verified"
+    },
+    {
+      "id": "ROLE-D-01",
+      "team": "D",
+      "criteria": [
+        10,
+        11,
+        17
+      ],
+      "evidence_status": "captured",
+      "observed_evidence": "The captured panel and persisted sample have different resource IDs, two seconds apart, and identical PM2.5, CO₂ and airflow for the same command.",
+      "gap_and_impact": "Labeling the later CIN as the original reading implied an exact frame match.",
+      "minimum_change": "Identify the later native verification sample on screen and link both native reads.",
+      "product_reason": "Independent operators must be able to reproduce each reading.",
+      "verification": "evidence/video/role-handoff/operator-native-readings.json and canonical film at 00:11.",
+      "main_decision": "accept",
+      "decision_reason": "Independent operators must be able to reproduce each reading.",
+      "implementation_state": "completed",
+      "review_state": "independently verified"
+    },
+    {
+      "id": "ROLE-E-01",
+      "team": "E",
+      "criteria": [
+        12,
+        13,
+        16
+      ],
+      "evidence_status": "captured",
+      "observed_evidence": "The featured cloud handoff exercised a separate private workbench pod and real MEC services on one VM.",
+      "gap_and_impact": "The general landing proof link previously led to a different cloud example.",
+      "minimum_change": "Point the filmed proof directly to its run ID.",
+      "product_reason": "Reviewers need the exact register, response, work-order and handoff of the featured case.",
+      "verification": "Both landing links reference evidence/runtime/option-c/technician-handoff.json; evidence/application/role-film-landing.json.",
+      "main_decision": "accept",
+      "decision_reason": "Reviewers need the exact register, response, work-order and handoff of the featured case.",
+      "implementation_state": "completed",
+      "review_state": "independently verified"
+    },
+    {
+      "id": "ROLE-F-01",
+      "team": "F and Idea Model",
+      "criteria": [
+        5
+      ],
+      "evidence_status": "captured",
+      "observed_evidence": "The workbench was exercised programmatically in the actual cloud trial.",
+      "gap_and_impact": "A solo viewer could interpret technician scheduling in the narration as an observed human action.",
+      "minimum_change": "Say that the workbench recorded a scheduled inspection and disclose the automated exercise in publication materials.",
+      "product_reason": "A recorded application operation and a real technician visit support different claims.",
+      "verification": "Final SRT, workbench source and docs/submission/hackster-article.md identify the automated trial.",
+      "main_decision": "accept",
+      "decision_reason": "A recorded application operation and a real technician visit support different claims.",
+      "implementation_state": "completed",
+      "review_state": "independently verified"
+    },
+    {
+      "id": "ROLE-C-01",
+      "team": "C",
+      "criteria": [
+        9
+      ],
+      "evidence_status": "captured",
+      "observed_evidence": "The presentation Q&A justified future use of oneM2M; the prior spoken script did not say explicitly when the team would choose it again.",
+      "gap_and_impact": "Whether judges hear that answer depended on their questions.",
+      "minimum_change": "Put the rationale into the spoken eighth slide and its notes.",
+      "product_reason": "A new team can reuse the same records with distinct rights when device vendors change.",
+      "verification": "Final English and Korean scripts and ppt/notesSlides/notesSlide8.xml. Updated implementation section is 51.57 seconds in the synthetic rehearsal.",
+      "main_decision": "accept",
+      "decision_reason": "A new team can reuse the same records with distinct rights when device vendors change.",
+      "implementation_state": "completed",
+      "review_state": "independently verified"
+    },
+    {
+      "id": "ROLE-C-02",
+      "team": "C",
+      "criteria": [
+        6,
+        8,
+        9
+      ],
+      "evidence_status": "captured",
+      "observed_evidence": "The organizer announcement identifies columns G–AJ. The inspected sheet labels slots through AN and requests at least two. Folder access depended on the account used.",
+      "gap_and_impact": "The owner might mark insufficient slots or miss the upload on the invited account.",
+      "minimum_change": "Record both instructions and who can resolve folder access.",
+      "product_reason": "The owner must enter real availability and publish from their account.",
+      "verification": "docs/submission/handoff.md and the extracted START-HERE.html contain scope, schedule and access instructions.",
+      "main_decision": "accept",
+      "decision_reason": "The owner must enter real availability and publish from their account.",
+      "implementation_state": "completed",
+      "review_state": "independently verified"
+    },
+    {
+      "id": "ROLE-BC-03",
+      "team": "B and C",
+      "criteria": [
+        4,
+        6,
+        8,
+        9
+      ],
+      "evidence_status": "open",
+      "observed_evidence": "English story, media, source and presentation exist. Public Hackster/README backlink, authentic public technical interaction and interview delivery are pending.",
+      "gap_and_impact": "No receipt exists for those official judging conditions.",
+      "minimum_change": "After posting, check video and reciprocal links while signed out; record any real public discussion and complete the interview.",
+      "product_reason": "Actual publication and interactions require the owner and organizers.",
+      "verification": "docs/submission/handoff.md lists pending owner tasks.",
+      "main_decision": "accept",
+      "decision_reason": "Actual publication and interactions require the owner and organizers.",
+      "implementation_state": "owner action pending",
+      "review_state": "open"
+    },
+    {
+      "id": "ROLE-F-02",
+      "team": "F",
+      "criteria": [
+        14,
+        15
+      ],
+      "evidence_status": "open",
+      "observed_evidence": "Hosted inference and a virtual shaft angle from ETSI MEC 046 are demonstrated. The two deployment hosts are logical and operator-selected.",
+      "gap_and_impact": "Federated training on the ESTIMED VM and network-origin location influencing a decision lack qualifying executions.",
+      "minimum_change": "If justified, exercise several actual training rounds with cohort changes/dropout; separately trace a real network location event to a changed assignment and reject stale events.",
+      "product_reason": "Fixed facilities and the current two filmed incidents do not need either capability.",
+      "verification": "For 14 retain VM, participant, task, round and model receipts. For 15 retain network/MEC/CSE event and resulting policy or assignment IDs.",
+      "main_decision": "defer",
+      "decision_reason": "Fixed facilities and the current two filmed incidents do not need either capability.",
+      "implementation_state": "open",
+      "review_state": "open"
+    },
+    {
+      "id": "ROLE-IDEA-01",
+      "team": "Idea Model",
+      "criteria": [],
+      "evidence_status": "open",
+      "observed_evidence": "Closure currently uses consecutive fresh samples. An accelerated virtual case accepted two samples only 23 ms apart.",
+      "gap_and_impact": "Sample count does not establish sustained physical recovery. Unassisted adoption and advantage over incumbent building/work-order tools have not been observed.",
+      "minimum_change": "Document site-specific hold time and observation gap as pilot requirements. Compare an uncoached supervisor and technician to incumbent tools with the same evidence.",
+      "product_reason": "Facilities differ in their targets, operating constraints and existing workflows.",
+      "verification": "Publication scope is verified in the article. Field gate: short burst, gap/rebound and sustained traces under a commissioned site profile, then uncoached use.",
+      "main_decision": "accept",
+      "decision_reason": "Facilities differ in their targets, operating constraints and existing workflows.",
+      "implementation_state": "pilot deferred; publication scope clarified",
+      "review_state": "field evidence open"
     }
   ],
   "release_assessment": "docs/review/release-assessment.ko.md",
@@ -2217,5 +2398,105 @@
       "finding": "AIR-IDEA-08"
     },
     "supplemental_history_access": "evidence/application/air-quality-history-access.json"
+  },
+  "two_incident_submission_review": {
+    "common_candidate": "009de59b1157b6505cc97d9cdb00fce7250a1f9e",
+    "revised_product": "e3a036e185cff099c2e7c2f239e10a7ac5740b9c",
+    "model": "gpt-6.2-sol",
+    "reasoning_effort": "max",
+    "film_sha256": "338ef6f98eabd05ef6bcf7bd0dd2c2d34c13ed348c77f0cef60d1c27fc4ac8fe",
+    "official_rubric_sha256": "42b38857fffae7c92739f84440b9db020ec6b79897c0f70db64c465ffd2cdfad",
+    "teams": [
+      {
+        "team": "A",
+        "criteria": [
+          1,
+          2,
+          3
+        ],
+        "disposition": "Scoped Expert. Standard resource and group use, secure native binding runs, and applications with separate work and command authority. The two filmed cases use different runs."
+      },
+      {
+        "team": "B",
+        "criteria": [
+          4,
+          5,
+          7
+        ],
+        "disposition": "4 open pending the actual public article. 5 and 7 scoped Expert for the original narrated film and documented oneM2M adoption."
+      },
+      {
+        "team": "C",
+        "criteria": [
+          6,
+          8,
+          9
+        ],
+        "disposition": "Open. A public article backlink, actual judge-facing public technical discussion and a real interview remain outstanding."
+      },
+      {
+        "team": "D",
+        "criteria": [
+          10,
+          11,
+          17
+        ],
+        "disposition": "Scoped Expert from the independently tested secure local profile, PM2.5 standard interoperability, and prior actual hosted-model/Codex workflows. The film is deterministic."
+      },
+      {
+        "team": "E",
+        "criteria": [
+          12,
+          13,
+          16
+        ],
+        "disposition": "Scoped Expert from separately captured CSE handover and genuine one-VM, two-logical-host Sandbox deployment and functional services. Cloud scene replays the recorded response."
+      },
+      {
+        "team": "F",
+        "criteria": [
+          14,
+          15
+        ],
+        "disposition": "Open. No qualifying ESTIMED VM federated learning or network-origin location-driven action."
+      }
+    ],
+    "idea_model": "Adopt for virtual equipment prototype. Human adoption and commissioned sustained recovery require field evidence. A local route remains adequate when the same independent measurement is already available.",
+    "open_criteria": [
+      4,
+      6,
+      8,
+      9,
+      14,
+      15
+    ],
+    "findings": [
+      "ROLE-A-01",
+      "ROLE-B-01",
+      "ROLE-D-01",
+      "ROLE-E-01",
+      "ROLE-F-01",
+      "ROLE-C-01",
+      "ROLE-C-02",
+      "ROLE-BC-03",
+      "ROLE-F-02",
+      "ROLE-IDEA-01"
+    ],
+    "review_sources": [
+      "docs/hackathon/rubric-baseline.json",
+      "evidence/video/role-handoff/operator-native-readings.json",
+      "evidence/video/air-quality-film.json",
+      "evidence/runtime/option-c/technician-handoff.json",
+      "evidence/runtime/technician-workbench.json",
+      "evidence/application/role-film-landing.json",
+      "evidence/presentation/air-quality-rehearsal.json",
+      "evidence/release/role-film-public.json"
+    ],
+    "targeted_recheck": {
+      "candidate": "e3a036e185cff099c2e7c2f239e10a7ac5740b9c",
+      "team_c": "Passed. Actual slide 8 notes, English and zipped script matched. MP4 matched both native slide relationships and ZIP. All 16 manifest entries and local links passed. Review keeps criteria 6, 8 and 9 open.",
+      "idea_model": "Passed. The reviewer compared the final visible/selectable closing wording, film and archive hashes, two original readings, automated handoff, public wording, case-specific landing links and the stated site-pilot conditions.",
+      "media_and_provenance": "Decoded frames at 11.8 and 13.75 seconds identify the later verification sample. The earlier held and later native readings agree. At 52 seconds visible and embedded text identify the shared oneM2M status, automated scheduling and open incident. The workbench replay is labeled. All seven audio segments passed volume checks; slide 5 and ZIP copies match."
+    }
   }
 }
