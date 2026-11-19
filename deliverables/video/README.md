@@ -7,11 +7,11 @@ The following films document earlier demonstrations.
 
 | Film | Use | Editorial and technical sources |
 | --- | --- | --- |
-| [Work-order decision film](openSoom-work-order-720p.mp4) | Current evaluation talk and main Hackster walkthrough. 104.938 seconds, 1280 × 720, English voice and burned-in plus selectable captions | [Caption file](openSoom-work-order.en.srt), [browser source](cinematic/demo/maintenance-work-order.webm), [film manifest](../../evidence/video/work-order/film.json) |
+| [Work-order decision film](openSoom-work-order-720p.mp4) | Earlier maintenance walkthrough. 104.938 seconds, 1280 × 720, English voice and burned-in plus selectable captions | [Caption file](openSoom-work-order.en.srt), [browser source](cinematic/demo/maintenance-work-order.webm), [film manifest](../../evidence/video/work-order/film.json) |
 | [45-second introduction](openSoom-pr-45s.mp4) | Public project introduction, with Firefly cinematography, original generated score, English voice and selectable English captions | [PR sources](cinematic/pr/), [production budget](../../evidence/video/cinematic/adobe-production.json) |
 | [Five-minute demonstration](openSoom-demo-5min.mp4) | Extended walkthrough of two facilities and the independent application receipts | [Scene list, captions, recordings and reproduction](cinematic/demo/README.md) |
 
-Play the 720p work-order film after slide 5. Its local dashboard scene follows `demo-271a6c3a23` from a 100% command ACK to a 360 m³/h follow-up and an independent shaft reading of 35%. The later cloud comparison shows its own run ID. [English presenter notes](../../docs/submission/presenter-script.en.md) · [Local work order](../../evidence/runtime/maintenance-release-local.json) · [Cloud comparison](../../evidence/runtime/mec-maintenance-roundtrip.json)
+The work-order film is available for maintenance questions. Its local dashboard scene follows `demo-271a6c3a23` from a 100% command ACK to a 360 m³/h follow-up and an independent shaft reading of 35%. The later cloud comparison shows its own run ID. [English presenter notes](../../docs/submission/presenter-script.en.md) · [Local work order](../../evidence/runtime/maintenance-release-local.json) · [Cloud comparison](../../evidence/runtime/mec-maintenance-roundtrip.json)
 
 ## Reproduce and verify the work-order film
 

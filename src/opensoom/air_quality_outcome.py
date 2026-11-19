@@ -80,7 +80,11 @@ def observe(store, key, source_run, record, now):
     age = (now - datetime.fromisoformat(point["observed_at"])).total_seconds()
     issue = record.get("sequence_issue")
     if seconds_between(point["observed_at"], ack) <= 0:
-        return
+        if not record.get("gap_before"):
+            return
+        # A post-ACK CSE sequence gap breaks continuity even when the
+        # newly arrived reading itself was acquired before the command.
+        issue = "unobserved_interval"
     if not issue and (age < -5 or age > outcome["freshness_seconds"]):
         issue = "sample_not_fresh"
     if not issue and (point["pm25"] is None or point["co2"] is None):

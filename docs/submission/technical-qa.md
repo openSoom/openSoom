@@ -1,6 +1,10 @@
 # Technical interview notes
 
-Use the [English slides](../../deliverables/presentation/openSoom-evaluation.pptx), [English script](presenter-script.en.md) and [Korean rehearsal script](presenter-script.ko.md) for the 10–15 minute presentation and video. The organizer allocates 20 minutes including questions. The 720p film records the operating case. The workbench is a separate local application.
+Use the [English slides](../../deliverables/presentation/openSoom-evaluation.pptx), [English script](presenter-script.en.md) and [Korean rehearsal script](presenter-script.ko.md) for the 10–15 minute presentation and video. The organizer allocates 20 minutes including questions. The 720p film shows the operator dashboard in three air-quality trials, including a rebound after reaching the targets. The workbench is a separate local application.
+
+### What exactly do the outcome clocks measure?
+
+The baseline is the accepted fresh measurement available when the command was issued. Both post-action pollutant readings must come from one eligible measurement in that zone. The first clock ends at the first observed joint target crossing after device ACK. The second spans consecutive qualifying observations, starting at zero for one point. It stops accumulating at the last eligible point. A rebound or a gap ends that spell; a later qualifying sample can start another. A new action has a separate record. These are observed intervals in virtual trials. They do not establish how long a real room stayed continuously in range or whether the command alone caused the change. [Results and original readings](../../evidence/runtime/air-quality-outcomes.json)
 
 ### Which problem did you observe, and which part is a product hypothesis?
 
@@ -82,4 +86,4 @@ Start with one zone under observation. Establish the facility’s own targets wi
 
 ### Before the interview
 
-Download the [PPTX](../../deliverables/presentation/openSoom-evaluation.pptx), [PDF](../../deliverables/presentation/openSoom-evaluation.pdf) and [720p MP4](../../deliverables/video/openSoom-work-order-720p.mp4). Open both local applications for slide 6. If the lab is unavailable, use the role comparison on slide 6 and the recorded operator case on slide 5. Upload the slides to the designated Drive folder by Sunday, 22 November 2026, confirm the organizer’s assigned `PICK` slot and join before it begins. [Submission handoff](handoff.md)
+Download the [PPTX](../../deliverables/presentation/openSoom-evaluation.pptx), [PDF](../../deliverables/presentation/openSoom-evaluation.pdf) and [720p MP4](../../deliverables/video/openSoom-air-quality-720p.mp4). Play the air-quality film on slide 5. For slide 6 open the operator dashboard, select the action and expand Measurement evidence. The technician workbench is an optional handoff. If the lab is unavailable, keep the same three 30-second audience exercises offline. Use the slide 3 table to identify the outstanding pollutant, pause the downloaded film at the first target reading on slide 5, and inspect the saved command and sample IDs on slide 6. Upload the slides to the designated Drive folder by Sunday, 22 November 2026, confirm the organizer’s assigned `PICK` slot and join before it begins. [Submission handoff](handoff.md)

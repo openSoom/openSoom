@@ -171,6 +171,23 @@ def test_native_gap_and_pre_ack_sample_boundaries_and_zero_baseline(tmp_path):
     assert trace["last_hold"]["ended_by"] == "unobserved_interval"
 
 
+def test_missing_native_record_reported_by_late_pre_ack_sample_ends_hold(tmp_path):
+    store = Store(tmp_path / "db")
+    start(store)
+    ack(store)
+    observe(store, reading("within-1", 4, 35, 800))
+    observe(store, reading("within-2", 6, 33, 800))
+    observe(store, reading("delayed", 1, 30, 800, created=8, gap=True, issue="unobserved_interval"))
+    trace = result(store)
+    assert (trace["status"], trace["hold_seconds"], trace["last_hold_seconds"]) == ("evidence_gap", None, 2)
+    assert trace["latest"]["cin_ri"] == "within-2"
+    assert trace["sample_count"] == 2
+    assert store.air_samples("one", 0, 10)[-1]["cin_ri"] == "delayed"
+    observe(store, reading("within-3", 10, 31, 800))
+    trace = result(store)
+    assert (trace["hold_seconds"], trace["last_hold_seconds"], trace["first_target_at"]) == (0, 2, at(4))
+
+
 def test_command_history_pagination_and_facility_scope(tmp_path):
     service = Core(runtime=tmp_path)
     try:

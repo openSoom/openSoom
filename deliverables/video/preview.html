@@ -12,8 +12,9 @@ nav button[aria-pressed="true"]{background:#f3f8e8;box-shadow:inset 0 -3px #80b6
 <h1>openSoom films</h1>
 <p>English films about a working oneM2M service with simulated equipment.</p>
 <nav aria-label="Choose a film">
+  <button type="button" data-film="air">Did the air get better?</button>
   <button type="button" data-film="pr">45-second introduction</button>
-  <button type="button" data-film="demo">Five-minute evaluation demo</button>
+  <button type="button" data-film="demo">Five-minute architecture walkthrough</button>
   <button type="button" data-film="earlier">Earlier 108-second film</button>
 </nav>
 <p id="summary" aria-live="polite"></p>
@@ -64,6 +65,7 @@ openSoom shows what happened next.
 </script>
 <script>
 const films = {
+  air: {file: 'openSoom-air-quality-720p.mp4', summary: '56 seconds · Air quality before and after ventilation in three simulated trials · English captions', evidence: 15, closing: 51},
   pr: {file: 'openSoom-pr-45s.mp4', summary: '45 seconds · Introduction · Selectable English captions', evidence: 13, closing: 38.5},
   demo: {file: 'openSoom-demo-5min.mp4', summary: '5 minutes · Two facilities and two independent oneM2M applications · English captions', evidence: 145, closing: 286},
   earlier: {file: 'openSoom-demo-en.mp4', summary: '108 seconds · Earlier project walkthrough · English captions', evidence: 50, closing: 100}
@@ -98,6 +100,6 @@ function jumpTo(time) { film.currentTime = time; film.play(); }
 document.getElementById('verify').onclick = () => jumpTo(selected.evidence);
 document.getElementById('end').onclick = () => jumpTo(selected.closing);
 const requested = new URLSearchParams(location.search).get('film');
-selectFilm(Object.hasOwn(films, requested) ? requested : 'pr');
+selectFilm(Object.hasOwn(films, requested) ? requested : 'air');
 </script>
 </html>
