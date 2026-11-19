@@ -1,0 +1,57 @@
+{
+  "status": "passed",
+  "source": "Local static pitch, keyboard selection checked against original CSE case report; responsive widths",
+  "views": {
+    "320": [
+      {
+        "key": "air_quality_recovery",
+        "first": "6.2 s",
+        "hold": "10.2 s"
+      },
+      {
+        "key": "air_quality_persistent",
+        "first": "Not observed",
+        "hold": "Not observed"
+      },
+      {
+        "key": "air_quality_rebound",
+        "first": "6.2 s",
+        "hold": "6.2 s"
+      }
+    ],
+    "390": [
+      {
+        "key": "air_quality_recovery",
+        "first": "6.2 s",
+        "hold": "10.2 s"
+      },
+      {
+        "key": "air_quality_persistent",
+        "first": "Not observed",
+        "hold": "Not observed"
+      },
+      {
+        "key": "air_quality_rebound",
+        "first": "6.2 s",
+        "hold": "6.2 s"
+      }
+    ],
+    "1440": [
+      {
+        "key": "air_quality_recovery",
+        "first": "6.2 s",
+        "hold": "10.2 s"
+      },
+      {
+        "key": "air_quality_persistent",
+        "first": "Not observed",
+        "hold": "Not observed"
+      },
+      {
+        "key": "air_quality_rebound",
+        "first": "6.2 s",
+        "hold": "6.2 s"
+      }
+    ]
+  }
+}

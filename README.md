@@ -1,6 +1,6 @@
 <h1 align="center"><img src="docs/assets/opensoom-horizontal.png" width="540" alt="openSoom"></h1>
 
-<p align="center"><strong>Find the first ventilation inspection and verify recovery across shifts.</strong></p>
+<p align="center"><strong>See how much the air improved after ventilation, how soon the room reached its targets and how long it stayed in range.</strong></p>
 
 <p align="center">
   <a href="LICENSE"><img src="https://img.shields.io/badge/code-Apache_2.0-173f39?style=flat" alt="Code license: Apache 2.0"></a>
@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/openSoom/openSoom/raw/refs/heads/main/deliverables/video/openSoom-work-order-720p.mp4">Watch the 720p work-order demo</a> ·
+  <a href="https://github.com/openSoom/openSoom/raw/refs/heads/main/deliverables/video/openSoom-air-quality-720p.mp4">Watch the air-quality outcome demo (720p)</a> ·
   <a href="https://github.com/openSoom/openSoom/raw/refs/heads/main/deliverables/video/openSoom-demo-5min.mp4">5-minute demo</a> ·
   <a href="#follow-a-ventilation-incident">Workflow</a> ·
   <a href="#why-onem2m-is-part-of-the-product">Architecture</a> ·
@@ -17,6 +17,10 @@
   <a href="CONTRIBUTING.md">Contribute</a> ·
   <a href="docs/project-guide.ko.md">한국어 안내</a>
 </p>
+
+**Did the room air improve?** The operator console compares PM2.5 and CO₂ from just before a ventilation command to later readings. It shows time from device acknowledgement to the first observation at both zone targets, and the observed span in range. Switch between recovery, persistent particles and rebound. All three trials use virtual devices and a real oneM2M CSE. [Watch the 720p demo](deliverables/video/openSoom-air-quality-720p.mp4) · [Three timestamped runs](evidence/runtime/air-quality-outcomes.json)
+
+![Recorded operator screen with both pollutants, elapsed time and observed time in range](evidence/application/air-quality-dashboard.png)
 
 Two ventilation faults can look identical to the operator. In a virtual conservation workshop, two trials both acknowledged **95% opening** and then measured **515 m³/h against a 560 m³/h target**. An independent shaft reading of **35%** sent the technician to the actuator and its position feedback. A reading of **93%** sent the technician to the airflow path. Both incidents stayed open. A competent person still needs to establish the physical cause. [Paired trials and comparison method](docs/inspection-benchmark.md)
 
@@ -41,12 +45,12 @@ Two executions exercised the same decision. In the local run, the independent se
 
 At a facility whose external provider was still unregistered, the facility owner used oneM2M to commission that provider through MEC 033 and register a MEC 046 sensor subscription. The bridge verified the test callback. A separate 046 lookup supplied the virtual 35% reading. The same subscription survived a bridge restart. [Full commissioning and work-order record](evidence/runtime/option-c/commissioned-sensor-roundtrip.json)
 
-To replay the work order after cloning the repo, run the following from its root. The first two commands install the software. The third launches an isolated lab and keeps its dashboard open. Select **No recovery after action** for a shaft that falls short, or **Low airflow, shaft follows command** for a shaft that reaches the accepted setting. Choose **Run scenario**, wait for the independent measurement, then open the order in the technician workbench. Record **Inspection scheduled** to try the handoff. Press Ctrl+C in the terminal to close both apps and the test CSEs.
+To replay the air-quality trials and the maintenance follow-up, run the following from a source checkout. The first two commands install the software. The third launches an isolated lab and keeps its dashboard open. On the operator screen select **Air clears after ventilation**, **Particles stay high** or **Particles return** to compare the pollutants and both timers. For the equipment follow-up, select **No recovery after action** for a shaft that falls short, or **Low airflow, shaft follows command** for a shaft that reaches the accepted setting. Choose **Run scenario**, wait for the independent measurement, then open the order in the technician workbench. Record **Inspection scheduled** to try the handoff. Press Ctrl+C in the terminal to close both apps and the test CSEs.
 
 ```sh
 uv sync --locked --python 3.12
 uv run --no-sync python scripts/cse_runtime.py install
-uv run --no-sync python scripts/maintenance_demo.py --dashboard-port 19490 --technician-port 19492 --hold
+uv run --no-sync python scripts/maintenance_demo.py --dashboard-port 19490 --technician-port 19492 --hold --opening-scenario air_quality_recovery
 ```
 
 [Operator console](http://127.0.0.1:19490/) · [Technician workbench](http://127.0.0.1:19492/) · [Agent-authored trials and original CSE observations](evidence/agent/scenario-authoring/README.md)

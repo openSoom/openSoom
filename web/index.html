@@ -61,11 +61,30 @@
 
     <main id="main">
       <section class="page-heading" id="overview">
-        <div><div class="eyebrow">FACILITY OPERATOR CONSOLE</div><h1>Facility overview<span class="heading-dot">.</span></h1><p id="overview-subtitle">Track the facility target and verify recovery after an equipment action.</p></div>
+        <div><div class="eyebrow">FACILITY OPERATOR CONSOLE</div><h1>Facility overview<span class="heading-dot">.</span></h1><p id="overview-subtitle">Compare the air before and after each ventilation action.</p></div>
         <div class="facility-picker"><svg><use href="#i-building"/></svg><label class="sr-only" for="facility-select">Choose facility</label><select id="facility-select" disabled><option>Waiting for a facility</option></select><svg class="picker-chevron"><use href="#i-chevron"/></svg></div>
       </section>
 
       <div class="connection-banner" id="connection-banner" role="status" hidden></div>
+
+      <section class="panel scenario-panel" aria-labelledby="scenario-heading">
+        <div class="scenario-label"><span class="scenario-icon"><svg><use href="#i-play"/></svg></span><div><h2 id="scenario-heading">Replay ventilation</h2><p>Virtual equipment · real oneM2M software</p></div></div>
+        <div class="scenario-controls"><label class="sr-only" for="scenario-select">Scenario</label><select id="scenario-select"><option value="air_quality_recovery">Air clears after ventilation</option><option value="air_quality_persistent">Particles stay high</option><option value="air_quality_rebound">Particles return</option><option value="exhaust_fault">Insufficient exhaust</option><option value="normal">Normal operation</option><option value="stale">Stale observations</option><option value="missing_ack">Device not responding</option><option value="no_recovery">No recovery after action</option></select><label class="toggle-label"><input type="checkbox" id="autorun-toggle" checked><span class="toggle-track" aria-hidden="true"></span><span>Allowed actions</span></label><button class="button primary" id="start-demo-button" type="button" disabled><svg><use href="#i-play"/></svg>Run scenario</button></div>
+      </section>
+
+      <section class="panel air-outcome" id="air-outcome" aria-labelledby="air-outcome-heading">
+        <div class="outcome-heading">
+          <div><h2 id="air-outcome-heading">Air quality after ventilation</h2><p id="air-outcome-context">Select a zone to review its ventilation action.</p></div>
+          <div class="outcome-pickers">
+            <label for="air-outcome-zone">Zone<select id="air-outcome-zone" disabled><option>Waiting for zones</option></select></label>
+            <label for="air-outcome-command">Action<select id="air-outcome-command" disabled><option>Current run</option></select></label>
+          </div>
+        </div>
+        <div id="air-outcome-body"><p class="outcome-empty">Waiting for a facility connection.</p></div>
+        <div id="air-outcome-evidence" hidden>
+          <details><summary>Measurement evidence</summary><div id="air-outcome-records"></div></details>
+        </div>
+      </section>
 
       <section class="summary-grid" aria-label="Facility summary">
         <article class="summary-card"><div class="summary-top"><span>Monitored zones</span><span class="metric-icon mint"><svg><use href="#i-grid"/></svg></span></div><div class="summary-number" id="summary-zones">—<small>zones</small></div><p id="summary-zones-note">Waiting for current observations</p></article>
@@ -77,7 +96,7 @@
       <div class="primary-grid">
         <section class="panel facility-panel" id="zones-section" aria-labelledby="facility-map-heading">
           <div class="panel-heading"><div><span class="section-kicker">LIVE FACILITY VIEW</span><h2 id="facility-map-heading">Every zone, connected.</h2></div><span class="soft-badge" id="facility-profile">No profile loaded</span></div>
-          <div class="map-toolbar"><div class="metric-tabs" role="group" aria-label="Observation shown on map"><button type="button" class="selected" data-metric="airflow" aria-pressed="true">Airflow</button><button type="button" data-metric="pm25" aria-pressed="false">PM2.5</button><button type="button" data-metric="co2" aria-pressed="false">CO₂</button></div><span class="map-live" id="map-updated"><span class="tiny-dot"></span>No observations yet</span></div>
+          <div class="map-toolbar"><div class="metric-tabs" role="group" aria-label="Observation shown on map"><button type="button" class="selected" data-metric="pm25" aria-pressed="true">PM2.5</button><button type="button" data-metric="airflow" aria-pressed="false">Airflow</button><button type="button" data-metric="co2" aria-pressed="false">CO₂</button></div><span class="map-live" id="map-updated"><span class="tiny-dot"></span>No observations yet</span></div>
           <div class="spatial-toolbar"><div class="spatial-view-toggle" role="group" aria-label="Facility visualization"><button type="button" id="view-3d" aria-pressed="false" disabled>3D facility</button><button type="button" id="view-2d" aria-pressed="true">2D map</button></div><button type="button" id="motion-toggle" class="motion-toggle" aria-pressed="false" hidden>Pause motion</button></div>
           <div class="spatial-stage" id="spatial-stage" hidden><div id="facility-3d" class="facility-3d" aria-hidden="true"></div><div id="spatial-labels" class="spatial-labels" role="group" aria-label="Select a zone in the 3D facility"></div><div class="spatial-caption"><span class="spatial-marker"></span><span id="spatial-condition">Waiting for facility observations</span></div></div>
           <p class="spatial-notice" id="spatial-notice" hidden></p>
@@ -96,11 +115,6 @@
           <button class="text-button evidence-button" type="button" id="view-run-button">View execution evidence <svg><use href="#i-arrow"/></svg></button>
         </aside>
       </div>
-
-      <section class="panel scenario-panel" aria-labelledby="scenario-heading">
-        <div class="scenario-label"><span class="scenario-icon"><svg><use href="#i-play"/></svg></span><div><h2 id="scenario-heading">See the system respond</h2><p>Replay a virtual facility scenario through the real service.</p></div></div>
-        <div class="scenario-controls"><label class="sr-only" for="scenario-select">Scenario</label><select id="scenario-select"><option value="exhaust_fault">Insufficient exhaust</option><option value="normal">Normal operation</option><option value="stale">Stale observations</option><option value="missing_ack">Device not responding</option><option value="no_recovery">No recovery after action</option></select><label class="toggle-label"><input type="checkbox" id="autorun-toggle" checked><span class="toggle-track" aria-hidden="true"></span><span>Allowed actions</span></label><button class="button primary" id="start-demo-button" type="button" disabled><svg><use href="#i-play"/></svg>Run scenario</button></div>
-      </section>
 
       <section class="panel maintenance-panel" id="maintenance-panel" aria-labelledby="maintenance-heading" hidden>
         <div class="panel-heading"><div><h2 id="maintenance-heading">Maintenance work order</h2></div><svg class="heading-icon"><use href="#i-tool"/></svg></div>

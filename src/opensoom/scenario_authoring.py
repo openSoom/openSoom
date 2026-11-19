@@ -10,6 +10,7 @@ from typing import Literal
 
 from pydantic import BaseModel, ConfigDict, Field
 
+from . import air_quality_outcome
 from .adapters import encode_virtual, normalize
 from .models import ActionRequest, utcnow
 
@@ -114,12 +115,18 @@ def dispatch(core, name, args, principal, agent_run_id, error):
                  "scenario_id": saved["scenario_id"], "version": args["version"], "expected_result": saved["expected_result"],
                  "agent_run_id": agent_run_id, "status": "running", "started_at": utcnow()}
         core.store.put("scenario_runs", execution, trial)
+        scope = fid + ":" + zone["id"]
+        with core.store.transaction():
+            air_quality_outcome.finish(core.store, scope, "run_ended", trial["started_at"])
         try:
             execute_trial(core, facility, zone, saved, trial, principal, error)
         except Exception as exc:
             trial.update(status="interrupted", error=getattr(exc, "code", type(exc).__name__))
             core.store.put("scenario_runs", execution, trial)
             raise
+        finally:
+            with core.store.transaction():
+                air_quality_outcome.finish(core.store, scope, "run_ended", utcnow())
         core.store.put("scenario_runs", execution, trial)
         return trial
 

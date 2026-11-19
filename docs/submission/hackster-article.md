@@ -1,16 +1,38 @@
-# openSoom: Which ventilation inspection comes first?
+# openSoom — Did the air get better after ventilation?
 
-Suppose you are the technician called to the same low-airflow warning in two workshop trials. In each trial the controller acknowledged a command to open the damper to **95%**. Airflow stayed at **515 m³/h**, short of the workshop’s **560 m³/h** target. Where would you start?
+Imagine taking over a shift just after an air-quality alarm. The ventilation controller accepted an adjustment and the fan is running. People are still working in the room. **How much did the air improve, when did the room reach its targets, and how long did the readings stay there?**
 
-In the first trial an independent shaft sensor measured **35%**. The work order prioritized actuator travel and position feedback. In the second it measured **93%**. Now the airflow path came first. The operator kept both incidents open. The technician could record the inspection they scheduled and the precise evidence they had reviewed. A field examination would establish the physical cause.
+At the virtual cooking line, PM2.5 starts at **75 µg/m³** and CO₂ at **1,500 ppm**. We run three responses to the same type of adjustment. In the recovery trial the readings drop to **15 µg/m³ and 720 ppm**. In the persistent-particles trial CO₂ reaches 720 ppm while PM2.5 stays at 60 µg/m³, above this zone’s configured limit of 45. The rebound trial reaches both targets, then particles rise again. The operator can read all three answers for one command at the top of the dashboard. The room-to-room targets are configurable.
 
-A commissioning report supplies the facility’s airflow benchmark. Low airflow itself has several possible causes, including damper position, restricted ducts and fan problems. We use shaft position to choose the first field inspection. The site technician still needs to establish the cause. [HSE commissioning guidance](https://www.hse.gov.uk/lev/commissioning.htm) · [OSHA exhaust-system troubleshooting, Appendix III:3-4](https://www.osha.gov/otm/section-3-health-hazards/chapter-3)
+![Live operator console with paired PM2.5 and CO₂ observations, time to both targets and observed time in range](https://raw.githubusercontent.com/openSoom/openSoom/main/evidence/application/air-quality-dashboard.png)
 
-![Real openSoom technician workbench showing a facility-scoped order, a recommended first inspection and the form to record the activity](https://raw.githubusercontent.com/openSoom/openSoom/main/evidence/application/technician-workbench.png)
+[Watch the 720p dashboard demo](https://github.com/openSoom/openSoom/raw/refs/heads/main/deliverables/video/openSoom-air-quality-720p.mp4) · [Get the source and run the demo](https://github.com/openSoom/openSoom) · [Read the three timestamped trials](https://github.com/openSoom/openSoom/blob/main/evidence/runtime/air-quality-outcomes.json)
 
-*The workbench screenshot is a separate cooking-line run. The paired workshop trials above use the same command and airflow in two different runs. All equipment and physical measurements are simulated. The oneM2M requests, application permissions and recorded decisions were executed by the software.*
+## Read an outcome for one ventilation action
 
-[Watch the 11-second operator-to-technician handoff](https://github.com/openSoom/openSoom/blob/main/docs/assets/technician-handoff.gif) · [Source and local demo](https://github.com/openSoom/openSoom) · [Watch the operator work-order film, 720p](https://github.com/openSoom/openSoom/raw/refs/heads/main/deliverables/video/openSoom-work-order-720p.mp4) · [45-second introduction](https://github.com/openSoom/openSoom/raw/refs/heads/main/deliverables/video/openSoom-pr-45s.mp4) · [5-minute walkthrough](https://github.com/openSoom/openSoom/raw/refs/heads/main/deliverables/video/openSoom-demo-5min.mp4)
+The baseline is the fresh observation available when the command was issued. The latest pair is taken after the device acknowledged the command. The first clock measures from that acknowledgement to the first recorded sample where **both** PM2.5 and CO₂ meet the zone targets. The second measures from the first to the last consecutive qualifying sample in the current spell. A single qualifying sample gives zero seconds. A rebound ends the spell. Missing or stale evidence breaks continuity, and an idle dashboard cannot add time after the last observation. An earlier command retains its own record.
+
+| Captured trial | Latest PM2.5 / CO₂ | First observed at both targets | Observed time in range |
+| --- | --- | --- | --- |
+| Recovery | 15 µg/m³ / 720 ppm | 6.20 s after ACK | 10.24 s through the last sample in this capture |
+| Particles persist | 60 µg/m³ / 720 ppm | Never observed | No qualifying span |
+| Particles return | 60 µg/m³ / 720 ppm | 6.17 s after ACK | The previous 6.17 s span ended when particles rebounded |
+
+The table uses the three linked API captures. The video and a new live run have their own timestamps. All three cases had adequate post-action airflow (1,035 m³/h). The difference that matters to the supervisor is the concentration measured in the room.
+
+Try **Air clears after ventilation**, **Particles stay high**, then **Particles return**. Open **Measurement evidence** to inspect the original oneM2M records. These are accelerated virtual-equipment trials using actual elapsed seconds and a real ACME CSE. The measurements describe changes observed after the action. Field effectiveness, exposure and the cause of a change need independent site evidence.
+
+## How to run this dashboard
+
+From a source checkout, use the following commands. The launcher opens the virtual cooking line with a recovery trial already in progress. Select a scenario and use **Run scenario** to repeat it.
+
+```sh
+uv sync --locked --python 3.12
+uv run --no-sync python scripts/cse_runtime.py install
+uv run --no-sync python scripts/maintenance_demo.py --dashboard-port 19490 --technician-port 19492 --hold --opening-scenario air_quality_recovery
+```
+
+Open the operator console at `http://127.0.0.1:19490/`. The technician workbench runs on port 19492. Press Ctrl+C in the launcher terminal to stop this local lab. [Installation requirements and facility setup](https://github.com/openSoom/openSoom#readme)
 
 ## What changed when the system had more evidence?
 
@@ -20,7 +42,7 @@ We also examined archived supply-air measurements from three rooms in one Oak Ri
 
 ## The people and the software they rely on
 
-The **operator console** is where a facility checks whether airflow recovered. The **technician workbench** is where the next shift reads an order, checks source measurements and records what it will inspect. Each entry points to the exact oneM2M resource that the technician reviewed. The **Codex plugin or independent model** lets a facility manager prepare a new site profile or virtual trial under normal facility permissions.
+The **operator console** is where a supervisor compares the room’s PM2.5 and CO₂ before and after an action and checks how long they met the zone targets. The **technician workbench** is where the next shift reads an order, checks source measurements and records what it will inspect. Each entry points to the exact oneM2M resource that the technician reviewed. The **Codex plugin or independent model** lets a facility manager prepare a new site profile or virtual trial under normal facility permissions.
 
 The **site operations app** sends permitted device commands and determines recovery. The separate **maintenance app** subscribes to the outcome and updates a work order. When an external provider owns the independent sensor, a **service bridge** connects that provider through MEC 033 and looks up the shaft measurement through MEC 046. The bridge writes the result to the facility MN-CSE. The maintenance app reads it under its own identity. A site that already has an independent local sensor can reach the same decision with a simpler installation. [Application and deployment architecture](https://github.com/openSoom/openSoom/blob/main/docs/architecture.md)
 

@@ -12,7 +12,7 @@ from contextlib import asynccontextmanager
 from html import escape
 from urllib.parse import urlsplit
 
-from fastapi import BackgroundTasks, FastAPI, HTTPException, Request
+from fastapi import BackgroundTasks, FastAPI, HTTPException, Query, Request
 from fastapi.responses import HTMLResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import ValidationError
@@ -154,6 +154,12 @@ def health():
 @app.get("/api/state")
 def state(request: Request):
     return core.state(principal(request))
+
+
+@app.get("/api/commands/{command_id}/air-quality")
+def air_quality_history(command_id: str, request: Request, after: int = Query(0, ge=0),
+                        limit: int = Query(50, ge=1, le=200)):
+    return core.air_quality_history(command_id, principal(request), after, limit)
 
 
 @app.post("/api/notify")

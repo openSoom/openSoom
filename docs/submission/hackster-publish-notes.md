@@ -1,35 +1,17 @@
-# Hackster paste and asset notes
+# Publish the air-quality demonstration
 
-Use `docs/submission/hackster-article.md` as the English article body. It contains full source URLs, public image URLs and a text resource tree; no repository-relative links or Mermaid renderer are required. Place the 720p work-order film first in the demo-video field. After the release is pushed, open the article’s source and video links in a signed-out browser before submitting the public article URL.
+Use the [English article](hackster-article.md). Its opening compares the change in PM2.5 and CO₂, the first observed time at both targets and the observed duration. The cooking-line profile and any thresholds in these recordings belong to a virtual facility.
 
-Suggested project summary: **Give operators and technicians different decisions from the same ventilation incident using oneM2M and an independent edge sensor.**
+**Project summary** · See how the air in a room changes after a ventilation adjustment, how soon it meets the facility’s targets and how long the readings stay in range.
 
-Hardware field: **No physical hardware required for the demonstration.** Fans, dampers and sensor measurements are virtual. A Mac arm64/Python 3.12 environment is the verified source-checkout route; other OS or real devices need separate acceptance.
+| Placement | Stable source |
+| --- | --- |
+| Source repository | [openSoom/openSoom](https://github.com/openSoom/openSoom) |
+| Primary demo video | [English captioned 720p MP4](https://github.com/openSoom/openSoom/raw/refs/heads/main/deliverables/video/openSoom-air-quality-720p.mp4) · [English SRT](../../deliverables/video/openSoom-air-quality.en.srt) |
+| Cover and opening example | [Observed air-quality outcome, actual dashboard](../../evidence/application/air-quality-dashboard.png) |
+| First-results table | [Source values, three separate commands and native observations](../../evidence/runtime/air-quality-outcomes.json) |
+| Further examples | Keep the work-order and architecture images next to their respective paragraphs. The older [maintenance film](../../deliverables/video/openSoom-work-order-720p.mp4) illustrates the optional diagnostic follow-up. |
 
-Software field: openSoom source, ACME CSE 2026.5.3, Python 3.12, uv, OpenSSL, MCP and Codex CLI 0.166.0. Use the repository lockfiles for exact library versions. The deterministic demonstration requires no paid API account. Actual inference uses separately configured credentials and finite persistent accounting.
+The deterministic replay runs without physical hardware or a model account. The local software uses ACME oneM2M, Python 3.12 and uv. AI workflows are available via the Codex plugin or a standalone hosted-model runner using configured credentials.
 
-## Assets to place
-
-| Position | Asset | Verified status |
-| --- | --- | --- |
-| Main demo / evaluation film | `deliverables/video/openSoom-work-order-720p.mp4` | English, 1280 × 720, 104.938 seconds. Console ACK, airflow, shaft position, work order and expanded receipt accompany the corresponding narration. |
-| Near the opening | `deliverables/video/openSoom-pr-45s.mp4` | Actual 45-second master reviewed and published; anonymous full download matches the master hash |
-| Extended historical walkthrough | `deliverables/video/openSoom-demo-5min.mp4` | Actual 300-second English demo reviewed and published; anonymous full download matches the master hash |
-| Current work-order image | `evidence/video/work-order/dashboard-order.png` | Actual screenshot of the same work order as the 720p demo. Upload beside the current main case or retain the pinned image URL. |
-| Opening image | `evidence/application/technician-workbench.png` | Actual human technician workspace in the cooking-line lab; the opening text separately compares two conservation-workshop trials |
-| Architecture | source-mapped distributed-lab image already linked in the body | Explanatory geometry; separate processes versus logical/resource cards are captioned |
-
-For the current film, verify the complete public MP4 against SHA-256 `313c78416e3dec940d6b32486c57bf028b0525b3f140aaa316bb0235952ba7b8`. Check the 100% ACK at 29.19 s, 360 m³/h at 37.75 s, 35% shaft reading at 47.15 s and the open work-order receipt at 66.44 s. Run `python3 scripts/cinematic/render_work_order.py --verify-screen` on the source checkout to compare all six screens, and test playback with sound and English captions in the published article. [Reproduction commands](../../deliverables/video/README.md) · [Film manifest](../../evidence/video/work-order/film.json)
-
-The two earlier film URLs are public GitHub raw-file locations. Both dedicated masters have been reviewed as actual encoded files: the PR is exactly 45 seconds (`7cd91a052221c4c54baccf7560bda93cb595b905c8aeab0c7d3e441051220960`) and the demo is exactly 300 seconds (`c47b134ce2202c57a6089cad7a262eb0e16927e69e58af9593c95dcc7b2158ab`). Their technical/source QA is in `evidence/video/cinematic/`; the scoped review is `docs/review/cinematic-team2.md`. The maintainer completed a logged-out check at public commit `c7d068e4992b1c0adca7c81c1c0011cd6c828062`: all 34 article/asset targets returned HTTP 200, and both complete MP4 downloads matched the published master hashes byte for byte. No separate video-host upload is claimed. Replace links with video-host URLs only if those services are separately authorized and actually used.
-
-The workshop comparison links to its case matrix. The first image shows the separate technician workspace. The original operator work order and distributed architecture images retain their pinned GitHub URLs. [Anonymous asset check](../../evidence/release/final-work-order-publication.json) Existing code/evidence links use full canonical repository URLs so new reviewed evidence can be published without breaking article links.
-
-## Claims and final readback
-
-- The two facility cases have actual CSE/application evidence: food-production recovery and learning-space non-recovery. The supplementary independent operations/maintenance scenario is captured in `evidence/runtime/multiapp/index.json`, run `ma-d1a54f066e`, with recovery, missing-ACK and no-recovery cases. Its current-source revalidation is separately retained as `ma-b9129cb90a` in `evidence/runtime/multiapp-revalidation/index.json`; the film preserves the original run. Its three separate worker processes, shared source CIN rereads and denied maintenance command write are distinct from the cohosted roles of the default dashboard service. Those reviewed source/evidence paths are included in the completed GitHub access check.
-- The optional maintenance paragraph is a later editorial addition grounded in `handover-b6e82ef69f` and its actual CSE receipts. It is separate from the unchanged film/outage story. The follow-up anonymous check at `aecd7e2` verified the GitHub article draft, guide and run links. Ten downloaded files matched the local bytes. [Public receipt](../../evidence/release/cinematic-publication.json) · [Independent criterion 12 review](../review/handover-independent.md).
-- Retain the physical-simulation statement, facility-specific target caveat, protocol-profile separation and command/ACK/outcome distinction. Original source news is linked; its photos are not reused.
-- Source code is Apache-2.0. Original project documentation, diagrams and media are CC BY 4.0; preserve third-party exceptions and attribution.
-- Independent readback of the cinematic article and film evidence is completed in `docs/review/cinematic-team1.md`, `cinematic-team2.md` and `cinematic-team3.md`; the reports retain their exact reviewed hashes and the article editor's role. When pasting into Hackster, check the actual rendered page, captions, images and outgoing links. The optional later maintenance paragraph retains its own source/run attribution.
-- Actual Hackster/video-service posting is outside this editorial task. After authorized Hackster publication, check the logged-out Hackster page, its repository/video links and the README's real article backlink, then record the actual article URL and submission state. The completed GitHub checks do not claim a public Hackster page or event submission.
+On Hackster, add the source and primary video, confirm playback without signing in and check the images, captions and links on the published article. Add that public article URL to the GitHub README and use the organizer’s specified submission channels. The article’s API trial, screenshot and film are independent executions. Quote the times belonging to the corresponding run.

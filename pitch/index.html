@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>openSoom · Ventilation inspection and recovery</title>
-<meta name="description" content="Compare two low-airflow events, choose a first inspection and see how facility and edge applications share the evidence.">
+<title>openSoom · Did the air improve?</title>
+<meta name="description" content="See the change in room PM2.5 and CO₂ after a ventilation action, when both reached the zone targets, and how long the readings stayed there.">
 <meta name="theme-color" content="#f5f4ec"><link rel="stylesheet" href="style.css"><link rel="stylesheet" href="architecture.css">
 </head>
 <body>
@@ -12,12 +12,53 @@
 <main id="top">
 <section class="hero">
  <div class="hero-copy">
-  <p class="eyebrow">openSoom · Facility maintenance</p>
-  <h1>Same low airflow.<br><em>Which part do<br>you check first?</em></h1>
-  <p class="lead">A ventilation controller can accept a command and still leave a room below target. The operator keeps the incident open. The technician needs one more measurement to choose the first inspection.</p>
-  <div class="actions"><a class="button primary" href="#human-apps">Open the two workspaces ↓</a><a class="quiet-link" href="#app-boundaries">Where MEC fits ↗</a></div>
-  <p class="disclosure">Recorded oneM2M decisions · simulated equipment and measurements.</p>
+  <p class="eyebrow">openSoom · Facility air quality</p>
+  <h1>Did the air<br><em>get better?</em></h1>
+  <p class="lead">After a ventilation adjustment, see how much PM2.5 and CO₂ changed, when the room first met both targets, and how long the readings stayed there.</p>
+  <div class="actions"><a class="button primary" href="http://127.0.0.1:19490/">Run the local dashboard</a><a class="quiet-link" href="https://github.com/openSoom/openSoom/raw/refs/heads/main/deliverables/video/openSoom-air-quality-720p.mp4">Watch the demo</a></div>
+  <p class="disclosure">Recorded oneM2M runs · virtual cooking line · zone-specific targets.</p>
  </div>
+ <article id="air-result" class="air-result" aria-labelledby="air-result-heading">
+  <p class="air-site">Cooking line · Recorded trials</p>
+  <h2 id="air-result-heading">Air quality after ventilation</h2>
+  <div class="outcome-tabs" role="group" aria-label="Choose a recorded air-quality trial">
+   <button type="button" data-outcome="air_quality_recovery" aria-pressed="true">Recovery</button>
+   <button type="button" data-outcome="air_quality_persistent" aria-pressed="false">Particles persist</button>
+   <button type="button" data-outcome="air_quality_rebound" aria-pressed="false">Rebound</button>
+  </div>
+  <div id="air-reading" aria-live="polite">
+   <p class="air-verdict" id="air-verdict">Loading the recorded measurements…</p>
+   <table class="air-readings"><thead><tr><th>Room reading</th><th>Before</th><th>Latest</th><th>Change</th></tr></thead><tbody>
+    <tr><th scope="row">PM2.5 <small>µg/m³</small></th><td id="pm-before">—</td><td id="pm-after">—</td><td id="pm-delta">—</td></tr>
+    <tr><th scope="row">CO₂ <small>ppm</small></th><td id="co-before">—</td><td id="co-after">—</td><td id="co-delta">—</td></tr>
+   </tbody></table>
+   <div class="air-clocks"><div><span>First observed at both targets</span><strong id="air-first">—</strong></div><div><span id="air-hold-label">Observed time in range</span><strong id="air-hold">—</strong></div></div>
+   <p class="air-rule" id="air-rule"></p>
+  </div>
+  <a class="air-record" href="https://github.com/openSoom/openSoom/blob/main/evidence/runtime/air-quality-outcomes.json">Inspect the timestamped CSE records</a>
+ </article>
+</section>
+
+<section id="human-apps" class="human-apps section-pad" aria-labelledby="human-apps-heading">
+ <div class="section-intro"><p class="eyebrow">Application architecture</p><h2 id="human-apps-heading">Two people share the case.<br>Each owns a different decision.</h2></div>
+ <div class="workspace-grid">
+  <article><p class="eyebrow">For the facility operator</p><h3>Operator console</h3><p>Did the room return to its air-quality targets? Compare pollutant readings across the adjustment, then check the first target observation and how long the readings remained in range.</p><a class="source-link" href="http://127.0.0.1:19490/">Open local operator console ↗</a></article>
+  <article><p class="eyebrow">For the technician</p><h3>Technician workbench</h3><p>Which part should I inspect first? Open the facility’s order, compare the independent reading with the requested setting and record a field observation against the order you reviewed.</p><a class="source-link" href="http://127.0.0.1:19492/">Open local technician workbench ↗</a></article>
+ </div>
+ <div class="background-apps"><h3>What runs in the background?</h3><dl>
+   <div><dt>Facility operations app</dt><dd>Sends allowed equipment commands and checks recovery. The facility MN-CSE stores the original observations and enforces access by application identity.</dd></div>
+   <div><dt>Edge maintenance app</dt><dd>Maintains the work order and selects a first inspection from verified evidence. It runs as its own workload in the Option C deployment.</dd></div>
+   <div><dt>MEC service bridge</dt><dd>Connects an approved external sensor provider through MEC 033 and obtains a shaft reading through MEC 046. A site with its own independent sensor can read it locally.</dd></div>
+ </dl><p>A manager can also use Codex or an independent LLM to configure and test virtual scenarios. Each client works within its facility permissions. <a href="#start">Start the account-free local demo ↓</a></p></div>
+</section>
+<section id="story" class="problem section-pad"><div class="section-intro"><p class="eyebrow">A gap after installation</p><h2>Equipment installed.<br>Outcome still uncertain.</h2></div><div class="problem-body"><div class="source-stat"><strong>17.9<span>%</span></strong><p>of 301 upgraded school kitchens in the cited assessment were rated inadequate.</p></div><p>That is the reference case. The operating question applies more broadly: <strong>did the action achieve the condition this facility needs?</strong></p><p>openSoom connects observations, permissions and follow-up evidence. A kitchen is one profile. A learning space is another. Each keeps its own targets.</p><a class="source-link" href="https://www.yna.co.kr/view/AKR20261010032900004">Yonhap, 11 October 2026 ↗</a><p class="fine">The report motivates post-installation verification. It does not establish vendor integration as the cause, or validate this prototype's effectiveness.</p></div></section>
+<section id="building-records" class="human-apps section-pad" aria-labelledby="building-records-heading">
+ <div class="section-intro"><p class="eyebrow">Measured building data</p><h2 id="building-records-heading">A stuck damper can still deliver air.</h2>
+ <p class="subheading">During controlled tests in three rooms at Oak Ridge National Laboratory, six of 18 fixed-damper days had median occupied airflow at or above the room’s fault-free reference day. The reported opening also matters when deciding what to inspect.</p></div>
+ <p>31 room-days · 44,640 recorded minutes · Three rooms in one research building. These supply-air measurements are separate from the virtual exhaust equipment in the live demo.</p>
+ <a class="source-link" href="https://github.com/openSoom/openSoom/tree/main/examples/ornl-vav">Inspect the measurements and replay your own zone export ↗</a>
+</section>
+<section id="inspection" class="hero section-pad inspection-followup"><div class="section-intro"><p class="eyebrow">Maintenance follow-up</p><h2>Where should the technician look?</h2><p class="subheading">When airflow stays low, an independent shaft reading helps choose the first inspection. Both workshop trials remained open.</p></div>
  <article class="inspection-comparison" aria-labelledby="comparison-title">
   <div class="comparison-top"><span>Conservation workshop</span><span>Two recorded trials</span></div>
   <h2 id="comparison-title">The bench stayed below target.</h2>
@@ -33,26 +74,6 @@
   </div>
   <a class="comparison-source" id="comparison-source" href="https://github.com/openSoom/openSoom/blob/462d4d9b4fbff824e343aafdc9b837af7bed88ee/evidence/runtime/inspection-benchmark.json">Inspect both recorded trials ↗</a>
  </article>
-</section>
-
-<section id="human-apps" class="human-apps section-pad" aria-labelledby="human-apps-heading">
- <div class="section-intro"><p class="eyebrow">Application architecture</p><h2 id="human-apps-heading">Two people share the case.<br>Each owns a different decision.</h2></div>
- <div class="workspace-grid">
-  <article><p class="eyebrow">For the facility operator</p><h3>Operator console</h3><p>Did the action restore the commissioned airflow? Run a permitted virtual adjustment and follow the device response and fresh airflow samples.</p><a class="source-link" href="http://127.0.0.1:19490/">Open local operator console ↗</a></article>
-  <article><p class="eyebrow">For the technician</p><h3>Technician workbench</h3><p>Which part should I inspect first? Open the facility’s order, compare the independent reading with the requested setting and record a field observation against the order you reviewed.</p><a class="source-link" href="http://127.0.0.1:19492/">Open local technician workbench ↗</a></article>
- </div>
- <div class="background-apps"><h3>What runs in the background?</h3><dl>
-   <div><dt>Facility operations app</dt><dd>Sends allowed equipment commands and checks recovery. The facility MN-CSE stores the original observations and enforces access by application identity.</dd></div>
-   <div><dt>Edge maintenance app</dt><dd>Maintains the work order and selects a first inspection from verified evidence. It runs as its own workload in the Option C deployment.</dd></div>
-   <div><dt>MEC service bridge</dt><dd>Connects an approved external sensor provider through MEC 033 and obtains a shaft reading through MEC 046. A site with its own independent sensor can read it locally.</dd></div>
- </dl><p>A manager can also use Codex or an independent LLM to configure and test virtual scenarios. Each client works within its facility permissions. <a href="#start">Start the account-free local demo ↓</a></p></div>
-</section>
-<section id="story" class="problem section-pad"><div class="section-intro"><p class="eyebrow">A gap after installation</p><h2>Equipment installed.<br>Outcome still uncertain.</h2></div><div class="problem-body"><div class="source-stat"><strong>17.9<span>%</span></strong><p>of 301 upgraded school kitchens in the cited assessment were rated inadequate.</p></div><p>That is the reference case. The operating question applies more broadly: <strong>did the action achieve the condition this facility needs?</strong></p><p>openSoom connects observations, permissions and follow-up evidence. A kitchen is one profile. A learning space is another. Each keeps its own targets.</p><a class="source-link" href="https://www.yna.co.kr/view/AKR20261010032900004">Yonhap, 11 October 2026 ↗</a><p class="fine">The report motivates post-installation verification. It does not establish vendor integration as the cause, or validate this prototype's effectiveness.</p></div></section>
-<section id="building-records" class="human-apps section-pad" aria-labelledby="building-records-heading">
- <div class="section-intro"><p class="eyebrow">Measured building data</p><h2 id="building-records-heading">A stuck damper can still deliver air.</h2>
- <p class="subheading">During controlled tests in three rooms at Oak Ridge National Laboratory, six of 18 fixed-damper days had median occupied airflow at or above the room’s fault-free reference day. The reported opening also matters when deciding what to inspect.</p></div>
- <p>31 room-days · 44,640 recorded minutes · Three rooms in one research building. These supply-air measurements are separate from the virtual exhaust equipment in the live demo.</p>
- <a class="source-link" href="https://github.com/openSoom/openSoom/tree/main/examples/ornl-vav">Inspect the measurements and replay your own zone export ↗</a>
 </section>
 <section id="work-order" class="incident-story section-pad" aria-labelledby="work-order-heading">
 <div class="section-intro"><p class="eyebrow">The operator’s decision</p><h2 id="work-order-heading">One incident.<br>Two people with<br>different decisions.</h2><p class="subheading">The operator checks whether airflow recovered. The technician needs evidence to choose an inspection.</p><a class="source-link" href="https://github.com/openSoom/openSoom/blob/main/evidence/runtime/maintenance-release-local.json">Open the local CSE record ↗</a></div>
@@ -153,6 +174,6 @@ uv run --no-sync python scripts/cse_runtime.py install
 uv run --no-sync python scripts/maintenance_demo.py --dashboard-port 19490 --technician-port 19492 --hold</code></pre><p>Verified on macOS with Python 3.12, uv and OpenSSL. Initial downloads need network access. Once the order appears, open the operator console on port 19490 and the technician workbench on 19492. Replay “No recovery after action” to see a new work order. Ctrl+C closes the lab.</p><p class="fine">Source: Apache-2.0. Original content: CC BY 4.0. Three.js: MIT. Keep runtime listeners on loopback.</p></div></section>
 </main>
 <footer><a class="brand" href="#top"><span class="mark" aria-hidden="true">◌</span>openSoom</a><p>“Soom” means breath in Korean.</p><div><a href="https://github.com/openSoom/openSoom/blob/main/docs/architecture.md">Architecture</a><a href="https://github.com/openSoom/openSoom/blob/main/THIRD_PARTY_NOTICES.md">Licenses &amp; sources</a><a href="https://github.com/openSoom/openSoom/blob/main/deliverables/video/openSoom-work-order-720p.mp4">Watch the demo ↗</a></div><p class="fine">oneM2M Hackathon 2026 prototype. No organizer endorsement implied.</p></footer>
-<aside id="guide" lang="ko" hidden aria-label="한국어 발표 가이드"><div class="guide-heading"><span>발표 가이드 · 약 5분</span><button id="guide-close" aria-label="발표 가이드 닫기">×</button></div><h2 id="guide-title">같은 저풍량에서도 첫 점검은 달라집니다.</h2><p id="guide-body">보존 작업실에서는 독립 시험 두 건 모두 95% 개방 명령 뒤 목표 560 m³/h에 못 미치는 515 m³/h가 측정됐습니다. 두 번의 축 위치는 달랐습니다.</p><div class="guide-cue"><b>지금 보여줄 것</b><p id="guide-action">Trial A와 Trial B를 차례로 눌러 독립 개도와 첫 점검이 어떻게 바뀌는지 보여주세요.</p></div><nav aria-label="발표 순서"><button data-guide="0" class="selected">1 문제</button><button data-guide="1">2 앱과 역할</button><button data-guide="2">3 AI</button><button data-guide="3">4 분산</button><button data-guide="4">5 증거</button><button data-guide="5">6 재사용</button></nav><p class="fine">화면을 읽기보다, 왜 이 구조가 필요한지 설명하세요.</p><a class="guide-full" href="https://github.com/openSoom/openSoom/blob/main/docs/project-guide.ko.md">한국어 전체 해설 · 발표 대본 ↗</a></aside>
-<script type="module" src="main.js"></script><script type="module" src="workflow.js"></script><script type="module" src="work-order.js"></script><script type="module" src="inspection-comparison.js"></script><script type="module" src="architecture.js"></script><noscript><p class="noscript">The article remains readable without JavaScript. Enable it for the Three.js model and presenter controls.</p></noscript>
+<aside id="guide" lang="ko" hidden aria-label="한국어 발표 가이드"><div class="guide-heading"><span>발표 가이드 · 약 5분</span><button id="guide-close" aria-label="발표 가이드 닫기">×</button></div><h2 id="guide-title">환기 뒤 이 공간의 공기는 얼마나 나아졌을까요?</h2><p id="guide-body">환기 전후의 초미세먼지와 CO₂, 두 지표가 처음 목표에 든 시간, 목표 안에 머문 관측 시간을 함께 봅니다.</p><div class="guide-cue"><b>지금 보여줄 것</b><p id="guide-action">Recovery와 Particles persist를 번갈아 선택하세요. Rebound에서는 첫 도달 후 다시 기준을 넘은 순간의 기록을 확인하세요.</p></div><nav aria-label="발표 순서"><button data-guide="0" class="selected">1 문제</button><button data-guide="1">2 앱과 역할</button><button data-guide="2">3 AI</button><button data-guide="3">4 분산</button><button data-guide="4">5 증거</button><button data-guide="5">6 재사용</button></nav><p class="fine">화면을 읽기보다, 왜 이 구조가 필요한지 설명하세요.</p><a class="guide-full" href="https://github.com/openSoom/openSoom/blob/main/docs/project-guide.ko.md">한국어 전체 해설 · 발표 대본 ↗</a></aside>
+<script type="module" src="air-outcomes.js"></script><script type="module" src="main.js"></script><script type="module" src="workflow.js"></script><script type="module" src="work-order.js"></script><script type="module" src="inspection-comparison.js"></script><script type="module" src="architecture.js"></script><noscript><p class="noscript">The article remains readable without JavaScript. Enable it for the Three.js model and presenter controls.</p></noscript>
 </body></html>

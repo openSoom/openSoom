@@ -1,0 +1,66 @@
+{
+  "method": "macOS synthesized English read-through at 116 words/minute nominal, excluding stage directions; actual encoded movie duration added. Optional additional live replay is budgeted separately.",
+  "slides": [
+    {
+      "slide": 1,
+      "words": 118,
+      "speech_seconds": 41.29
+    },
+    {
+      "slide": 2,
+      "words": 134,
+      "speech_seconds": 55.53
+    },
+    {
+      "slide": 3,
+      "words": 136,
+      "speech_seconds": 51.76
+    },
+    {
+      "slide": 4,
+      "words": 118,
+      "speech_seconds": 44.08
+    },
+    {
+      "slide": 5,
+      "words": 131,
+      "speech_seconds": 45.46
+    },
+    {
+      "slide": 6,
+      "words": 112,
+      "speech_seconds": 42.44
+    },
+    {
+      "slide": 7,
+      "words": 135,
+      "speech_seconds": 52.53
+    },
+    {
+      "slide": 8,
+      "words": 116,
+      "speech_seconds": 47.42
+    },
+    {
+      "slide": 9,
+      "words": 123,
+      "speech_seconds": 46.96
+    },
+    {
+      "slide": 10,
+      "words": 136,
+      "speech_seconds": 54.02
+    }
+  ],
+  "spoken_seconds": 481.49,
+  "film_seconds": 55.894292,
+  "speech_plus_film_seconds": 537.38,
+  "suggested_live_demo_allowance_seconds": 90,
+  "script_sha256": "0fb6323bac056f94df609c576d9928515f2267bb8258f4686d3dfab2d05753c7",
+  "interaction_allowances": {
+    "room_comparison": 30,
+    "live_target_crossing": 30,
+    "previous_action_and_source_records": 30
+  },
+  "planned_total_seconds": 627.38
+}

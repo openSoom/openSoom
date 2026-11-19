@@ -1,5 +1,10 @@
 # openSoom films
 
+The current evaluation film is [Did the air get better? (720p)](openSoom-air-quality-720p.mp4). It shows three ordinary dashboard runs with virtual equipment: recovery, persistent particles and rebound. The 55.9-second MP4 has English narration and both visible and selectable captions. [Captions](openSoom-air-quality.en.srt) · [Frame acquisition, command IDs and checksum](../../evidence/video/air-quality-film.json)
+
+The following films document earlier demonstrations.
+
+
 | Film | Use | Editorial and technical sources |
 | --- | --- | --- |
 | [Work-order decision film](openSoom-work-order-720p.mp4) | Current evaluation talk and main Hackster walkthrough. 104.938 seconds, 1280 × 720, English voice and burned-in plus selectable captions | [Caption file](openSoom-work-order.en.srt), [browser source](cinematic/demo/maintenance-work-order.webm), [film manifest](../../evidence/video/work-order/film.json) |

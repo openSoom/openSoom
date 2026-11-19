@@ -20,6 +20,7 @@ import httpx
 
 from opensoom.onem2m import CSEClient, CSEError
 from opensoom.store import Store
+from opensoom.ventilation_trials import SCENARIOS as AIR_QUALITY_SCENARIOS
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -334,13 +335,24 @@ def run_lab(args):
                                 "maintenance_saw_order":True,"maintenance_saw_technician_activity":False,
                                 "restarted_entries":1,"new_device_commands":0,"incident_after_entry":"open"},
                   "dashboard":"live service projection from oneM2M work_order CINs"}
+        if args.opening_scenario:
+            opening = api.post("/api/demo/start", json={"facility_id": fid, "scenario": args.opening_scenario,
+                                                        "autorun": True}).raise_for_status().json()
+            def opening_command():
+                return next((cmd for cmd in state()["commands"] if cmd["run_id"] == opening["run_id"]
+                             and (cmd.get("air_quality_outcome") or {}).get("latest")), None)
+            active = until("First post-ACK air-quality observation", opening_command)
+            result["opening_trial"] = {"scenario": args.opening_scenario, "run_id": opening["run_id"],
+                                       "command_id": active["id"], "first_outcome": active["air_quality_outcome"]}
+            print(json.dumps({"opening_scenario": args.opening_scenario, "opening_run_id": opening["run_id"],
+                              "command_id": active["id"]}), flush=True)
         if args.output:
             args.output.parent.mkdir(parents=True,exist_ok=True)
             args.output.write_text(json.dumps(result,ensure_ascii=False,indent=2)+"\n")
         print(json.dumps({"result":"passed","run_id":run_id,"work_order":final["work_order_id"],
                           "dashboard":url["api"],"technician":url["technician"],"runtime":str(folder)}),flush=True)
         if args.hold:
-            print("Dashboard is live. Repeat the unresolved scenario to retest this virtual position sensor. Press Ctrl+C to close the lab.", flush=True)
+            print("Dashboard is live. Select Run scenario to replay a trial. Press Ctrl+C to close the lab.", flush=True)
             seeded = {command["id"]}
             while True:
                 if provider == "local":
@@ -366,7 +378,12 @@ if __name__ == "__main__":
     parser.add_argument("--mec-config",type=Path,help="Use an already provisioned MEC registry and authorized service origins")
     parser.add_argument("--sample-timeout",type=int,default=90)
     parser.add_argument("--hold",action="store_true")
+    parser.add_argument("--opening-scenario", choices=AIR_QUALITY_SCENARIOS,
+                        help="Open the live dashboard on this air-quality trial after the maintenance checks (--hold)")
+    args = parser.parse_args()
+    if args.opening_scenario and not args.hold:
+        parser.error("--opening-scenario opens the live dashboard and requires --hold")
     try:
-        run_lab(parser.parse_args())
+        run_lab(args)
     except KeyboardInterrupt:
         pass

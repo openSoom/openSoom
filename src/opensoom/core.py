@@ -13,6 +13,8 @@ import jsonschema
 from . import scenario_authoring
 from . import maintenance
 from . import facility_pack
+from . import air_quality_outcome
+from . import ventilation_trials
 from .adapters import encode_virtual, normalize
 from .models import ActionRequest, Observation, utcnow
 from .onem2m import CSEClient, CSEError, MQTTCSEClient
@@ -291,6 +293,7 @@ class Core:
                       "last_arrival": arrival, "gap_before": gap, "cse_created_at": created.isoformat(),
                       "sequence_issue": issue}
             self.store.put("observations", fid + ":" + zid, record)
+            air_quality_outcome.observe(self.store, stream, run, record, datetime.now(timezone.utc))
             self.evaluate(observation, facility, zone, result["rqi"], record)
             return record
 
@@ -463,7 +466,8 @@ class Core:
                         raise
             result = self.facility_view(facility)
             result["incidents"] = [i for i in self.store.list("incidents") if i["facility_id"] == fid]
-            result["commands"] = [c for c in self.store.list("commands") if c["facility_id"] == fid and c.get("run_id") == (run_id or facility.get("active_run"))][-10:]
+            scoped = [c for c in self.store.list("commands") if c["facility_id"] == fid and c.get("run_id") == (run_id or facility.get("active_run"))][-10:]
+            result["commands"] = [{**c, "air_quality_outcome": air_quality_outcome.view(c)} for c in scoped]
             result["current_run_id"] = run_id or facility.get("active_run")
             result["evidence_scope"] = {
                 "observations": "The site admits measurements by acquisition time. A delayed CIN can be last in the native container while the operator retains a newer measurement. Conflicting and future-dated inputs block control.",
@@ -532,7 +536,10 @@ class Core:
             command = {**request.model_dump(), "id": command_id, "status": "requested", "ack": False, "created_at": now.isoformat(), "expires_at": (now + timedelta(seconds=profile["command_ttl_seconds"])).isoformat(), "profile_version": profile["schema_version"], "run_id": run_id or facility.get("active_run"), "incident_id": incident.get("id"), "observed_result": "pending"}
             result = self.create_content(zone["path"] + "/commands", command, self.identities["operator"])
             command.update(cse_rqi=result["rqi"], cse_resource_id=result["body"]["m2m:cin"]["ri"])
-            self.store.put("commands", command_id, command)
+            with self.store.transaction():
+                if request.action == "set_damper":
+                    air_quality_outcome.initialize(self.store, command, facility, zone, profile, record)
+                self.store.put("commands", command_id, command)
             self.log("command_requested", "Maintenance requested" if request.action == "request_maintenance" else f"Damper adjustment requested: {request.value:g}%", facility["id"], zone["id"], command["run_id"], command_id=command_id, rqi=result["rqi"])
             return command
 
@@ -552,7 +559,18 @@ class Core:
             self.store.put("commands", command_id, command)
         facility = self.facility(command["facility_id"])
         observation = next(z for z in self.facility_view(facility)["zones"] if z["id"] == command["zone_id"])
-        return {**command, "command_id": command["id"], "complete": command["status"] == "verified", "outcome": "recovered" if command["status"] == "verified" else ("unresolved" if command["observed_result"] == "unresolved" or command["status"] in ("timed_out", "maintenance_recorded") else "pending"), "observations": observation["observations"], "observation_cin": observation.get("observation_cin"), "sequence_issue": observation.get("sequence_issue"), "message": "Result verified from later CSE observations" if command["status"] == "verified" else "CSE acceptance/ACK alone does not establish recovery"}
+        return {**command, "air_quality_outcome": air_quality_outcome.view(command), "command_id": command["id"], "complete": command["status"] == "verified", "outcome": "recovered" if command["status"] == "verified" else ("unresolved" if command["observed_result"] == "unresolved" or command["status"] in ("timed_out", "maintenance_recorded") else "pending"), "observations": observation["observations"], "observation_cin": observation.get("observation_cin"), "sequence_issue": observation.get("sequence_issue"), "message": "Result verified from later CSE observations" if command["status"] == "verified" else "CSE acceptance/ACK alone does not establish recovery"}
+
+    def air_quality_history(self, command_id, principal, after, limit):
+        with self.store.transaction():
+            command = self.store.get("commands", command_id)
+            if not command:
+                raise OperationError("unknown_command", "Command was not found", 404)
+            self.authorize(principal, command["facility_id"])
+            samples = self.store.air_samples(command_id, after, limit + 1)
+            return {"command_id": command_id, "facility_id": command["facility_id"], "zone_id": command["zone_id"],
+                    "air_quality_outcome": air_quality_outcome.view(command), "samples": samples[:limit],
+                    "next_after": samples[limit-1]["sequence"] if len(samples) > limit else None}
 
     def acknowledge_pending(self, facility, only_command_id=None):
         with self.lock:
@@ -584,6 +602,7 @@ class Core:
             ack_cin = ack_result["body"]["m2m:cin"]
             command["ack_source"] = {"cin_ri": ack_cin["ri"], "cin_path": zone["path"] + "/acks/" + ack_cin["rn"]}
             command.update(ack=True, ack_at=ack["ack_at"], ack_rqi=ack_result["rqi"], ack_sequence=ack_result["body"]["m2m:cin"].get("st", 0), status="acknowledged", observed_result="awaiting_observations")
+            air_quality_outcome.acknowledge(command)
             if command["action"] == "request_maintenance":
                 command.update(status="maintenance_recorded", observed_result="unresolved")
             self.store.put("commands", command["id"], command)
@@ -597,7 +616,8 @@ class Core:
             faulty = index == 0 and scenario != "normal"
             started_at = self.store.get("runs", facility.get("active_run"), {}).get("started_at", "9999")
             applied = [c for c in commands if c["facility_id"] == facility["id"] and c["zone_id"] == zone["id"] and c["action"] == "set_damper" and c.get("ack") and c["created_at"] >= started_at]
-            damper = float(max(applied, key=maintenance.damper_ack_order)["value"]) if applied else (35.0 if faulty else 70.0)
+            latest = max(applied, key=maintenance.damper_ack_order, default=None)
+            damper = float(latest["value"]) if latest else (35.0 if faulty else 70.0)
             # Deterministic device model, not a physical airflow equation:
             # an acknowledged setpoint must become the reported device state.
             # Partial/closed requests cannot borrow a full-open recovery.
@@ -606,6 +626,11 @@ class Core:
                 flow_ratio = min(flow_ratio, 0.4)
             deficient = flow_ratio < 1
             values = {"observed_at": utcnow(), "pm25": 62.0 if deficient else 12.0, "co2": 1450.0 if deficient else 620.0, "airflow": zone["minimum_airflow"] * flow_ratio, "fan_running": True, "damper_pct": damper}
+            if index == 0 and scenario in ventilation_trials.SCENARIOS:
+                elapsed = None
+                if latest and not deficient:
+                    elapsed = (datetime.fromisoformat(values["observed_at"]) - datetime.fromisoformat(latest["ack_at"])).total_seconds()
+                values["pm25"], values["co2"] = ventilation_trials.pollutant_readings(scenario, zone, elapsed)
             if index == 0 and scenario == "stale":
                 values["observed_at"] = (datetime.now(timezone.utc) - timedelta(minutes=5)).isoformat()
             if index == 0 and scenario == "missing":
@@ -618,8 +643,14 @@ class Core:
             if facility["id"] not in self.registry or not facility.get("active_run"):
                 continue
             try:
-                self.sample_facility(facility)
-                self.finish_demo_if_observed(facility)
+                # A scenario switch and a sensor tick must not publish across runs.
+                with self.lock:
+                    facility = self.facility(facility["id"])
+                with self.lock:
+                    if self.facility(facility["id"]).get("active_run") != facility["active_run"]:
+                        continue
+                    self.sample_facility(facility)
+                    self.finish_demo_if_observed(facility)
                 self.connected, self.last_error = True, None
             except (CSEError, OperationError, ValueError) as exc:
                 self.connected, self.last_error = False, type(exc).__name__
@@ -639,6 +670,8 @@ class Core:
         # Archive previous incidents so scenarios do not borrow earlier ACKs.
         for zone in facility["zones"]:
             key = fid + ":" + zone["id"]
+            with self.store.transaction():
+                air_quality_outcome.finish(self.store, key, "run_ended", utcnow())
             incident = self.store.get("incidents", key)
             if incident:
                 self.store.put("incident_history", incident["id"], {**incident, "archived_at": utcnow()})
@@ -658,7 +691,13 @@ class Core:
         commands = [c for c in self.store.list("commands") if c.get("run_id") == run["id"]]
         scenario = facility["scenario"]
         expected = None
-        if scenario == "normal" and self.facility_view(facility)["status"] == "nominal":
+        if scenario in ventilation_trials.SCENARIOS:
+            zone = facility["zones"][0]
+            actions = [c for c in commands if c["zone_id"] == zone["id"] and c["action"] == "set_damper"]
+            command = max(actions, key=lambda c: c["created_at"], default=None)
+            reading = self.store.get("observations", facility["id"] + ":" + zone["id"])
+            expected = ventilation_trials.observed_ending(scenario, command, reading, zone)
+        elif scenario == "normal" and self.facility_view(facility)["status"] == "nominal":
             expected = "normal_observations"
         elif scenario in ("stale", "missing") and self.facility_view(facility)["status"] == scenario:
             expected = "unsafe_evidence_remains_unresolved"
@@ -697,7 +736,7 @@ class Core:
         incidents = [i for i in self.store.list("incidents") if i["facility_id"] in allowed]
         commands = [c for c in self.store.list("commands") if c["facility_id"] in allowed]
         acknowledged = maintenance.latest_damper_commands(commands)
-        commands = commands[-40:]
+        commands = [{**c, "air_quality_outcome": air_quality_outcome.view(c)} for c in commands[-40:]]
         role = principal["role"]
         orders = []
         if role in ("admin", "operator", "maintenance"):

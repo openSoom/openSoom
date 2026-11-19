@@ -1,0 +1,622 @@
+{
+  "status": "passed",
+  "captured_at": "2026-11-19T17:04:58.680823+00:00",
+  "acme_version": "2026.5.3",
+  "scope": "The normal operator API starts three trials with a virtual device sampled at real elapsed times. Actual local ACME stores the command, device ACK and sensor CINs. Pollutant reductions describe these simulated observations. Durations span observed acquisition times, and do not establish physical exposure, causal effects or conditions between measurements.",
+  "units": {
+    "pm25": "µg/m³",
+    "co2": "ppm",
+    "airflow": "m³/h",
+    "time": "seconds"
+  },
+  "cases": {
+    "air_quality_recovery": {
+      "run_id": "demo-a156861d04",
+      "scenario": "air_quality_recovery",
+      "command_id": "cmd-bf054c1194d6",
+      "expected_behavior": "air_quality_targets_observed",
+      "facility_id": "food-a",
+      "zone_id": "cook",
+      "command": {
+        "cin_path": "cinZicNKZ9cbJ",
+        "cin_ri": "cinZicNKZ9cbJ",
+        "state_tag": 1,
+        "read_rqi": "opensoom-c68903207c944b26baf0874fc3e888dd",
+        "created_at": "2026-11-19T17:04:02.817326+00:00",
+        "opening_pct": 100.0
+      },
+      "ack": {
+        "cin_path": "cse-multiapp/opensoom/facilities/food-a/cook/acks/cin_bNXFGX9TAN",
+        "cin_ri": "cingNNbuPGw93",
+        "state_tag": 1,
+        "read_rqi": "opensoom-f742f63c8717446088d7a664a6c173fa",
+        "ack_at": "2026-11-19T17:04:04.617+00:00",
+        "opening_pct": 100.0
+      },
+      "outcome": {
+        "status": "in_target",
+        "source": "simulated",
+        "baseline": {
+          "observed_at": "2026-11-19T17:04:02.775+00:00",
+          "cin_ri": "cinTFDjwXnLjb",
+          "cin_path": "cse-multiapp/opensoom/facilities/food-a/cook/observations/cin_zEOR4HgSGH",
+          "read_rqi": "opensoom-dce5991689f544799711d14ff2ed5f84",
+          "pm25": 75.0,
+          "co2": 1500.0
+        },
+        "latest": {
+          "observed_at": "2026-11-19T17:04:21.059+00:00",
+          "cin_ri": "cinvw3hyHGX7p",
+          "cin_path": "cse-multiapp/opensoom/facilities/food-a/cook/observations/cin_91ehzZvqJR",
+          "read_rqi": "opensoom-f9e081007e6949aebc9c359588fe235e",
+          "pm25": 15.0,
+          "co2": 720.0
+        },
+        "targets": {
+          "pm25": 45,
+          "co2": 1200
+        },
+        "freshness_seconds": 45,
+        "ack_at": "2026-11-19T17:04:04.617+00:00",
+        "ack_cin_ri": "cingNNbuPGw93",
+        "first_target_at": "2026-11-19T17:04:10.819+00:00",
+        "first_target_sample": {
+          "observed_at": "2026-11-19T17:04:10.819+00:00",
+          "cin_ri": "cinV94x6wGh3l",
+          "cin_path": "cse-multiapp/opensoom/facilities/food-a/cook/observations/cin_DoDstF7jQ4",
+          "read_rqi": "opensoom-fb4905c8b00e4dd5afedefa83af7a48e",
+          "pm25": 30.0,
+          "co2": 960.0
+        },
+        "time_to_target_seconds": 6.202,
+        "hold_started_at": "2026-11-19T17:04:10.819+00:00",
+        "hold_start_sample": {
+          "observed_at": "2026-11-19T17:04:10.819+00:00",
+          "cin_ri": "cinV94x6wGh3l",
+          "cin_path": "cse-multiapp/opensoom/facilities/food-a/cook/observations/cin_DoDstF7jQ4",
+          "read_rqi": "opensoom-fb4905c8b00e4dd5afedefa83af7a48e",
+          "pm25": 30.0,
+          "co2": 960.0
+        },
+        "hold_seconds": 10.24,
+        "last_hold": null,
+        "last_hold_seconds": null,
+        "sample_count": 9,
+        "last_sample_status": "in_target",
+        "last_event": {
+          "observed_at": "2026-11-19T17:04:21.059+00:00",
+          "cin_ri": "cinvw3hyHGX7p",
+          "cin_path": "cse-multiapp/opensoom/facilities/food-a/cook/observations/cin_91ehzZvqJR",
+          "read_rqi": "opensoom-f9e081007e6949aebc9c359588fe235e",
+          "pm25": 15.0,
+          "co2": 720.0,
+          "status": "in_target",
+          "issue": null,
+          "gap_before": false,
+          "cse_created_at": "2026-11-19T17:04:21.061649+00:00",
+          "sequence": 9
+        },
+        "change": {
+          "pm25": {
+            "decrease": 60.0,
+            "percent": 80.0
+          },
+          "co2": {
+            "decrease": 780.0,
+            "percent": 52.0
+          }
+        }
+      },
+      "samples": [
+        {
+          "cin_path": "cse-multiapp/opensoom/facilities/food-a/cook/observations/cin_zEOR4HgSGH",
+          "cin_ri": "cinTFDjwXnLjb",
+          "state_tag": 1,
+          "read_rqi": "opensoom-9c178ed73b7b496687d4100790460684",
+          "observed_at": "2026-11-19T17:04:02.775+00:00",
+          "pm25": 75.0,
+          "co2": 1500.0,
+          "airflow": 360.0
+        },
+        {
+          "cin_path": "cse-multiapp/opensoom/facilities/food-a/cook/observations/cin_kwEhm9eV4I",
+          "cin_ri": "cinKAm6oPY7vw",
+          "state_tag": 2,
+          "read_rqi": "opensoom-66c8b2a7a2844f29a64779c1cc432038",
+          "observed_at": "2026-11-19T17:04:04.622+00:00",
+          "pm25": 60.0,
+          "co2": 1320.0,
+          "airflow": 1035.0
+        },
+        {
+          "cin_path": "cse-multiapp/opensoom/facilities/food-a/cook/observations/cin_ecV3SuKjqA",
+          "cin_ri": "cin7BK849igfU",
+          "state_tag": 3,
+          "read_rqi": "opensoom-c5b3ac70d1704d9286f0f95a9e051c2c",
+          "observed_at": "2026-11-19T17:04:06.669+00:00",
+          "pm25": 60.0,
+          "co2": 1320.0,
+          "airflow": 1035.0
+        },
+        {
+          "cin_path": "cse-multiapp/opensoom/facilities/food-a/cook/observations/cin_anFZbXGdFz",
+          "cin_ri": "cinyLc0vvbzOk",
+          "state_tag": 4,
+          "read_rqi": "opensoom-f4a5e12b56a84c479231ac8c87116b8d",
+          "observed_at": "2026-11-19T17:04:08.780+00:00",
+          "pm25": 60.0,
+          "co2": 1320.0,
+          "airflow": 1035.0
+        },
+        {
+          "cin_path": "cse-multiapp/opensoom/facilities/food-a/cook/observations/cin_DoDstF7jQ4",
+          "cin_ri": "cinV94x6wGh3l",
+          "state_tag": 5,
+          "read_rqi": "opensoom-de43269b37ed4e078221d3032f664de2",
+          "observed_at": "2026-11-19T17:04:10.819+00:00",
+          "pm25": 30.0,
+          "co2": 960.0,
+          "airflow": 1035.0
+        },
+        {
+          "cin_path": "cse-multiapp/opensoom/facilities/food-a/cook/observations/cin_UJ89CybCuC",
+          "cin_ri": "cinadLNdAyPIm",
+          "state_tag": 6,
+          "read_rqi": "opensoom-af7098850b0744bf825214d1fa83023c",
+          "observed_at": "2026-11-19T17:04:12.863+00:00",
+          "pm25": 30.0,
+          "co2": 960.0,
+          "airflow": 1035.0
+        },
+        {
+          "cin_path": "cse-multiapp/opensoom/facilities/food-a/cook/observations/cin_uAsXqUtWHC",
+          "cin_ri": "cinmkrKM4cS1q",
+          "state_tag": 7,
+          "read_rqi": "opensoom-927e4e53d1b44849adeb0f16953e9d67",
+          "observed_at": "2026-11-19T17:04:14.905+00:00",
+          "pm25": 15.0,
+          "co2": 720.0,
+          "airflow": 1035.0
+        },
+        {
+          "cin_path": "cse-multiapp/opensoom/facilities/food-a/cook/observations/cin_E9rc9qRaWi",
+          "cin_ri": "cinNW3cyHwW5Q",
+          "state_tag": 8,
+          "read_rqi": "opensoom-0bd40bde919148a2a522ae3bf64e0e49",
+          "observed_at": "2026-11-19T17:04:16.949+00:00",
+          "pm25": 15.0,
+          "co2": 720.0,
+          "airflow": 1035.0
+        },
+        {
+          "cin_path": "cse-multiapp/opensoom/facilities/food-a/cook/observations/cin_cb8VNR4Y9k",
+          "cin_ri": "cinslOR66Qukb",
+          "state_tag": 9,
+          "read_rqi": "opensoom-d301abac419e48d58466a4a1afbe8ce7",
+          "observed_at": "2026-11-19T17:04:19.002+00:00",
+          "pm25": 15.0,
+          "co2": 720.0,
+          "airflow": 1035.0
+        },
+        {
+          "cin_path": "cse-multiapp/opensoom/facilities/food-a/cook/observations/cin_91ehzZvqJR",
+          "cin_ri": "cinvw3hyHGX7p",
+          "state_tag": 10,
+          "read_rqi": "opensoom-bb91679b7d804cdb819dec7e825e6d1c",
+          "observed_at": "2026-11-19T17:04:21.059+00:00",
+          "pm25": 15.0,
+          "co2": 720.0,
+          "airflow": 1035.0
+        }
+      ]
+    },
+    "air_quality_persistent": {
+      "run_id": "demo-ff1ed37f87",
+      "scenario": "air_quality_persistent",
+      "command_id": "cmd-b11e74c90349",
+      "expected_behavior": "airflow_restored_particles_still_high",
+      "facility_id": "food-a",
+      "zone_id": "cook",
+      "command": {
+        "cin_path": "cinu8IHh39d2H",
+        "cin_ri": "cinu8IHh39d2H",
+        "state_tag": 2,
+        "read_rqi": "opensoom-a6746ccab5934c1287944fd7199266ee",
+        "created_at": "2026-11-19T17:04:21.330054+00:00",
+        "opening_pct": 100.0
+      },
+      "ack": {
+        "cin_path": "cse-multiapp/opensoom/facilities/food-a/cook/acks/cin_ixCY4CJbIQ",
+        "cin_ri": "cinVK9oFfMQPY",
+        "state_tag": 2,
+        "read_rqi": "opensoom-4aec811c4c2d4807952d323787466fa4",
+        "ack_at": "2026-11-19T17:04:23.117+00:00",
+        "opening_pct": 100.0
+      },
+      "outcome": {
+        "status": "outside_target",
+        "source": "simulated",
+        "baseline": {
+          "observed_at": "2026-11-19T17:04:21.293+00:00",
+          "cin_ri": "cinOVQBsWqvCC",
+          "cin_path": "cse-multiapp/opensoom/facilities/food-a/cook/observations/cin_XHcpUq0ljE",
+          "read_rqi": "opensoom-e4d6cf9b54d44b8d803cbdb9040092a8",
+          "pm25": 75.0,
+          "co2": 1500.0
+        },
+        "latest": {
+          "observed_at": "2026-11-19T17:04:39.580+00:00",
+          "cin_ri": "cinMaXMwPCiJd",
+          "cin_path": "cse-multiapp/opensoom/facilities/food-a/cook/observations/cin_AfC6RjyvBY",
+          "read_rqi": "opensoom-4f1ede53fa154e689b0cbd04ea694458",
+          "pm25": 60.0,
+          "co2": 720.0
+        },
+        "targets": {
+          "pm25": 45,
+          "co2": 1200
+        },
+        "freshness_seconds": 45,
+        "ack_at": "2026-11-19T17:04:23.117+00:00",
+        "ack_cin_ri": "cinVK9oFfMQPY",
+        "first_target_at": null,
+        "first_target_sample": null,
+        "time_to_target_seconds": null,
+        "hold_started_at": null,
+        "hold_start_sample": null,
+        "hold_seconds": null,
+        "last_hold": null,
+        "last_hold_seconds": null,
+        "sample_count": 9,
+        "last_sample_status": "outside_target",
+        "last_event": {
+          "observed_at": "2026-11-19T17:04:39.580+00:00",
+          "cin_ri": "cinMaXMwPCiJd",
+          "cin_path": "cse-multiapp/opensoom/facilities/food-a/cook/observations/cin_AfC6RjyvBY",
+          "read_rqi": "opensoom-4f1ede53fa154e689b0cbd04ea694458",
+          "pm25": 60.0,
+          "co2": 720.0,
+          "status": "outside_target",
+          "issue": null,
+          "gap_before": false,
+          "cse_created_at": "2026-11-19T17:04:39.581951+00:00",
+          "sequence": 18
+        },
+        "change": {
+          "pm25": {
+            "decrease": 15.0,
+            "percent": 20.0
+          },
+          "co2": {
+            "decrease": 780.0,
+            "percent": 52.0
+          }
+        }
+      },
+      "samples": [
+        {
+          "cin_path": "cse-multiapp/opensoom/facilities/food-a/cook/observations/cin_XHcpUq0ljE",
+          "cin_ri": "cinOVQBsWqvCC",
+          "state_tag": 11,
+          "read_rqi": "opensoom-7b06e2d5abd649b489e6b64094737577",
+          "observed_at": "2026-11-19T17:04:21.293+00:00",
+          "pm25": 75.0,
+          "co2": 1500.0,
+          "airflow": 360.0
+        },
+        {
+          "cin_path": "cse-multiapp/opensoom/facilities/food-a/cook/observations/cin_HfEvK9ZKEy",
+          "cin_ri": "cinA2dF52xK17",
+          "state_tag": 12,
+          "read_rqi": "opensoom-7530cb1408fd4fd19676c12cf20d0402",
+          "observed_at": "2026-11-19T17:04:23.125+00:00",
+          "pm25": 60.0,
+          "co2": 1320.0,
+          "airflow": 1035.0
+        },
+        {
+          "cin_path": "cse-multiapp/opensoom/facilities/food-a/cook/observations/cin_UDr8lOavVV",
+          "cin_ri": "cinhX3O1GLzlS",
+          "state_tag": 13,
+          "read_rqi": "opensoom-9dc2cd2cd366403c88e9617de50b4e17",
+          "observed_at": "2026-11-19T17:04:25.190+00:00",
+          "pm25": 60.0,
+          "co2": 1320.0,
+          "airflow": 1035.0
+        },
+        {
+          "cin_path": "cse-multiapp/opensoom/facilities/food-a/cook/observations/cin_vHgNQ3RWvi",
+          "cin_ri": "cin8zsBRb7uOh",
+          "state_tag": 14,
+          "read_rqi": "opensoom-7c0706d5e1d24cd68cc40ffd0d090313",
+          "observed_at": "2026-11-19T17:04:27.248+00:00",
+          "pm25": 60.0,
+          "co2": 1320.0,
+          "airflow": 1035.0
+        },
+        {
+          "cin_path": "cse-multiapp/opensoom/facilities/food-a/cook/observations/cin_73mQfCgFyZ",
+          "cin_ri": "cinskKfXLcI0j",
+          "state_tag": 15,
+          "read_rqi": "opensoom-bba725710f504dd9abe67435b7f97dc4",
+          "observed_at": "2026-11-19T17:04:29.300+00:00",
+          "pm25": 60.0,
+          "co2": 720.0,
+          "airflow": 1035.0
+        },
+        {
+          "cin_path": "cse-multiapp/opensoom/facilities/food-a/cook/observations/cin_JQCC8MscKO",
+          "cin_ri": "cinlKODVHi8PS",
+          "state_tag": 16,
+          "read_rqi": "opensoom-61b62fe5fd734d928e3cfe44761b34bf",
+          "observed_at": "2026-11-19T17:04:31.346+00:00",
+          "pm25": 60.0,
+          "co2": 720.0,
+          "airflow": 1035.0
+        },
+        {
+          "cin_path": "cse-multiapp/opensoom/facilities/food-a/cook/observations/cin_9SKw7OOSUi",
+          "cin_ri": "cinXMWjxox775",
+          "state_tag": 17,
+          "read_rqi": "opensoom-c29056318da1419984899c23c7b72743",
+          "observed_at": "2026-11-19T17:04:33.421+00:00",
+          "pm25": 60.0,
+          "co2": 720.0,
+          "airflow": 1035.0
+        },
+        {
+          "cin_path": "cse-multiapp/opensoom/facilities/food-a/cook/observations/cin_IQbZgpyuAE",
+          "cin_ri": "cin5F9KOEMqcB",
+          "state_tag": 18,
+          "read_rqi": "opensoom-6c7f1f737d9d43798864872e2e4a79bc",
+          "observed_at": "2026-11-19T17:04:35.472+00:00",
+          "pm25": 60.0,
+          "co2": 720.0,
+          "airflow": 1035.0
+        },
+        {
+          "cin_path": "cse-multiapp/opensoom/facilities/food-a/cook/observations/cin_7Mp5nFzbep",
+          "cin_ri": "cin3hfJHAmsaE",
+          "state_tag": 19,
+          "read_rqi": "opensoom-e0b539ac463e4e858c339d8d63d0d140",
+          "observed_at": "2026-11-19T17:04:37.531+00:00",
+          "pm25": 60.0,
+          "co2": 720.0,
+          "airflow": 1035.0
+        },
+        {
+          "cin_path": "cse-multiapp/opensoom/facilities/food-a/cook/observations/cin_AfC6RjyvBY",
+          "cin_ri": "cinMaXMwPCiJd",
+          "state_tag": 20,
+          "read_rqi": "opensoom-b11a368f1682419097124a4f56778636",
+          "observed_at": "2026-11-19T17:04:39.580+00:00",
+          "pm25": 60.0,
+          "co2": 720.0,
+          "airflow": 1035.0
+        }
+      ]
+    },
+    "air_quality_rebound": {
+      "run_id": "demo-d09442ad3b",
+      "scenario": "air_quality_rebound",
+      "command_id": "cmd-0a86760086f7",
+      "expected_behavior": "particles_returned_after_first_target",
+      "facility_id": "food-a",
+      "zone_id": "cook",
+      "command": {
+        "cin_path": "cinzMlISDrIWJ",
+        "cin_ri": "cinzMlISDrIWJ",
+        "state_tag": 3,
+        "read_rqi": "opensoom-db31f4459e534ccb8fd88e331532e9fc",
+        "created_at": "2026-11-19T17:04:39.877172+00:00",
+        "opening_pct": 100.0
+      },
+      "ack": {
+        "cin_path": "cse-multiapp/opensoom/facilities/food-a/cook/acks/cin_x5Xy8Ih9Bi",
+        "cin_ri": "cin9sR2Am1LdI",
+        "state_tag": 3,
+        "read_rqi": "opensoom-67cd3fe371164e81b00a5eee92c13a97",
+        "ack_at": "2026-11-19T17:04:41.630+00:00",
+        "opening_pct": 100.0
+      },
+      "outcome": {
+        "status": "outside_target",
+        "source": "simulated",
+        "baseline": {
+          "observed_at": "2026-11-19T17:04:39.834+00:00",
+          "cin_ri": "cinxFwz6MOuwj",
+          "cin_path": "cse-multiapp/opensoom/facilities/food-a/cook/observations/cin_8d8zNdhSGj",
+          "read_rqi": "opensoom-8dd582dc1a3943eea512ef48af38526b",
+          "pm25": 75.0,
+          "co2": 1500.0
+        },
+        "latest": {
+          "observed_at": "2026-11-19T17:04:58.186+00:00",
+          "cin_ri": "cingNazDzrNW5",
+          "cin_path": "cse-multiapp/opensoom/facilities/food-a/cook/observations/cin_fh7RoecDQ1",
+          "read_rqi": "opensoom-2da1cc8bf3974fee81daca7ae754fb04",
+          "pm25": 60.0,
+          "co2": 720.0
+        },
+        "targets": {
+          "pm25": 45,
+          "co2": 1200
+        },
+        "freshness_seconds": 45,
+        "ack_at": "2026-11-19T17:04:41.630+00:00",
+        "ack_cin_ri": "cin9sR2Am1LdI",
+        "first_target_at": "2026-11-19T17:04:47.801+00:00",
+        "first_target_sample": {
+          "observed_at": "2026-11-19T17:04:47.801+00:00",
+          "cin_ri": "cinvqM2tCBopE",
+          "cin_path": "cse-multiapp/opensoom/facilities/food-a/cook/observations/cin_IA86XksVP9",
+          "read_rqi": "opensoom-91fec644819545ab916bcba0eaad2526",
+          "pm25": 30.0,
+          "co2": 960.0
+        },
+        "time_to_target_seconds": 6.171,
+        "hold_started_at": null,
+        "hold_start_sample": null,
+        "hold_seconds": null,
+        "last_hold": {
+          "start": {
+            "observed_at": "2026-11-19T17:04:47.801+00:00",
+            "cin_ri": "cinvqM2tCBopE",
+            "cin_path": "cse-multiapp/opensoom/facilities/food-a/cook/observations/cin_IA86XksVP9",
+            "read_rqi": "opensoom-91fec644819545ab916bcba0eaad2526",
+            "pm25": 30.0,
+            "co2": 960.0
+          },
+          "end": {
+            "observed_at": "2026-11-19T17:04:53.971+00:00",
+            "cin_ri": "ciniGHV65XXUS",
+            "cin_path": "cse-multiapp/opensoom/facilities/food-a/cook/observations/cin_QzBASeuzju",
+            "read_rqi": "opensoom-2b6de55e05554dd49a05ff9bf88ebd66",
+            "pm25": 15.0,
+            "co2": 720.0
+          },
+          "seconds": 6.17,
+          "ended_by": "above_target"
+        },
+        "last_hold_seconds": 6.17,
+        "sample_count": 9,
+        "last_sample_status": "outside_target",
+        "last_event": {
+          "observed_at": "2026-11-19T17:04:58.186+00:00",
+          "cin_ri": "cingNazDzrNW5",
+          "cin_path": "cse-multiapp/opensoom/facilities/food-a/cook/observations/cin_fh7RoecDQ1",
+          "read_rqi": "opensoom-2da1cc8bf3974fee81daca7ae754fb04",
+          "pm25": 60.0,
+          "co2": 720.0,
+          "status": "outside_target",
+          "issue": null,
+          "gap_before": false,
+          "cse_created_at": "2026-11-19T17:04:58.188628+00:00",
+          "sequence": 27
+        },
+        "change": {
+          "pm25": {
+            "decrease": 15.0,
+            "percent": 20.0
+          },
+          "co2": {
+            "decrease": 780.0,
+            "percent": 52.0
+          }
+        }
+      },
+      "samples": [
+        {
+          "cin_path": "cse-multiapp/opensoom/facilities/food-a/cook/observations/cin_8d8zNdhSGj",
+          "cin_ri": "cinxFwz6MOuwj",
+          "state_tag": 21,
+          "read_rqi": "opensoom-ec5fdf8cdba74fba9437f2736789ee6d",
+          "observed_at": "2026-11-19T17:04:39.834+00:00",
+          "pm25": 75.0,
+          "co2": 1500.0,
+          "airflow": 360.0
+        },
+        {
+          "cin_path": "cse-multiapp/opensoom/facilities/food-a/cook/observations/cin_rBMnNly1nq",
+          "cin_ri": "cindc4tWcLz0g",
+          "state_tag": 22,
+          "read_rqi": "opensoom-fe4dc96bd4694c09aee78acaa8daf8da",
+          "observed_at": "2026-11-19T17:04:41.636+00:00",
+          "pm25": 60.0,
+          "co2": 1320.0,
+          "airflow": 1035.0
+        },
+        {
+          "cin_path": "cse-multiapp/opensoom/facilities/food-a/cook/observations/cin_PeVgBmcAOH",
+          "cin_ri": "cinjAhyf2UecO",
+          "state_tag": 23,
+          "read_rqi": "opensoom-83c527d3c3c3488381f641bfa1b5d9bb",
+          "observed_at": "2026-11-19T17:04:43.687+00:00",
+          "pm25": 60.0,
+          "co2": 1320.0,
+          "airflow": 1035.0
+        },
+        {
+          "cin_path": "cse-multiapp/opensoom/facilities/food-a/cook/observations/cin_uBb33LmGYl",
+          "cin_ri": "cin4sYzVQOVyC",
+          "state_tag": 24,
+          "read_rqi": "opensoom-4608c949f37e4e9f846fe4ded342bd2b",
+          "observed_at": "2026-11-19T17:04:45.746+00:00",
+          "pm25": 60.0,
+          "co2": 1320.0,
+          "airflow": 1035.0
+        },
+        {
+          "cin_path": "cse-multiapp/opensoom/facilities/food-a/cook/observations/cin_IA86XksVP9",
+          "cin_ri": "cinvqM2tCBopE",
+          "state_tag": 25,
+          "read_rqi": "opensoom-8d43daa36a214cb38607b1ac4f281c4f",
+          "observed_at": "2026-11-19T17:04:47.801+00:00",
+          "pm25": 30.0,
+          "co2": 960.0,
+          "airflow": 1035.0
+        },
+        {
+          "cin_path": "cse-multiapp/opensoom/facilities/food-a/cook/observations/cin_WfV5MvdMAS",
+          "cin_ri": "cinKYpPGC3h8E",
+          "state_tag": 26,
+          "read_rqi": "opensoom-20eb35bb8dfe4852a621f69c67782292",
+          "observed_at": "2026-11-19T17:04:49.850+00:00",
+          "pm25": 30.0,
+          "co2": 960.0,
+          "airflow": 1035.0
+        },
+        {
+          "cin_path": "cse-multiapp/opensoom/facilities/food-a/cook/observations/cin_YbIYatpafs",
+          "cin_ri": "cinYadFvDFSsm",
+          "state_tag": 27,
+          "read_rqi": "opensoom-6c61ab3fa37c48919a725ffaee005264",
+          "observed_at": "2026-11-19T17:04:51.898+00:00",
+          "pm25": 15.0,
+          "co2": 720.0,
+          "airflow": 1035.0
+        },
+        {
+          "cin_path": "cse-multiapp/opensoom/facilities/food-a/cook/observations/cin_QzBASeuzju",
+          "cin_ri": "ciniGHV65XXUS",
+          "state_tag": 28,
+          "read_rqi": "opensoom-ed66550315f04461b3488f59e6604d94",
+          "observed_at": "2026-11-19T17:04:53.971+00:00",
+          "pm25": 15.0,
+          "co2": 720.0,
+          "airflow": 1035.0
+        },
+        {
+          "cin_path": "cse-multiapp/opensoom/facilities/food-a/cook/observations/cin_rjnCWzj9Ew",
+          "cin_ri": "cinDMjTitVFXt",
+          "state_tag": 29,
+          "read_rqi": "opensoom-19012baedef442a8a2386dfbb8e1c493",
+          "observed_at": "2026-11-19T17:04:56.124+00:00",
+          "pm25": 60.0,
+          "co2": 720.0,
+          "airflow": 1035.0
+        },
+        {
+          "cin_path": "cse-multiapp/opensoom/facilities/food-a/cook/observations/cin_fh7RoecDQ1",
+          "cin_ri": "cingNazDzrNW5",
+          "state_tag": 30,
+          "read_rqi": "opensoom-1bb824fd7b0648658dc8c64e67721857",
+          "observed_at": "2026-11-19T17:04:58.186+00:00",
+          "pm25": 60.0,
+          "co2": 720.0,
+          "airflow": 1035.0
+        }
+      ]
+    }
+  },
+  "source_sha256": {
+    "src/opensoom/ventilation_trials.py": "58671e1d7d7bded694eb289b3cc6c296be4f9ea05ba5cdc6812f7ddb25a3b27d",
+    "src/opensoom/core.py": "58b33b0cb105085e2f0aecc6b73ff105ed8e32829f2e9c558defd220382b1e1b",
+    "src/opensoom/app.py": "96253cedfe0755cd4b814800f28f589a20a462348db8e88ce6a67e60dc5f0466",
+    "src/opensoom/policy.py": "3ee09a4c064deec43f6e39deb0be5451fe512eaf17fdbd0955bf71781548e091",
+    "scenarios/scenarios.json": "4769b857b05a9a9e864fdc9cd2d9a1922165d2da9b546c406ab39eba5b8b391c",
+    "profiles/food-production.json": "402ae760ec4fe13c23e2a6c63e3ec80518d8ebdba30edde9e64cfdbb573e4c6e",
+    "scripts/air_quality_outcomes.py": "589da12271df42214a9dc00d3c12e2fd209f627297003a52b56193a5164f1187",
+    "src/opensoom/air_quality_outcome.py": "94543f4c5648686c5f4774b42e2f214510678608d1d5eebf9ca85530a20de6d2"
+  }
+}

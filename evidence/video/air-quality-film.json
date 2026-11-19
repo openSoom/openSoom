@@ -1,0 +1,48 @@
+{
+  "public_film": "openSoom-air-quality-720p.mp4",
+  "sha256": "c8beb1bfb3e27ebdde979272196347f1cfd8badd14a7b60c92fc9190dee6ae8b",
+  "seconds": 55.894292,
+  "resolution": [
+    1280,
+    720
+  ],
+  "method": "Three distinct ordinary UI runs on a local native ACME and virtual equipment. Cropped original browser frames retain acquisition order and recorded elapsed time. Last screen held for narration. English synthetic voice, burned-in and selectable subtitles.",
+  "cases": {
+    "air_quality_recovery": {
+      "run_id": "demo-f1b187f62d",
+      "status": "Both targets met",
+      "hold": "6.2 s",
+      "first": "6.2 s",
+      "pm25": "15",
+      "co2": "720",
+      "command": "cmd-a9a6c6fb0382",
+      "starts_at": 0,
+      "seconds": 16.473688,
+      "browser_frames": 29
+    },
+    "air_quality_persistent": {
+      "run_id": "demo-bd5a62228f",
+      "status": "Outside air-quality targets",
+      "hold": "\u2014",
+      "first": "Not reached",
+      "pm25": "60",
+      "co2": "720",
+      "command": "cmd-d719691490e1",
+      "starts_at": 16.474,
+      "seconds": 17.257313,
+      "browser_frames": 30
+    },
+    "air_quality_rebound": {
+      "run_id": "demo-e5464603d9",
+      "status": "Above target again",
+      "hold": "6.1 s",
+      "first": "6.2 s",
+      "pm25": "60",
+      "co2": "720",
+      "command": "cmd-1d48b6ddddb7",
+      "starts_at": 33.731,
+      "seconds": 22.141958,
+      "browser_frames": 46
+    }
+  }
+}

@@ -1,0 +1,84 @@
+{
+  "status": "passed",
+  "source": "real local browser, ACME and virtual sensors, native scenario launch",
+  "evidence": [
+    {
+      "scenario": "air_quality_recovery",
+      "run": "demo-d1974fdd33",
+      "command": "cmd-d193181c8927",
+      "pm25": {
+        "before": "75",
+        "latest": "15",
+        "change": "60 lower (80%)",
+        "target": "≤ 45"
+      },
+      "co2": {
+        "before": "1,500",
+        "latest": "720",
+        "change": "780 lower (52%)",
+        "target": "≤ 1,200"
+      },
+      "first": "6.5 s",
+      "hold": "4.1 s",
+      "status": "Both targets met"
+    },
+    {
+      "scenario": "air_quality_persistent",
+      "run": "demo-7a39826619",
+      "command": "cmd-a386afd72624",
+      "pm25": {
+        "before": "75",
+        "latest": "60",
+        "change": "15 lower (20%)",
+        "target": "≤ 45"
+      },
+      "co2": {
+        "before": "1,500",
+        "latest": "720",
+        "change": "780 lower (52%)",
+        "target": "≤ 1,200"
+      },
+      "first": "Not reached",
+      "hold": "—",
+      "status": "Outside air-quality targets"
+    },
+    {
+      "scenario": "air_quality_rebound",
+      "run": "demo-9880565700",
+      "command": "cmd-bac92bcbe3e0",
+      "pm25": {
+        "before": "75",
+        "latest": "60",
+        "change": "15 lower (20%)",
+        "target": "≤ 45"
+      },
+      "co2": {
+        "before": "1,500",
+        "latest": "720",
+        "change": "780 lower (52%)",
+        "target": "≤ 1,200"
+      },
+      "first": "6.3 s",
+      "hold": "6.2 s",
+      "status": "Above target again"
+    }
+  ],
+  "checks": [
+    "history selection",
+    "scoped zone empty",
+    "mobile 390 and 320",
+    "baseline and latest native CSE observation IDs",
+    "Latest above-target PM2.5 cell labeled on both affected runs",
+    "Rebound caution also displayed in workflow and command detail",
+    "Reload restored latest run and above-target status",
+    "No panel or document horizontal overflow at 390 px and 320 px"
+  ],
+  "errors": [],
+  "captured_at": "2026-11-19T17:05:50.676546+00:00",
+  "scope": "Three scenarios launched independently using the visible operator console controls in Chromium and an isolated ACME lab. Values are simulated sensor readings from their own runs. Displayed durations use real acquisition times and are captured at a specific refresh.",
+  "web_source_sha256": {
+    "web/app.js": "657ba10db7f65d699365cbf03c65fff9a68c2b672c7adefcf4528bf50e586675",
+    "web/index.html": "32b54e17468110e6c09296d9b0044855c35dbb71fe6fc50bf1e8636e587a857c",
+    "web/styles.css": "1b20a2bf6453e6f7a2e73f64cee7f22c1508ebd31c2459db6941ace06768855a"
+  }
+}

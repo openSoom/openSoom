@@ -1,0 +1,23 @@
+1
+00:00:00,000 --> 00:00:11,405
+Did the room air improve after ventilation? Watch the two pollutant readings.
+
+2
+00:00:11,405 --> 00:00:16,474
+Both reach their targets. The second clock measures the observed spell in range.
+
+3
+00:00:16,474 --> 00:00:26,856
+The same virtual cooking line receives another adjustment.
+
+4
+00:00:26,856 --> 00:00:33,731
+Carbon dioxide falls. Fine particles stay above the zone target. Neither clock records attainment.
+
+5
+00:00:33,731 --> 00:00:50,565
+Here the readings initially reach both targets. Each new sample can extend the observed time.
+
+6
+00:00:50,565 --> 00:00:55,873
+Particles rise again. The first target time and the previous spell remain visible.

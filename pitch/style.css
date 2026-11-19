@@ -72,3 +72,22 @@
 .room-model{background:#f5f4ec}
 .room-model .scene-shell{max-width:1000px;margin:auto}
 @media(max-width:760px){.workspace-grid,.background-apps dl{grid-template-columns:1fr;gap:8px}.comparison-top{gap:8px}.comparison-pair{gap:25px}#comparison-reason{min-height:0}}
+
+.air-result{min-width:0;align-self:center;background:#163e37;color:#f3f6ec;border-radius:10px;padding:clamp(20px,2.8vw,44px)}
+.air-site{margin:0;color:#bbd0c4;font-size:.88rem}
+.air-result h2{font-size:clamp(1.55rem,2.2vw,2.35rem);font-weight:500;letter-spacing:-.045em;line-height:1.1;margin:12px 0 20px}
+.outcome-tabs{display:flex;flex-wrap:wrap;gap:5px}
+.outcome-tabs button{cursor:pointer;font:inherit;font-size:.88rem;color:#e1eae2;border:1px solid #6e9284;background:transparent;border-radius:5px;padding:7px 10px}
+.outcome-tabs button[aria-pressed="true"]{background:#ddeddc;color:#163c32;border-color:#ddeddc}
+.air-result :focus-visible{outline:3px solid #f5c880;outline-offset:3px}
+.air-verdict{font-weight:550;line-height:1.4;min-height:1.4em;margin:18px 0 6px;color:#d5edbf}
+.air-readings{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
+.air-readings td,.air-readings th{padding:.63rem .12rem;text-align:right;border-bottom:1px solid #527268}
+.air-readings th:first-child{text-align:left}.air-readings thead th{font-size:.82rem;font-weight:500;color:#c0d2c8}
+.air-readings tbody th{font-weight:550}.air-readings small{font-size:.77rem;color:#c0d2c8;font-weight:400;display:block}
+.air-readings td{font-size:clamp(1rem,1.5vw,1.3rem)}
+.air-clocks{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin:17px 0}
+.air-clocks span,.air-rule,.air-record{font-size:.88rem;line-height:1.4;color:#c8dacd}
+.air-clocks span,.air-clocks strong{display:block}.air-clocks strong{margin-top:.25em;font-size:clamp(1.13rem,2.1vw,1.78rem);line-height:1.2;font-weight:500}
+.air-rule{margin:0 0 13px}.air-record{color:white;text-underline-offset:4px}
+.inspection-followup{min-height:auto}.inspection-followup h2{margin-block:0 20px}

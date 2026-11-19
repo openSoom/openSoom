@@ -17,6 +17,11 @@ class Store:
             PRAGMA journal_mode=WAL;
             CREATE TABLE IF NOT EXISTS records (kind TEXT NOT NULL, key TEXT NOT NULL, data TEXT NOT NULL, PRIMARY KEY(kind,key));
             CREATE TABLE IF NOT EXISTS events (seq INTEGER PRIMARY KEY AUTOINCREMENT, data TEXT NOT NULL);
+            CREATE TABLE IF NOT EXISTS air_samples (
+                seq INTEGER PRIMARY KEY, command_id TEXT NOT NULL, cin_ri TEXT NOT NULL, data TEXT NOT NULL,
+                UNIQUE (command_id, cin_ri)
+            );
+            CREATE INDEX IF NOT EXISTS air_samples_command_seq ON air_samples(command_id, seq);
             """)
 
     @contextmanager
@@ -69,3 +74,16 @@ class Store:
     def events(self, limit=150):
         with self.lock, self.connect() as db:
             return [{**json.loads(row[1]), "id": row[0]} for row in db.execute("SELECT seq,data FROM events ORDER BY seq DESC LIMIT ?", (limit,))][::-1]
+
+    def append_air_sample(self, command_id, event):
+        with self.lock, self.connect() as db:
+            row = db.execute("INSERT INTO air_samples(command_id,cin_ri,data) VALUES(?,?,?) "
+                             "ON CONFLICT(command_id,cin_ri) DO NOTHING RETURNING seq",
+                             (command_id, event["cin_ri"], json.dumps(event))).fetchone()
+            return row[0] if row else None
+
+    def air_samples(self, command_id, after, limit):
+        with self.lock, self.connect() as db:
+            rows = db.execute("SELECT seq,data FROM air_samples WHERE command_id=? AND seq>? ORDER BY seq LIMIT ?",
+                              (command_id, after, limit))
+            return [{**json.loads(data), "sequence": seq} for seq, data in rows]

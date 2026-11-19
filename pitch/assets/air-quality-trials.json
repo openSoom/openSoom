@@ -1,0 +1,113 @@
+{
+  "air_quality_recovery": {
+    "status": "in_target",
+    "baseline": {
+      "observed_at": "2026-11-19T17:04:02.775+00:00",
+      "cin_ri": "cinTFDjwXnLjb",
+      "cin_path": "cse-multiapp/opensoom/facilities/food-a/cook/observations/cin_zEOR4HgSGH",
+      "read_rqi": "opensoom-dce5991689f544799711d14ff2ed5f84",
+      "pm25": 75.0,
+      "co2": 1500.0
+    },
+    "latest": {
+      "observed_at": "2026-11-19T17:04:21.059+00:00",
+      "cin_ri": "cinvw3hyHGX7p",
+      "cin_path": "cse-multiapp/opensoom/facilities/food-a/cook/observations/cin_91ehzZvqJR",
+      "read_rqi": "opensoom-f9e081007e6949aebc9c359588fe235e",
+      "pm25": 15.0,
+      "co2": 720.0
+    },
+    "targets": {
+      "pm25": 45,
+      "co2": 1200
+    },
+    "change": {
+      "pm25": {
+        "decrease": 60.0,
+        "percent": 80.0
+      },
+      "co2": {
+        "decrease": 780.0,
+        "percent": 52.0
+      }
+    },
+    "first_target_at": "2026-11-19T17:04:10.819+00:00",
+    "time_to_target_seconds": 6.202,
+    "hold_seconds": 10.24,
+    "last_hold_seconds": null
+  },
+  "air_quality_persistent": {
+    "status": "outside_target",
+    "baseline": {
+      "observed_at": "2026-11-19T17:04:21.293+00:00",
+      "cin_ri": "cinOVQBsWqvCC",
+      "cin_path": "cse-multiapp/opensoom/facilities/food-a/cook/observations/cin_XHcpUq0ljE",
+      "read_rqi": "opensoom-e4d6cf9b54d44b8d803cbdb9040092a8",
+      "pm25": 75.0,
+      "co2": 1500.0
+    },
+    "latest": {
+      "observed_at": "2026-11-19T17:04:39.580+00:00",
+      "cin_ri": "cinMaXMwPCiJd",
+      "cin_path": "cse-multiapp/opensoom/facilities/food-a/cook/observations/cin_AfC6RjyvBY",
+      "read_rqi": "opensoom-4f1ede53fa154e689b0cbd04ea694458",
+      "pm25": 60.0,
+      "co2": 720.0
+    },
+    "targets": {
+      "pm25": 45,
+      "co2": 1200
+    },
+    "change": {
+      "pm25": {
+        "decrease": 15.0,
+        "percent": 20.0
+      },
+      "co2": {
+        "decrease": 780.0,
+        "percent": 52.0
+      }
+    },
+    "first_target_at": null,
+    "time_to_target_seconds": null,
+    "hold_seconds": null,
+    "last_hold_seconds": null
+  },
+  "air_quality_rebound": {
+    "status": "outside_target",
+    "baseline": {
+      "observed_at": "2026-11-19T17:04:39.834+00:00",
+      "cin_ri": "cinxFwz6MOuwj",
+      "cin_path": "cse-multiapp/opensoom/facilities/food-a/cook/observations/cin_8d8zNdhSGj",
+      "read_rqi": "opensoom-8dd582dc1a3943eea512ef48af38526b",
+      "pm25": 75.0,
+      "co2": 1500.0
+    },
+    "latest": {
+      "observed_at": "2026-11-19T17:04:58.186+00:00",
+      "cin_ri": "cingNazDzrNW5",
+      "cin_path": "cse-multiapp/opensoom/facilities/food-a/cook/observations/cin_fh7RoecDQ1",
+      "read_rqi": "opensoom-2da1cc8bf3974fee81daca7ae754fb04",
+      "pm25": 60.0,
+      "co2": 720.0
+    },
+    "targets": {
+      "pm25": 45,
+      "co2": 1200
+    },
+    "change": {
+      "pm25": {
+        "decrease": 15.0,
+        "percent": 20.0
+      },
+      "co2": {
+        "decrease": 780.0,
+        "percent": 52.0
+      }
+    },
+    "first_target_at": "2026-11-19T17:04:47.801+00:00",
+    "time_to_target_seconds": 6.171,
+    "hold_seconds": null,
+    "last_hold_seconds": 6.17
+  }
+}

@@ -9,7 +9,7 @@
   const token = tokenValue.startsWith('__') ? '' : tokenValue;
   const workbench = document.querySelector('meta[name="technician-workbench"]');
   const localShaftFacility = document.querySelector('meta[name="local-shaft-replay"]')?.content;
-  const state = { data: null, facilityId: '', zoneId: '', metric: 'airflow', connected: false, polling: false, busy: false, lastReceived: null, latestRunId: null, history: new Map() };
+  const state = { data: null, facilityId: '', zoneId: '', metric: 'pm25', outcomeCommandId: '', connected: false, polling: false, busy: false, lastReceived: null, latestRunId: null, history: new Map() };
   try { state.facilityId = localStorage.getItem('opensoom.facility') || ''; } catch (_) { /* Local storage is optional. */ }
   let toastTimer;
   let facilityVisual = null;
@@ -175,6 +175,7 @@
       state.connected = false;
       renderConnection(error.message);
       $('start-demo-button').disabled = true;
+      renderOutcomes();
     } finally {
       state.polling = false;
       $('refresh-button').classList.remove('loading');
@@ -227,7 +228,8 @@
     $('summary-incidents-note').textContent = open.length ? `${open.length === 1 ? 'One issue needs' : 'Issues need'} a closer look` : 'No open incidents reported';
     $('summary-actions-note').textContent = pending.length ? 'Waiting for acknowledgement or outcome' : 'No pending actions reported';
     $('facility-profile').textContent = human(typeof f?.profile === 'object' ? f.profile.name || f.profile.id : f?.profile || 'No profile loaded');
-    $('overview-subtitle').textContent = f ? `${f.name || f.id} · ${open.length ? 'Review the highlighted zones and follow each action through.' : 'A clear view of every zone, from observation to outcome.'}` : 'Connect a facility to begin observing its air and equipment.';
+    $('overview-subtitle').textContent = f ? `${f.name || f.id} · Compare air quality before and after a ventilation action.` : 'Connect a facility to see its air-quality readings.';
+    renderOutcomes();
     renderMap();
     renderZoneDetail();
     renderWorkflow();
@@ -235,6 +237,149 @@
     renderCommand();
     renderMaintenance();
     $('start-demo-button').disabled = state.busy || !canAct() || !state.data.runtime?.cse_connected;
+  }
+
+  function observedDuration(seconds) {
+    if (!Number.isFinite(seconds) || seconds < 0) return '—';
+    if (seconds === 0) return '0 s';
+    if (seconds < 1) return seconds < 0.001 ? '<1 ms' : `${Math.round(seconds * 1000)} ms`;
+    if (seconds < 60) return `${Number(seconds.toFixed(1))} s`;
+    const whole = Math.floor(seconds);
+    if (whole < 3600) return `${Math.floor(whole / 60)} min ${whole % 60} s`;
+    return `${Math.floor(whole / 3600)} h ${Math.floor(whole % 3600 / 60)} min`;
+  }
+
+  const outcomeNumber = new Intl.NumberFormat('en-US', {maximumFractionDigits: 2});
+  function outcomeMetric(outcome, key) {
+    const before = outcome.baseline?.[key];
+    const latest = outcome.latest?.[key];
+    const target = outcome.targets?.[key];
+    const delta = outcome.change?.[key];
+    const decrease = delta?.decrease;
+    const trend = decrease > 0 ? 'lower' : decrease < 0 ? 'higher' : 'unchanged';
+    const reading = value => Number.isFinite(value) ? outcomeNumber.format(value) : '—';
+    let change = 'Awaiting a pair';
+    if (Number.isFinite(decrease)) {
+      const percent = Number.isFinite(delta.percent) ? ` (${reading(Math.abs(delta.percent))}%)` : '';
+      change = decrease === 0 ? 'No change' : `${reading(Math.abs(decrease))} ${trend}${percent}`;
+    }
+    const aboveTarget = Number.isFinite(latest) && Number.isFinite(target) && latest > target;
+    return `<tr id="air-outcome-${key}">
+      <th scope="row">${labels[key]} <small>${units[key]}</small></th>
+      <td data-reading="before">${reading(before)}</td><td class="outcome-latest${aboveTarget ? ' above-target' : ''}"><span data-reading="latest">${reading(latest)}</span>${aboveTarget ? '<small class="outcome-limit-warning">Above target</small>' : ''}</td>
+      <td data-reading="change"><span class="outcome-change ${Number.isFinite(decrease) ? trend : 'pending'}">${esc(change)}</span></td>
+      <td data-reading="target">${Number.isFinite(target) ? '≤ ' + reading(target) : '—'}</td>
+    </tr>`;
+  }
+
+  const outcomeStatuses = {
+    awaiting_ack: ['Awaiting device ACK', 'pending'],
+    awaiting_sample: ['Awaiting first follow-up', 'pending'],
+    in_target: ['Both targets met', 'within'],
+    outside_target: ['Outside air-quality targets', 'outside'],
+    evidence_gap: ['Measurement gap', 'outside'],
+    superseded: ['Replaced by a later action', 'archived'],
+    run_ended: ['Run ended', 'archived'],
+    timed_out: ['Device ACK timed out', 'outside']
+  };
+  const endReasons = {
+    above_target: 'Ended when a later reading exceeded a target.',
+    sample_gap: 'The next reading arrived outside the freshness window.',
+    unobserved_interval: 'A gap in the observation sequence ended this interval.',
+    incomplete_air_quality: 'A required pollutant reading was missing.',
+    sample_not_fresh: 'The next reading failed the freshness check.',
+    conflicting_measurements: 'Conflicting readings ended this interval.',
+    evidence_gap: 'A gap ended this observation window.',
+    stale_silence: 'Further readings did not arrive within the freshness window.',
+    superseded: 'A newer action ended this window.',
+    run_ended: 'This run ended.'
+  };
+
+  function outcomeEvidence(command, outcome) {
+    const rows = [
+      ['Action', command.id], ['Run', command.run_id], ['Incident', command.incident_id],
+      ['Action requested', command.created_at], ['Device acknowledged', outcome.ack_at], ['ACK observation ID', outcome.ack_cin_ri],
+      ['Before reading', outcome.baseline?.observed_at], ['Before observation ID', outcome.baseline?.cin_ri],
+      ['Latest paired reading', outcome.latest?.observed_at], ['Latest paired observation ID', outcome.latest?.cin_ri],
+      ['First combined target reading', outcome.first_target_at], ['First target observation ID', outcome.first_target_sample?.cin_ri],
+      ['Accepted follow-up count', outcome.sample_count], ['Freshness window', observedDuration(outcome.freshness_seconds)]
+    ];
+    if (outcome.hold_start_sample) rows.push(['Current interval start ID', outcome.hold_start_sample.cin_ri]);
+    if (outcome.last_hold) rows.push(['Previous interval start', outcome.last_hold.start?.observed_at], ['Previous interval end', outcome.last_hold.end?.observed_at], ['Previous interval end ID', outcome.last_hold.end?.cin_ri]);
+    if (outcome.last_event?.issue) rows.push(['Latest evidence issue', human(outcome.last_event.issue)], ['Evidence issue observation ID', outcome.last_event.cin_ri]);
+    return `<dl class="outcome-evidence-list">${rows.filter(([, value]) => value != null && value !== '').map(([label, value]) =>
+      `<div><dt>${esc(label)}</dt><dd>${esc(value)}</dd></div>`).join('')}</dl>`;
+  }
+
+  function renderOutcomes() {
+    const f = facility();
+    const z = zone();
+    const actions = commands().filter(c => c.action === 'set_damper' && c.zone_id === z?.id);
+    const current = f?.active_run ? actions.find(c => c.run_id === f.active_run) : actions.find(c => !c.run_id);
+    if (!actions.some(c => c.id === state.outcomeCommandId)) state.outcomeCommandId = '';
+    const command = actions.find(c => c.id === state.outcomeCommandId) || current;
+    const outcome = command?.air_quality_outcome;
+    setHTML('air-outcome-zone', f?.zones?.length ? f.zones.map(item => `<option value="${esc(item.id)}">${esc(item.name || item.id)}</option>`).join('') : '<option value="">No zones</option>');
+    $('air-outcome-zone').value = z?.id || '';
+    $('air-outcome-zone').disabled = !f?.zones?.length;
+    const choices = ['<option value="">Current run · latest action</option>'];
+    for (const c of actions) {
+      const when = dateValue(c.created_at)?.toLocaleString('en-GB', {day:'numeric',month:'short',hour:'2-digit',minute:'2-digit',second:'2-digit'}) || 'Time unavailable';
+      choices.push(`<option value="${esc(c.id)}">${esc(`${when} · ${actionName(c)} · ${c.id}`)}</option>`);
+    }
+    setHTML('air-outcome-command', choices.join(''));
+    $('air-outcome-command').value = state.outcomeCommandId;
+    $('air-outcome-command').disabled = !actions.length;
+    const panel = $('air-outcome');
+    panel.dataset.commandId = command?.id || '';
+    panel.dataset.runId = command?.run_id || f?.active_run || '';
+    panel.dataset.status = outcome?.status || 'no_outcome';
+    $('air-outcome-context').textContent = command ? `${z.name} · ${actionName(command)} · requested ${clock(command.created_at)}` : 'Compare the readings for one action in the selected zone.';
+    $('air-outcome-evidence').hidden = !outcome;
+    if (!outcome) {
+      const message = command ? 'This action has no retained air-quality comparison.' :
+        f?.active_run ? 'No ventilation action has been recorded for this zone in the current run.' :
+        'Run a ventilation scenario to see the change in this zone.';
+      setHTML('air-outcome-body', `<p class="outcome-empty" id="air-outcome-status">${esc(message)}</p>`);
+      setHTML('air-outcome-records', '');
+      return;
+    }
+
+    const hasFirst = Number.isFinite(outcome.time_to_target_seconds);
+    const hasHold = Number.isFinite(outcome.hold_seconds);
+    const previousHold = Number.isFinite(outcome.last_hold_seconds);
+    const finalStatus = ['superseded','run_ended'].includes(outcome.status);
+    let [statusLabel, tone] = outcomeStatuses[outcome.status] || ['Observation pending', 'pending'];
+    if (outcome.status === 'outside_target' && hasFirst) statusLabel = 'Above target again';
+    if (finalStatus && outcome.last_sample_status) {
+      const last = outcomeStatuses[outcome.last_sample_status];
+      if (last) statusLabel += ` · ${last[0].toLowerCase()} at last reading`;
+    }
+    const offline = !state.connected || !state.data?.runtime?.cse_connected;
+    let timingNote = hasFirst ? `After ACK · first observed at ${clock(outcome.first_target_at)}` : 'Waiting for both pollutants to meet their targets.';
+    if (!outcome.ack_at) timingNote = 'Timing starts at the device acknowledgement.';
+    else if (!hasFirst && finalStatus) timingNote = 'No qualifying pair was observed for this action.';
+    const timeValue = hasFirst ? observedDuration(outcome.time_to_target_seconds) : (outcome.sample_count > 0 ? 'Not reached' : '—');
+    const holdValue = hasHold ? observedDuration(outcome.hold_seconds) : previousHold ? observedDuration(outcome.last_hold_seconds) : '—';
+    let holdNote = 'Needs two qualifying observations to measure a span.';
+    if (hasHold) {
+      holdNote = outcome.hold_seconds === 0 ? 'One qualifying reading. Awaiting the next.' : `Observed ${clock(outcome.hold_started_at)} – ${clock(outcome.latest?.observed_at)}`;
+    } else if (previousHold) {
+      holdNote = endReasons[outcome.last_hold?.ended_by] || 'Last completed observation window.';
+    } else if (outcome.status === 'evidence_gap') {
+      holdNote = 'A continuous span cannot be verified across this gap.';
+    } else if (outcome.sample_count > 0) {
+      holdNote = 'No observed interval with both pollutants in target.';
+    }
+
+    setHTML('air-outcome-body', `<div class="outcome-result">
+      <div class="outcome-result-head"><span class="outcome-status ${tone}" id="air-outcome-status">${esc(statusLabel)}</span><span class="outcome-source">${esc([outcome.source === 'simulated' ? 'Virtual measurements' : '', offline ? 'Last received record' : '', outcome.latest?.observed_at ? 'Last paired reading ' + clock(outcome.latest.observed_at) : ''].filter(Boolean).join(' · '))}</span></div>
+      <table class="outcome-measures"><caption class="sr-only">Measured change from before the action to the latest paired follow-up</caption><thead><tr><th scope="col">Pollutant</th><th scope="col">Before</th><th scope="col">Latest</th><th scope="col">Change</th><th scope="col">Target</th></tr></thead><tbody>${outcomeMetric(outcome, 'pm25')}${outcomeMetric(outcome, 'co2')}</tbody></table>
+      <dl class="outcome-times">
+        <div><dt>Time to both targets</dt><dd id="air-outcome-first">${esc(timeValue)}</dd><dd class="outcome-caption">${esc(timingNote)}</dd></div>
+        <div><dt>${hasHold ? 'Observed time in target' : previousHold ? 'Last observed time in target' : 'Observed time in target'}</dt><dd id="air-outcome-hold">${esc(holdValue)}</dd><dd class="outcome-caption">${esc(holdNote)}</dd></div>
+      </dl></div>`);
+    setHTML('air-outcome-records', outcomeEvidence(command, outcome));
   }
 
   function project(x, y) { return [322 + (x - y) * .72, 37 + (x + y) * .39]; }
@@ -303,6 +448,14 @@
     return result === 'recovered' || result === 'verified' || result?.recovered === true || result?.verified === true || ['verified', 'recovered'].includes(String(command.status).toLowerCase());
   }
 
+  function afterRecoveryNotice(command) {
+    if (!isVerified(command)) return '';
+    const state = command.air_quality_outcome?.status;
+    if (state === 'outside_target') return 'Air quality rose above target after the earlier recovery.';
+    if (state === 'evidence_gap') return 'A measurement gap followed the earlier recovery.';
+    return '';
+  }
+
   function hasAck(command) {
     if (!command) return false;
     return command.ack === true || !!command.ack_at || command.ack?.received === true || ['acknowledged', 'acked', 'verified', 'recovered'].includes(String(command.status).toLowerCase());
@@ -330,13 +483,14 @@
     const ack = hasAck(command);
     const verified = isVerified(command);
     const failed = !!command && failedStates.has(String(command.status).toLowerCase());
+    const laterNotice = afterRecoveryNotice(command);
     const maintenance = command?.action === 'request_maintenance';
     const stale = ['stale', 'missing', 'unknown'].includes(status(z));
     const observedCount = Number.isInteger(issue?.recovery_count) ? issue.recovery_count : null;
     const steps = [
       { title: 'Command', text: command ? actionName(command) : stale ? 'Fresh data required' : 'None in this run', kind: command ? 'complete' : stale ? 'attention' : '' },
       { title: 'Device ACK', text: maintenance ? 'Not an equipment command' : ack ? `Received ${clock(command.ack_at)}` : command ? failed ? 'Not received' : 'Waiting for device' : 'No command to acknowledge', kind: ack ? 'complete' : failed ? 'attention' : '' },
-      { title: 'Observed result', text: verified ? observedCount !== null ? `Recovery verified · ${observedCount} fresh samples` : 'Recovery verified' : maintenance ? 'Follow-up recorded · no recovery claim' : command?.observed_result === 'unresolved' ? 'Not recovered · follow up' : command ? ack ? 'Recovery not yet verified' : 'Not verified' : 'No recovery claim', kind: verified ? 'complete' : failed ? 'attention' : '' }
+      { title: 'Observed result', text: laterNotice || (verified ? observedCount !== null ? `Recovery verified · ${observedCount} fresh samples` : 'Recovery verified' : maintenance ? 'Follow-up recorded · no recovery claim' : command?.observed_result === 'unresolved' ? 'Not recovered · follow up' : command ? ack ? 'Recovery not yet verified' : 'Not verified' : 'No recovery claim'), kind: laterNotice ? 'attention' : verified ? 'complete' : failed ? 'attention' : '' }
     ];
     const fan = observation(z, 'fan_running');
     const airflow = observation(z, 'airflow');
@@ -387,12 +541,13 @@
     const hasObservations = facility()?.zones?.some((z) => Object.values(z.observations || {}).some((o) => o?.value != null)) || false;
     const needsFreshData = facility()?.zones?.some((z) => ['stale', 'missing'].includes(status(z))) || false;
     const verified = isVerified(cmd) || incidentRecovered(issue);
+    const laterNotice = afterRecoveryNotice(cmd);
     const failed = cmd && failedStates.has(String(cmd.status).toLowerCase());
     const steps = [
       { title: 'Observe the facility', sub: needsFreshData ? 'Fresh observations are needed' : hasObservations ? 'Equipment observations received' : 'Waiting for current observations', done: hasObservations && !needsFreshData, warning: needsFreshData },
       { title: 'Understand the issue', sub: issue ? issue.title || human(issue.type || issue.reason || 'Incident recorded') : run ? 'Checking the facility profile' : 'Rules belong to each facility', done: !!issue || verified },
       { title: 'Take a permitted action', sub: cmd ? hasAck(cmd) ? 'Device acknowledgement received' : failed ? human(cmd.status) : 'Command sent · awaiting device' : needsFreshData ? 'Equipment control awaits fresh data' : 'Bounded by the active profile', done: hasAck(cmd), warning: !!failed || needsFreshData },
-      { title: 'Verify the outcome', sub: verified ? 'Later observations confirm recovery' : cmd ? 'Recovery is not yet verified' : 'Check what changed after the action', done: !!verified, warning: !!failed }
+      { title: 'Verify the outcome', sub: laterNotice || (verified ? 'Later observations confirm recovery' : cmd ? 'Recovery is not yet verified' : 'Check what changed after the action'), done: !!verified && !laterNotice, warning: !!failed || !!laterNotice }
     ];
     let currentAssigned = false;
     setHTML('workflow-steps', steps.map((step, index) => {
@@ -455,6 +610,7 @@
       const requested = order.requested_pct ?? cmd?.value;
       const sample = order.sample;
       const recovery = order.recovery;
+      const laterNotice = afterRecoveryNotice(cmd);
       const activity = order.latest_technician_activity;
       const activityNames = {scheduled: 'Inspection scheduled', checked: 'Inspection performed', escalated: 'Specialist requested'};
       const fieldStatus = activity && activity.work_order_ri === order.resource_id && activityNames[activity.action]
@@ -474,7 +630,7 @@
       <div><dt>Follow-up airflow</dt><dd>${order.airflow == null ? 'See source observation' : esc(number(order.airflow)) + ' m³/h'}</dd></div></dl>
       <p>${esc(zone?.name || order.zone_id)} · ${esc(order.asset_id)} · ${esc(order.work_order_id)}</p>
       <p>${recovery ? esc(recovery.observations.length + ' qualifying post-ACK measurements · ' + recovery.observations.map(row => number(row.airflow) + ' m³/h').join(' and ')) : sample ? esc(order.mode === 'mec046' ? 'ETSI MEC 046 sensor sharing' : 'Local oneM2M sensor') + ' · ' + esc(sample.sensor_id) : esc(human(order.evidence_status))}</p>
-      ${fieldStatus}${handoff}<details><summary>Work order evidence</summary><pre>${esc(JSON.stringify(sanitize(order), null, 2))}</pre></details>
+      ${laterNotice && recovery ? `<p>${esc(laterNotice)}</p>` : ''}${fieldStatus}${handoff}<details><summary>Work order evidence</summary><pre>${esc(JSON.stringify(sanitize(order), null, 2))}</pre></details>
     </article>`;
     }).join(''));
   }
@@ -490,8 +646,9 @@
     const zoneName = facility()?.zones?.find((z) => z.id === cmd.zone_id)?.name || cmd.zone_id || 'Facility';
     const result = typeof cmd.observed_result === 'object' ? cmd.observed_result?.message || cmd.observed_result?.reason : cmd.observed_result;
     const resultLabels = { pending: 'Later observations have not established recovery yet.', awaiting_observations: 'Waiting for later observations to check the configured recovery condition.', unresolved: 'Later observations have not met the configured recovery condition.' };
-    const outcome = verified ? 'Subsequent observations confirm the configured recovery condition.' : result ? resultLabels[result] || human(result) : failed ? 'This action did not establish recovery. The incident needs follow-up.' : ack ? 'The device responded. Recovery still needs to be checked against later observations.' : 'The command was recorded. A device acknowledgement has not been confirmed yet.';
-    setHTML('command-detail', `<div class="command-content"><div class="command-name"><div>${esc(actionName(cmd))}<small>${esc(zoneName)} · ${esc(clock(cmd.created_at || cmd.timestamp))}</small></div><span class="status-pill ${failed ? 'error' : verified ? '' : 'warning'}">${esc(human(cmd.status || 'pending'))}</span></div><div class="command-stages"><span class="command-stage done">01 · Requested</span><span class="command-stage ${ack ? 'done' : failed ? 'failed' : 'pending'}">02 · Device ACK</span><span class="command-stage ${verified ? 'done' : failed ? 'failed' : 'pending'}">03 · Verified result</span></div><div class="command-outcome"><strong>${verified ? 'Recovery verified.' : 'Keep the loop open.'}</strong> ${esc(outcome)}</div><div class="command-tools"><button class="button secondary" type="button" data-verify-command="${esc(cmd.id || cmd.command_id)}" ${!token || !state.connected ? 'disabled' : ''}>${icon('refresh')}Check result</button><button class="button secondary" type="button" data-command-evidence="${esc(cmd.id || cmd.command_id)}">${icon('document')}View evidence</button></div></div>`);
+    const laterNotice = afterRecoveryNotice(cmd);
+    const outcome = laterNotice || (verified ? 'Subsequent observations confirm the configured recovery condition.' : result ? resultLabels[result] || human(result) : failed ? 'This action did not establish recovery. The incident needs follow-up.' : ack ? 'The device responded. Recovery still needs to be checked against later observations.' : 'The command was recorded. A device acknowledgement has not been confirmed yet.');
+    setHTML('command-detail', `<div class="command-content"><div class="command-name"><div>${esc(actionName(cmd))}<small>${esc(zoneName)} · ${esc(clock(cmd.created_at || cmd.timestamp))}</small></div><span class="status-pill ${failed ? 'error' : verified ? '' : 'warning'}">${esc(human(cmd.status || 'pending'))}</span></div><div class="command-stages"><span class="command-stage done">01 · Requested</span><span class="command-stage ${ack ? 'done' : failed ? 'failed' : 'pending'}">02 · Device ACK</span><span class="command-stage ${verified ? 'done' : failed ? 'failed' : 'pending'}">03 · Verified result</span></div><div class="command-outcome"><strong>${laterNotice ? 'Review the latest air measurements.' : verified ? 'Recovery verified.' : 'Keep the loop open.'}</strong> ${esc(outcome)}</div><div class="command-tools"><button class="button secondary" type="button" data-verify-command="${esc(cmd.id || cmd.command_id)}" ${!token || !state.connected ? 'disabled' : ''}>${icon('refresh')}Check result</button><button class="button secondary" type="button" data-command-evidence="${esc(cmd.id || cmd.command_id)}">${icon('document')}View evidence</button></div></div>`);
   }
 
   function sanitize(value) {
@@ -568,9 +725,23 @@
 
   $('facility-select').addEventListener('change', (event) => {
     state.facilityId = event.target.value;
+    state.outcomeCommandId = '';
     state.zoneId = facility()?.zones?.[0]?.id || '';
     try { localStorage.setItem('opensoom.facility', state.facilityId); } catch (_) { /* Optional persistence. */ }
     render();
+  });
+  function selectZone(id) {
+    state.zoneId = id;
+    state.outcomeCommandId = '';
+    renderOutcomes();
+    renderMap();
+    renderZoneDetail();
+  }
+
+  $('air-outcome-zone').addEventListener('change', (event) => selectZone(event.target.value));
+  $('air-outcome-command').addEventListener('change', (event) => {
+    state.outcomeCommandId = event.target.value;
+    renderOutcomes();
   });
   $('refresh-button').addEventListener('click', () => poll(true));
   document.querySelectorAll('[data-metric]').forEach((button) => button.addEventListener('click', () => {
@@ -578,9 +749,9 @@
     document.querySelectorAll('[data-metric]').forEach((item) => { const selected = item === button; item.classList.toggle('selected', selected); item.setAttribute('aria-pressed', String(selected)); });
     renderMap();
   }));
-  $('facility-map').addEventListener('click', (event) => { const target = event.target.closest('[data-zone]'); if (target) { state.zoneId = target.dataset.zone; renderMap(); renderZoneDetail(); } });
-  $('mobile-zones').addEventListener('click', (event) => { const target = event.target.closest('[data-zone]'); if (target) { state.zoneId = target.dataset.zone; renderMap(); renderZoneDetail(); } });
-  $('facility-map').addEventListener('keydown', (event) => { if (['Enter', ' '].includes(event.key)) { const target = event.target.closest('[data-zone]'); if (target) { event.preventDefault(); state.zoneId = target.dataset.zone; renderMap(); renderZoneDetail(); } } });
+  $('facility-map').addEventListener('click', (event) => { const target = event.target.closest('[data-zone]'); if (target) selectZone(target.dataset.zone); });
+  $('mobile-zones').addEventListener('click', (event) => { const target = event.target.closest('[data-zone]'); if (target) selectZone(target.dataset.zone); });
+  $('facility-map').addEventListener('keydown', (event) => { if (['Enter', ' '].includes(event.key)) { const target = event.target.closest('[data-zone]'); if (target) { event.preventDefault(); selectZone(target.dataset.zone); } } });
   $('zone-detail').addEventListener('click', (event) => { const target = event.target.closest('[data-inspect-zone]'); if (target) inspectZone(target.dataset.inspectZone); });
   $('evidence-nav').addEventListener('click', () => showEvidence());
   $('view-run-button').addEventListener('click', () => showEvidence());
@@ -597,6 +768,8 @@
     try {
       const result = await api('/api/demo/start', { facility_id: state.facilityId, scenario: $('scenario-select').value, autorun: $('autorun-toggle').checked });
       state.latestRunId = result.run_id || result.id;
+      state.outcomeCommandId = '';
+      state.zoneId = facility()?.zones?.[0]?.id || '';
       toast('Scenario started. Follow its recorded observations and outcomes.');
       await poll(true);
     } catch (error) { toast(error.message, true); }
@@ -626,7 +799,7 @@
   $('facility-3d').addEventListener('motion-paused', renderMotion);
   $('facility-3d').addEventListener('visual-unavailable', visualUnavailable);
   import('/assets/facility-3d.js').then(({ createFacilityVisual }) => {
-    facilityVisual = createFacilityVisual({ host: $('facility-3d'), labelHost: $('spatial-labels'), onSelect: (id) => { state.zoneId = id; renderMap(); renderZoneDetail(); } });
+    facilityVisual = createFacilityVisual({ host: $('facility-3d'), labelHost: $('spatial-labels'), onSelect: selectZone });
     $('view-3d').disabled = false;
     setVisualMode('3d');
     facilityVisual.setPaused(facilityVisual.paused);
