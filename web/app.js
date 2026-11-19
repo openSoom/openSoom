@@ -451,7 +451,7 @@
   function afterRecoveryNotice(command) {
     if (!isVerified(command)) return '';
     const state = command.air_quality_outcome?.status;
-    if (state === 'outside_target') return 'Air quality rose above target after the earlier recovery.';
+    if (state === 'outside_target') return 'A pollutant is back above target after the earlier recovery.';
     if (state === 'evidence_gap') return 'A measurement gap followed the earlier recovery.';
     return '';
   }

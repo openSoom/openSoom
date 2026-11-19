@@ -236,5 +236,20 @@
     ],
     "execution_scope": "Field workflow and new sequence/queue tests ran on local native ACME with virtual devices. Archived ORNL BMS data were analyzed separately. Cloud and hosted-model receipts are historical and version-bound.",
     "user_handoff": "Public Hackster publication is scheduled by the maintainer for 2026-11-20."
+  },
+  "air_quality_outcomes_release": {
+    "common_review_candidate": "3a9a64459ac0b58b5a5e4be41826dc8bd9a95a03",
+    "published_and_verified_product_revision": "6481bada87409caab1550f7864dd6207ac2561c9",
+    "scope": "Virtual pollutant response after an acknowledged command. User-facing dashboard, deterministic trials, English film, bilingual scripts, slide deck, landing page and English Hackster draft.",
+    "original_presentation_trials": "evidence/runtime/air-quality-outcomes.json",
+    "final_product_replay": "evidence/runtime/air-quality-outcomes-final.json",
+    "public_install_and_assets": "evidence/release/air-quality-outcomes.json",
+    "independent_review": "docs/review/review-ledger.json#air_quality_release_review",
+    "live_demo_ports": {
+      "operations": 19490,
+      "technician": 19492,
+      "landing": 8095
+    },
+    "external_submission": "Public GitHub assets available. The Hackster article, Discord submission, scheduling, Drive upload and actual interview remain external handoff steps."
   }
 }

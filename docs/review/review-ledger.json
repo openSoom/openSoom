@@ -1701,6 +1701,150 @@
       "review_state": "resolved",
       "final_rechecked_on": "f8fd12f38030b9984c0cc76d7f502fd0904086f4",
       "recheck": "Independent reviewer repeated the third-facility ACME run, rechecked 16 scoped tests and the original film frame. Valid low airflow triggers one request. Adequate airflow, particle-only, CO₂-only, fan-only, missing and stale input leave the general inspection in place."
+    },
+    {
+      "id": "AIR-A-01",
+      "team": "A",
+      "criteria": [
+        1,
+        3
+      ],
+      "evidence_status": "captured",
+      "observed_evidence": "Native st=3, missing st=4, pre-ACK acquisition received after ACK at st=5.",
+      "gap_and_impact": "A missing interval could be credited to a clean-air spell.",
+      "minimum_change": "Record gap-only event, retain the previous eligible measurement, restart the next valid interval at zero.",
+      "product_reason": "A shift supervisor needs measured continuity when relying on elapsed time.",
+      "verification": "Native ACME secure replay, regression test_missing_native_record_reported_by_late_pre_ack_sample_ends_hold and 120-test run.",
+      "main_decision": "accept",
+      "decision_reason": "A shift supervisor needs measured continuity when relying on elapsed time.",
+      "implementation_state": "corrected",
+      "review_state": "independently verified"
+    },
+    {
+      "id": "AIR-B-02",
+      "team": "B",
+      "criteria": [
+        4,
+        5,
+        7
+      ],
+      "evidence_status": "captured",
+      "observed_evidence": "Landing footer and preview default still linked older media.",
+      "gap_and_impact": "Judges could see the wrong demonstration.",
+      "minimum_change": "Update both entry points and distinguish the older maintenance film in the README.",
+      "product_reason": "Every evaluation entry point should lead to the three pollutant outcomes.",
+      "verification": "Team B independently verified corrected links, archive options, seek markers and matching slide 5 link. Public media fetched and checked byte-for-byte.",
+      "main_decision": "accept",
+      "decision_reason": "Every evaluation entry point should lead to the three pollutant outcomes.",
+      "implementation_state": "corrected",
+      "review_state": "independently verified"
+    },
+    {
+      "id": "AIR-C-03",
+      "team": "C",
+      "criteria": [
+        6,
+        9
+      ],
+      "evidence_status": "captured",
+      "observed_evidence": "Old film pointer in the technical Q&A and 8:57 speech plus film before guided interaction.",
+      "gap_and_impact": "An offline delivery could skip the decision exercises and end early.",
+      "minimum_change": "Update the Q&A and reserve 30 seconds each for the table, target crossing and source history offline.",
+      "product_reason": "Judges can make the same decision using the saved evidence.",
+      "verification": "Technical Q&A links checked with the published source; speech + film measured 8:57, planned interaction 1:30. The interview has not taken place.",
+      "main_decision": "accept",
+      "decision_reason": "Judges can make the same decision using the saved evidence.",
+      "implementation_state": "verified materials; interview pending",
+      "review_state": "verified materials; interview pending"
+    },
+    {
+      "id": "AIR-BC-04",
+      "team": "B/C",
+      "criteria": [
+        4,
+        6,
+        8,
+        9
+      ],
+      "evidence_status": "captured",
+      "observed_evidence": "Public repository and downloadable assets verified; no supplied public Hackster backlink, qualifying exchange or completed interview.",
+      "gap_and_impact": "External criteria cannot be closed by an internal artifact.",
+      "minimum_change": "Check the signed-out article/backlink and playback after publication; retain actual technical exchange and interview evidence when available.",
+      "product_reason": "Competition submission and peer interaction require actual public or organizer actions.",
+      "verification": "See docs/submission/handoff.md and evidence/release/air-quality-outcomes.json.",
+      "main_decision": "defer",
+      "decision_reason": "Competition submission and peer interaction require actual public or organizer actions.",
+      "implementation_state": "external handoff open",
+      "review_state": "external handoff open"
+    },
+    {
+      "id": "AIR-F-05",
+      "team": "F",
+      "criteria": [
+        14,
+        15
+      ],
+      "evidence_status": "captured",
+      "observed_evidence": "Fixed-zone deterministic virtual trials using paired readings.",
+      "gap_and_impact": "No ESTIMED multi-client learning or network location event changes a workflow.",
+      "minimum_change": "Require useful cross-site task before FL; actual zone transition and persisted assignment before location claim.",
+      "product_reason": "Current facility decision can use its paired readings and local thresholds.",
+      "verification": "Product deferrals remain in docs/extension-decisions.md.",
+      "main_decision": "defer",
+      "decision_reason": "Current facility decision can use its paired readings and local thresholds.",
+      "implementation_state": "open; product justification required",
+      "review_state": "open; product justification required"
+    },
+    {
+      "id": "AIR-D-06",
+      "team": "D",
+      "criteria": [
+        10
+      ],
+      "evidence_status": "captured",
+      "observed_evidence": "Pre-existing secure transport and ACP test; initial per-command scope checked in-process.",
+      "gap_and_impact": "A new command-history endpoint needed an actual scope check.",
+      "minimum_change": "Capture real HTTP 200/403/401 with two registered facilities.",
+      "product_reason": "An operator should only see the permitted facility’s records.",
+      "verification": "Team D verified two scoped HTTP 200s and paginated native command/ACK and samples, one known command denied 403 and one unauthenticated GET 401. See evidence/application/air-quality-history-access.json.",
+      "main_decision": "accept",
+      "decision_reason": "An operator should only see the permitted facility’s records.",
+      "implementation_state": "completed",
+      "review_state": "independently verified"
+    },
+    {
+      "id": "AIR-E-07",
+      "team": "E",
+      "criteria": [
+        12,
+        13,
+        16
+      ],
+      "evidence_status": "captured",
+      "observed_evidence": "Separate local pollutant, handover and cloud maintenance runs have distinct receipts.",
+      "gap_and_impact": "Generic landing disclosure could imply air-quality trials used MEC.",
+      "minimum_change": "Name local ACME and link the handover and MEC deployment runs directly.",
+      "product_reason": "A site should know which infrastructure was exercised for its decision.",
+      "verification": "Landing disclosure links the independent handover and Option C receipts. Slide 8 identifies the separate cloud test on one VM in the projected slide and spoken notes.",
+      "main_decision": "accept",
+      "decision_reason": "A site should know which infrastructure was exercised for its decision.",
+      "implementation_state": "completed",
+      "review_state": "independently verified"
+    },
+    {
+      "id": "AIR-IDEA-08",
+      "team": "idea_model",
+      "criteria": [],
+      "evidence_status": "captured",
+      "observed_evidence": "Three virtual trials share airflow and produce different pollutant outcomes.",
+      "gap_and_impact": "The rebound message “air quality rose” could suggest improvement; the landing quickstart opened the older maintenance path.",
+      "minimum_change": "Name the pollutant exceeding its target and open the recovery trial in quickstart.",
+      "product_reason": "A new operator should recognize relapse and immediately see the relevant case.",
+      "verification": "Revised operator wording and identical opening-scenario option in both public quickstarts.",
+      "main_decision": "accept",
+      "decision_reason": "A new operator should recognize relapse and immediately see the relevant case.",
+      "implementation_state": "completed",
+      "review_state": "independently verified"
     }
   ],
   "release_assessment": "docs/review/release-assessment.ko.md",
@@ -1968,5 +2112,110 @@
       "verification": "Independently reran all five archived histories, matched 6/18 fixed-damper days, reviewed queue provenance and confirmed all four hashes in the republished capture.",
       "accepted": "Clarified the two EdgeGuard experiment denominators, the scope of the mock location subscription, and the 23ms interval between readings in the accelerated workflow. Documented a real-site comparison using commissioned recovery duration, uncoached users, correct first inspection, setup effort and evidence retrieval after restart."
     }
+  },
+  "air_quality_release_review": {
+    "common_candidate": "3a9a64459ac0b58b5a5e4be41826dc8bd9a95a03",
+    "corrected_and_publicly_replayed_product": "6481bada87409caab1550f7864dd6207ac2561c9",
+    "model": "gpt-6.2-sol",
+    "reasoning_effort": "max",
+    "evidence_sha256": {
+      "evidence/runtime/air-quality-outcomes.json": "4bfc39cd287f8680c9838ab8a9d10d350aeabaae75470958248f3b46650d8437",
+      "evidence/application/air-quality-dashboard.json": "4556f555349a939d064cbb2a5f521b30bb1eb4b784fe19579e84217147dfee97",
+      "evidence/application/air-quality-landing.json": "46e4d758927f8c97cdd94514a1f50790f5364d5ff49ca165e55e77621dfe8843",
+      "evidence/video/air-quality-film.json": "b1b3447e774da5460236ef4c14deac6afebe27c1e41e9a7b0e564dfb3ffa2808",
+      "docs/review/air-quality-design-review.md": "16399fd5295e47ff6193c582a87f877a3c78921cc7f7115ff96e15b513a709f4",
+      "pitch/assets/air-quality-trials.json": "30bc5baff64f0fb28242d5d7b695c7cab90869621f8a04b2dbb4472b45163d02",
+      "evidence/presentation/air-quality-rehearsal.json": "08fa2330df3d0add7e81eecf3b5c5ea939587363d4a494cfc2e0d31f5455311c"
+    },
+    "teams": [
+      {
+        "team": "A",
+        "criteria": [
+          1,
+          2,
+          3
+        ],
+        "decision": "Scoped Expert for native group fan-out, native MQTT/TLS alongside HTTPS in the secure loopback profile, and distinct operations, maintenance and device applications. The ordinary air trials used local HTTP. The independent reproduction confirmed the delayed native gap fix.",
+        "verification": "Independent multi-app replay ma-d94f8bdf15, HTTPS group request opensoom-6419f85590a048c8adca64d78f62a6d2, MQTT observation cinbtujPVSN9h read via HTTPS. Secure gap trial skipped native st=4, ended the 0.055 s prior span and restarted at 0 s; contiguous out-of-order duplicate did not end it."
+      },
+      {
+        "team": "B",
+        "criteria": [
+          4,
+          5,
+          7
+        ],
+        "decision": "4 open pending rendered public Hackster article and logged-out playback. 5 scoped Expert for the decoded, narrated and captioned 720p film. 7 scoped Expert for native oneM2M adoption explanations.",
+        "verification": "All six narration segments, captions, three visual outcomes and 41 article repository paths checked. Corrected preview default, download and scene jumps; pitch hero/footer and slide 5 select the air-quality film."
+      },
+      {
+        "team": "C",
+        "criteria": [
+          6,
+          8,
+          9
+        ],
+        "decision": "6 Proficient confirmed, Expert pending actual public Hackster backlink; 8 actual public technical exchange missing; 9 interview pending.",
+        "verification": "Separately installed frozen archive using locked package cache. Operator and technician HTTP 200, opening native CIN cin1eoijsXACI, protected shutdown, 11 focused tests. The main agent separately reproduced the public product revision and downloaded the current assets. Offline Q&A reserves the same three 30-second exercises."
+      },
+      {
+        "team": "D",
+        "criteria": [
+          10,
+          11,
+          17
+        ],
+        "decision": "Scoped Expert for loopback TLS and native ACPs, TS-0023 interoperability for PM2.5, and earlier executed hosted model and Codex workflows with durable CSE state. CO₂ ppm and timings are application-level fields; the new three-trial demo is deterministic.",
+        "verification": "Frozen runtime/browser hashes checked; 12 focused tests passed on the fix. Secure loopback, model executions and ordinary HTTP trials have distinct evidence. See docs/standard-model.md and evidence/agent/scenario-authoring/README.md."
+      },
+      {
+        "team": "E",
+        "criteria": [
+          12,
+          13,
+          16
+        ],
+        "decision": "Scoped Expert in their own earlier executions for application-assisted two-CSE handover, operator-selected custom native ETSI deployment on north/south logical hosts of one VM, and registration/discovery plus service configuration and consumption.",
+        "verification": "Independent restoration/ACP/subscription and historical normal/failure gaps 0.173037 s / 0.379308 s. MEC 011 discovery and oneM2M-initiated 033/046 configuration and sensor use are separate from local pollutant trials. See evidence/runtime/handover/independent/index.json and evidence/runtime/option-c/index.json."
+      },
+      {
+        "team": "F",
+        "criteria": [
+          14,
+          15
+        ],
+        "decision": "14 and 15 open, unscored. The cases apply configured pollutant targets to fixed zones.",
+        "verification": "No ESTIMED VM multi-round learning or dynamic client participation, and no actual network or MEC location event changing a persisted assignment or policy. Reopen only for a facility use case that needs these capabilities. See docs/extension-decisions.md."
+      }
+    ],
+    "open_criteria": [
+      4,
+      6,
+      8,
+      9,
+      14,
+      15
+    ],
+    "issue_records": [
+      "AIR-A-01",
+      "AIR-B-02",
+      "AIR-C-03",
+      "AIR-BC-04",
+      "AIR-F-05",
+      "AIR-D-06",
+      "AIR-E-07",
+      "AIR-IDEA-08"
+    ],
+    "cursor_external_design_review": "docs/review/air-quality-design-review.md",
+    "fresh_public_replay": "evidence/release/air-quality-outcomes.json",
+    "idea_model": {
+      "decision": "Adopt for the virtual release and an observe-only field pilot.",
+      "user_decision": "The shift supervisor can keep a particle alert open after CO₂ falls or reopen it on rebound. A technician selects an inspection only with equipment evidence, while administrators activate profiles and the bridge reads its sensor.",
+      "documented_need": "The Korean November 2025 inspection and HSE commissioning guidance establish the need for site-specific verification. Measured ORNL supply-air data provides separate equipment context.",
+      "alternative": "An incumbent building-management system with synchronized pollutant measurements and a maintenance log can support the same decision. Independent permissions, common resource provenance, two vendor adapters and configured profile reuse justify integration across organizations.",
+      "acceptance": "Three adequate-airflow trials distinguish recovery, persistent particles and rebound. Open field test: compare unassisted setup, correct shift handoff, lookup time and technician findings against the incumbent using identical calibrated readings and site-approved intervals. Physical ventilation or exposure benefit remains unverified.",
+      "finding": "AIR-IDEA-08"
+    },
+    "supplemental_history_access": "evidence/application/air-quality-history-access.json"
   }
 }

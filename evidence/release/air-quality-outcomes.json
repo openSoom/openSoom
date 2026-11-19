@@ -1,0 +1,103 @@
+{
+  "status": "passed",
+  "published_product_revision": "6481bada87409caab1550f7864dd6207ac2561c9",
+  "captured_at": "2026-11-19T17:19:31.046809+00:00",
+  "method": "Anonymous depth-one HTTPS GitHub clone, normal locked install of the application and ACME, full tests, fresh isolated operator and native oneM2M replay with virtual equipment, then byte comparison of public assets. The film URL is the main-branch link used in the landing page.",
+  "pytest": "120 passed, 29 subtests passed in 3.98s",
+  "clean_after_install_and_tests": true,
+  "runtime_replay": "../runtime/air-quality-outcomes-final.json",
+  "presentation_capture": "../runtime/air-quality-outcomes.json",
+  "source_note": "The presentation table retains the original captured CSE timings. The separate final replay was made from the product commit after the continuity fix.",
+  "public_files": [
+    {
+      "path": "README.md",
+      "bytes": 21325,
+      "sha256": "b18f0604c6ab576a3efa8fee6d0738e1b1604e15a15df23aaa477d17ed6a7fe0"
+    },
+    {
+      "path": "docs/submission/hackster-article.md",
+      "bytes": 33852,
+      "sha256": "5a3ed8c6f490d912e6ed832fa4cba84a4674b404f5b0f19460a54f8e8d3f16e3"
+    },
+    {
+      "path": "docs/submission/presenter-script.en.md",
+      "bytes": 9713,
+      "sha256": "0fb6323bac056f94df609c576d9928515f2267bb8258f4686d3dfab2d05753c7"
+    },
+    {
+      "path": "docs/submission/presenter-script.ko.md",
+      "bytes": 7182,
+      "sha256": "6c92f1d3184a0a833f523e0944bf76e0bd3b89177e3dba76ccb2ff16be71d248"
+    },
+    {
+      "path": "docs/submission/technical-qa.md",
+      "bytes": 16004,
+      "sha256": "6890518ec98ef2ccc7b14991768d3e607e62de01081bb6c27ce199262f7e8235"
+    },
+    {
+      "path": "deliverables/presentation/openSoom-evaluation.pptx",
+      "bytes": 354399,
+      "sha256": "349f8c2b4b9fff1dc04df8e58dd362982f50ff648ddffa093e9e10ce70b4e43d"
+    },
+    {
+      "path": "deliverables/presentation/openSoom-evaluation.pdf",
+      "bytes": 632898,
+      "sha256": "94170fa22cc4c5e865f0d7622c8581a08256a1d625b92e4c69ffa79c5aa8e4e1"
+    },
+    {
+      "path": "deliverables/video/openSoom-air-quality-720p.mp4",
+      "bytes": 1028233,
+      "sha256": "c8beb1bfb3e27ebdde979272196347f1cfd8badd14a7b60c92fc9190dee6ae8b"
+    },
+    {
+      "path": "deliverables/video/openSoom-air-quality.en.srt",
+      "bytes": 691,
+      "sha256": "c65e1685a08c5fc974f67642445068a85341f391531affca5057a369e77d27b2"
+    },
+    {
+      "path": "deliverables/video/preview.html",
+      "bytes": 4665,
+      "sha256": "64d041ff9923e253c57b2274393730cd93910cf2ba6364bcb1f6e54167c64074"
+    },
+    {
+      "path": "evidence/application/air-quality-dashboard.png",
+      "bytes": 52181,
+      "sha256": "3f3304f429a0de0c297c7a768bc47a4292591804eb6dbe1842852ac02dd1e903"
+    },
+    {
+      "path": "evidence/application/air-quality-dashboard.json",
+      "bytes": 2658,
+      "sha256": "4556f555349a939d064cbb2a5f521b30bb1eb4b784fe19579e84217147dfee97"
+    },
+    {
+      "path": "evidence/application/air-quality-landing.json",
+      "bytes": 1216,
+      "sha256": "46e4d758927f8c97cdd94514a1f50790f5364d5ff49ca165e55e77621dfe8843"
+    },
+    {
+      "path": "evidence/runtime/air-quality-outcomes.json",
+      "bytes": 23599,
+      "sha256": "4bfc39cd287f8680c9838ab8a9d10d350aeabaae75470958248f3b46650d8437"
+    },
+    {
+      "path": "evidence/video/air-quality-film.json",
+      "bytes": 1443,
+      "sha256": "b1b3447e774da5460236ef4c14deac6afebe27c1e41e9a7b0e564dfb3ffa2808"
+    },
+    {
+      "path": "pitch/index.html",
+      "bytes": 31760,
+      "sha256": "bc64b300d9bdf8cce7b2dfcb56745c533fe0877002321b3a26f8a7e1b8d1efb4"
+    },
+    {
+      "path": "pitch/assets/air-quality-trials.json",
+      "bytes": 3155,
+      "sha256": "30bc5baff64f0fb28242d5d7b695c7cab90869621f8a04b2dbb4472b45163d02"
+    },
+    {
+      "path": "pitch/air-outcomes.js",
+      "bytes": 2333,
+      "sha256": "d48944a5a739aee1511dc8cc221bd3f022b05fdd5f8c2211e97d78aad982920a"
+    }
+  ]
+}
