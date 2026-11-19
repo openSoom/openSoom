@@ -1,6 +1,6 @@
 {
   "method": "macOS synthesized English read-through at a nominal 116 words per minute; measured audio per slide excludes stage directions. Film duration is the encoded MP4. Three 30-second audience exercises are planned, including offline equivalents.",
-  "script_sha256": "877170a3c255d240d5971b3c41b1daf9d7eddd3063a42ded6725a0c16f880d7e",
+  "script_sha256": "00d2831f6d3b64936c1fa573b8b6b13001cf7c0d1b98981414fa6ec2e8e412fc",
   "slides": [
     {
       "slide": 1,
@@ -39,8 +39,8 @@
     },
     {
       "slide": 8,
-      "words": 106,
-      "speech_seconds": 43.85
+      "words": 127,
+      "speech_seconds": 51.57
     },
     {
       "slide": 9,
@@ -53,10 +53,10 @@
       "speech_seconds": 55.19
     }
   ],
-  "spoken_seconds": 481.64,
-  "film_sha256": "55820c5ea78eeaf3799b32d559f3f0f47e1e43347b5ac6f37d58bd7ddbb537db",
+  "spoken_seconds": 489.36,
+  "film_sha256": "338ef6f98eabd05ef6bcf7bd0dd2c2d34c13ed348c77f0cef60d1c27fc4ac8fe",
   "film_seconds": 56,
-  "speech_plus_film_seconds": 537.64,
+  "speech_plus_film_seconds": 545.36,
   "interaction_allowances": {
     "slides": [
       3,
@@ -66,5 +66,5 @@
     "seconds_each": 30,
     "total_seconds": 90
   },
-  "planned_total_seconds": 627.64
+  "planned_total_seconds": 635.36
 }

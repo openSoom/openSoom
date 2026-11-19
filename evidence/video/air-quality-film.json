@@ -1,8 +1,8 @@
 {
   "title": "Keep the alert open. Choose the first inspection.",
   "public_film": "openSoom-air-quality-720p.mp4",
-  "sha256": "55820c5ea78eeaf3799b32d559f3f0f47e1e43347b5ac6f37d58bd7ddbb537db",
-  "captions_sha256": "1aa9d691a8aaf1033bdb6b1520e19f581bedc87f8ef75ed54c3ef820a4bba7b4",
+  "sha256": "338ef6f98eabd05ef6bcf7bd0dd2c2d34c13ed348c77f0cef60d1c27fc4ac8fe",
+  "captions_sha256": "1f0cffde1df046f01cd0ae1594b05e5da054633de4dbcfb47ceb753c5b0bac00",
   "seconds": 56.0,
   "resolution": [
     1280,
@@ -55,12 +55,13 @@
       "scene": "field-handoff",
       "start": 47.75,
       "end": 56,
-      "narration_seconds": 6.688
+      "narration_seconds": 6.223
     }
   ],
   "source_sha256": {
     "evidence/video/role-handoff/operator-source.mp4": "772a9b23bc6306b28da980c04bac6d1f1af86355270c84045e3b597c799fb379",
     "evidence/video/role-handoff/operator-incident.json": "84074fd3acb213b4989d5984c9ab941e323e19e45f4677f97256235632719cff",
+    "evidence/video/role-handoff/operator-native-readings.json": "fcf774cdc37aebae5f75f8b036141cabc5f7c654409627431358e4968ff927e5",
     "evidence/video/role-handoff/revision-3.png": "f5f90e82b0e9d1c6da0ed342c6abb448cf9fc4e30d221257afae167b68391bf7",
     "evidence/video/role-handoff/revision-4.png": "49360feeb3a1d351a77fedcec3bc6a958f5a33b3c61ef7ec51e8de9a179a8773",
     "evidence/video/role-handoff/scheduled.png": "b2fcb3de5bfaa3d7a83a0c43744a87996d6b0842d70c98c215dc5c2c8b7a44b1",

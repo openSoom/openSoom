@@ -66,7 +66,7 @@
 .workspace-grid .eyebrow{margin:0 0 12px}
 .workspace-grid article p:not(.eyebrow),.background-apps dd,.background-apps p{font-size:15px;line-height:1.6;max-width:49em}
 .background-apps{padding:clamp(20px,3vw,45px);background:#f5f4ec;border:1px solid #c9d5c8;border-radius:8px}
-.background-apps dl{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+.background-apps dl{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
 .background-apps dt{font-weight:650;font-size:16px}
 .background-apps dd{margin:7px 0}
 .room-model{background:#f5f4ec}

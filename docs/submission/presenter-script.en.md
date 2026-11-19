@@ -56,7 +56,7 @@ That example explains why our operating interface preserves several kinds of obs
 
 *Keep the implementation explanation to about one minute.*
 
-The adapter writes timestamped measurements to the facility’s oneM2M node. Its subscriptions notify the operations app, which reads the original observations, matches them to the command and applies the facility’s targets. Only site operations can issue device commands. The maintenance app has a different permission. It can request an independent measurement and revise the work order. A separate bridge discovers and reads the external sensor through the MEC platform. The technician’s app records the planned inspection against the exact revision it reviewed. We tested the cloud maintenance path on one virtual machine. A facility that already has a suitable local sensor can provide that evidence directly.
+The adapter writes timestamped measurements to the facility’s oneM2M node. Its subscriptions notify the operations app, which reads the original observations, matches them to the command and applies the facility’s targets. Only site operations can issue device commands. The maintenance app has a different permission. It can request an independent measurement and revise the work order. A separate bridge discovers and reads the external sensor through the MEC platform. The technician’s app records the planned inspection against the exact revision it reviewed. We tested the cloud maintenance path on one virtual machine. A facility that already has a suitable local sensor can provide that evidence directly. We would choose oneM2M again for sites where equipment vendors change and separate teams need the same evidence under different permissions.
 
 ## 9 · Try it at another site
 

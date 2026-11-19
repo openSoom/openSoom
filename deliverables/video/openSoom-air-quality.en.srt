@@ -24,4 +24,4 @@ With that reading, the maintenance app updates the same work order. Check actuat
 
 7
 00:00:47,750 --> 00:00:56,000
-The technician schedules the check. Through oneM2M, operations sees the update. The incident stays open.
+The workbench records the scheduled check. Operations sees it through oneM2M. The incident stays open.

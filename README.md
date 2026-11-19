@@ -19,7 +19,7 @@
   <a href="docs/project-guide.ko.md">한국어 안내</a>
 </p>
 
-**Why keep an alert open?** At 1,035 m³/h after an adjustment, CO₂ fell to 720 ppm but PM2.5 stayed at 60 µg/m³ above the zone target of 45. The operations app kept the room alert open. In a **separate cloud incident**, airflow was 360 m³/h against 900. A MEC sensor reported 35% shaft opening after a 100% command. The maintenance app moved actuator travel and position feedback to the top of the same work order. The technician scheduled that inspection and the incident stayed open. Both cases use virtual equipment. [Watch the film](deliverables/video/openSoom-air-quality-720p.mp4) · [Local trial records](evidence/runtime/air-quality-outcomes.json) · [Native cloud work order](evidence/runtime/option-c/technician-handoff.json)
+**Why keep an alert open?** At 1,035 m³/h after an adjustment, CO₂ fell to 720 ppm but PM2.5 stayed at 60 µg/m³ above the zone target of 45. The operations app kept the room alert open. In a **separate cloud incident**, airflow was 360 m³/h against 900. A MEC sensor reported 35% shaft opening after a 100% command. The maintenance app moved actuator travel and position feedback to the top of the same work order. The technician workbench recorded the scheduled inspection in an automated trial, and the incident stayed open. Both cases use virtual equipment. [Watch the film](deliverables/video/openSoom-air-quality-720p.mp4) · [Local trial records](evidence/runtime/air-quality-outcomes.json) · [Native cloud work order](evidence/runtime/option-c/technician-handoff.json)
 
 ![Actual operator screen showing PM2.5 above target while CO₂ is within target](evidence/application/air-quality-persistent.png)
 

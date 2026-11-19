@@ -5,11 +5,11 @@
   "cloud_source_run": "demo-c172aa90d9",
   "local_table_run": "demo-ff1ed37f87",
   "files": {
-    "pitch/index.html": "d1a58daf91bb6597c9ced0a73de8800d1f15efe3a5f41ce5a6b5234257a7520f",
-    "pitch/style.css": "80424d4cc4cb46d88dc0cb97fc352810bd3ae15a56106911a295652d3c083df6",
+    "pitch/index.html": "c59b3e60952d7f5ce70b7aee9599fb00f06a3f925945d4ccd60e3b8698ecfe0d",
+    "pitch/style.css": "8307952df589d28a03a82157e5492229b777c11b16201cf1ba94cb7e0cce8515",
     "pitch/air-outcomes.js": "561f81131d7f3da94bfc28f6933f2468310d50093f0a9005557e9422406c809e",
-    "pitch/assets/role-film-poster.jpg": "18bfe49fa5a8b7c751cfa05b536efc1e46371a916476735248a8dd62909f19af",
-    "deliverables/video/openSoom-air-quality-720p.mp4": "55820c5ea78eeaf3799b32d559f3f0f47e1e43347b5ac6f37d58bd7ddbb537db",
+    "pitch/assets/role-film-poster.jpg": "6b6855846e48a4bcaa74683a0cfa1749df2b48d157af801f9854a634bf50ce2b",
+    "deliverables/video/openSoom-air-quality-720p.mp4": "338ef6f98eabd05ef6bcf7bd0dd2c2d34c13ed348c77f0cef60d1c27fc4ac8fe",
     "evidence/runtime/option-c/technician-handoff.json": "8abb401d1ef9471bf57f147d5ed62efe377f4f3cb41f1835ea14c6d71af3d7a4",
     "evidence/runtime/air-quality-outcomes.json": "4bfc39cd287f8680c9838ab8a9d10d350aeabaae75470958248f3b46650d8437"
   },

@@ -20,7 +20,7 @@ CHAPTERS = [
     (21, 'maintenance-incident', 'In a separate incident, the damper acknowledged a full-opening command. Airflow reached only 40 percent of its target.'),
     (30, 'independent-reading', 'The bridge queries the independent shaft sensor through the MEC service. It reports only 35 percent open.'),
     (38.5, 'maintenance-decision', 'With that reading, the maintenance app updates the same work order. Check actuator travel and position feedback first.'),
-    (47.75, 'field-handoff', 'The technician schedules the check. Through oneM2M, operations sees the update. The incident stays open.'),
+    (47.75, 'field-handoff', 'The workbench records the scheduled check. Operations sees it through oneM2M. The incident stays open.'),
 ]
 END = 56
 OP_BG = '#142e31'
@@ -93,7 +93,7 @@ def render_frame(index, when, source_frame, images, operator, cloud):
     entry=cloud['technician_http']['entry']
     ids = [
         ('Local run  '+operator['run_id']+'     /     command  '+operator['command_id'],'Recorded local oneM2M console'),
-        ('Local run  '+operator['run_id']+'     /     original reading  '+operator['latest']['cin_ri'],'Recorded local oneM2M console'),
+        ('Local run  '+operator['run_id']+'     /     later verification sample  '+operator['latest']['cin_ri'],'Recorded local oneM2M console'),
         ('Local incident  '+operator['incident']['id']+'     /     persisted state  '+operator['incident']['status'],'Recorded local oneM2M console'),
         ('Cloud run  '+cloud['run_id']+'     /     work order  '+order['work_order_id'],'Workbench replay · archived cloud response'),
         ('oneM2M sensor response  '+cloud['native_cse_path']['response']['ri']+'     /     '+order['sample']['sensor_id'],'Archived cloud sensor response'),
@@ -212,7 +212,7 @@ def render():
         mix=''.join(f'[a{i}]' for i in range(len(vo)))+f'amix=inputs={len(vo)}:normalize=0,apad[audio]'
         run('ffmpeg','-y','-v','error','-i',silent,*[av for f in vo for av in ('-i',f)],'-i',srt,'-filter_complex',';'.join([*delays,mix]),'-map','0:v','-map','[audio]','-map',f'{len(vo)+1}:s','-c:v','copy','-c:a','aac','-b:a','128k','-ar','48000','-c:s','mov_text','-metadata:s:a:0','language=eng','-metadata:s:s:0','language=eng','-movflags','+faststart','-t',str(END),movie)
         run('ffmpeg','-v','error','-i',movie,'-map','0:v','-map','0:a','-f','null','-')
-        files=[SOURCE/p for p in ('operator-source.mp4','operator-incident.json','revision-3.png','revision-4.png','scheduled.png')]+[CLOUD,ROOT/'src/opensoom/technician_web/workbench.js',ROOT/'src/opensoom/technician_web/index.html',ROOT/'src/opensoom/technician_web/workbench.css']
+        files=[SOURCE/p for p in ('operator-source.mp4','operator-incident.json','operator-native-readings.json','revision-3.png','revision-4.png','scheduled.png')]+[CLOUD,ROOT/'src/opensoom/technician_web/workbench.js',ROOT/'src/opensoom/technician_web/index.html',ROOT/'src/opensoom/technician_web/workbench.css']
         result={'title':'Keep the alert open. Choose the first inspection.','public_film':movie.name,'sha256':digest(movie),'captions_sha256':digest(srt),'seconds':duration(movie),'resolution':[WIDTH,HEIGHT],'fps':FPS,'method':'Actual operator console capture from a local ACME trial. Case B is a different recorded cloud maintenance incident; the shipped workbench renders the archived response locally. All equipment readings are virtual. Native MEC 046 GET supplied the recorded 35%. No new cloud execution or human field inspection was filmed. English narration, burned captions and selectable subtitles.','operator_run':operator['run_id'],'operator_incident':operator['incident']['id'],'cloud_run':cloud['run_id'],'cloud_work_order':cloud['technician_http']['reviewed_order']['work_order_id'],'scenes':stamps,'source_sha256':{str(p.relative_to(ROOT)):digest(p) for p in files},'tools':['scripts/cinematic/retain_role_source.py','scripts/cinematic/capture_role_workbench.cjs','scripts/cinematic/render_role_handoff.py']}
         (ROOT/'evidence/video/air-quality-film.json').write_text(json.dumps(result,indent=2)+'\n')
         print(json.dumps({'seconds':result['seconds'],'sha256':result['sha256']}))

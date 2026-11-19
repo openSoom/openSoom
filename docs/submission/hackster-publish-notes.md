@@ -15,7 +15,7 @@
 | Video thumbnail | Use the same cover image as the article. The kitchen background is the project’s [AI-generated illustration](../../deliverables/video/cinematic/firefly/kitchen.png). |
 | Story | [English publication copy](hackster-article.md). The submission ZIP also contains a formatted copy for the Story editor and both inline images. |
 
-1. Upload the MP4 to your YouTube or Vimeo account. Hackster supports **unlisted** videos. Set English captions from the SRT if the host offers the option. The movie also has visible captions.
+1. Upload the MP4 to your YouTube or Vimeo account. Hackster supports **unlisted** videos. Set English captions from the SRT if the host offers the option. The movie already displays English captions. If your player displays two layers, turn off its selectable CC track.
 2. Create a public Hackster project. Enter the title, short description and source link above. In Story, paste the formatted article. Put the YouTube or Vimeo URL on its own line immediately after the opening two paragraphs and press Enter. Set the cover. If the editor discards the two inline images, insert the supplied operator and architecture images at their matching paragraphs. Keep the GitHub MP4 link as an independent download. [Hackster’s video embed instructions](https://help.hackster.io/en/articles/1895235-how-do-i-add-a-video-to-my-project)
 3. Publish the project. Open the public article in a signed-out window, play the video, check the images and open the repository. Use the article URL for the Discord submission and schedule. [Organizer handoff](handoff.md)
 
