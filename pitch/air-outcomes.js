@@ -1,3 +1,45 @@
+const film = document.querySelector('#role-film video');
+const loopback = ['localhost', '127.0.0.1', '[::1]'].includes(location.hostname);
+let seekableCopy;
+
+function prepareFilm() {
+  if (!loopback) return Promise.resolve();
+  // Python's static server serves the full MP4 without HTTP byte ranges.
+  // Load a seekable local copy on first play so both chapters also work offline.
+  seekableCopy ??= fetch(film.querySelector('source').src)
+    .then(response => {
+      if (!response.ok) throw new Error('Local film unavailable');
+      return response.blob();
+    })
+    .then(blob => new Promise((resolve, reject) => {
+      film.addEventListener('loadedmetadata', resolve, {once: true});
+      film.addEventListener('error', reject, {once: true});
+      film.src = URL.createObjectURL(blob);
+    }))
+    .catch(() => {
+      film.removeAttribute('src');
+      film.load();
+    });
+  return seekableCopy;
+}
+
+async function playFilm(start) {
+  await prepareFilm();
+  if (start !== undefined) film.currentTime = start;
+  film.play().catch(() => { film.controls = true; });
+}
+
+film.addEventListener('play', () => {
+  if (loopback && !seekableCopy) playFilm(film.currentTime);
+}, {once: true});
+document.getElementById('play-role-film').addEventListener('click', () => {
+  film.focus();
+  playFilm();
+});
+for (const button of document.querySelectorAll('[data-film-start]')) {
+  button.addEventListener('click', () => playFilm(Number(button.dataset.filmStart)));
+}
+
 const buttons = [...document.querySelectorAll('[data-outcome]')];
 const put = (id, value) => { document.getElementById(id).textContent = value; };
 const decimal = new Intl.NumberFormat('en', { maximumFractionDigits: 1 });
@@ -23,8 +65,9 @@ function drawOutcome(study, id) {
   put('air-hold-label', prior ? 'Last observed spell in range' : 'Observed time in range');
   put('air-hold', seconds(prior ? previous : current));
   put('air-verdict', current != null ? 'Both readings reached the zone targets.' :
-    (prior ? 'Particles rose above target again.' : 'Particles remained above target.'));
-  put('air-rule', 'Zone targets: PM2.5 ≤ ' + fmt(targets.pm25) + ' µg/m³ and CO₂ ≤ ' + fmt(targets.co2) + ' ppm. Elapsed from device acknowledgement to recorded samples.');
+    (prior ? 'Particles exceeded the target again. Keep the air alert open.' : 'Keep the alert open. Particles exceeded the zone target.'));
+  put('air-rule', 'Zone targets are PM2.5 ≤ ' + fmt(targets.pm25) + ' µg/m³ and CO₂ ≤ ' + fmt(targets.co2) +
+    ' ppm. Airflow was 1,035 m³/h after the command in each recorded trial.');
   for (const button of buttons) button.setAttribute('aria-pressed', String(button.dataset.outcome === id));
 }
 

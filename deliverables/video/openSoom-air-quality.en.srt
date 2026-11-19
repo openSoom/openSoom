@@ -1,23 +1,27 @@
 1
-00:00:00,000 --> 00:00:11,405
-Did the room air improve after ventilation? Watch the two pollutant readings.
+00:00:00,000 --> 00:00:06,500
+A ventilation command went through. Can the operator clear the air-quality alert?
 
 2
-00:00:11,405 --> 00:00:16,474
-Both reach their targets. The second clock measures the observed spell in range.
+00:00:06,500 --> 00:00:14,250
+Fine particles stay at 60, above the zone limit of 45. Carbon dioxide falls within its limit.
 
 3
-00:00:16,474 --> 00:00:26,856
-The same virtual cooking line receives another adjustment.
+00:00:14,250 --> 00:00:21,000
+Both targets must be met together. The operator keeps the alert open for the next shift.
 
 4
-00:00:26,856 --> 00:00:33,731
-Carbon dioxide falls. Fine particles stay above the zone target. Neither clock records attainment.
+00:00:21,000 --> 00:00:30,000
+In a separate incident, the damper acknowledged a full-opening command. Airflow reached only 40 percent of its target.
 
 5
-00:00:33,731 --> 00:00:50,565
-Here the readings initially reach both targets. Each new sample can extend the observed time.
+00:00:30,000 --> 00:00:38,500
+The bridge queries the independent shaft sensor through the MEC service. It reports only 35 percent open.
 
 6
-00:00:50,565 --> 00:00:55,873
-Particles rise again. The first target time and the previous spell remain visible.
+00:00:38,500 --> 00:00:47,750
+With that reading, the maintenance app updates the same work order. Check actuator travel and position feedback first.
+
+7
+00:00:47,750 --> 00:00:56,000
+The technician schedules the check. Through oneM2M, operations sees the update. The incident stays open.

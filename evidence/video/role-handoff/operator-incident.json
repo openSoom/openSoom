@@ -1,0 +1,41 @@
+{
+  "method": "Original ordinary Chrome screenshots in acquisition order; variable capture times resampled to 24 fps. Command and incident independently extracted from the persisted operations store of the same local ACME trial at run closure.",
+  "scope": "Virtual equipment. UI frames are an actual local operator recording.",
+  "run_id": "demo-bd5a62228f",
+  "command_id": "cmd-d719691490e1",
+  "zone_id": "cook",
+  "incident": {
+    "id": "incident-3f5a10f732",
+    "status": "open",
+    "reason": "Particles exceed the configured simulation target",
+    "updated_at": "2026-11-19T17:05:43.589+00:00",
+    "latest_rqi": "opensoom-76e65751b22e4080abe6bda88f36a01f",
+    "archived_at": "2026-11-19T17:05:45.370+00:00"
+  },
+  "command_status": "unresolved",
+  "ack_at": "2026-11-19T17:05:35.240+00:00",
+  "ack_cin_ri": "cinE4s7E3MjQh",
+  "profile_targets": {
+    "pm25": 45,
+    "co2": 1200
+  },
+  "baseline": {
+    "observed_at": "2026-11-19T17:05:33.629+00:00",
+    "cin_ri": "cinx3wjxqVaq8",
+    "cin_path": "cse-food/opensoom/facilities/food-a/cook/observations/cin_ERLz9VICK2",
+    "read_rqi": "opensoom-a1830242a0a643c2ac19aff2c2db4474",
+    "pm25": 75.0,
+    "co2": 1500.0
+  },
+  "latest": {
+    "observed_at": "2026-11-19T17:05:43.579+00:00",
+    "cin_ri": "cinaN6LAgdNKm",
+    "cin_path": "cse-food/opensoom/facilities/food-a/cook/observations/cin_fFAXoe24GN",
+    "read_rqi": "opensoom-76e65751b22e4080abe6bda88f36a01f",
+    "pm25": 60.0,
+    "co2": 720.0
+  },
+  "first_target_at": null,
+  "browser_frames": 30,
+  "source_clip_sha256": "772a9b23bc6306b28da980c04bac6d1f1af86355270c84045e3b597c799fb379"
+}

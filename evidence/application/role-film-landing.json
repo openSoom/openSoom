@@ -1,0 +1,150 @@
+{
+  "status": "passed",
+  "scope": "Local Chrome with a fresh browser context and no signed-in user. Initial selection, keyboard selection of all three recorded local trials, original cloud work order and sensor readback IDs, separate-source links and keyboard-operated native playback at three viewport widths.",
+  "film_run": "demo-bd5a62228f",
+  "cloud_source_run": "demo-c172aa90d9",
+  "local_table_run": "demo-ff1ed37f87",
+  "files": {
+    "pitch/index.html": "d1a58daf91bb6597c9ced0a73de8800d1f15efe3a5f41ce5a6b5234257a7520f",
+    "pitch/style.css": "80424d4cc4cb46d88dc0cb97fc352810bd3ae15a56106911a295652d3c083df6",
+    "pitch/air-outcomes.js": "561f81131d7f3da94bfc28f6933f2468310d50093f0a9005557e9422406c809e",
+    "pitch/assets/role-film-poster.jpg": "18bfe49fa5a8b7c751cfa05b536efc1e46371a916476735248a8dd62909f19af",
+    "deliverables/video/openSoom-air-quality-720p.mp4": "55820c5ea78eeaf3799b32d559f3f0f47e1e43347b5ac6f37d58bd7ddbb537db",
+    "evidence/runtime/option-c/technician-handoff.json": "8abb401d1ef9471bf57f147d5ed62efe377f4f3cb41f1835ea14c6d71af3d7a4",
+    "evidence/runtime/air-quality-outcomes.json": "4bfc39cd287f8680c9838ab8a9d10d350aeabaae75470958248f3b46650d8437"
+  },
+  "checks": [
+    {
+      "viewport": 1440,
+      "initial_case": "air_quality_persistent",
+      "verified_trials": [
+        {
+          "scenario": "air_quality_recovery",
+          "pm25": "15",
+          "co2": "720",
+          "first": "6.2 s",
+          "hold": "10.2 s"
+        },
+        {
+          "scenario": "air_quality_persistent",
+          "pm25": "60",
+          "co2": "720",
+          "first": "Not observed",
+          "hold": "Not observed"
+        },
+        {
+          "scenario": "air_quality_rebound",
+          "pm25": "60",
+          "co2": "720",
+          "first": "6.2 s",
+          "hold": "6.2 s"
+        }
+      ],
+      "cloud_record_ids": [
+        "cinPbVMvYLWQ2",
+        "cin3OIMghQfKP"
+      ],
+      "native_video": {
+        "width": 1280,
+        "height": 720,
+        "localSource": true,
+        "seconds": 56
+      },
+      "video_width_css_pixels": 690.296875,
+      "horizontal_overflow": 0,
+      "application_links": true,
+      "keyboard_chapters_seconds": [
+        0,
+        21
+      ]
+    },
+    {
+      "viewport": 390,
+      "initial_case": "air_quality_persistent",
+      "verified_trials": [
+        {
+          "scenario": "air_quality_recovery",
+          "pm25": "15",
+          "co2": "720",
+          "first": "6.2 s",
+          "hold": "10.2 s"
+        },
+        {
+          "scenario": "air_quality_persistent",
+          "pm25": "60",
+          "co2": "720",
+          "first": "Not observed",
+          "hold": "Not observed"
+        },
+        {
+          "scenario": "air_quality_rebound",
+          "pm25": "60",
+          "co2": "720",
+          "first": "6.2 s",
+          "hold": "6.2 s"
+        }
+      ],
+      "cloud_record_ids": [
+        "cinPbVMvYLWQ2",
+        "cin3OIMghQfKP"
+      ],
+      "native_video": {
+        "width": 1280,
+        "height": 720,
+        "localSource": true,
+        "seconds": 56
+      },
+      "video_width_css_pixels": 343.21875,
+      "horizontal_overflow": 0,
+      "application_links": true,
+      "keyboard_chapters_seconds": [
+        0,
+        21
+      ]
+    },
+    {
+      "viewport": 320,
+      "initial_case": "air_quality_persistent",
+      "verified_trials": [
+        {
+          "scenario": "air_quality_recovery",
+          "pm25": "15",
+          "co2": "720",
+          "first": "6.2 s",
+          "hold": "10.2 s"
+        },
+        {
+          "scenario": "air_quality_persistent",
+          "pm25": "60",
+          "co2": "720",
+          "first": "Not observed",
+          "hold": "Not observed"
+        },
+        {
+          "scenario": "air_quality_rebound",
+          "pm25": "60",
+          "co2": "720",
+          "first": "6.2 s",
+          "hold": "6.2 s"
+        }
+      ],
+      "cloud_record_ids": [
+        "cinPbVMvYLWQ2",
+        "cin3OIMghQfKP"
+      ],
+      "native_video": {
+        "width": 1280,
+        "height": 720,
+        "localSource": true,
+        "seconds": 56
+      },
+      "video_width_css_pixels": 281.625,
+      "horizontal_overflow": 0,
+      "application_links": true,
+      "keyboard_chapters_seconds": [
+        0,
+        21
+      ]
+    }
+  ]
+}

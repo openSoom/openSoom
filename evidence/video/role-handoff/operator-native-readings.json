@@ -1,0 +1,35 @@
+{
+  "run_id": "demo-bd5a62228f",
+  "command_id": "cmd-d719691490e1",
+  "scope": "Field-selected excerpt of the original local native oneM2M GET trace. The held panel and the subsequent persisted reading are separate CINs from the same command. Airflow is the adapter field in cubic metres per hour. PM2.5 is in micrograms per cubic metre and CO2 in ppm.",
+  "samples": {
+    "held_panel": {
+      "method": "GET",
+      "path": "cse-food/opensoom/facilities/food-a/cook/observations/la",
+      "rqi": "opensoom-158715c6127243b38383bf5a16825cdf",
+      "rsc": 2000,
+      "cin_ri": "cinRhWnxAXBVP",
+      "facility_id": "food-a",
+      "zone_id": "cook",
+      "observed_at": "2026-11-19T17:05:41.527+00:00",
+      "source": "simulated",
+      "pm25": 60.0,
+      "co2": 720.0,
+      "airflow": 1035.0
+    },
+    "subsequent_persisted_sample": {
+      "method": "GET",
+      "path": "cse-food/opensoom/facilities/food-a/cook/observations/la",
+      "rqi": "opensoom-76e65751b22e4080abe6bda88f36a01f",
+      "rsc": 2000,
+      "cin_ri": "cinaN6LAgdNKm",
+      "facility_id": "food-a",
+      "zone_id": "cook",
+      "observed_at": "2026-11-19T17:05:43.579+00:00",
+      "source": "simulated",
+      "pm25": 60.0,
+      "co2": 720.0,
+      "airflow": 1035.0
+    }
+  }
+}

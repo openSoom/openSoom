@@ -1,5 +1,6 @@
 {
-  "method": "macOS synthesized English read-through at 116 words/minute nominal, excluding stage directions; actual encoded movie duration added. Optional additional live replay is budgeted separately.",
+  "method": "macOS synthesized English read-through at a nominal 116 words per minute; measured audio per slide excludes stage directions. Film duration is the encoded MP4. Three 30-second audience exercises are planned, including offline equivalents.",
+  "script_sha256": "877170a3c255d240d5971b3c41b1daf9d7eddd3063a42ded6725a0c16f880d7e",
   "slides": [
     {
       "slide": 1,
@@ -13,23 +14,23 @@
     },
     {
       "slide": 3,
-      "words": 136,
-      "speech_seconds": 51.76
+      "words": 135,
+      "speech_seconds": 51.17
     },
     {
       "slide": 4,
-      "words": 118,
-      "speech_seconds": 44.08
+      "words": 127,
+      "speech_seconds": 48.66
     },
     {
       "slide": 5,
-      "words": 131,
-      "speech_seconds": 45.46
+      "words": 109,
+      "speech_seconds": 40.82
     },
     {
       "slide": 6,
-      "words": 112,
-      "speech_seconds": 42.44
+      "words": 120,
+      "speech_seconds": 45.64
     },
     {
       "slide": 7,
@@ -38,8 +39,8 @@
     },
     {
       "slide": 8,
-      "words": 116,
-      "speech_seconds": 47.42
+      "words": 106,
+      "speech_seconds": 43.85
     },
     {
       "slide": 9,
@@ -48,19 +49,22 @@
     },
     {
       "slide": 10,
-      "words": 136,
-      "speech_seconds": 54.02
+      "words": 143,
+      "speech_seconds": 55.19
     }
   ],
-  "spoken_seconds": 481.49,
-  "film_seconds": 55.894292,
-  "speech_plus_film_seconds": 537.38,
-  "suggested_live_demo_allowance_seconds": 90,
-  "script_sha256": "0fb6323bac056f94df609c576d9928515f2267bb8258f4686d3dfab2d05753c7",
+  "spoken_seconds": 481.64,
+  "film_sha256": "55820c5ea78eeaf3799b32d559f3f0f47e1e43347b5ac6f37d58bd7ddbb537db",
+  "film_seconds": 56,
+  "speech_plus_film_seconds": 537.64,
   "interaction_allowances": {
-    "room_comparison": 30,
-    "live_target_crossing": 30,
-    "previous_action_and_source_records": 30
+    "slides": [
+      3,
+      5,
+      6
+    ],
+    "seconds_each": 30,
+    "total_seconds": 90
   },
-  "planned_total_seconds": 627.38
+  "planned_total_seconds": 627.64
 }

@@ -1,6 +1,6 @@
 # openSoom films
 
-The current evaluation film is [Did the air get better? (720p)](openSoom-air-quality-720p.mp4). It shows three ordinary dashboard runs with virtual equipment: recovery, persistent particles and rebound. The 55.9-second MP4 has English narration and both visible and selectable captions. [Captions](openSoom-air-quality.en.srt) · [Frame acquisition, command IDs and checksum](../../evidence/video/air-quality-film.json)
+The evaluation film is [Keep the alert open. Choose the first inspection. (720p)](openSoom-air-quality-720p.mp4). The local operator sees particles remain above target and leaves the alert open. In a separate low-flow incident the maintenance app uses an independent MEC sensor to prioritize an actuator inspection. Equipment is virtual. The cloud sequence uses retained responses from the real MEC service and work order. English narration, visible subtitles and a selectable caption track are included. [Captions](openSoom-air-quality.en.srt) · [Film sources and checksum](../../evidence/video/air-quality-film.json) · [Cloud handoff](../../evidence/runtime/option-c/technician-handoff.json)
 
 The following films document earlier demonstrations.
 

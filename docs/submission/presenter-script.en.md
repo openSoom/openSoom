@@ -1,8 +1,8 @@
 # Did the air get better?
 
-Use the [evaluation slides](../../deliverables/presentation/openSoom-evaluation.pptx), [720p air-quality demo](../../deliverables/video/openSoom-air-quality-720p.mp4) and [live operator console](http://127.0.0.1:19490/). Open the virtual cooking line before the session. Italic lines are stage directions. The three runs have independent measurement clocks. Read the seconds shown on the screen for the selected command. [Korean rehearsal](presenter-script.ko.md)
+Use the [evaluation slides](../../deliverables/presentation/openSoom-evaluation.pptx), [English captioned film](../../deliverables/video/openSoom-air-quality-720p.mp4) and [Korean rehearsal](presenter-script.ko.md). Slide 5 presents two separate incidents. The first uses a local operator dashboard. The second uses records from one cloud MEC work order. Keep the downloaded MP4 alongside the slides for offline playback.
 
-**Presentation pacing.** The measured English read-through plus the film takes 8:57. Reserve another 90 seconds of guided interaction across slides 3, 5 and 6. Give the room 30 seconds to compare the two pollutants and identify the outstanding limit, 30 seconds for the live target crossing, and 30 seconds to open the command history and inspect the original evidence. Together these give a planned 10:27 presentation. [Rehearsal timing](../../evidence/presentation/air-quality-rehearsal.json)
+**Presentation pacing.** Allow 30 seconds on each of slides 3, 5 and 6 for the three guided exercises. Their offline versions use the slide, the downloaded film and the recorded handoff. [Measured English rehearsal](../../evidence/presentation/air-quality-rehearsal.json)
 
 ## 1 · Did the air get better?
 
@@ -16,33 +16,35 @@ One starting point was a school kitchen in Seoul. A government inspection found 
 
 A classroom and a cooking line can use the same method and have different targets. The facility defines which conditions it expects. In this demonstration the cooking line tracks fine particles, called PM2.5, and carbon dioxide. We compare each to the target configured for that zone. The values in this talk come from virtual equipment, with real software processing the observations. A field deployment would first establish sensor placement, targets and sampling cadence with the facility.
 
-## 3 · Read the room before diagnosing the equipment
+## 3 · Why the operator keeps the alert open
 
-Look at the cooking-line trial. The reading before the command was 75 micrograms of fine particles per cubic metre. In the recovery trial it fell to 15. Carbon dioxide went from 1,500 to 720 parts per million. Each comparison belongs to the same zone and the same adjustment. The operator can open the measurement records and check their acquisition times.
+*Give the audience 30 seconds to compare the last two readings with the targets on the slide. Ask which value they would report to the next shift. The slide works offline.*
 
-Now change just the outcome. In the persistent-particles trial the air is moving and carbon dioxide improves, but particles are still at 60. That is above this zone’s target of 45. A reassuring number on the carbon dioxide row would be a poor reason to close the warning. The operator needs to see which condition still needs attention. A different person coming on duty should be able to reach the same conclusion from the same evidence.
+These two readings come from the same zone after one adjustment. Fine particles fell from 75 to 60 micrograms per cubic metre. Carbon dioxide fell from 1,500 to 720 parts per million. Put yourself in the operator’s chair. There is a 52 percent drop on the right, and the ventilation system is moving air. Would you tell the next shift the warning is over?
 
-## 4 · When is an inspection useful?
+Look at the particle target. This facility chose 45, and the latest reading is 60. The system has yet to observe both measures inside their targets together. The operator keeps the alert open and can hand over a precise reason. In a separate recovery trial, both limits were reached after about six seconds and stayed within range across the next ten seconds of observations. Each clock belongs to its own trial.
 
-If the room is still outside its targets, we next look for an appropriate follow-up. The case on this slide is a separate equipment test. Airflow remained low after the adjustment. An independent sensor then measured only 35 percent shaft opening. That gives the technician a concrete first check at the actuator and its position feedback. It still takes a field examination to identify the cause.
+## 4 · Why maintenance calls for a different measurement
 
-In the particles-only trial the measured airflow is already adequate. A high particle reading alone gives us no reason to send someone to inspect a damper shaft. Keeping the room alert open and knowing which inspection to request are two separate decisions. That distinction matters when the next person inherits the case.
+Now consider a different incident, recorded in the cloud. A damper accepted a command to open fully, yet the zone was getting only 360 cubic metres per hour against its target of 900. The initial work order called for a general inspection. With that information, a technician still has several plausible places to start.
 
-## 5 · See the three outcomes
+The facility then connected a separately managed sensor through the edge service. It measured the damper shaft at 35 percent open. The mismatch between the request and the physical position in this simulation gives a technician a specific place to begin. Check the actuator travel and its position feedback first. A person still has to inspect the equipment to determine the cause. This second incident has its own command, measurements and work order.
 
-*Play the complete captioned air-quality film. Then open the dashboard, select the cooking line and run “Air clears after ventilation”. Let the audience watch the first valid observation and the next in-range observation. Allow about 30 seconds for this live demonstration.*
+## 5 · Keep the alert open. Choose the first inspection.
 
-Watch the two clocks. The first starts at device acknowledgement and ends at the first subsequent observation where both pollutants meet their targets. The second counts the observed span in range. A single good reading starts a span of zero seconds. Only a later qualifying measurement adds time. The timestamps come from the measurements. Reading the screen a minute later cannot add a minute of evidence.
+*Play the full English-captioned film on slide 5. Click the film poster in PowerPoint slide-show mode. The separate MP4 is the offline fallback. After playback, give the audience 30 seconds to identify the moment the inspection priority changed. Pause on the revision 3 and revision 4 records or return to slide 4.*
 
-In the rebound trial the particles rise again. We still know when the targets were first reached, and we can see the earlier span that ended. That is exactly the distinction I would want at a shift change. When the sensor goes quiet, the interface shows that the evidence has aged. We cannot fill in the missing interval by assuming the room stayed the same.
+In the opening scene the operator can explain exactly why the alert is still open. Carbon dioxide is within target and particles remain high. Those two readings justify keeping the room under observation. On their own they tell a technician very little about a particular damper.
 
-## 6 · Put the evidence in the next shift’s hands
+The second scene starts a separate low-flow case. Revision three of the work order called for a general inspection. When the independent shaft measurement arrived, the maintenance app updated the same work order to revision four. Its first check became the actuator and position feedback. The operator still owned the room alert. That is the moment that makes the second application worth having.
 
-*Open Measurement evidence. Point to the baseline, the acknowledgement and the latest observation. Show the technician workbench if time permits.*
+## 6 · What each person hands over
 
-The supervisor can give a precise handover. Here is the last reading before the action. Here is the controller’s acknowledgement. Here are the later observations that support our decision. For every comparison the values keep their units, their time and their original measurement identity. A second adjustment starts its own comparison. The first one remains available for review.
+*Allow 30 seconds. Identify the reviewed work-order revision, the scheduled inspection and the open incident. Use the embedded film’s final scene and slide 6 offline. The optional local [technician workbench](http://127.0.0.1:19492/) shows a separately seeded case.*
 
-The maintenance team sees its own work order. A technician can record which version they reviewed and what they intend to inspect. A recovered air-quality reading can sit alongside an open field inspection. That lets the supervisor describe the room as observed while the technician remains responsible for the work they have taken on.
+On the maintenance side, scheduling an inspection is a real action someone has to own. In the cloud trial, the technician application recorded an inspection against revision four. The operator’s view then showed the scheduled activity on that same order. The room incident was still open and there was no additional damper command. The field interface was exercised automatically using virtual equipment.
+
+At the next shift, the supervisor can say what the air measurements support. The technician can say what they intend to inspect and which measurement justified it. A later sensor reading can change the room’s status while the inspection remains open. That separation lets both people work from a shared record without handing either person the other’s authority.
 
 ## 7 · The equipment evidence has a specific job
 
@@ -50,11 +52,11 @@ In another workshop the airflow stayed at 515 cubic metres per hour, below the l
 
 That example explains why our operating interface preserves several kinds of observation. Concentrations help tell a facility what happened in the room. Airflow and independent mechanical position can help a technician choose the next inspection when airflow itself is deficient. A facility with a trustworthy local sensor can use it directly. A facility that contracts a separate sensor provider can bring in the same evidence through the edge service.
 
-## 8 · How it works
+## 8 · How the measurements reach each app
 
 *Keep the implementation explanation to about one minute.*
 
-The sensor adapter writes timestamped measurements to the facility’s oneM2M node. A subscription tells the operations app that new evidence is available. The app checks the original record, connects it to the correct command and acknowledgement, and applies that zone’s targets. The operator dashboard reads the result. An independently authorized maintenance app can work from the same event and maintain the inspection order. The CSE enforces the different permissions. In a separate cloud demonstration, our MEC service bridge registered an external provider and retrieved its virtual shaft reading. The operating app retained authority over the device. This lets a facility change an adapter or provider while keeping the decision and its history intelligible to both people.
+The adapter writes timestamped measurements to the facility’s oneM2M node. Its subscriptions notify the operations app, which reads the original observations, matches them to the command and applies the facility’s targets. Only site operations can issue device commands. The maintenance app has a different permission. It can request an independent measurement and revise the work order. A separate bridge discovers and reads the external sensor through the MEC platform. The technician’s app records the planned inspection against the exact revision it reviewed. We tested the cloud maintenance path on one virtual machine. A facility that already has a suitable local sensor can provide that evidence directly.
 
 ## 9 · Try it at another site
 
@@ -62,8 +64,8 @@ A manager can use the Codex plugin or a standalone model to prepare a virtual tr
 
 For a second facility, I would start with one observed zone. Agree on its targets, sensor cadence and what the team considers a meaningful time in range. Give the oncoming supervisor two records, one sustained and one with a rebound, and ask them to explain what happened without help.
 
-## 10 · What we can show today
+## 10 · What the next shift can verify
 
-Across an earlier comparison, sixteen designed virtual cases still required investigation. Accepting the equipment acknowledgement alone closed fourteen of those cases. Looking only at two airflow readings closed two. openSoom kept all sixteen open. Today’s three runs make the reason visible directly in a room’s pollution readings and timestamps.
+Across an earlier comparison, sixteen designed virtual cases still needed investigation. Accepting the equipment acknowledgement alone closed fourteen of them. Looking only at two airflow readings closed two. openSoom kept all sixteen open. In the four cases designed with a specific first inspection, the maintenance rule selected the expected check. Those figures describe our virtual test set.
 
-We can reproduce what changed after the adjustment and how long the sensors observed it. Demonstrating that a particular intervention caused the improvement, or that a real room stayed healthy for an entire shift, would require field evidence. The source, facility profiles and runnable trials are public. I would start a field pilot with the question we began with. When the next shift arrives, can they tell how much the air improved, how soon it reached the target, and how long that conclusion was supported? Thank you.
+The film puts two decisions in front of us. Is there enough evidence to hand over the room as recovered? And if the equipment still underperforms, what should someone inspect first? One supervisor can point to the particle reading; one technician can point to the shaft measurement. The project is open source and both records are available for review. Our next test is to give a real shift team its own calibrated measurements and find out whether they can make that handover without us. Thank you.

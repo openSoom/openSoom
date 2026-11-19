@@ -1,6 +1,6 @@
 # Technical interview notes
 
-Use the [English slides](../../deliverables/presentation/openSoom-evaluation.pptx), [English script](presenter-script.en.md) and [Korean rehearsal script](presenter-script.ko.md) for the 10–15 minute presentation and video. The organizer allocates 20 minutes including questions. The 720p film shows the operator dashboard in three air-quality trials, including a rebound after reaching the targets. The workbench is a separate local application.
+Use the [English slides](../../deliverables/presentation/openSoom-evaluation.pptx), [English script](presenter-script.en.md) and [Korean rehearsal script](presenter-script.ko.md) for the 10–15 minute presentation and video. The organizer allocates 20 minutes including questions. The film first shows the local operator keeping the particle alert open. A second incident follows the maintenance app from low airflow to an inspection priority, using a retained cloud MEC response. The original cloud test exercised the technician web service over HTTP.
 
 ### What exactly do the outcome clocks measure?
 
@@ -12,7 +12,7 @@ A November 2025 inspection in Seoul documented inadequate ventilation performanc
 
 ### What did the operator and technician each decide?
 
-In the cooking-line simulation, airflow after a 100% damper command remained at 360 m³/h against a 900 m³/h zone target. The operator kept the incident open. An independent 35% shaft-position reading made actuator travel and position feedback the first inspection. The same work order changed priority. Confirming a fault requires inspection. The virtual measurement gives no clinical or certified ventilation outcome. [Filmed local run](../../evidence/runtime/maintenance-release-local.json)
+The local operator saw PM2.5 stay at 60 µg/m³ against 45, even as CO₂ improved to 720 ppm and airflow reached 1,035 m³/h. The alert stayed open. In a separate cloud incident, the damper acknowledged 100% but airflow stayed at 360 m³/h against 900. The MEC 046 service supplied an independent virtual shaft reading of 35%. Maintenance revised the existing order from 3 to 4 and prioritized checking actuator travel and position feedback. The technician scheduled it. The operator saw the disposition while the incident stayed open. A field inspection would establish the cause. [Cloud handoff used in the film](../../evidence/runtime/option-c/technician-handoff.json)
 
 ### What can the two people record, and who changes the work order?
 
@@ -70,7 +70,7 @@ A facility administrator chooses its zones, profile, equipment bindings, install
 
 ### Which protocol and semantic claims can be reproduced?
 
-The protocol tests include native oneM2M MQTT/TLS primitives and HTTPS. The shared standard field is the TS-0023 air-quality sensor PM2.5 value, exposed in integer µg/m³ and discoverable as a flexContainer. The canonical measurement also preserves timestamp, units and original precision. CO₂ ppm and volumetric airflow use their own typed fields. In a separate native group test, a denied member produced a top-level 4103 on the pinned ACME version. Separate diagnostic member reads retain their own outcome. [Native MQTT evidence](../../evidence/runtime/cse-mqtt-tls-smoke.json) · [Standard model](../standard-model.md)
+In the secure product test, repeated device telemetry and acknowledgements used a persistent native MQTT/TLS connection. Operations used HTTPS for identified resource reads and commands with a request/response. The ordinary local film used HTTP loopback. [Secure product acceptance](../../evidence/application/release-acceptance.json) The shared standard field is the TS-0023 air-quality sensor PM2.5 value, exposed in integer µg/m³ and discoverable as a flexContainer. The canonical measurement also preserves timestamp, units and original precision. CO₂ ppm and volumetric airflow use their own typed fields. In a separate native group test, a denied member produced a top-level 4103 on the pinned ACME version. Separate diagnostic member reads retain their own outcome. [Native MQTT evidence](../../evidence/runtime/cse-mqtt-tls-smoke.json) · [Standard model](../standard-model.md)
 
 ### Which identities can act?
 
@@ -78,7 +78,7 @@ Worker gateway credentials bind each allowed role to its facility-specific AE id
 
 ### How do you distinguish a central outage, a maintenance app restart and a serving-CSE transfer?
 
-During the central outage test the facility kept its current local CSE and completed an operation while the IN-CSE was down. In the filmed maintenance test the MN-CSE stayed available and the restarted app caught up on durable events. In a separate planned-maintenance experiment two failed probes moved a stable endpoint to the second same-host CSE and restored incident state and access configuration. Each test has its own failure boundary. [Central outage](../../evidence/runtime/product-multisite-continuity.json) · [Application restart](../../evidence/runtime/maintenance-release-local.json) · [Serving-CSE transfer](../../evidence/runtime/handover/acceptance.json)
+During the central outage test the facility kept its current local CSE and completed an operation while the IN-CSE was down. In the separate local maintenance restart test the MN-CSE stayed available and the restarted app caught up on durable events. In a separate planned-maintenance experiment two failed probes moved a stable endpoint to the second same-host CSE and restored incident state and access configuration. Each test has its own failure boundary. [Central outage](../../evidence/runtime/product-multisite-continuity.json) · [Application restart](../../evidence/runtime/maintenance-release-local.json) · [Serving-CSE transfer](../../evidence/runtime/handover/acceptance.json)
 
 ### What would convince you the product works in the field?
 
@@ -86,4 +86,4 @@ Start with one zone under observation. Establish the facility’s own targets wi
 
 ### Before the interview
 
-Download the [PPTX](../../deliverables/presentation/openSoom-evaluation.pptx), [PDF](../../deliverables/presentation/openSoom-evaluation.pdf) and [720p MP4](../../deliverables/video/openSoom-air-quality-720p.mp4). Play the air-quality film on slide 5. For slide 6 open the operator dashboard, select the action and expand Measurement evidence. The technician workbench is an optional handoff. If the lab is unavailable, keep the same three 30-second audience exercises offline. Use the slide 3 table to identify the outstanding pollutant, pause the downloaded film at the first target reading on slide 5, and inspect the saved command and sample IDs on slide 6. Upload the slides to the designated Drive folder by Sunday, 22 November 2026, confirm the organizer’s assigned `PICK` slot and join before it begins. [Submission handoff](handoff.md)
+Download the [PPTX](../../deliverables/presentation/openSoom-evaluation.pptx), [PDF](../../deliverables/presentation/openSoom-evaluation.pdf) and [720p MP4](../../deliverables/video/openSoom-air-quality-720p.mp4). Play the two-case film on slide 5. Use slide 6 to trace the work order, the technician’s disposition and the operator’s still-open incident. If the lab is unavailable, keep the same three 30-second audience exercises offline. Use the slide 3 table to identify the outstanding pollutant, pause the film on the separate MEC case on slide 5, and inspect the saved order revision and scheduling receipt on slide 6. Upload the slides to the designated Drive folder by Sunday, 22 November 2026, confirm the organizer’s assigned `PICK` slot and join before it begins. [Submission handoff](handoff.md)

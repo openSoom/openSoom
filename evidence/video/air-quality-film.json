@@ -1,48 +1,77 @@
 {
+  "title": "Keep the alert open. Choose the first inspection.",
   "public_film": "openSoom-air-quality-720p.mp4",
-  "sha256": "c8beb1bfb3e27ebdde979272196347f1cfd8badd14a7b60c92fc9190dee6ae8b",
-  "seconds": 55.894292,
+  "sha256": "55820c5ea78eeaf3799b32d559f3f0f47e1e43347b5ac6f37d58bd7ddbb537db",
+  "captions_sha256": "1aa9d691a8aaf1033bdb6b1520e19f581bedc87f8ef75ed54c3ef820a4bba7b4",
+  "seconds": 56.0,
   "resolution": [
     1280,
     720
   ],
-  "method": "Three distinct ordinary UI runs on a local native ACME and virtual equipment. Cropped original browser frames retain acquisition order and recorded elapsed time. Last screen held for narration. English synthetic voice, burned-in and selectable subtitles.",
-  "cases": {
-    "air_quality_recovery": {
-      "run_id": "demo-f1b187f62d",
-      "status": "Both targets met",
-      "hold": "6.2 s",
-      "first": "6.2 s",
-      "pm25": "15",
-      "co2": "720",
-      "command": "cmd-a9a6c6fb0382",
-      "starts_at": 0,
-      "seconds": 16.473688,
-      "browser_frames": 29
+  "fps": 24,
+  "method": "Actual operator console capture from a local ACME trial. Case B is a different recorded cloud maintenance incident; the shipped workbench renders the archived response locally. All equipment readings are virtual. Native MEC 046 GET supplied the recorded 35%. No new cloud execution or human field inspection was filmed. English narration, burned captions and selectable subtitles.",
+  "operator_run": "demo-bd5a62228f",
+  "operator_incident": "incident-3f5a10f732",
+  "cloud_run": "demo-c172aa90d9",
+  "cloud_work_order": "work-incident-ece6a50668",
+  "scenes": [
+    {
+      "scene": "operator-question",
+      "start": 0,
+      "end": 6.5,
+      "narration_seconds": 4.548
     },
-    "air_quality_persistent": {
-      "run_id": "demo-bd5a62228f",
-      "status": "Outside air-quality targets",
-      "hold": "\u2014",
-      "first": "Not reached",
-      "pm25": "60",
-      "co2": "720",
-      "command": "cmd-d719691490e1",
-      "starts_at": 16.474,
-      "seconds": 17.257313,
-      "browser_frames": 30
+    {
+      "scene": "operator-readings",
+      "start": 6.5,
+      "end": 14.25,
+      "narration_seconds": 6.34
     },
-    "air_quality_rebound": {
-      "run_id": "demo-e5464603d9",
-      "status": "Above target again",
-      "hold": "6.1 s",
-      "first": "6.2 s",
-      "pm25": "60",
-      "co2": "720",
-      "command": "cmd-1d48b6ddddb7",
-      "starts_at": 33.731,
-      "seconds": 22.141958,
-      "browser_frames": 46
+    {
+      "scene": "operator-decision",
+      "start": 14.25,
+      "end": 21,
+      "narration_seconds": 4.811
+    },
+    {
+      "scene": "maintenance-incident",
+      "start": 21,
+      "end": 30,
+      "narration_seconds": 6.649
+    },
+    {
+      "scene": "independent-reading",
+      "start": 30,
+      "end": 38.5,
+      "narration_seconds": 6.398
+    },
+    {
+      "scene": "maintenance-decision",
+      "start": 38.5,
+      "end": 47.75,
+      "narration_seconds": 6.643
+    },
+    {
+      "scene": "field-handoff",
+      "start": 47.75,
+      "end": 56,
+      "narration_seconds": 6.688
     }
-  }
+  ],
+  "source_sha256": {
+    "evidence/video/role-handoff/operator-source.mp4": "772a9b23bc6306b28da980c04bac6d1f1af86355270c84045e3b597c799fb379",
+    "evidence/video/role-handoff/operator-incident.json": "84074fd3acb213b4989d5984c9ab941e323e19e45f4677f97256235632719cff",
+    "evidence/video/role-handoff/revision-3.png": "f5f90e82b0e9d1c6da0ed342c6abb448cf9fc4e30d221257afae167b68391bf7",
+    "evidence/video/role-handoff/revision-4.png": "49360feeb3a1d351a77fedcec3bc6a958f5a33b3c61ef7ec51e8de9a179a8773",
+    "evidence/video/role-handoff/scheduled.png": "b2fcb3de5bfaa3d7a83a0c43744a87996d6b0842d70c98c215dc5c2c8b7a44b1",
+    "evidence/runtime/option-c/technician-handoff.json": "8abb401d1ef9471bf57f147d5ed62efe377f4f3cb41f1835ea14c6d71af3d7a4",
+    "src/opensoom/technician_web/workbench.js": "a243aebfaa7271a6e346b9a705ad3adc10b6320f524ff61b0499b176ecca053b",
+    "src/opensoom/technician_web/index.html": "d3531ed806b7fc8e10983c5ed37d529e980171e30dc8cd65413503bfdd3b7fac",
+    "src/opensoom/technician_web/workbench.css": "0e13af8fc401bb970a23aed0567c6c99c3e3c4f1c4c50dd2d24eee4203bd220b"
+  },
+  "tools": [
+    "scripts/cinematic/retain_role_source.py",
+    "scripts/cinematic/capture_role_workbench.cjs",
+    "scripts/cinematic/render_role_handoff.py"
+  ]
 }

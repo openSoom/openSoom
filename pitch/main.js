@@ -13,8 +13,8 @@ $$('[data-layer]').forEach(button => button.addEventListener('click', () => {
  $('#layer-body').textContent=data.body;$('#layer-proof').textContent=data.proof;$('#layer-proof').style.whiteSpace='pre-line';$('#layer-limit').textContent=data.limit;
 }));
 const guide = [
- {title:'환기 뒤 이 공간의 공기는 얼마나 나아졌을까요?',body:'환기 전후의 초미세먼지와 CO₂, 두 지표가 처음 목표에 든 시간, 목표 안에 머문 관측 시간을 함께 봅니다.',action:'Recovery와 Particles persist를 번갈아 선택하세요. Rebound에서는 첫 도달 후 다시 기준을 넘은 순간의 기록을 확인하세요.',target:'#top'},
- {title:'운영자와 정비사가 같은 사건에서 다른 판단을 합니다.',body:'운영자는 구역 공기질이 언제 목표에 도달했고 얼마나 유지됐는지 확인합니다. 정비사는 같은 작업지시서에서 점검할 곳을 정하고 활동을 기록합니다. MEC 정비 앱과 서비스 연동기는 화면 뒤에서 독립 센서의 출처와 시각을 확인합니다.',action:'두 앱의 링크를 보여주고 정비사 화면에서 점검 일정을 저장하세요. 운영자 콘솔에 그 상태가 돌아와도 풍량이 부족한 동안 사건은 열려 있습니다.',target:'#human-apps'},
+ {title:'공기질 경보를 해제해도 될까요?',body:'첫 사건은 CO₂가 720 ppm까지 내려갔지만 초미세먼지가 60 µg/m³로 남아 구역 기준 45를 넘습니다. 운영자는 경보를 유지합니다.',action:'영상을 재생하고 운영자의 경보 유지부터 보세요. 두 번째 장면은 별도 클라우드 사건입니다.',target:'#top'},
+ {title:'별도의 저풍량 사건에서 첫 점검 부위를 정합니다.',body:'풍량이 900 m³/h 목표에서 360에 머문 사건입니다. 100% 개방 명령에 독립 MEC 센서가 35%를 보고했습니다. 정비 앱이 같은 작업지시서를 3판에서 4판으로 갱신해 구동부와 위치 피드백을 먼저 점검하도록 했습니다.',action:'클라우드 기록에서 센서와 작업지시서 ID를 펼쳐 보세요. 정비사가 점검 일정을 저장한 뒤에도 운영 사건은 열려 있었습니다.',target:'#human-apps'},
  {title:'AI는 도구를 고르고, 서비스가 권한과 결과를 검증합니다.',body:'LLM은 시설의 최신 증거를 읽고 허용된 조치를 요청합니다. 역할·시설·프로필·데이터 신선도는 서버가 검사합니다. 모델이 “성공”이라고 말해도 그것만으로 회복이 되지 않습니다.',action:'Observe, Authorize, Acknowledge, Verify 순서로 설명합니다. ACK 뒤의 서로 다른 정상 관측 2개가 필요합니다. 미회복 테스트도 함께 말하세요.',target:'#workflow'},
  {title:'중앙 연결이 끊겨도 현장에 필요한 판단은 남아 있습니다.',body:'두 시설의 MN-CSE와 중앙 IN-CSE를 실제로 실행했습니다. 중앙을 중단한 동안 현장 관측·명령·ACK·회복이 이어졌습니다. 재연결 후 만료된 중앙 명령은 거절됩니다.',action:'Across facilities와 Central offline을 선택하세요. 이는 중앙 장애 중 현장 연속성 시험이며 CSE handover나 MEC 배포는 아니라고 구분합니다.',target:'#explore',view:'network',condition:'offline'},
  {title:'구현된 것, 가상인 것, 아직 확인하지 않은 것을 구분합니다.',body:'CSE·프로토콜·MCP·실제 모델 호출은 실행했습니다. 센서와 액추에이터는 가상입니다. Codex는 CLI 호스트 호출을 검증했고 별도 데스크톱 UI나 실제 장비 검증은 하지 않았습니다.',action:'증거 링크를 열어 run ID와 명령·ACK·이후 관측의 연결을 보여줍니다. 테스트 PASS가 건강 효과나 미회복 시설의 정상화를 의미하지 않습니다.',target:'#proof'},
