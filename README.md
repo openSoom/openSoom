@@ -12,6 +12,7 @@
   <a href="https://github.com/openSoom/openSoom/raw/refs/heads/main/deliverables/video/openSoom-air-quality-720p.mp4">Watch the operator and maintenance demo (720p)</a> ·
   <a href="https://github.com/openSoom/openSoom/raw/refs/heads/main/deliverables/video/openSoom-demo-5min.mp4">5-minute demo</a> ·
   <a href="https://github.com/openSoom/openSoom/raw/refs/heads/main/deliverables/openSoom-submission.zip">Presentation &amp; media kit</a> ·
+  <a href="https://www.hackster.io/jaylee/opensoom-keep-the-alert-open-choose-the-first-inspection-aeff75">Hackster project</a> ·
   <a href="#follow-a-ventilation-incident">Workflow</a> ·
   <a href="#why-onem2m-is-part-of-the-product">Architecture</a> ·
   <a href="#run-the-local-demo">Quickstart</a> ·
