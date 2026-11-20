@@ -18,8 +18,11 @@
     awaiting_independent_sample: 'Waiting for the independent shaft measurement.',
     unknown: 'Independent shaft evidence is unavailable for this revision.'
   };
+  function revisionActivity(order) {
+    return order.inspections?.find(item => order.resource_id && item.work_order_ri === order.resource_id);
+  }
   function workItem(order) {
-    const entry = (order.inspections || []).find(item => order.resource_id && item.work_order_ri === order.resource_id);
+    const entry = revisionActivity(order);
     let title = 'Inspect ventilation';
     let state = 'Awaiting evidence';
     let rank = 3;
@@ -131,7 +134,9 @@
     current = order || null;
     byId('order').hidden = !order;
     if (!order) return;
-    label('order-state', 'Work order ' + order.status);
+    const entry = revisionActivity(order);
+    const disposition = entry ? ' · ' + (activities[entry.action] || 'Activity recorded') : '';
+    label('order-state', 'Work order ' + order.status + disposition);
     const recovery = order.recovery;
     label('decision-kind', recovery ? 'Operating recovery' : order.priority === 'inspection' ? 'Inspection planning' : 'First inspection');
     label('priority', recovery ? 'Review verified operating recovery' : titles[order.priority] || 'Review maintenance evidence');
