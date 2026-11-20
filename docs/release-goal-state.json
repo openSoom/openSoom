@@ -289,5 +289,14 @@
     "receipt": "evidence/dashboard/role-dashboard-review.json",
     "review": "docs/review/review-ledger.json",
     "filmed_release": "e3a036e185cff099c2e7c2f239e10a7ac5740b9c"
+  },
+  "current_submission_kit": {
+    "status": "Downloadable and verified. Owner publication and organizer receipt are pending.",
+    "public_product": "947d9fc1f5d270596184ce18772260a2d059a516",
+    "archive": "deliverables/openSoom-submission.zip",
+    "sha256": "e23b1a2b9f6dc761d9072b5dbdca0088adfdaafe5c13a16a3c222c7077d05d34",
+    "receipt": "evidence/release/submission-preflight.json",
+    "contents": "English article and three inline images including both current local dashboards, original cloud demo film, embedded presentation, PDF backup and speaker material.",
+    "prior_public_kit": "two_incident_submission"
   }
 }

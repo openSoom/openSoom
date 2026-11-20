@@ -1,0 +1,40 @@
+{
+  "status": "passed",
+  "checked_at": "2026-11-20T09:51:15.354427+09:00",
+  "public_product": "947d9fc1f5d270596184ce18772260a2d059a516",
+  "archive": "deliverables/openSoom-submission.zip",
+  "sha256": "e23b1a2b9f6dc761d9072b5dbdca0088adfdaafe5c13a16a3c222c7077d05d34",
+  "anonymous_downloads": {
+    "README.md": "929fc1369860e34e4f76b44d8aaf8dcb2e9eed3fa40d0e1789892c2a30b01a6a",
+    "docs/submission/hackster-article.md": "3056eb73df3bed8f43cf6159e1f35fa1700a84d8e488957929461c6ce9f8b26d",
+    "docs/submission/handoff.md": "1e18e93211df8dc98252412845f721f5dcace4664e8c74bfbc6d2c4a110b8981",
+    "evidence/dashboard/dashboard-operations.png": "8d4e9c8c25fe9b8fdd9a425c98864968396cefccdaed752648d208bcc2a3e18b",
+    "evidence/dashboard/dashboard-technician.png": "5120a18db4304fd21c491237ed00ed3c82fc18fd8e35ba8de9ca0a277c9c370e",
+    "evidence/pitch/architecture-release-desktop.jpg": "ec9f207ae4c55555fdf4d93c2a2a720bec466ca3069c6d812f14364f874b22d8",
+    "deliverables/openSoom-submission.zip": "e23b1a2b9f6dc761d9072b5dbdca0088adfdaafe5c13a16a3c222c7077d05d34",
+    "deliverables/presentation/openSoom-evaluation.pptx": "15b491a89e8cf04a5aa03bb9afac13740aac33a304fa5645ce1b17334992e2e0",
+    "deliverables/presentation/openSoom-evaluation.pdf": "24db2351ae9d14b04c583661e87a2f8ea449544fb8dcaacf987a7233c8d715aa",
+    "deliverables/video/openSoom-air-quality-720p.mp4": "338ef6f98eabd05ef6bcf7bd0dd2c2d34c13ed348c77f0cef60d1c27fc4ac8fe",
+    "deliverables/video/openSoom-air-quality.en.srt": "1f0cffde1df046f01cd0ae1594b05e5da054633de4dbcfb47ceb753c5b0bac00"
+  },
+  "archive_members": 18,
+  "internal_sha256_checks": 17,
+  "slides": 10,
+  "film_duration_seconds": 56,
+  "slide5_embedded_film_matches_public_mp4": true,
+  "offline_chrome": {
+    "html_links_examined": 92,
+    "rendered_images_in_story": 3,
+    "clipboard_uses_public_image_urls": true,
+    "generated_submission_message": true,
+    "standalone_mp4_playback": true
+  },
+  "scope": "Current operator and technician screenshots show separate local trials. The earlier recorded film and its slide 5 embed retain the original interface and distinct local and cloud runs. Native PowerPoint playback remains unconfirmed; standalone MP4 playback in Chrome was verified.",
+  "owner_actions": [
+    "Host and embed the video on Hackster, publish the public English article, verify signed out",
+    "Share article URL in the team Discord channel",
+    "Check existing availability, enter project and public URL on the schedule, watch for PICK",
+    "Upload English slides to the invited Drive and attend assigned interview"
+  ],
+  "eligibility": "The effect of the missed interim submission is an organizer decision; no ruling represented."
+}

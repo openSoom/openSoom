@@ -2583,5 +2583,13 @@
     ],
     "evidence": "evidence/dashboard/role-dashboard-review.json",
     "official_score_change": false
+  },
+  "submission_kit_preflight": {
+    "frozen_zip_sha256": "e23b1a2b9f6dc761d9072b5dbdca0088adfdaafe5c13a16a3c222c7077d05d34",
+    "public_product": "947d9fc1f5d270596184ce18772260a2d059a516",
+    "receipt": "evidence/release/submission-preflight.json",
+    "team_b": "Checked the three images and separate cover, source/provenance wording, 56-second English captioned 720p film. Local dashboard screenshots and interface from the original cloud test are differentiated; hosted Hackster embedding and signed-out viewing require an owner-published article.",
+    "team_c": "Checked the exact slide 5 MP4 relationship and archive hashes, rich article, source link and remaining publication/scheduling tasks. The bidirectional public article link, actual public contributions and interview require independent evidence.",
+    "parent_disposition": "Verified the revised ZIP and 10 other files against public GitHub after the reviewers checked the local bundle. Historical media verification remains attached to its prior revision. No organizer submission receipt asserted."
   }
 }
