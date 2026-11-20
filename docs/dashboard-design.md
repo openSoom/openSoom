@@ -2,6 +2,10 @@
 
 The buildless dashboard in `web/` is served by the openSoom service. It has no framework, external font, icon or CDN dependency. All SVG marks, equipment symbols and facility geometry are original project assets.
 
+The operator’s first panel names the selected zone and explains the current decision. Each pollutant has its own scale and unit. The filled bar shows the latest reading, a circle marks the pre-action reading, and a line marks the configured target. Choosing a scenario under **Next demo** changes the pending replay selection. Historical actions, missing observations and a lost connection have distinct states.
+
+The technician workbench ranks orders by what a technician can do next. A new inspection with independent evidence takes precedence, followed by a new recovery review, an order with an activity already recorded for that revision, and orders awaiting evidence. Selecting an order or opening its link keeps it selected while the queue updates. The two opening readings use the same 0–100% scale. Follow-up airflow is shown in m³/h with its own site target. [Live browser verification](../evidence/dashboard/role-dashboard-review.json)
+
 ## Operator experience
 
 The screen answers four questions: which zones are reporting, what needs attention, which actions are pending, and whether later observations established recovery. A selectable isometric zone schematic keeps the facility visible beside the operating workflow. The latest action separates request, device acknowledgement and verified outcome. Recent events and an evidence dialog preserve the path from observation to result.

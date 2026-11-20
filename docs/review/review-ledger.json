@@ -2026,6 +2026,73 @@
       "decision_reason": "Facilities differ in their targets, operating constraints and existing workflows.",
       "implementation_state": "pilot deferred; publication scope clarified",
       "review_state": "field evidence open"
+    },
+    {
+      "id": "UI-01",
+      "team": "A and Idea Model",
+      "criteria": [
+        3
+      ],
+      "evidence_status": "captured",
+      "observed_evidence": "In the previous 390px dashboard the current measurement panel began below the virtual replay selector. The active virtual case remained above its particle target.",
+      "gap_and_impact": "The selected next replay could look like the currently observed result.",
+      "minimum_change": "Present the scoped decision and pollutant comparisons before replay, and label the selector Next demo.",
+      "product_reason": "The shift supervisor must see whether there is enough evidence to hand the room over.",
+      "verification": "Live 1440/390/320 CSS px dashboard, native 60/45 and 720/1200, keyboard-accessible evidence; evidence/dashboard/role-dashboard-review.json.",
+      "main_decision": "accept",
+      "decision_reason": "The shift supervisor must see whether there is enough evidence to hand the room over.",
+      "implementation_state": "completed",
+      "review_state": "independently verified"
+    },
+    {
+      "id": "UI-02",
+      "team": "A and Idea Model",
+      "criteria": [
+        3
+      ],
+      "evidence_status": "captured",
+      "observed_evidence": "Three initial work-order options had identical zone names and differed by incident IDs. The ready or scheduled diagnosis had to be discovered by opening each order.",
+      "gap_and_impact": "The existing queue labels did not expose the next task or state.",
+      "minimum_change": "Rank evidence-ready tasks, show meaningful task and revision status in the queue, and keep already-selected links and draft notes stable as data refreshes.",
+      "product_reason": "Field staff must be able to select a next action from the queue.",
+      "verification": "Recorded read-only test with recovery review, scheduled actuator inspection and awaiting outcome. The 100% and 35% share one scale; the 360 m³/h vs 900 m³/h target uses native values.",
+      "main_decision": "accept",
+      "decision_reason": "Field staff must be able to select a next action from the queue.",
+      "implementation_state": "completed",
+      "review_state": "independently verified"
+    },
+    {
+      "id": "UI-03",
+      "team": "Idea Model",
+      "criteria": [],
+      "evidence_status": "captured",
+      "observed_evidence": "Independent comparison found that the new field form omitted the authority for confirming facility recovery. The narrow selected-order menu can abbreviate its field disposition.",
+      "gap_and_impact": "A person recording a scheduled inspection could conflate field work with operational recovery.",
+      "minimum_change": "State that operations verifies recovery from follow-up readings. Show an existing inspection disposition for the exact reviewed revision in the selected header.",
+      "product_reason": "Each role must retain ownership of its decision, even on a narrow screen.",
+      "verification": "Independent read-only live verification on all three widths found “Work order open · Inspection scheduled” and the separate recovery sentence.",
+      "main_decision": "accept",
+      "decision_reason": "Each role must retain ownership of its decision, even on a narrow screen.",
+      "implementation_state": "completed",
+      "review_state": "independently verified"
+    },
+    {
+      "id": "UI-04",
+      "team": "D",
+      "criteria": [
+        10,
+        11
+      ],
+      "evidence_status": "captured",
+      "observed_evidence": "The API can remain reachable while its upstream CSE connection reports unavailable. The first redesign treated the combination as “service is offline”.",
+      "gap_and_impact": "The retained reading was correctly identified but the copy attributed the failure to the wrong component.",
+      "minimum_change": "Describe the last paired measurements and need for fresh readings without assuming the failed component.",
+      "product_reason": "An operator must distinguish last-known results from current conditions during an outage.",
+      "verification": "The operator fixture checks the exact summary; Team D verified the correction and the live asset digest. The existing role and revision checks still govern any write.",
+      "main_decision": "accept",
+      "decision_reason": "An operator must distinguish last-known results from current conditions during an outage.",
+      "implementation_state": "completed",
+      "review_state": "independently verified"
     }
   ],
   "release_assessment": "docs/review/release-assessment.ko.md",
@@ -2498,5 +2565,23 @@
       "idea_model": "Passed. The reviewer compared the final visible/selectable closing wording, film and archive hashes, two original readings, automated handoff, public wording, case-specific landing links and the stated site-pilot conditions.",
       "media_and_provenance": "Decoded frames at 11.8 and 13.75 seconds identify the later verification sample. The earlier held and later native readings agree. At 52 seconds visible and embedded text identify the shared oneM2M status, automated scheduling and open incident. The workbench replay is labeled. All seven audio segments passed volume checks; slide 5 and ZIP copies match."
     }
+  },
+  "dashboard_visual_review": {
+    "initial_candidate": "ecda79f0ce0497a73638e5abf06ca948d38a82c1",
+    "final_product": "4cc3b69e0fe0d1fc6bf4875b55041170b5a94791",
+    "reviewers": "GPT-6.2-Sol Max, independent of both implementation authors",
+    "affected_review": {
+      "A": "Criterion 3. Verified two different roles and normal read-only UI paths on native local records.",
+      "D": "Criteria 10 and 11. Reviewed retained vs current and missing vs zero, source and revision boundaries; no new trust or standard-interoperability claims.",
+      "Idea Model": "Adopt the two dashboards for the virtual demonstration. Human first use and actual field results remain separate field checks."
+    },
+    "finding_ids": [
+      "UI-01",
+      "UI-02",
+      "UI-03",
+      "UI-04"
+    ],
+    "evidence": "evidence/dashboard/role-dashboard-review.json",
+    "official_score_change": false
   }
 }

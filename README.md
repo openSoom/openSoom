@@ -21,7 +21,10 @@
 
 **Why keep an alert open?** At 1,035 m³/h after an adjustment, CO₂ fell to 720 ppm but PM2.5 stayed at 60 µg/m³ above the zone target of 45. The operations app kept the room alert open. In a **separate cloud incident**, airflow was 360 m³/h against 900. A MEC sensor reported 35% shaft opening after a 100% command. The maintenance app moved actuator travel and position feedback to the top of the same work order. The technician workbench recorded the scheduled inspection in an automated trial, and the incident stayed open. Both cases use virtual equipment. [Watch the film](deliverables/video/openSoom-air-quality-720p.mp4) · [Local trial records](evidence/runtime/air-quality-outcomes.json) · [Native cloud work order](evidence/runtime/option-c/technician-handoff.json)
 
-![Actual operator screen showing PM2.5 above target while CO₂ is within target](evidence/application/air-quality-persistent.png)
+| Operations dashboard | Technician workbench |
+| --- | --- |
+| [![Live operator dashboard showing both pollutant readings against their zone targets](evidence/dashboard/dashboard-operations.png)](evidence/dashboard/dashboard-operations.png) | [![Local technician dashboard showing the inspection queue and the requested and measured shaft positions](evidence/dashboard/dashboard-technician.png)](evidence/dashboard/dashboard-technician.png) |
+| See why the alert stayed open, then compare each latest reading against its baseline and zone target. | Select a work order by its next inspection and see the independent shaft and airflow measurements for the reviewed revision. |
 
 Two ventilation faults can look identical to the operator. In a virtual conservation workshop, two trials both acknowledged **95% opening** and then measured **515 m³/h against a 560 m³/h target**. An independent shaft reading of **35%** sent the technician to the actuator and its position feedback. A reading of **93%** sent the technician to the airflow path. Both incidents stayed open. A competent person still needs to establish the physical cause. [Paired trials and comparison method](docs/inspection-benchmark.md)
 

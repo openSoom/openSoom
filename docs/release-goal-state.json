@@ -278,5 +278,16 @@
       "Send article URL to team Discord and enter schedule availability",
       "Upload slides to organizer Drive and attend interview"
     ]
+  },
+  "dashboard_visual_refresh": {
+    "status": "verified on the existing local virtual lab",
+    "product_revision": "4cc3b69e0fe0d1fc6bf4875b55041170b5a94791",
+    "application_ports": {
+      "operations": 19490,
+      "technician": 19492
+    },
+    "receipt": "evidence/dashboard/role-dashboard-review.json",
+    "review": "docs/review/review-ledger.json",
+    "filmed_release": "e3a036e185cff099c2e7c2f239e10a7ac5740b9c"
   }
 }

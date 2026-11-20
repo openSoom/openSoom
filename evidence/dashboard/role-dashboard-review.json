@@ -1,0 +1,320 @@
+{
+  "method": "Read-only Chrome checks on the two live local applications and their virtual facility. The local independent sensor is distinct from the previously filmed cloud MEC execution.",
+  "source_sha256": {
+    "web/index.html": "4b7e4a0169bbce833521eac8d653d2c26b5e0dc4812912db624d08471e62077a",
+    "web/app.js": "cfe336f4c4a7351569c20f4300bfcd4c06f135de3e0be84a2044b1c2f8853ca8",
+    "web/styles.css": "1b4f50b3230001ce498516a688ffc9b2664995a6720bb6a53fef25d79cbb2fdd",
+    "src/opensoom/technician_web/index.html": "4165453544a704cca3482156471d7c4784e90b42bd1fa012ba41f0703f52fc15",
+    "src/opensoom/technician_web/workbench.js": "9b2cdbf7d01c790f0c24cd60d88464a0522beb9aff156aa44304de0058ffc951",
+    "src/opensoom/technician_web/workbench.css": "85db746c880cd979a6055d8c88d35cb48f850f05e601efb00b420f47b70129e0"
+  },
+  "captured_at": "2026-11-20T00:30:08.451Z",
+  "applications": {
+    "operations": [
+      {
+        "width": 1440,
+        "height": 900,
+        "layout": {
+          "viewport": 1440,
+          "documentWidth": 1440
+        },
+        "identity": {
+          "run": "demo-777c682ceb",
+          "command": "cmd-3e7c0e343eba",
+          "status": "outside_target"
+        },
+        "readings": {
+          "pm25": {
+            "before": "75",
+            "latest": "60",
+            "target": "≤ 45"
+          },
+          "co2": {
+            "before": "1,500",
+            "latest": "720",
+            "target": "≤ 1,200"
+          }
+        },
+        "decisionY": 268,
+        "nextDemoY": 772,
+        "gauges": [
+          {
+            "fill": 0.75,
+            "limit": 56.25,
+            "before": 93.75
+          },
+          {
+            "fill": 0.359979633401222,
+            "limit": 60,
+            "before": 75
+          }
+        ],
+        "keyboardSources": true,
+        "consoleErrors": [],
+        "productWrites": [],
+        "screenshot": {
+          "file": "evidence/dashboard/dashboard-operations.png",
+          "sha256": "8d4e9c8c25fe9b8fdd9a425c98864968396cefccdaed752648d208bcc2a3e18b"
+        }
+      },
+      {
+        "width": 390,
+        "height": 844,
+        "layout": {
+          "viewport": 390,
+          "documentWidth": 390
+        },
+        "identity": {
+          "run": "demo-777c682ceb",
+          "command": "cmd-3e7c0e343eba",
+          "status": "outside_target"
+        },
+        "readings": {
+          "pm25": {
+            "before": "75",
+            "latest": "60",
+            "target": "≤ 45"
+          },
+          "co2": {
+            "before": "1,500",
+            "latest": "720",
+            "target": "≤ 1,200"
+          }
+        },
+        "decisionY": 237,
+        "nextDemoY": 887,
+        "gauges": [
+          {
+            "fill": 0.75,
+            "limit": 56.25,
+            "before": 93.75
+          },
+          {
+            "fill": 0.35997596153846156,
+            "limit": 60,
+            "before": 75
+          }
+        ],
+        "keyboardSources": true,
+        "consoleErrors": [],
+        "productWrites": []
+      },
+      {
+        "width": 320,
+        "height": 690,
+        "layout": {
+          "viewport": 320,
+          "documentWidth": 320
+        },
+        "identity": {
+          "run": "demo-777c682ceb",
+          "command": "cmd-3e7c0e343eba",
+          "status": "outside_target"
+        },
+        "readings": {
+          "pm25": {
+            "before": "75",
+            "latest": "60",
+            "target": "≤ 45"
+          },
+          "co2": {
+            "before": "1,500",
+            "latest": "720",
+            "target": "≤ 1,200"
+          }
+        },
+        "decisionY": 237,
+        "nextDemoY": 956,
+        "gauges": [
+          {
+            "fill": 0.75,
+            "limit": 56.25,
+            "before": 93.75
+          },
+          {
+            "fill": 0.35997596153846156,
+            "limit": 60,
+            "before": 75
+          }
+        ],
+        "keyboardSources": true,
+        "consoleErrors": [],
+        "productWrites": []
+      }
+    ],
+    "technician": [
+      {
+        "width": 1440,
+        "height": 900,
+        "layout": {
+          "viewport": 1440,
+          "documentWidth": 1440
+        },
+        "defaultOrder": {
+          "id": "work-incident-04152acc24",
+          "priority": "inspection",
+          "revision": 5,
+          "requested": 100,
+          "airflow": 1035,
+          "target": 900,
+          "recovery": true,
+          "hasRevisionEntry": false
+        },
+        "selected": {
+          "id": "work-incident-5332446e61",
+          "priority": "inspect_actuator_feedback",
+          "revision": 4,
+          "requested": 100,
+          "position": 35,
+          "airflow": 360,
+          "target": 900,
+          "recovery": false,
+          "hasRevisionEntry": true
+        },
+        "orders": 3,
+        "decisionY": 167,
+        "verifiedWaitingDeepLink": "work-incident-04152acc24",
+        "verifiedDraftFocusAcrossPoll": true,
+        "keyboardSources": true,
+        "consoleErrors": [],
+        "productWrites": [],
+        "screenshot": {
+          "file": "evidence/dashboard/dashboard-technician.png",
+          "sha256": "5120a18db4304fd21c491237ed00ed3c82fc18fd8e35ba8de9ca0a277c9c370e"
+        }
+      },
+      {
+        "width": 390,
+        "height": 844,
+        "layout": {
+          "viewport": 390,
+          "documentWidth": 390
+        },
+        "defaultOrder": {
+          "id": "work-incident-04152acc24",
+          "priority": "inspection",
+          "revision": 5,
+          "requested": 100,
+          "airflow": 1035,
+          "target": 900,
+          "recovery": true,
+          "hasRevisionEntry": false
+        },
+        "selected": {
+          "id": "work-incident-5332446e61",
+          "priority": "inspect_actuator_feedback",
+          "revision": 4,
+          "requested": 100,
+          "position": 35,
+          "airflow": 360,
+          "target": 900,
+          "recovery": false,
+          "hasRevisionEntry": true
+        },
+        "orders": 3,
+        "decisionY": 277,
+        "verifiedWaitingDeepLink": "work-incident-04152acc24",
+        "verifiedDraftFocusAcrossPoll": true,
+        "keyboardSources": true,
+        "consoleErrors": [],
+        "productWrites": []
+      },
+      {
+        "width": 320,
+        "height": 690,
+        "layout": {
+          "viewport": 320,
+          "documentWidth": 320
+        },
+        "defaultOrder": {
+          "id": "work-incident-04152acc24",
+          "priority": "inspection",
+          "revision": 5,
+          "requested": 100,
+          "airflow": 1035,
+          "target": 900,
+          "recovery": true,
+          "hasRevisionEntry": false
+        },
+        "selected": {
+          "id": "work-incident-5332446e61",
+          "priority": "inspect_actuator_feedback",
+          "revision": 4,
+          "requested": 100,
+          "position": 35,
+          "airflow": 360,
+          "target": 900,
+          "recovery": false,
+          "hasRevisionEntry": true
+        },
+        "orders": 3,
+        "decisionY": 291,
+        "verifiedWaitingDeepLink": "work-incident-04152acc24",
+        "verifiedDraftFocusAcrossPoll": true,
+        "keyboardSources": true,
+        "consoleErrors": [],
+        "productWrites": []
+      }
+    ]
+  },
+  "product_revision": "4cc3b69e0fe0d1fc6bf4875b55041170b5a94791",
+  "operator_state_rendering": {
+    "source": "Read-only browser interception using earlier recorded outcomes and deliberately varied UI states. No API writes.",
+    "checks": [
+      {
+        "name": "Recovered",
+        "headline": "Both pollutants reached target",
+        "summary": "The latest paired reading meets this zone’s PM2.5 and CO₂ limits.",
+        "status": "Both targets met",
+        "tone": "within"
+      },
+      {
+        "name": "Rebounded",
+        "headline": "Keep the alert open",
+        "summary": "PM2.5 is 60 µg/m³, above the zone limit of 45 µg/m³.",
+        "status": "Above target again",
+        "tone": "outside"
+      },
+      {
+        "name": "Gap",
+        "headline": "Fresh observations needed",
+        "summary": "A fresh pair of pollutant readings is needed to assess this zone.",
+        "status": "Measurement gap",
+        "tone": "neutral"
+      },
+      {
+        "name": "Missing",
+        "headline": "Waiting for a follow-up reading",
+        "summary": "The device acknowledged the action. The next paired reading will show how the air changed.",
+        "status": "Awaiting first follow-up",
+        "tone": "pending"
+      },
+      {
+        "name": "Ended",
+        "headline": "Recorded ventilation result",
+        "summary": "These measurements belong to the selected action.",
+        "status": "Run ended · both targets met at last reading",
+        "tone": "neutral"
+      },
+      {
+        "name": "Offline",
+        "headline": "Last received measurements",
+        "summary": "These are the last paired measurements received. Current room conditions need a fresh reading.",
+        "status": "Both targets met",
+        "tone": "neutral"
+      }
+    ]
+  },
+  "workbench_replay_checks": {
+    "method": "Browser-only fixture based on the archived cloud work order with an unanswered order, an independent sample of zero and an incoming revision; normal local workbench CSP enforced. No facility POSTs.",
+    "passed": [
+      "Initially select the inspection with evidence ahead of an unanswered order",
+      "Keep a manually selected order and keyboard focus across refresh",
+      "Keep the draft note and disable submission when its order revision changes",
+      "Distinguish zero opening and zero airflow from a missing measurement",
+      "Handle an empty queue and an unavailable explicit order",
+      "Render at 320 and 390 CSS pixels without document overflow"
+    ]
+  },
+  "limitations": "Desktop Chrome and emulated narrow viewports on one computer. All device measurements are virtual. No human first-use trial or new cloud execution took place. Public film preserves its original interface and recorded cases."
+}
