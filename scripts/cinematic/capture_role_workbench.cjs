@@ -1,11 +1,11 @@
-// Render the shipped technician frontend with recorded, public cloud responses.
+// Render the technician frontend at the time of filming with recorded, public cloud responses.
 // This is an offline replay for the film, not a new network or cloud execution.
 const {chromium} = require('playwright');
 const fs = require('node:fs');
 const path = require('node:path');
 const assert = require('node:assert/strict');
 const root = path.resolve(__dirname, '../..');
-const source = path.join(root, 'src/opensoom/technician_web');
+const source = path.join(root, 'evidence/video/role-handoff/filmed-workbench');
 const data = JSON.parse(fs.readFileSync(path.join(root, 'evidence/runtime/option-c/technician-handoff.json')));
 const out = process.argv[2];
 if (!out) throw Error('Pass an output directory');

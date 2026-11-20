@@ -67,23 +67,27 @@
 
       <div class="connection-banner" id="connection-banner" role="status" hidden></div>
 
-      <section class="panel scenario-panel" aria-labelledby="scenario-heading">
-        <div class="scenario-label"><span class="scenario-icon"><svg><use href="#i-play"/></svg></span><div><h2 id="scenario-heading">Replay ventilation</h2><p>Virtual equipment · real oneM2M software</p></div></div>
-        <div class="scenario-controls"><label class="sr-only" for="scenario-select">Scenario</label><select id="scenario-select"><option value="air_quality_recovery">Air clears after ventilation</option><option value="air_quality_persistent">Particles stay high</option><option value="air_quality_rebound">Particles return</option><option value="exhaust_fault">Insufficient exhaust</option><option value="normal">Normal operation</option><option value="stale">Stale observations</option><option value="missing_ack">Device not responding</option><option value="no_recovery">No recovery after action</option></select><label class="toggle-label"><input type="checkbox" id="autorun-toggle" checked><span class="toggle-track" aria-hidden="true"></span><span>Allowed actions</span></label><button class="button primary" id="start-demo-button" type="button" disabled><svg><use href="#i-play"/></svg>Run scenario</button></div>
-      </section>
-
       <section class="panel air-outcome" id="air-outcome" aria-labelledby="air-outcome-heading">
-        <div class="outcome-heading">
-          <div><h2 id="air-outcome-heading">Air quality after ventilation</h2><p id="air-outcome-context">Select a zone to review its ventilation action.</p></div>
+        <div class="outcome-header">
+          <div class="outcome-meta"><span id="air-outcome-scope">Air quality after ventilation</span><span id="air-outcome-context"></span></div>
+          <h2 id="air-outcome-heading">Waiting for room readings</h2>
+          <p id="air-outcome-summary">Select a zone to review its ventilation action.</p>
+        </div>
+        <div id="air-outcome-body"><p class="outcome-empty">Waiting for a facility connection.</p></div>
+        <div class="outcome-tools">
           <div class="outcome-pickers">
             <label for="air-outcome-zone">Zone<select id="air-outcome-zone" disabled><option>Waiting for zones</option></select></label>
             <label for="air-outcome-command">Action<select id="air-outcome-command" disabled><option>Current run</option></select></label>
           </div>
+          <div id="air-outcome-evidence" hidden>
+            <details><summary>Measurement evidence</summary><div id="air-outcome-records"></div></details>
+          </div>
         </div>
-        <div id="air-outcome-body"><p class="outcome-empty">Waiting for a facility connection.</p></div>
-        <div id="air-outcome-evidence" hidden>
-          <details><summary>Measurement evidence</summary><div id="air-outcome-records"></div></details>
-        </div>
+      </section>
+
+      <section class="panel scenario-panel" aria-labelledby="scenario-heading">
+        <div class="scenario-label"><span class="scenario-icon"><svg><use href="#i-play"/></svg></span><div><h2 id="scenario-heading">Next demo</h2><p>Choose a scenario to replay on virtual equipment.</p></div></div>
+        <div class="scenario-controls"><label class="sr-only" for="scenario-select">Next demo scenario</label><select id="scenario-select"><option value="air_quality_recovery">Air clears after ventilation</option><option value="air_quality_persistent">Particles stay high</option><option value="air_quality_rebound">Particles return</option><option value="exhaust_fault">Insufficient exhaust</option><option value="normal">Normal operation</option><option value="stale">Stale observations</option><option value="missing_ack">Device not responding</option><option value="no_recovery">No recovery after action</option></select><label class="toggle-label"><input type="checkbox" id="autorun-toggle" checked><span class="toggle-track" aria-hidden="true"></span><span>Allowed actions</span></label><button class="button primary" id="start-demo-button" type="button" disabled><svg><use href="#i-play"/></svg>Run scenario</button></div>
       </section>
 
       <section class="summary-grid" aria-label="Facility summary">

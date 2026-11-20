@@ -250,26 +250,54 @@
   }
 
   const outcomeNumber = new Intl.NumberFormat('en-US', {maximumFractionDigits: 2});
-  function outcomeMetric(outcome, key) {
+  function outcomeMetric(outcome, key, retained) {
     const before = outcome.baseline?.[key];
     const latest = outcome.latest?.[key];
     const target = outcome.targets?.[key];
     const delta = outcome.change?.[key];
-    const decrease = delta?.decrease;
-    const trend = decrease > 0 ? 'lower' : decrease < 0 ? 'higher' : 'unchanged';
     const reading = value => Number.isFinite(value) ? outcomeNumber.format(value) : '—';
+    const comparable = Number.isFinite(latest) && Number.isFinite(target);
+    const above = comparable && latest > target;
+    const condition = comparable ? (above ? 'Above target' : 'Within target') : 'Awaiting data';
+    const tone = retained || !comparable ? 'neutral' : above ? 'exceeds' : 'within';
     let change = 'Awaiting a pair';
-    if (Number.isFinite(decrease)) {
+    if (Number.isFinite(delta?.decrease)) {
       const percent = Number.isFinite(delta.percent) ? ` (${reading(Math.abs(delta.percent))}%)` : '';
-      change = decrease === 0 ? 'No change' : `${reading(Math.abs(decrease))} ${trend}${percent}`;
+      change = delta.decrease === 0 ? 'No change' : `${reading(Math.abs(delta.decrease))} ${delta.decrease > 0 ? 'lower' : 'higher'}${percent}`;
     }
-    const aboveTarget = Number.isFinite(latest) && Number.isFinite(target) && latest > target;
-    return `<tr id="air-outcome-${key}">
-      <th scope="row">${labels[key]} <small>${units[key]}</small></th>
-      <td data-reading="before">${reading(before)}</td><td class="outcome-latest${aboveTarget ? ' above-target' : ''}"><span data-reading="latest">${reading(latest)}</span>${aboveTarget ? '<small class="outcome-limit-warning">Above target</small>' : ''}</td>
-      <td data-reading="change"><span class="outcome-change ${Number.isFinite(decrease) ? trend : 'pending'}">${esc(change)}</span></td>
-      <td data-reading="target">${Number.isFinite(target) ? '≤ ' + reading(target) : '—'}</td>
-    </tr>`;
+
+    // Each pollutant has a separate zero-based scale, shared by its three measurements.
+    const values = [before, latest, target].filter(value => Number.isFinite(value) && value >= 0);
+    const largest = Math.max(1, ...values);
+    const step = 10 ** Math.floor(Math.log10(largest));
+    const maximum = Math.ceil(largest / step) * step;
+    const percent = value => 100 * (value / maximum);
+    const marker = (value, name) => Number.isFinite(value) && value >= 0
+      ? `<i class="metric-marker ${name}" style="left:${percent(value)}%"></i>` : '';
+    const fill = Number.isFinite(latest) && latest >= 0
+      ? `<i class="metric-fill" style="width:${percent(latest)}%"></i>` : '';
+    return `<article class="outcome-metric ${tone}" id="air-outcome-${key}" aria-label="${labels[key]} after ventilation">
+      <div class="metric-heading"><h3>${labels[key]}</h3><span class="metric-condition${above ? ' outcome-limit-warning' : ''}">${condition}</span></div>
+      <div class="metric-reading"><strong data-reading="latest">${reading(latest)}</strong><span>${units[key]}</span><small data-reading="change">${esc(change)}</small></div>
+      <div class="metric-plot" aria-hidden="true"><div class="metric-rail">${fill}${marker(target, 'target')}${marker(before, 'before')}</div></div>
+      <div class="metric-key"><span><i class="key-latest" aria-hidden="true"></i>Latest</span><span><i class="key-before" aria-hidden="true"></i>Before <b data-reading="before">${reading(before)}</b></span><span><i class="key-target" aria-hidden="true"></i>Target <b data-reading="target">${Number.isFinite(target) ? '≤ ' + reading(target) : '—'}</b></span></div>
+    </article>`;
+  }
+
+  function outcomeHeading(command, outcome, context) {
+    if (context.offline) return ['Last received measurements', 'The service is offline. Current room conditions need a new reading.'];
+    if (context.historical) return ['Recorded ventilation result', 'These measurements belong to the selected action.'];
+    if (outcome.status === 'evidence_gap') return ['Fresh observations needed', endReasons[outcome.last_event?.issue || outcome.last_hold?.ended_by] || 'A fresh pair of pollutant readings is needed to assess this zone.'];
+    if (outcome.status === 'awaiting_ack') return ['Waiting for the device', 'The ventilation action is waiting for acknowledgement.'];
+    if (outcome.status === 'awaiting_sample') return ['Waiting for a follow-up reading', 'The device acknowledged the action. The next paired reading will show how the air changed.'];
+    if (outcome.status === 'timed_out') return ['Check the device response', 'The ventilation action reached its deadline without an acknowledgement.'];
+    if (outcome.status === 'in_target') return ['Both pollutants reached target', 'The latest paired reading meets this zone’s PM2.5 and CO₂ limits.'];
+    if (outcome.status !== 'outside_target') return ['Review the latest readings', 'Use the zone’s targets to interpret the measurements.'];
+    const exceeded = ['pm25', 'co2'].filter(key => Number.isFinite(outcome.latest?.[key]) && Number.isFinite(outcome.targets?.[key]) && outcome.latest[key] > outcome.targets[key]);
+    const reason = exceeded.map(key => `${labels[key]} is ${outcomeNumber.format(outcome.latest[key])} ${units[key]}, above the zone limit of ${outcomeNumber.format(outcome.targets[key])} ${units[key]}.`).join(' ');
+    const incident = incidents().find(item => item.id === command.incident_id && item.zone_id === command.zone_id);
+    const heading = incident?.status === 'open' ? 'Keep the alert open' : 'Review the above-target reading';
+    return [heading, reason || 'The latest paired reading exceeded a configured zone target.'];
   }
 
   const outcomeStatuses = {
@@ -334,9 +362,17 @@
     panel.dataset.commandId = command?.id || '';
     panel.dataset.runId = command?.run_id || f?.active_run || '';
     panel.dataset.status = outcome?.status || 'no_outcome';
-    $('air-outcome-context').textContent = command ? `${z.name} · ${actionName(command)} · requested ${clock(command.created_at)}` : 'Compare the readings for one action in the selected zone.';
+    const offline = !state.connected || !state.data?.runtime?.cse_connected;
+    const finalStatus = ['superseded', 'run_ended'].includes(outcome?.status);
+    const historical = finalStatus || Boolean(command && command.id !== current?.id);
+    const scope = historical ? 'Recorded action' : offline ? 'Last received action' : 'Current action';
+    $('air-outcome-scope').textContent = z ? `${scope} · ${z.name || z.id}` : 'Air quality after ventilation';
+    $('air-outcome-context').textContent = command ? `${actionName(command)} · ${clock(command.created_at)}` : '';
     $('air-outcome-evidence').hidden = !outcome;
     if (!outcome) {
+      $('air-outcome-heading').textContent = 'No air-quality result yet';
+      $('air-outcome-summary').textContent = '';
+      panel.dataset.tone = 'neutral';
       const message = command ? 'This action has no retained air-quality comparison.' :
         f?.active_run ? 'No ventilation action has been recorded for this zone in the current run.' :
         'Run a ventilation scenario to see the change in this zone.';
@@ -348,14 +384,17 @@
     const hasFirst = Number.isFinite(outcome.time_to_target_seconds);
     const hasHold = Number.isFinite(outcome.hold_seconds);
     const previousHold = Number.isFinite(outcome.last_hold_seconds);
-    const finalStatus = ['superseded','run_ended'].includes(outcome.status);
     let [statusLabel, tone] = outcomeStatuses[outcome.status] || ['Observation pending', 'pending'];
     if (outcome.status === 'outside_target' && hasFirst) statusLabel = 'Above target again';
     if (finalStatus && outcome.last_sample_status) {
       const last = outcomeStatuses[outcome.last_sample_status];
       if (last) statusLabel += ` · ${last[0].toLowerCase()} at last reading`;
     }
-    const offline = !state.connected || !state.data?.runtime?.cse_connected;
+    const retained = offline || historical || outcome.status === 'evidence_gap';
+    const [heading, reason] = outcomeHeading(command, outcome, {offline, historical});
+    $('air-outcome-heading').textContent = heading;
+    $('air-outcome-summary').textContent = reason;
+    panel.dataset.tone = retained ? 'neutral' : tone;
     let timingNote = hasFirst ? `After ACK · first observed at ${clock(outcome.first_target_at)}` : 'Waiting for both pollutants to meet their targets.';
     if (!outcome.ack_at) timingNote = 'Timing starts at the device acknowledgement.';
     else if (!hasFirst && finalStatus) timingNote = 'No qualifying pair was observed for this action.';
@@ -373,8 +412,8 @@
     }
 
     setHTML('air-outcome-body', `<div class="outcome-result">
-      <div class="outcome-result-head"><span class="outcome-status ${tone}" id="air-outcome-status">${esc(statusLabel)}</span><span class="outcome-source">${esc([outcome.source === 'simulated' ? 'Virtual measurements' : '', offline ? 'Last received record' : '', outcome.latest?.observed_at ? 'Last paired reading ' + clock(outcome.latest.observed_at) : ''].filter(Boolean).join(' · '))}</span></div>
-      <table class="outcome-measures"><caption class="sr-only">Measured change from before the action to the latest paired follow-up</caption><thead><tr><th scope="col">Pollutant</th><th scope="col">Before</th><th scope="col">Latest</th><th scope="col">Change</th><th scope="col">Target</th></tr></thead><tbody>${outcomeMetric(outcome, 'pm25')}${outcomeMetric(outcome, 'co2')}</tbody></table>
+      <div class="outcome-result-head"><span class="outcome-status ${retained ? 'archived' : tone}" id="air-outcome-status">${esc(statusLabel)}</span><span class="outcome-source">${esc([outcome.source === 'simulated' ? 'Virtual measurements' : '', retained ? 'Retained measurements' : '', outcome.latest?.observed_at ? 'Paired reading ' + clock(outcome.latest.observed_at) : ''].filter(Boolean).join(' · '))}</span></div>
+      <div class="outcome-metrics">${outcomeMetric(outcome, 'pm25', retained)}${outcomeMetric(outcome, 'co2', retained)}</div>
       <dl class="outcome-times">
         <div><dt>Time to both targets</dt><dd id="air-outcome-first">${esc(timeValue)}</dd><dd class="outcome-caption">${esc(timingNote)}</dd></div>
         <div><dt>${hasHold ? 'Observed time in target' : previousHold ? 'Last observed time in target' : 'Observed time in target'}</dt><dd id="air-outcome-hold">${esc(holdValue)}</dd><dd class="outcome-caption">${esc(holdNote)}</dd></div>

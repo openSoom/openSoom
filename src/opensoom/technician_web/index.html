@@ -1,10 +1,75 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light">
-<title>Technician workbench · openSoom</title><link rel="stylesheet" href="/assets/workbench.css"><script defer src="/assets/workbench.js"></script></head>
-<body><header><span class="brand">openSoom</span><span>Technician workbench</span><span id="facility"></span></header>
-<main><aside><p class="eyebrow">Facility maintenance</p><h1>Work orders</h1><p id="status" role="status">Connecting to the facility queue…</p><label for="queue">Select a work order</label><select id="queue"><option>Loading…</option></select><p id="scope"></p></aside>
-<section id="order" hidden><div class="sheet"><div class="topline"><span class="eyebrow">Maintenance app recommendation</span><span class="pill" id="order-state"></span></div><h2 id="priority"></h2><p id="context"></p><div class="metrics"><div><span>Requested opening</span><b id="requested"></b></div><div><span>Independent position</span><b id="position"></b></div><div><span>Follow-up airflow</span><b id="flow"></b></div></div><p id="reason"></p>
-<details><summary>Source measurements and work-order record</summary><dl id="provenance"></dl></details></div>
-<div class="sheet"><p class="eyebrow">Technician entry</p><h2>Record inspection activity</h2><p>This entry records field work against the revision you reviewed. Site operations verifies airflow recovery separately.</p>
-<form id="inspection"><label for="action">Activity</label><select id="action" required><option value="">Choose an activity</option><option value="scheduled">Inspection scheduled</option><option value="checked">Inspection performed</option><option value="escalated">Specialist requested</option></select><label for="note">Field note <small>(optional)</small></label><textarea id="note" maxlength="280" rows="2" placeholder="Record what was observed or which check is needed."></textarea><button id="save" type="submit">Save inspection entry</button></form><p id="save-state" role="status"></p><div id="history"></div></div></section>
-</main></body></html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>Technician workbench · openSoom</title>
+  <link rel="stylesheet" href="/assets/workbench.css">
+  <script defer src="/assets/workbench.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <span class="brand">openSoom</span>
+    <span class="desk-name">Technician workbench</span>
+    <span id="facility"></span>
+  </header>
+  <main>
+    <aside aria-labelledby="queue-heading" class="queue-panel">
+      <div class="queue-heading">
+        <h1 id="queue-heading">Work orders</h1>
+        <p id="status" role="status">Connecting to facility…</p>
+      </div>
+      <nav id="worklist" aria-label="Work orders by inspection readiness"></nav>
+      <div class="compact-queue">
+        <label for="queue">Select a work order</label>
+        <select id="queue"><option>Loading…</option></select>
+      </div>
+      <p id="scope"></p>
+    </aside>
+    <div class="detail-column">
+      <p id="empty-state" role="status" hidden></p>
+      <section id="order" aria-labelledby="priority" hidden>
+        <div class="sheet decision">
+          <div class="decision-head">
+            <div class="topline"><span class="eyebrow" id="decision-kind">First inspection</span><span class="pill" id="order-state"></span></div>
+            <h2 id="priority"></h2>
+            <p id="context"></p>
+          </div>
+          <div class="evidence-body">
+            <div class="metrics">
+              <section class="chart" aria-labelledby="shaft-heading">
+                <h3 id="shaft-heading">Shaft opening</h3>
+                <div class="measure"><span>Requested</span><strong id="requested"></strong></div>
+                <svg class="rail" id="requested-rail" aria-hidden="true" viewBox="0 0 100 14" preserveAspectRatio="none"><rect class="track" y="3" width="100" height="8"/><rect class="reading" y="3" width="0" height="8"/></svg>
+                <div class="measure"><span>Independent sensor</span><strong id="position"></strong></div>
+                <svg class="rail position-rail" id="position-rail" aria-hidden="true" viewBox="0 0 100 14" preserveAspectRatio="none"><rect class="track" y="3" width="100" height="8"/><rect class="reading" y="3" width="0" height="8"/></svg>
+                <div class="axis"><span>0%</span><span>100%</span></div>
+              </section>
+              <section class="chart" aria-labelledby="flow-heading">
+                <h3 id="flow-heading">Follow-up airflow</h3>
+                <div class="flow-value" id="flow"></div>
+                <svg class="rail flow-rail" id="flow-rail" aria-hidden="true" viewBox="0 0 100 14" preserveAspectRatio="none"><rect class="track" y="3" width="100" height="8"/><rect class="reading" y="3" width="0" height="8"/><line class="target-mark" y1="0" y2="14" x1="0" x2="0"/></svg>
+                <div class="axis"><span>0</span><span id="flow-scale"></span></div>
+                <p class="benchmark"><span class="benchmark-symbol" aria-hidden="true"></span><span id="flow-target"></span></p>
+              </section>
+            </div>
+            <p id="reason"></p>
+            <details><summary>Source measurements and work-order record</summary><dl id="provenance"></dl></details>
+          </div>
+        </div>
+        <div class="sheet entry">
+          <h2>Record inspection activity</h2>
+          <p>Operations sees the activity for this revision. Field notes stay in the technician workbench.</p>
+          <form id="inspection">
+            <div class="form-field"><label for="action">Activity</label><select id="action" required><option value="">Choose an activity</option><option value="scheduled">Inspection scheduled</option><option value="checked">Inspection performed</option><option value="escalated">Specialist requested</option></select></div>
+            <div class="form-field"><label for="note">Field note <small>(optional)</small></label><textarea id="note" maxlength="280" rows="2" placeholder="What did you observe or plan to check?"></textarea></div>
+            <button id="save" type="submit" disabled>Save inspection entry</button>
+          </form>
+          <p id="save-state" role="status"></p><div id="history"></div>
+        </div>
+      </section>
+    </div>
+  </main>
+</body>
+</html>

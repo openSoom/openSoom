@@ -1,0 +1,10 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light">
+<title>Technician workbench · openSoom</title><link rel="stylesheet" href="/assets/workbench.css"><script defer src="/assets/workbench.js"></script></head>
+<body><header><span class="brand">openSoom</span><span>Technician workbench</span><span id="facility"></span></header>
+<main><aside><p class="eyebrow">Facility maintenance</p><h1>Work orders</h1><p id="status" role="status">Connecting to the facility queue…</p><label for="queue">Select a work order</label><select id="queue"><option>Loading…</option></select><p id="scope"></p></aside>
+<section id="order" hidden><div class="sheet"><div class="topline"><span class="eyebrow">Maintenance app recommendation</span><span class="pill" id="order-state"></span></div><h2 id="priority"></h2><p id="context"></p><div class="metrics"><div><span>Requested opening</span><b id="requested"></b></div><div><span>Independent position</span><b id="position"></b></div><div><span>Follow-up airflow</span><b id="flow"></b></div></div><p id="reason"></p>
+<details><summary>Source measurements and work-order record</summary><dl id="provenance"></dl></details></div>
+<div class="sheet"><p class="eyebrow">Technician entry</p><h2>Record inspection activity</h2><p>This entry records field work against the revision you reviewed. Site operations verifies airflow recovery separately.</p>
+<form id="inspection"><label for="action">Activity</label><select id="action" required><option value="">Choose an activity</option><option value="scheduled">Inspection scheduled</option><option value="checked">Inspection performed</option><option value="escalated">Specialist requested</option></select><label for="note">Field note <small>(optional)</small></label><textarea id="note" maxlength="280" rows="2" placeholder="Record what was observed or which check is needed."></textarea><button id="save" type="submit">Save inspection entry</button></form><p id="save-state" role="status"></p><div id="history"></div></div></section>
+</main></body></html>

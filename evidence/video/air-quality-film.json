@@ -66,9 +66,9 @@
     "evidence/video/role-handoff/revision-4.png": "49360feeb3a1d351a77fedcec3bc6a958f5a33b3c61ef7ec51e8de9a179a8773",
     "evidence/video/role-handoff/scheduled.png": "b2fcb3de5bfaa3d7a83a0c43744a87996d6b0842d70c98c215dc5c2c8b7a44b1",
     "evidence/runtime/option-c/technician-handoff.json": "8abb401d1ef9471bf57f147d5ed62efe377f4f3cb41f1835ea14c6d71af3d7a4",
-    "src/opensoom/technician_web/workbench.js": "a243aebfaa7271a6e346b9a705ad3adc10b6320f524ff61b0499b176ecca053b",
-    "src/opensoom/technician_web/index.html": "d3531ed806b7fc8e10983c5ed37d529e980171e30dc8cd65413503bfdd3b7fac",
-    "src/opensoom/technician_web/workbench.css": "0e13af8fc401bb970a23aed0567c6c99c3e3c4f1c4c50dd2d24eee4203bd220b"
+    "evidence/video/role-handoff/filmed-workbench/workbench.js": "a243aebfaa7271a6e346b9a705ad3adc10b6320f524ff61b0499b176ecca053b",
+    "evidence/video/role-handoff/filmed-workbench/index.html": "d3531ed806b7fc8e10983c5ed37d529e980171e30dc8cd65413503bfdd3b7fac",
+    "evidence/video/role-handoff/filmed-workbench/workbench.css": "0e13af8fc401bb970a23aed0567c6c99c3e3c4f1c4c50dd2d24eee4203bd220b"
   },
   "tools": [
     "scripts/cinematic/retain_role_source.py",
