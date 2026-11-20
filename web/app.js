@@ -285,7 +285,7 @@
   }
 
   function outcomeHeading(command, outcome, context) {
-    if (context.offline) return ['Last received measurements', 'The service is offline. Current room conditions need a new reading.'];
+    if (context.offline) return ['Last received measurements', 'These are the last paired measurements received. Current room conditions need a fresh reading.'];
     if (context.historical) return ['Recorded ventilation result', 'These measurements belong to the selected action.'];
     if (outcome.status === 'evidence_gap') return ['Fresh observations needed', endReasons[outcome.last_event?.issue || outcome.last_hold?.ended_by] || 'A fresh pair of pollutant readings is needed to assess this zone.'];
     if (outcome.status === 'awaiting_ack') return ['Waiting for the device', 'The ventilation action is waiting for acknowledgement.'];
